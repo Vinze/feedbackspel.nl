@@ -96,6 +96,8 @@ Om de doelgroep vast te stellen is het van belang om erachter te komen of en hoe
 
 http://nl.wikipedia.org/wiki/Neurolingu%C3%AFstisch_programmeren
 
+http://www.bol.com/nl/p/universele-ontwerpmethoden/9200000005539881/
+
 
 # Realtime webapplicaties
 

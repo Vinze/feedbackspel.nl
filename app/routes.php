@@ -15,9 +15,10 @@ Route::get('/', function() {
 	return View::make('pages.home');
 });
 
-Route::get('phpinfo', function() {
-	phpinfo();
+Route::group(array('before' => 'csrf'), function() {
+	Route::post('register', 'UserController@postRegister');
 });
+
 
 App::missing(function($exception) {
 	return Response::view('layout.404', array(), 404);

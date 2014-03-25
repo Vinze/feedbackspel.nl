@@ -24,7 +24,7 @@
 				</div>
 				<div class="col span-4 signup">
 					<h1>Registeren</h1>
-					{{ Form::open() }}
+					{{ Form::open(array('url' => 'register')) }}
 
 						<div class="row">
 							<div class="col span-12">
@@ -55,8 +55,8 @@
 						<div class="row">
 							<div class="col span-12">
 								Ik ben een: 
-								<label>{{ Form::radio('sex', 'male') }} Man</label>
-								<label>{{ Form::radio('sex', 'female') }} Vrouw</label>
+								<label>{{ Form::radio('gender', 'male', true) }} Man</label>
+								<label>{{ Form::radio('gender', 'female') }} Vrouw</label>
 							</div>
 						</div>
 						<div class="row">
@@ -75,19 +75,16 @@
 			<div class="section row">
 				<div class="col span-4">
 					<h2>Wat is dit?</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nesciunt impedit dolore similique vel facere tempora! Quasi, sint, sapiente, itaque deleniti placeat debitis labore non unde iure ab cum nobis!</p>
-					<p>Quasi, sint, sapiente, itaque deleniti placeat debitis labore.</p>
+					<p>Allereerst welkom op Feedbackspel.nl! Op deze website kun je na het registreren een online spel spelen welke het makkelijker maakt om feedback te geven en ontvangen in groepsverband.</p>
+					<p>Deze feedback wordt automatisch opgeslagen en bied waardevolle informatie over hoe mensen over jou denken. Zo krijg je inzicht in je goede eigenschappen, maar ook op welke punten je je nog beter kan ontwikkelen.</p>
 				</div>
 				<div class="col span-4">
 					<h2>Voor wie?</h2>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nesciunt impedit dolore similique vel facere tempora! Quasi, sint, sapiente, itaque deleniti placeat debitis labore non unde iure ab cum nobis!
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nesciunt impedit dolore similique vel facere tempora! Quasi, sint, sapiente, itaque deleniti placeat debitis labore non unde iure ab cum nobis!</p>
 						<ul>
-							<li>Lorem ipsum dolar sit..</li>
-							<li>Lorem ipsum dolar sit..</li>
-							<li>Lorem ipsum dolar sit..</li>
+							<li>Studenten</li>
+							<li>Collega's</li>
 						</ul>
-					</p>
 				</div>
 				<div class="col span-4">
 					<h2>Waarom?</h2>
@@ -103,7 +100,7 @@
 
 				<div class="col span-12 align-center">
 					<p>&copy; {{ date('Y') }} Feedbackspel.nl - <a href="http://www.vbremer.nl/" target="_blank">Vincent Bremer</a></p>
-					<p id="clients"></p>
+					<p id="clients">Er is momenteen niemand online.</p>
 				</div>
 				
 			</div>
