@@ -57,6 +57,10 @@ body {
 	max-width: 100%;
 }
 
+.signup .btn {
+	margin-top: 15px;
+}
+
 .page {
 	background-color: #f2f2f2;
 }

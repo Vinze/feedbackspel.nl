@@ -105,7 +105,7 @@ body {
 
 body, input, textarea {
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 h1 {
@@ -133,7 +133,7 @@ table,
 ul,
 ol,
 form {
-	margin: 0 0 10px 0;
+	margin: 0 0 15px 0;
 	line-height: 150%;
 }
 
@@ -244,7 +244,6 @@ input[type="checkbox"] {
 	vertical-align: -2px;
 }
 
-
 .btn, a.btn {
 	background-color: #FFD800;
 	text-decoration: none;
@@ -255,7 +254,7 @@ input[type="checkbox"] {
 	color: #333;
 	border: none;
 	cursor: pointer;
-	font-size: 1.1em;
+	font-size: 1em;
 }
 
 .btn:hover, a.btn:hover {
