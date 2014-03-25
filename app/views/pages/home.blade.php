@@ -100,11 +100,31 @@
 	<div class="footer-wrapper">
 		<div class="container">
 			<div class="footer row">
-				<div class="col span-12">
-					&copy; {{ date('Y') }} Feedbackspel.nl - <a href="http://www.vbremer.nl/" target="_blank">Vincent Bremer</a>
+
+				<div class="col span-12 align-center">
+					<p>&copy; {{ date('Y') }} Feedbackspel.nl - <a href="http://www.vbremer.nl/" target="_blank">Vincent Bremer</a></p>
+					<p id="clients"></p>
 				</div>
+				
 			</div>
 		</div>
 	</div>
 
+@stop
+@section('scripts')
+	
+	{{ HTML::script('http://feedbackspel.nl:3000/socket.io/socket.io.js') }}
+	<script type="text/javascript">
+
+		var socket = io.connect('http://feedbackspel.nl:3000');
+
+		socket.on('clients_update', function(clients) {
+			if (clients == 1) {
+				document.getElementById('clients').innerHTML = 'Momenteel is ' + clients + ' iemand online.';
+			} else {
+				document.getElementById('clients').innerHTML = 'Momenteel zijn ' + clients + ' mensen online.';
+			}
+			console.log(clients);			
+		});
+	</script>
 @stop
