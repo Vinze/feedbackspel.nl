@@ -74,15 +74,14 @@ table {
 }
 
 @font-face {
-    font-family: 'Narkisim';
-    src: url('../fonts/Narkisim/Regular.eot');
-    src: url('../fonts/Narkisim/Regular.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Narkisim/Regular.woff') format('woff'),
-         url('../fonts/Narkisim/Regular.ttf') format('truetype'),
-         url('../fonts/Narkisim/Regular.svg#narkisimregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+	font-family: 'Poiret One';
+	src: url('../fonts/PoiretOne/Regular.eot');
+	src: url('../fonts/PoiretOne/Regular.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/PoiretOne/Regular.woff') format('woff'),
+	     url('../fonts/PoiretOne/Regular.ttf') format('truetype'),
+	     url('../fonts/PoiretOne/Regular.svg#poiret_oneregular') format('svg');
+	font-weight: bold;
+	font-style: normal;
 }
 
 /*-------------------------------------
@@ -232,7 +231,8 @@ label {
 	height: 28px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
 	background-color: #fff;
 	padding: 6px;
 	width: 100%;
@@ -259,6 +259,14 @@ input[type="checkbox"] {
 
 .btn:hover, a.btn:hover {
 	background-color: #FFE147;
+}
+
+.required {
+	color: red;
+}
+
+.required:after {
+	content: "*";
 }
 
 /*-------------------------------------

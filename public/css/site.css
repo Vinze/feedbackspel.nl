@@ -7,6 +7,10 @@ body {
 	max-width: 1200px;
 }
 
+.header-wrapper {
+	border-top: 2px solid #FFD800;
+}
+
 .header {
 	color: #fff;
 }
@@ -16,12 +20,13 @@ body {
 }
 
 .header .logo {
-	font-family: Narkisim, Arial;
+	font-family: 'Poiret One', Arial;
 	font-size: 3.5em;
 	margin: 25px 0;
 	color: #FFD800;
 	text-decoration: none;
 	display: inline-block;
+	float: left;
 }
 
 .header .logo .grey {
@@ -69,17 +74,16 @@ body {
 	padding: 40px 20px 50px 20px;
 }
 
-.footer {
-	font-size: 0.85em;
+.footer-wrapper {
 	border-top: 2px solid #fff;
-	color: #ccc;
 }
 
-.footer .container {
+.footer {
+	font-size: 0.85em;
+	color: #ccc;
 	padding: 30px 20px;
 	text-align: center;
 }
-
 
 /*-------------------------------------
 -- Responsiveness

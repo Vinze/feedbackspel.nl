@@ -94,12 +94,15 @@ Na afloop krijgt iedere deelnemer een overzicht van de ontvangen kaarten met daa
 
 ## Hoofd en deelvragen
 ### Hoofdvraag
-- Welke feedback spellen vinden studenten prettig werken en zijn mogelijk in een applicatie te verwerken?
+- Met welke feedback spellen vinden mensen prettig werken en zijn mogelijk te verwerken in een applicatie?
 
 ### Deelvragen
-- Wat doen studenten met de ontvangen feedback?
-- Wat voor soort feedback spellen zijn al op de markt?
-- Hoe zijn de resultaten uit een feedback sessie meetbaar te maken?
+- In hoeverre wordt er feedback gegeven in het bedrijfsleven?
+- Op welke opleidingen werken mensen in een (project-)groep en wordt aan feedback gedaan?
+- Waarom wordt er aan feedback gedaan?
+- Wat wordt er met de informatie uit een feedback sessie gedaan?
+- Met wat voor feedbackmethodes is men al bekend?
+- Welk doel hebben de verschillende al bestaande feedbackspellen?
 - Wat houd een realtime (web-)applicatie in en wat is er nodig om dit toe te passen?
 
 ## Competenties
@@ -144,6 +147,7 @@ De multimediadeskundige onderzoekt wat voor innovatieve multimedia-oplossing nod
 - Anticipeert met onderzoeksaanbevelingen op trends
 
 ### Results:
+- Doelgroep onderzoek
 - Onderzoeksplan feedback geven/ontvangen
 	- Enquêtes en interviews
 - Onderzoeksplan realtime webapplicaties
@@ -156,10 +160,11 @@ Onderzoekend, Onafhankelijk, Nieuwsgierig, Open voor intuïtie, Lateraal denken,
 - Product gericht onderzoek uitvoeren.
 - Resultaten uit onderzoek direct verwerken in prototype.
 - Hoe ik onderzoek en het ontwikkelingen tegelijkertijd kan uitvoeren.
+- Opstellen van goede vragenlijsten en hoe deze over een grote groep mensen te verspreiden is.
 
 ### Activiteiten
 - Onderzoek uitvoeren naar verschillende feedback spellen
-- Enquetes en/of interviews met projectgroepen houden
+- Enquetes en/of interviews met studenten/bedrijven houden
 - Technisch onderzoek realtime webapplicaties
 
 <hr>
@@ -282,18 +287,16 @@ Doelgericht, Resultaatgericht, Leergierig, Consistent, Nauwkeurig, Kwaliteitsbew
 Gericht op kwaliteit, Gericht op effectiviteit en efficiëntie, Gericht op preventie, Gericht op behoeften en mogelijkheden van gebruikers, Zorgvuldig
 
 ### Leerdoelen
-- Wat 
-
-- Test plan
-- Wat is belangrijk
-- Hoe test je precies
-- Wat wil ik weten
-- Hoe verwerk ik de informatie
--
+- Opstellen van een testplan waaruit meetbare resultaten gehaald kunnen worden.
+- Samenwerken met de doelgroep en testpersonen.
+- Het eindproduct of prototype aanpassen aan de hand van de ontvangen feedback.
+- De informatie verwerken en een verbeterplan leren schrijven.
+- Rocket Surgery Made Easy lezen.
 
 ### Activiteiten
 - Testmomenten houden
 - Schrijven testplan(nen)
+- Testpersonen zoeken.
 
 <hr>
 
@@ -314,7 +317,6 @@ Zodra het project goed loopt en ik bezig ben met het ontwikkelen van een prototy
 - Quality Monitoring/Usability
 - Teamwork/feedback
 
-Dit zijn namelijk
 
 
 ## Planning

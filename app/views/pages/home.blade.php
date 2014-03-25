@@ -27,6 +27,22 @@
 					{{ Form::open() }}
 
 						<div class="row">
+							<div class="col span-12">
+								{{ Form::label('email', 'E-mail adres:') }}<br>
+								{{ Form::text('email') }}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col span-6">
+								{{ Form::label('password', 'Wachtwoord:') }}<br>
+								{{ Form::password('password') }}
+							</div>
+							<div class="col span-6">
+								{{ Form::label('password_repeat', 'Herhaal wachtwoord:') }}<br>
+								{{ Form::password('password_repeat') }}
+							</div>
+						</div>
+						<div class="row">
 							<div class="col span-6">
 								{{ Form::label('firstname', 'Voornaam:') }}<br>
 								{{ Form::text('firstname') }}
@@ -34,12 +50,6 @@
 							<div class="col span-6">
 								{{ Form::label('lastname', 'Achternaam:') }}<br>
 								{{ Form::text('lastname') }}
-							</div>
-						</div>
-						<div class="row">
-							<div class="col span-12">
-								{{ Form::label('email', 'E-mail adres:') }}<br>
-								{{ Form::text('email') }}
 							</div>
 						</div>
 						<div class="row">
@@ -87,12 +97,14 @@
 		</div>
 	</div>
 
-	<div class="footer">
-		<div class="row container">
-			<div class="col span-12">
-				&copy; {{ date('Y') }} Feedbackspel.nl - <a href="http://www.vbremer.nl/" target="_blank">Vincent Bremer</a>
+	<div class="footer-wrapper">
+		<div class="container">
+			<div class="footer row">
+				<div class="col span-12">
+					&copy; {{ date('Y') }} Feedbackspel.nl - <a href="http://www.vbremer.nl/" target="_blank">Vincent Bremer</a>
+				</div>
 			</div>
 		</div>
 	</div>
-	
+
 @stop

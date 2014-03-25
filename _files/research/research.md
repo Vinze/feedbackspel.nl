@@ -94,6 +94,8 @@ Om de doelgroep vast te stellen is het van belang om erachter te komen of en hoe
 
 [http://www.carrieretijger.nl/functioneren/communiceren/mondeling/vaardigheden/feedback-geven](http://www.carrieretijger.nl/functioneren/communiceren/mondeling/vaardigheden/feedback-geven)
 
+http://nl.wikipedia.org/wiki/Neurolingu%C3%AFstisch_programmeren
+
 
 # Realtime webapplicaties
 
@@ -115,15 +117,10 @@ Het feedbackspel wordt met meerdere gebruikers tegelijkertijd gespeeld en iedere
 
 
 ## Realtime applicaties
-Een realtime applicatie is een applicatie welke functioneert binnen een bepaald tijdsbestek waardoor de gebruiker het idee heeft de informatie direct binnenkomt. Dit soort applicaties luisteren
-
-Een realtime applicatie is verbonden met bijvoorbeeld een server of een service op de computer. Dit soort programma's houden de verbinding open en luisteren actief naar wijzigingen. 
-Voor programma's die geinstalleerd worden op een computer is dit vrij normaal en wordt het ook al jaren toegepast. Neem bijvoorbeeld het programma Dropbox, deze houd actief de map in te gaten op wijzigingen, en is constant verbonden met internet om eventuele nieuwe versies te downloaden. Andere voorbeelden zijn bijvoorbeeld multiplayer games en chatprogramma's.
-
+Een realtime applicatie is een applicatie welke functioneert binnen een bepaald tijdsbestek waardoor de gebruiker het idee heeft de informatie direct binnenkomt. Dit soort applicaties luisteren actief naar gebeurtenissen en verwerken de informatie vrijwel direct. Deze gebeurtenissen kunnen plaatsvinden op een (externe) server of geleverd worden door een service. Een voorbeeld van een aantal realtime applicaties zijn bijvoorbeeld chatprogramma's, bluetooth software, besturingssystemen en multiplayer games.
 
 ## Geschiedenis
-
-
+Software welke draait op computers en geschreven is in een taal welke dicht bij de hardware
 
 Bij webapplicaties is het minder vanzelfsprekend dat deze ook realtime werken. 
 
@@ -136,4 +133,4 @@ http://en.wikipedia.org/wiki/Real-time_computing
 
 http://searchunifiedcommunications.techtarget.com/definition/real-time-application-RTA
 
-http://nl.wikipedia.org/wiki/Neurolingu%C3%AFstisch_programmeren
+http://ifs.host.cs.st-andrews.ac.uk/Books/SE7/Presentations/PDF/ch15.pdf
