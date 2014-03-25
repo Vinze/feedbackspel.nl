@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+Route::get('/', function() {
+	return View::make('pages.home');
+});
+
+Route::get('phpinfo', function() {
+	phpinfo();
+});
+
+App::missing(function($exception) {
+	return Response::view('layout.404', array(), 404);
 });

@@ -79,3 +79,16 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| Require The Custom Library Files
+|--------------------------------------------------------------------------
+|
+| Next we will load the library files for the application.
+|
+*/
+
+require app_path().'/libraries/macros.php';
+
+require app_path().'/libraries/functions.php';

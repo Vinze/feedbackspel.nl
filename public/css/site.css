@@ -1,0 +1,109 @@
+body {
+	background-color: #333333;
+}
+
+.container {
+	margin: 0px auto;
+	max-width: 1200px;
+}
+
+.header {
+	color: #fff;
+}
+
+.header {
+	padding: 0 20px;
+}
+
+.header .logo {
+	font-family: Narkisim, Arial;
+	font-size: 3.5em;
+	margin: 25px 0;
+	color: #FFD800;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.header .logo .grey {
+	color: #ccc;
+}
+
+.header .logo:hover {
+	opacity: 0.8;
+}
+
+.header .buttons {
+	margin-top: 30px;
+	float: right;
+}
+
+.banner-wrapper {
+	background-color: #FFF0C8;
+	border-top: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+}
+
+.banner {
+	padding: 40px 20px;
+}
+
+.cards {
+	text-align: center;
+	position: relative;
+}
+
+.cards img {
+	display: inline-block;
+	max-width: 100%;
+}
+
+.page {
+	background-color: #f2f2f2;
+}
+
+.section {
+	padding: 40px 20px 50px 20px;
+}
+
+.footer {
+	font-size: 0.85em;
+	border-top: 2px solid #fff;
+	color: #ccc;
+}
+
+.footer .container {
+	padding: 30px 20px;
+	text-align: center;
+}
+
+
+/*-------------------------------------
+-- Responsiveness
+-------------------------------------*/
+
+@media screen and (max-width: 720px) {
+	.header .logo {
+		font-size: 2.8em;
+		margin: 10px 0;
+	}
+	.header .buttons {
+		margin-top: 12px;
+	}
+	.row > .col {
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.header .logo {
+		font-size: 2em;
+		margin: 10px 0;
+	}
+	.header .buttons {
+		margin-top: 9px;
+	}
+	.header .btn {
+		padding: 6px;
+	}
+}
