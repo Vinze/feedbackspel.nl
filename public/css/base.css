@@ -109,12 +109,12 @@ body, input, textarea {
 
 h1 {
 	font-size: 2em;
-	margin: 20px 0 15px;
+	margin: 0px 0 15px;
 }
 
 h2 {
 	font-size: 1.4em;
-	margin: 20px 0 10px;
+	margin: 0px 0 10px;
 }
 
 a:link, a:visited {
