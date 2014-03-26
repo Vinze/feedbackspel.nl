@@ -1,5 +1,5 @@
 body {
-	background-color: #333333;
+	background: #333 url('../images/debut_dark.png') repeat top left;
 }
 
 .container {
@@ -43,7 +43,8 @@ body {
 }
 
 .banner-wrapper {
-	background-color: #FFF0C8;
+	background: #FFF0C8 url('../images/fabric_plaid.png') repeat top left;
+	
 	border-top: 2px solid #fff;
 	border-bottom: 2px solid #fff;
 }
@@ -66,7 +67,7 @@ body {
 	margin-top: 15px;
 }
 
-.page {
+.sections {
 	background-color: #f2f2f2;
 }
 
@@ -101,6 +102,14 @@ body {
 		width: 100%;
 		margin-left: 0;
 	}
+	.banner > .col,
+	.section > .col {
+		margin-bottom: 20px;
+	}
+	.banner > .col:last-child,
+	.section > .col:last-child {
+		margin-bottom: 0;
+	}
 }
 
 @media screen and (max-width: 480px) {
@@ -114,4 +123,20 @@ body {
 	.header .btn {
 		padding: 6px;
 	}
+}
+
+/*-------------------------------------
+-- Flash messages
+-------------------------------------*/
+
+.flash-success {
+	padding: 20px;
+	margin: 20px;
+	background-color: rgba(92, 184, 92, 0.4);
+	color: #236923;
+	border-radius: 5px;
+}
+
+.flash-error {
+
 }

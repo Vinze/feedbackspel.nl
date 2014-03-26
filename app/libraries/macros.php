@@ -2,14 +2,14 @@
 HTML::macro('flash', function() {
 	if (Session::has('error')) {
 		$message = Session::get('error');
-		return '<div class="flash-msg-red">' . $message . '</div>';
+		return '<div class="flash-error">'.$message.'</div>';
 	}
 	if (Session::has('message')) {
 		$message = Session::get('message');
-		return '<div class="flash-msg-green">' . $message . '</div>';
+		return '<div class="flash-success">'.$message.'</div>';
 	}
 	if (Session::has('errors')) {
-		return '<div class="flash-msg-red">Niet alle verplichte velden zijn ingevuld.</div>';
+		return '<div class="flash-error">Niet alle verplichte velden zijn ingevuld.</div>';
 	}
 });
 

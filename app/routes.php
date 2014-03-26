@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function() {
-	return View::make('pages.home');
+	$domain = 'http://'.Request::server('HTTP_HOST').':3000';
+	return View::make('pages.home', compact('domain'));
 });
 
 Route::group(array('before' => 'csrf'), function() {

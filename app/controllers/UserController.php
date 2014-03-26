@@ -19,6 +19,8 @@ class UserController extends BaseController {
 
 		nprint($input);
 		nprint($validator->messages());
+
+		return Redirect::to('/')->with('message', 'Het account is succesvol geregistreerd!');
 	}
 
 }
