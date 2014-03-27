@@ -9,7 +9,7 @@ HTML::macro('flash', function() {
 		return '<div class="flash-success">'.$message.'</div>';
 	}
 	if (Session::has('errors')) {
-		return '<div class="flash-error">Niet alle verplichte velden zijn ingevuld.</div>';
+		return '<div class="flash-error">Niet alle verplichte velden zijn (correct) ingevuld.</div>';
 	}
 });
 

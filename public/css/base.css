@@ -127,21 +127,34 @@ a:hover, a:active {
 	text-decoration: underline;
 }
 
-p,
-table,
-ul,
-ol,
-form {
+p, table, ul, ol, form {
 	margin: 0 0 15px 0;
 	line-height: 150%;
 }
 
-p:last-child {
+p:last-child, ul:last-child {
 	margin-bottom: 0;
+}
+
+ul {
+	margin-left: 20px;
+}
+
+li {
+	padding-left: 0px;
+	list-style-type: disc;
 }
 
 img {
 	border: none;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	text-decoration: italic;
 }
 
 
@@ -203,6 +216,13 @@ img {
 .offset-9:first-child { margin-left: 76.5% !important; }
 .offset-10:first-child { margin-left: 85% !important; }
 
+@media screen and (max-width: 720px) {
+	.row > .col {
+		width: 100%;
+		margin-left: 0 !important;
+	}
+}
+
 
 /*-------------------------------------
 - Form elements
@@ -235,17 +255,26 @@ label {
 	height: 28px;
 }
 
-input[type="text"],
-input[type="password"] {
-	background-color: #fff;
-	padding: 6px;
-	width: 100%;
-	border: 1px solid #ccc;
+input {
+	margin: 0;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type="text"], input[type="password"] {
+	background-color: #fff;
+	padding: 5px;
+	width: 100%;
+	border: 1px solid #ccc;
+	height: 34px;
+}
+
+input[type="radio"], input[type="checkbox"] {
 	vertical-align: -2px;
+}
+
+input:focus {
+	outline: 0;
+	box-shadow: 0 0 3px rgba(255, 216, 0, 0.5);
+	border: 1px solid #EBD86E;
 }
 
 .btn, a.btn {
@@ -259,10 +288,17 @@ input[type="checkbox"] {
 	border: none;
 	cursor: pointer;
 	font-size: 1em;
+	vertical-align: middle;
+	line-height: 1;
 }
 
 .btn:hover, a.btn:hover {
 	background-color: #FFE147;
+}
+
+.has-error input {
+	border: 1px solid #FF9090;
+	box-shadow: 0 0 3px rgba(255, 216, 0, 0.5);
 }
 
 .required {
@@ -287,4 +323,25 @@ input[type="checkbox"] {
 
 .align-left {
 	text-align: left;
+}
+
+/*-------------------------------------
+-- Flash messages
+-------------------------------------*/
+
+.flash-success, .flash-error {
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	line-height: 150%;
+}
+
+.flash-success {
+	background-color: rgba(92, 184, 92, 0.4);
+	color: #236923;
+}
+
+.flash-error {
+	background-color: rgba(207, 67, 67, 0.4);
+	color: #BE0D0D;
 }

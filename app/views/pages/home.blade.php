@@ -5,6 +5,7 @@
 		<title>Feedbackspel.nl</title>
 		<link rel="shortcut icon" href="{{ url('favicon.png') }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="keywords" content="feedbackspel feedback spel online game reflectie team samenwerken">
 		{{ HTML::style('css/font-awesome.min.css') }}
 		{{ HTML::style('css/base.css') }}
 		{{ HTML::style('css/site.css') }}
@@ -12,25 +13,22 @@
 	</head>
 	<body>
 		<div class="header-wrapper">
-			<div class="container">
-				<div class="header row">
+			<div class="header container">
+				<div class="row">
 					<div class="col span-12">
-						<a href="{{ url('/') }}" class="logo">
-							Feedback<span class="grey">spel.nl</span>
+						<a href="{{ url('/') }}">
+							<img src="{{ url('images/logo.png') }}" class="logo">
 						</a>
-						<div class="buttons">
-							<a href="{{ url('login') }}" class="btn"><i class="fa fa-sign-in"></i> Inloggen</a>
-						</div>
+						<a href="{{ url('login') }}" class="btn"><i class="fa fa-sign-in"></i> Inloggen</a>
 					</div>
 				</div>
 			</div>
 		</div>
 
-
 		<div class="banner-wrapper">
-			<div class="container">
+			<div class="banner container">
 				{{ HTML::flash() }}
-				<div class="banner row">
+				<div class="row">
 					<div class="col span-8 cards">
 						<img src="{{ url('images/banner.png') }}">
 					</div>
@@ -39,33 +37,35 @@
 						{{ Form::open(array('url' => 'register')) }}
 
 							<div class="row">
-								<div class="col span-12">
+								<div class="col span-12{{ ($errors->has('email') ? ' has-error' : '') }}">
 									{{ Form::label('email', 'E-mail adres:') }}<br>
 									{{ Form::text('email') }}
 								</div>
 							</div>
 							<div class="row">
-								<div class="col span-6">
+								<div class="col span-12{{ ($errors->has('password') ? ' has-error' : '') }}">
 									{{ Form::label('password', 'Wachtwoord:') }}<br>
 									{{ Form::password('password') }}
 								</div>
-								<div class="col span-6">
+							</div>
+							<div class="row">
+								<div class="col span-12{{ ($errors->has('password_repeat') ? ' has-error' : '') }}">
 									{{ Form::label('password_repeat', 'Herhaal wachtwoord:') }}<br>
 									{{ Form::password('password_repeat') }}
 								</div>
 							</div>
 							<div class="row">
-								<div class="col span-6">
+								<div class="col span-6{{ ($errors->has('firstname') ? ' has-error' : '') }}">
 									{{ Form::label('firstname', 'Voornaam:') }}<br>
 									{{ Form::text('firstname') }}
 								</div>
-								<div class="col span-6">
+								<div class="col span-6{{ ($errors->has('lastname') ? ' has-error' : '') }}">
 									{{ Form::label('lastname', 'Achternaam:') }}<br>
 									{{ Form::text('lastname') }}
 								</div>
 							</div>
 							<div class="row">
-								<div class="col span-12">
+								<div class="col span-12{{ ($errors->has('gender') ? ' has-error' : '') }}">
 									Ik ben een: 
 									<label>{{ Form::radio('gender', 'male', true) }} Man</label>
 									<label>{{ Form::radio('gender', 'female') }} Vrouw</label>
@@ -82,33 +82,36 @@
 			</div>
 		</div>
 
-		<div class="sections">
-			<div class="container">
-				<div class="section row">
+		<div class="content-wrapper">
+			<div class="content container">
+				<div class="row">
 					<div class="col span-4">
 						<h2>Wat is dit?</h2>
-						<p>Allereerst welkom op Feedbackspel.nl! Op deze website kun je na het registreren een online spel spelen welke het makkelijker maakt om feedback te geven en ontvangen in groepsverband.</p>
+						<p>Op deze website kun je na het registreren van een (gratis!) account een online spel spelen welke het makkelijker maakt om feedback te geven en ontvangen in groepsverband.</p>
 						<p>Deze feedback wordt automatisch opgeslagen en bied waardevolle informatie over hoe mensen over jou denken. Zo krijg je inzicht in je goede eigenschappen, maar ook op welke punten je je nog beter kan ontwikkelen.</p>
 					</div>
 					<div class="col span-4">
 						<h2>Voor wie?</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nesciunt impedit dolore similique vel facere tempora! Quasi, sint, sapiente, itaque deleniti placeat debitis labore non unde iure ab cum nobis!</p>
+						<p>Het spel is bedoeld voor iedereen die weleens samenwerkt in een team van 3 tot ongeveer 8 personen. Je zou het feedbackspel bijvoorbeeld kunnen spelen met:</p>
 						<ul>
-							<li>Studenten</li>
 							<li>Collega's</li>
+							<li>Medestudenten</li>
+							<li>Familieleden</li>
+							<li>Vrienden</li>
 						</ul>
 					</div>
 					<div class="col span-4">
 						<h2>Waarom?</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nesciunt impedit dolore similique vel facere tempora! Quasi, sint, sapiente, itaque deleniti placeat debitis labore non unde iure ab cum <a href="#">nobis</a>!</p>
+						<p>Het geven en ontvangen van feedback kan ontzettend waardevolle informatie opleveren. Hoe denken anderen over je? Wat zijn je positieve eigenschappen? Waar kan je nog aan werken? Door het spelen van dit spel wordt het makkelijker en leuker om een feedback sessie te organiseren.</p>
+						<p>De ontvangen feedback is op ieder moment terug te vinden in je persoonlijke profiel, en bied een uitstekende basis om nieuwe (leer-)doelen op te stellen!</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="footer-wrapper">
-			<div class="container">
-				<div class="footer row">
+			<div class="footer container">
+				<div class="row">
 
 					<div class="col span-12 align-center">
 						<p>&copy; {{ date('Y') }} Feedbackspel.nl - <a href="http://www.vbremer.nl/" target="_blank">Vincent Bremer</a></p>
@@ -125,7 +128,7 @@
 			var base_url = '{{ url('/') }}';
 
 			$('form').on('submit', function(e) {
-				e.preventDefault();
+				// e.preventDefault();
 			});
 			
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

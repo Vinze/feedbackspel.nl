@@ -1,6 +1,11 @@
 <?php
 class UserController extends BaseController {
 
+	public function getLogin() {
+		$email = Session::get('email', '');
+		return View::make('users.login', compact('email'));
+	}
+
 	/**
 	 * Validate and register a new user account
 	 * 
@@ -20,7 +25,14 @@ class UserController extends BaseController {
 		nprint($input);
 		nprint($validator->messages());
 
-		return Redirect::to('/')->with('message', 'Het account is succesvol geregistreerd!');
+		if ($validator->passes()) {
+			return Redirect::to('login')
+				->with('message', 'Het account is succesvol geregistreerd, log hieronder in om verder te gaan!')
+				->with('email', $input['email']);
+		} else {
+			return Redirect::to('/')->withErrors($validator)->withInput();
+		}
+
 	}
 
 }

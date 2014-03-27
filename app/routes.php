@@ -16,6 +16,8 @@ Route::get('/', function() {
 	return View::make('pages.home', compact('domain'));
 });
 
+Route::get('login', 'UserController@getLogin');
+
 Route::group(array('before' => 'csrf'), function() {
 	Route::post('register', 'UserController@postRegister');
 });
