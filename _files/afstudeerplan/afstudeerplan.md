@@ -47,7 +47,7 @@
 		<td>J.W. Hovingh</td>
 	</tr>
 	<tr>
-		<td>Vakdocument:</td>
+		<td>Vakdocent:</td>
 		<td>D.S. de Vries</td>
 	</tr>
 </table>
@@ -62,7 +62,7 @@ Op zowel scholen als in het bedrijfsleven krijgen mensen ermee te maken; reflect
 
 Het feedback geven en ontvangen met een groep mensen kan op verschillende manieren gedaan worden. Wanneer een feedback sessie gehouden wordt in een groep kan men gebruik maken van een zogenaamd 'feedbackspel'. Deze spellen zijn vrijwel altijd in de vorm van een kaart en/of bordspel. Dit moet vaak gekocht of geleend worden, hierdoor is het niet altijd beschikbaar. Daarnaast moet de feedback nog opgeschreven worden, met het risico de aantekeningen kwijt te raken. Deze aantekeningen moeten vervolgens worden uitgetypt en kunnen later dienen als uitgangspunt bij het reflecteren. De kans bestaat dat hier enige tijd tussen zit waardoor het soms moeilijk is deze informatie weer naar boven te halen.
 
-Na meerdere feedback sessies moet men progressie of persoonlijke groei kunnen zien. Om dit inzichtelijk te krijgen moet men de ontvangen feedback erg gestructeerd verwerken, en later ook de moeite willen nemen om de voorgaande resultaten te vergelijken.
+Na meerdere feedback sessies moet progressie of persoonlijke groei zichtbaar zijn. Om dit inzichtelijk te krijgen moet de ontvangen feedback erg gestructeerd verwerkt worden, en iemand moet later ook de moeite willen nemen om de voorgaande resultaten te vergelijken.
 
 ## Opdrachtomschrijving
 Een korte [zoekopdracht](https://www.google.nl/search?q=feedback%20spel) naar "feedbackspel" op Google levert diverse resultaten op. Er zijn veel boeken en spelletjes te vinden die kunnen helpen bij het uitvoeren van een feedback sessie. Vrijwel al deze spellen zijn in de vorm van een bordspel of met papieren kaartjes.
