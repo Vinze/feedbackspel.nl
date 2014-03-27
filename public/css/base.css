@@ -108,8 +108,10 @@ body, input, textarea {
 }
 
 h1 {
-	font-size: 2em;
-	margin: 0 0 15px;
+	font-size: 2.4em;
+	margin: 0 0 20px;
+	/*padding: 0 0 0 10px;
+	border-left: 4px solid #fff;*/
 }
 
 h2 {
@@ -248,11 +250,11 @@ em {
 }
 
 label {
-	padding: 6px 0;
+	padding: 5px 0;
 	display: inline-block;
 	cursor: pointer;
 	margin: 0 5px 0 0;
-	height: 28px;
+	height: 34px;
 }
 
 input {

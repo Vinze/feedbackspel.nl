@@ -19,7 +19,11 @@
 						<a href="{{ url('/') }}">
 							<img src="{{ url('images/logo.png') }}" class="logo">
 						</a>
-						<a href="{{ url('login') }}" class="btn"><i class="fa fa-sign-in"></i> Inloggen</a>
+						@if (Auth::check())
+							<a href="{{ url('dashboard') }}" class="btn"><i class="fa fa-home"></i> Dashboard</a>
+						@else
+							<a href="{{ url('login') }}" class="btn"><i class="fa fa-sign-in"></i> Inloggen</a>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -35,7 +39,6 @@
 					<div class="col span-4 signup">
 						<h1>Registeren</h1>
 						{{ Form::open(array('url' => 'register')) }}
-
 							<div class="row">
 								<div class="col span-12{{ ($errors->has('email') ? ' has-error' : '') }}">
 									{{ Form::label('email', 'E-mail adres:') }}<br>

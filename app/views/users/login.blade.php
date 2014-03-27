@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		{{ HTML::style('css/font-awesome.min.css') }}
 		{{ HTML::style('css/base.css') }}
-		{{ HTML::style('css/app.css') }}
+		{{ HTML::style('css/login.css') }}
 		@yield('head')
 	</head>
 	<body>
@@ -27,28 +27,24 @@
 				<h1>Inloggen</h1>
 				{{ HTML::flash() }}
 				{{ Form::open() }}
-					<div class="fg row">
-						<div class="col span-4">
+					<div class="row">
+						<div class="col span-12">
 							{{ Form::label('email', 'E-mail adres:') }}
-						</div>
-						<div class="col span-8">
 							{{ Form::text('email', $email) }}
 						</div>
 					</div>
-					<div class="fg row">
-						<div class="col span-4">
-							{{ Form::label('password', 'Wachtwoord:') }}
-						</div>
-						<div class="col span-8">
-							{{ Form::text('password') }}
-						</div>
-					</div>
-					<div class="fg row">
+					<div class="row">
 						<div class="col span-12">
-							<label>{{ Form::checkbox('remember_me') }} Ingelogd blijven</label>
+							{{ Form::label('password', 'Wachtwoord:') }}
+							{{ Form::password('password') }}
 						</div>
 					</div>
-					<div class="fg row">
+					<div class="row">
+						<div class="col span-12">
+							<label>{{ Form::checkbox('remember') }} Ingelogd blijven</label>
+						</div>
+					</div>
+					<div class="row">
 						<div class="col span-12 align-right">
 							{{ Form::save('<i class="fa fa-sign-in"></i> Inloggen') }}
 						</div>

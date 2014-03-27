@@ -97,6 +97,8 @@ Na afloop krijgt iedere deelnemer een overzicht van de ontvangen kaarten met daa
 - Met welke feedback spellen vinden mensen prettig werken en zijn mogelijk te verwerken in een applicatie?
 
 ### Deelvragen
+
+
 - In hoeverre wordt er feedback gegeven in het bedrijfsleven?
 - Op welke opleidingen werken mensen in een (project-)groep en wordt aan feedback gedaan?
 - Waarom wordt er aan feedback gedaan?
