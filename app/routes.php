@@ -13,22 +13,22 @@
 
 Route::get('/', function() {
 	$domain = 'http://'.Request::server('HTTP_HOST').':3000';
-	return View::make('pages.home', compact('domain'));
+	return View::make('pages.home');
 });
 
-Route::get('login', 'UserController@getLogin');
-Route::post('login', 'UserController@postLogin');
+// Route::get('login', 'UserController@getLogin');
+// Route::post('login', 'UserController@postLogin');
 
-Route::group(array('before' => 'csrf'), function() {
-	Route::post('register', 'UserController@postRegister');
-});
+// Route::group(array('before' => 'csrf'), function() {
+// 	Route::post('register', 'UserController@postRegister');
+// });
 
-Route::group(array('before' => 'auth'), function() {
-	Route::get('dashboard', function() {
-		return 'Dashboard';
-	});
-	Route::get('logout', 'UserController@getLogout');
-});
+// Route::group(array('before' => 'auth'), function() {
+// 	Route::get('dashboard', function() {
+// 		return View::make('users.dashboard');
+// 	});
+// 	Route::get('logout', 'UserController@getLogout');
+// });
 
 
 App::missing(function($exception) {

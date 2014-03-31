@@ -4,189 +4,222 @@
 		<meta charset="UTF-8">
 		<title>Research</title>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
-		<style type="text/css">
-			/* http://meyerweb.com/eric/tools/css/reset/ 
-			   v2.0 | 20110126
-			   License: none (public domain)
-			*/
-			html, body, div, span, applet, object, iframe,
-			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-			a, abbr, acronym, address, big, cite, code,
-			del, dfn, em, img, ins, kbd, q, s, samp,
-			small, strike, strong, sub, sup, tt, var,
-			b, u, i, center,
-			dl, dt, dd, ol, ul, li,
-			fieldset, form, label, legend,
-			table, caption, tbody, tfoot, thead, tr, th, td,
-			article, aside, canvas, details, embed, 
-			figure, figcaption, footer, header, hgroup, 
-			menu, nav, output, ruby, section, summary,
-			time, mark, audio, video {
-				margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;
-			}
-			/* HTML5 display-role reset for older browsers */
-			article, aside, details, figcaption, figure, 
-			footer, header, hgroup, menu, nav, section {
-				display: block;
-			}
-			body {
-				line-height: 1;
-			}
-			ol, ul {
-				list-style: none;
-			}
-			blockquote, q {
-				quotes: none;
-			}
-			blockquote:before, blockquote:after,
-			q:before, q:after {
-				content: ''; content: none;
-			}
-			table {
-				border-collapse: collapse; border-spacing: 0;
-			}
-			*, *:before, *:after {
-				-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-			body {
-				background: #f2f2f2 url('img/background.png') repeat left top; background-attachment: fixed; font-family: 'Open Sans', sans-serif; font-size: 13px; color: #4C4C4C; }
-			a:link, a:visited {
-				color: #428bca; text-decoration: none;
-			}
-			a:hover, a:active {
-				color: #2a6496; text-decoration: underline;
-			}
-			h1, h2, h3 {
-				line-height: 100%;
-			}
-			h1 {
-				font-size: 3em; margin: 40px 0 20px 0; padding: 0 0 20px 0; font-weight: normal; border-bottom: 1px solid #e5e5e5; page-break-before: always;
-			}
-			h1:first-child {
-				margin-top: 0;
-				page-break-before: auto;
-			}
-			h2 {
-				font-size: 2em; margin: 30px 0 20px 0; font-weight: normal;
-			}
-			h3 {
-				font-size: 1.2em; margin: 20px 0 10px 0; font-weight: normal;
-			}
-			hr {
-				display: block; width: 100%; height: 1px; border: none; background-color: #e5e5e5; margin: 40px 0;
-			}
-			p, ul, table, pre {
-				margin-bottom: 15px;
-			}
-			ul {
-				margin-left: 20px;
-			}
-			ul ul {
-				margin-bottom: 0;
-			}
-			li {
-				list-style-type: disc; padding-left: 5px;
-			}
-			table {
-				width: 100%;
-			}
-			th, td {
-				padding: 3px 15px 3px 0; text-align: left;
-			}
-			th {
-				font-weight: bold;
-			}
-			pre {
-				font-family: consolas, monospace;
-			}
-			.nowrap {
-				white-space: nowrap;
-			}
-			#content {
-				width: 720px; background-color: #fff; min-height: 300px; margin: 30px auto; box-shadow: 0 0 10px #ccc; padding: 80px 60px; line-height: 150%;
-			}
-
-			@media print {
-				body {
-					background-color: transparent;
-				}
-				#content {
-					margin: 0; padding: 30px; box-shadow: none;
-				}
-				hr {
-					page-break-after: always;
-				}
-			}
-
-
-			/*-------------------------------------
-			- Grid
-			-------------------------------------*/
-
-			*, *:before, *:after {
-				-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
-			}
-			.row:after {
-				content: ""; display: table; clear: both;
-			}
-			.col { display: inline-block; float: left; position: relative;	 min-height: 10px; margin-left: 2%;
-			}
-			.col:first-child { margin-left: 0; }
-			.span-1 { width: 6.5%; }
-			.span-2 { width: 15%; }
-			.span-3 { width: 23.5%; }
-			.span-4 { width: 32%; }
-			.span-5 { width: 40.5%; }
-			.span-6 { width: 49%; }
-			.span-7 { width: 57.5%; }
-			.span-8 { width: 66%; }
-			.span-9 { width: 74.5%; }
-			.span-10 { width: 83%; }
-			.span-11 { width: 91.5%; }
-			.span-12 { width: 100%; }
-			.offset-1 { margin-left: 10.5% !important; }
-			.offset-2 { margin-left: 19% !important; }
-			.offset-3 { margin-left: 27.5% !important; }
-			.offset-4 { margin-left: 36% !important; }
-			.offset-5 { margin-left: 44.5% !important; }
-			.offset-6 { margin-left: 53% !important; }
-			.offset-7 { margin-left: 61.5% !important; }
-			.offset-8 { margin-left: 70% !important; }
-			.offset-9 { margin-left: 78.5% !important; }
-			.offset-10 { margin-left: 87% !important; }
-			.offset-11 { margin-left: 93.5% !important; }
-			.offset-1:first-child { margin-left: 8.5% !important; }
-			.offset-2:first-child { margin-left: 17% !important; }
-			.offset-3:first-child { margin-left: 25.5% !important; }
-			.offset-4:first-child { margin-left: 34% !important; }
-			.offset-5:first-child { margin-left: 42.5% !important; }
-			.offset-6:first-child { margin-left: 51% !important; }
-			.offset-7:first-child { margin-left: 59.5% !important; }
-			.offset-8:first-child { margin-left: 68% !important; }
-			.offset-9:first-child { margin-left: 76.5% !important; }
-			.offset-10:first-child { margin-left: 85% !important; }
-		</style>
+		<link href='../style.css' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-		<div id="content"></div>
+<!-- Markdown goes here -->
+<div id="markdown">
+
+# Onderzoeksdocument
+
+<table>
+	<tr>
+		<td>Startdatum:</td>
+		<td>17 februari 2014</td>
+	</tr>
+	<tr>
+		<td>Einddatum:</td>
+		<td>5 juni 2014</td>
+	</tr>
+	<tr>
+		<td>Afstudeeropdracht:</td>
+		<td>Feedbackspel.nl</td>
+	</tr>
+
+	<tr>
+		<td>Student:</td>
+		<td>Vincent Bremer</td>
+	</tr>
+	<tr>
+		<td>Studentnummer:</td>
+		<td>205133</td>
+	</tr>
+	<tr>
+		<td>Adres:</td>
+		<td>Valstraat 33<br>8605AV Sneek</td>
+	</tr>
+	<tr>
+		<td>Telefoon:</td>
+		<td>06 504 909 16</td>
+	</tr>
+	<tr>
+		<td>E-mail:</td>
+		<td>vbremer89@gmail.com</td>
+	</tr>
+	<tr>
+		<td>School:</td>
+		<td>NHL Hogeschool</td>
+	</tr>
+	<tr>
+		<td>Opleiding:</td>
+		<td>Communication &amp; Multimedia Design</td>
+	</tr>
+	<tr>
+		<td>Mentor:</td>
+		<td>J.W. Hovingh</td>
+	</tr>
+	<tr>
+		<td>Vakdocument:</td>
+		<td>D.S. de Vries</td>
+	</tr>
+</table>
+
+# Doelgroep
+## Inleiding
+Om de doelgroep vast te stellen is het van belang om erachter te komen of en hoe feedback gegeven wordt bij bedrijven en verschillende opleidingen.
+
+
+## Feedback onderwijs
+
+### Welke opleidingen?
+
+
+### Hoe wordt feedback gegeven?
+
+
+### Waarom?
+
+
+## Feedback bedrijven
+
+### Hoe wordt feedback gegeven?
+
+
+# Feedbackspellen
+
+## Voorwoord
+
+- Wat is feedback?
+- Wat doet feedback met iemand?
+- Waarom zou je feedback willen gebruiken?
+- 
+
+## Feedbackspellen
+- Kwaliteitenspel
+- 
+
+## Vergelijkstabel
+
+## Bronnen
+
+[http://www.despellenmakelaar.nl/webwinkel/communicatie](http://www.despellenmakelaar.nl/webwinkel/communicatie)
+
+[http://www.carrieretijger.nl/functioneren/communiceren/mondeling/vaardigheden/feedback-geven](http://www.carrieretijger.nl/functioneren/communiceren/mondeling/vaardigheden/feedback-geven)
+
+http://nl.wikipedia.org/wiki/Neurolingu%C3%AFstisch_programmeren
+
+http://www.bol.com/nl/p/universele-ontwerpmethoden/9200000005539881/
+
+
+# Realtime webapplicaties
+
+## Aanleiding
+Het feedbackspel wordt met meerdere gebruikers tegelijkertijd gespeeld en iedereen moet van elkaar kunnen zien wat ze aan het doen zijn. Om het spel interactief te houden is het van belang dat dit zonder vertraging inzichtelijk is. In de software ontwikkeling wordt dit over het algemeen 'realtime' genoemd. Aangezien er meerdere technieken beschikbaar zijn zal uitgezocht moeten worden wat mogelijk is, en welke het meest geschikt is om te gebruiken in het feedbackspel.
+
+## Hoofd en deelvragen
+### Hoofdvraag
+
+- Wat is er nodig om een web applicatie realtime te maken?
+
+### Deelvragen
+
+- Wat is realtime?
+- Hoe werkt realtime op het web?
+- Welke technieken zijn er mogelijk?
+
+
+## Realtime applicaties
+Een realtime applicatie is een applicatie welke functioneert binnen een bepaald tijdsbestek waardoor de gebruiker het idee heeft de informatie direct binnenkomt. Dit soort applicaties luisteren actief naar gebeurtenissen en verwerken deze informatie vrijwel direct. Deze gebeurtenissen kunnen plaatsvinden op een (externe) server of geleverd worden door een service. Een voorbeeld van een aantal realtime applicaties zijn bijvoorbeeld chatprogramma's, bluetooth software, besturingssystemen en multiplayer games.
+
+## Geschiedenis
+Software geschreven in bijvoorbeeld de programmeertaal C kan al jaren lang gebruik maken van realtime data. Doordat dit soort programma's zeer dicht bij de hardware staan kan het communiceren met de componenten in de computer, en deze informatie soms wel duizenden keren per seconde bijwerken. Sinds de laatste jaren wordt ook het gebruik van realtime data op internet steeds belangrijker, en diverse ontwikkelaars hebben programma's gemaakt waarmee dit mogelijk wordt. Zo kwam onder andere de FutureSplash plugin (tegenwoordig: Adobe Flash) ([bron](http://nl.wikipedia.org/wiki/Adobe_Flash)) en de Java-applet ([bron](http://nl.wikipedia.org/wiki/Java-applet)). Dit zijn programma's welke apart gedownload en geïnstalleerd moesten worden en deze programma's konden uitgevoerd worden binnen de webbrowser.
+
+Sinds de komst van AJAX (Asynchronous JavaScript and XML) ([bron](http://nl.wikipedia.org/wiki/Asynchronous_JavaScript_and_XML)) en de XMLHTTP ([bron](http://nl.wikipedia.org/wiki/XMLHTTP)) software bibliotheken is de techniek om gegevens dynamisch op te halen enorm vereenvoudigd. Dit zorgde ervoor dat er geen aparte plugins of software meer nodig was om webapplicaties realtime te laten werken. Dit heeft ertoe geleid dat er steeds meer realtime webapplicaties in opkomst waren.
+
+## Technieken
+Tegenwoordig zijn er meerdere mogelijkheden om een webapplicatie te ontwikkelen welke kan werken met realtime data. Hieronder worden enkele technieken besproken welke toegepast kunnen worden en welke voor en nadelen hieraan kleven.
+
+### HTTP polling 
+
+<div class="row">
+	<div class="col span-6">
+		De client stuurt op een vaste interval een verzoek (rood) naar de server om te controleren of er nieuwe data beschikbaar is. De server stuurt hierop een antwoord (blauw) terug. Indien er nieuwe data (geel) beschikbaar is zal de server deze data bij het volgende verzoek terugsturen. Vervolgens ontvangt de client de data en kan dit verder verwerken. Door de interval erg laag te zetten, bijvoorbeeld om de 50 milliseconde, kan de gebruiker dit ervaren als realtime.
+	</div>
+	<div class="col span-6">
+		![Polling afb.](img/polling.png)
+	</div>
+</div>
+
+
+### HTTP long-polling
+<div class="row">
+	<div class="col span-6">
+		Long-polling lijkt erg veel op polling met het verschil dat de verbinding bij long-polling tijdelijk open blijft staan. De client doet een verzoek (rood) naar de server om te controleren of er nieuwe data (geel) beschikbaar is. De server wacht met het geven van antwoord tot nieuwe data beschikbaar is. Zodra dit het geval is stuurt de server deze data naar de client (blauw) en herhaalt dit proces zich weer.
+	</div>
+	<div class="col span-6">
+		![Long-polling afb.](img/long-polling.png)
+	</div>
+</div>
+
+### HTTP streaming
+
+<div class="row">
+	<div class="col span-6">
+		Streaming lijkt enigzins op long-polling met het grootste verschil dat de verbinding nu vanuit de server open blijft staan. De client doet eenmalig een verzoek tot informatie (rood), en de server zal deze data (geel) in gedeeltes opsturen naar de client (rood).
+	</div>
+	<div class="col span-6">
+		![Streaming afb.](img/streaming.png)
+	</div>
+</div>
+
+
+http://www.w3.org/TR/eventsource/
+
+### Websockets
+<div class="row">
+	<div class="col span-6">
+		Moderne webbrowsers kunnen tegenwoordig ook gebruikmakan van het in 2011 gestandaardiseerde ([bron](http://tools.ietf.org/html/rfc6455)) websocket protocol. In tegenstelling tot bovenstaande technieken is het mogelijk om met websockets een zogenaamde 'full-duplex' verbinding op te zetten. Dit houd in dat zowel de client als de server tegelijkertijd data naar elkaar kunnen sturen. De client doet een verzoek tot verbinding (rood) met de server. Indien alles goed gaat zal de server deze verbinding accepteren (blauw) en komt er een nieuwe full-duplex verbinding tot stand waarover gegevens verzonden kunnen worden.
+	</div>
+	<div class="col span-6">
+		![Websocket afb.](img/websocket.png)
+	</div>
+</div>
+
+http://www.w3.org/TR/2009/WD-websockets-20091222/
+
+
+
+### Browser plugins
+
+
+
+
+
+## Bronnen
+http://en.wikipedia.org/wiki/Real-time_computing
+
+http://searchunifiedcommunications.techtarget.com/definition/real-time-application-RTA
+
+http://ifs.host.cs.st-andrews.ac.uk/Books/SE7/Presentations/PDF/ch15.pdf
+
+http://www.hugozonderland.nl/studie/onderzoek/html5-websocket-de-theorie/
+
+http://www.pubnub.com/
+
+http://en.wikipedia.org/wiki/Comet_(programming)
+
+http://stackoverflow.com/questions/12555043/my-understanding-of-http-polling-long-polling-http-streaming-and-websockets
+
+</div>
+<!--// Markdown goes here -->
+
 	</body>
 
-	<script type="text/javascript" src="marked.js"></script>
+	<script type="text/javascript" src="../marked.js"></script>
 	<script type="text/javascript">
-		var url = 'research.md';
-		var xmlhttp = new XMLHttpRequest();
 
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				var html = marked(xmlhttp.responseText);
-				document.getElementById('content').innerHTML = html;
-			}
-		}
-		xmlhttp.open('GET', url, false);
-		xmlhttp.send();
-
-		var elements = document.getElementsByTagName('h2');
-		for (var i = 0; i < elements.length; i++) {
-			console.log(elements[i].id + ':', elements[i].innerHTML);
-		}
+		var markdown = document.getElementById('markdown').innerHTML;
+		var html = marked(markdown);
+		document.getElementById('markdown').innerHTML = html;
 	</script>
 </html>
