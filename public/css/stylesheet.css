@@ -386,7 +386,10 @@ body {
 
 .header .btn-confirm {
 	float: right;
-	margin-top: 30px;
+	margin-top: 29px;
+	border: 1px solid #fff;
+	background-color: transparent;
+	text-shadow: none;
 }
 
 .header a.btn-small {
@@ -395,7 +398,8 @@ body {
 	padding: 15px;
 	font-size: 1.4em;
 	background-color: transparent;
-	color: #ccc;
+	color: #e5e5e5;
+	border: none;
 }
 
 .banner-wrapper {
