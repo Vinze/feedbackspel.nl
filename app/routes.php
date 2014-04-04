@@ -16,6 +16,10 @@ Route::get('/', function() {
 	return View::make('pages.home');
 });
 
+Route::get('register', function() {
+	return View::make('users.register');
+});
+
 // Route::get('login', 'UserController@getLogin');
 // Route::post('login', 'UserController@postLogin');
 

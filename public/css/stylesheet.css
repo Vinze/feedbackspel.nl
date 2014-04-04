@@ -98,13 +98,10 @@ table {
 - HTML elements
 -------------------------------------*/
 
-body {
-	color: #00597C;	
-}
-
 body, input, textarea {
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
+	color: #00597C;	
 }
 
 h1, h2 {
@@ -275,10 +272,10 @@ input {
 input[type="text"],
 input[type="password"],
 input[type="number"] {
-	background-color: #fff;
+	background-color: #f2f2f2;
+	border: 1px solid #f2f2f2;
 	padding: 5px 10px;
 	width: 100%;
-	border: none;
 	height: 34px;
 }
 
@@ -289,6 +286,8 @@ input[type="checkbox"] {
 
 input:focus {
 	outline: 0;
+	/*border: 1px solid #8AC7DF;*/
+	box-shadow: 0 0 3px #33AEDF;
 }
 
 input[class*="btn-"],
@@ -323,6 +322,9 @@ a[class*="btn-"] {
 
 .required {
 	color: red;
+	position: absolute;
+	top: 8px;
+	right: -12px;
 }
 
 .required:after {
@@ -408,6 +410,14 @@ body {
 
 .banner {
 	padding: 0 20px;
+	min-height: 20px;
+}
+
+.banner h1 {
+	color: #fff;
+	margin: 0;
+	padding: 20px 10px;
+	font-size: 3em;
 }
 
 .banner-image {
@@ -421,7 +431,8 @@ body {
 }
 
 .content {
-	padding: 10px 20px 50px 20px;
+	padding: 20px 20px 50px 20px;
+	min-height: 500px;
 }
 
 .footer-wrapper {
