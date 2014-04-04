@@ -16,16 +16,14 @@ Route::get('/', function() {
 	return View::make('pages.home');
 });
 
-Route::get('register', function() {
-	return View::make('users.register');
-});
-
-// Route::get('login', 'UserController@getLogin');
+Route::get('login', 'UserController@getLogin');
 // Route::post('login', 'UserController@postLogin');
 
-// Route::group(array('before' => 'csrf'), function() {
-// 	Route::post('register', 'UserController@postRegister');
-// });
+Route::get('register', 'UserController@getRegister');
+
+Route::group(array('before' => 'csrf'), function() {
+	Route::post('register', 'UserController@postRegister');
+});
 
 // Route::group(array('before' => 'auth'), function() {
 // 	Route::get('dashboard', function() {

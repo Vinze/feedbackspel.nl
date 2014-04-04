@@ -38,6 +38,14 @@ class UserController extends BaseController {
 	}
 
 	/**
+	 * Register page
+	 * @return View object
+	 */
+	public function getRegister() {
+		return View::make('users.register');
+	}
+
+	/**
 	 * Validate and register a new user account
 	 * 
 	 * @return Redirect object
@@ -45,27 +53,25 @@ class UserController extends BaseController {
 	public function postRegister() {
 		$rules = array(
 			'email'     => 'required|email',
-			'password'  => 'required|same:password_repeat',
+			'password'  => 'required|same:password2',
+			'password2'  => 'required',
 			'firstname' => 'required|min:2',
 			'lastname'  => 'required|min:2',
-			'gender'    => 'required|in:male,female'
+			'gender'    => 'required|in:m,f'
 		);
 		$input = Input::all();
 		$validator = Validator::make($input, $rules);
-
-		nprint($input);
-		nprint($validator->messages());
 
 		if ($validator->passes()) {
 			$user = new User();
 			$user->fill($input);
 			$user->password = Hash::make($input['password']);
-			$user->save();
-			return Redirect::to('login')
+			// $user->save();
+			return Redirect::to('register')
 				->with('message', 'Het account is succesvol geregistreerd, log hieronder in om verder te gaan!')
 				->with('email', $user->email);
 		} else {
-			return Redirect::to('/')->withErrors($validator)->withInput();
+			return Redirect::to('register')->withErrors($validator)->withInput();
 		}
 
 	}

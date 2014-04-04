@@ -27,9 +27,7 @@
 		<div class="banner-wrapper">
 			<div class="container">
 				<div class="banner row">
-					<div class="col span-12 align-center">
-						<img src="images/banner.png" class="banner-image">
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -38,31 +36,28 @@
 			<div class="container">
 				<div class="content">
 					<div class="row">
-						<div class="col span-4">
-							<h2>Wat is dit?</h2>
-							<p>Op deze website kun je, na het registreren van een gratis account, een online feedbackspel spelen. Dit spel maakt het leuker en makkelijker om feedback te geven en ontvangen in groepsverband.</p>
-							<p>De ontvangen feedback wordt automatisch opgeslagen in je persoonlijke profiel, en kun je later op ieder moment weer opvragen.</p>
-						</div>
-						<div class="col span-4">
-							<h2>Voor wie?</h2>
-							<p>Het spel is bedoeld voor iedereen die geregeld samenwerkt in een team en graag wil weten hoe anderen over je denken. Je zou het feedbackspel bijvoorbeeld kunnen spelen met:</p>
-							<ul>
-								<li>Collega's</li>
-								<li>Medestudenten</li>
-								<li>Familieleden</li>
-								<li>Vrienden</li>
-							</ul>
-						</div>
-						<div class="col span-4">
-							<h2>Waarom?</h2>
-							<p>Het geven en ontvangen van feedback kan ontzettend waardevolle informatie opleveren. Hoe denken anderen over je? Wat zijn je positieve eigenschappen? Waar kan je nog aan werken? Door het spelen van dit spel wordt het makkelijker en leuker om een feedback sessie te organiseren.</p>
-							<p>De ontvangen feedback bied een uitstekende basis om op te reflecteren en nieuwe (leer-)doelen op te stellen. Door geregeld feedback sessies te houden zal de samenwerking verbeteren en komen eventuele knelpunten snel boven water.</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col span-6">
-							<h2>Wanneer komt spel online?</h2>
-							<p>Dit feedbackspel is mijn afstudeerproject waarmee ik wil afstuderen van de opleiding Communication &amp; Multimedia Design aan de NHL Hogeschool. Het afstuderen is momenteel in volle gang en ik hoop binnenkort een eerste versie uit te kunnen brengen!</p>
+						<div class="col span-4 offset-4">
+							<h1>Inloggen</h1>
+							{{ HTML::flash() }}
+							{{ Form::open() }}
+								<div class="row fg{{ ($errors->has('email') ? ' has-error' : '') }}">
+									<div class="col span-12">
+										{{ Form::label('email', 'E-mail adres:') }}
+										{{ Form::text('email', null, array('placeholder' => '...')) }}
+									</div>
+								</div>
+								<div class="row fg{{ ($errors->has('password') ? ' has-error' : '') }}">
+									<div class="col span-12">
+										{{ Form::label('password', 'Wachtwoord:') }}
+										{{ Form::password('password', array('placeholder' => '...')) }}
+									</div>
+								</div>
+								<div class="row fg">
+									<div class="col span-12">
+										<button type="submit" class="btn-confirm">Inloggen</button>
+									</div>
+								</div>
+							{{ Form::close() }}
 						</div>
 					</div>
 				</div>

@@ -109,8 +109,10 @@ h1, h2 {
 }
 
 h1 {
-	font-size: 2.4em;
-	margin: 0 0 20px;
+	font-size: 2.8em;
+	margin: 0 0 30px;
+	padding: 0 0 5px;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 h2 {
@@ -239,22 +241,11 @@ em {
 -------------------------------------*/
 
 .fg {
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 
 .fg:last-child {
 	margin-bottom: 0;
-}
-
-.fg .label {
-	display: inline-block;
-	float: left;
-	width: 200px;
-	color: #808080;
-}
-
-.fg .field {
-	margin-left: 200px;
 }
 
 label {
@@ -273,7 +264,7 @@ input[type="text"],
 input[type="password"],
 input[type="number"] {
 	background-color: #f2f2f2;
-	border: 1px solid #f2f2f2;
+	border: none;
 	padding: 5px 10px;
 	width: 100%;
 	height: 34px;
@@ -316,14 +307,13 @@ a[class*="btn-"] {
 }
 
 .has-error input {
-	border: 1px solid #FF9090;
-	box-shadow: 0 0 3px rgba(255, 216, 0, 0.5);
+	background-color: #FFDEDE;
 }
 
 .required {
 	color: red;
 	position: absolute;
-	top: 8px;
+	top: 6px;
 	right: -12px;
 }
 
@@ -336,19 +326,21 @@ a[class*="btn-"] {
 -------------------------------------*/
 
 .flash-success, .flash-error {
-	padding: 20px;
-	margin-bottom: 20px;
-	border-radius: 5px;
+	padding: 15px 10px;
+	margin-bottom: 30px;
 	line-height: 150%;
+	background-color: #f2f2f2;
 }
 
 .flash-success {
-	background-color: rgba(92, 184, 92, 0.4);
-	color: #236923;
+	/*background-color: rgba(92, 184, 92, 0.4);*/
+	border-left: 5px solid #208B20;
+	color: #208B20;
 }
 
 .flash-error {
-	background-color: rgba(207, 67, 67, 0.4);
+	/*background-color: #F1C9C9;*/
+	border-left: 5px solid #BE0D0D;
 	color: #BE0D0D;
 }
 
@@ -413,13 +405,6 @@ body {
 	min-height: 20px;
 }
 
-.banner h1 {
-	color: #fff;
-	margin: 0;
-	padding: 20px 10px;
-	font-size: 3em;
-}
-
 .banner-image {
 	display: block;
 	margin: 0px auto;
@@ -432,7 +417,7 @@ body {
 
 .content {
 	padding: 20px 20px 50px 20px;
-	min-height: 500px;
+	min-height: 400px;
 }
 
 .footer-wrapper {

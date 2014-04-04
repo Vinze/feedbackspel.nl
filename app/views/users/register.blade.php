@@ -15,11 +15,11 @@
 		<div class="header-wrapper">
 			<div class="container">
 				<div class="header row">
-					<a href="#" class="logo">
+					<a href="{{ url('/') }}" class="logo">
 						<img src="images/logo.png">
 					</a>
-					<a href="#" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
-					<a href="#" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
+					<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
+					<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
 				</div>
 			</div>
 		</div>
@@ -36,51 +36,58 @@
 			<div class="container">
 				<div class="content">
 					<div class="row">
-						<div class="col span-8">
+						<div class="col span-8 offset-2">
 							<h1>Registeren</h1>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col span-8">
-							<div class="row fg">
-								<div class="col span-4">{{ Form::label('firstname', 'Voornaam:') }}</div>
-								<div class="col span-6">
-									{{ Form::text('firstname', null, array('placeholder' => 'Voornaam')) }}
-									<div class="required"></div>
+							{{ HTML::flash() }}
+							{{ Form::open() }}
+								<div class="row fg{{ ($errors->has('email') ? ' has-error' : '') }}">
+									<div class="col span-4">{{ Form::label('email', 'E-mail adres:') }}</div>
+									<div class="col span-6">
+										{{ Form::text('email', null, array('placeholder' => '...')) }}
+										<div class="required"></div>
+									</div>
 								</div>
-							</div>
-							<div class="row fg">
-								<div class="col span-4">{{ Form::label('lastname', 'Achternaam:') }}</div>
-								<div class="col span-6">
-									{{ Form::text('lastname', null, array('placeholder' => 'Achternaam')) }}
+								<div class="row fg{{ ($errors->has('password') ? ' has-error' : '') }}">
+									<div class="col span-4">{{ Form::label('password', 'Wachtwoord:') }}</div>
+									<div class="col span-6">
+										{{ Form::password('password', array('placeholder' => '...')) }}
+										<div class="required"></div>
+									</div>
 								</div>
-							</div>
-							<div class="row fg">
-								<div class="col span-4">{{ Form::label('email', 'E-mail adres:') }}</div>
-								<div class="col span-6">
-									{{ Form::text('email', null, array('placeholder' => 'E-mail adres')) }}
-									<div class="required"></div>
+								<div class="row fg{{ ($errors->has('password2') ? ' has-error' : '') }}">
+									<div class="col span-4">{{ Form::label('password2', 'Herhaal wachtwoord:') }}</div>
+									<div class="col span-6">
+										{{ Form::password('password2', array('placeholder' => '...')) }}
+										<div class="required"></div>
+									</div>
 								</div>
-							</div>
-							<div class="row fg">
-								<div class="col span-4">{{ Form::label('password', 'Wachtwoord:') }}</div>
-								<div class="col span-6">
-									{{ Form::password('password', array('placeholder' => 'Wachtwoord')) }}
-									<div class="required"></div>
+								<div class="row fg{{ ($errors->has('firstname') ? ' has-error' : '') }}">
+									<div class="col span-4">{{ Form::label('firstname', 'Voornaam:') }}</div>
+									<div class="col span-6">
+										{{ Form::text('firstname', null, array('placeholder' => '...')) }}
+										<div class="required"></div>
+									</div>
 								</div>
-							</div>
-							<div class="row fg">
-								<div class="col span-4">{{ Form::label('password_repeat', 'Herhaal wachtwoord:') }}</div>
-								<div class="col span-6">
-									{{ Form::password('password_repeat', array('placeholder' => 'Herhaal wachtwoord')) }}
-									<div class="required"></div>
+								<div class="row fg{{ ($errors->has('lastname') ? ' has-error' : '') }}">
+									<div class="col span-4">{{ Form::label('lastname', 'Achternaam:') }}</div>
+									<div class="col span-6">
+										{{ Form::text('lastname', null, array('placeholder' => '...')) }}
+										<div class="required"></div>
+									</div>
 								</div>
-							</div>
-							<div class="row fg">
-								<div class="col span-6 offset-4">
-									<button type="submit" class="btn-confirm">Registeren</button>
+								<div class="row fg{{ ($errors->has('gender') ? ' has-error' : '') }}">
+									<div class="col span-4">{{ Form::label(null, 'Ik ben een:') }}</div>
+									<div class="col span-6">
+										<label>{{ Form::radio('gender', 'm', true) }} Man</label>
+										<label>{{ Form::radio('gender', 'f') }} Vrouw</label>
+									</div>
 								</div>
-							</div>
+								<div class="row fg">
+									<div class="col span-6 offset-4">
+										<button type="submit" class="btn-confirm">Registeren</button>
+									</div>
+								</div>
+							{{ Form::close() }}
 						</div>
 					</div>
 				</div>
