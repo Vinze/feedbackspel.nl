@@ -41,28 +41,9 @@
 			<div class="container">
 				<div class="content">
 					<div class="row">
-						<div class="col span-4 offset-4">
-							<h1>Inloggen</h1>
-							{{ HTML::flash() }}
-							{{ Form::open() }}
-								<div class="row fg{{ ($errors->has('email') ? ' has-error' : '') }}">
-									<div class="col span-12">
-										{{ Form::label('email', 'E-mail adres:') }}
-										{{ Form::text('email', $email, array('placeholder' => '...')) }}
-									</div>
-								</div>
-								<div class="row fg{{ ($errors->has('password') ? ' has-error' : '') }}">
-									<div class="col span-12">
-										{{ Form::label('password', 'Wachtwoord:') }}
-										{{ Form::password('password', array('placeholder' => '...')) }}
-									</div>
-								</div>
-								<div class="row fg">
-									<div class="col span-12">
-										<button type="submit" class="btn-confirm">Inloggen</button>
-									</div>
-								</div>
-							{{ Form::close() }}
+						<div class="col span-12">
+							<h1>Dashboard</h1>
+							Hello :)
 						</div>
 					</div>
 				</div>

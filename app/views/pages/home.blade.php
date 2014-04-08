@@ -16,10 +16,15 @@
 			<div class="container">
 				<div class="header row">
 					<a href="{{ url('/') }}" class="logo">
-						<img src="images/feedbackspel.nl.png">
+						<img src="images/logo.png">
 					</a>
-					<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
-					<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
+					@if (Auth::check())
+						<a href="{{ url('dashboard') }}" class="btn-confirm btn-large"><i class="fa fa-home"></i> Dashboard</a>
+						<a href="{{ url('dashboard') }}" class="btn-confirm btn-small"><i class="fa fa-home"></i></a>
+					@else
+						<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
+						<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
+					@endif
 				</div>
 			</div>
 		</div>

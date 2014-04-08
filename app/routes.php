@@ -27,6 +27,12 @@ Route::group(array('before' => 'csrf'), function() {
 
 Route::group(array('before' => 'auth'), function() {
 	Route::get('dashboard', 'UserController@getDashboard');
+
+	Route::get('profile', 'UserController@getProfile');
+	Route::post('profile', 'UserController@postProfile');
+
+	Route::post('change-password', 'UserController@getChangePassword');
+
 	Route::get('logout', 'UserController@getLogout');
 });
 

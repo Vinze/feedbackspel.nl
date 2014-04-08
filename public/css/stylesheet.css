@@ -117,7 +117,7 @@ h1 {
 
 h2 {
 	font-size: 1.4em;
-	margin: 30px 0 10px;
+	margin: 0 0 10px;
 }
 
 a:link, a:visited {
@@ -441,6 +441,9 @@ body {
 	.row > .col {
 		width: 100%;
 		margin-left: 0 !important;
+	}
+	.content > .row > .col {
+		margin-bottom: 30px;
 	}
 }
 
