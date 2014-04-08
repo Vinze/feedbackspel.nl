@@ -25,13 +25,10 @@ Route::group(array('before' => 'csrf'), function() {
 	Route::post('register', 'UserController@postRegister');
 });
 
-// Route::group(array('before' => 'auth'), function() {
-// 	Route::get('dashboard', function() {
-// 		return View::make('users.dashboard');
-// 	});
-// 	Route::get('logout', 'UserController@getLogout');
-// });
-
+Route::group(array('before' => 'auth'), function() {
+	Route::get('dashboard', 'UserController@getDashboard');
+	Route::get('logout', 'UserController@getLogout');
+});
 
 App::missing(function($exception) {
 	return Response::view('layout.404', array(), 404);

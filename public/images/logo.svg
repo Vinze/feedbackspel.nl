@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Nieuw document 1">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="328.90475"
+     inkscape:cy="905.98051"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1148"
+     inkscape:window-x="-5"
+     inkscape:window-y="-5"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Laag 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#00709f;fill-opacity:0.94117647;stroke:none;stroke-opacity:1;stroke-width:6.49999885999999980;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 41.686987,24.362229 c -6.175819,0 -11.717793,4.929281 -12.437206,11.064072 l -9.187283,78.167349 c -0.719413,6.13479 3.698948,11.06407 9.874767,11.06407 l 155.840065,0 -3.31242,19.28399 c -1.90444,11.20024 4.5001,11.22295 14.37466,0.0937 l 17.21834,-19.37776 157.74627,0 c 6.17582,0 11.74904,-4.92928 12.46845,-11.06407 l 9.15604,-78.167349 c 0.71941,-6.134791 -3.6677,-11.064072 -9.84352,-11.064072 l -341.898163,0 z"
+       id="rect4033"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="D:\htdocs\feedbackspel.nl\public\images\feedbackspel.nl.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:97.01303100999999200px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Vijaya;-inkscape-font-specification:Vijaya"
+       x="31.114626"
+       y="105.83739"
+       id="text2985"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99291295,1.0071376)"
+       inkscape:export-filename="D:\htdocs\feedbackspel.nl\public\images\feedbackspel.nl.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="31.114626"
+         y="105.83739"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;font-family:Narkisim;-inkscape-font-specification:Narkisim">Feedback</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:97.01303100999999200px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#333333;fill-opacity:1;stroke:none;font-family:Poiret One;-inkscape-font-specification:Poiret One"
+       x="396.56299"
+       y="105.6055"
+       id="text4029"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99291295,1.0071376)"
+       inkscape:export-filename="D:\htdocs\feedbackspel.nl\public\images\feedbackspel.nl.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan4031"
+         x="396.56299"
+         y="105.6055"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#333333;fill-opacity:1;font-family:Narkisim;-inkscape-font-specification:Narkisim">spel.nl</tspan></text>
+  </g>
+</svg>

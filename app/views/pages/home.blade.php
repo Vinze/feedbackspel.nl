@@ -16,7 +16,7 @@
 			<div class="container">
 				<div class="header row">
 					<a href="{{ url('/') }}" class="logo">
-						<img src="images/logo.png">
+						<img src="images/feedbackspel.nl.png">
 					</a>
 					<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
 					<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
