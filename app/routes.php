@@ -17,12 +17,11 @@ Route::get('/', function() {
 });
 
 Route::get('login', 'UserController@getLogin');
-// Route::post('login', 'UserController@postLogin');
-
 Route::get('register', 'UserController@getRegister');
 
 Route::group(array('before' => 'csrf'), function() {
 	Route::post('register', 'UserController@postRegister');
+	Route::post('login', 'UserController@postLogin');
 });
 
 Route::group(array('before' => 'auth'), function() {
@@ -33,7 +32,22 @@ Route::group(array('before' => 'auth'), function() {
 
 	Route::post('change-password', 'UserController@getChangePassword');
 
+	Route::get('avatar/{hash}', 'UserController@getAvatar');
+	Route::post('avatar', 'UserController@postAvatar');
+
 	Route::get('logout', 'UserController@getLogout');
+
+	Route::get('game', function() {
+		$token = str_random(32);
+		$user = Auth::user();
+		$user->game_token = $token;
+		$user->save();
+
+		$io = 'http://' . Request::server('SERVER_NAME') . ':3000?token=' . $token;
+		
+
+		return View::make('pages.game', compact('io'));
+	});
 });
 
 App::missing(function($exception) {

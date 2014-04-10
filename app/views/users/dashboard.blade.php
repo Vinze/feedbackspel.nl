@@ -18,21 +18,11 @@
 					<a href="{{ url('/') }}" class="logo">
 						<img src="images/logo.png">
 					</a>
-					@if (Auth::check())
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-large"><i class="fa fa-home"></i> Dashboard</a>
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-small"><i class="fa fa-home"></i></a>
-					@else
-						<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
-						<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
-					@endif
-				</div>
-			</div>
-		</div>
-
-		<div class="banner-wrapper">
-			<div class="container">
-				<div class="banner row">
-					
+					<ul class="nav">
+						<li><a href="{{ url('dashboard') }}"><i class="fa fa-fw fa-home"></i> Dashboard</a></li>
+						<li><a href="{{ url('profile') }}"><i class="fa fa-fw fa-user"></i> Profiel</a></li>
+						<li><a href="{{ url('logout') }}"><i class="fa fa-fw fa-sign-out"></i> Uitloggen</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -43,7 +33,8 @@
 					<div class="row">
 						<div class="col span-12">
 							<h1>Dashboard</h1>
-							Hello :)
+
+							<a href="{{ url('game') }}" class="btn-confirm"><i class="fa fa-fw fa-gamepad"></i> Nieuw spel</a>
 						</div>
 					</div>
 				</div>

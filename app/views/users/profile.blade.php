@@ -18,44 +18,43 @@
 					<a href="{{ url('/') }}" class="logo">
 						<img src="images/logo.png">
 					</a>
-					@if (Auth::check())
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-large"><i class="fa fa-home"></i> Dashboard</a>
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-small"><i class="fa fa-home"></i></a>
-					@else
-						<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
-						<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
-					@endif
+					<ul class="nav">
+						<li><a href="{{ url('dashboard') }}"><i class="fa fa-fw fa-home"></i> Dashboard</a></li>
+						<li><a href="{{ url('profile') }}"><i class="fa fa-fw fa-user"></i> Profiel</a></li>
+						<li><a href="{{ url('logout') }}"><i class="fa fa-fw fa-sign-out"></i> Uitloggen</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
-
-		<div class="banner-wrapper">
-			<div class="container">
-				<div class="banner row">
-					
-				</div>
-			</div>
-		</div>
-
 		<div class="content-wrapper">
 			<div class="container">
 				<div class="content">
 					<h1>Mijn profiel</h1>
-					<div class="row">
-						<div class="col span-6">
+					{{ HTML::flash() }}
+					<div class="section row">
+						<div class="col span-8">
 							<h2>Gegevens</h2>
 							{{ Form::model(Auth::user()) }}
-								<div class="row fg">
+								<div class="row fg{{ ($errors->has('email') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label('email', 'E-mail adres:') }}</div>
-									<div class="col span-6">{{ Form::text('email') }}</div>
+									<div class="col span-6">
+										{{ Form::text('email') }}
+										<span class="required"></span>
+									</div>
 								</div>
-								<div class="row fg">
+								<div class="row fg{{ ($errors->has('firstname') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label('firstname', 'Voornaam:') }}</div>
-									<div class="col span-6">{{ Form::text('firstname') }}</div>
+									<div class="col span-6">
+										{{ Form::text('firstname') }}
+										<span class="required"></span>
+									</div>
 								</div>
-								<div class="row fg">
+								<div class="row fg{{ ($errors->has('lastname') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label('lastname', 'Achternaam:') }}</div>
-									<div class="col span-6">{{ Form::text('lastname') }}</div>
+									<div class="col span-6">
+										{{ Form::text('lastname') }}
+										<span class="required"></span>
+									</div>
 								</div>
 								<div class="row fg{{ ($errors->has('gender') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label(null, 'Ik ben een:') }}</div>
@@ -65,11 +64,22 @@
 									</div>
 								</div>
 								<div class="row fg">
-									<button type="submit" class="btn-confirm">Gegevens bijwerken</button>
+									<button type="submit" class="btn-confirm"><i class="fa fa-save"></i> Opslaan</button>
 								</div>
 							{{ Form::close() }}
 						</div>
-						<div class="col span-6">
+						<div class="col span-4 avatar-select">
+							<img src="{{ url('avatar/'.Auth::user()->hash) }}" class="avatar">
+							{{ Form::open(array('url' => 'avatar', 'files' => true, 'id' => 'upload-form')) }}
+								{{ Form::file('avatar') }}
+								<button class="btn-confirm file-upload" type="submit">
+									<i class="fa fa-picture-o"></i> Wijzig foto..
+								</button>
+							{{ Form::close() }}
+						</div>
+					</div>
+					<div class="section row">
+						<div class="col span-8">
 							<h2>Wijzig wachtwoord</h2>
 							{{ Form::open(array('url' => 'change-password')) }}
 								<div class="row fg">
@@ -85,14 +95,9 @@
 									<div class="col span-6">{{ Form::text('new_password2') }}</div>
 								</div>
 								<div class="row fg">
-									<button type="submit" class="btn-confirm">Wachtwoord wijzigen</button>
+									<button type="submit" class="btn-confirm"><i class="fa fa-save"></i> Opslaan</button>
 								</div>
 							{{ Form::close() }}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col span-12">
-							<h2>Profielfoto</h2>
 						</div>
 					</div>
 				</div>
@@ -108,6 +113,8 @@
 				</div>
 			</div>
 		</div>
+
+		{{ HTML::script('js/libs/jquery.min.js') }}
 		
 		<script type="text/javascript">
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -117,6 +124,11 @@
 
 			ga('create', 'UA-49342046-1', 'feedbackspel.nl');
 			ga('send', 'pageview');
+
+			// $('#upload-form input').on('change', function(e) {
+			// 	e.preventDefault();
+			// 	$('#upload-form').submit();
+			// });
 		</script>
 	</body>	
 </html>

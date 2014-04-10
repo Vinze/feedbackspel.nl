@@ -76,14 +76,93 @@ class UserController extends BaseController {
 		return View::make('users.profile');
 	}
 
+	/**
+	 * Update the user profile
+	 * 
+	 * @return object Redirect
+	 */
 	public function postProfile() {
-		nprint(Input::all());
+		// Set the validation rules
+		$rules = array(
+			'email'     => 'required|email',
+			'firstname' => 'required|min:2',
+			'lastname'  => 'required|min:2',
+			'gender'    => 'required|in:m,f'
+		);
+
+		// Get the input and validate it
+		$validator = Validator::make(Input::all(), $rules);
+
+		// Check if the validation has passed
+		if ($validator->passes()) {
+			// Create the new user
+			$user = Auth::user();
+			$user->fill(Input::all());
+			$user->save();
+
+			// Redirect to the dashboard
+			return Redirect::to('profile')->with('message', 'Gegevens zijn succesvol gewijzigd.');
+		} else {
+			// Validation failed, return to the register page
+			return Redirect::to('profile')->withErrors($validator)->withInput();
+		}
+	}
+
+	/**
+	 * Show the user avatar
+	 * 
+	 * @return string Image
+	 */
+	public function getAvatar($hashid) {
+		$hash = substr($hashid, 0, 8);
+		$id = substr($hashid, 8);
+		$user = User::where('id', $id)->where('hash', $hash)->first();
+		$path = storage_path('avatars/'.$id. '.jpg');
+		
+		if ($user && file_exists($path)) {
+			$image = Image::make($path);
+		} else {
+			$image = Image::make(storage_path('avatars/placeholder.png'));
+		}
+
+		return $image->response();
+		
+	}
+
+	/**
+	 * Update the user avatar
+	 * 
+	 * @return object Redirect
+	 */
+	public function postAvatar() {
+		$mimes = array('image/png', 'image/jpeg');
+		$path  = storage_path('avatars/'.Auth::user()->id. '.jpg');
+		$file  = Input::file('avatar');
+		
+		if ($file && in_array($file->getMimeType(), $mimes)) {
+			$image = Image::make($file->getRealPath());
+			if ($image->width > $image->height) {
+				$image->resize(null, 256, true, true);
+				$image->crop(256, 256);
+			} else {
+				$image->resize(256, null, true, true);
+				if ($image->height > (256 + 20)) {
+					$image->crop(256, 256, null, 20);
+				} else {
+					$image->crop(256, 256);
+				}
+			}
+			$image->save($path);
+			return Redirect::to('profile')->with('message', 'De afbeelding is succesvol gewijzigd.');
+		} else {
+			return Redirect::to('profile')->with('error', 'Er is een fout opgetreden bij het wijzigen van de foto!');
+		}
 	}
 
 	/**
 	 * Register page
 	 * 
-	 * @return View object
+	 * @return object View
 	 */
 	public function getRegister() {
 		// Check if the user is already logged in
@@ -118,6 +197,7 @@ class UserController extends BaseController {
 			$user = new User();
 			$user->fill(Input::all());
 			$user->password = Hash::make(Input::get('password'));
+			$user->hash = strtolower(str_random(8));
 			$user->save();
 
 			// Login the new user

@@ -18,12 +18,17 @@
 					<a href="{{ url('/') }}" class="logo">
 						<img src="images/logo.png">
 					</a>
+
 					@if (Auth::check())
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-large"><i class="fa fa-home"></i> Dashboard</a>
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-small"><i class="fa fa-home"></i></a>
+						<ul class="nav">
+							<li><a href="{{ url('dashboard') }}"><i class="fa fa-fw fa-home"></i> Dashboard</a></li>
+							<li><a href="{{ url('profile') }}"><i class="fa fa-fw fa-user"></i> Profiel</a></li>
+							<li><a href="{{ url('logout') }}"><i class="fa fa-fw fa-sign-out"></i> Uitloggen</a></li>
+						</ul>
 					@else
-						<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
-						<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
+						<ul class="nav">
+							<li><a href="{{ url('login') }}"><i class="fa fa-fw fa-sign-in"></i> Inloggen</a></li>
+						</ul>
 					@endif
 				</div>
 			</div>

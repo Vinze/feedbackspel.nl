@@ -17,7 +17,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $fillable = array('email', 'firstname', 'lastname', 'gender');
+	protected $fillable = array('hash', 'email', 'firstname', 'lastname', 'gender');
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -54,6 +54,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function getReminderEmail()
 	{
 		return $this->email;
+	}
+
+	public function getHashAttribute($value) {
+		return $this->attributes['hash'] . $this->attributes['id'];
 	}
 
 }

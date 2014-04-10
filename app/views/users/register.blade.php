@@ -18,21 +18,9 @@
 					<a href="{{ url('/') }}" class="logo">
 						<img src="images/logo.png">
 					</a>
-					@if (Auth::check())
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-large"><i class="fa fa-home"></i> Dashboard</a>
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-small"><i class="fa fa-home"></i></a>
-					@else
-						<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
-						<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
-					@endif
-				</div>
-			</div>
-		</div>
-
-		<div class="banner-wrapper">
-			<div class="container">
-				<div class="banner row">
-					
+					<ul class="nav">
+						<li><a href="{{ url('login') }}"><i class="fa fa-fw fa-sign-in"></i> Inloggen</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -48,35 +36,35 @@
 								<div class="row fg{{ ($errors->has('email') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label('email', 'E-mail adres:') }}</div>
 									<div class="col span-6">
-										{{ Form::text('email', null, array('placeholder' => '...')) }}
+										{{ Form::text('email') }}
 										<div class="required"></div>
 									</div>
 								</div>
 								<div class="row fg{{ ($errors->has('password') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label('password', 'Wachtwoord:') }}</div>
 									<div class="col span-6">
-										{{ Form::password('password', array('placeholder' => '...')) }}
+										{{ Form::password('password') }}
 										<div class="required"></div>
 									</div>
 								</div>
 								<div class="row fg{{ ($errors->has('password2') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label('password2', 'Herhaal wachtwoord:') }}</div>
 									<div class="col span-6">
-										{{ Form::password('password2', array('placeholder' => '...')) }}
+										{{ Form::password('password2') }}
 										<div class="required"></div>
 									</div>
 								</div>
 								<div class="row fg{{ ($errors->has('firstname') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label('firstname', 'Voornaam:') }}</div>
 									<div class="col span-6">
-										{{ Form::text('firstname', null, array('placeholder' => '...')) }}
+										{{ Form::text('firstname') }}
 										<div class="required"></div>
 									</div>
 								</div>
 								<div class="row fg{{ ($errors->has('lastname') ? ' has-error' : '') }}">
 									<div class="col span-4">{{ Form::label('lastname', 'Achternaam:') }}</div>
 									<div class="col span-6">
-										{{ Form::text('lastname', null, array('placeholder' => '...')) }}
+										{{ Form::text('lastname') }}
 										<div class="required"></div>
 									</div>
 								</div>

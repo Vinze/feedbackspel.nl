@@ -18,21 +18,6 @@
 					<a href="{{ url('/') }}" class="logo">
 						<img src="images/logo.png">
 					</a>
-					@if (Auth::check())
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-large"><i class="fa fa-home"></i> Dashboard</a>
-						<a href="{{ url('dashboard') }}" class="btn-confirm btn-small"><i class="fa fa-home"></i></a>
-					@else
-						<a href="{{ url('login') }}" class="btn-confirm btn-large"><i class="fa fa-sign-in"></i> Inloggen</a>
-						<a href="{{ url('login') }}" class="btn-confirm btn-small"><i class="fa fa-sign-in"></i></a>
-					@endif
-				</div>
-			</div>
-		</div>
-
-		<div class="banner-wrapper">
-			<div class="container">
-				<div class="banner row">
-					
 				</div>
 			</div>
 		</div>
@@ -48,13 +33,18 @@
 								<div class="row fg{{ ($errors->has('email') ? ' has-error' : '') }}">
 									<div class="col span-12">
 										{{ Form::label('email', 'E-mail adres:') }}
-										{{ Form::text('email', $email, array('placeholder' => '...')) }}
+										{{ Form::text('email', $email) }}
 									</div>
 								</div>
 								<div class="row fg{{ ($errors->has('password') ? ' has-error' : '') }}">
 									<div class="col span-12">
 										{{ Form::label('password', 'Wachtwoord:') }}
-										{{ Form::password('password', array('placeholder' => '...')) }}
+										{{ Form::password('password') }}
+									</div>
+								</div>
+								<div class="row fg">
+									<div class="col span-12">
+										<label>{{ Form::checkbox('remember', 1, true) }} Ingelogd blijven</label>
 									</div>
 								</div>
 								<div class="row fg">
