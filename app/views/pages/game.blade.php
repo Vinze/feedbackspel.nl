@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="css/stylesheet.css">
 
 		{{ HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular.min.js') }}
-		{{ HTML::script('http://localhost:3000/socket.io/socket.io.js') }}
+		{{ HTML::script($url . '/socket.io/socket.io.js') }}
 	</head>
 	<body ng-app="project">
 		
@@ -27,11 +27,15 @@
 
 		<div class="content-wrapper">
 			<div class="container">
-				Ingelogd als: {{ Auth::user()->firstname }}
 				<div class="content" id="content" ng-controller="GameController">
 					<table>
+					<tr>
+						<th colspan="3">
+							Ingelogd als: {{ Auth::user()->firstname }}				
+						</th>
+					</tr>
 						<tr ng-repeat="user in users">
-							<td style="width: 40px"><img ng-src="avatar/<% user.hash + user.id %>" style="width: 32px; height: 32px"></td>
+							<td><img ng-src="avatar/<% user.hash + user.id %>" style="width: 32px; height: 32px"></td>
 							<td><% user.firstname %> <% user.lastname %></td>
 							<td>
 								<i class="fa fa-square-o" ng-hide="user.done"></i>
@@ -55,7 +59,7 @@
 			});
 
 			app.factory('socket', function ($rootScope) {
-				var socket = io.connect('{{ $io }}');
+				var socket = io.connect('{{ $url . '?token=' . $token }}');
 				return {
 					on: function (eventName, callback) {
 						socket.on(eventName, function () {  

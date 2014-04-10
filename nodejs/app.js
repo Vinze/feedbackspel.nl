@@ -7,6 +7,10 @@ var mysql = mysql2.createConnection({
 	database: 'feedbackspel.nl'
 });
 
+var Datastore = require('nedb');
+var users = new Datastore();
+var total_users = 0;
+
 io.configure(function() {
 	io.set('authorization', function (data, accept) {
 		// Set the mysql query
@@ -18,8 +22,14 @@ io.configure(function() {
 		// Find the user with the token
 		mysql.execute(query, [token], function(err, rows) {
 			if (rows.length == 1 && ! err) {
-				data.user = rows[0];
-				accept(null, true);
+				users.count({ id: rows[0].id }, function(err, total) {
+					if (total == 0) {
+						data.user = rows[0];
+						accept(null, true);
+					} else {
+						accept('Client already connected!', false);		
+					}
+				});
 			} else {
 				accept('No valid token provided!', false);
 			}
@@ -27,10 +37,6 @@ io.configure(function() {
 	});
 	io.set('log level', 1);
 });
-
-var Datastore = require('nedb');
-var users = new Datastore();
-var total_users = 0;
 
 io.sockets.on('connection', function(client) {
 	// Set the user data

@@ -43,10 +43,9 @@ Route::group(array('before' => 'auth'), function() {
 		$user->game_token = $token;
 		$user->save();
 
-		$io = 'http://' . Request::server('SERVER_NAME') . ':3000?token=' . $token;
+		$url = 'http://' . Request::server('SERVER_NAME') . ':3000';
 		
-
-		return View::make('pages.game', compact('io'));
+		return View::make('pages.game', compact('url', 'token'));
 	});
 });
 
