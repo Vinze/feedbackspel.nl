@@ -35,6 +35,10 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('avatar/{hash}', 'UserController@getAvatar');
 	Route::post('avatar', 'UserController@postAvatar');
 
+	Route::group(array('before' => 'isadmin'), function() {
+		Route::get('users', 'UserController@getIndex');
+	});
+
 	Route::get('logout', 'UserController@getLogout');
 
 	Route::get('game', function() {

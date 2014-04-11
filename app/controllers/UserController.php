@@ -1,6 +1,11 @@
 <?php
 class UserController extends BaseController {
 
+	public function getIndex() {
+		$users = User::all();
+		return View::make('users.index', compact('users'));
+	}
+
 	/**
 	 * Login page
 	 * @return [type] [description]
