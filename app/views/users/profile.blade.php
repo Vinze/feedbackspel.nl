@@ -71,8 +71,8 @@
 						<div class="col span-4 avatar-select">
 							<img src="{{ url('avatar/'.Auth::user()->hash) }}" class="avatar">
 							{{ Form::open(array('url' => 'avatar', 'files' => true, 'id' => 'upload-form')) }}
-								{{ Form::file('avatar') }}
 								<button class="btn-confirm file-upload" type="submit">
+									{{ Form::file('avatar') }}
 									<i class="fa fa-picture-o"></i> Wijzig foto..
 								</button>
 							{{ Form::close() }}
@@ -125,10 +125,12 @@
 			ga('create', 'UA-49342046-1', 'feedbackspel.nl');
 			ga('send', 'pageview');
 
-			// $('#upload-form input').on('change', function(e) {
-			// 	e.preventDefault();
-			// 	$('#upload-form').submit();
-			// });
+			$(function() {
+				$('#upload-form input').on('change', function(e) {
+					e.preventDefault();
+					$('#upload-form').submit();
+				});
+			});
 		</script>
 	</body>	
 </html>

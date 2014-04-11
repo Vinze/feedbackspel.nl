@@ -14,14 +14,16 @@ var total_users = 0;
 io.configure(function() {
 	io.set('authorization', function (data, accept) {
 		// Set the mysql query
-		var query = 'SELECT id, firstname, lastname, hash FROM users WHERE game_token = ? LIMIT 1';
+		var select = "SELECT id, firstname, lastname, hash FROM users WHERE game_token = ? LIMIT 1";
+		var update = "UPDATE users SET game_token = '' WHERE game_token = ?";
 
 		// Get the token from the URL
 		var token = data.query.token;
 
 		// Find the user with the token
-		mysql.execute(query, [token], function(err, rows) {
+		mysql.execute(select, [token], function(err, rows) {
 			if (rows.length == 1 && ! err) {
+				mysql.execute(update, [token]);
 				users.count({ id: rows[0].id }, function(err, total) {
 					if (total == 0) {
 						data.user = rows[0];

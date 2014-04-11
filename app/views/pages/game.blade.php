@@ -28,21 +28,28 @@
 		<div class="content-wrapper">
 			<div class="container">
 				<div class="content" id="content" ng-controller="GameController">
-					<table>
-					<tr>
-						<th colspan="3">
-							Ingelogd als: {{ Auth::user()->firstname }}				
-						</th>
-					</tr>
-						<tr ng-repeat="user in users">
-							<td><img ng-src="avatar/<% user.hash + user.id %>" style="width: 32px; height: 32px"></td>
-							<td><% user.firstname %> <% user.lastname %></td>
-							<td>
-								<i class="fa fa-square-o" ng-hide="user.done"></i>
-								<i class="fa fa-check-square-o" ng-show="user.done"></i>
-							</td>
-						</tr>
-					</table>
+					<div class="row">
+						<div class="col span-6">
+							<table>
+							<tr>
+								<th colspan="3">
+									Ingelogd als: {{ Auth::user()->firstname }}				
+								</th>
+							</tr>
+								<tr ng-repeat="user in users">
+									<td><img ng-src="avatar/<% user.hash + user.id %>" style="width: 32px; height: 32px"></td>
+									<td><% user.firstname %> <% user.lastname %></td>
+									<td>
+										<i class="fa fa-square-o" ng-hide="user.done"></i>
+										<i class="fa fa-check-square-o" ng-show="user.done"></i>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="col span-6">
+							
+						</div>
+					</div>
 					
 					<button class="btn-confirm" ng-click="done()">Klaar!</button>
 				</div>
