@@ -538,15 +538,24 @@ body {
 
 
 .nav-collapse ul {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  display: block;
-  list-style: none;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	list-style: none;
+	background-color: #0073A2;
+	border-radius: 5px 5px 0 0;
 }
 
 .nav-collapse li {
   display: inline-block;
+  float: left;
+}
+
+.nav-collapse a {
+	display: block;
+	color: #f2f2f2;
+	text-decoration: none;
+	padding: 10px;
 }
 
 .js .nav-collapse {

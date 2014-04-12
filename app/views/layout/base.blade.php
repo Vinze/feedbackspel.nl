@@ -19,7 +19,7 @@
 				<a href="{{ url('/') }}" class="logo">
 					<img src="images/logo.png">
 				</a>
-				<ul class="nav">
+				<!-- <ul class="nav">
 					@if (Auth::check())
 						<li><a href="{{ url('dashboard') }}"><i class="fa fa-fw fa-home"></i> Dashboard</a></li>
 						<li><a href="{{ url('profile') }}"><i class="fa fa-fw fa-user"></i> Profiel</a></li>
@@ -27,18 +27,18 @@
 					@else
 						<li><a href="{{ url('login') }}"><i class="fa fa-fw fa-sign-in"></i> Inloggen</a></li>
 					@endif
-				</ul>
+				</ul> -->
+				<button class="nav-toggle"><i class="fa fa-bars"></i></button>
+				<nav class="nav-collapse">
+					<ul>
+						<li><a href="#"><i class="fa fa-fw fa-home"></i> Dashboard</a></li>
+						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profiel</a></li>
+						<li><a href="#"><i class="fa fa-fw fa-sign-out"></i> Uitloggen</a></li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
-	<nav class="nav-collapse">
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Projects</a></li>
-			<li><a href="#">Blog</a></li>
-		</ul>
-	</nav>
 	<div class="content-wrapper">
 		<div class="container">
 			<div class="content">
@@ -69,7 +69,9 @@
 
 		var base_url = "{{ url('/') }}";
 
-		var navigation = responsiveNav(".nav-collapse");
+		var navigation = responsiveNav('.nav-collapse', {
+			customToggle: '.nav-toggle'
+		});
 	</script>
 	@yield('scripts')
 </body>	
