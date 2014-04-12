@@ -31,6 +31,14 @@
 			</div>
 		</div>
 	</div>
+	<nav class="nav-collapse">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Projects</a></li>
+			<li><a href="#">Blog</a></li>
+		</ul>
+	</nav>
 	<div class="content-wrapper">
 		<div class="container">
 			<div class="content">
@@ -48,6 +56,8 @@
 		</div>
 	</div>
 	
+	{{ HTML::script('js/libs/responsive-nav.min.js') }}
+
 	<script type="text/javascript">
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -58,6 +68,8 @@
 		ga('send', 'pageview');
 
 		var base_url = "{{ url('/') }}";
+
+		var navigation = responsiveNav(".nav-collapse");
 	</script>
 	@yield('scripts')
 </body>	

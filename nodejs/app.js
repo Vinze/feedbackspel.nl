@@ -23,7 +23,10 @@ io.configure(function() {
 		// Find the user with the token
 		mysql.execute(select, [token], function(err, rows) {
 			if (rows.length == 1 && ! err) {
-				mysql.execute(update, [token]);
+				mysql.execute(update, [token], function(err, rows) {
+					console.log(err);
+					console.log(rows);
+				});
 				users.count({ id: rows[0].id }, function(err, total) {
 					if (total == 0) {
 						data.user = rows[0];

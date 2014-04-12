@@ -1,6 +1,6 @@
 @extends('layout.base')
 @section('content')
-	<div id="content" ng-app="project" ng-controller="GameController">
+	<div id="content" ng-app="project" ng-controller="GameController" ng-cloak class="ng-cloak">
 		<h1>Game</h1>
 		<div class="row">
 			<div class="col span-6">
