@@ -6,7 +6,7 @@ app.config(function($interpolateProvider) {
 });
 
 app.factory('socket', function ($rootScope) {
-	var socket = io.connect(base_url + ':3000');
+	var socket = io.connect(socket_url);
 	return {
 		on: function (eventName, callback) {
 			socket.on(eventName, function () {  

@@ -1,5 +1,6 @@
 var io = require('socket.io').listen(3000);
 var mysql2 = require('mysql2');
+var base64 = require('base64');
 
 // Connect to the MySQL database
 var mysql = mysql2.createConnection({
@@ -8,98 +9,91 @@ var mysql = mysql2.createConnection({
 	database: 'feedbackspel.nl'
 });
 
-
 // Load a new IMDB (in memory database)
 var Datastore = require('nedb');
 var users = new Datastore();
 
 // Configure the socket
-io.configure(function() {
-	// Set the authorization function
+io.configure(function () {
+
+	// Define the authorization
 	io.set('authorization', function (data, accept) {
-		// Set the mysql queries
-		var select = "SELECT id, firstname, lastname, hash, room FROM users WHERE token = ? LIMIT 1";
-		var update = "UPDATE users SET token = '' WHERE token = ?";
+		// Decode the base64 string from the URL
+		var string = base64.decode(data.query.d).split('/');
 
-		// Get the token from the URL
-		var token = data.query.token;
+		// Set the variables
+		var type = string[0];
+		var token = string[1];
+		var room = string[2];
 
-		// Find the user with the token
-		mysql.execute(select, [token], function(err, rows) {
-			// Check if the user can be found by the token
-			if (rows.length == 1 && ! err) {
-				// mysql.execute(update, [token]);
-				users.count({ id: rows[0].id }, function(err, total) {
-					if (total == 0) {
-						data.user = rows[0];
-						console.log('Connected:', data.user.firstname + ' ' + data.user.lastname);
-						accept(null, true);
-					} else {
-						accept('Client already connected!', false);		
-					}
-				});
-			} else {
-				accept('No valid token provided!', false);
-			}
-		});
+		// Set the select query
+		var select = 'SELECT id, email, firstname, lastname, hash FROM users WHERE token = ? LIMIT 1';
+
+		// Check if a token is provided
+		if (token != undefined && token.length > 10) {
+			// Check if the token exists in the database
+			mysql.query(select, [token], function(e, rows) {
+				if (rows.length == 1) {
+					// Store the handshake data
+					data.user = rows[0];
+					data.type = type;
+					data.room = room;
+
+					// Accept the connection
+					accept(null, true);
+				} else {
+					// Deny the connection
+					accept('No (valid) token provided', false);		
+				}
+			});
+		} else {
+			// Deny the connection
+			accept('No (valid) token provided', false);
+		}
+		
+
 	});
+
+	// Set the log level to 1 (only show errors)
 	io.set('log level', 1);
 });
 
-io.sockets.on('connection', function(client) {
-	// Set the user data
-	// 
-	/*
-	var user = client.handshake.user;
-	    user.socket_id = client.id;
-	client.join(user.room);
+io.sockets.on('connection', function(socket) {
 
-	// Store the user
-	users.insert(user, function() {
-		// Logging
-		console.log('Connected:', user.firstname + ' ' + user.lastname);
+	// Set the data associated with the socket
+	socket.user = socket.handshake.user;
+	socket.type = socket.handshake.type;
+	socket.room = socket.handshake.room;
 
-		// Find all users and send them to the connected user
-		users.find({room: user.room}, function(err, results) {
-			io.sockets.in(user.room).emit('users:updated', results);
+	// Send the updated users list
+	function usersUpdated() {
+		users.find({}, function(err, docs) {
+			io.sockets.in(socket.room).emit('users updated', docs);
 		});
+	}
+
+	// If the socket is a client, add the user
+	if (socket.type == 'client') {
+		var user = socket.user;
+		user.socket_id = socket.id;
+
+		users.insert(user, function(err, doc) {
+			usersUpdated();
+		});
+	}
+
+
+
+	socket.join(socket.room);
+
+	socket.on('message', function(message) {
+		message = socket.user.firstname + ' ' + socket.user.lastname + ': ' + message;
+		io.sockets.in(socket.room).emit('message', message);
 	});
 
-	// A user is done
-	client.on('user:done', function() {
-
-		// Find the user
-		users.findOne({ socket_id: client.id }, function(err, user) {
-			// Update the user
-			users.update({ socket_id: client.id }, { $set: { done: true } }, {multi: true}, function(err, rows) {
-				console.log('Done:', user.firstname + ' ' + user.lastname);
-				io.sockets.in(user.room).emit('user:done', user.id);
-			});
-
-			// Count the users in the room who are done
-			users.count({room: user.room, done: true }, function(err, total) {
-				var total_users = io.sockets.clients(user.room).length;
-
-				// Check if all users in the room are done
-				if (total == total_users) {
-					users.update({done: true }, { $set: { done: false } }, {multi: true});
-					console.log('Everyone is ready');
-					io.sockets.in(user.room).emit('game:done', cards);
-				}
-			});
+	socket.on('disconnect', function() {
+		users.remove({ socket_id: socket.id }, function() {
+			usersUpdated();
 		});
 	});
-	
-	// A user has disconnected
-	client.on('disconnect', function() {
-		users.findOne({ socket_id: client.id }, function(err, user) {
-			users.remove({ socket_id: client.id }, function() {
-				users.find({room: user.room}, function(err, results) {
-					io.sockets.in(user.room).emit('users:updated', results);
-				});
-			});
-			console.log('Disconnected:', user.firstname + ' ' + user.lastname);
-		});
-	});
-*/
 });

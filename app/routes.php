@@ -45,36 +45,9 @@ Route::group(array('before' => 'auth'), function() {
 		return Redirect::to('host/'.randomStr(6));
 	});
 
-	Route::get('host/{room}', function($room) {
-		$token = str_random(32);
-		$user = Auth::user();
-		$user->token = $token;
-		$user->room = ($room) ? $room : randomStr(6);
-		$user->save();
-		return View::make('game.host', compact('token'));
-	});
+	Route::get('host/{room}', 'GameController@getHost');
+	Route::get('client/{room}', 'GameController@getClient');
 
-	Route::get('join/{room}', function($room) {
-		return View::make('game.join');
-		// $token = str_random(32);
-		// $user = Auth::user();
-		// $user->token = $token;
-		// $user->room = ($room) ? $room : randomStr(6);
-		// $user->save();
-		
-		// $url = 'http://' . Request::server('SERVER_NAME') . ':3000';
-
-		// $url_params = '?token=' . $token;
-		
-		// return View::make('pages.game', compact('user', 'url', 'url_params'));
-	});
-
-	Route::get('get-token', function() {
-		$user = Auth::user();
-		$user->token = str_random(32);
-		$user->save();
-		return $user->token;
-	});
 });
 
 App::missing(function($exception) {

@@ -67,10 +67,9 @@
 		ga('create', 'UA-49342046-1', 'feedbackspel.nl');
 		ga('send', 'pageview');
 
-		var app_url = "{{ url('/') }}";
-		var base_url = "http://{{ Request::server('SERVER_NAME') }}";
-		var token = "{{ isset($token) ? $token : null }}";
-
+		var base_url = "{{ url('/') }}";
+		var socket_url = "{{ isset($socket_url) ? $socket_url : '' }}";
+		
 		var navigation = responsiveNav('.nav-collapse', {
 			customToggle: '.nav-toggle'
 		});
