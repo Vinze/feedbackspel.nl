@@ -536,6 +536,10 @@ body {
 	display: none;
 }
 
+.nav-collapse {
+	float: right;
+	margin-top: 45px;
+}
 
 .nav-collapse ul {
 	margin: 0;
@@ -547,42 +551,42 @@ body {
 }
 
 .nav-collapse li {
-  display: inline-block;
-  float: left;
+	display: inline-block;
+	float: left;
 }
 
 .nav-collapse a {
 	display: block;
 	color: #f2f2f2;
 	text-decoration: none;
-	padding: 10px;
+	padding: 8px 10px 15px 10px;
 }
 
 .js .nav-collapse {
-  clip: rect(0 0 0 0);
-  max-height: 0;
-  position: absolute;
-  display: block;
-  overflow: hidden;
-  zoom: 1;
+	clip: rect(0 0 0 0);
+	max-height: 0;
+	position: absolute;
+	display: block;
+	overflow: hidden;
+	zoom: 1;
 }
 
 .nav-collapse.opened {
-  max-height: 9999px;
+	max-height: 9999px;
 }
 
 .disable-pointer-events {
-  pointer-events: none !important;
+	pointer-events: none !important;
 }
 
 .nav-toggle {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
 
 @media screen and (min-width: 40em) {

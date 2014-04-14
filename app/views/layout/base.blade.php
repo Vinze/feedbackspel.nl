@@ -8,7 +8,7 @@
 	<meta name="keywords" content="feedbackspel feedback spel online game reflectie team samenwerken">
 	<link href="http://fonts.googleapis.com/css?family=Poiret+One|Open+Sans:400italic,600italic,400,600" rel="stylesheet" type="text/css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/stylesheet.css">
+	<link rel="stylesheet" href="{{ url('css/stylesheet.css') }}">
 	@yield('head')
 </head>
 <body>
@@ -17,7 +17,7 @@
 		<div class="container">
 			<div class="header row">
 				<a href="{{ url('/') }}" class="logo">
-					<img src="images/logo.png">
+					<img src="{{ url('images/logo.png') }}">
 				</a>
 				<!-- <ul class="nav">
 					@if (Auth::check())
@@ -67,7 +67,9 @@
 		ga('create', 'UA-49342046-1', 'feedbackspel.nl');
 		ga('send', 'pageview');
 
-		var base_url = "{{ url('/') }}";
+		var app_url = "{{ url('/') }}";
+		var base_url = "http://{{ Request::server('SERVER_NAME') }}";
+		var token = "{{ isset($token) ? $token : null }}";
 
 		var navigation = responsiveNav('.nav-collapse', {
 			customToggle: '.nav-toggle'

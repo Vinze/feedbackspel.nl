@@ -8,6 +8,10 @@ var mysql = mysql2.createConnection({
 	database: 'feedbackspel.nl'
 });
 
+var cards = [
+	{ description: 'Zelfingenomen' },
+	{ description: 'Arrogant' }
+];
 
 // Load a new IMDB (in memory database)
 var Datastore = require('nedb');
@@ -32,7 +36,6 @@ io.configure(function() {
 				users.count({ id: rows[0].id }, function(err, total) {
 					if (total == 0) {
 						data.user = rows[0];
-						console.log('Connected:', data.user.firstname + ' ' + data.user.lastname);
 						accept(null, true);
 					} else {
 						accept('Client already connected!', false);		
@@ -48,8 +51,6 @@ io.configure(function() {
 
 io.sockets.on('connection', function(client) {
 	// Set the user data
-	// 
-	/*
 	var user = client.handshake.user;
 	    user.socket_id = client.id;
 	client.join(user.room);
@@ -101,5 +102,4 @@ io.sockets.on('connection', function(client) {
 			console.log('Disconnected:', user.firstname + ' ' + user.lastname);
 		});
 	});
-*/
 });
