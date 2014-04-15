@@ -314,6 +314,16 @@ a[class*="btn-"] {
 	line-height: 1;
 }
 
+.btn-default, a.btn-default {
+	background-color: #808080;
+	text-shadow: 1px 1px #333;
+	color: #FFF;
+}
+
+.btn-default:hover, a.btn-default:hover {
+	background-color: #6F6F6F;
+}
+
 .btn-confirm, a.btn-confirm {
 	background-color: #67A364;
 	text-shadow: 1px 1px #658663;

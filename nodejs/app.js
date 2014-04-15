@@ -50,8 +50,6 @@ io.configure(function () {
 			// Deny the connection
 			accept('No (valid) token provided', false);
 		}
-		
-
 	});
 
 	// Set the log level to 1 (only show errors)
@@ -59,14 +57,13 @@ io.configure(function () {
 });
 
 io.sockets.on('connection', function(socket) {
-
 	// Set the data associated with the socket
 	socket.user = socket.handshake.user;
 	socket.type = socket.handshake.type;
 	socket.room = socket.handshake.room;
 
 	// Send the updated users list
-	function usersUpdated() {
+	function updateUsers() {
 		users.find({}, function(err, docs) {
 			io.sockets.in(socket.room).emit('users updated', docs);
 		});
@@ -76,24 +73,24 @@ io.sockets.on('connection', function(socket) {
 	if (socket.type == 'client') {
 		var user = socket.user;
 		user.socket_id = socket.id;
-
 		users.insert(user, function(err, doc) {
-			usersUpdated();
+			updateUsers();
 		});
+		console.log(socket.user.firstname + ' ' + socket.user.lastname + ' joined the room ' + socket.room);
+	} else {
+		console.log(socket.user.firstname + ' ' + socket.user.lastname + ' hosted the room ' + socket.room);
 	}
-
-
 
 	socket.join(socket.room);
 
-	socket.on('message', function(message) {
-		message = socket.user.firstname + ' ' + socket.user.lastname + ': ' + message;
-		io.sockets.in(socket.room).emit('message', message);
+	socket.on('feedback', function(feedback) {
+		io.sockets.in(socket.room).emit('user done', socket.user.id);
+		console.log(feedback);
 	});
 
 	socket.on('disconnect', function() {
 		users.remove({ socket_id: socket.id }, function() {
-			usersUpdated();
+			updateUsers();
 		});
 	});
 });

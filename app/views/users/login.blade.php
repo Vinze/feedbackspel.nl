@@ -77,6 +77,8 @@
 
 			ga('create', 'UA-49342046-1', 'feedbackspel.nl');
 			ga('send', 'pageview');
+
+			document.getElementById('email').focus();
 		</script>
 	</body>	
 </html>

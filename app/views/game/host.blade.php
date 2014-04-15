@@ -3,15 +3,24 @@
 	<div id="content" ng-app="feedbackspel" ng-controller="HostController" ng-cloak class="ng-cloak">
 		<h1>Game</h1>
 		<div class="row">
-			<div class="col span-6">
+			<div class="col span-4">
 				<h2>Verbonden</h2>
-				<p class="user" ng-repeat="user in users">
-					<img ng-src="<% base_url + '/avatar/' + user.hash + user.id %>" style="width:32px;">
-					<% user.firstname %>
-					<% user.lastname %>
-				</p>
+				<table>
+					<tbody>
+						<tr ng-repeat="user in users">
+							<td><img ng-src="<% base_url + '/avatar/' + user.hash + user.id %>" style="width:32px;"></td>
+							<td><% user.firstname %> <% user.lastname %></td>
+							<td>
+								<i class="fa fa-fw fa-square-o" ng-show="!user.done"></i>
+								<i class="fa fa-fw fa-check-square-o" ng-show="user.done"></i>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p><a href="{{ url('join/'.$room) }}" target="_blank">Join room</a></p>
 			</div>
-			<div class="col span-6">
+			<div class="col span-8">
 				<h2>Berichten</h2>
 				<p class="message" ng-repeat="message in messages">
 					<% message %>
@@ -29,16 +38,20 @@
 	<script type="text/javascript">
 	app.controller('HostController', function($scope, socket) {
 
-		$scope.messages = [];
-		$scope.users = [];
 		$scope.base_url = base_url;
-
-		socket.on('message', function(message) {
-			$scope.messages.push(message);
-		});
-
+		$scope.users = [];
+		
 		socket.on('users updated', function(users) {
 			$scope.users = users;
+		});
+
+		socket.on('user done', function(user_id) {
+			for (var i = 0; i < $scope.users.length; i++) {
+				if ($scope.users[i].id == user_id) {
+					$scope.users[i].done = true;
+					break;
+				}
+			}
 		});
 	});
 	</script>

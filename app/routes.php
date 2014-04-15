@@ -46,7 +46,7 @@ Route::group(array('before' => 'auth'), function() {
 	});
 
 	Route::get('host/{room}', 'GameController@getHost');
-	Route::get('client/{room}', 'GameController@getClient');
+	Route::get('join/{room}', 'GameController@getClient');
 
 });
 
