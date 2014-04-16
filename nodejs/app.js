@@ -1,17 +1,29 @@
-var io = require('socket.io').listen(3000);
-var mysql2 = require('mysql2');
-var base64 = require('base64');
+var io = require('socket.io').listen(3000),
+    mysql2 = require('mysql2'),
+    os = require('os'),
+    Datastore = require('nedb');
 
-// Connect to the MySQL database
-var mysql = mysql2.createConnection({
-	user: 'root',
-	password: 'usbw',
-	database: 'feedbackspel.nl'
-});
+if (os.hostname() == 'UbuntuVPS1') {
+	// Connect to the MySQL database
+	var mysql = mysql2.createConnection({
+		user: 'root',
+		password: 'W3bW8woord',
+		database: 'feedbackspel.nl'
+	});
+} else {
+	// Connect to the MySQL database
+	var mysql = mysql2.createConnection({
+		user: 'root',
+		password: 'usbw',
+		database: 'feedbackspel.nl'
+	});
+}
+
 
 // Load a new IMDB (in memory database)
-var Datastore = require('nedb');
-var users = new Datastore();
+var db = {};
+db.users = new Datastore();
+db.users_done = new Datastore();
 
 // Configure the socket
 io.configure(function () {
@@ -19,8 +31,8 @@ io.configure(function () {
 	// Define the authorization
 	io.set('authorization', function (data, accept) {
 		// Decode the base64 string from the URL
-		var string = base64.decode(data.query.d).split('/');
-
+		var string = new Buffer(data.query.d, 'base64').toString().split('/');
+		
 		// Set the variables
 		var type = string[0];
 		var token = string[1];
@@ -56,6 +68,10 @@ io.configure(function () {
 	io.set('log level', 1);
 });
 
+setInterval(function() {
+	
+}, 5000);
+
 io.sockets.on('connection', function(socket) {
 	// Set the data associated with the socket
 	socket.user = socket.handshake.user;
@@ -64,16 +80,18 @@ io.sockets.on('connection', function(socket) {
 
 	// Send the updated users list
 	function updateUsers() {
-		users.find({}, function(err, docs) {
+		db.users.find({}, function(err, docs) {
 			io.sockets.in(socket.room).emit('users updated', docs);
 		});
 	}
+
+	updateUsers();
 
 	// If the socket is a client, add the user
 	if (socket.type == 'client') {
 		var user = socket.user;
 		user.socket_id = socket.id;
-		users.insert(user, function(err, doc) {
+		db.users.insert(user, function(err, doc) {
 			updateUsers();
 		});
 		console.log(socket.user.firstname + ' ' + socket.user.lastname + ' joined the room ' + socket.room);
@@ -83,14 +101,35 @@ io.sockets.on('connection', function(socket) {
 
 	socket.join(socket.room);
 
-	socket.on('feedback', function(feedback) {
+	socket.on('user done', function(feedback) {
+
+		db.users_done.update(
+			{ room: socket.room, user_id: socket.user.id },
+			{ room: socket.room, user_id: socket.user.id },
+			{ upsert: true },
+			function(err, rows) {		
+			}
+		);
+
+		db.users_done.count({ room: socket.room } , function(err, total) {
+			console.log(total);
+		});
 		io.sockets.in(socket.room).emit('user done', socket.user.id);
-		console.log(feedback);
+		// console.log(feedback);
 	});
 
 	socket.on('disconnect', function() {
-		users.remove({ socket_id: socket.id }, function() {
-			updateUsers();
-		});
+		if (socket.type == 'host') {
+			db.users.remove({ room: socket.room }, function() {
+				console.log('Host left, remove users in room ' + socket.room);
+			});
+			db.users_done.remove({ room: socket.room }, function() {
+				console.log('Host left, remove user count in room ' + socket.room);
+			});
+		} else {
+			db.users.remove({ socket_id: socket.id }, function() {
+				updateUsers();
+			});
+		}
 	});
 });

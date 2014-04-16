@@ -21,10 +21,11 @@
 				<p><a href="{{ url('join/'.$room) }}" target="_blank">Join room</a></p>
 			</div>
 			<div class="col span-8">
-				<h2>Berichten</h2>
-				<p class="message" ng-repeat="message in messages">
-					<% message %>
-				</p>
+				<div class="card">
+					<div class="card-title">
+						Perfectionist
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -45,10 +46,15 @@
 			$scope.users = users;
 		});
 
+		var total_done = 0;
 		socket.on('user done', function(user_id) {
 			for (var i = 0; i < $scope.users.length; i++) {
 				if ($scope.users[i].id == user_id) {
 					$scope.users[i].done = true;
+					total_done++;
+				}
+				if (total_done = $scope.users.length) {
+					console.log('Everyone is done!');
 					break;
 				}
 			}

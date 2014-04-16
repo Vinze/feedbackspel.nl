@@ -54,16 +54,16 @@
 			<h2>Wijzig wachtwoord</h2>
 			{{ Form::open(array('url' => 'change-password')) }}
 				<div class="row fg">
-					<div class="col span-4">{{ Form::label('password', 'Huidig wachtwoord:') }}</div>
-					<div class="col span-6">{{ Form::text('password') }}</div>
+					<div class="col span-4">{{ Form::label('old_password', 'Huidig wachtwoord:') }}</div>
+					<div class="col span-6">{{ Form::password('old_password') }}</div>
 				</div>
 				<div class="row fg">
-					<div class="col span-4">{{ Form::label('new_password', 'Nieuw wachtwoord:') }}</div>
-					<div class="col span-6">{{ Form::text('new_password') }}</div>
+					<div class="col span-4">{{ Form::label('new_password1', 'Nieuw wachtwoord:') }}</div>
+					<div class="col span-6">{{ Form::password('new_password1') }}</div>
 				</div>
 				<div class="row fg">
 					<div class="col span-4">{{ Form::label('new_password2', 'Herhaal wachtwoord:') }}</div>
-					<div class="col span-6">{{ Form::text('new_password2') }}</div>
+					<div class="col span-6">{{ Form::password('new_password2') }}</div>
 				</div>
 				<div class="row fg">
 					<button type="submit" class="btn-confirm"><i class="fa fa-save"></i> Opslaan</button>

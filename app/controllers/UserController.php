@@ -113,6 +113,46 @@ class UserController extends BaseController {
 		}
 	}
 
+	public function postChangePassword() {
+		// Set the validation rules
+		$rules = array(
+			'old_password'      => 'required',
+			'new_password1' => 'required|same:new_password2',
+			'new_password2' => 'required'
+		);
+
+		// Get the input and validate it
+		$validator = Validator::make(Input::all(), $rules);
+
+		// Check if the validation has passed
+		if ($validator->passes()) {
+
+			// Get the user
+			$user = Auth::user();
+
+			// Check if the old password is valid
+			if (Hash::check(Input::get('old_password'), $user->password)) {
+
+				// Set the new password
+				$user->password = Hash::make(Input::get('new_password1'));
+
+				// Save the user
+				$user->save();
+
+				// Redirect to the profile page
+				return Redirect::to('profile')->with('message', 'Het wachtwoord is succesvol gewijzigd.');
+			} else {
+				return Redirect::to('profile')->with('message', 'Het huidige wachtwoord is niet correct.');
+			}
+		} else {
+			// Validation failed, return to the profile page
+			return Redirect::to('profile')->withErrors($validator)->withInput();
+		}
+
+		
+
+	}
+
 	/**
 	 * Show the user avatar
 	 * 

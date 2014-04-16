@@ -3,13 +3,16 @@
 	<div id="content" ng-app="feedbackspel" ng-controller="ClientController" ng-cloak class="ng-cloak">
 		<div class="row">
 			<div class="col span-4 offset-4">
-				<p ng-repeat="user in users">
-					<button ng-click="setFeedback(user)" class="btn-default" style="width:100%">
+				<div class="user-select" ng-repeat="user in users">
+					<div class="name" ng-click="setFeedback(user)">
 						<% user.firstname %> <% user.lastname %>
 						<i class="fa fa-fw fa-square-o" ng-show="!user.checked"></i>
 						<i class="fa fa-fw fa-check-square-o" ng-show="user.checked"></i>
-					</button>
-				</p>
+					</div>
+					<div class="feedback">
+						<textarea rows="2" placeholder="Feedback" ng-show="user.checked"></textarea>
+					</div>
+				</div>
 				<p>
 					<button ng-click="sendFeedback()" class="btn-confirm" style="width:100%">Done!</button>
 				</p>
@@ -52,7 +55,7 @@
 		}
 
 		$scope.sendFeedback = function() {
-			socket.emit('feedback', $scope.feedback);
+			socket.emit('user done', $scope.feedback);
 			for (var i = 0; i < $scope.users.length; i++) {
 				$scope.users[i].checked = false;
 			}

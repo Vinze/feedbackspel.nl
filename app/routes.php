@@ -30,7 +30,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('profile', 'UserController@getProfile');
 	Route::post('profile', 'UserController@postProfile');
 
-	Route::post('change-password', 'UserController@getChangePassword');
+	Route::post('change-password', 'UserController@postChangePassword');
 
 	Route::get('avatar/{hash}', 'UserController@getAvatar');
 	Route::post('avatar', 'UserController@postAvatar');

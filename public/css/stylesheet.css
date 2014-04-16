@@ -399,6 +399,51 @@ a[class*="btn-"] {
 }
 
 /*-------------------------------------
+-- In-game
+-------------------------------------*/
+
+.card {
+	background-color: #f2f2f2;
+	width: 300px;
+	box-shadow: 0 0 5px #ccc;
+}
+
+.card-title {
+	line-height: 30px;
+	padding: 85px 0;
+	text-align: center;
+}
+
+.user-select {
+	background-color: red;
+	margin-bottom: 10px;
+	border: 1px solid #e5e5e5;
+}
+
+.user-select .name {
+	background-color: #f2f2f2;
+	padding: 10px;
+}
+
+.user-select .feedback {
+	overflow: hidden;
+}
+
+.user-select textarea {
+	width: 100%;
+	border: none;
+	background-color: #fff;
+	padding: 10px;
+	margin: 0;
+	float: left;
+}
+
+.user-select textarea:focus {
+	outline: none;
+}
+
+
+/*-------------------------------------
 -- Layout
 -------------------------------------*/
 
@@ -548,7 +593,7 @@ body {
 		float: none;
 	}
 	.nav a {
-		line-height: 60px;
+		line-height: 50px;
 		border: 1px solid #005780;
 		border-top: none;
 		border-radius: 0;
