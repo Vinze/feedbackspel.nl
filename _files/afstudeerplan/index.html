@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Afstudeerplan</title>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
-		<link href='../style.css' rel='stylesheet' type='text/css'>
+		<link href='style.css' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 <!-- Markdown goes here -->
@@ -87,25 +87,14 @@ In eerste instantie zal ik me voornamelijk richten op HBO studenten. Vooral bij 
 Het geven en ontvangen van feedback binnen een team moet toegankelijker, makkelijker, en leuker worden. De ontvangen feedback moet op een eenvoudige manier inzicht geven in de vorderingen van de gebruiker.
 
 ## Het idee (concept)
-De deelnemers van het spel zitten gezamelijk aan tafel met een laptop, tablet of telefoon. Iedere student registreert een account op de (web-)applicatie en één iemand maakt een nieuwe feedback sessie aan en nodigt deelnemers uit. Degene die de sessie aangemaakt heeft wordt automatisch de 'host' en zal het spel starten zodra alle deelnemers verbonden zijn.
+Het idee is om een (web-)applicatie te ontwikkelen waarmee het mogelijk is om op de computer, laptop, tablet of smartphone een feedbackspel te spelen met een (project-)groep. Hoe dit spel eruit gaat zien staat nog niet vast, maar gezien het vooronderzoek zal het vermoedelijk een spel worden met feedbackkaartjes.
 
-Vervolgens krijgt iedereen dezelfde feedback kaart te zien met daarop een eigenschap. De deelnemers geven individueel deze kaart aan één of meerdere personen typen hierbij een kort stukje feedback. Zodra alle deelnemers dit gedaan hebben worden de resultaten getoond en kan de host de volgende ronde starten. Dit herhaald zich een aantal rondes tot alle kaarten geweest zijn.
-
-Na afloop krijgt iedere deelnemer een overzicht van de ontvangen kaarten met daarbij de ontvangen feedback. Deze resultaten worden ook opgeslagen zodat ze later weer opgezocht kunnen worden. Ik wil hier graag een soort score aan koppelen zodat het mogelijk wordt om bijvoorbeeld knelpunten aan te duiden en de groei in kaart te brengen. Deze resultaten moeten een basis kunnen vormen waarop gereflecteerd kan worden, en waaruit nieuwe leerdoelen opgesteld kunnen worden.
-
-### Ingame
-<img src="img/schets_ingame.jpg">
-
-### Mobiel
-<img src="img/schets_mobiel.jpg">
-
-### Statistieken
-<img src="img/schets_statistieken.jpg">
+Een projectgroep van 3 t/m 6 personen zal aan tafel zitten en bezoekt de website [feedbackspel.nl](http://feedbackspel.nl). Door hier een account aan te maken kan een nieuwe feedbacksessie gestart worden en kunnen alle deelnemers tegelijkertijd het spel spelen. Door bijvoorbeeld een variant van het 'kernkwaliteitenspel' te ontwikkelen kunnen de deelnemers feedback kaartjes aan elkaar geven. De uitslagen van deze feedbacksessies worden opgeslagen en is door de deelnemer in zijn of haar persoonlijke profiel in te zien.
 
 
 ## Hoofd en deelvragen
 ### Hoofdvraag
-- Welke feedback spellen vinden mensen prettig werken en zijn mogelijk te verwerken in een (web-)applicatie?
+- Wat voor soort feedbackspellen vinden mensen prettig te spelen en zijn te verwerken in een (web-)applicatie?
 
 ### Deelvragen
 
@@ -245,6 +234,7 @@ Bewust van de balans tussen Mens, Techniek en Gevoel/Ervaring, Bewust van nut, c
 - Uitzoeken hoe [DocBlock](http://www.phpdoc.org/) werkt.
 - Diverse UML (?) teken programma's testen.
 - API documentatie bestuderen en kijken hoe anderen deze opgebouwd hebben.
+- Ontwikkelen van een responsive design.
 
 <hr>
 
@@ -273,15 +263,17 @@ Doelgericht, Resultaatgericht, Leergierig, Consistent, Nauwkeurig, Kwaliteitsbew
 	- Realtime data via Node.js
 - Uitzoeken wat er allemaal komt kijken bij realtime webapplicaties.
 - Zoveel mogelijk gebruik maken van geteste en bestaande technieken, niet het wiel opnieuw uitvinden.
+- Unit tests uitvoeren in het Laravel framework.
 
 ### Activiteiten
 - Ontwikkelen in het Laravel framework.
 - Ontwikkelen met Node.js.
 - Gebruikmaken van diverse JavaScript libraries.
-	- jQuery / Zepto
+	- jQuery
+	- Angular.js
 	- Socket.io
-	- Templating
 - Applicatie online zetten
+- Unit tests schrijven in [PHPUnit](http://laravel.com/docs/testing)
 
 <hr>
 
@@ -333,14 +325,10 @@ Zodra de basis research is afgerond zal er een landingspagina gemaakt worden voo
 Zodra het project goed loopt en ik bezig ben met het ontwikkelen van een prototype wil ik iedere 2 weken een half uurtje inplannen met mijn mentor en/of vakdocent. Dit is voor mijzelf een stok achter de deur om deadlines te stellen en tijdig bij te kunnen sturen mocht ik afdwalen. Ook wil ik geregeld contact hebben met vakdocenten en dan voornamelijk op de volgende gebieden:
 
 ### Test driven development
+Het product zal zich ontwikkelen aan de hand van testmomenten en de feedback van de testpersonen. De prototypes zullen meerdere malen getest worden door de doelgroep waarbij ik zal observeren welke verbeterpunten en aanpassingen er gedaan moeten worden. Daarnaast zal ik voor het Laravel framework Unit tests schrijven, en uitzoeken in hoeverre het mogelijk is om het spel via websockets te testen.
 
 
-- Research
-- Quality Monitoring/Usability
-- Teamwork/feedback
-
-
-
+<!-- 
 ## Planning
 
 <table>
@@ -411,12 +399,13 @@ Zodra het project goed loopt en ik bezig ben met het ontwikkelen van een prototy
 		<td>Verwerken resultaten uit de usertests in een verbeterplan.</td>
 	</tr>
 </table>
+-->
 </div>
 <!-- / Markdown goes here -->
 
 	</body>
 
-	<script type="text/javascript" src="../marked.js"></script>
+	<script type="text/javascript" src="marked.js"></script>
 	<script type="text/javascript">
 
 		var markdown = document.getElementById('markdown').innerHTML;
