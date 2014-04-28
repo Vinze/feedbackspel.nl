@@ -1,0 +1,47 @@
+extends ../layout/base
+block content
+	div.row
+		.col.span-8.offset-2
+			h1 Registeren
+			form(method="POST", action="/register", accept-charset="UTF-8")
+				div.row.fg
+					div.col.span-4
+						label(for="email") E-mail adres:
+					div.col.span-6
+						input(name="email", type="text", id="email")
+						div.required
+				div.row.fg
+					div.col.span-4
+						label(for="password") Wachtwoord:
+					div.col.span-6
+						input(name="password", type="password", id="password")
+						div.required
+				div.row.fg
+					div.col.span-4
+						label(for="password2") Herhaal wachtwoord:
+					div.col.span-6
+						input(name="password2", type="password", id="password2")
+						div.required
+				div.row.fg
+					div.col.span-4
+						label(for="firstname") Voornaam:
+					div.col.span-6
+						input(name="firstname", type="text", id="firstname")
+						div.required
+				div.row.fg
+					div.col.span-4
+						label(for="lastname") Achternaam:
+					div.col.span-6
+						input(name="lastname", type="text", id="lastname")
+						div.required
+				div.row.fg
+					div.col.span-4
+						label Ik ben een:
+					div.col.span-6
+						label
+							<input checked="checked" name="gender" type="radio" value="m"> Man
+						label
+							<input checked="checked" name="gender" type="radio" value="f"> Vrouw
+				div.row.fg
+					div.col.span-6.offset-4
+						button(type="submit" class="btn-confirm") Registeren
