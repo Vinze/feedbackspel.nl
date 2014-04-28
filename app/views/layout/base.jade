@@ -21,14 +21,14 @@ html(lang="en")
 					ul.nav
 						if logged_in
 							li
-								a(href="/login"): <i class="fa fa-fw fa-sign-in"></i> Inloggen
-						else
-							li
 								a(href="/dashboard") <i class="fa fa-fw fa-home"></i> Dashboard
 							li
 								a(href="/profile") <i class="fa fa-fw fa-user"></i> Profiel
 							li
 								a(href="/logout") <i class="fa fa-fw fa-sign-out"></i> Uitloggen
+						else
+							li
+								a(href="/login"): <i class="fa fa-fw fa-sign-in"></i> Inloggen
 		div.content-wrapper
 			div.container
 				div.content

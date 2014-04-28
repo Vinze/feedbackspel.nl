@@ -13,33 +13,11 @@ var UserController = {
 	},
 
 	getLogin: function(req, res) {
-		var Model = function(model) {
-			this.setName = function(name) {
-				this.name = name;
-			}
-			this.getName = function() {
-				return this.name;
-			}
-
-			this.find = function(id, callback) {
-				callback(null, { name: 'Vincent' });
-			}
-		}
-
-		var UserOne = new Model('User');
-		var UserTwo = new Model('User');
-
-		UserOne.setName('Vincent');
-		UserTwo.setName('Niels');
-
-		console.log(UserOne.getName());
-		console.log(UserTwo.getName());
-
-		res.send('login');
-		
+		res.render('users/login');
 	},
 
 	postLogin: function(req, res) {
+		res.send(req.body);
 	}
 }
 
