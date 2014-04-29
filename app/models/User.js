@@ -10,6 +10,6 @@ module.exports = {
 		});
 	},
 	insert: function(data, callback) {
-		callback(null, data);
+		db.query('INSERT INTO users SET ?', data, callback);
 	}
 }
