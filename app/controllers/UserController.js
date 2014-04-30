@@ -1,4 +1,4 @@
-var User = require('../models/User');
+var DB = require('../models/DB');
 
 var UserController = {
 
@@ -7,9 +7,16 @@ var UserController = {
 	},
 
 	postRegister: function(req, res) {
-		User.insert(req.body, function(err, user) {
-			console.log('err:', err);
-			console.log('user:', user);
+		var user = {
+			email: req.body.email,
+			password: req.body.password,
+			firstname: req.body.firstname,
+			lastname: req.body.lastname,
+			gender: req.body.gender
+		}
+		DB.insert('users', user, function(err, res) {
+			console.log('err', err);
+			console.log('res', res);
 		});
 	},
 

@@ -9,9 +9,11 @@ module.exports = {
 			cb(err, rows);
 		});
 	},
-	insert: function(data, cb) {
+	insert: function(table, data, cb) {
 		data.created_at = new Date();
 		data.updated_at = new Date();
-		db.query('INSERT INTO users SET ?', data, cb);
+		db.query('INSERT INTO ?? SET ?', [table, data], function(err, result) {
+			cb(err, result);
+		});
 	}
 }
