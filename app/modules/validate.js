@@ -47,10 +47,11 @@ validate(data, rules, function(validates, errors) {
 */
 
 var validator = require('validator');
-var validates = true;
-var errors    = [];
 
 module.exports = function(data, validation, callback) {
+	var validates = true;
+	var errors    = {};
+
 	// Loop through the validation rules
 	for (var field in validation) {
 
@@ -79,56 +80,56 @@ module.exports = function(data, validation, callback) {
 					case 'email': // Validate email address
 						if (!validator.isEmail(input)) {
 							validates = false;
-							errors.push({field: field, message: 'no valid email'});
+							errors[field] = 'no valid email';
 						};
 					break;
 					case 'url': // Validate URL
 						if (!validator.isURL(input)) {
 							validates = false;
-							errors.push({field: field, message: 'no valid URL'});
+							errors[field] = 'no valid URL';
 						}
 					break;
 					case 'numeric': // Validate number
 						if (!validator.isNumeric(input)) {
 							validates = false;
-							errors.push({field: field, message: 'not a number'});
+							errors[field] = 'not a number';
 						}
 					break;
 					case 'in': // Validate if in
 						if (!validator.isIn(input, val.split(','))) {
 							validates = false;
-							errors.push({field: field, message: 'not in range'});
+							errors[field] = 'not in range';
 						}
 					break;
 					case 'not_in': // Validate if NOT in
 						if (validator.isIn(input, val.split(','))) {
 							validates = false;
-							errors.push({field: field, message: 'in range'});
+							errors[field] = 'in range';
 						}
 					break;
 					case 'same': // Validate if same
 						if (!validator.equals(input, data[val]))  {
 							validates = false;
-							errors.push({field: field, message: 'not the same as ' + val});
+							errors[field] = 'not the same as ' + val;
 						}
 					break;
 					case 'min': // Validate min value
 						if (input.length < val) {
 							validates = false;
-							errors.push({field: field, message: 'too short'});
+							errors[field] = 'too short';
 						};
 					break;
 					case 'max': // Validate max value
 						if (input.length > val) {
 							validates = false;
-							errors.push({field: field, message: 'too long'});
+							errors[field] = 'too long';
 						};
 					break;
 				}
 			} else if (rule == 'required') {
 				// Value is not set but is required
 				validates = false;
-				errors.push({field: field, message: 'is required'});
+				errors[field] = 'is required';
 			}
 		}
 	}

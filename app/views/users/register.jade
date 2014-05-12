@@ -3,12 +3,12 @@ block content
 	div.row
 		.col.span-8.offset-2
 			h1 Registeren
-			if errors
-				each error in errors
-					p #{error.field} #{error.message}
+			if errors.length > 0
+				div.flash-error Niet alle velden zijn (correct) ingevuld!
+				p= errors.email
 
 			form(method="POST", action="/register", accept-charset="UTF-8")
-				div.row.fg
+				div.row.fg(class="#{errors.email ? 'has-error' : ''}")
 					div.col.span-4
 						label(for="email") E-mail adres:
 					div.col.span-6
@@ -43,12 +43,9 @@ block content
 						label Ik ben een:
 					div.col.span-6
 						label
-							<input checked="checked" name="gender" type="radio" value="m"> Man
+							<input name="gender" type="radio" value="m" checked> Man
 						label
-							<input checked="checked" name="gender" type="radio" value="f"> Vrouw
+							<input name="gender" type="radio" value="f"> Vrouw
 				div.row.fg
 					div.col.span-6.offset-4
 						button(type="submit" class="btn-confirm") Registeren
-	div.row
-		div.col.span-4.offset-8
-			p= global_var

@@ -1,11 +1,11 @@
 // Load the framework modules
 var express          = require('express');
-var app              = express();
 var bodyParser       = require('body-parser');
 var cookieParser     = require('cookie-parser');
 var session          = require('express-session');
-var flash            = require('express-flash')
-var passport         = require('passport');
+var flash            = require('connect-flash')
+// var passport         = require('passport');
+var app              = express();
 
 // Load the config
 var config           = require('./config');
@@ -14,7 +14,7 @@ var config           = require('./config');
 var HomeController   = require('./controllers/HomeController');
 var UserController   = require('./controllers/UserController');
 
-// Config the app
+// Set the middleware
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
@@ -27,10 +27,9 @@ app.use(flash());
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-app.locals.global_var = 'testing testing';
-
 // Routes
 app.get('/', HomeController.getIndex);
+app.get('/users', UserController.getIndex);
 app.get('/register', UserController.getRegister);
 app.post('/register', UserController.postRegister);
 app.get('/login', UserController.getLogin);

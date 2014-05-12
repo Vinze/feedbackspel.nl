@@ -1,11 +1,24 @@
 var validate = require('../modules/validate');
-var database = require('../modules/database');
+var Datastore = require('nedb');
+var db = new Datastore({
+	filename: './storage/users.db',
+	autoload: true
+});
+// var database = require('../modules/database');
 
 var UserController = {
 
+	getIndex: function(req, res) {
+		db.find({}).sort({'email': 1}).exec(function(err, docs) {
+			res.render('users/index', {
+				users: docs
+			});
+		});
+	},
+
 	getRegister: function(req, res) {
 		var errors = req.flash('errors');
-		console.log(req.flash('errors'));
+
 		res.render('users/register', {
 			errors: errors
 		});
@@ -20,19 +33,21 @@ var UserController = {
 			'lastname': 'required',
 			'gender': 'in:m,f'
 		}
+		var user = {
+			email: req.body.email,
+			password: req.body.password,
+			firstname: req.body.firstname,
+			lastname: req.body.lastname,
+			gender: req.body.gender
+		}
 		validate(req.body, rules, function(validates, errors) {
-			// console.log('Validates:', validates);
-			// console.log('Errors:', errors);
 			if (validates) {
-				var user = {
-					email: req.body.email,
-					password: req.body.password,
-					firstname: req.body.firstname,
-					lastname: req.body.lastname,
-					gender: req.body.gender
-				}
+				db.insert(user, function(err, doc) {
+					res.redirect('/users');
+				});
 			} else {
 				req.flash('errors', errors);
+				req.flash('user', user);
 				res.redirect('/register');
 			}
 		});
