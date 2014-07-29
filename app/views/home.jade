@@ -1,51 +1,34 @@
-doctype html
-html(lang="nl")
-	head
-		title Feedbackspel.nl
-		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
-		link(rel="stylesheet", href="/css/font-awesome.min.css", type="text/css")
-		link(rel="stylesheet", href="/css/stylesheet.css", type="text/css")
-	body
-		div.header
-			div.container
-				h1.logo Feedbackspel.nl
-				ul.nav
-					li: a(href="#") <i class="fa fa-sign-in"></i> Inloggen
-		
-		div.page
-
-			div.banner
-				div.container
-					h1 Welkom!
-					h2 Lorem ipsum dolar sit amet.
-					
-			div.container
-				div.section.first
-					h1 Huh, wat is dit?
-					p Op deze website kun je, na het registreren van een gratis account, een online feedbackspel spelen. Dit spel maakt het leuker en makkelijker om feedback te geven en ontvangen in groepsverband.
-					p De ontvangen feedback wordt automatisch opgeslagen in je persoonlijke profiel, en kun je later op ieder moment weer opvragen.
+extends base
+block content
+	div.banner-wrapper
+		div.banner.container
+			h1 Welkom!
+			h2 Website binnenkort online!
 			
-			div.container
-				div.section
-					h1 Oké leuk, en waarom zou ik dit doen?
-					p Het geven en ontvangen van feedback kan ontzettend waardevolle informatie opleveren. Hoe denken anderen over je? Wat zijn je positieve eigenschappen? Waar kan je nog aan werken? Door het spelen van dit spel wordt het makkelijker en leuker om een feedback sessie te organiseren.
-					p De ontvangen feedback bied een uitstekende basis om op te reflecteren en nieuwe (leer-)doelen op te stellen. Door geregeld feedback sessies te houden zal de samenwerking verbeteren en komen eventuele knelpunten snel boven water.
-			
-			div.container
-				div.section
-					h1 En met wie moet ik dit spelen?
-					p Het spel is bedoeld voor iedereen die geregeld samenwerkt in een team en graag wil weten hoe anderen over je denken. Je zou het feedbackspel bijvoorbeeld kunnen spelen met:
-					ul
-						li Collega's
-						li Medestudenten
-						li Familieleden
-						li Vrienden
-
-			div.container
-				div.section.last
-					h1 Ik wil het spelen!
-					p Dit feedbackspel is mijn afstudeerproject waarmee ik wil afstuderen van de opleiding Communication & Multimedia Design aan de NHL Hogeschool. Het afstuderen is momenteel in volle gang en ik hoop binnenkort een eerste versie uit te kunnen brengen!
-			
-			div.footer
-				div.container
-					p © 2014 Feedbackspel.nl - Vincent Bremer
+	div.container
+		div.section
+			h1 Huh, wat is dit?
+			p Op deze website kun je, na het registreren van een gratis account, een online feedbackspel spelen. Dit spel maakt het leuker en makkelijker om feedback te geven en ontvangen in groepsverband.
+			p De ontvangen feedback wordt automatisch opgeslagen in je persoonlijke profiel, en kun je later op ieder moment weer opvragen.
+	hr
+	div.container
+		div.section
+			h1 Oké leuk, en waarom zou ik dit doen?
+			p Het geven en ontvangen van feedback kan ontzettend waardevolle informatie opleveren. Hoe denken anderen over je? Wat zijn je positieve eigenschappen? Waar kan je nog aan werken? Door het spelen van dit spel wordt het makkelijker en leuker om een feedback sessie te organiseren.
+			p De ontvangen feedback bied een uitstekende basis om op te reflecteren en nieuwe (leer-)doelen op te stellen. Door geregeld feedback sessies te houden zal de samenwerking verbeteren en komen eventuele knelpunten snel boven water.
+	hr
+	div.container
+		div.section
+			h1 En met wie moet ik dit spelen?
+			p Het spel is bedoeld voor iedereen die geregeld samenwerkt in een team en graag wil weten hoe anderen over je denken. Je zou het feedbackspel bijvoorbeeld kunnen spelen met:
+			ul
+				li Collega's
+				li Medestudenten
+				li Familieleden
+				li Vrienden
+				li Etc.
+	hr
+	div.container
+		div.section
+			h1 Waar kan ik me aanmelden?
+			p Dit feedbackspel is mijn afstudeerproject waarmee ik wil afstuderen van de opleiding Communication & Multimedia Design aan de NHL Hogeschool. Het afstuderen is momenteel in volle gang en ik hoop binnenkort een eerste versie uit te kunnen brengen!

@@ -1,0 +1,45 @@
+extends base
+block content
+	div.page-title
+		h1 Profiel
+	div.container
+		div.section
+			h2 Mijn gegevens
+			div.fg
+				div.label: label(for="email") E-mail adres:
+				div.field: input(type="text", value="mijn@email.nl", id="email")
+			div.fg
+				div.label: label(for="firstname") Voornaam:
+				div.field: input(type="text", value="Vincent", id="firstname")
+			div.fg
+				div.label: label(for="lastname") Achternaam:
+				div.field: input(type="text", value="Bremer", id="lastname")
+			div.fg
+				div.label: label Ik ben een:
+				div.field
+					<label><input type="radio" name="gender" value="m" checked> Man</label>
+					<label><input type="radio" name="gender" value="f"> Vrouw</label>
+			div.fg
+				div.field
+					a.btn.confirm(href="profile") <i class="fa fa-save"></i> Opslaan
+
+		div.section.change-avatar
+			h2 Profielfoto
+			img(src="/img/vincent.png")
+			br
+			a(href="/profile") Wijzigen
+
+		div.section
+			h2 Wachtwoord wijzigen
+			div.fg
+				div.label: label(for="old_password") Huidig wachtwoord:
+				div.field: input(type="password", value="", id="old_password")
+			div.fg
+				div.label: label(for="new_password1") Nieuw wachtwoord:
+				div.field: input(type="password", value="", id="new_password1")
+			div.fg
+				div.label: label(for="new_password2") Herhaal wachtwoord:
+				div.field: input(type="password", value="", id="new_password2")
+			div.fg
+				div.field
+					a.btn.confirm(href="profile") <i class="fa fa-save"></i> Opslaan
