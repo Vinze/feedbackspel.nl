@@ -12,15 +12,15 @@ html(lang="nl")
 			div.header.container
 				a.logo(href="/") <img src="/img/bubble.png"> Feedbackspel.nl
 				button.nav-button <i class="fa fa-bars"></i>
-				ul.nav
-					if (logged_in)
-						li: a(href="/game") <i class="fa fa-gamepad"></i> Nieuw spel
-						li: a(href="/dashboard") <i class="fa fa-home"></i> Dashboard
-						li: a(href="/profile") <i class="fa fa-user"></i> Profiel
-						li: a(href="/") <i class="fa fa-sign-out"></i> Uitloggen
-					else
-						li: a(href="/login") <i class="fa fa-sign-in"></i> Inloggen
-
+				div.nav-collapse
+					ul
+						if (logged_in)
+							li: a(href="/game") <i class="fa fa-gamepad"></i> Nieuw spel
+							li: a(href="/dashboard") <i class="fa fa-home"></i> Dashboard
+							li: a(href="/profile") <i class="fa fa-user"></i> Profiel
+							li: a(href="/") <i class="fa fa-sign-out"></i> Uitloggen
+						else
+							li: a(href="/login") <i class="fa fa-sign-in"></i> Inloggen
 		div.content-wrapper
 			block content
 		div.footer

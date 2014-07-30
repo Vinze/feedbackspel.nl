@@ -283,19 +283,19 @@ th, td {
 	vertical-align: -5px;
 }
 
-.nav {
+.nav-collapse ul {
 	float: right;
 	margin: 0;
 	padding: 0;
 }
 
-.nav li {
+.nav-collapse li {
 	display: inline-block;
 	margin: 0;
 	padding: 0;
 }
 
-.nav a {
+.nav-collapse a {
 	display: block;
 	text-decoration: none;
 	color: #5F5F5F;
@@ -303,7 +303,7 @@ th, td {
 	padding: 0 8px;
 }
 
-.nav a:hover {
+.nav-collapse a:hover {
 	color: #1176AC;
 }
 

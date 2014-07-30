@@ -23,7 +23,7 @@ block content
 								div.fill(style="width:{{ (result.received / highest) * 300 }}px")
 				tfoot
 					tr
-						td: button.btn(ng-click="add()") Toevoegen
+						td: a(ng-click="add()") <i class="fa fa-plus-circle"></i> Toevoegen
 block scripts
 	script(type='text/javascript').
 		require(['angular'], function(angular) {
