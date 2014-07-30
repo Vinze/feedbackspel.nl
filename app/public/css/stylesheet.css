@@ -102,6 +102,7 @@ body, input, textarea, button {
 a, a:link, a:visited {
 	color: #1176AC;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 a:hover, a:active {
@@ -141,6 +142,10 @@ li {
 	list-style-type: disc;
 	padding: 0 0 0 5px;
 	margin: 0 0 0 20px;
+}
+
+strong {
+	font-weight: bold;
 }
 
 /*-------------------------------------
@@ -199,7 +204,7 @@ input[type="password"] {
 	background-color: #ccc;
 	padding: 5px 15px;
 	margin: 0 10px 0 0;
-	height: 32px;
+	height: 34px;
 	border-radius: 3px;
 	cursor: pointer;
 	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
@@ -220,6 +225,24 @@ input[type="password"] {
 
 .btn.confirm:hover, a.btn.confirm:hover {
 	background-color: #64A060;
+}
+
+/*-------------------------------------
+- Tables
+-------------------------------------*/
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th {
+	font-weight: bold;
+}
+
+th, td {
+	padding: 3px 10px 3px 0;
+	text-align: left;
 }
 
 /*-------------------------------------
@@ -277,7 +300,7 @@ input[type="password"] {
 	text-decoration: none;
 	color: #5F5F5F;
 	line-height: 50px;
-	padding: 0 10px;
+	padding: 0 8px;
 }
 
 .nav a:hover {
@@ -301,17 +324,19 @@ input[type="password"] {
 
 .content-wrapper > hr {
 	max-width: 960px;
-	margin-top: 40px;
-	margin-bottom: 40px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 .banner-wrapper {
 	background: transparent url('/img/background.jpg') repeat center center;
 	box-shadow: 0 0 5px rgba(50, 50, 50, 0.5);
+	margin-bottom: 40px;
 }
 
 .banner {
 	height: 500px;
+	text-align: center;
 }
 
 .banner h1,
@@ -319,7 +344,6 @@ input[type="password"] {
 .page-title h1,
 .page-title h2 {
 	color: #fff;
-	text-align: center;
 	font-weight: normal;
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
@@ -332,6 +356,16 @@ input[type="password"] {
 .banner h2 {
 	font-size: 2em;
 	font-style: italic;
+	padding: 0 20px 10px 20px;
+}
+
+.banner .btn {
+	box-shadow: 0 0 10px rgba(50, 50, 50, 0.5);
+	padding: 7px 30px;
+	height: 54px;
+	font-size: 1.6em;
+	margin: 0;
+	border-radius: 10px;
 }
 
 .container {
@@ -347,7 +381,7 @@ input[type="password"] {
 }
 
 .section {
-	padding: 30px 20px;
+	padding: 20px;
 }
 
 .section h1 {
@@ -359,6 +393,7 @@ input[type="password"] {
 .page-title {
 	background: transparent url('/img/background.jpg') repeat center center;
 	box-shadow: 0 0 5px rgba(50, 50, 50, 0.5);
+	margin-bottom: 20px;
 }
 
 .page-title h1 {
@@ -385,6 +420,41 @@ input[type="password"] {
 	position: absolute;
 	right: 0px;
 	top: 0px;
+}
+
+/*-------------------------------------
+- Dashboard page
+-------------------------------------*/
+
+.bar {
+	height: 10px;
+	background-color: #fff;
+	width: 300px;
+}
+
+.fill {
+	height: 10px;
+	background-color: #52ABDB;
+}
+
+.comments {
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+}
+
+.comments li {
+	list-style-type: none;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+/*-------------------------------------
+- Angular cloak
+-------------------------------------*/
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }
 
 /*-------------------------------------

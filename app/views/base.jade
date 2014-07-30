@@ -6,6 +6,7 @@ html(lang="nl")
 		link(rel="stylesheet", href="/css/font-awesome.min.css", type="text/css")
 		link(rel="stylesheet", href="/css/stylesheet.css", type="text/css")
 		link(rel="shortcut icon", href="/favicon.png")
+		block head
 	body
 		div.header-wrapper
 			div.header.container
@@ -13,6 +14,7 @@ html(lang="nl")
 				button.nav-button <i class="fa fa-bars"></i>
 				ul.nav
 					if (logged_in)
+						li: a(href="/game") <i class="fa fa-gamepad"></i> Nieuw spel
 						li: a(href="/dashboard") <i class="fa fa-home"></i> Dashboard
 						li: a(href="/profile") <i class="fa fa-user"></i> Profiel
 						li: a(href="/") <i class="fa fa-sign-out"></i> Uitloggen
@@ -23,3 +25,6 @@ html(lang="nl")
 			block content
 		div.footer
 			div.container © 2014 Feedbackspel.nl - Vincent Bremer
+		script(src="/js/libs/require.js")
+		script(src="/js/main.js")
+		block scripts

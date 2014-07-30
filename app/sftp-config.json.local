@@ -14,12 +14,12 @@
     "confirm_sync": true,
     "confirm_overwrite_newer": false,
     
-    "host": "feedbackspel.nl",
-    "user": "vincent",
-    "password": "W3bW8woord",
+    "host": "172.16.1.22",
+    "user": "pi",
+    "password": "raspberry",
     "port": "22",
     
-    "remote_path": "/var/www/feedbackspel.nl",
+    "remote_path": "/home/pi/Node.js/feedbackspel.nl",
     "ignore_regexes": [
         "\\.sublime-(project|workspace)", "sftp-config(-alt\\d?)?\\.json",
         "sftp-settings\\.json", "/venv/", "\\.svn/", "\\.hg/", "\\.git/",

@@ -1,0 +1,31 @@
+extends base
+block content
+	div.page-title
+		h1 Registreren
+	div.container
+		div.section
+			div.fg
+				div.label: label(for="email") E-mail:
+				div.field
+					input(type="text", value="mijn@email.nl", id="email")
+					*<i class="required"></i>
+			div.fg
+				div.label: label(for="firstname") Voornaam:
+				div.field: input(type="text", value="Vincent", id="firstname")
+			div.fg
+				div.label: label(for="lastname") Achternaam:
+				div.field: input(type="text", value="Bremer", id="lastname")
+			div.fg
+				div.label: label Ik ben een:
+				div.field
+					<label><input type="radio" name="gender" value="m" checked> Man</label>
+					<label><input type="radio" name="gender" value="f"> Vrouw</label>
+			div.fg
+				div.label: label(for="password") Wachtwoord:
+				div.field: input(type="password", value="ditisgeheim", id="password")
+			div.fg
+				div.label: label(for="password2") Herhaal wachtwoord:
+				div.field: input(type="password", value="ditisgeheim", id="password2")
+			div.fg
+				div.field
+					a.btn.confirm(href="/login") <i class="fa fa-sign-in"></i> Registreren

@@ -23,12 +23,20 @@ app.get('/login', function(req, res) {
 	res.render('login');
 });
 
+app.get('/register', function(req, res) {
+	res.render('register', { logged_in: false });
+});
+
 app.get('/dashboard', function(req, res) {
 	res.render('dashboard', { logged_in: true });
 });
 
 app.get('/profile', function(req, res) {
 	res.render('profile', { logged_in: true });
+});
+
+app.get('/game', function(req, res) {
+	res.render('game', { logged_in: true });
 });
 
 // Run the server
