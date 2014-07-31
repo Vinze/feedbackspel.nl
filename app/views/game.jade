@@ -1,4 +1,20 @@
-extends base
+extends layout/minimal
 block content
-	div.page-title
-		h1 Game
+	div.container
+		div.game
+			div.game-board
+				ul.card-stack
+					li.card.bottom
+					li.card.middle
+					li.card.top Temperamentvol
+				ul.player-list
+				div.game-actions
+					button.btn.confirm.ready Volgende <i class="fa fa-arrow-right"></i>
+				a.quit(href="/dashboard") <i class="fa fa-times"></i> Spel stoppen
+			div.game-results
+				h2 Resultaten voor Temperamentvol
+				table.results
+					
+
+block scripts
+	script(type='text/javascript', src="/js/game.js")

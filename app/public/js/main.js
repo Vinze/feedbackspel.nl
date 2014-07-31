@@ -1,17 +1,15 @@
-require.config({
-	paths: {
-		jquery: '/js/libs/jquery.min',
-		angular: '/js/libs/angular.min',
-		moment: '/js/libs/moment.min',
-		responsiveNav: '/js/libs/responsive-nav.min' 
-	},
-	shim: {
-		'angular': {
-			exports: 'angular'
-		}
-	}
-});
+$(function() {
+	var $toggle = $('.nav-toggle');
+	var $nav = $('.nav');
 
-require(['responsiveNav'], function() {
-	// var navigation = responsiveNav(".nav-collapse");
+	$toggle.on('click', function() {
+		$nav.slideToggle(200);
+	});
+
+	$(window).on('resize', function() {
+		var w = $(window).width(); 
+		if (w > 720 && $nav.is(':hidden')) {
+			$nav.removeAttr('style');
+		}
+	});
 });
