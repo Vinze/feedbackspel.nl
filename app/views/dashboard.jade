@@ -3,7 +3,9 @@ block content
 	div.page-title
 		h1 Dashboard
 	div.container
-		div.section(ng-app="feedbackspel", ng-controller="DashboardCtrl")
+		div.section
+			a.btn.confirm(href="/game") <i class="fa fa-gamepad"></i> Nieuw spel starten
+		div.section
 			h2 Statistieken
 			table
 				thead

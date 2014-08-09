@@ -4,12 +4,13 @@ block content
 		h1 Inloggen
 	div.container
 		div.section
-			div.fg
-				div.label: label(for="email") E-mail:
-				div.field: input(type="text", value="mijn@email.nl", id="email")
-			div.fg
-				div.label: label(for="password") Wachtwoord:
-				div.field: input(type="password", value="ditisgeheim", id="password")
-			div.fg
-				div.field
-					a.btn.confirm(href="dashboard") <i class="fa fa-sign-in"></i> Inloggen
+			form(method="post", action="/login")
+				div.fg
+					div.label: label(for="email") E-mail:
+					div.field: input(type="text", value="mijn@email.nl", id="email")
+				div.fg
+					div.label: label(for="password") Wachtwoord:
+					div.field: input(type="password", value="ditisgeheim", id="password")
+				div.fg
+					div.field
+						button.btn.confirm(type="submit") <i class="fa fa-sign-in"></i> Inloggen

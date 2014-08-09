@@ -6,15 +6,35 @@ block content
 				ul.card-stack
 					li.card.bottom
 					li.card.middle
-					li.card.top Temperamentvol
+					li.card.top Behulpzaam
 				ul.player-list
 				div.game-actions
 					button.btn.confirm.ready Volgende <i class="fa fa-arrow-right"></i>
 				a.quit(href="/dashboard") <i class="fa fa-times"></i> Spel stoppen
 			div.game-results
-				h2 Resultaten voor Temperamentvol
+				h2 Resultaten voor Behulpzaam
 				table.results
-					
+				p: strong Je wordt terug gestuurd in <span class="timer"></span> seconden..
 
+	script(type="text/template", id="player-tpl").
+		<li id="player-<%= id %>" class="player">
+			<img src="/img/avatars/<%= id %>.jpg">
+			<h3><%= firstname %> <%= lastname %></h3>
+			<div class="checkbox">
+				<i class="fa fa-check"></i>
+			</div>
+		</li>
+	script(type="text/template", id="comment-tpl").
+		<div class="overlay">
+			<div class="comment">
+				<a class="close"><i class="fa fa-times"></i></a>
+				<h2>Feedback voor <%=firstname%>:</h2>
+				<textarea><%=comment%></textarea>
+				<div class="card-actions">
+					<button class="cancel"><i class="fa fa-trash-o"></i></button>
+					<button class="save"><i class="fa fa-save"></i></button>
+				</div>
+			</div>
+		</div>
 block scripts
 	script(type='text/javascript', src="/js/game.js")

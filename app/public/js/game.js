@@ -8,27 +8,9 @@ var players = [
 
 var comments = {};
 
-var PlayerView = _.template([
-	'<li class="player" id="player-<%= id %>">',
-		'<img src="img/avatars/<%= id %>.jpg">',
-		'<h3><%= firstname %> <%= lastname %></h3>',
-		'<div class="checkbox"><i class="fa fa-check"></i></div>',
-	'</li>'
-].join('\n'));
+var PlayerView = _.template($('#player-tpl').html());
 
-var CommentView = _.template([
-	'<div class="overlay">',
-		'<div class="comment">',
-			'<a class="close"><i class="fa fa-times"></i></a>',
-			'<h2>Feedback voor <%=firstname%>:</h2>',
-			'<textarea><%=comment%></textarea>',
-			'<div class="card-actions">',
-				'<button class="cancel"><i class="fa fa-times"></i></button>',
-				'<button class="save"><i class="fa fa-check"></i></button>',
-			'</div>',
-		'</div>',
-	'</div>'
-].join('\n'));
+var CommentView = _.template($('#comment-tpl').html());
 
 var Game = {
 
@@ -46,9 +28,11 @@ var Game = {
 	
 	// Add a collection of players
 	addPlayers: function(players) {
+		var html = '';
 		_.each(players, function(player) {
-			Game.addPlayer(player);
+			html += PlayerView(player);
 		});
+		$('.player-list').html(html);
 	},
 	
 	// Find a player by id
@@ -73,24 +57,24 @@ var Game = {
 
 		// Fade out and remove the comment + overlay
 		self.exit = function() {
-			$comment.fadeOut(200, function() {
-				$comment.remove();
-			});
+			$overlay.transition({ opacity: 0, duration: 400, complete: function() { $overlay.remove() } });
 		}
 		
 		// Get the modal html and fade it in
-		var $comment = $(CommentView({
+		var $overlay = $(CommentView({
 			comment: Game.getComment(player.id),
 			firstname: player.firstname
 		}));
+		var $comment = $overlay.find('.comment');
 		var $textarea = $comment.find('textarea');
 
 		// Append the modal to the body
-		$('body').append($comment);
+		$('body').prepend($overlay);
 
-		// Fade the modal in
-		$comment.fadeIn(200);
-
+		// // Fade the modal in
+		// $comment.fadeIn(200);
+		$overlay.transition({ opacity: 1, duration: 400 });
+		
 		if ($textarea.val().length == 0) {
 			$textarea.focus();
 		}
@@ -121,14 +105,14 @@ var Game = {
 		});
 
 		// Close the modal when clicking outside the comment box
-		//$overlay.on('click', function() {
-		//	self.exit();
-		//});
+		$overlay.on('click', function() {
+			self.exit();
+		});
 
 		// Prevent closing the model when clicking inside the comment box
-		//$overlay.on('click', '.comment', function(e) {
-		//	e.stopPropagation();
-		//});
+		$comment.on('click', function(e) {
+			e.stopPropagation();
+		});
 	},
 
 	init: function() {
@@ -159,9 +143,19 @@ var Results = {
 				});
 			});
 			$('.results').html(html);
-			setTimeout(function() {
-				Game.render();
-			}, 5000);
+
+			var wait = 5;
+			$('.timer').text(wait);
+			var timer = setInterval(function() {
+				wait--
+				if (wait == 0) {
+					clearInterval(timer);
+					Game.render();
+				} else {
+					$('.timer').text(wait);
+				}
+			}, 1000);
+
 		});
 	},
 

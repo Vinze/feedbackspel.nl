@@ -410,11 +410,13 @@ th, td {
 }
 
 .footer {
-	padding: 20px;
+	padding: 30px 20px;
 	font-size: 0.8em;
 	text-align: center;
 	color: #808080;
 	border-top: 1px solid #e5e5e5;
+	margin: 0px auto;
+	max-width: 400px;
 }
 
 /*-------------------------------------
@@ -564,8 +566,8 @@ th, td {
 	top: 0;
 	left: 0;
 	padding: 10px;
-	display: none;
 	z-index: 2000;
+	opacity: 0;
 }
 
 .comment {
@@ -672,12 +674,13 @@ a.quit {
 	}
 
 	.nav {
-		display: none;
-		top: 50px;
+		/*display: none;*/
+		margin-right: -100px;
 		right: 0px;
 		position: absolute;
-		width: 100%;
+		width: 100px;
 		box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+		height: 0px;
 	}
 
 	.nav li {
@@ -726,7 +729,7 @@ a.quit {
 		position: relative;
 	}
 
-	.game-board {
+	.game {
 		max-width: 457px;
 	}
 
