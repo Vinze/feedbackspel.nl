@@ -8,21 +8,21 @@ html(lang="nl")
 		link(rel="shortcut icon", href="/favicon.png")
 		block head
 	body
-		div.header-wrapper
-			div.header.container
-				a.logo(href="/") <img src="/img/bubble.png"> Feedbackspel.nl
-				button.nav-toggle <i class="fa fa-bars"></i>
-				ul.nav
-					if (logged_in)
-						li: a(href="/dashboard") <i class="fa fa-home"></i> Dashboard
-						li: a(href="/profile") <i class="fa fa-user"></i> Profiel
-						li: a(href="/logout") <i class="fa fa-sign-out"></i> Uitloggen
-					else
-						li: a(href="/login") <i class="fa fa-sign-in"></i> Inloggen
-		div.content-wrapper
-			block content
-		div.footer
-			div.container © 2014 Feedbackspel.nl - Vincent Bremer
+		div.site-wrapper
+			div.header-wrapper
+				div.header.container
+					a.logo(href="/") <img src="/img/bubble.png"> Feedbackspel.nl
+					button.nav-toggle <i class="fa fa-bars"></i>
+					ul.nav
+						if (logged_in)
+							li: a(href="/dashboard") <i class="fa fa-home"></i> Dashboard
+							li: a(href="/profile") <i class="fa fa-user"></i> Profiel
+							li: a(href="/logout") <i class="fa fa-sign-out"></i> Uitloggen
+						else
+							li: a(href="/login") <i class="fa fa-sign-in"></i> Inloggen
+			div.content-wrapper
+				block content
+			div.footer © 2014 Feedbackspel.nl - Vincent Bremer
 		script(type='text/javascript', src="/js/libs/jquery.min.js")
 		script(type='text/javascript', src="/js/libs/jquery.transit.min.js")
 		script(type='text/javascript', src="/js/libs/underscore-min.js")

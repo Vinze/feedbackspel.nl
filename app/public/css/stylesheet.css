@@ -87,11 +87,6 @@ table {
 - HTML elements
 -------------------------------------*/
 
-body {
-	background: #f2f2f2 url('../img/cubes.png') repeat top left;
-	background-attachment: fixed;
-}
-
 body, input, textarea, button {
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 15px;
@@ -249,6 +244,20 @@ th, td {
 - Layout
 -------------------------------------*/
 
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #f2f2f2 url('../img/cubes.png') repeat top left;
+	background-attachment: fixed;
+}
+
+.site-wrapper {
+	min-height: 100%;
+	position: relative;
+}
+
 .header-wrapper {
 	background-color: #fff;
 	height: 50px;
@@ -324,7 +333,7 @@ th, td {
 }
 
 .content-wrapper {
-	padding: 50px 0;
+	padding: 50px 0 120px;
 }
 
 .content-wrapper > hr {
@@ -410,13 +419,16 @@ th, td {
 }
 
 .footer {
-	padding: 30px 20px;
 	font-size: 0.8em;
-	text-align: center;
+	text-align: right;
 	color: #808080;
 	border-top: 1px solid #e5e5e5;
-	margin: 0px auto;
-	max-width: 400px;
+	padding: 0 15px;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	line-height: 32px;
+	background-color: #fff;
 }
 
 /*-------------------------------------
