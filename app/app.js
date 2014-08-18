@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(cookieParser('dsadsaasddsadsdfdfgfgdfgd'));
 app.use(session({ secret: 'dsadsaasddsadsdfdfgfgdfgd', saveUninitialized: true, resave: true }));
 
-var logged_in = false;
+var logged_in = true;
 
 app.use(function(req, res, next) {
 	res.locals.logged_in = logged_in;

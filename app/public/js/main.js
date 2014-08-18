@@ -3,8 +3,8 @@ $(function() {
 	var $nav = $('.nav');
 
 	$toggle.on('click', function() {
-		$nav.transition({ 'margin-right': '100px' });
-		// $nav.slideToggle(200);
+		// $nav.transition({ 'margin-right': '100px' });
+		$nav.slideToggle(200);
 	});
 
 	$(window).on('resize', function() {

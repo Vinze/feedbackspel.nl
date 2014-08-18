@@ -422,13 +422,17 @@ body {
 	font-size: 0.8em;
 	text-align: right;
 	color: #808080;
-	border-top: 1px solid #e5e5e5;
+	/*border-top: 1px solid #e5e5e5;*/
 	padding: 0 15px;
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	line-height: 50px;
-	background-color: #fff;
+	line-height: 42px;
+	/*background-color: #fff;*/
+}
+
+.footer a {
+	color: #808080;
 }
 
 /*-------------------------------------
@@ -686,13 +690,12 @@ a.quit {
 	}
 
 	.nav {
-		/*display: none;*/
-		margin-right: -100px;
+		display: none;
+		top: 50px;
 		right: 0px;
 		position: absolute;
-		width: 100px;
+		width: 100%;
 		box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-		height: 0px;
 	}
 
 	.nav li {
