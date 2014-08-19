@@ -70,42 +70,22 @@ addResults(results);
 
 // TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING
 
-// REACTJS REACTJS REACTJS
+// RACTIVE RACTIVE RACTIVE
 
-var Input = React.createClass({
+var ractive = new Ractive({
+	el: 'playground',
 
-	displayName: 'Input',
+	template: '#template',
 
-	getInitialState: function() {
-		return {
-			name: 'Vincent'
-		}
-	},
-
-	render: function() {
-		return React.DOM.div({},
-			React.DOM.h2({},
-				'Hello ' + this.state.name
-			),
-
-			React.DOM.input({
-				type: 'text',
-				onChange: function(e) {
-					console.log(e.target.value);
-					this.setState({ name: e.target.value }, function() {
-						console.log(React.DOM);
-					});
-					// this.setState();
-				}
-			})
-		);
+	data: {
+		name: 'Vincent'
 	}
-})
+});
 
-React.renderComponent(
-	Input(),
-	document.getElementById('playground')
-);
+ractive.on('updateName', function(evt) {
+	ractive.set({name: evt.node.value});
+	evt.original.preventDefault();
+});
 
 // WATCHJS WATCHJS WATCHJS
 
@@ -141,3 +121,40 @@ React.renderComponent(
 // 	}, '');
 // 	$('#people').html(html);
 // }, 2, true);
+
+// REACTJS REACTJS REACTJS
+
+// var Input = React.createClass({
+
+// 	displayName: 'Input',
+
+// 	getInitialState: function() {
+// 		return {
+// 			name: 'Vincent'
+// 		}
+// 	},
+
+// 	render: function() {
+// 		return React.DOM.div({},
+// 			React.DOM.h2({},
+// 				'Hello ' + this.state.name
+// 			),
+
+// 			React.DOM.input({
+// 				type: 'text',
+// 				onChange: function(e) {
+// 					console.log(e.target.value);
+// 					this.setState({ name: e.target.value }, function() {
+// 						console.log(React.DOM);
+// 					});
+// 					// this.setState();
+// 				}
+// 			})
+// 		);
+// 	}
+// })
+
+// React.renderComponent(
+// 	Input(),
+// 	document.getElementById('playground')
+// );

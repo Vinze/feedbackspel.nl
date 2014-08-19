@@ -17,6 +17,8 @@ block content
 		div.section(id="playground")
 			
 block scripts
-	script(type='text/javascript', src="/js/libs/react.min.js")
-	script(type='text/javascript', src="/js/libs/watch.js")
+	script(type="text/template", id="template").
+		<h1>Hallo {{name}}!</h1>
+		<input type="text" value="{{name}}" on-keyup="updateName">
+	script(type='text/javascript', src="/js/libs/ractive.min.js")
 	script(type='text/javascript', src="/js/dashboard.js")
