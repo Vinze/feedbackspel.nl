@@ -13,12 +13,27 @@ block content
 						th Feedbackkaart
 						th Ontvangen
 						th
-				tbody.results
-		div.section(id="playground")
-			
+				tbody#results
 block scripts
-	script(type="text/template", id="template").
-		<h1>Hallo {{name}}!</h1>
-		<input type="text" value="{{name}}" on-keyup="updateName">
+	script(type="text/template", id="result-tpl").
+		{{#each sort(cards)}}
+			<tr>
+				<td style="width: 300px">
+					<a href="#" class="toggle-comments" on-click="open">{{card}}</a>
+
+					<ul class="comments">
+						{{#each comments}}
+							<li>{{.}}</li>
+						{{/each}}
+					</ul>
+				</td>
+				<td style="width: 150px">{{received}} keer</td>
+				<td>
+				<div class="bar">
+					<div style="width:{{(received / highest(cards) * 300)}}px" class="fill"></div>
+				</div>
+				</td>
+			</tr>
+		{{/each}}
 	script(type='text/javascript', src="/js/libs/ractive.min.js")
 	script(type='text/javascript', src="/js/dashboard.js")
