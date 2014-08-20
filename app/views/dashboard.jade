@@ -16,16 +16,17 @@ block content
 				tbody#results
 block scripts
 	script(type="text/template", id="result-tpl").
-		{{#each sort(cards)}}
+		{{#each sort(cards):i}}
 			<tr>
 				<td style="width: 300px">
-					<a href="#" class="toggle-comments" on-click="open">{{card}}</a>
-
-					<ul class="comments">
-						{{#each comments}}
-							<li>{{.}}</li>
-						{{/each}}
-					</ul>
+					<a href="#" on-click="open" data-id="{{id}}">{{card}}</a>
+					{{#if open}}
+						<ul class="comments">
+							{{#each comments}}
+								<li>{{.}}</li>
+							{{/each}}
+						</ul>
+					{{/if}}
 				</td>
 				<td style="width: 150px">{{received}} keer</td>
 				<td>
