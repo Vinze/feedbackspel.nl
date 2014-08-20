@@ -19,7 +19,7 @@ block scripts
 		{{#each sort(cards):i}}
 			<tr>
 				<td style="width: 300px">
-					<a href="#" on-click="open" data-id="{{id}}">{{card}}</a>
+					<a href="#" on-click="open" data-index="{{i}}">{{card}}</a>
 					{{#if open}}
 						<ul class="comments">
 							{{#each comments}}
