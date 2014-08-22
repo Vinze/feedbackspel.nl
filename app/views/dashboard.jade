@@ -4,37 +4,41 @@ block content
 		h1 Dashboard
 	div.container
 		div.section
-			a.btn.confirm(href="/game") <i class="fa fa-gamepad"></i> Nieuw spel starten
-		div.section
-			h2 Statistieken
-			table
-				thead
-					tr
-						th Feedbackkaart
-						th Ontvangen
-						th
-				tbody#results
+			a.btn-confirm(href="/game") <i class="fa fa-gamepad"></i> Nieuw spel starten
+		div.section#results
+			
 block scripts
 	script(type="text/template", id="result-tpl").
-		{{#each sort(cards):i}}
-			<tr>
-				<td style="width: 300px">
-					<a href="#" on-click="open" data-index="{{i}}">{{card}}</a>
-					{{#if open}}
-						<ul class="comments">
-							{{#each comments}}
-								<li>{{.}}</li>
-							{{/each}}
-						</ul>
-					{{/if}}
-				</td>
-				<td style="width: 150px">{{received}} keer</td>
-				<td>
-				<div class="bar">
-					<div style="width:{{(received / highest(cards) * 300)}}px" class="fill"></div>
-				</div>
-				</td>
-			</tr>
-		{{/each}}
+		<h2>Statistieken</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Feedbackkaart</th>
+					<th>Ontvangen</th>
+					<th></th>
+				</tr>
+			</thead>
+			{{#each sort(cards):i}}
+				<tr>
+					<td style="width: 300px">
+						<a href="#" on-click="open" data-index="{{i}}">{{card}}</a>
+						{{#if open}}
+							<ul class="comments">
+								{{#each comments}}
+									<li>{{.}}</li>
+								{{/each}}
+							</ul>
+						{{/if}}
+					</td>
+					<td style="width: 150px">{{received}} keer</td>
+					<td>
+					<div class="bar">
+						<div style="width:{{(received / highest(cards) * 300)}}px" class="fill"></div>
+					</div>
+					</td>
+				</tr>
+			{{/each}}
+		</table>
+		<p><a href="#" on-click="addOne" class="btn">Add one</a></p>
 	script(type='text/javascript', src="/js/libs/ractive.min.js")
 	script(type='text/javascript', src="/js/dashboard.js")
