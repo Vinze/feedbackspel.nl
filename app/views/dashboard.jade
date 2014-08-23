@@ -19,7 +19,7 @@ block scripts
 				</tr>
 			</thead>
 			{{#each sort(cards):i}}
-				<tr>
+				<tr intro="slide">
 					<td style="width: 300px">
 						<a href="#" on-click="open" data-index="{{i}}">{{card}}</a>
 						{{#if open}}
@@ -33,12 +33,18 @@ block scripts
 					<td style="width: 150px">{{received}} keer</td>
 					<td>
 					<div class="bar">
-						<div style="width:{{(received / highest(cards) * 300)}}px" class="fill"></div>
+						<div style="width:{{(received / highest() * 300)}}px" class="fill"></div>
 					</div>
 					</td>
 				</tr>
 			{{/each}}
+			<tbody>
+				<tr>
+					<td>Totaal ontvangen:</td>
+					<td>{{totalReceived()}} kaarten</td>
+				</tr>
+			</tbody>
 		</table>
-		<p><a href="#" on-click="addOne" class="btn">Add one</a></p>
+		<p><a href="#" on-click="addOne" class="btn"><i class="fa fa-plus"></i></a></p>
 	script(type='text/javascript', src="/js/libs/ractive.min.js")
 	script(type='text/javascript', src="/js/dashboard.js")

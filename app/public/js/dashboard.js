@@ -38,9 +38,15 @@ var resultList = new Ractive({
 			});
 		},
 
-		highest: function(array) {
-			var max = _.max(array, function(item) { return item.received });
+		highest: function() {
+			var max = _.max(this.get('cards'), function(item) { return item.received });
 			return max.received;
+		},
+
+		totalReceived: function() {
+			return _.reduce(this.get('cards'), function(memo, card) {
+				return memo + card.received;
+			}, 0);
 		}
 	}
 });
