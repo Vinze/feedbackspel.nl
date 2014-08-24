@@ -54,16 +54,13 @@ var resultList = new Ractive({
 resultList.on({
 	open: function(evt) {
 		evt.original.preventDefault();
-		var index = evt.node.getAttribute('data-index');
-		var selected = resultList.get('cards['+index+'].open');
-		resultList.set('cards['+index+'].open', !selected);
+		this.toggle( evt.keypath + '.open' );
 	},
 	addOne: function(evt) {
 		evt.original.preventDefault();
 		cards.push({ card: randomWord(), comments: ['Lorem ipsum...'], received: randomNum() });
 	}
 });
-
 
 var words = ['aangenaam','aangepast','aanhankelijk','aanpassend','aantrekkelijk','agressief','achterdochtig','behendig','behoedzaam','bescheiden','beschermend','creatief','contactloos','eerlijk','eigenwijs','eigenzinnig','doorzettend','dominant','flexibel','flink','gehoorzaam','gemeenschappelijk','gemoedelijk','gulzig','grappig','heftig','helder','hulpvaardig','humeurig','ijverig','imiterend','imponerend','inactief','ingenieus','ingewikkeld','innemend','intelligent','intensief','jaloers','kalm','kieskeurig','krachtig','kunstig','kwetsbaar','lawaaierig','leergierig','leerzaam','leidinggevend','lief','liefdevol','lui','luidruchtig','materialistisch','medelijdend','melancholiek','mensenschuw','merkwaardig','moedig','mooi','muzikaal','nieuwsgierig','nors','nuttig','oppervlakkig','praktisch','prikkelbaar','rustig samenwerkend','scherpzinnig','schitterend','slim','slordig','sluw','sober','sportief','spottend','standvastig','stil','stoutmoedig','strijdlustig','sympatiek','taai','tam','teder','temperamentvol','teruggetrokken','tevreden','toneelspelend','traag','trots','trouw','volgzaam','volhardend','volhoudend','wispelturig','wisselvallig','zeldzaam','zelfbewust','zelfstandig','zelfvertrouwend','zelfzeker','zintuigelijk','zorgzaam'];
 

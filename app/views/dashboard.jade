@@ -19,11 +19,11 @@ block scripts
 				</tr>
 			</thead>
 			{{#each sort(cards):i}}
-				<tr intro="slide">
+				<tr>
 					<td style="width: 300px">
 						<a href="#" on-click="open" data-index="{{i}}">{{card}}</a>
 						{{#if open}}
-							<ul class="comments">
+							<ul class="comments" intro-outro="slide">
 								{{#each comments}}
 									<li>{{.}}</li>
 								{{/each}}
@@ -33,7 +33,7 @@ block scripts
 					<td style="width: 150px">{{received}} keer</td>
 					<td>
 					<div class="bar">
-						<div style="width:{{(received / highest() * 300)}}px" class="fill"></div>
+						<div style="width:{{(received / highest() * 300)}}px" class="fill" intro="fade"></div>
 					</div>
 					</td>
 				</tr>
@@ -47,4 +47,6 @@ block scripts
 		</table>
 		<p><a href="#" on-click="addOne" class="btn"><i class="fa fa-plus"></i></a></p>
 	script(type='text/javascript', src="/js/libs/ractive.min.js")
+	script(type='text/javascript', src="/js/libs/ractive-transitions-fade.js")
+	script(type='text/javascript', src="/js/libs/ractive-transitions-slide.js")
 	script(type='text/javascript', src="/js/dashboard.js")
