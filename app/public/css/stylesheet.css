@@ -377,7 +377,7 @@ body {
 	padding: 0 20px 10px 20px;
 }
 
-.banner .btn {
+.banner .btn-confirm {
 	box-shadow: 0 0 10px rgba(50, 50, 50, 0.5);
 	padding: 7px 30px;
 	height: 54px;
