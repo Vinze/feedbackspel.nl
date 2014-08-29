@@ -18,34 +18,35 @@ block scripts
 					<th></th>
 				</tr>
 			</thead>
-			{{#each sort(cards):i}}
-				<tr>
-					<td style="width: 300px">
-						<a href="#" on-click="open" data-index="{{i}}">{{card}}</a>
-						{{#if open}}
-							<ul class="comments" intro-outro="slide">
-								{{#each comments}}
-									<li>{{.}}</li>
-								{{/each}}
-							</ul>
-						{{/if}}
-					</td>
-					<td style="width: 150px">{{received}} keer</td>
-					<td>
-					<div class="bar">
-						<div style="width:{{(received / highest() * 300)}}px" class="fill" intro="fade"></div>
-					</div>
-					</td>
-				</tr>
-			{{/each}}
 			<tbody>
+				{{#each sort(cards):i}}
+					<tr>
+						<td style="width: 300px">
+							<a href="#" on-click="open" data-index="{{i}}" style="display:block">{{card}}</a>
+							{{#if open}}
+								<ul class="comments" intro-outro="slide">
+									{{#each comments}}
+										<li>{{.}}</li>
+									{{/each}}
+								</ul>
+							{{/if}}
+						</td>
+						<td style="width: 150px">{{received}} keer</td>
+						<td>
+						<div class="bar">
+							<div style="width:{{(received / highest() * 100)}}%" class="fill" intro="fade"></div>
+						</div>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+			<tfoot>
 				<tr>
 					<td>Totaal ontvangen:</td>
 					<td>{{totalReceived()}} kaarten</td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
-		<p><a href="#" on-click="addOne" class="btn"><i class="fa fa-plus"></i></a></p>
 	script(type='text/javascript', src="/js/libs/ractive.min.js")
 	script(type='text/javascript', src="/js/libs/ractive-transitions-fade.js")
 	script(type='text/javascript', src="/js/libs/ractive-transitions-slide.js")

@@ -456,7 +456,7 @@ body {
 .bar {
 	height: 10px;
 	background-color: #fff;
-	width: 300px;
+	width: 100%;
 }
 
 .fill {

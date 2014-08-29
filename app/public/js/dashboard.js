@@ -17,7 +17,6 @@ var resultList = new Ractive({
 
 	data: {
 		cards: cards,
-
 		sort: function (array) {
 			return array.sort(function(a, b) {
 				var received1 = a.received;
@@ -37,12 +36,10 @@ var resultList = new Ractive({
 
 			});
 		},
-
 		highest: function() {
 			var max = _.max(this.get('cards'), function(item) { return item.received });
 			return max.received;
 		},
-
 		totalReceived: function() {
 			return _.reduce(this.get('cards'), function(memo, card) {
 				return memo + card.received;
@@ -53,15 +50,20 @@ var resultList = new Ractive({
 
 resultList.on({
 	open: function(evt) {
-		evt.original.preventDefault();
 		this.toggle( evt.keypath + '.open' );
+		evt.original.preventDefault();
 	},
 	addOne: function(evt) {
+		cards.push({
+			card: randomWord(),
+			comments: ['Lorem ipsum...'],
+			received: randomNum()
+		});
 		evt.original.preventDefault();
-		cards.push({ card: randomWord(), comments: ['Lorem ipsum...'], received: randomNum() });
 	}
 });
 
+/*
 var words = ['aangenaam','aangepast','aanhankelijk','aanpassend','aantrekkelijk','agressief','achterdochtig','behendig','behoedzaam','bescheiden','beschermend','creatief','contactloos','eerlijk','eigenwijs','eigenzinnig','doorzettend','dominant','flexibel','flink','gehoorzaam','gemeenschappelijk','gemoedelijk','gulzig','grappig','heftig','helder','hulpvaardig','humeurig','ijverig','imiterend','imponerend','inactief','ingenieus','ingewikkeld','innemend','intelligent','intensief','jaloers','kalm','kieskeurig','krachtig','kunstig','kwetsbaar','lawaaierig','leergierig','leerzaam','leidinggevend','lief','liefdevol','lui','luidruchtig','materialistisch','medelijdend','melancholiek','mensenschuw','merkwaardig','moedig','mooi','muzikaal','nieuwsgierig','nors','nuttig','oppervlakkig','praktisch','prikkelbaar','rustig samenwerkend','scherpzinnig','schitterend','slim','slordig','sluw','sober','sportief','spottend','standvastig','stil','stoutmoedig','strijdlustig','sympatiek','taai','tam','teder','temperamentvol','teruggetrokken','tevreden','toneelspelend','traag','trots','trouw','volgzaam','volhardend','volhoudend','wispelturig','wisselvallig','zeldzaam','zelfbewust','zelfstandig','zelfvertrouwend','zelfzeker','zintuigelijk','zorgzaam'];
 
 var cache = [];
@@ -81,4 +83,4 @@ function randomWord() {
 function randomNum() {
    return Math.floor(Math.random() * 10);
 }
-
+*/
