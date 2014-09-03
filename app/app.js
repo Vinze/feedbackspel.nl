@@ -22,6 +22,14 @@ app.use(function(req, res, next) {
 	next();
 });
 
+/**
+ * Description
+ * @method isAuthenticated
+ * @param {} req
+ * @param {} res
+ * @param {} next
+ * @return 
+ */
 function isAuthenticated(req, res, next) {
 	if (logged_in) {
 		next();
@@ -30,6 +38,14 @@ function isAuthenticated(req, res, next) {
 	}
 }
 
+/**
+ * Description
+ * @method isGuest
+ * @param {} req
+ * @param {} res
+ * @param {} next
+ * @return 
+ */
 function isGuest(req, res, next) {
 	if (logged_in) {
 		res.redirect('/dashboard');
