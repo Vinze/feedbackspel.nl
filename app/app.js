@@ -12,85 +12,12 @@ app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cookieParser('dsadsaasddsadsdfdfgfgdfgd'));
-app.use(session({ secret: 'dsadsaasddsadsdfdfgfgdfgd', saveUninitialized: true, resave: true }));
-
-var logged_in = true;
-
-app.use(function(req, res, next) {
-	res.locals.logged_in = logged_in;
-	next();
-});
-
-/**
- * Description
- * @method isAuthenticated
- * @param {} req
- * @param {} res
- * @param {} next
- * @return 
- */
-function isAuthenticated(req, res, next) {
-	if (logged_in) {
-		next();
-	} else {
-		res.redirect('/login');
-	}
-}
-
-/**
- * Description
- * @method isGuest
- * @param {} req
- * @param {} res
- * @param {} next
- * @return 
- */
-function isGuest(req, res, next) {
-	if (logged_in) {
-		res.redirect('/dashboard');
-	} else {
-		next();
-	}
-}
+app.use(cookieParser('5^C)6TAD0t-C$di81^Sx*1fXPVxv-Cv^'));
+app.use(session({ secret: 'q#CcMig&j3ky^GEZFR8toi8sDq4aI5Qf', saveUninitialized: true, resave: true }));
 
 // Routes
 app.get('/', function(req, res) {
 	res.render('home');
-});
-
-app.get('/login', isGuest, function(req, res) {
-	res.render('login');
-});
-
-app.post('/login', isGuest, function(req, res) {
-	logged_in = true;
-	res.redirect('/dashboard');
-});
-
-app.get('/logout', isAuthenticated, function(req, res) {
-	logged_in = false;
-	res.redirect('/');
-});
-
-app.get('/register', isGuest, function(req, res) {
-	res.render('register');
-});
-
-app.post('/register', isGuest, function(req, res) {
-	res.redirect('/login');
-});
-
-app.get('/dashboard', isAuthenticated, function(req, res) {
-	res.render('dashboard');
-});
-
-app.get('/profile', isAuthenticated, function(req, res) {
-	res.render('profile');
-});
-
-app.get('/game', isAuthenticated, function(req, res) {
-	res.render('game');
 });
 
 // Run the server
