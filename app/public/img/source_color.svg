@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="893.72198"
+   height="434.74268"
+   id="svg3252"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="New document 3">
+  <defs
+     id="defs3254" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="341.861"
+     inkscape:cy="351.65706"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="719"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3257">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-33.138999,-472.13371)">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:-18px;word-spacing:0px;fill:#7ac141;fill-opacity:1;stroke:none;font-family:Comic Sans MS;-inkscape-font-specification:Comic Sans MS"
+       x="20.754999"
+       y="880.23639"
+       id="text2995-9-6-0-8-4-34-4-4-3-49-9"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/vincent/tmp.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan2997-6-9-7-9-7-4-0-9-9-7-8"
+         x="20.754999"
+         y="880.23639"
+         style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:-10px;word-spacing:0px;fill:#7ac141;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
+         dx="0"
+         dy="0"
+         rotate="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"><tspan
+   style="fill:#888888"
+   id="tspan5062-3">Feedback</tspan>spel.nl</tspan></text>
+    <path
+       style="fill:#7ac141;fill-opacity:1"
+       d="m 691.60942,472.13371 -138.4062,0.3124 36.6874,27.6876 -45.9374,32.5312 c -28.6659,-27.8363 -74.1846,-44.9062 -122.4376,-44.9062 -80.887,0 -153.125,47.7078 -153.125,112.96867 0,23.14674 9.4355,45.86484 26.125,63.50004 0.7049,20.6655 -13.049,50.3134 -25.4374,71.9063 33.2028,-5.3073 80.4045,-17.028 101.8124,-28.625 117.2775,25.2383 202.8955,-37.81 203.75,-105.75004 l 59.375,-42.06257 15.8438,44.40627 41.75,-131.96867 z m -21.9062,16.75 -23.3126,73.6562 -9.3437,-26.2188 -142.375,97.34381 a 20.002,20.002 0 0 1 -20.4063,1.2812 l -53.9374,-27.59374 -61.5938,47.81254 a 20.002,20.002 0 1 1 -24.5312,-31.5938 l 71.6562,-55.62501 a 20.002,20.002 0 0 1 21.375,-2 l 54.6875,28 130.9063,-89.5 -20.375,-15.375 77.25,-0.1874 z"
+       id="speech-bubble-2-icon-3-35-9-94-6-0-6-3-7-0-2-2-0"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
