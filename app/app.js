@@ -14,8 +14,8 @@ var HomeController = require('./controllers/HomeController');
 // View directory
 app.set('views', __dirname + '/views')
 
-// Set the view engine (Jade)
-app.set('view engine', 'jade');
+// Set the view engine (EJS)
+app.set('view engine', 'ejs');
 
 // Serve static files from the /public directory
 app.use(express.static(__dirname + '/public'));

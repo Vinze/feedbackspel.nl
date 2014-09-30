@@ -11,6 +11,6 @@
     "body-parser": "1.*",
     "cookie-parser": "1.*",
     "nedb": "0.10.*",
-    "jade": "1.5.*"
+    "ejs": "1.*"
   }
 }
