@@ -8,6 +8,7 @@ var app          = express();
 
 // Load the controllers
 var HomeController = require('./controllers/HomeController');
+var UserController = require('./controllers/UserController');
 
 // Set the middleware
 
@@ -36,6 +37,7 @@ app.use(session({
 
 // Routes
 app.get('/', HomeController.getIndex);
+app.get('/login', UserController.getLogin);
 
 // Run the server
 app.listen(1337);
