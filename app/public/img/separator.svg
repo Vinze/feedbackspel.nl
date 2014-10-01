@@ -13,7 +13,7 @@
    height="52"
    id="svg5322"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="separator.svg">
   <defs
      id="defs5324" />
@@ -26,14 +26,14 @@
      inkscape:pageshadow="2"
      inkscape:zoom="11.313708"
      inkscape:cx="39.892007"
-     inkscape:cy="16.657914"
+     inkscape:cy="15.906613"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="719"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1148"
+     inkscape:window-x="-5"
+     inkscape:window-y="-5"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -90,7 +90,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -100,7 +100,7 @@
      id="layer1"
      transform="translate(-204.40312,-387.99224)">
     <rect
-       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="color:#000000;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect6485"
        width="48"
        height="8"
@@ -109,6 +109,7 @@
     <path
        style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#e5e5e5;fill-opacity:1;stroke:none;stroke-width:4;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
        d="m 218.21562,387.99224 a 2.0002,2.0002 0 0 0 -1.59375,1.09375 l -12,24 a 2.0002,2.0002 0 1 0 3.5625,1.8125 l 10.21875,-20.4375 22.21875,44.4375 a 2.0002,2.0002 0 0 0 3.5625,0 l 12,-24 a 2.0002,2.0002 0 1 0 -3.5625,-1.8125 l -10.21875,20.4375 -22.21875,-44.4375 a 2.0002,2.0002 0 0 0 -1.96875,-1.09375 z"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       id="path18" />
   </g>
 </svg>

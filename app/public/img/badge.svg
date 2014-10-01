@@ -13,8 +13,8 @@
    height="264"
    id="svg2997"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="logo_small.svg">
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="badge.svg">
   <defs
      id="defs2999" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
      inkscape:cx="868.18494"
-     inkscape:cy="-73.619908"
+     inkscape:cy="-97.905622"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -34,10 +34,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1366"
-     inkscape:window-height="719"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1148"
+     inkscape:window-x="-5"
+     inkscape:window-y="-5"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata3002">
@@ -57,7 +57,7 @@
      id="layer1"
      transform="translate(-163.3906,-400.36218)">
     <path
-       style="fill:#888888;fill-opacity:1"
+       style="fill:#53bf6b;fill-opacity:1"
        d="m 586.6094,400.36218 -138.4062,0.3124 36.6874,27.6876 -45.9374,32.5312 c -28.6659,-27.8363 -74.1846,-44.9062 -122.4376,-44.9062 -80.887,0 -153.125,47.7078 -153.125,112.96867 0,23.14674 9.4355,45.86484 26.125,63.50004 0.7049,20.6655 -13.049,50.3134 -25.4374,71.9063 33.2028,-5.3073 80.4045,-17.028 101.8124,-28.625 117.2775,25.2383 202.8955,-37.81 203.75,-105.75004 l 59.375,-42.06257 15.8438,44.40627 41.75,-131.96867 z m -21.9062,16.75 -23.3126,73.6562 -9.3437,-26.2188 -142.375,97.34381 a 20.002,20.002 0 0 1 -20.4063,1.2812 l -53.9374,-27.59374 -61.5938,47.81254 a 20.002,20.002 0 1 1 -24.5312,-31.5938 l 71.6562,-55.62501 a 20.002,20.002 0 0 1 21.375,-2 l 54.6875,28 130.9063,-89.5 -20.375,-15.375 77.25,-0.1874 z"
        id="speech-bubble-2-icon-3-35-9-94-6-0-6-3-7-0-2-2-0"
        inkscape:connector-curvature="0" />
