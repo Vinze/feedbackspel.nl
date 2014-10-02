@@ -1,6 +1,23 @@
 @font-color: #5F5F5F;
 @accent-color: #53BF6B;
 @body-background: #f2f2f2 url('../img/light_toast.png') repeat left top;
+@max-page-width: 960px;
+@header-height: 60px;
+@footer-height: 50px;
+
+.transition(@element, @duration) {
+	-webkit-transition: @element @duration;
+	-moz-transition: @element @duration;
+	-o-transition: @element @duration;
+	-ms-transition: @element @duration;
+	transition: @element @duration;
+}
+
+.border-radius(@px) {
+	-webkit-border-radius: @px;
+	-moz-border-radius: @px;
+	border-radius: @px;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -120,13 +137,102 @@ hr {
 }
 
 a {
-	-webkit-transition: all 0.33s;
-	-moz-transition: all 0.33s;
-	-o-transition: all 0.33s;
-	-ms-transition: all 0.33s;
-	transition: all 0.33s;
+	.transition(color, 0.33s);
+	.transition(background-color, 0.33s);
+	color: @font-color;
+	text-decoration: underline;
+	&.hover, &.active {
+		color: @accent-color;
+	}
 }
 
+/* -------------------------------------
+-- FORM ELEMENTS -----------------------
+------------------------------------- */
+
+label {
+	display: inline-block;
+	padding: 5px 10px 5px 0;
+	cursor: pointer;
+}
+
+input.text {
+	display: block;
+	width: 100%;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+	padding: 5px 10px;
+	margin: 0;
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 4px lighten(@accent-color, 30%);
+	}
+}
+
+input.checkbox, input.radio {
+	vertical-align: -1px;
+	margin: 0;
+}
+
+.required {
+	color: #CA3D3D;
+	font-weight: bold;
+	vertical-align: middle;
+	position: absolute;
+	right: -15px;
+	top: 8px;
+	&:after {
+		content: "*";
+	}
+}
+
+.btn {
+	padding: 5px 15px;
+	margin: 0px;
+	cursor: pointer;
+	background-color: #ccc;
+	border: none;
+	display: inline-block;
+	text-decoration: none;
+	.transition(color, 0.33s);
+	.transition(background-color, 0.33s);	
+	&:hover {
+		background-color: darken(#ccc, 5%);
+	}
+	&.confirm {
+		background-color: @accent-color;
+		color: #fff;
+		&:hover {
+			background-color: darken(@accent-color, 5%);
+		}
+	}
+}
+
+/* -------------------------------------
+-- HAPPY.JS VALIDATION -----------------
+------------------------------------- */
+
+input.unhappy {
+	// border: 1px solid #FFB4B4 !important;
+}
+
+.unhappyMessage {
+	position: absolute;
+	top: 0px;
+	right: 0;
+	background-color: #FFC6C6;
+	z-index: 100;
+	padding: 1px 5px;
+	font-size: 0.8em;
+	.border-radius(0 0 0 5px);
+}
+
+
+
+
+/* -------------------------------------
+-- GRID SYSTEM -------------------------
+------------------------------------- */
 
 .row:after {
 	content: "";
@@ -170,67 +276,126 @@ a {
 .offset-10 { margin-left: 87% !important;  &:first-child { margin-left: 85% !important; } }
 .offset-11 { margin-left: 93.5% !important; }
 
+/* -------------------------------------
+-- LAYOUT ------------------------------
+------------------------------------- */
+
 div.site-wrapper {
-	padding-top: 70px;
+	padding-top: @header-height;
 	min-height: 100%;
 	position: relative;
+}
+
+div.container {
+	max-width: @max-page-width;
+	margin: 0px auto;
 }
 
 div.header-wrapper {
 	border-top: 4px solid @accent-color;
 	background-color: #fff;
-	height: 70px;
+	height: @header-height;
 	position: fixed;
 	width: 100%;
 	z-index: 9999;
 	// box-shadow: 0 0 5px #ccc;
-	border-bottom: 1px solid #e5e5e5;
 	.header {
 		max-width: 1200px;
 		margin: 0px auto;
 	}
 	.logo {
 		float: left;
-		padding: 8px 0 0 10px;
-		height: 58px;
+		margin: 8px 0 0 10px;
+		height: @header-height - 20px;
 		img {
-			max-width: 100%;
 			max-height: 100%;
 		}
 	}
-	.menu {
+	ul.menu {
 		float: right;
-		ul {
-			display: inline-block;
-			margin: 10px 10px 10px 0;
-		}
+		display: inline-block;
+		margin: 8px 10px 8px 0;
 		li {
 			display: inline-block;
 			list-style-type: none;
 			float: left;
 			padding: 0;
-			margin: 0;
-			border-left: 1px solid #f2f2f2;
-			&:last-child {
-				border-right: 1px solid #f2f2f2;
-			}
+			margin: 0 5px;
 		}
 		a {
 			color: @font-color;
 			text-decoration: none;
-			line-height: 45px;
+			line-height: @header-height - 20px;
 			padding: 0 15px;
 			display: block;
+			.border-radius(5px);
 			&:hover, &:active {
-				color: @accent-color;
 				background-color: #f2f2f2;
+				color: @accent-color;
 			}
 		}
 	}
 }
 
+div.content-wrapper {
+	padding-bottom: @footer-height + 50px;
+	div.content {
+		padding: 20px 10px;
+	}
+}
+
+div.footer-wrapper {
+	background-color: #444;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: @footer-height;
+	font-size: 0.8em;
+	color: #ccc;
+	div.footer {
+		padding: 15px 20px;
+	}
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+div.box {
+	background-color: #fff;
+	// box-shadow: 0 0 5px #ccc;
+	padding: 20px 30px;
+}
+
+div.page-form {
+	margin: 40px auto;
+	input.text {
+		border: 1px solid #e5e5e5;
+		background-color: #f2f2f2;
+	}
+}
+
+/* -------------------------------------
+-- HOMEPAGE ----------------------------
+------------------------------------- */
+
+div.home {
+	hr {
+		margin: 0px auto;
+		max-width: 960px;
+	}
+}
+
 div.banner-wrapper {
-	height: 720px;
+	height: 700px;
 	text-align: center;
 	position: relative;
 	background: transparent url('../img/background.jpg') no-repeat top center;
@@ -239,7 +404,7 @@ div.banner-wrapper {
 	// background-color: #fff;
 	box-shadow: 0 0 10px #808080;
 	.logo {
-		padding-top: 150px;
+		padding-top: 125px;
 		padding-bottom: 50px;
 		img {
 			max-width: 500px;
@@ -252,68 +417,14 @@ div.banner-wrapper {
 		text-decoration: none;
 		color: #fff;
 		font-size: 1.2em;
-		
+		background-color: rgba(0, 0, 0, 0.2);
 		&:hover {
 			background-color: #fff;
 			color: @font-color;
 		}
 	}
-	
-}
-
-div.content-wrapper {
-	padding-bottom: 40px;
-}
-
-div.container {
-	max-width: 960px;
-	margin: 0px auto;
 }
 
 div.section {
-	padding: 100px 10px;
-}
-
-div.footer-wrapper {
-	background-color: #444;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 40px;
-	div.footer {
-		font-size: 0.8em;
-		text-align: center;
-		padding: 10px 20px;
-		color: #ccc;
-		width: 960px;
-		margin: 0px auto;
-	}
-}
-
-div.home {
-	hr {
-		margin: 0px auto;
-		max-width: 600px;
-	}
-}
-
-div.login-form {
-	padding: 40px;
-	
-	p {
-		margin-bottom: 10px;
-	}
-	label {
-		display: block;
-		margin-bottom: 5px;
-	}
-	input {
-		display: block;
-		border: 1px solid #e5e5e5;
-		background-color: #fff;
-		padding: 5px 10px;
-		width: 100%;
-		margin-bottom: 10px;
-		border-radius: 5px;
-	}
+	padding: 150px 10px;
 }

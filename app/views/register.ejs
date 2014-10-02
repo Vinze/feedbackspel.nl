@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include includes/head %>
+</head>
+<body>
+	<div class="header-wrapper">
+		<div class="header">
+			<a href="/" class="logo"><img src="/img/badge.svg"></a>
+			<ul class="menu">
+				<li><a href="/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="site-wrapper">
+		<div class="content-wrapper">
+			<div class="box page-form" style="width: 640px;">
+				<h2>Registreren</h2>
+				<form action="/register" method="post" id="register-form">
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4">
+							<label for="email">E-mail adres</label>
+						</div>
+						<div class="col span-8">
+							<input type="text" name="email" class="text" id="email">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4">
+							<label for="firstname">Voornaam</label><br>
+						</div>
+						<div class="col span-8">
+							<input type="text" name="firstname" class="text" id="firstname">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4">
+							<label for="lastname">Achternaam</label><br>
+						</div>
+						<div class="col span-8">
+							<input type="text" name="lastname" class="text" id="lastname">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4">
+							<label>Ik ben een</label>
+						</div>
+						<div class="col span-8">
+							<label><input type="radio" name="gender" value="m" class="radio" checked> Man</label>
+							<label><input type="radio" name="gender" value="f" class="radio"> Vrouw	</label>
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4">
+							<label for="password">Wachtwoord</label>
+						</div>
+						<div class="col span-8">
+							<input type="password" name="password" class="text" id="password">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 20px">
+						<div class="col span-4">
+							<label for="password_repeat">Herhaal wachtwoord</label>
+						</div>
+						<div class="col span-8">
+							<input type="password" name="password_repeat" class="text" id="password_repeat">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col span-12">
+							<button class="btn confirm"><i class="fa fa-user"></i> Registreren</button>
+						</div>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+		<div class="footer-wrapper">
+			<% include includes/footer %>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/libs/zepto.min.js"></script>
+	<script type="text/javascript" src="/js/libs/happy.js"></script>
+	<script type="text/javascript">
+	$('#register-form').isHappy({
+		fields: {
+			'#email': { required: true, test: happy.email, message: 'Voer een (geldig) e-mail adres in.' },
+			'#firstname': { required: true, message: 'Voornaam is verplicht.' },
+			'#lastname': { required: true, message: 'Achternaam is verplicht.' },
+			'#password': { required: true, message: 'Wachtwoord is verplicht.' },
+			'#password_repeat': { required: true, message: 'Dit veld is verplicht' }
+		}
+	})
+	</script>
+</body>
+</html>
