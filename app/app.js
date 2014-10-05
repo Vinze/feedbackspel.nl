@@ -3,7 +3,6 @@ var express      = require('express');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
-var nedb         = require('nedb');
 var app          = express();
 
 // Load the controllers
@@ -42,6 +41,10 @@ app.post('/login', UserController.postLogin);
 app.get('/register', UserController.getRegister);
 app.post('/register', UserController.postRegister);
 app.get('/dashboard', UserController.getDashboard);
+
+app.get('/test', function(req, res) {
+	res.render('test');
+});
 
 // Run the server
 app.listen(1337);

@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div class="header-wrapper">
-		<div class="header">
+		<div class="container">
 			<a href="/" class="logo"><img src="/img/badge.svg"></a>
 			<ul class="menu">
 				<li><a href="/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
@@ -93,16 +93,6 @@
 	</div>
 	<script type="text/javascript" src="/js/libs/zepto.min.js"></script>
 	<script type="text/javascript" src="/js/libs/happy.js"></script>
-	<script type="text/javascript">
-	$('#register-form').isHappy({
-		fields: {
-			'#email': { required: true, test: happy.email, message: 'Voer een (geldig) e-mail adres in.' },
-			'#firstname': { required: true, message: 'Voornaam is verplicht.' },
-			'#lastname': { required: true, message: 'Achternaam is verplicht.' },
-			'#password': { required: true, message: 'Wachtwoord is verplicht.' },
-			'#password_repeat': { required: true, message: 'Dit veld is verplicht' }
-		}
-	})
-	</script>
+	<script type="text/javascript" src="/js/register.js"></script>
 </body>
 </html>
