@@ -3,6 +3,8 @@ var express      = require('express');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
+var config       = require('./config');
+var auth         = require('./helpers/auth');
 var app          = express();
 
 // Load the controllers
@@ -25,11 +27,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Enable the cookieparser middleware for accessing cookies
-app.use(cookieParser('5^C)6TAD0t-C$di81^Sx*1fXPVxv-Cv^'));
+app.use(cookieParser(config.cookie_secret));
 
 // Enable the session middleware for managing sessions
 app.use(session({
-	secret: 'q#CcMig&j3ky^GEZFR8toi8sDq4aI5Qf',
+	secret: config.session_secret,
 	saveUninitialized: true, 
 	resave: true
 }));
@@ -38,13 +40,19 @@ app.use(session({
 app.get('/', HomeController.getIndex);
 app.get('/login', UserController.getLogin);
 app.post('/login', UserController.postLogin);
+app.get('/logout', auth.LoggedIn, UserController.getLogout);
 app.get('/register', UserController.getRegister);
 app.post('/register', UserController.postRegister);
-app.get('/dashboard', UserController.getDashboard);
+app.get('/dashboard', auth.LoggedIn, UserController.getDashboard);
 
-app.get('/test', function(req, res) {
-	res.render('test');
+app.get('/api/users/all', UserController.findAll);
+app.get('/api/users/find/:id', UserController.findOne);
+app.get('/api/users/delete/:id', UserController.delete);
+app.post('/api/users/check-email', UserController.checkEmail);
+
+app.get('/kernkwadranten', function(req, res) {
+	res.render('kernkwadranten');
 });
 
 // Run the server
-app.listen(1337);
+app.listen(config.port);

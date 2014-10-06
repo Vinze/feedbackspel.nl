@@ -219,24 +219,25 @@ i.required {
 }
 
 /* -------------------------------------
--- HAPPY.JS VALIDATION -----------------
+-- FORM VALIDATION ---------------------
 ------------------------------------- */
 
-input.unhappy {
-	border: 1px solid #FFC6C6 !important;
+.flash-succes {
+
 }
 
-.unhappyMessage {
-	position: absolute;
-	top: -18px;
-	right: 0;
-	background-color: #FFC6C6;
-	z-index: 100;
-	padding: 0px 5px;
-	font-size: 0.8em;
-	.border-radius(5px 0 0 0);
-	line-height: 18px;
-	color: #9E2828;
+.flash-error {
+	background-color: #fcc;
+	color: #555;
+	padding: 10px 15px;
+	margin-bottom: 20px;
+	.border-radius(5px);
+}
+
+.has-error {
+	input.text {
+		border-color: #FF9898 !important;
+	}
 }
 
 

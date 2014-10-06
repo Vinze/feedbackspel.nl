@@ -1,7 +1,8 @@
 var Datastore = require('nedb')
 var bcrypt    = require('bcrypt-nodejs');
-var md5       = require('MD5');
 var validate  = require('../helpers/validate');
+var jwt       = require('jwt-simple');
+var config    = require('../config');
 var db        = {};
 
 db.users = new Datastore({ filename: './storage/users.db', autoload: true });
@@ -18,26 +19,16 @@ var UserController = {
 			// Check if the password matches
 			bcrypt.compare(req.body.password, user.password, function(err, match) {
 				if (match == true) {
-					// Create the session token
-					var timestamp = new Date().getTime()
-					var data = {
-						token: md5(user.email + timestamp),
-						token_issued: timestamp
-					};
-					db.users.update({ _id: user._id }, { $set: data }, function(err) {
-						if (err) console.log(err);
-					});
-
+					// Create the JWToken
+					var payload = { iat: new Date().getTime(), user_id: user._id, user_mail: user.email };
+					var token = jwt.encode(payload, config.jwt_secret);
+					res.cookie('token', token, { maxAge: 31536000 * 1000 });
 					res.redirect('/dashboard');
 				} else {
 					res.redirect('/login');
 				}
 			});
 		});
-
-		// res.json(req.body);
-		// var hash = bcrypt.hashSync(req.body.password);
-		// console.log(hash);
 	},
 
 	getRegister: function(req, res) {
@@ -65,9 +56,7 @@ var UserController = {
 				firstname: req.body.firstname,
 				lastname: req.body.lastname,
 				password: bcrypt.hashSync(req.body.password),
-				gender: req.body.gender,
-				token: '',
-				token_issued: 0
+				gender: req.body.gender
 			}, function(err, doc) {
 				if (err) console.log(err);
 			});
@@ -77,6 +66,37 @@ var UserController = {
 
 	getDashboard: function(req, res) {
 		res.render('dashboard');
+	},
+
+	getLogout: function(req, res) {
+		res.clearCookie('token');
+		res.redirect('/');
+	},
+
+	findAll: function(req, res) {
+		db.users.find({}, function(err, users) {
+			res.json(users);
+		});
+	},
+
+	findOne: function(req, res) {
+		var user_id = req.params.id;
+		db.users.findOne({_id: user_id}, function(err, user) {
+			res.json(user);
+		});
+	},
+
+	delete: function(req, res) {
+		var user_id = req.params.id;
+		db.users.remove({ _id: user_id }, function(err, doc) {
+			res.json(doc);
+		});
+	},
+
+	checkEmail: function(req, res) {
+		db.users.findOne({ email: req.body.email }, function(err, doc) {
+			res.json((doc) ? true : false);
+		});
 	}
 
 };
