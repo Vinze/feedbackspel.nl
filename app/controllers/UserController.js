@@ -1,11 +1,9 @@
-var Datastore = require('nedb')
+var User      = require('../models/User')
 var bcrypt    = require('bcrypt-nodejs');
-var validate  = require('../helpers/validate');
+var validate  = require('../libs/validate');
 var jwt       = require('jwt-simple');
+var moment    = require('moment');
 var config    = require('../config');
-var db        = {};
-
-db.users = new Datastore({ filename: './storage/users.db', autoload: true });
 
 var UserController = {
 
@@ -15,14 +13,21 @@ var UserController = {
 
 	postLogin: function(req, res) {
 		// Find the user
-		db.users.findOne({ email: req.body.email }, function(err, user) {
+		User.findByEmail(req.body.email, function(err, user) {
 			// Check if the password matches
+			if ( ! user) return res.redirect('/login');
+
 			bcrypt.compare(req.body.password, user.password, function(err, match) {
 				if (match == true) {
 					// Create the JWToken
-					var payload = { iat: new Date().getTime(), user_id: user._id, user_mail: user.email };
-					var token = jwt.encode(payload, config.jwt_secret);
-					res.cookie('token', token, { maxAge: 31536000 * 1000 });
+					var expires = moment().add(config.token_expires, 'days').unix();
+					var token = jwt.encode({
+						expires: expires,
+						user_id: user._id,
+						email: user.email,
+						firstname: user.firstname
+					}, config.jwt_secret);
+					res.cookie('jwtoken', token, { maxAge: 31536000 * 1000 });
 					res.redirect('/dashboard');
 				} else {
 					res.redirect('/login');
@@ -51,7 +56,7 @@ var UserController = {
 			console.log(errors);
 			res.redirect('/register');
 		} else {
-			db.users.insert({
+			User.insert({
 				email: req.body.email,
 				firstname: req.body.firstname,
 				lastname: req.body.lastname,
@@ -65,37 +70,38 @@ var UserController = {
 	},
 
 	getDashboard: function(req, res) {
+		console.log(req.user);
 		res.render('dashboard');
 	},
 
 	getLogout: function(req, res) {
-		res.clearCookie('token');
+		res.clearCookie('jwtoken');
 		res.redirect('/');
 	},
 
 	findAll: function(req, res) {
-		db.users.find({}, function(err, users) {
+		User.findAll(function(err, users) {
 			res.json(users);
 		});
 	},
 
 	findOne: function(req, res) {
 		var user_id = req.params.id;
-		db.users.findOne({_id: user_id}, function(err, user) {
+		User.findById(user_id, function(err, user) {
 			res.json(user);
 		});
 	},
 
 	delete: function(req, res) {
 		var user_id = req.params.id;
-		db.users.remove({ _id: user_id }, function(err, doc) {
+		User.removeById(user_id, function(err, doc) {
 			res.json(doc);
 		});
 	},
 
 	checkEmail: function(req, res) {
-		db.users.findOne({ email: req.body.email }, function(err, doc) {
-			res.json((doc) ? true : false);
+		User.findByEmail(req.body.email, function(err, user) {
+			res.json((user) ? true : false);
 		});
 	}
 

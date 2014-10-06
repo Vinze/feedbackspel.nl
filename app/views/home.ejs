@@ -8,7 +8,11 @@
 		<div class="container">
 			<a href="/" class="logo"><img src="/img/badge.svg"></a>
 			<ul class="menu">
-				<li><a href="/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
+				<% if (user) { %>
+					<li><a href="/logout"><i class="fa fa-sign-out"></i> Uitloggen</a></li>
+				<% } else {%>
+					<li><a href="/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
+				<% } %>
 			</ul>
 		</div>
 	</div>
@@ -19,7 +23,11 @@
 				<img src="/img/banner.png">
 			</div>
 			<div class="button">
-				<a href="/register"><i class="fa fa-user"></i> Registreren</a>
+				<% if (user) { %>
+					<a href="/dashboard"><i class="fa fa-user"></i> Dashboard</a>
+				<% } else {%>
+					<a href="/register"><i class="fa fa-user"></i> Registreren</a>
+				<% } %>
 			</div>
 		</div>
 
