@@ -5,16 +5,7 @@
 </head>
 <body>
 	<div class="header-wrapper">
-		<div class="container">
-			<a href="/" class="logo"><img src="/img/badge.svg"></a>
-			<ul class="menu">
-				<% if (user) { %>
-					<li><a href="/logout"><i class="fa fa-sign-out"></i> Uitloggen</a></li>
-				<% } else {%>
-					<li><a href="/login"><i class="fa fa-sign-in"></i> Inloggen</a></li>
-				<% } %>
-			</ul>
-		</div>
+		<% include includes/header %>
 	</div>
 	<div class="site-wrapper">
 
@@ -24,7 +15,7 @@
 			</div>
 			<div class="button">
 				<% if (user) { %>
-					<a href="/dashboard"><i class="fa fa-user"></i> Dashboard</a>
+					<a href="/dashboard"><i class="fa fa-home"></i> Dashboard</a>
 				<% } else {%>
 					<a href="/register"><i class="fa fa-user"></i> Registreren</a>
 				<% } %>

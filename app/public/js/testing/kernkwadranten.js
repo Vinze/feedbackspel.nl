@@ -1,3 +1,15 @@
+var ractive = new Ractive({
+	el: 'content',
+	template: '#template',
+	data: {
+		kernkwadranten: {},
+		selected: 1,
+		ucfirst: function(value) {
+			return value.charAt(0).toUpperCase() + value.slice(1);
+		}
+	}
+});
+
 var kernkwadranten = {
 	1: {
 		kwaliteit: { naam: 'accuratesse', omschrijving: 'nauwgezetheid, nauwkeurigheid, precisie, stiptheid, zorgvuldigheid' },
@@ -258,3 +270,5 @@ var kernkwadranten = {
 		uitdaging: { naam: 'bescheiden', omschrijving: '' }
 	}
 };
+
+ractive.set('kernkwadranten', kernkwadranten);

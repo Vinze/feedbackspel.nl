@@ -35,7 +35,8 @@ var UserController = {
 						expires: expires,
 						user_id: user._id,
 						email: user.email,
-						firstname: user.firstname
+						firstname: user.firstname,
+						lastname: user.lastname
 					}, config.jwt_secret);
 					res.cookie('jwtoken', token, { maxAge: 31536000 * 1000 });
 					res.redirect('/dashboard');

@@ -9,12 +9,18 @@ var SocketController = function(server) {
 
 		var token = client.handshake.query.jwtoken;
 
-		var token_data = jwt.decode(token, config.jwt_secret);
+		client.user = jwt.decode(token, config.jwt_secret);
 
-		console.log('a user connected:', token_data.email);
+		client.on('message', function(message) {
+			io.sockets.emit('message', {
+				text: message,
+				from: client.user.firstname + ' ' + client.user.lastname
+			});
+		});
+
 
 		client.on('disconnect', function() {
-			console.log('user disconnected', token_data.email);
+			
 		});
 
 	});

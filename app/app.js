@@ -67,7 +67,11 @@ app.get('/api/users/delete/:id', auth.check, UserController.delete);
 app.post('/api/users/check-email', auth.check, UserController.checkEmail);
 
 app.get('/kernkwadranten', auth.check, function(req, res) {
-	res.render('kernkwadranten');
+	res.render('testing/kernkwadranten');
+});
+
+app.get('/chat', auth.check, function(req, res) {
+	res.render('testing/chat');
 });
 
 // Run the server

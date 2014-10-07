@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include ../includes/head %>
+	<style type="text/css">
+		div.chat {
+			height: 300px;
+			background-color: #fff;
+			border: 1px solid #e5e5e5;
+			border-bottom: none;
+		}
+		div.message {
+			border-bottom: 1px solid #f2f2f2;
+		}
+		div.from, div.text {
+			padding: 5px;
+		}
+		div.from {
+			width: 200px;
+			float: left;
+		}
+		div.text {
+			
+			margin-left: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header-wrapper">
+		<% include ../includes/header %>
+	</div>
+	<div class="site-wrapper">
+		<div class="content-wrapper">
+			<div class="content container" id="content">
+				<!-- CONTENT -->
+			</div>
+		</div>
+		<div class="footer-wrapper">
+			<% include ../includes/footer %>
+		</div>
+	</div>
+	<script type="text/template" id="template">
+		<div class="chat">
+			{{#each messages}}
+				<div class="message row">
+					<div class="from">{{from}}</div>
+					<div class="text">{{text}}</div>
+				</div>
+			{{/each}}
+		</div>
+		<form on-submit="postMessage">
+			<input type="text" class="text" value="{{message}}">
+		</form>
+	</script>
+	<script type="text/javascript" src="/js/libs/cookies.min.js"></script>
+	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+
+		// https://github.com/ScottHamper/Cookies
+
+		var chat = new Ractive({
+			el: 'content',
+			template: '#template',
+			data: {
+				messages: []
+			}
+		});
+
+		chat.on('postMessage', function(evt) {
+			socket.emit('message', chat.get('message'));
+			chat.set('message', '');
+			evt.original.preventDefault();
+		});
+
+
+		var jwtoken = Cookies.get('jwtoken');
+
+		var socket = io('/', { query: 'jwtoken=' + jwtoken });
+
+
+		socket.on('message', function(message) {
+			console.log(message);
+			chat.push('messages', message);
+		});
+	</script>
+</body>
+</html>

@@ -5,17 +5,12 @@
 </head>
 <body>
 	<div class="header-wrapper">
-		<div class="container">
-			<a href="/" class="logo"><img src="/img/badge.svg"></a>
-			<ul class="menu">
-				<li><a href="/logout"><i class="fa fa-sign-out"></i> Uitloggen</a></li>
-			</ul>
-		</div>
+		<% include includes/header %>
 	</div>
 	<div class="site-wrapper">
 		<div class="content-wrapper">
 			<div class="content container">
-				<h1>Dashboard voor <%= user.firstname %></h1>
+				<h1>Welkom, <%= user.firstname %></h1>
 				
 				<% if (message) { %>
 					<div class="flash-<%= message.type %>"><%- message.message %></div>

@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include includes/head %>
+	<% include ../includes/head %>
 </head>
 <body>
 	<div class="header-wrapper">
-		<div class="container">
-			<a href="/" class="logo"><img src="/img/badge.svg"></a>
-			<ul class="menu">
-				<li><a href="/logout"><i class="fa fa-sign-out"></i> Uitloggen</a></li>
-			</ul>
-		</div>
+		<% include ../includes/header %>
 	</div>
 	<div class="site-wrapper">
 		<div class="content-wrapper">
 			<div class="content container" id="content"></div>
 		</div>
 		<div class="footer-wrapper">
-			<% include includes/footer %>
+			<% include ../includes/footer %>
 		</div>
 	</div>
 
@@ -72,40 +67,8 @@
 		</div>
 
 	</script>
-	
-	<script type="text/javascript" src="/js/kernkwadranten.js"></script>
-	<script type="text/javascript" src="/js/libs/zepto.min.js"></script>
-	<script type="text/javascript" src="/js/libs/pgwcookie.min.js"></script>
+		
 	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
-	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript">
-
-		var ractive = new Ractive({
-			el: 'content',
-			template: '#template',
-			data: {
-				kernkwadranten: kernkwadranten,
-				selected: 1,
-				ucfirst: function(value) {
-					return value.charAt(0).toUpperCase() + value.slice(1);
-				}
-			}
-		});
-
-		var jwtoken = $.pgwCookie({ name: 'jwtoken' });
-
-		var socket = io('/', { query: 'jwtoken=' + jwtoken });
-
-		// ractive.on({
-		// 	setKwaliteit: function(evt) {
-		// 		console.log(ractive.get('kwaliteit'));
-		// 	}
-		// });
-
-		// ractive.observe('selected', function(new_val, old_val, keypath) {
-		// 	ractive.set('selected', new_val);
-		// });
-	</script>
-	
+	<script type="text/javascript" src="/js/testing/kernkwadranten.js"></script>
 </body>
 </html>
