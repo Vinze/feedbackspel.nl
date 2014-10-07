@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var config       = require('./config');
 var auth         = require('./libs/auth');
+var flash        = require('./libs/flash');
 
 // Load the controllers
 var HomeController   = require('./controllers/HomeController');
@@ -38,12 +39,18 @@ app.use(session({
 	resave: true
 }));
 
+// Enable the JWToken parser
 app.use(auth.jwtokenParser);
 
+// Rendering flash messages
+app.use(flash());
+
+// Make the user available
 app.use(function(req, res, next) {
-	app.locals.user = req.user;
+	res.locals.user = req.user;
 	next();
 });
+
 
 // Routes
 app.get('/', HomeController.getIndex);

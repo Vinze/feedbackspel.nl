@@ -16,25 +16,24 @@
 		<div class="content-wrapper">
 			<div class="box page-form" style="width: 450px">
 				<h2>Inloggen</h2>
+				
+				<% if (message) { %>
+					<div class="flash-<%= message.type %>"><%- message.message %></div>
+				<% } %>
+
 				<form action="/login" method="post">
 
 					<div class="row" style="margin-bottom: 10px">
 						<div class="col span-12">
 							<label for="email">E-mail adres:</label><br>
-							<input type="text" name="email" value="vbremer89@gmail.com" class="text" id="email">
+							<input type="text" name="email" value="<%= email %>" class="text" id="email">
 						</div>
 					</div>
 
-					<div class="row" style="margin-bottom: 10px">
+					<div class="row" style="margin-bottom: 20px">
 						<div class="col span-12">
 							<label for="password">Wachtwoord:</label><br>
 							<input type="password" name="password" value="" class="text" id="password">
-						</div>
-					</div>
-
-					<div class="row" style="margin-bottom: 10px">
-						<div class="col span-12">
-							<label><input type="checkbox" name="remember" value="1" class="checkbox"> Onthoud mij</label>
 						</div>
 					</div>
 

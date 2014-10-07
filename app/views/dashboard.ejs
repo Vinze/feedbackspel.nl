@@ -16,6 +16,11 @@
 		<div class="content-wrapper">
 			<div class="content container">
 				<h1>Dashboard voor <%= user.firstname %></h1>
+				
+				<% if (message) { %>
+					<div class="flash-<%= message.type %>"><%- message.message %></div>
+				<% } %>
+
 				<div class="row">
 					<div class="box col span-8">
 						<h2>Resultaten</h2>

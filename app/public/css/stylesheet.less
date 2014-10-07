@@ -112,6 +112,14 @@ h1 {
 h2 {
 	font-size: 1.8em;
 	margin-bottom: 15px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #f2f2f2;
+}
+
+h3 {
+	font-size: 1.3em;
+	// font-weight: bold;
+	margin-bottom: 10px;
 }
 
 p {
@@ -222,16 +230,23 @@ i.required {
 -- FORM VALIDATION ---------------------
 ------------------------------------- */
 
-.flash-succes {
-
-}
-
-.flash-error {
-	background-color: #fcc;
+.flash-success, .flash-error {
 	color: #555;
 	padding: 10px 15px;
 	margin-bottom: 20px;
 	.border-radius(5px);
+	a {
+		color: #555;
+		text-decoration: underline;
+	}
+}
+
+.flash-success {
+	background-color: #C5FCB0;
+}
+
+.flash-error {
+	background-color: #fcc;
 }
 
 .has-error {
@@ -371,7 +386,7 @@ div.section {
 
 div.box {
 	background-color: #fff;
-	// box-shadow: 0 0 5px #ccc;
+	box-shadow: 2px 2px 0 #D8D8D8;
 	padding: 20px 30px;
 	input.text, select.select {
 		border: 1px solid #e5e5e5;

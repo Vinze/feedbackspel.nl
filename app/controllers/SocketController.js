@@ -6,16 +6,15 @@ var SocketController = function(server) {
 	var io = socketio.listen(server, { log: false });
 
 	io.on('connection', function(client) {
-		
+
 		var token = client.handshake.query.jwtoken;
 
 		var token_data = jwt.decode(token, config.jwt_secret);
 
-		console.log(token_data);
-		console.log('a user connected');
+		console.log('a user connected:', token_data.email);
 
 		client.on('disconnect', function() {
-			console.log('user disconnected');
+			console.log('user disconnected', token_data.email);
 		});
 
 	});

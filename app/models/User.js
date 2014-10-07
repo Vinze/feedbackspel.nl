@@ -1,7 +1,7 @@
 var Datastore = require('nedb');
 var db = {
 	users: new Datastore({
-		filename: './storage/users.db',
+		filename: __dirname + '/../storage/users.db',
 		autoload: true
 	})
 };
@@ -9,6 +9,7 @@ var db = {
 var User = {
 
 	findById: function(user_id, callback) {
+		console.log(__dirname);
 		db.users.findOne({ _id: user_id }, { password: 0 }, callback);
 	},
 

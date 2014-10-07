@@ -8,14 +8,24 @@ var config    = require('../config');
 var UserController = {
 
 	getLogin: function(req, res) {
-		res.render('login');
+		res.render('login', {
+			email: req.flash('email') || '',
+			message: req.flash('message')
+		});
 	},
 
 	postLogin: function(req, res) {
+		if (req.body.email.length < 3) {
+			req.flash('message', {type: 'error', message: 'Voer een e-mail adres in!'});
+			return res.redirect('/login');
+		} 
 		// Find the user
 		User.findByEmail(req.body.email, function(err, user) {
 			// Check if the password matches
-			if ( ! user) return res.redirect('/login');
+			if ( ! user) {
+				req.flash('message', {type: 'error', message: 'Het ingevoerde e-mail adres is niet bekend.'});
+				return res.redirect('/login');
+			}
 
 			bcrypt.compare(req.body.password, user.password, function(err, match) {
 				if (match == true) {
@@ -30,6 +40,8 @@ var UserController = {
 					res.cookie('jwtoken', token, { maxAge: 31536000 * 1000 });
 					res.redirect('/dashboard');
 				} else {
+					req.flash('email', req.body.email);
+					req.flash('message', {type: 'error', message: 'E-mail adres/wachtwoord komen niet overeen.'});
 					res.redirect('/login');
 				}
 			});
@@ -37,41 +49,63 @@ var UserController = {
 	},
 
 	getRegister: function(req, res) {
-		res.render('register');
+		var defaults = { email: '', firstname: '', lastname: '', gender: 'm' };
+		res.render('register', {
+			input: req.flash('old_input') || defaults,
+			message: req.flash('message')
+		});
 	},
 
 	postRegister: function(req, res) {
-		var rules = {
+		var errors = validate(req.body, {
 			email: 'required|email',
 			firstname: 'required',
 			lastname: 'required',
 			password: 'required|min:2',
 			password_repeat: 'required|same:password',
 			gender: 'in:m,f'
-		}
+		});
 
-		var errors = validate(req.body, rules);
-		
 		if (errors.length > 0) {
-			console.log(errors);
-			res.redirect('/register');
-		} else {
-			User.insert({
+			req.flash('message', {type: 'error', message: 'Niet alle verplichte velden zijn (correct) ingevuld.'});
+			req.flash('old_input', {
 				email: req.body.email,
 				firstname: req.body.firstname,
 				lastname: req.body.lastname,
-				password: bcrypt.hashSync(req.body.password),
 				gender: req.body.gender
-			}, function(err, doc) {
-				if (err) console.log(err);
 			});
-			res.redirect('/login');
+			res.redirect('/register');
+		} else {
+			User.findByEmail(req.body.email, function(err, user) {
+				if (user) {
+					req.flash('message', {type: 'error', message: 'Het ingevoerde e-mail adres is al in gebruik. (<a href="/forgot-password">Wachtwoord vergeten?</a>)'});
+					req.flash('old_input', {
+						email: req.body.email,
+						firstname: req.body.firstname,
+						lastname: req.body.lastname,
+						gender: req.body.gender
+					});
+					res.redirect('/register');
+				} else {
+					User.insert({
+						email: req.body.email,
+						firstname: req.body.firstname,
+						lastname: req.body.lastname,
+						password: bcrypt.hashSync(req.body.password),
+						gender: req.body.gender
+					}, function(err, doc) {
+						if (err) console.log(err);
+					});
+					req.flash('email', req.body.email);
+					req.flash('message', {type: 'success', message: 'Je kunt nu inloggen!'});
+					res.redirect('/login');
+				}
+			});
 		}
 	},
 
 	getDashboard: function(req, res) {
-		console.log(req.user);
-		res.render('dashboard');
+		res.render('dashboard', { message: req.flash('message') });
 	},
 
 	getLogout: function(req, res) {
