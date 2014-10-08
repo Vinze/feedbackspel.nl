@@ -4,24 +4,38 @@
 	<% include ../includes/head %>
 	<style type="text/css">
 		div.chat {
-			height: 300px;
+			height: 400px;
 			background-color: #fff;
 			border: 1px solid #e5e5e5;
 			border-bottom: none;
+			overflow-y: scroll;
 		}
 		div.message {
 			border-bottom: 1px solid #f2f2f2;
+			font-size: 0.9em;
+			padding: 5px 10px;
 		}
-		div.from, div.text {
-			padding: 5px;
+		div.message:last-child {
+			border-bottom: none;
 		}
-		div.from {
-			width: 200px;
-			float: left;
+		div.event {
+			color: #ccc;
 		}
-		div.text {
-			
-			margin-left: 200px;
+		span.from {
+			color: #53bf6b;
+			padding-right: 5px;
+		}
+		span.time {
+			color: #ccc;
+			float: right;
+		}
+		input.text {
+			padding: 10px;
+			font-size: 0.9em;
+		}
+		input.text:focus {
+			box-shadow: none;
+			outline: none;
 		}
 	</style>
 </head>
@@ -31,33 +45,62 @@
 	</div>
 	<div class="site-wrapper">
 		<div class="content-wrapper">
-			<div class="content container" id="content">
-				<!-- CONTENT -->
+			<div class="content container">
+				<div id="content">
+					<!-- CONTENT -->
+				</div>
 			</div>
 		</div>
 		<div class="footer-wrapper">
 			<% include ../includes/footer %>
 		</div>
 	</div>
+
 	<script type="text/template" id="template">
-		<div class="chat">
-			{{#each messages}}
-				<div class="message row">
-					<div class="from">{{from}}</div>
-					<div class="text">{{text}}</div>
-				</div>
-			{{/each}}
+		<div class="row">
+			<div class="col span-12 chat" id="chat-area">
+				{{#if messages}}
+					{{#each messages}}
+						{{#if (from)}}
+							<div class="message">
+								<span class="time">{{time}}</span>
+								<span class="from">{{from}}:</span>
+								<span class="text">{{text}}</span>
+							</div>
+						{{else}}
+							<div class="message event">{{text}}</div>
+						{{/if}}
+					{{/each}}
+				{{/if}}
+			</div>
 		</div>
-		<form on-submit="postMessage">
-			<input type="text" class="text" value="{{message}}">
-		</form>
+		<div class="row">
+			<div class="col span-12">
+				<form on-submit="submit">
+					<input type="text" value="{{message}}" class="text" id="text">
+				</form>
+			</div>
+		</div>
 	</script>
+
 	<script type="text/javascript" src="/js/libs/cookies.min.js"></script>
 	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
 
 		// https://github.com/ScottHamper/Cookies
+
+		function scrolldown() {
+			var chatArea = document.getElementById('chat-area');
+			chatArea.scrollTop = chatArea.scrollHeight;
+		}
+
+		var notification = new Audio('/notification.mp3');
+
+		var base_url = 'http://' + (window.location.hostname == 'localhost' ? 'localhost' : 'feedbackspel.nl');
+
+		var jwtoken = Cookies.get('jwtoken');
+		var socket = io(base_url + ':1337', { query: 'jwtoken=' + jwtoken });
 
 		var chat = new Ractive({
 			el: 'content',
@@ -67,22 +110,39 @@
 			}
 		});
 
-		chat.on('postMessage', function(evt) {
-			socket.emit('message', chat.get('message'));
-			chat.set('message', '');
-			evt.original.preventDefault();
+		chat.on({
+			submit: function(evt) {
+				var message = chat.get('message');
+				if (message.length > 0) {
+					if (message == '/clear') {
+						socket.emit('chat.clear')
+					} else if (message == '/exit') {
+						window.location.href = base_url + '/dashboard';
+					} else {
+						socket.emit('chat.message', message);
+					}
+					chat.set('message', '');
+				}
+				evt.original.preventDefault();
+			}
 		});
 
+		socket.on('chat.history', function(messages) {
+			chat.set('messages', messages);
+			scrolldown();
+		});
 
-		var jwtoken = Cookies.get('jwtoken');
-
-		var socket = io('/', { query: 'jwtoken=' + jwtoken });
-
-
-		socket.on('message', function(message) {
-			console.log(message);
+		socket.on('chat.message', function(message) {
+			notification.play();
 			chat.push('messages', message);
+			scrolldown();
 		});
+
+		socket.on('chat.clear', function() {
+			chat.set('messages', []);
+			scrolldown();
+		});
+
 	</script>
 </body>
 </html>

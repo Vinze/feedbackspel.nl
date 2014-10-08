@@ -93,7 +93,8 @@ var UserController = {
 						firstname: req.body.firstname,
 						lastname: req.body.lastname,
 						password: bcrypt.hashSync(req.body.password),
-						gender: req.body.gender
+						gender: req.body.gender,
+						registered: moment().format('YYYY-MM-DD HH:mm:ss')
 					}, function(err, doc) {
 						if (err) console.log(err);
 					});

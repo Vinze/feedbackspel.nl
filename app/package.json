@@ -16,6 +16,6 @@
     "validator": "3.*",
     "bcrypt-nodejs": "0.0.*",
     "jwt-simple": "0.2.*",
-    "moment": "2.8.*"
+    "moment": "^2.8.3"
   }
 }
