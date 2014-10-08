@@ -5,7 +5,7 @@ var server       = require('http').Server(app);
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
-var config       = require('./config');
+var config       = require('./libs/config');
 var auth         = require('./libs/auth');
 var flash        = require('./libs/flash');
 

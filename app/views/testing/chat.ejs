@@ -63,12 +63,15 @@
 					{{#each messages}}
 						{{#if (from)}}
 							<div class="message">
-								<span class="time">{{time}}</span>
 								<span class="from">{{from}}:</span>
 								<span class="text">{{text}}</span>
+								<span class="time">{{time}}</span>
 							</div>
 						{{else}}
-							<div class="message event">{{text}}</div>
+							<div class="message event">
+								<span class="text">{{text}}</span>
+								<span class="time">{{time}}</span>
+							</div>
 						{{/if}}
 					{{/each}}
 				{{/if}}
@@ -105,16 +108,14 @@
 		var chat = new Ractive({
 			el: 'content',
 			template: '#template',
-			data: {
-				messages: []
-			}
+			data: { messages: [] }
 		});
 
 		chat.on({
 			submit: function(evt) {
 				var message = chat.get('message');
 				if (message.length > 0) {
-					if (message == '/clear') {
+					if (message == '/cls') {
 						socket.emit('chat.clear')
 					} else if (message == '/exit') {
 						window.location.href = base_url + '/dashboard';
@@ -133,7 +134,7 @@
 		});
 
 		socket.on('chat.message', function(message) {
-			notification.play();
+			if (message.from) notification.play();
 			chat.push('messages', message);
 			scrolldown();
 		});

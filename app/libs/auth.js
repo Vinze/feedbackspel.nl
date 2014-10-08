@@ -1,6 +1,6 @@
 var User   = require('../models/User')
 var jwt    = require('jwt-simple');
-var config = require('../config');
+var config = require('../libs/config');
 var moment = require('moment');
 
 var auth = {

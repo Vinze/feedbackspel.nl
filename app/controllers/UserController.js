@@ -1,9 +1,9 @@
-var User      = require('../models/User')
 var bcrypt    = require('bcrypt-nodejs');
-var validate  = require('../libs/validate');
 var jwt       = require('jwt-simple');
 var moment    = require('moment');
-var config    = require('../config');
+var User      = require('../models/User')
+var validate  = require('../libs/validate');
+var config    = require('../libs/config');
 
 var UserController = {
 
