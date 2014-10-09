@@ -5,8 +5,8 @@ var server       = require('http').Server(app);
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
-var config       = require('./libs/config');
 var auth         = require('./libs/auth');
+var config       = require('./libs/config');
 var flash        = require('./libs/flash');
 
 // Load the controllers
@@ -51,7 +51,6 @@ app.use(function(req, res, next) {
 	next();
 });
 
-
 // Routes
 app.get('/', HomeController.getIndex);
 app.get('/login', auth.guest, UserController.getLogin);
@@ -65,6 +64,8 @@ app.get('/api/users/all', auth.check, UserController.findAll);
 app.get('/api/users/find/:id', auth.check, UserController.findOne);
 app.get('/api/users/delete/:id', auth.check, UserController.delete);
 app.post('/api/users/check-email', auth.check, UserController.checkEmail);
+
+app.post('/api/users/save', UserController.save);
 
 app.get('/kernkwadranten', auth.check, function(req, res) {
 	res.render('testing/kernkwadranten');

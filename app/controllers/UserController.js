@@ -106,6 +106,12 @@ var UserController = {
 		}
 	},
 
+	save: function(req, res) {
+		console.log(req.body);
+		res.json(req.body);
+
+	},
+
 	getDashboard: function(req, res) {
 		res.render('dashboard', { message: req.flash('message') });
 	},

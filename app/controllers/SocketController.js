@@ -13,11 +13,12 @@ var SocketController = function(server) {
 		var token = client.handshake.query.jwtoken;
 
 		client.user = jwt.decode(token, config.jwt_secret);
+		client.user.fullname = client.user.firstname + ' ' + client.user.lastname;
 
 		client.emit('chat.history', messages);
 
 		var message = {
-			text: client.user.firstname + ' ' + client.user.lastname + ' heeft zich aangesloten bij de ​​chat.',
+			text: client.user.fullname + ' heeft zich aangesloten bij de ​​chat.',
 			time: moment().format('HH:mm')
 		};
 		io.sockets.emit('chat.message', message);
@@ -26,7 +27,7 @@ var SocketController = function(server) {
 		client.on('chat.message', function(text) {
 			var message = {
 				text: text,
-				from: client.user.firstname + ' ' + client.user.lastname,
+				from: client.user.fullname,
 				time: moment().format('HH:mm')
 			}
 			messages.push(message);
@@ -38,19 +39,16 @@ var SocketController = function(server) {
 			messages = [];
 		});
 
-
 		client.on('disconnect', function() {
 			var message = {
-				text: client.user.firstname + ' ' + client.user.lastname + ' heeft de chat verlaten.',
+				text: client.user.fullname + ' heeft de chat verlaten.',
 				time: moment().format('HH:mm')
 			};
 			io.sockets.emit('chat.message', message);
 			messages.push(message);
-
 		});
 
 	});
-
 }
 
 module.exports = SocketController;
