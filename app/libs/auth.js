@@ -1,7 +1,7 @@
-var User   = require('../models/User')
 var jwt    = require('jwt-simple');
-var config = require('../libs/config');
 var moment = require('moment');
+var config = require('../libs/config');
+var User   = require('../models/User')
 
 var auth = {
 
@@ -30,7 +30,7 @@ var auth = {
 		}
 	},
 
-	check: function(req, res, next) {
+	isMember: function(req, res, next) {
 		if (req.user) {
 			next();
 		} else {
@@ -38,7 +38,7 @@ var auth = {
 		}
 	},
 
-	guest: function(req, res, next) {
+	isGuest: function(req, res, next) {
 		if (req.user) {
 			res.redirect('/dashboard');
 		} else {

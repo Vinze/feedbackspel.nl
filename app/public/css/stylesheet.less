@@ -255,6 +255,21 @@ i.required {
 	}
 }
 
+/* -------------------------------------
+-- TEXT MARKUP -------------------------
+------------------------------------- */
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
 
 /* -------------------------------------
 -- GRID SYSTEM -------------------------
@@ -377,11 +392,12 @@ div.footer-wrapper {
 	color: #ccc;
 	div.footer {
 		padding: 15px 20px;
+		text-align: center;
 	}
 }
 
 div.section {
-	margin: 20px 0;
+	margin-bottom: 30px;
 }
 
 div.box {
@@ -396,18 +412,6 @@ div.box {
 
 div.page-form {
 	margin: 40px auto;
-}
-
-.text-left {
-	text-align: left;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.text-right {
-	text-align: right;
 }
 
 /* -------------------------------------
@@ -458,3 +462,54 @@ div.banner-wrapper {
 	}
 }
 
+
+/* -------------------------------------
+-- MEDIA QUERIES -----------------------
+------------------------------------- */
+
+@media (max-width: 1024px) {
+	div.section {
+		margin-bottom: 0;
+	}
+	div.col {
+		width: 100%;
+		margin: 0;
+		margin-bottom: 20px;
+	}
+	div.banner-wrapper {
+		height: 600px;
+		.logo {
+			padding-left: 25px;
+			padding-right: 25px;
+			img {
+				max-width: 400px;
+			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	h1 {
+		font-size: 2em;
+	}
+	h2 {
+		font-size: 1.5em;
+	}
+	.menu a { 
+		font-size: 2em;
+		span {
+			display: none;
+		}
+	}
+	div.banner-wrapper {
+		height: 500px;
+		.logo {
+			padding-top: 75px;
+			padding-bottom: 75px;
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+}

@@ -8,6 +8,7 @@ var session      = require('express-session');
 var auth         = require('./libs/auth');
 var config       = require('./libs/config');
 var flash        = require('./libs/flash');
+// var validate = require('./libs/ez-validator');
 
 // Load the controllers
 var HomeController   = require('./controllers/HomeController');
@@ -53,25 +54,25 @@ app.use(function(req, res, next) {
 
 // Routes
 app.get('/', HomeController.getIndex);
-app.get('/login', auth.guest, UserController.getLogin);
-app.post('/login', auth.guest, UserController.postLogin);
-app.get('/logout', auth.check, UserController.getLogout);
-app.get('/register', auth.guest, UserController.getRegister);
-app.post('/register', auth.guest, UserController.postRegister);
-app.get('/dashboard', auth.check, UserController.getDashboard);
+app.get('/login', auth.isGuest, UserController.getLogin);
+app.post('/login', auth.isGuest, UserController.postLogin);
+app.get('/logout', auth.isMember, UserController.getLogout);
+app.get('/register', auth.isGuest, UserController.getRegister);
+app.post('/register', auth.isGuest, UserController.postRegister);
+app.get('/dashboard', auth.isMember, UserController.getDashboard);
 
-app.get('/api/users/all', auth.check, UserController.findAll);
-app.get('/api/users/find/:id', auth.check, UserController.findOne);
-app.get('/api/users/delete/:id', auth.check, UserController.delete);
-app.post('/api/users/check-email', auth.check, UserController.checkEmail);
+app.get('/api/users/all', auth.isMember, UserController.findAll);
+app.get('/api/users/find/:id', auth.isMember, UserController.findOne);
+app.get('/api/users/delete/:id', auth.isMember, UserController.delete);
+app.post('/api/users/check-email', auth.isMember, UserController.checkEmail);
 
 app.post('/api/users/save', UserController.save);
 
-app.get('/kernkwadranten', auth.check, function(req, res) {
+app.get('/kernkwadranten', auth.isMember, function(req, res) {
 	res.render('testing/kernkwadranten');
 });
 
-app.get('/chat', auth.check, function(req, res) {
+app.get('/chat', auth.isMember, function(req, res) {
 	res.render('testing/chat');
 });
 

@@ -24,6 +24,10 @@ var User = {
 		db.users.insert(input, callback);
 	},
 
+	updateById: function(user_id, input, callback) {
+
+	},
+
 	removeById: function(user_id, callback) {
 		db.users.remove({ _id: user_id }, callback);
 	}

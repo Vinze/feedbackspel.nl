@@ -13,9 +13,9 @@
     "ejs": "1.*",
     "socket.io": "1.*",
     "nedb": "0.10.*",
-    "validator": "3.*",
     "bcrypt-nodejs": "0.0.*",
     "jwt-simple": "0.2.*",
-    "moment": "^2.8.3"
+    "moment": "^2.8.3",
+    "underscore": "^1.7.0"
   }
 }

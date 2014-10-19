@@ -1,9 +1,19 @@
 var bcrypt    = require('bcrypt-nodejs');
 var jwt       = require('jwt-simple');
 var moment    = require('moment');
+var _         = require('underscore');
 var User      = require('../models/User')
-var validate  = require('../libs/validate');
 var config    = require('../libs/config');
+var validate  = require('../libs/ez-validator');
+
+var rules = {
+	email: { required: true, email: true, minlength: 4, maxlength: 60 },
+	firstname: { required: true },
+	lastname: { required: true },
+	password: { required: true, minlength: 3 },
+	password_repeat: { required: true, same: 'password' },
+	gender: { in: ['m', 'f'] }
+};
 
 var UserController = {
 
@@ -58,52 +68,48 @@ var UserController = {
 	},
 
 	postRegister: function(req, res) {
-		var errors = validate(req.body, {
-			email: 'required|email',
-			firstname: 'required',
-			lastname: 'required',
-			password: 'required|min:2',
-			password_repeat: 'required|same:password',
-			gender: 'in:m,f'
-		});
+		var input = req.body;
 
-		if (errors.length > 0) {
-			req.flash('message', {type: 'error', message: 'Niet alle verplichte velden zijn (correct) ingevuld.'});
-			req.flash('old_input', {
-				email: req.body.email,
-				firstname: req.body.firstname,
-				lastname: req.body.lastname,
-				gender: req.body.gender
-			});
-			res.redirect('/register');
-		} else {
-			User.findByEmail(req.body.email, function(err, user) {
+		validate(input, rules, function(errors) {
+			if (errors) {
+				req.flash('message', { type: 'error', message: 'Niet alle verplichte velden zijn (correct) ingevuld.' });
+				req.flash('old_input', {
+					email: input.email,
+					firstname: input.firstname,
+					lastname: input.lastname,
+					gender: input.gender
+				});
+				return res.redirect('/register');
+			}
+
+			User.findByEmail(input.email, function(err, user) {
 				if (user) {
 					req.flash('message', {type: 'error', message: 'Het ingevoerde e-mail adres is al in gebruik. (<a href="/forgot-password">Wachtwoord vergeten?</a>)'});
 					req.flash('old_input', {
-						email: req.body.email,
-						firstname: req.body.firstname,
-						lastname: req.body.lastname,
-						gender: req.body.gender
+						email: input.email,
+						firstname: input.firstname,
+						lastname: input.lastname,
+						gender: input.gender
 					});
-					res.redirect('/register');
-				} else {
-					User.insert({
-						email: req.body.email,
-						firstname: req.body.firstname,
-						lastname: req.body.lastname,
-						password: bcrypt.hashSync(req.body.password),
-						gender: req.body.gender,
-						registered: moment().format('YYYY-MM-DD HH:mm:ss')
-					}, function(err, doc) {
-						if (err) console.log(err);
-					});
-					req.flash('email', req.body.email);
-					req.flash('message', {type: 'success', message: 'Je kunt nu inloggen!'});
-					res.redirect('/login');
+					return res.redirect('/register');
 				}
+
+				User.insert({
+					email: input.email,
+					firstname: input.firstname,
+					lastname: input.lastname,
+					password: bcrypt.hashSync(input.password),
+					gender: input.gender,
+					registered: moment().format('YYYY-MM-DD HH:mm:ss')
+				}, function(err, doc) {
+					if (err) console.log(err);
+				});
+				req.flash('email', input.email);
+				req.flash('message', { type: 'success', message: 'Je kunt nu inloggen!' });
+				return res.redirect('/login');
 			});
-		}
+			
+		});
 	},
 
 	save: function(req, res) {
