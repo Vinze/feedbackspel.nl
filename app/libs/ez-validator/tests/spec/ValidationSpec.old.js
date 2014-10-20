@@ -1,29 +1,25 @@
 describe('email validation:', function() {
-	var rules = {
-		email: { email: true }
-	};
+	var rules = { email: { email: true } };
 
 	it('should validate e-mail address as valid', function() {
 		validate({ email: 'john@gmail.com' }, rules, function(errors) {
 			expect(errors).toBe(false);
-			expect(typeof errors).not.toBe('object');
 		});
 	});
 
-	it('shouldn\'t be a valid email address when missing domain extension', function() {
+	it('john@examplecom should not be a valid email address (missing domain extension)', function() {
 		validate({ email: 'john@examplecom' }, rules, function(errors) {
-			expect(typeof errors).not.toBe('boolean');
 			expect(typeof errors).toBe('object');
 		});
 	});
 
-	it('shouldn\'t validate when the address is missing the @)', function() {
+	it('john.example.com should not be a valid email address (missing @)', function() {
 		validate({ email: 'john.example.com' }, rules, function(errors) {
 			expect(typeof errors).toBe('object');
 		});
 	});
 
-	it('shouldn\'t validate when starting with an @', function() {
+	it('@example.com should not validate (starting with an @)', function() {
 		validate({ email: '@example.com' }, rules, function(errors) {
 			expect(typeof errors).toBe('object');
 		});
@@ -33,42 +29,6 @@ describe('email validation:', function() {
 		validate({ email: 'myemailcom' }, rules, function(errors) {
 			expect(errors[0].field).toBe('email');
 			expect(errors[0].message).toBe('email is not an valid email address');
-		});
-	});
-});
-
-describe('url validation:', function() {
-	var rules = {
-		link: { url: true }
-	};
-
-	it('should validate a valid URL', function() {
-		validate({ link: 'http://www.google.com' }, rules, function(errors) {
-			expect(errors).toBe(false);
-		});
-	});
-
-	it('shouldn\'t validate an URL without extension', function() {
-		validate({ link: 'googlecom' }, rules, function(errors) {
-			expect(typeof errors).toBe('object');
-		});
-	});
-
-	it('should validate an URL without http://', function() {
-		validate({ link: 'google.com' }, rules, function(errors) {
-			expect(errors).toBe(false);
-		});
-	});
-
-	it('shouldn\'t validate an URL starting with a non-alphanumeric character', function() {
-		validate({ link: '-http://google.com' }, rules, function(errors) {
-			expect(typeof errors).toBe('object');
-		});
-	});
-
-	it('should validate an URL with path', function() {
-		validate({ link: 'http://www.google.com/info' }, rules, function(errors) {
-			expect(errors).toBe(false);
 		});
 	});
 });
@@ -85,7 +45,7 @@ describe('same validation:', function() {
 		});
 	});
 
-	it('the password and password_repeat repeat field shouldn\'t be the same', function() {
+	it('the password and password_repeat repeat field should not be the same', function() {
 		validate({ password: 'MyPassword321', password_repeat: 'MyPassword123' }, rules, function(errors) {
 			expect(typeof errors).toBe('object');
 		});
@@ -93,9 +53,7 @@ describe('same validation:', function() {
 });
 
 describe('minlength validation:', function() {
-	var rules = {
-		firstname: { minlength: 3 }
-	};
+	var rules = { firstname: { minlength: 3 } };
 
 	it('should return an error when the length of the input is too short', function() {
 		validate({ firstname: 'V' }, rules, function(errors) {
@@ -111,9 +69,7 @@ describe('minlength validation:', function() {
 });
 
 describe('maxlength validation:', function() {
-	var rules = {
-		lastname: { maxlength: 20 }
-	};
+	var rules = { lastname: { maxlength: 20 } };
 
 	it('should return an error when the length of the input is too long', function() {
 		validate({ lastname: 'Thisisjustaverylongstringthatshardtoread' }, rules, function(errors) {
@@ -145,37 +101,34 @@ describe('object validation:', function() {
 		age: { between: [10, 80] }
 	};
 
-	var good = {
-		email: 'vbremer@gmail.com',
-		firstname: 'Vincent',
-		lastname: 'Bremer',
-		homepage: 'vbremer.nl',
-		gender: 'm',
-		age: 25
-	};
-
-	var wrong = {
-		email: 'vbremer@gmailcom',
-		firstname: '',
-		lastname: 'Bremer',
-		homepage: 'vbremer.nl',
-		gender: '?',
-		age: 5
-	};
-	
 	it('object should validate without errors', function() {
-		validate(good, rules, function(errors) {
+		var input = {
+			email: 'vbremer@gmail.com',
+			firstname: 'Vincent',
+			lastname: 'Bremer',
+			homepage: 'vbremer.nl',
+			gender: 'm',
+			age: 25
+		};
+
+		validate(input, rules, function(errors) {
 			expect(errors).toBe(false);
 		});
 	});
 
 	it('object shouldn\'t validate and return errors', function() {
-		validate(wrong, rules, function(errors) {
+		var input = {
+			email: 'vbremer@gmailcom',
+			firstname: '',
+			lastname: 'Bremer',
+			homepage: 'vbremer.nl',
+			gender: '?',
+			age: 5
+		};
+		validate(input, rules, function(errors) {
 			expect(typeof errors).toBe('object');
-			expect(errors[0].message).toBe('email is not an valid email address');
-			expect(errors[1].message).toBe('firstname is required');
-			expect(errors[2].message).toBe('gender is not in array');
-			expect(errors[3].message).toBe('age is not in range');
 		});
+
 	});
+
 });

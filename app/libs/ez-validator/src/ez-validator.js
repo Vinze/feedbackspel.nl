@@ -4,14 +4,19 @@ var validate = function(values, schema, callback) {
 		// Check if the input validates as an email address
 		email: function(field, input) {
 			var pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-			if ( ! pattern.test(input)) {
+			if ( ! pattern.test(input))
 				return { field: field, message: field + ' is not an valid email address' };
-			} else {
+			else
 				return false;
-			}
 		},
 
 		url: function(field, input) {
+			var pattern = /^(http(s)?:\/\/)?([a-zA-Z0-9]+\.)?[a-zA-Z0-9][a-zA-Z0-9-]+\.[a-zA-Z]{2,6}?/i;
+			console.log( ! pattern.test(input));
+			if ( ! pattern.test(input))
+				return { field: field, message: field + ' is not an valid URL' };
+			else
+				return false;
 		},
 
 		// Check if the input isn't too short
