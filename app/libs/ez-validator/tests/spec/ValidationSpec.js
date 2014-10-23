@@ -6,13 +6,11 @@ describe('email validation:', function() {
 	it('should validate e-mail address as valid', function() {
 		validate({ email: 'john@gmail.com' }, rules, function(errors) {
 			expect(errors).toBe(false);
-			expect(typeof errors).not.toBe('object');
 		});
 	});
 
 	it('shouldn\'t be a valid email address when missing domain extension', function() {
 		validate({ email: 'john@examplecom' }, rules, function(errors) {
-			expect(typeof errors).not.toBe('boolean');
 			expect(typeof errors).toBe('object');
 		});
 	});
@@ -32,7 +30,7 @@ describe('email validation:', function() {
 	it('should return an error message when validations fails', function() {
 		validate({ email: 'myemailcom' }, rules, function(errors) {
 			expect(errors[0].field).toBe('email');
-			expect(errors[0].message).toBe('email is not an valid email address');
+			expect(errors[0].message).toBe('email is not a valid email address');
 		});
 	});
 });
@@ -69,6 +67,13 @@ describe('url validation:', function() {
 	it('should validate an URL with path', function() {
 		validate({ link: 'http://www.google.com/info' }, rules, function(errors) {
 			expect(errors).toBe(false);
+		});
+	});
+
+	it('should return an error message when validations fails', function() {
+		validate({ link: 'xxx' }, rules, function(errors) {
+			expect(errors[0].field).toBe('link');
+			expect(errors[0].message).toBe('link is not an valid URL');
 		});
 	});
 });
@@ -172,7 +177,7 @@ describe('object validation:', function() {
 	it('object shouldn\'t validate and return errors', function() {
 		validate(wrong, rules, function(errors) {
 			expect(typeof errors).toBe('object');
-			expect(errors[0].message).toBe('email is not an valid email address');
+			expect(errors[0].message).toBe('email is not a valid email address');
 			expect(errors[1].message).toBe('firstname is required');
 			expect(errors[2].message).toBe('gender is not in array');
 			expect(errors[3].message).toBe('age is not in range');

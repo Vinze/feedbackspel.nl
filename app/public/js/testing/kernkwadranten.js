@@ -12,28 +12,28 @@ var ractive = new Ractive({
 
 var kernkwadranten = {
 	1: {
-		kwaliteit: { naam: 'accuratesse', omschrijving: 'nauwgezetheid, nauwkeurigheid, precisie, stiptheid, zorgvuldigheid' },
-		valkuil: { naam: 'pietluttigheid', omschrijving: 'benepen, keutelachtig, kleinzielig, pietepeuterig' },
-		allergie: { naam: 'warrigheid', omschrijving: 'chaotisch, ingewikkeld, onduidelijk' },
-		uitdaging: { naam: 'creativiteit', omschrijving: 'artistiek, fantasierijk, inventief, origineel, vindingrijk' }
+		kwaliteit: { naam: 'accuraat', omschrijving: 'nauwgezetheid, nauwkeurigheid, precisie, stiptheid, zorgvuldigheid' },
+		valkuil: { naam: 'pietluttig', omschrijving: 'benepen, keutelachtig, kleinzielig, pietepeuterig' },
+		allergie: { naam: 'warrig', omschrijving: 'chaotisch, ingewikkeld, onduidelijk' },
+		uitdaging: { naam: 'creatief', omschrijving: 'artistiek, fantasierijk, inventief, origineel, vindingrijk' }
 	},
 	2: {
-		kwaliteit: { naam: 'autonoom', omschrijving: '' },
-		valkuil: { naam: 'dwars', omschrijving: '' },
-		allergie: { naam: 'onderdanig', omschrijving: '' },
-		uitdaging: { naam: 'meegaand', omschrijving: '' }
+		kwaliteit: { naam: 'autonoom', omschrijving: 'zelfstandig, onafhankelijk' },
+		valkuil: { naam: 'dwars', omschrijving: 'weerbarstig, scheef' },
+		allergie: { naam: 'onderdanig', omschrijving: '(al te) gehoorzaam' },
+		uitdaging: { naam: 'meegaand', omschrijving: 'inschikkelijk, toegevend' }
 	},
 	3: {
-		kwaliteit: { naam: 'bedachtzaam', omschrijving: '' },
-		valkuil: { naam: 'beducht', omschrijving: '' },
-		allergie: { naam: 'roekeloos', omschrijving: '' },
-		uitdaging: { naam: 'moedig', omschrijving: '' }
+		kwaliteit: { naam: 'bedachtzaam', omschrijving: 'met overleg te werk gaand' },
+		valkuil: { naam: 'beducht', omschrijving: 'bang, bevreesd' },
+		allergie: { naam: 'roekeloos', omschrijving: 'in hoge mate onvoorzichtig' },
+		uitdaging: { naam: 'moedig', omschrijving: 'vol moed; dapper' }
 	},
 	4: {
-		kwaliteit: { naam: 'beheerst', omschrijving: '' },
-		valkuil: { naam: 'onpersoonlijk', omschrijving: '' },
-		allergie: { naam: 'onbereikbaar', omschrijving: '' },
-		uitdaging: { naam: 'empathisch', omschrijving: '' }
+		kwaliteit: { naam: 'beheerst', omschrijving: 'in bedwang houden, geestelijk helemaal machtig zijn' },
+		valkuil: { naam: 'onpersoonlijk', omschrijving: 'zonder eigen aard' },
+		allergie: { naam: 'onbereikbaar', omschrijving: 'niet te bereiken' },
+		uitdaging: { naam: 'empathisch', omschrijving: 'inlevingsvermogen' }
 	},
 	5: {
 		kwaliteit: { naam: 'behulpzaam', omschrijving: '' },

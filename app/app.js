@@ -68,8 +68,8 @@ app.post('/api/users/check-email', auth.isMember, UserController.checkEmail);
 
 app.post('/api/users/save', UserController.save);
 
-app.get('/kernkwadranten', auth.isMember, function(req, res) {
-	res.render('testing/kernkwadranten');
+app.get('/kernkwadranten', function(req, res) {
+	res.render('kernkwadranten');
 });
 
 app.get('/chat', auth.isMember, function(req, res) {

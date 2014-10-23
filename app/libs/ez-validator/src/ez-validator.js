@@ -5,7 +5,7 @@ var validate = function(values, schema, callback) {
 		email: function(field, input) {
 			var pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			if ( ! pattern.test(input))
-				return { field: field, message: field + ' is not an valid email address' };
+				return { field: field, message: field + ' is not a valid email address' };
 			else
 				return false;
 		},
