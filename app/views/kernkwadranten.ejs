@@ -2,10 +2,6 @@
 <html lang="nl">
 <head>
 	<% include includes/head %>
-</head>
-<body>
-	<div class="header-wrapper">
-		<% include includes/header %>
 		<style type="text/css">
 		.kernkwadranten {
 			background: transparent url('/img/bg-kernkwadranten.png') top left no-repeat;
@@ -28,32 +24,21 @@
 		.box-3 { bottom: 0; left: 0; }
 		.box-4 { bottom: 0; right: 2px; }
 		</style>
-	</div>
+</head>
+<body>
+	<% include includes/navigation %>
+
 	<div class="site-wrapper">
-		<div class="content-wrapper">
+		<div class="site-overlay" id="close-nav"></div>
 
-			<div class="kernkwadranten"  id="content"></div>
-
-			<!-- <div class="content container">
-				<svg width="800" height="400">
-			
-					<rect x="15" y="15" width="380" height="180" fill="#d8d8d8"></rect>
-					<rect x="415" y="15" width="380" height="180" fill="#d8d8d8"></rect>
-					<rect x="15" y="215" width="380" height="180" fill="#d8d8d8"></rect>
-					<rect x="415" y="215" width="380" height="180" fill="#d8d8d8"></rect>
-			
-					<rect x="10" y="10" width="380" height="180" fill="#fff"></rect>
-					<rect x="410" y="10" width="380" height="180" fill="#fff"></rect>
-					<rect x="10" y="210" width="380" height="180" fill="#fff"></rect>
-					<rect x="410" y="210" width="380" height="180" fill="#fff"></rect>
-					
-					<polygon x="50" y="50" points="10 0,50 20,20 50" fill="#ff0000"></polygon>
-				</svg>
-			</div> -->
-
+		<div class="header-wrapper">
+			<% include includes/header %>
 		</div>
 
-
+		<div class="content-wrapper">
+			<div class="kernkwadranten"  id="content"></div>
+		</div>
+		
 		<div class="footer-wrapper">
 			<% include includes/footer %>
 		</div>
@@ -113,6 +98,6 @@
 		
 	<% include includes/scripts %>
 	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
-	<script type="text/javascript" src="/js/testing/kernkwadranten.js"></script>
+	<script type="text/javascript" src="/js/kernkwadranten.js"></script>
 </body>
 </html>

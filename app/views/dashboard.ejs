@@ -4,10 +4,15 @@
 	<% include includes/head %>
 </head>
 <body>
-	<div class="header-wrapper">
-		<% include includes/header %>
-	</div>
+	<% include includes/navigation %>
+
 	<div class="site-wrapper">
+		<div class="site-overlay" id="close-nav"></div>
+
+		<div class="header-wrapper">
+			<% include includes/header %>
+		</div>
+
 		<div class="content-wrapper">
 			<div class="content container">
 				<h1>Welkom, <%= user.firstname %></h1>
@@ -38,9 +43,9 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente vel nostrum ad, deleniti facere iste eius error aspernatur necessitatibus illum nobis consequuntur quos earum atque ipsum, neque, pariatur numquam repellendus.</p>
 					</div>
 				</div>
-
 			</div>
 		</div>
+		
 		<div class="footer-wrapper">
 			<% include includes/footer %>
 		</div>
