@@ -5,22 +5,16 @@
 </head>
 <body>
 	<% include includes/navigation %>
-
 	<div class="site-wrapper">
-		<div class="site-overlay" id="close-nav"></div>
-
 		<div class="header-wrapper">
 			<% include includes/header %>
 		</div>
-
 		<div class="content-wrapper">
 			<div class="content container">
 				<h1>Welkom, <%= user.firstname %></h1>
-				
 				<% if (message) { %>
 					<div class="flash-<%= message.type %>"><%- message.message %></div>
 				<% } %>
-
 				<div class="row section">
 					<div class="box col span-8 align-center">
 						<p><button class="btn confirm"><i class="fa fa-gamepad"></i> Nieuw spel starten</button></p>
@@ -36,7 +30,6 @@
 						</ul>
 					</div>
 				</div>
-
 				<div class="row section">
 					<div class="box col span-12">
 						<h2>Resultaten</h2>
@@ -45,12 +38,10 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="footer-wrapper">
 			<% include includes/footer %>
 		</div>
 	</div>
-
 	<% include includes/scripts %>
 </body>
 </html>
