@@ -14,7 +14,8 @@
 					<img src="/img/banner.png">
 				</div>
 
-				<div class="info" id="info">
+				<div id="info">
+					<!-- Info will be rendered here -->					
 				</div>
 			</div>
 		</div>
@@ -26,7 +27,7 @@
 
 	<script type="text/template" id="info-tpl">
 		{{#if show_front}}
-			<div intro-outro="slide:{ duration: 500 }">
+			<div class="info front" intro-outro="fade:{ duration: 300 }">
 				<h1>Werk je samen in een team en wil je graag weten hoe anderen over je denken?</h1>
 				<p>Op deze website kun je, na het registreren van een gratis account, een feedbacksessie starten samen met je teamgenoten.</p>
 				<p>Deze feedback maakt inzichtelijk waar je sterke en verbeterpunten liggen, en het bied waardevolle informatie welke je zal helpen om op persoonlijk vlak en in een groep te groeien.</p>
@@ -34,8 +35,8 @@
 			</div>
 		{{/if}}
 		{{#if show_back}}
-			<div intro-outro="slide:{ duration: 500 }">
-				<h1>Bètaversie binnenkort online!</h1>
+			<div class="info back" intro-outro="fade:{ duration: 300 }">
+				<h1>Bètaversie komt binnenkort online!</h1>
 				<p>Momenteel wordt keihard gewerkt om deze webapplicatie zo spoedig mogelijk te lanceren. Tot die tijd zou je een feedbacksessie kunnen houden met behulp van het <a href="/kernkwadranten">kernkwadrantenspel</a>.</p>
 				<button on-tap="back"><i class="fa fa-angle-double-left"></i> Terug</button>
 			</div>
