@@ -1,19 +1,23 @@
 function showNavigation() {
 	$('body').addClass('show-nav');
-	$('body').prepend('<div class="site-overlay" id="close-nav"></div>');
+	$('body').prepend('<div class="site-overlay close-nav"></div>');
 }
 
 function hideNavigation() {
 	$('body').removeClass('show-nav');
-	$('#close-nav').remove();
+	$('.site-overlay').remove();
 }
 
-$('#open-nav').on('click', function(evt) {
+$('.nav-toggle').on('tap, click', function(evt) {
 	showNavigation();
 	evt.preventDefault();
 });
 
-$('body').on('click', '#close-nav', function(evt) {
+$('.navigation').on('swipeRight', function() {
+	hideNavigation();
+});
+
+$('body').on('tap, click', '.close-nav', function(evt) {
 	hideNavigation();
 	evt.preventDefault();
 });

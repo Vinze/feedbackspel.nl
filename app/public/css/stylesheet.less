@@ -146,6 +146,7 @@ hr {
 a, a:link, a:visited {
 	color: @accent-color;
 	text-decoration: none;
+	cursor: pointer;
 	&:hover, &:active {
 		text-decoration: underline;
 	}
@@ -375,46 +376,60 @@ body, html {
 .nav-toggle {
 	float: right;
 	font-size: 2.4em;
-	padding-left: 20px;
+	padding: 0 5px 0 20px;
 }
 
 .navigation {
 	width: @navigation-width;
 	height: 100%;
 	position: fixed;
-	top: 4px;
-	right: -@navigation-width;
+	top: 0;
+	right: -@navigation-width - 10px;
 	transition: right 300ms;
 	z-index: 900;
 	margin: 0px;
-	// border-top: 4px solid @accent-color;
 	background: #444 url('../img/bg-navigation.png') repeat left top;
 	color: #fff;
 	font-size: 1.1em;
+	box-shadow: 0 0 5px #222;
+	.close {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding: 14px;
+		font-size: 1.4em;
+		color: #fff;
+	}
 	ul {
-		margin: 10px 0 0 0;
-	}
-	li {
-		list-style-type: none;
-		display: block;
 		margin: 0;
-		padding: 0;
-	}
-	.title {
-		padding: 10px 30px;
-		font-weight: bold;
 	}
 	a {
-		display: block;
 		color: #ccc;
-		text-decoration: none;
-		padding: 10px 30px;
 		&:hover {
 			color: #fff;
 			text-decoration: none;
 		}
-		i {
-			margin-right: 5px;
+	}
+	li {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		display: block;
+		&.nav-title {
+			padding: 10px 40px;
+			font-weight: bold;
+			background-color: #51C864;
+			margin: 10px 0 5px -10px;
+		}
+		&.nav-item {
+			a {
+				display: block;
+				text-decoration: none;
+				padding: 10px 30px;
+				i {
+					margin-right: 5px;
+				}
+			}
 		}
 	}
 }
@@ -447,8 +462,7 @@ body.show-nav {
 	// 	right: @navigation-width;
 	// }
 	.navigation {
-		// box-shadow: 0 0 5px #222;
-		box-shadow: 0px 5px 5px 0 #222;
+		// box-shadow: 0px 5px 5px 0 #222;
 		right: 0;
 	}
 }
