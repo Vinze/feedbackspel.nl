@@ -12,80 +12,7 @@
 		<div class="content-wrapper">
 			<div class="content container">
 				<div class="box page-form" id="content" style="max-width: 640px;">
-					<h2>Registreren</h2>
-
-					<% if (message) { %>
-						<div class="flash-<%= message.type %>"><%- message.message %></div>
-					<% } %>
-
-					<form action="/register" method="post" id="register-form" on-submit="validate">
-						<div class="row" style="margin-bottom: 20px">
-							<div class="col span-4">
-								<label for="email">E-mail adres</label>
-							</div>
-							<div class="col span-8">
-								<input type="text" name="email" value="<%=input.email%>" class="text" id="email">
-								<i class="required"></i>
-							</div>
-						</div>
-
-						<div class="row" style="margin-bottom: 20px">
-							<div class="col span-4">
-								<label for="firstname">Voornaam</label><br>
-							</div>
-							<div class="col span-8">
-								<input type="text" name="firstname" value="<%=input.firstname%>" class="text" id="firstname">
-								<i class="required"></i>
-							</div>
-						</div>
-
-						<div class="row" style="margin-bottom: 20px">
-							<div class="col span-4">
-								<label for="lastname">Achternaam</label><br>
-							</div>
-							<div class="col span-8">
-								<input type="text" name="lastname" value="<%=input.lastname%>" class="text" id="lastname">
-								<i class="required"></i>
-							</div>
-						</div>
-
-						<div class="row" style="margin-bottom: 20px">
-							<div class="col span-4">
-								<label>Ik ben een</label>
-							</div>
-							<div class="col span-8">
-								<label><input type="radio" name="gender" value="m" class="radio" <%= input.gender == 'm' ? 'checked' : '' %>> Man</label>
-								<label><input type="radio" name="gender" value="f" class="radio" <%= input.gender == 'f' ? 'checked' : '' %>> Vrouw	</label>
-								<i class="required"></i>
-							</div>
-						</div>
-
-						<div class="row" style="margin-bottom: 20px">
-							<div class="col span-4">
-								<label for="password">Wachtwoord</label>
-							</div>
-							<div class="col span-8">
-								<input type="password" name="password" value="" class="text" id="password">
-								<i class="required"></i>
-							</div>
-						</div>
-
-						<div class="row" style="margin-bottom: 20px">
-							<div class="col span-4">
-								<label for="password_repeat">Herhaal wachtwoord</label>
-							</div>
-							<div class="col span-8">
-								<input type="password" name="password_repeat" value="" class="text" id="password_repeat">
-								<i class="required"></i>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col span-12">
-								<button class="btn confirm"><i class="fa fa-user"></i> Registreren</button>
-							</div>
-						</div>
-					</form>
+					
 				</div>
 			</div>
 		</div>
@@ -94,51 +21,150 @@
 		</div>
 	</div>
 	<% include includes/scripts %>
-	<script type="text/javascript" src="/js/libs/happy.js"></script>
+	
+	<script type="text/template" id="form-tpl">
+		<h2>Registreren</h2>
+		<form action="/register" method="post" id="register-form" on-submit="validate">
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col span-4">
+					<label for="email">E-mail adres</label>
+				</div>
+				<div class="col span-8">
+					<input type="text" name="email" value="{{email.value}}" class="text{{email.error ? ' error' : ''}}" id="email" on-blur="validate:email">
+					<i class="required"></i>
+					{{#if email.error}}<span class="error-msg">{{email.error}}</span>{{/if}}
+				</div>
+			</div>
+
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col span-4">
+					<label for="firstname">Voornaam</label><br>
+				</div>
+				<div class="col span-8">
+					<input type="text" name="firstname" value="{{firstname.value}}" class="text{{firstname.error ? ' error' : ''}}" id="firstname" on-blur="validate">
+					<i class="required"></i>
+					{{#if firstname.error}}<span class="error-msg">{{firstname.error}}</span>{{/if}}
+				</div>
+			</div>
+
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col span-4">
+					<label for="lastname">Achternaam</label><br>
+				</div>
+				<div class="col span-8">
+					<input type="text" name="lastname" value="{{lastname.value}}" class="text{{lastname.error ? ' error' : ''}}" id="lastname" on-blur="validate">
+					<i class="required"></i>
+					{{#if lastname.error}}<span class="error-msg">{{lastname.error}}</span>{{/if}}
+				</div>
+			</div>
+
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col span-4">
+					<label>Ik ben een</label>
+				</div>
+				<div class="col span-8">
+					<label><input type="radio" name="gender" value="m" class="radio"> Man</label>
+					<label><input type="radio" name="gender" value="f" class="radio"> Vrouw	</label>
+					<i class="required"></i>
+				</div>
+			</div>
+
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col span-4">
+					<label for="password">Wachtwoord</label>
+				</div>
+				<div class="col span-8">
+					<input type="password" name="password" value="{{password.value}}" class="text{{password.error ? ' error' : ''}}" id="password" on-blur="validate">
+					<i class="required"></i>
+					{{#if password.error}}<span class="error-msg">{{password.error}}</span>{{/if}}
+				</div>
+			</div>
+
+			<div class="row" style="margin-bottom: 20px">
+				<div class="col span-4">
+					<label for="password2">Herhaal wachtwoord</label>
+				</div>
+				<div class="col span-8">
+					<input type="password" name="password2" value="{{password2.value}}" class="text{{password2.error ? ' error' : ''}}" id="password2" on-blur="validate">
+					<i class="required"></i>
+					{{#if password2.error}}<span class="error-msg">{{password2.error}}</span>{{/if}}
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col span-12">
+					<button class="btn confirm"><i class="fa fa-user"></i> Registreren</button>
+				</div>
+			</div>
+		</form>
+	</script>
+
+	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
+	<script type="text/javascript" src="/js/libs/validator.min.js"></script>
 	<script type="text/javascript">
-	$('#register-form').isHappy({
-		fields: {
-			'#email': {
-				required: true,
-				test: function(val) {
-					return /^(?:\w+\.?\+?)*\w+@(?:\w+\.)+\w+$/.test(val);
-				},
-				message: 'Een geldig e-mail adres is verplicht'
-			},
-			'#email': {
-				required: true,
-				test: function(val) {
-					return false;
-				},
-				message: 'MAAAAHHHH'
-			},
-			'#firstname': {
-				required: true,
-				test: function(val) {
-					return val.length < 2;
-				},
-				message: 'Voer je voornaam in'
-			},
-			'#lastname': {
-				required: true,
-				message: 'Voer je achternaam in'
-			},
-			'#password': {
-				required: true,
-				test: function(val) {
-					return val.length >= 3;
-				},
-				message: 'Het wachtwoord moet minimaal 3 karakters lang zijn'
-			},
-			'#password_repeat': {
-				required: true,
-				test: function(val) {
-					return (val == $('#password').val());
-				},
-				message: 'De wachtwoorden moeten overeenkomen'
-			},
-		}
-	});
+		var form = new Ractive({
+			el: 'content',
+			template: '#form-tpl',
+			data: {
+				email:     { value: '', error: '' },
+				firstname: { value: '', error: '' },
+				lastname:  { value: '', error: '' },
+				password:  { value: '', error: '' },
+				password2: { value: '', error: '' }
+			}
+		});
+
+		form.on({
+			validate: function(evt, field) {
+				// var errors = { email: false, firstname: false, lastname: false, password: false, password2: false };
+				var errors = false;
+
+
+				if (field == 'email' || ! field) {
+					if ( ! validator.isEmail(form.get('email.value'))) {
+						form.set('email.error', 'Geen geldig e-mail adres');
+						errors = true;
+					} else {
+						var email = form.get('email.value');
+						$.post('/api/check-email', { email: email }, function(res) {
+							if (res.exists) {
+								form.set('email.error', 'Dit e-mail adres is al in gebruikt');
+								errors = true;
+							} else {
+								form.set('email.error', '');
+							}
+						});
+					}
+				}
+				
+				if ( ! validator.isLength(form.get('firstname.value'), 2)) {
+					form.set('firstname.error', 'Dit veld is verplicht');
+					errors = true;
+				} else {
+					form.set('firstname.error', '');
+				}
+				if ( ! validator.isLength(form.get('lastname.value'), 2)) {
+					form.set('lastname.error', 'Dit veld is verplicht');
+					errors = true;
+				} else {
+					form.set('lastname.error', '');
+				}
+				if ( ! validator.isLength(form.get('password.value'), 4)) {
+					form.set('password.error', 'Wachtwoord moet minimaal 4 karakters lang zijn');
+					errors = true;
+				} else {
+					form.set('password.error', '');
+				}
+				if ( ! validator.equals(form.get('password.value'), form.get('password2.value'))) {
+					form.set('password2.error', 'De wachtwoorden komen niet overeen');
+					errors = true;
+				} else {
+					form.set('password2.error', '');
+				}
+
+				evt.original.preventDefault();
+			}
+		});
 	</script>
 </body>
 </html>

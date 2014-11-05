@@ -8,6 +8,7 @@ var validate = function(values, schema, callback) {
 			return validator.isEmail(input) ? false : { field: field, message: field + ' is not a valid email address' };
 		},
 
+		// Check if the input is a valid URL
 		url: function(field, input) {
 			return validator.isURL(input) ? false : { field: field, message: field + ' is not an valid URL' };
 		},

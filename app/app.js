@@ -60,6 +60,10 @@ app.get('/register', auth.isGuest, UserController.getRegister);
 app.post('/register', auth.isGuest, UserController.postRegister);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
 
+app.post('/api/check-email', function(req, res) {
+	res.json({ exists: true });
+});
+
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten');
 });

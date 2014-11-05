@@ -230,11 +230,11 @@ i.required {
 	}
 }
 
-input.unhappy {
+input.unhappy, input.error {
 	border-color: #FCABAB !important;
 }
 
-.unhappyMessage {
+.unhappyMessage, .error-msg {
 	position: absolute;
 	z-index: 500;
 	top: -18px;
@@ -429,7 +429,7 @@ body, html {
 		list-style-type: none;
 		display: block;
 		&.nav-title {
-			padding: 10px 40px;
+			padding: 10px 10px 10px 64px;
 			font-weight: bold;
 			background-color: #51C864;
 			margin: 10px 0 5px -10px;
