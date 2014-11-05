@@ -1,15 +1,20 @@
-var Datastore = require('nedb');
-var db = {
-	users: new Datastore({
-		filename: __dirname + '/../storage/users.db',
-		autoload: true
-	})
-};
+var mysql    = require('mysql');
+
+var db = mysql.createConnection({
+	host:     'localhost',
+	user:     'root',
+	password: 'usbw'
+});
+
+db.connect();
 
 var User = {
 
 	findById: function(user_id, callback) {
-		db.users.findOne({ _id: user_id }, { password: 0 }, callback);
+		var sql = 'SELECT id, email, firstname, lastname FROM users WHERE id = ?';
+		db.query(sql, user_id, function(err, rows, fields) {
+			callback(err, rows[0]);
+		});
 	},
 
 	findByEmail: function(email, callback) {

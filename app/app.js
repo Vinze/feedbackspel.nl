@@ -8,7 +8,6 @@ var session      = require('express-session');
 var auth         = require('./libs/auth');
 var config       = require('./libs/config');
 var flash        = require('./libs/flash');
-// var validate = require('./libs/ez-validator');
 
 // Load the controllers
 var HomeController   = require('./controllers/HomeController');
@@ -41,7 +40,7 @@ app.use(session({
 }));
 
 // Enable the JWToken parser
-app.use(auth.jwtokenParser);
+app.use(auth.tokenParser);
 
 // Rendering flash messages
 app.use(flash());
@@ -60,13 +59,6 @@ app.get('/logout', auth.isMember, UserController.getLogout);
 app.get('/register', auth.isGuest, UserController.getRegister);
 app.post('/register', auth.isGuest, UserController.postRegister);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
-
-app.get('/api/users/all', auth.isMember, UserController.findAll);
-app.get('/api/users/find/:id', auth.isMember, UserController.findOne);
-app.get('/api/users/delete/:id', auth.isMember, UserController.delete);
-app.post('/api/users/check-email', auth.isMember, UserController.checkEmail);
-
-app.post('/api/users/save', UserController.save);
 
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten');

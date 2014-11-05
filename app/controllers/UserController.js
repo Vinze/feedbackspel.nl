@@ -1,19 +1,10 @@
-var bcrypt    = require('bcrypt-nodejs');
+var bcrypt   = require('bcrypt-nodejs');
 var jwt       = require('jwt-simple');
+var User     = require('../models/User');
+var validate = require('../libs/validator');
 var moment    = require('moment');
-var _         = require('underscore');
-var User      = require('../models/User')
 var config    = require('../libs/config');
-var validate  = require('../libs/ez-validator');
-
-var rules = {
-	email: { required: true, email: true, minlength: 4, maxlength: 60 },
-	firstname: { required: true },
-	lastname: { required: true },
-	password: { required: true, minlength: 3 },
-	password_repeat: { required: true, same: 'password' },
-	gender: { in: ['m', 'f'] }
-};
+var _         = require('underscore');
 
 var UserController = {
 
@@ -69,54 +60,73 @@ var UserController = {
 
 	postRegister: function(req, res) {
 		var input = req.body;
-
+		var rules = {
+			email: { required: true, email: true, minlength: 4, maxlength: 60 },
+			firstname: { required: true },
+			lastname: { required: true },
+			password: { required: true, minlength: 3 },
+			password_repeat: { required: true, same: 'password' },
+			gender: { in: ['m', 'f'] }
+		};
 		validate(input, rules, function(errors) {
-			if (errors) {
-				req.flash('message', { type: 'error', message: 'Niet alle verplichte velden zijn (correct) ingevuld.' });
-				req.flash('old_input', {
-					email: input.email,
-					firstname: input.firstname,
-					lastname: input.lastname,
-					gender: input.gender
-				});
-				return res.redirect('/register');
-			}
-
-			User.findByEmail(input.email, function(err, user) {
-				if (user) {
-					req.flash('message', {type: 'error', message: 'Het ingevoerde e-mail adres is al in gebruik. (<a href="/forgot-password">Wachtwoord vergeten?</a>)'});
-					req.flash('old_input', {
-						email: input.email,
-						firstname: input.firstname,
-						lastname: input.lastname,
-						gender: input.gender
-					});
-					return res.redirect('/register');
-				}
-
-				User.insert({
-					email: input.email,
-					firstname: input.firstname,
-					lastname: input.lastname,
-					password: bcrypt.hashSync(input.password),
-					gender: input.gender,
-					registered: moment().format('YYYY-MM-DD HH:mm:ss')
-				}, function(err, doc) {
-					if (err) console.log(err);
-				});
-				req.flash('email', input.email);
-				req.flash('message', { type: 'success', message: 'Je kunt nu inloggen!' });
-				return res.redirect('/login');
-			});
-			
+			res.json(errors);
 		});
 	},
 
-	save: function(req, res) {
-		console.log(req.body);
-		res.json(req.body);
+	// postRegister: function(req, res) {
+	// 	var input = req.body;
+	// 	var rules = {
+	// 		email: { required: true, email: true, minlength: 4, maxlength: 60 },
+	// 		firstname: { required: true },
+	// 		lastname: { required: true },
+	// 		password: { required: true, minlength: 3 },
+	// 		password_repeat: { required: true, same: 'password' },
+	// 		gender: { in: ['m', 'f'] }
+	// 	};
 
-	},
+	// 	validate(input, rules, function(errors) {
+	// 		return res.send('Error saving');
+
+	// 		if (errors) {
+	// 			req.flash('message', { type: 'error', message: 'Niet alle verplichte velden zijn (correct) ingevuld.' });
+	// 			req.flash('old_input', {
+	// 				email: input.email,
+	// 				firstname: input.firstname,
+	// 				lastname: input.lastname,
+	// 				gender: input.gender
+	// 			});
+	// 			return res.redirect('/register');
+	// 		}
+
+	// 		User.findByEmail(input.email, function(err, user) {
+	// 			if (user) {
+	// 				req.flash('message', {type: 'error', message: 'Het ingevoerde e-mail adres is al in gebruik. (<a href="/forgot-password">Wachtwoord vergeten?</a>)'});
+	// 				req.flash('old_input', {
+	// 					email: input.email,
+	// 					firstname: input.firstname,
+	// 					lastname: input.lastname,
+	// 					gender: input.gender
+	// 				});
+	// 				return res.redirect('/register');
+	// 			}
+
+	// 			User.insert({
+	// 				email: input.email,
+	// 				firstname: input.firstname,
+	// 				lastname: input.lastname,
+	// 				password: bcrypt.hashSync(input.password),
+	// 				gender: input.gender,
+	// 				registered: moment().format('YYYY-MM-DD HH:mm:ss')
+	// 			}, function(err, doc) {
+	// 				if (err) console.log(err);
+	// 			});
+	// 			req.flash('email', input.email);
+	// 			req.flash('message', { type: 'success', message: 'Je kunt nu inloggen!' });
+	// 			return res.redirect('/login');
+	// 		});
+			
+	// 	});
+	// },
 
 	getDashboard: function(req, res) {
 		res.render('dashboard', { message: req.flash('message') });
@@ -125,34 +135,7 @@ var UserController = {
 	getLogout: function(req, res) {
 		res.clearCookie('jwtoken');
 		res.redirect('/');
-	},
-
-	findAll: function(req, res) {
-		User.findAll(function(err, users) {
-			res.json(users);
-		});
-	},
-
-	findOne: function(req, res) {
-		var user_id = req.params.id;
-		User.findById(user_id, function(err, user) {
-			res.json(user);
-		});
-	},
-
-	delete: function(req, res) {
-		var user_id = req.params.id;
-		User.removeById(user_id, function(err, doc) {
-			res.json(doc);
-		});
-	},
-
-	checkEmail: function(req, res) {
-		User.findByEmail(req.body.email, function(err, user) {
-			res.json((user) ? true : false);
-		});
 	}
-
 };
 
 module.exports = UserController;

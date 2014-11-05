@@ -19,7 +19,7 @@
 					<% } %>
 
 					<form action="/register" method="post" id="register-form" on-submit="validate">
-						<div class="row" style="margin-bottom: 15px">
+						<div class="row" style="margin-bottom: 20px">
 							<div class="col span-4">
 								<label for="email">E-mail adres</label>
 							</div>
@@ -29,7 +29,7 @@
 							</div>
 						</div>
 
-						<div class="row" style="margin-bottom: 15px">
+						<div class="row" style="margin-bottom: 20px">
 							<div class="col span-4">
 								<label for="firstname">Voornaam</label><br>
 							</div>
@@ -39,7 +39,7 @@
 							</div>
 						</div>
 
-						<div class="row" style="margin-bottom: 15px">
+						<div class="row" style="margin-bottom: 20px">
 							<div class="col span-4">
 								<label for="lastname">Achternaam</label><br>
 							</div>
@@ -49,7 +49,7 @@
 							</div>
 						</div>
 
-						<div class="row" style="margin-bottom: 15px">
+						<div class="row" style="margin-bottom: 20px">
 							<div class="col span-4">
 								<label>Ik ben een</label>
 							</div>
@@ -60,7 +60,7 @@
 							</div>
 						</div>
 
-						<div class="row" style="margin-bottom: 15px">
+						<div class="row" style="margin-bottom: 20px">
 							<div class="col span-4">
 								<label for="password">Wachtwoord</label>
 							</div>
@@ -94,5 +94,51 @@
 		</div>
 	</div>
 	<% include includes/scripts %>
+	<script type="text/javascript" src="/js/libs/happy.js"></script>
+	<script type="text/javascript">
+	$('#register-form').isHappy({
+		fields: {
+			'#email': {
+				required: true,
+				test: function(val) {
+					return /^(?:\w+\.?\+?)*\w+@(?:\w+\.)+\w+$/.test(val);
+				},
+				message: 'Een geldig e-mail adres is verplicht'
+			},
+			'#email': {
+				required: true,
+				test: function(val) {
+					return false;
+				},
+				message: 'MAAAAHHHH'
+			},
+			'#firstname': {
+				required: true,
+				test: function(val) {
+					return val.length < 2;
+				},
+				message: 'Voer je voornaam in'
+			},
+			'#lastname': {
+				required: true,
+				message: 'Voer je achternaam in'
+			},
+			'#password': {
+				required: true,
+				test: function(val) {
+					return val.length >= 3;
+				},
+				message: 'Het wachtwoord moet minimaal 3 karakters lang zijn'
+			},
+			'#password_repeat': {
+				required: true,
+				test: function(val) {
+					return (val == $('#password').val());
+				},
+				message: 'De wachtwoorden moeten overeenkomen'
+			},
+		}
+	});
+	</script>
 </body>
 </html>

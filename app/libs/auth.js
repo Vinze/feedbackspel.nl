@@ -1,11 +1,11 @@
 var jwt    = require('jwt-simple');
 var moment = require('moment');
 var config = require('../libs/config');
-var User   = require('../models/User')
+// var User   = require('../models/User')
 
 var auth = {
 
-	jwtokenParser: function(req, res, next) {
+	tokenParser: function(req, res, next) {
 		var token = (req.cookies && req.cookies.jwtoken) || (req.body && req.body.jwtoken) || (req.query && req.query.jwtoken) || req.headers['x-jwtoken'];
 		req.user = null;
 
@@ -16,10 +16,11 @@ var auth = {
 					res.clearCookie('jwtoken');
 					next();
 				} else {
-					User.findById(token_data.user_id, function(err, user) {
-						req.user = user;
-						next();
-					});
+					next();
+					// User.findById(token_data.user_id, function(err, user) {
+					// 	req.user = user;
+					// 	next();
+					// });
 				}
 			} catch(err) {
 				console.log(err);
