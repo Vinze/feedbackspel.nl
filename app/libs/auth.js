@@ -1,8 +1,7 @@
 var jwt     = require('jwt-simple');
 var moment  = require('moment');
 var config  = require('../libs/config');
-var User    = require('../models/User');
-var Session = require('../models/Session');
+var db      = require('../libs/datastore');
 
 var auth = {
 
@@ -13,14 +12,14 @@ var auth = {
 		            req.headers['x-jwtoken'];
 		req.user = null;
 
-		Session.findOne({ token: token, expires: { $gt: moment().unix() } }, function(err, session) {
-			if ( ! session) {
+		db.sessions.findOne({ token: token, expires: { $gt: moment().unix() } }, function(err, session) {
+			if ( ! session && token) {
 				res.clearCookie('jwtoken');
 				return next();
 			}
 			try {
 				var data = jwt.decode(session.token, config.jwt_secret);
-				User.findOne({ _id: data.user_id }, function(err, user) {
+				db.users.findOne({ _id: data.user_id }, function(err, user) {
 					req.user = {
 						_id: user._id,
 						email: user.email,

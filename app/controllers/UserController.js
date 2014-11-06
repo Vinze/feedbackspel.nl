@@ -1,10 +1,9 @@
-var bcrypt    = require('bcrypt-nodejs');
-var jwt       = require('jwt-simple');
-var moment    = require('moment');
-var validate  = require('../libs/validator');
-var config    = require('../libs/config');
-var User      = require('../models/User');
-var Session   = require('../models/Session');
+var bcrypt   = require('bcrypt-nodejs');
+var jwt      = require('jwt-simple');
+var moment   = require('moment');
+var validate = require('../libs/validator');
+var config   = require('../libs/config');
+var db       = require('../libs/datastore');
 
 var UserController = {
 
@@ -22,7 +21,7 @@ var UserController = {
 	postLogin: function(req, res) {
 		var input = req.body;
 
-		User.findOne({ email: input.email }, function(err, user) {
+		db.users.findOne({ email: input.email }, function(err, user) {
 			if ( ! user) return res.redirect('/login');
 
 			bcrypt.compare(input.password, user.password, function(err, match) {
@@ -36,7 +35,7 @@ var UserController = {
 					lastname: user.lastname
 				}, config.jwt_secret);
 				
-				Session.insert({
+				db.sessions.insert({
 					user_id: user._id,
 					token: token,
 					expires: expires.unix(),
@@ -77,10 +76,10 @@ var UserController = {
 		validate(input, rules, function(errors) {
 			if (errors) return res.send('Validation failed');
 
-			User.findOne({ email: input.email }, function(err, exists) {
+			db.users.findOne({ email: input.email }, function(err, exists) {
 				if (exists) return res.send('E-mail already taken');
 
-				User.insert({
+				db.users.insert({
 					email: input.email,
 					password: bcrypt.hashSync(input.password),
 					firstname: input.firstname,
@@ -95,7 +94,7 @@ var UserController = {
 	},
 
 	postCheckEmail: function(req, res) {
-		User.findOne({ email: req.body.email }, function(err, exists) {
+		db.users.findOne({ email: req.body.email }, function(err, exists) {
 			res.json({ exists: exists ? true : false });
 		});
 	}
