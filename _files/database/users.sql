@@ -7,4 +7,3 @@ CREATE TABLE IF NOT EXISTS `users` (
 	`created_at` datetime NOT NULL,
 	`updated_at` datetime NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-

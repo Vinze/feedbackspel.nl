@@ -63,9 +63,10 @@
 					<label>Ik ben een</label>
 				</div>
 				<div class="col span-8">
-					<label><input type="radio" name="gender" value="m" class="radio"> Man</label>
-					<label><input type="radio" name="gender" value="f" class="radio"> Vrouw	</label>
+					<label><input type="radio" name="{{gender.value}}" value="m" class="radio" on-blur="validate"> Man</label>
+					<label><input type="radio" name="{{gender.value}}" value="f" class="radio" on-blur="validate"> Vrouw</label>
 					<i class="required"></i>
+					{{#if gender.error}}<span class="error-msg">{{gender.error}}</span>{{/if}}
 				</div>
 			</div>
 
@@ -109,6 +110,7 @@
 				email:     { value: '', error: '' },
 				firstname: { value: '', error: '' },
 				lastname:  { value: '', error: '' },
+				gender:    { value: 'm', error: '' },
 				password:  { value: '', error: '' },
 				password2: { value: '', error: '' }
 			}
@@ -116,17 +118,14 @@
 
 		form.on({
 			validate: function(evt, field) {
-				// var errors = { email: false, firstname: false, lastname: false, password: false, password2: false };
 				var errors = false;
-
 
 				if (field == 'email' || ! field) {
 					if ( ! validator.isEmail(form.get('email.value'))) {
 						form.set('email.error', 'Geen geldig e-mail adres');
 						errors = true;
 					} else {
-						var email = form.get('email.value');
-						$.post('/api/check-email', { email: email }, function(res) {
+						$.post('/api/check-email', { email: form.get('email.value') }, function(res) {
 							if (res.exists) {
 								form.set('email.error', 'Dit e-mail adres is al in gebruikt');
 								errors = true;
@@ -136,7 +135,6 @@
 						});
 					}
 				}
-				
 				if ( ! validator.isLength(form.get('firstname.value'), 2)) {
 					form.set('firstname.error', 'Dit veld is verplicht');
 					errors = true;
@@ -149,8 +147,14 @@
 				} else {
 					form.set('lastname.error', '');
 				}
+				if ( ! validator.isIn(form.get('gender.value'), ['m', 'f'])) {
+					form.set('gender.error', 'Dit veld is verplicht');
+					errors = true;
+				} else {
+					form.set('gender.error', '');
+				}
 				if ( ! validator.isLength(form.get('password.value'), 4)) {
-					form.set('password.error', 'Wachtwoord moet minimaal 4 karakters lang zijn');
+					form.set('password.error', 'Het wachtwoord moet minimaal 4 karakters lang zijn');
 					errors = true;
 				} else {
 					form.set('password.error', '');
