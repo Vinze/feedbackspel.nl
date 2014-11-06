@@ -48,6 +48,7 @@ app.use(flash());
 // Make the user available
 app.use(function(req, res, next) {
 	res.locals.user = req.user;
+	console.log(req.user);
 	next();
 });
 
@@ -60,9 +61,11 @@ app.get('/register', auth.isGuest, UserController.getRegister);
 app.post('/register', auth.isGuest, UserController.postRegister);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
 
-app.post('/api/check-email', function(req, res) {
-	res.json({ exists: true });
+app.get('/users', auth.isAdmin, function(req, res) {
+	res.render('users/index');
 });
+
+app.post('/api/check-email', UserController.postCheckEmail);
 
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten');

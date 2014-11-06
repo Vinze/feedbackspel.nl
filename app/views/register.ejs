@@ -30,7 +30,7 @@
 					<label for="email">E-mail adres</label>
 				</div>
 				<div class="col span-8">
-					<input type="text" name="email" value="{{email.value}}" class="text{{email.error ? ' error' : ''}}" id="email" on-blur="validate:email">
+					<input type="text" name="email" value="{{email.value}}" class="text{{email.error ? ' error' : ''}}" id="email" on-blur="validateEmail">
 					<i class="required"></i>
 					{{#if email.error}}<span class="error-msg">{{email.error}}</span>{{/if}}
 				</div>
@@ -41,7 +41,7 @@
 					<label for="firstname">Voornaam</label><br>
 				</div>
 				<div class="col span-8">
-					<input type="text" name="firstname" value="{{firstname.value}}" class="text{{firstname.error ? ' error' : ''}}" id="firstname" on-blur="validate">
+					<input type="text" name="firstname" value="{{firstname.value}}" class="text{{firstname.error ? ' error' : ''}}" id="firstname" on-blur="validateFirstname">
 					<i class="required"></i>
 					{{#if firstname.error}}<span class="error-msg">{{firstname.error}}</span>{{/if}}
 				</div>
@@ -52,7 +52,7 @@
 					<label for="lastname">Achternaam</label><br>
 				</div>
 				<div class="col span-8">
-					<input type="text" name="lastname" value="{{lastname.value}}" class="text{{lastname.error ? ' error' : ''}}" id="lastname" on-blur="validate">
+					<input type="text" name="lastname" value="{{lastname.value}}" class="text{{lastname.error ? ' error' : ''}}" id="lastname" on-blur="validateLastname">
 					<i class="required"></i>
 					{{#if lastname.error}}<span class="error-msg">{{lastname.error}}</span>{{/if}}
 				</div>
@@ -63,8 +63,8 @@
 					<label>Ik ben een</label>
 				</div>
 				<div class="col span-8">
-					<label><input type="radio" name="{{gender.value}}" value="m" class="radio" on-blur="validate"> Man</label>
-					<label><input type="radio" name="{{gender.value}}" value="f" class="radio" on-blur="validate"> Vrouw</label>
+					<label><input type="radio" name="{{gender.value}}" value="m" class="radio" on-blur="validateGender"> Man</label>
+					<label><input type="radio" name="{{gender.value}}" value="f" class="radio" on-blur="validateGender"> Vrouw</label>
 					<i class="required"></i>
 					{{#if gender.error}}<span class="error-msg">{{gender.error}}</span>{{/if}}
 				</div>
@@ -75,20 +75,9 @@
 					<label for="password">Wachtwoord</label>
 				</div>
 				<div class="col span-8">
-					<input type="password" name="password" value="{{password.value}}" class="text{{password.error ? ' error' : ''}}" id="password" on-blur="validate">
+					<input type="password" name="password" value="{{password.value}}" class="text{{password.error ? ' error' : ''}}" id="password" on-blur="validatePassword">
 					<i class="required"></i>
 					{{#if password.error}}<span class="error-msg">{{password.error}}</span>{{/if}}
-				</div>
-			</div>
-
-			<div class="row" style="margin-bottom: 20px">
-				<div class="col span-4">
-					<label for="password2">Herhaal wachtwoord</label>
-				</div>
-				<div class="col span-8">
-					<input type="password" name="password2" value="{{password2.value}}" class="text{{password2.error ? ' error' : ''}}" id="password2" on-blur="validate">
-					<i class="required"></i>
-					{{#if password2.error}}<span class="error-msg">{{password2.error}}</span>{{/if}}
 				</div>
 			</div>
 
@@ -112,61 +101,70 @@
 				lastname:  { value: '', error: '' },
 				gender:    { value: 'm', error: '' },
 				password:  { value: '', error: '' },
-				password2: { value: '', error: '' }
+				password2: { value: '', error: '' },
+				errors:    false
 			}
 		});
 
 		form.on({
 			validate: function(evt, field) {
-				var errors = false;
+				form.set('errors', false);
+				form.fire('validateEmail');
+				form.fire('validateFirstname');
+				form.fire('validateLastname');
+				form.fire('validateGender');
+				form.fire('validatePassword');
 
-				if (field == 'email' || ! field) {
-					if ( ! validator.isEmail(form.get('email.value'))) {
-						form.set('email.error', 'Geen geldig e-mail adres');
-						errors = true;
-					} else {
-						$.post('/api/check-email', { email: form.get('email.value') }, function(res) {
-							if (res.exists) {
-								form.set('email.error', 'Dit e-mail adres is al in gebruikt');
-								errors = true;
-							} else {
-								form.set('email.error', '');
-							}
-						});
-					}
+				if (form.get('errors')) {
+					evt.original.preventDefault();
 				}
+			},
+			validateEmail: function() {
+				if ( ! validator.isEmail(form.get('email.value'))) {
+					form.set('email.error', 'Geen geldig e-mail adres');
+					form.set('errors', true);
+				} else {
+					$.post('/api/check-email', { email: form.get('email.value') }, function(res) {
+						if (res.exists) {
+							form.set('email.error', 'Dit e-mail adres is al in gebruikt');
+							form.set('errors', true);
+						} else {
+							form.set('email.error', '');
+						}
+					});
+				}
+			},
+			validateFirstname: function() {
 				if ( ! validator.isLength(form.get('firstname.value'), 2)) {
 					form.set('firstname.error', 'Dit veld is verplicht');
-					errors = true;
+					form.set('errors', true);
 				} else {
 					form.set('firstname.error', '');
 				}
+			},
+			validateLastname: function() {
 				if ( ! validator.isLength(form.get('lastname.value'), 2)) {
 					form.set('lastname.error', 'Dit veld is verplicht');
-					errors = true;
+					form.set('errors', true);
 				} else {
 					form.set('lastname.error', '');
 				}
+			},
+			validateGender: function() {
 				if ( ! validator.isIn(form.get('gender.value'), ['m', 'f'])) {
 					form.set('gender.error', 'Dit veld is verplicht');
-					errors = true;
+					form.set('errors', true);
 				} else {
 					form.set('gender.error', '');
 				}
+			},
+			validatePassword: function() {
 				if ( ! validator.isLength(form.get('password.value'), 4)) {
 					form.set('password.error', 'Het wachtwoord moet minimaal 4 karakters lang zijn');
-					errors = true;
+					form.set('errors', true);
 				} else {
 					form.set('password.error', '');
 				}
-				if ( ! validator.equals(form.get('password.value'), form.get('password2.value'))) {
-					form.set('password2.error', 'De wachtwoorden komen niet overeen');
-					errors = true;
-				} else {
-					form.set('password2.error', '');
-				}
-
-				evt.original.preventDefault();
 			}
 		});
 	</script>

@@ -1,4 +1,1 @@
-{"email":"tjisse_reitsma@hotmail.com","firstname":"Tjisse","lastname":"Reitsma","password":"$2a$10$1bPbE8bxGVqSDoaEnhfj9u7gQDXcG3KCXLXHYS/7rf0UDMv12xC1K","gender":"m","_id":"8JZ6XDZqOMbvQIzy"}
-{"email":"ronald_grootjebbink@hotmail.com","firstname":"Ronald","lastname":"Groot Jebbink","password":"$2a$10$qxcJWUvIMDgHVh6iV5nAleT7gA8/MZVFR67LupIteCyWAil0MPy4.","gender":"m","_id":"RlBX67HbANXfTSjz"}
-{"email":"vbremer89@gmail.com","firstname":"Vincent","lastname":"Bremer","password":"$2a$10$I6lvK11Z2ilaR0I5D0.leeCooCh2kerJ5b/cArr/irxUyzdcq0KNW","gender":"m","_id":"drjpJBtp9feniOWG"}
-{"email":"niels.br@hotmail.com","firstname":"Niels","lastname":"Bremer","password":"$2a$10$GPwlzvchwvyJE7KeEEO9DuU3ADL4FK97rKf7j8s./8DBASxw0njTC","gender":"m","_id":"uppE55PVESnB7e5h"}
+{"email":"vbremer89@gmail.com","password":"$2a$10$6UojoVFjo4FdFoGqUX2nkufxNtLc8yOkqy3Mrw4V.yxlDS7TeYGJK","firstname":"Vincent","lastname":"Bremer","admin":"true","created_at":"2014-11-06 14:34:56","updated_at":"2014-11-06 14:34:56","_id":"6P2NAHPwJRSEJrAH"}
