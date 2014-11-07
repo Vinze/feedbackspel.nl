@@ -1,29 +1,29 @@
-function showNavigation() {
+function showSidebar() {
 	$('body').addClass('show-nav');
 	$('body').prepend('<div class="site-overlay close-nav"></div>');
 }
 
-function hideNavigation() {
+function hideSidebar() {
 	$('body').removeClass('show-nav');
 	$('.site-overlay').remove();
 }
 
 $('.nav-toggle').on('tap, click', function(evt) {
-	showNavigation();
+	showSidebar();
 	evt.preventDefault();
 });
 
-$('.navigation').on('swipeRight', function() {
-	hideNavigation();
+$('.sidebar').on('swipeRight', function() {
+	hideSidebar();
 });
 
 $('body').on('tap, click', '.close-nav', function(evt) {
-	hideNavigation();
+	hideSidebar();
 	evt.preventDefault();
 });
 
 $(document).on('keyup', function(evt) {
 	if (evt.keyCode == 27) {
-		hideNavigation();
+		hideSidebar();
 	}
 });

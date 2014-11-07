@@ -4,23 +4,11 @@
 	<% include includes/head %>
 </head>
 <body>
-	<% include includes/navigation %>
-	<div class="site-wrapper">
-		<div class="header-wrapper">
-			<% include includes/header %>
-		</div>
-		<div class="content-wrapper">
-			<div class="content container">
-				<div class="box page-form" id="content" style="max-width: 640px;">
-					
-				</div>
-			</div>
-		</div>
-		<div class="footer-wrapper">
-			<% include includes/footer %>
-		</div>
+	<% include includes/top %>
+	<div class="content-wrapper">
+		<div class="box page-form" id="content" style="max-width: 640px;"></div>
 	</div>
-	<% include includes/scripts %>
+	<% include includes/bottom %>
 	
 	<script type="text/template" id="form-tpl">
 		<h2>Registreren</h2>
@@ -89,7 +77,6 @@
 		</form>
 	</script>
 
-	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
 	<script type="text/javascript" src="/js/libs/validator.min.js"></script>
 	<script type="text/javascript">
 		var form = new Ractive({

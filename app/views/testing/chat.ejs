@@ -40,21 +40,15 @@
 	</style>
 </head>
 <body>
-	<div class="header-wrapper">
-		<% include ../includes/header %>
-	</div>
-	<div class="site-wrapper">
-		<div class="content-wrapper">
-			<div class="content container">
-				<div id="content">
-					<!-- CONTENT -->
-				</div>
+	<% include ../includes/top %>
+	<div class="content-wrapper">
+		<div class="content container">
+			<div id="content">
+				<!-- CONTENT -->
 			</div>
 		</div>
-		<div class="footer-wrapper">
-			<% include ../includes/footer %>
-		</div>
 	</div>
+	<% include ../includes/bottom %>
 
 	<script type="text/template" id="template">
 		<div class="row">
@@ -87,7 +81,6 @@
 	</script>
 
 	<script type="text/javascript" src="/js/libs/cookies.min.js"></script>
-	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
 

@@ -4,47 +4,36 @@
 	<% include includes/head %>
 </head>
 <body>
-	<% include includes/navigation %>
-	<div class="site-wrapper">
-		<div class="header-wrapper">
-			<% include includes/header %>
-		</div>
-		<div class="content-wrapper">
-			<div class="box page-form" style="width: 450px">
-				<h2>Inloggen</h2>
-				
-				<% if (message) { %>
-					<div class="flash-<%= message.type %>"><%- message.message %></div>
-				<% } %>
+	<% include includes/top %>
+	<div class="content-wrapper">
+		<div class="box page-form" style="width: 450px">
+			<h2>Inloggen</h2>
+			
+			<% if (message) { %>
+				<div class="flash-<%= message.type %>"><%- message.message %></div>
+			<% } %>
 
-				<form action="/login" method="post">
-
-					<div class="row" style="margin-bottom: 10px">
-						<div class="col span-12">
-							<label for="email">E-mail adres:</label><br>
-							<input type="text" name="email" value="<%= email %>" class="text" id="email">
-						</div>
+			<form action="/login" method="post">
+				<div class="row" style="margin-bottom: 10px">
+					<div class="col span-12">
+						<label for="email">E-mail adres:</label><br>
+						<input type="text" name="email" value="<%= email %>" class="text" id="email">
 					</div>
-
-					<div class="row" style="margin-bottom: 20px">
-						<div class="col span-12">
-							<label for="password">Wachtwoord:</label><br>
-							<input type="password" name="password" value="" class="text" id="password">
-						</div>
+				</div>
+				<div class="row" style="margin-bottom: 20px">
+					<div class="col span-12">
+						<label for="password">Wachtwoord:</label><br>
+						<input type="password" name="password" value="" class="text" id="password">
 					</div>
-
-					<div class="row">
-						<div class="col span-12">
-							<button class="btn confirm"><i class="fa fa-sign-in"></i> Inloggen</button>
-						</div>
+				</div>
+				<div class="row">
+					<div class="col span-12">
+						<button class="btn confirm"><i class="fa fa-sign-in"></i> Inloggen</button>
 					</div>
-				</form>
-			</div>
-		</div>
-		<div class="footer-wrapper">
-			<% include includes/footer %>
+				</div>
+			</form>
 		</div>
 	</div>
-	<% include includes/scripts %>
+	<% include includes/bottom %>
 </body>
 </html>

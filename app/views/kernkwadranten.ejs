@@ -26,76 +26,61 @@
 		</style>
 </head>
 <body>
-	<% include includes/navigation %>
-
-	<div class="site-wrapper">
-		<div class="header-wrapper">
-			<% include includes/header %>
-		</div>
-
-		<div class="content-wrapper">
-			<div class="kernkwadranten"  id="content"></div>
-		</div>
-		
-		<div class="footer-wrapper">
-			<% include includes/footer %>
-		</div>
+	<% include includes/top %>
+	<div class="content-wrapper">
+		<div class="kernkwadranten"  id="content"></div>
 	</div>
-
+	<% include includes/bottom %>
+	
 	<script type="text/template" id="template">
-		
-			<div class="box-1">
-				<h3>Kernkwaliteit</h3>
-				<p>
-					<select name="selected" value="{{selected}}" class="select">
-						{{#each kernkwadranten:i}}
-							<option value="{{i}}">{{ucfirst(kwaliteit.naam)}}</option>
-						{{/each}}
-					</select>
-				</p>
-				<p>{{kernkwadranten[selected].kwaliteit.omschrijving}}</p>
-			</div>
+		<div class="box-1">
+			<h3>Kernkwaliteit</h3>
+			<p>
+				<select name="selected" value="{{selected}}" class="select">
+					{{#each kernkwadranten:i}}
+						<option value="{{i}}">{{ucfirst(kwaliteit.naam)}}</option>
+					{{/each}}
+				</select>
+			</p>
+			<p>{{kernkwadranten[selected].kwaliteit.omschrijving}}</p>
+		</div>
 
-			<div class="box-2">
-				<h3>Valkuil</h3>
-				<p>
-					<select name="selected" value="{{selected}}" class="select">
-						{{#each kernkwadranten:i}}
-							<option value="{{i}}">{{ucfirst(valkuil.naam)}}</option>
-						{{/each}}
-					</select>
-				</p>
-				<p>{{kernkwadranten[selected].valkuil.omschrijving}}</p>
-			</div>
+		<div class="box-2">
+			<h3>Valkuil</h3>
+			<p>
+				<select name="selected" value="{{selected}}" class="select">
+					{{#each kernkwadranten:i}}
+						<option value="{{i}}">{{ucfirst(valkuil.naam)}}</option>
+					{{/each}}
+				</select>
+			</p>
+			<p>{{kernkwadranten[selected].valkuil.omschrijving}}</p>
+		</div>
 
-			<div class="box-3">
-				<h3>Allergie</h3>
-				<p>
-					<select name="selected" value="{{selected}}" class="select">
-						{{#each kernkwadranten:i}}
-							<option value="{{i}}">{{ucfirst(allergie.naam)}}</option>
-						{{/each}}
-					</select>
-				</p>
-				<p>{{kernkwadranten[selected].allergie.omschrijving}}</p>
-			</div>
+		<div class="box-3">
+			<h3>Allergie</h3>
+			<p>
+				<select name="selected" value="{{selected}}" class="select">
+					{{#each kernkwadranten:i}}
+						<option value="{{i}}">{{ucfirst(allergie.naam)}}</option>
+					{{/each}}
+				</select>
+			</p>
+			<p>{{kernkwadranten[selected].allergie.omschrijving}}</p>
+		</div>
 
-			<div class="box-4">
-				<h3>Uitdaging</h3>
-				<p>
-					<select name="selected" value="{{selected}}" class="select">
-						{{#each kernkwadranten:i}}
-							<option value="{{i}}">{{ucfirst(uitdaging.naam)}}</option>
-						{{/each}}
-					</select>
-				</p>
-				<p>{{kernkwadranten[selected].uitdaging.omschrijving}}</p>
-			</div>
-
+		<div class="box-4">
+			<h3>Uitdaging</h3>
+			<p>
+				<select name="selected" value="{{selected}}" class="select">
+					{{#each kernkwadranten:i}}
+						<option value="{{i}}">{{ucfirst(uitdaging.naam)}}</option>
+					{{/each}}
+				</select>
+			</p>
+			<p>{{kernkwadranten[selected].uitdaging.omschrijving}}</p>
+		</div>
 	</script>
-		
-	<% include includes/scripts %>
-	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
 	<script type="text/javascript" src="/js/kernkwadranten.js"></script>
 </body>
 </html>

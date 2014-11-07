@@ -4,44 +4,36 @@
 	<% include includes/head %>
 </head>
 <body>
-	<% include includes/navigation %>
-	<div class="site-wrapper">
-		<div class="header-wrapper">
-			<% include includes/header %>
-		</div>
-		<div class="content-wrapper">
-			<div class="content container">
-				<h1>Welkom, <%= user.firstname %></h1>
-				<% if (message) { %>
-					<div class="flash-<%= message.type %>"><%- message.message %></div>
-				<% } %>
-				<div class="row section">
-					<div class="box col span-8 align-center">
-						<p><button class="btn confirm"><i class="fa fa-gamepad"></i> Nieuw spel starten</button></p>
-						<p><button class="btn confirm"><i class="fa fa-gamepad"></i> Aan spel deelnemen</button></p>
-					</div>
-					<div class="box col span-4">
-						<h2>Acties</h2>
-						<ul>
-							<li><a href="/kernkwadranten">Kernkwadranten test</a></li>
-							<li><a href="/chat">Chat test</a></li>
-							<li>Lorem ipsum</li>
-							<li>Sapiente vel</li>
-						</ul>
-					</div>
+	<% include includes/top %>
+	<div class="content-wrapper">
+		<div class="content container">
+			<% if (message) { %>
+				<div class="flash-<%= message.type %>"><%- message.message %></div>
+			<% } %>
+			<div class="row section">
+				<div class="box col span-8">
+					<h2>Dashboard</h2>
+					<p><button class="btn confirm"><i class="fa fa-gamepad"></i> Nieuw spel starten</button></p>
+					<p><button class="btn confirm"><i class="fa fa-gamepad"></i> Aan spel deelnemen</button></p>
 				</div>
-				<div class="row section">
-					<div class="box col span-12">
-						<h2>Resultaten</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente vel nostrum ad, deleniti facere iste eius error aspernatur necessitatibus illum nobis consequuntur quos earum atque ipsum, neque, pariatur numquam repellendus.</p>
-					</div>
+				<div class="box col span-4">
+					<h2>Acties</h2>
+					<ul>
+						<li><a href="/kernkwadranten">Kernkwadranten test</a></li>
+						<li><a href="/chat">Chat test</a></li>
+						<li>Lorem ipsum</li>
+						<li>Sapiente vel</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row section">
+				<div class="box col span-12">
+					<h2>Resultaten</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente vel nostrum ad, deleniti facere iste eius error aspernatur necessitatibus illum nobis consequuntur quos earum atque ipsum, neque, pariatur numquam repellendus.</p>
 				</div>
 			</div>
 		</div>
-		<div class="footer-wrapper">
-			<% include includes/footer %>
-		</div>
 	</div>
-	<% include includes/scripts %>
+	<% include includes/bottom %>
 </body>
 </html>

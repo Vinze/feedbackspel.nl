@@ -48,7 +48,6 @@ app.use(flash());
 // Make the user available
 app.use(function(req, res, next) {
 	res.locals.user = req.user;
-	console.log(req.user);
 	next();
 });
 
@@ -65,7 +64,9 @@ app.get('/users', auth.isAdmin, function(req, res) {
 	res.render('users/index');
 });
 
-app.post('/api/check-email', UserController.postCheckEmail);
+app.post('/api/check-email', UserController.checkEmail);
+app.get('/api/users/all', auth.isAdmin, UserController.findAll);
+app.get('/api/users/:id', auth.isAdmin, UserController.findOne);
 
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten');

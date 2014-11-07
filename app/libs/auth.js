@@ -10,7 +10,10 @@ var auth = {
 		            (req.body && req.body.jwtoken) ||
 		            (req.query && req.query.jwtoken) ||
 		            req.headers['x-jwtoken'];
+		req.token = token || null;
 		req.user = null;
+
+		if ( ! token) return next();
 
 		db.sessions.findOne({ token: token, expires: { $gt: moment().unix() } }, function(err, session) {
 			if ( ! session && token) {
@@ -20,6 +23,7 @@ var auth = {
 			try {
 				var data = jwt.decode(session.token, config.jwt_secret);
 				db.users.findOne({ _id: data.user_id }, function(err, user) {
+					if ( ! user) return next();
 					req.user = {
 						_id: user._id,
 						email: user.email,

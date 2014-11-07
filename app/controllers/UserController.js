@@ -45,13 +45,16 @@ var UserController = {
 				});
 
 				res.cookie('jwtoken', token, { maxAge: expires.diff(moment()) });
-				res.redirect('/');
+				res.redirect('/dashboard');
 			});
 
 		});
 	},
 
 	getLogout: function(req, res) {
+		db.sessions.remove({ token: req.token }, function(err, removed) {
+			if (err) console.log(err);
+		});
 		res.clearCookie('jwtoken');
 		res.redirect('/');
 	},
@@ -84,6 +87,7 @@ var UserController = {
 					password: bcrypt.hashSync(input.password),
 					firstname: input.firstname,
 					lastname: input.lastname,
+					admin: false,
 					created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
 					updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
 				}, function(err, doc) {
@@ -93,48 +97,20 @@ var UserController = {
 		});
 	},
 
-	postCheckEmail: function(req, res) {
+	checkEmail: function(req, res) {
 		db.users.findOne({ email: req.body.email }, function(err, exists) {
 			res.json({ exists: exists ? true : false });
 		});
+	},
+
+	findAll: function(req, res) {
+		db.users.find({}, { password: 0 }, function(err, users) {
+			res.json(users);
+		});
+	},
+
+	findOne: function(req, res) {
 	}
 };
 
 module.exports = UserController;
-
-/*
-postLogin: function(req, res) {
-	if (req.body.email.length < 3) {
-		req.flash('message', {type: 'error', message: 'Voer een e-mail adres in!'});
-		return res.redirect('/login');
-	} 
-	// Find the user
-	User.findByEmail(req.body.email, function(err, user) {
-		// Check if the password matches
-		if ( ! user) {
-			req.flash('message', {type: 'error', message: 'Het ingevoerde e-mail adres is niet bekend.'});
-			return res.redirect('/login');
-		}
-
-		bcrypt.compare(req.body.password, user.password, function(err, match) {
-			if (match == true) {
-				// Create the JWToken
-				var expires = moment().add(config.token_expires, 'days').unix();
-				var token = jwt.encode({
-					expires: expires,
-					user_id: user._id,
-					email: user.email,
-					firstname: user.firstname,
-					lastname: user.lastname
-				}, config.jwt_secret);
-				res.cookie('jwtoken', token, { maxAge: 31536000 * 1000 });
-				res.redirect('/dashboard');
-			} else {
-				req.flash('email', req.body.email);
-				req.flash('message', {type: 'error', message: 'E-mail adres/wachtwoord komen niet overeen.'});
-				res.redirect('/login');
-			}
-		});
-	});
-},
-*/

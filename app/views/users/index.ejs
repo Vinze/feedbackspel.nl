@@ -4,32 +4,38 @@
 	<% include ../includes/head %>
 </head>
 <body>
-	<% include ../includes/navigation %>
-
-	<div class="site-wrapper">
-	
-		<div class="header-wrapper">
-			<% include ../includes/header %>
-		</div>
-
-		<div class="content-wrapper">
-			<div class="content container">
-
-				<h1>Gebruikers</h1>
-				
-				<div class="row section">
-					<div class="box col span-12">
-						Hmmm
+	<% include ../includes/top %>
+	<div class="content-wrapper">
+		<div class="content container">
+			<div class="row section">
+				<div class="box col span-12">
+					<h2>Gebruikers</h2>
+					<div class="responsive-table">
+						<table>
+							<thead>
+								<tr>
+									<th>Voornaam</th>
+									<th>Achternaam</th>
+									<th>Email</th>
+									<th>Gemaakt</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% for (var i = 0; i < 10; i++) { %>
+								<tr>
+									<td>Vincent</td>
+									<td>Bremer</td>
+									<td>vbremer89@gmail.com</td>
+									<td>24-10-2014 12:30:21</td>
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<div class="footer-wrapper">
-			<% include ../includes/footer %>
-		</div>
 	</div>
-	
-	<% include ../includes/scripts %>
+	<% include ../includes/bottom %>
 </body>
 </html>

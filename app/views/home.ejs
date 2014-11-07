@@ -3,34 +3,22 @@
 <head>
 	<% include includes/head %>
 </head>
-<body>
-	<% include includes/navigation %>
+<body class="home">
+	<% include includes/top %>
+	<div class="content-wrapper">
+		<div class="container">
+			<div class="home-center">
+				<div class="logo">
+					<img src="/img/banner.png">
+				</div>
 
-	<div class="site-wrapper home">
-	
-		<div class="header-wrapper">
-			<% include includes/header %>
-		</div>
-
-		<div class="content-wrapper">
-			<div class="container">
-				<div class="home-center">
-					<div class="logo">
-						<img src="/img/banner.png">
-					</div>
-
-					<div id="info">
-						<!-- Info will be rendered here -->					
-					</div>
+				<div id="info">
+					<!-- Info will be rendered here -->					
 				</div>
 			</div>
 		</div>
-		
-		<div class="footer-wrapper">
-			<% include includes/footer %>
-		</div>
 	</div>
-	
+	<% include includes/bottom %>
 	<script type="text/template" id="info-tpl">
 		{{#if show_front}}
 			<div class="info front" intro="fly:{ x: -300, y: 0, duration: 350 }" outro="fly:{ x: -300, y: 0, duration: 350 }">
@@ -48,9 +36,6 @@
 			</div>
 		{{/if}}
 	</script>
-	<% include includes/scripts %>
-	<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
-	<script type="text/javascript" src="/js/libs/ractive-plugins.js"></script>
 	<script type="text/javascript">
 	var info = new Ractive({
 		el: "info",
@@ -74,7 +59,7 @@
 			});
 			evt.original.preventDefault();
 		}
-	})
+	});
 	</script>
 </body>
 </html>
