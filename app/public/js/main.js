@@ -1,11 +1,11 @@
 function showSidebar() {
 	$('body').addClass('show-nav');
-	$('body').prepend('<div class="site-overlay close-nav"></div>');
+	$('body').prepend('<div class="sidebar-overlay close-nav"></div>');
 }
 
 function hideSidebar() {
 	$('body').removeClass('show-nav');
-	$('.site-overlay').remove();
+	$('.sidebar-overlay').remove();
 }
 
 $('.nav-toggle').on('tap, click', function(evt) {

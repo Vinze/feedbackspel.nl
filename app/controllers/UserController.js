@@ -11,10 +11,13 @@ var UserController = {
 		res.render('dashboard', { message: req.flash('message') });
 	},
 
+	getIndex: function(req, res) {
+		res.render('users/index');
+	},
+
 	getLogin: function(req, res) {
 		res.render('login', {
-			email: req.flash('email') || '',
-			message: req.flash('message')
+			email: req.flash('email')
 		});
 	},
 
@@ -22,10 +25,18 @@ var UserController = {
 		var input = req.body;
 
 		db.users.findOne({ email: input.email }, function(err, user) {
-			if ( ! user) return res.redirect('/login');
+			if ( ! user) {
+				req.flash('message', { type: 'error', text: 'Het opgegeven e-mail adres werd niet gevonden..' });
+				req.flash('email', input.email);
+				return res.redirect('/login');
+			}
 
 			bcrypt.compare(input.password, user.password, function(err, match) {
-				if ( ! match) return res.redirect('/login');
+				if ( ! match) {
+					req.flash('message', { type: 'error', text: 'E-mail adres en wachtwoord komen niet overeen.' });
+					req.flash('email', input.email);
+					return res.redirect('/login');
+				}
 
 				var expires = moment().add(1, 'years');
 				var token = jwt.encode({
@@ -34,14 +45,14 @@ var UserController = {
 					firstname: user.firstname,
 					lastname: user.lastname
 				}, config.jwt_secret);
-				
+
 				db.sessions.insert({
 					user_id: user._id,
 					token: token,
 					expires: expires.unix(),
 					ipaddress: req.connection.remoteAddress
 				}, function(err, doc) {
-					if (err) console.log(err);
+					if (err) console.log('error inserting token', err);
 				});
 
 				res.cookie('jwtoken', token, { maxAge: expires.diff(moment()) });

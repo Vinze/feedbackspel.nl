@@ -4,156 +4,162 @@
 	<% include includes/head %>
 </head>
 <body>
-	<% include includes/top %>
-	<div class="content-wrapper">
-		<div class="box page-form" id="content" style="max-width: 640px;"></div>
+<% include includes/top %>
+<div class="content-wrapper">
+	<div class="content container">
+		<div class="row">
+		<div class="box col span-8 offset-2" id="content">
+			<!-- The form will be rendered here -->
+		</div>
+		</div>
 	</div>
-	<% include includes/bottom %>
+</div>
+<% include includes/bottom %>
 	
-	<script type="text/template" id="form-tpl">
-		<h2>Registreren</h2>
-		<form action="/register" method="post" id="register-form" on-submit="validate">
-			<div class="row" style="margin-bottom: 20px">
-				<div class="col span-4">
-					<label for="email">E-mail adres</label>
-				</div>
-				<div class="col span-8">
-					<input type="text" name="email" value="{{email.value}}" class="text{{email.error ? ' error' : ''}}" id="email" on-blur="validateEmail">
-					<i class="required"></i>
-					{{#if email.error}}<span class="error-msg">{{email.error}}</span>{{/if}}
-				</div>
+<script type="text/template" id="form-tpl">
+	<h2>Registreren</h2>
+	<form action="/register" method="post" id="register-form" on-submit="validate">
+		<div class="row" style="margin-bottom: 20px">
+			<div class="col span-4">
+				<label for="email">E-mail adres:</label>
 			</div>
-
-			<div class="row" style="margin-bottom: 20px">
-				<div class="col span-4">
-					<label for="firstname">Voornaam</label><br>
-				</div>
-				<div class="col span-8">
-					<input type="text" name="firstname" value="{{firstname.value}}" class="text{{firstname.error ? ' error' : ''}}" id="firstname" on-blur="validateFirstname">
-					<i class="required"></i>
-					{{#if firstname.error}}<span class="error-msg">{{firstname.error}}</span>{{/if}}
-				</div>
+			<div class="col span-8">
+				<input type="text" name="email" value="{{email.value}}" class="text{{email.error ? ' error' : ''}}" id="email" on-blur="validateEmail">
+				<i class="required"></i>
+				{{#if email.error}}<span class="error-msg">{{email.error}}</span>{{/if}}
 			</div>
+		</div>
 
-			<div class="row" style="margin-bottom: 20px">
-				<div class="col span-4">
-					<label for="lastname">Achternaam</label><br>
-				</div>
-				<div class="col span-8">
-					<input type="text" name="lastname" value="{{lastname.value}}" class="text{{lastname.error ? ' error' : ''}}" id="lastname" on-blur="validateLastname">
-					<i class="required"></i>
-					{{#if lastname.error}}<span class="error-msg">{{lastname.error}}</span>{{/if}}
-				</div>
+		<div class="row" style="margin-bottom: 20px">
+			<div class="col span-4">
+				<label for="firstname">Voornaam:</label><br>
 			</div>
-
-			<div class="row" style="margin-bottom: 20px">
-				<div class="col span-4">
-					<label>Ik ben een</label>
-				</div>
-				<div class="col span-8">
-					<label><input type="radio" name="{{gender.value}}" value="m" class="radio" on-blur="validateGender"> Man</label>
-					<label><input type="radio" name="{{gender.value}}" value="f" class="radio" on-blur="validateGender"> Vrouw</label>
-					<i class="required"></i>
-					{{#if gender.error}}<span class="error-msg">{{gender.error}}</span>{{/if}}
-				</div>
+			<div class="col span-8">
+				<input type="text" name="firstname" value="{{firstname.value}}" class="text{{firstname.error ? ' error' : ''}}" id="firstname" on-blur="validateFirstname">
+				<i class="required"></i>
+				{{#if firstname.error}}<span class="error-msg">{{firstname.error}}</span>{{/if}}
 			</div>
+		</div>
 
-			<div class="row" style="margin-bottom: 20px">
-				<div class="col span-4">
-					<label for="password">Wachtwoord</label>
-				</div>
-				<div class="col span-8">
-					<input type="password" name="password" value="{{password.value}}" class="text{{password.error ? ' error' : ''}}" id="password" on-blur="validatePassword">
-					<i class="required"></i>
-					{{#if password.error}}<span class="error-msg">{{password.error}}</span>{{/if}}
-				</div>
+		<div class="row" style="margin-bottom: 20px">
+			<div class="col span-4">
+				<label for="lastname">Achternaam:</label><br>
 			</div>
-
-			<div class="row">
-				<div class="col span-12">
-					<button class="btn confirm"><i class="fa fa-user"></i> Registreren</button>
-				</div>
+			<div class="col span-8">
+				<input type="text" name="lastname" value="{{lastname.value}}" class="text{{lastname.error ? ' error' : ''}}" id="lastname" on-blur="validateLastname">
+				<i class="required"></i>
+				{{#if lastname.error}}<span class="error-msg">{{lastname.error}}</span>{{/if}}
 			</div>
-		</form>
-	</script>
+		</div>
 
-	<script type="text/javascript" src="/js/libs/validator.min.js"></script>
-	<script type="text/javascript">
-		var form = new Ractive({
-			el: 'content',
-			template: '#form-tpl',
-			data: {
-				email:     { value: '', error: '' },
-				firstname: { value: '', error: '' },
-				lastname:  { value: '', error: '' },
-				gender:    { value: 'm', error: '' },
-				password:  { value: '', error: '' },
-				password2: { value: '', error: '' },
-				errors:    false
+		<div class="row" style="margin-bottom: 20px">
+			<div class="col span-4">
+				<label>Ik ben een:</label>
+			</div>
+			<div class="col span-8">
+				<label><input type="radio" name="gender" value="m" checked="{{gender.value}}" class="radio" on-blur="validateGender"> Man</label>
+				<label><input type="radio" name="gender" value="f" checked="{{gender.value}}" class="radio" on-blur="validateGender"> Vrouw</label>
+				<i class="required"></i>
+				{{#if gender.error}}<span class="error-msg">{{gender.error}}</span>{{/if}}
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom: 20px">
+			<div class="col span-4">
+				<label for="password">Wachtwoord:</label>
+			</div>
+			<div class="col span-8">
+				<input type="password" name="password" value="{{password.value}}" class="text{{password.error ? ' error' : ''}}" id="password" on-blur="validatePassword">
+				<i class="required"></i>
+				{{#if password.error}}<span class="error-msg">{{password.error}}</span>{{/if}}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col span-12">
+				<button class="btn confirm"><i class="fa fa-user"></i> Registreren</button>
+			</div>
+		</div>
+	</form>
+</script>
+
+<script type="text/javascript" src="/js/libs/validator.min.js"></script>
+<script type="text/javascript">
+	var form = new Ractive({
+		el: 'content',
+		template: '#form-tpl',
+		data: {
+			email:     { value: '', error: '' },
+			firstname: { value: '', error: '' },
+			lastname:  { value: '', error: '' },
+			gender:    { value: 'm', error: '' },
+			password:  { value: '', error: '' },
+			password2: { value: '', error: '' },
+			errors:    false
+		}
+	});
+
+	form.on({
+		validate: function(evt, field) {
+			form.set('errors', false);
+			form.fire('validateEmail');
+			form.fire('validateFirstname');
+			form.fire('validateLastname');
+			form.fire('validateGender');
+			form.fire('validatePassword');
+
+			if (form.get('errors')) {
+				evt.original.preventDefault();
 			}
-		});
-
-		form.on({
-			validate: function(evt, field) {
-				form.set('errors', false);
-				form.fire('validateEmail');
-				form.fire('validateFirstname');
-				form.fire('validateLastname');
-				form.fire('validateGender');
-				form.fire('validatePassword');
-
-				if (form.get('errors')) {
-					evt.original.preventDefault();
-				}
-			},
-			validateEmail: function() {
-				if ( ! validator.isEmail(form.get('email.value'))) {
-					form.set('email.error', 'Geen geldig e-mail adres');
-					form.set('errors', true);
-				} else {
-					$.post('/api/check-email', { email: form.get('email.value') }, function(res) {
-						if (res.exists) {
-							form.set('email.error', 'Dit e-mail adres is al in gebruikt');
-							form.set('errors', true);
-						} else {
-							form.set('email.error', '');
-						}
-					});
-				}
-			},
-			validateFirstname: function() {
-				if ( ! validator.isLength(form.get('firstname.value'), 2)) {
-					form.set('firstname.error', 'Dit veld is verplicht');
-					form.set('errors', true);
-				} else {
-					form.set('firstname.error', '');
-				}
-			},
-			validateLastname: function() {
-				if ( ! validator.isLength(form.get('lastname.value'), 2)) {
-					form.set('lastname.error', 'Dit veld is verplicht');
-					form.set('errors', true);
-				} else {
-					form.set('lastname.error', '');
-				}
-			},
-			validateGender: function() {
-				if ( ! validator.isIn(form.get('gender.value'), ['m', 'f'])) {
-					form.set('gender.error', 'Dit veld is verplicht');
-					form.set('errors', true);
-				} else {
-					form.set('gender.error', '');
-				}
-			},
-			validatePassword: function() {
-				if ( ! validator.isLength(form.get('password.value'), 4)) {
-					form.set('password.error', 'Het wachtwoord moet minimaal 4 karakters lang zijn');
-					form.set('errors', true);
-				} else {
-					form.set('password.error', '');
-				}
+		},
+		validateEmail: function() {
+			if ( ! validator.isEmail(form.get('email.value'))) {
+				form.set('email.error', 'Geen geldig e-mail adres');
+				form.set('errors', true);
+			} else {
+				$.post('/api/check-email', { email: form.get('email.value') }, function(res) {
+					if (res.exists) {
+						form.set('email.error', 'Dit e-mail adres is al in gebruikt');
+						form.set('errors', true);
+					} else {
+						form.set('email.error', '');
+					}
+				});
 			}
-		});
-	</script>
+		},
+		validateFirstname: function() {
+			if ( ! validator.isLength(form.get('firstname.value'), 2)) {
+				form.set('firstname.error', 'Dit veld is verplicht');
+				form.set('errors', true);
+			} else {
+				form.set('firstname.error', '');
+			}
+		},
+		validateLastname: function() {
+			if ( ! validator.isLength(form.get('lastname.value'), 2)) {
+				form.set('lastname.error', 'Dit veld is verplicht');
+				form.set('errors', true);
+			} else {
+				form.set('lastname.error', '');
+			}
+		},
+		validateGender: function() {
+			if ( ! validator.isIn(form.get('gender.value'), ['m', 'f'])) {
+				form.set('gender.error', 'Dit veld is verplicht');
+				form.set('errors', true);
+			} else {
+				form.set('gender.error', '');
+			}
+		},
+		validatePassword: function() {
+			if ( ! validator.isLength(form.get('password.value'), 4)) {
+				form.set('password.error', 'Het wachtwoord moet minimaal 4 karakters lang zijn');
+				form.set('errors', true);
+			} else {
+				form.set('password.error', '');
+			}
+		}
+	});
+</script>
 </body>
 </html>

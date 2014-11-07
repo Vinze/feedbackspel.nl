@@ -260,7 +260,7 @@ input.unhappy, input.error {
 
 .unhappyMessage, .error-msg {
 	position: absolute;
-	z-index: 500;
+	z-index: 200;
 	top: -18px;
 	right: 1px;
 	font-size: 0.8em;
@@ -346,17 +346,17 @@ input.unhappy, input.error {
 .span-11 { width: 91.5%; }
 .span-12 { width: 100%; }
 
-.offset-1 { margin-left: 10.5% !important; &:first-child { margin-left: 8.5% !important; } }
-.offset-2 { margin-left: 19% !important;   &:first-child { margin-left: 17% !important; } }
-.offset-3 { margin-left: 27.5% !important; &:first-child { margin-left: 25.5% !important; } }
-.offset-4 { margin-left: 36% !important;   &:first-child { margin-left: 34% !important; } }
-.offset-5 { margin-left: 44.5% !important; &:first-child { margin-left: 42.5% !important; } }
-.offset-6 { margin-left: 53% !important;   &:first-child { margin-left: 51% !important; } }
-.offset-7 { margin-left: 61.5% !important; &:first-child { margin-left: 59.5% !important; } }
-.offset-8 { margin-left: 70% !important;   &:first-child { margin-left: 68% !important; } }
-.offset-9 { margin-left: 78.5% !important; &:first-child { margin-left: 76.5% !important; } }
-.offset-10 { margin-left: 87% !important;  &:first-child { margin-left: 85% !important; } }
-.offset-11 { margin-left: 93.5% !important; }
+.offset-1 { margin-left: 10.5%; &:first-child { margin-left: 8.5%; } }
+.offset-2 { margin-left: 19%;   &:first-child { margin-left: 17%; } }
+.offset-3 { margin-left: 27.5%; &:first-child { margin-left: 25.5%; } }
+.offset-4 { margin-left: 36%;   &:first-child { margin-left: 34%; } }
+.offset-5 { margin-left: 44.5%; &:first-child { margin-left: 42.5%; } }
+.offset-6 { margin-left: 53%;   &:first-child { margin-left: 51%; } }
+.offset-7 { margin-left: 61.5%; &:first-child { margin-left: 59.5%; } }
+.offset-8 { margin-left: 70%;   &:first-child { margin-left: 68%; } }
+.offset-9 { margin-left: 78.5%; &:first-child { margin-left: 76.5%; } }
+.offset-10 { margin-left: 87%;  &:first-child { margin-left: 85%; } }
+.offset-11 { margin-left: 93.5%; }
 
 /* -------------------------------------
 -- LAYOUT ------------------------------
@@ -374,17 +374,9 @@ body {
 	min-height: 100%;
 	position: absolute;
 	width: 100%;
-	z-index: 700;
+	z-index: 300;
 	// right: 0;
 	// transition: right 300ms;
-}
-
-.site-overlay {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	z-index: 900;
-	// left: @sidebar-width;
 }
 
 .container {
@@ -395,7 +387,7 @@ body {
 .header-wrapper {
 	height: @header-height;
 	width: 100%;
-	z-index: 800;
+	z-index: 400;
 	position: fixed;
 	background-color: #fff;
 	border-top: 4px solid @accent-color;
@@ -429,7 +421,7 @@ body {
 	top: 0;
 	right: -@sidebar-width - 10px;
 	transition: right 300ms;
-	z-index: 900;
+	z-index: 500;
 	margin: 0px;
 	background: #444 url('../img/bg-navigation.png') repeat left top;
 	color: #fff;
@@ -477,11 +469,19 @@ body {
 	}
 }
 
+.sidebar-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 450;
+	// left: @sidebar-width;
+}
+
 div.content-wrapper {
 	padding-top: @header-height;
 	padding-bottom: @footer-height;
 	div.content {
-		padding: 20px 10px;
+		padding: 40px 10px;
 	}
 }
 
@@ -517,18 +517,31 @@ div.box {
 	// box-shadow: 2px 2px 0 #D8D8D8;
 	border: 1px solid #e5e5e5;
 	padding: 20px 30px;
+	margin-bottom: 20px;
 	input.text, select.select {
 		border: 1px solid #e5e5e5;
 		background-color: #f2f2f2;
 	}
 }
 
-div.page-form {
-	margin: 40px auto;
+.modal-overlay {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 600;
+	padding: 10px;
 }
 
-div.section {
-	margin-bottom: 30px;
+.modal {
+	background-color: #fff;
+	min-height: 200px;
+	max-width: 640px;
+	width: 100%;
+	margin: 20px auto;
+	padding: 30px;
 }
 
 /* -------------------------------------
@@ -596,19 +609,14 @@ div.section {
 	}
 }
 
-
 /* -------------------------------------
 -- MEDIA QUERIES -----------------------
 ------------------------------------- */
 
 @media (max-width: 960px) {
-	div.section {
-		margin-bottom: 0;
-	}
 	div.col {
 		width: 100%;
-		margin: 0;
-		margin-bottom: 20px;
+		margin-left: 0 !important;
 	}
 	.responsive-table {
 		width: 100%;

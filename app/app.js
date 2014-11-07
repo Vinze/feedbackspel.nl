@@ -48,6 +48,7 @@ app.use(flash());
 // Make the user available
 app.use(function(req, res, next) {
 	res.locals.user = req.user;
+	res.locals.message = req.flash('message');
 	next();
 });
 
@@ -59,10 +60,7 @@ app.get('/logout', auth.isMember, UserController.getLogout);
 app.get('/register', auth.isGuest, UserController.getRegister);
 app.post('/register', auth.isGuest, UserController.postRegister);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
-
-app.get('/users', auth.isAdmin, function(req, res) {
-	res.render('users/index');
-});
+app.get('/users', auth.isAdmin, UserController.getIndex);
 
 app.post('/api/check-email', UserController.checkEmail);
 app.get('/api/users/all', auth.isAdmin, UserController.findAll);
