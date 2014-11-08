@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include ../includes/head %>
+	<% include includes/head %>
 </head>
 <body>
-<% include ../includes/top %>
+<% include includes/top %>
 <div class="content-wrapper">
 	<div class="content container">
 		<div class="row section">
@@ -14,7 +14,7 @@
 		</div>
 	</div>
 </div>
-<% include ../includes/bottom %>
+<% include includes/bottom %>
 
 <script type="text/template" id="tpl">
 	<h2>Gebruikers</h2>
@@ -30,8 +30,8 @@
 			</thead>
 			<tbody>
 				{{#each items}}
-					<tr on-click="edit:{{this}}">
-						<td>{{email}}</td>
+					<tr>
+						<td><a href="#" on-click="edit:{{this}}">{{email}}</a></td>
 						<td>{{firstname}}</td>
 						<td>{{lastname}}</td>
 						<td>{{created_at}}</td>
@@ -45,7 +45,7 @@
 			<div class="modal" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
 				<h2>Gebruiker bewerken</h2>
 				<form on-submit="save">
-					<div class="row" style="margin-bottom: 10px;">
+					<div class="row" style="margin-bottom: 15px;">
 						<div class="col span-4"><label for="email">E-mail adres</label></div>
 						<div class="col span-8">
 							<input type="text" name="email" value="{{editing.email}}" class="text" id="email">
@@ -53,7 +53,7 @@
 						</div>
 					</div>
 
-					<div class="row" style="margin-bottom: 10px">
+					<div class="row" style="margin-bottom: 15px">
 						<div class="col span-4"><label for="firstname">Voornaam:</label><br></div>
 						<div class="col span-8">
 							<input type="text" name="firstname" value="{{editing.firstname}}" class="text" id="firstname">
@@ -61,7 +61,7 @@
 						</div>
 					</div>
 
-					<div class="row" style="margin-bottom: 10px">
+					<div class="row" style="margin-bottom: 15px">
 						<div class="col span-4"><label for="lastname">Achternaam:</label><br></div>
 						<div class="col span-8">
 							<input type="text" name="lastname" value="{{editing.lastname}}" class="text" id="lastname">
@@ -69,8 +69,16 @@
 						</div>
 					</div>
 
-					<div class="row" style="margin-bottom: 10px">
-						<div class="col span-4"><label>Ik ben een:</label></div>
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4"><label for="password">Nieuw wachtwoord:</label><br></div>
+						<div class="col span-8">
+							<input type="password" name="password" value="{{editing.password}}" class="text" id="password">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4"><label>Geslacht:</label></div>
 						<div class="col span-8">
 							<label><input type="radio" name="gender" value="m" checked="{{editing.gender}}" class="radio"> Man</label>
 							<label><input type="radio" name="gender" value="f" checked="{{editing.gender}}" class="radio"> Vrouw</label>
@@ -100,17 +108,19 @@
 
 	Users.on({
 		edit: function(evt, user) {
-			// Users.set(evt.keypath, {
-			// 	firstname: 'POEP'
-			// });
-			this.set('editing', user);
+			Users.set('editing', user);
+			evt.original.preventDefault();
 		},
 		save: function(evt) {
-			console.log(this.get('editing'));
+			var user = Users.get('editing');
+			$.post('/api/users/save', user, function(users) {
+				Users.set('items', users);
+				Users.set('editing', null);
+			});
 			evt.original.preventDefault();
 		},
 		closeModal: function(evt) {
-			this.set('editing', null);
+			Users.set('editing', null);
 		},
 		stopPropagation: function(evt) {
 			evt.original.stopPropagation();

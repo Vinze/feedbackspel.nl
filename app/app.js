@@ -46,11 +46,7 @@ app.use(auth.tokenParser);
 app.use(flash());
 
 // Make the user available
-app.use(function(req, res, next) {
-	res.locals.user = req.user;
-	res.locals.message = req.flash('message');
-	next();
-});
+app.use(require('./libs/locals'));
 
 // Routes
 app.get('/', HomeController.getIndex);
@@ -65,14 +61,20 @@ app.get('/users', auth.isAdmin, UserController.getIndex);
 app.post('/api/check-email', UserController.checkEmail);
 app.get('/api/users/all', auth.isAdmin, UserController.findAll);
 app.get('/api/users/:id', auth.isAdmin, UserController.findOne);
+app.post('/api/users/save', auth.isAdmin, UserController.save);
 
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten');
 });
 
+app.get('/backbone', function(req, res) {
+	res.render('testing/backbone');
+});
+
 app.get('/chat', auth.isMember, function(req, res) {
 	res.render('testing/chat');
 });
+
 
 // Run the server
 server.listen(config.port);

@@ -12,7 +12,7 @@ var UserController = {
 	},
 
 	getIndex: function(req, res) {
-		res.render('users/index');
+		res.render('users');
 	},
 
 	getLogin: function(req, res) {
@@ -121,6 +121,29 @@ var UserController = {
 	},
 
 	findOne: function(req, res) {
+	},
+
+	save: function(req, res) {
+		var input = {
+			email: req.body.email,
+			firstname: req.body.firstname,
+			lastname: req.body.lastname
+		}
+
+		if (req.body.password) {
+			input.password = bcrypt.hashSync(req.body.password);
+		}
+
+		if (req.body._id) {
+			db.users.update({ _id: req.body._id }, { $set: input }, {}, done);
+		}
+
+		function done(err) {
+			if (err) console.log(err);
+			db.users.find({}, { password: 0 }, function(err, users) {
+				res.json(users);
+			});
+		}
 	}
 };
 
