@@ -6,18 +6,23 @@
 @font-size: 15px;
 @sidebar-width: 250px;
 
-.transition(@settings) {
-	-webkit-transition: @settings;
-	-moz-transition: @settings;
-	-o-transition: @settings;
-	-ms-transition: @settings;
-	transition: @settings;
+.transition(@props) {
+	-webkit-transition: @props;
+	-moz-transition: @props;
+	-o-transition: @props;
+	-ms-transition: @props;
+	transition: @props;
 }
 
 .border-radius(@px) {
 	-webkit-border-radius: @px;
 	-moz-border-radius: @px;
 	border-radius: @px;
+}
+
+.box-shadow(@props) {
+	-webkit-box-shadow: @props;
+	box-shadow: @props;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -40,25 +45,31 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -117,7 +128,6 @@ h1 {
 
 h2 {
 	font-size: 1.3em;
-	// font-weight: bold;
 	margin-bottom: 10px;
 }
 
@@ -130,13 +140,13 @@ p, ul {
 
 ul {
 	margin-left: 20px;
+	list-style-type: disc;
 	ul {
 		margin-bottom: 0px;
 	}
 }
 
 li {
-	list-style-type: disc;
 	padding-left: 0px;
 }
 
@@ -177,146 +187,9 @@ table td.icons {
 	}
 }
 
-/* -------------------------------------
--- FORM ELEMENTS -----------------------
-------------------------------------- */
-
-label {
-	display: inline-block;
-	padding: 5px 10px 5px 0;
-	cursor: pointer;
-}
-
-input.text {
-	display: block;
-	width: 100%;
-	border: 1px solid #e5e5e5;
-	background-color: #fff;
-	padding: 5px 10px;
-	margin: 0;
-	&:focus {
-		outline: none;
-		box-shadow: 0 0 4px lighten(@accent-color, 30%);
-	}
-}
-
-input.checkbox, input.radio {
-	vertical-align: -1px;
-	margin: 0;
-}
-
-select.select {
-	width: 100%;
-	border: 1px solid #e5e5e5;
-	background-color: #fff;
-	padding: 5px 6px;
-	margin: 0;
-	&:focus {
-		outline: none;
-		box-shadow: 0 0 4px lighten(@accent-color, 30%);
-	}
-}
-
-button {
-	cursor: pointer;
-}
-
-.btn, a.btn {
-	padding: 5px 15px;
-	margin: 0px;
-	cursor: pointer;
-	background-color: #ccc;
-	border: none;
-	display: inline-block;
-	text-decoration: none;
-	.transition(color 0.33s);
-	.transition(background-color 0.33s);	
-	&:hover {
-		background-color: darken(#ccc, 10%);
-		text-decoration: none;
-	}
-	&.confirm {
-		background-color: @accent-color;
-		color: #fff;
-		&:hover {
-			background-color: darken(@accent-color, 10%);
-		}
-	}
-}
-
-i.required {
-	color: #CA3D3D;
-	font-weight: bold;
-	vertical-align: middle;
-	position: absolute;
-	right: -15px;
-	top: 8px;
-	&:after {
-		content: "*";
-	}
-}
-
-input.unhappy, input.error {
-	border-color: #FCABAB !important;
-}
-
-.unhappyMessage, .error-msg {
-	position: absolute;
-	z-index: 200;
-	top: -18px;
-	right: 1px;
-	font-size: 0.8em;
-	color: #D74F4F;
-}
-
-/* -------------------------------------
--- FORM VALIDATION ---------------------
-------------------------------------- */
-
-.flash-success, .flash-error {
-	color: #555;
-	padding: 10px 15px;
-	margin-bottom: 20px;
-	.border-radius(5px);
-	a {
-		color: #555;
-		text-decoration: underline;
-	}
-}
-
-.flash-success {
-	background-color: #C5FCB0;
-}
-
-.flash-error {
-	background-color: #fcc;
-}
-
-.has-error {
-	input.text {
-		border-color: #FF9898 !important;
-	}
-}
-
-/* -------------------------------------
--- TEXT MARKUP -------------------------
-------------------------------------- */
-
-.align-left {
-	text-align: left;
-}
-
-.align-center {
-	text-align: center;
-}
-
-.align-right {
-	text-align: right;
-}
-
-/* -------------------------------------
--- GRID SYSTEM -------------------------
-------------------------------------- */
+// -------------------------------------
+// 12 column grid system ---------------
+// -------------------------------------
 
 .row:after {
 	content: "";
@@ -360,9 +233,191 @@ input.unhappy, input.error {
 .offset-10 { margin-left: 87%;  &:first-child { margin-left: 85%; } }
 .offset-11 { margin-left: 93.5%; }
 
-/* -------------------------------------
--- LAYOUT ------------------------------
-------------------------------------- */
+// -------------------------------------
+// Text markup -------------------------
+// -------------------------------------
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.italic {
+	font-style: italic;
+}
+
+// -------------------------------------
+// Form elements -----------------------
+// -------------------------------------
+
+label {
+	display: inline-block;
+	padding: 5px 10px 5px 0;
+	cursor: pointer;
+}
+
+input.text {
+	display: block;
+	width: 100%;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+	padding: 5px 10px;
+	margin: 0;
+	&:focus {
+		outline: none;
+		.box-shadow(0 0 4px lighten(@accent-color, 30%));
+	}
+}
+
+input.checkbox, input.radio {
+	vertical-align: -1px;
+	margin: 0;
+}
+
+select.select {
+	width: 100%;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+	padding: 5px 6px;
+	margin: 0;
+	&:focus {
+		outline: none;
+		.box-shadow(0 0 4px lighten(@accent-color, 30%));
+	}
+}
+
+button {
+	cursor: pointer;
+}
+
+.btn, a.btn {
+	padding: 5px 15px;
+	margin: 0px;
+	cursor: pointer;
+	background-color: #ccc;
+	border: none;
+	display: inline-block;
+	text-decoration: none;
+	.transition(color 0.33s);
+	.transition(background-color 0.33s);	
+	&:hover {
+		background-color: darken(#ccc, 10%);
+		text-decoration: none;
+	}
+	&.confirm {
+		background-color: @accent-color;
+		color: #fff;
+		&:hover {
+			background-color: darken(@accent-color, 10%);
+		}
+	}
+}
+
+i.required {
+	color: #CA3D3D;
+	font-weight: bold;
+	vertical-align: middle;
+	position: absolute;
+	right: -15px;
+	top: 8px;
+	&:after {
+		content: "*";
+	}
+}
+
+// -------------------------------------
+// Form validation ---------------------
+// -------------------------------------
+
+.flash-success, .flash-error {
+	color: #555;
+	padding: 10px 15px;
+	margin-bottom: 20px;
+	.border-radius(5px);
+	a {
+		color: #555;
+		text-decoration: underline;
+	}
+}
+
+.flash-success {
+	background-color: #C5FCB0;
+}
+
+.flash-error {
+	background-color: #fcc;
+}
+
+.has-error {
+	input.text {
+		border-color: #FF9898 !important;
+	}
+}
+
+input.unhappy, input.error {
+	border-color: #FCABAB !important;
+}
+
+.unhappyMessage, .error-msg {
+	position: absolute;
+	z-index: 200;
+	top: -18px;
+	right: 1px;
+	font-size: 0.8em;
+	color: #D74F4F;
+}
+
+// -------------------------------------
+// Page elements -----------------------
+// -------------------------------------
+
+div.box {
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	padding: 20px 30px;
+	margin-bottom: 20px;
+	input.text, select.select {
+		border: 1px solid #e5e5e5;
+		background-color: #f2f2f2;
+	}
+}
+
+.modal-overlay {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 600;
+	padding: 10px;
+	overflow-y: auto;
+}
+
+.modal {
+	background-color: #fff;
+	min-height: 200px;
+	max-width: 640px;
+	width: 100%;
+	margin: 20px auto;
+	padding: 30px;
+	.box-shadow(0 0 5px #444);
+}
+
+// -------------------------------------
+// Site layout -------------------------
+// -------------------------------------
 
 body, html {
 	height: 100%;
@@ -377,8 +432,6 @@ body {
 	position: absolute;
 	width: 100%;
 	z-index: 300;
-	// right: 0;
-	// transition: right 300ms;
 }
 
 .container {
@@ -428,7 +481,7 @@ body {
 	background: #444 url('../img/bg-navigation.png') repeat left top;
 	color: #fff;
 	font-size: 1.1em;
-	box-shadow: 0 0 5px #222;
+	.box-shadow(0 0 5px #222);
 	.close {
 		position: absolute;
 		top: 0px;
@@ -476,15 +529,15 @@ body {
 	width: 100%;
 	height: 100%;
 	z-index: 450;
-	// left: @sidebar-width;
 }
 
 div.content-wrapper {
 	padding-top: @header-height;
 	padding-bottom: @footer-height;
-	div.content {
-		padding: 40px 10px;
-	}
+}
+
+div.content {
+	padding: 40px 10px;
 }
 
 div.footer-wrapper {
@@ -494,65 +547,24 @@ div.footer-wrapper {
 	height: @footer-height;
 	font-size: 0.8em;
 	color: #404040;
-	div.footer {
-		text-align: center;
-		padding: 4px 0;
-	}
+}
+
+div.footer {
+	text-align: center;
+	padding: 4px 0;
 }
 
 body.show-nav {
-	// .site-wrapper {
-	// 	right: @sidebar-width;
-	// }
 	.sidebar {
-		// box-shadow: 0px 5px 5px 0 #222;
 		right: 0;
 	}
 }
 
-/* -------------------------------------
--- PAGE ELEMENTS -----------------------
-------------------------------------- */
+// -------------------------------------
+// Homepage ----------------------------
+// -------------------------------------
 
-div.box {
-	background-color: #fff;
-	// box-shadow: 2px 2px 0 #D8D8D8;
-	border: 1px solid #e5e5e5;
-	padding: 20px 30px;
-	margin-bottom: 20px;
-	input.text, select.select {
-		border: 1px solid #e5e5e5;
-		background-color: #f2f2f2;
-	}
-}
-
-.modal-overlay {
-	position: fixed;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.6);
-	z-index: 600;
-	padding: 10px;
-	overflow-y: auto;
-}
-
-.modal {
-	background-color: #fff;
-	min-height: 200px;
-	max-width: 640px;
-	width: 100%;
-	margin: 20px auto;
-	padding: 30px;
-	box-shadow: 0 0 5px #444;
-}
-
-/* -------------------------------------
--- HOMEPAGE ----------------------------
-------------------------------------- */
-
-.home {
+body.home {
 	background: transparent url('../img/background.jpg') no-repeat top center;
 	background-size: cover;
 }
@@ -613,9 +625,59 @@ div.box {
 	}
 }
 
-/* -------------------------------------
--- MEDIA QUERIES -----------------------
-------------------------------------- */
+
+// -------------------------------------
+// Game (client) -----------------------
+// -------------------------------------
+
+.client {
+	.content {
+		padding: 20px 10px;
+		max-width: 500px;
+	}
+	.player-list {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	.player {
+		margin: 0 0 10px 0;
+		padding: 5px;
+		background-color: #fff;
+		border: 1px solid #e5e5e5;
+		height: 72px;
+		position: relative;
+		.avatar {
+			// background-color: #ccc;
+			width: 60px;
+			height: 60px;
+			position: absolute;
+			img {
+				max-width: 100%;
+				max-height: 100%;
+			}
+		}
+		.name {
+			display: inline-block;
+			// background-color: #808080;
+			position: absolute;
+			left: 80px;
+			top: 7px;
+		}
+		.rating {
+			display: inline-block;
+			position: absolute;
+			left: 80px;
+			bottom: 0px;
+			font-size: 2em;
+			color: @accent-color;
+		}
+	}
+}
+
+// -------------------------------------
+// Media queries -----------------------
+// -------------------------------------
 
 @media (max-width: 960px) {
 	div.col {

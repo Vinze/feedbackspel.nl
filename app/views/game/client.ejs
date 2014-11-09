@@ -3,10 +3,11 @@
 <head>
 	<% include ../includes/head %>
 </head>
-<body>
+<body class="client">
 <% include ../includes/top %>
 <div class="content-wrapper">
 	<div class="content container" id="users">
+		
 	</div>
 </div>
 <% include ../includes/bottom %>
@@ -14,27 +15,41 @@
 <script type="text/javascript" src="/js/libs/cookies.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/template" id="users-tpl">
-	{{#each users}}
-		<div class="row section">
-			<div class="box col span-12">
-				{{firstname}} {{lastname}}
-			</div>
-		</div>
-	{{/each}}
+	<ul class="player-list">
+		{{#each users}}
+			<li class="player">
+				<div class="avatar"><img src="/img/avatars/{{_id}}.jpg"></div>
+				<div class="name">{{firstname}}</div>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+			</li>
+		{{/each}}
+	</ul>
 </script>
 <script type="text/javascript">
+	// var base_url = 'http://' + (window.location.hostname == 'localhost' ? 'localhost' : 'feedbackspel.nl');
+	// var token = Cookies.get('fbs_token');
+	// var socket = io(base_url + ':1337', { query: 'token=' + token + '&role=client' });
 
-	var base_url = 'http://' + (window.location.hostname == 'localhost' ? 'localhost' : 'feedbackspel.nl');
-	var token = Cookies.get('fbs_token');
-	var socket = io(base_url + ':1337', { query: 'token=' + token + '&role=client' });
+	var users = [
+		{ _id: 1, firstname: 'George' },
+		{ _id: 2, firstname: 'Emma' },
+		{ _id: 3, firstname: 'Morgan' },
+		{ _id: 4, firstname: 'Zooey' },
+		{ _id: 5, firstname: 'Gerard' }
+	];
 
 	var UsersList = new Ractive({
 		el: 'users',
 		template: '#users-tpl',
-		data: { users: [] }
+		data: { users: users }
 	});
 
-	socket.on('users.list', function(users) {
-		UsersList.set('users', users)
-	});
+	// socket.on('users.list', function(users) {
+	// 	UsersList.set('users', users)
+	// });
 </script>
