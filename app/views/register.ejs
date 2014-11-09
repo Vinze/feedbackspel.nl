@@ -16,8 +16,9 @@
 </div>
 <% include includes/bottom %>
 	
+<script type="text/javascript" src="/js/libs/validator.min.js"></script>
 <script type="text/template" id="form-tpl">
-	<h2>Registreren</h2>
+	<h1>Registreren</h1>
 	<form action="/register" method="post" id="register-form" on-submit="validate">
 		<div class="row" style="margin-bottom: 20px">
 			<div class="col span-4">
@@ -83,7 +84,6 @@
 	</form>
 </script>
 
-<script type="text/javascript" src="/js/libs/validator.min.js"></script>
 <script type="text/javascript">
 	var form = new Ractive({
 		el: 'content',

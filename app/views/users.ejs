@@ -17,7 +17,7 @@
 <% include includes/bottom %>
 
 <script type="text/template" id="tpl">
-	<h2>Gebruikers</h2>
+	<h1>Gebruikers</h1>
 	<div class="responsive-table">
 		<table>
 			<thead>
@@ -31,10 +31,14 @@
 			<tbody>
 				{{#each items}}
 					<tr>
-						<td><a href="#" on-click="edit:{{this}}">{{email}}</a></td>
+						<td>{{email}}</td>
 						<td>{{firstname}}</td>
 						<td>{{lastname}}</td>
 						<td>{{created_at}}</td>
+						<td class="icons">
+							<a href="#" on-click="deleteUser:{{this}}"><i class="fa fa-trash-o"></i></a>
+							<a href="#" on-click="editUser:{{this}}"><i class="fa fa-edit"></i></a>
+						</td>
 					</tr>
 				{{/each}}
 			</tbody>
@@ -43,7 +47,7 @@
 	{{#if editing}}
 		<div class="modal-overlay" intro-outro="fade:{ duration: 300 }" on-click="closeModal">
 			<div class="modal" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
-				<h2>Gebruiker bewerken</h2>
+				<h1>Gebruiker bewerken</h1>
 				<form on-submit="save">
 					<div class="row" style="margin-bottom: 15px;">
 						<div class="col span-4"><label for="email">E-mail adres</label></div>
@@ -95,6 +99,19 @@
 			</div>
 		</div>
 	{{/if}}
+	{{#if deleting}}
+		<div class="modal-overlay" intro-outro="fade:{ duration: 300 }" on-click="closeModal">
+			<div class="modal" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
+				<h1>Gebruiker verwijderen?</h1>
+				<div class="row">
+					<div class="col span-12">
+						<button class="btn" on-click="closeModal"><i class="fa fa-chevron-left"></i> Annuleren</button>
+						<button class="btn confirm" on-click="delete"><i class="fa fa-trash-o"></i> Verwijderen</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/if}}
 </script>
 <script type="text/javascript">
 	var Users = new Ractive({
@@ -102,12 +119,13 @@
 		template: '#tpl',
 		data: {
 			items: [],
-			editing: null
+			editing: null,
+			deleting: null
 		}
 	});
 
 	Users.on({
-		edit: function(evt, user) {
+		editUser: function(evt, user) {
 			Users.set('editing', user);
 			evt.original.preventDefault();
 		},
@@ -119,8 +137,16 @@
 			});
 			evt.original.preventDefault();
 		},
+		deleteUser: function(evt, user) {
+			Users.set('deleting', user);
+			evt.original.preventDefault();
+		},
+		delete: function(evt, user) {
+			console.log(user);
+		},
 		closeModal: function(evt) {
 			Users.set('editing', null);
+			Users.set('deleting', null);
 		},
 		stopPropagation: function(evt) {
 			evt.original.stopPropagation();

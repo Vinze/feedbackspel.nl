@@ -6,10 +6,10 @@ var db      = require('../libs/datastore');
 var auth = {
 
 	tokenParser: function(req, res, next) {
-		var token = (req.cookies && req.cookies.jwtoken) || 
-		            (req.body && req.body.jwtoken) ||
-		            (req.query && req.query.jwtoken) ||
-		            req.headers['x-jwtoken'];
+		var token = (req.cookies && req.cookies.fbs_token) || 
+		            (req.body && req.body.fbs_token) ||
+		            (req.query && req.query.fbs_token) ||
+		            req.headers['x-fbs_token'];
 		req.token = token || null;
 		req.user = null;
 
@@ -22,7 +22,7 @@ var auth = {
 			}
 			try {
 				var data = jwt.decode(session.token, config.jwt_secret);
-				db.users.findOne({ _id: data.user_id }, function(err, user) {
+				db.users.findById(data.user_id, function(err, user) {
 					if ( ! user) return next();
 					req.user = {
 						_id: user._id,

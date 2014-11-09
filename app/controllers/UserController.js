@@ -33,18 +33,13 @@ var UserController = {
 
 			bcrypt.compare(input.password, user.password, function(err, match) {
 				if ( ! match) {
-					req.flash('message', { type: 'error', text: 'E-mail adres en wachtwoord komen niet overeen.' });
+					req.flash('message', { type: 'error', text: 'Het opgegeven wachtwoord is onjuist.' });
 					req.flash('email', input.email);
 					return res.redirect('/login');
 				}
 
 				var expires = moment().add(1, 'years');
-				var token = jwt.encode({
-					user_id: user._id,
-					email: user.email,
-					firstname: user.firstname,
-					lastname: user.lastname
-				}, config.jwt_secret);
+				var token = jwt.encode({ user_id: user._id }, config.jwt_secret);
 
 				db.sessions.insert({
 					user_id: user._id,
@@ -55,7 +50,7 @@ var UserController = {
 					if (err) console.log('error inserting token', err);
 				});
 
-				res.cookie('jwtoken', token, { maxAge: expires.diff(moment()) });
+				res.cookie('fbs_token', token, { maxAge: expires.diff(moment()) });
 				res.redirect('/dashboard');
 			});
 
@@ -66,16 +61,12 @@ var UserController = {
 		db.sessions.remove({ token: req.token }, function(err, removed) {
 			if (err) console.log(err);
 		});
-		res.clearCookie('jwtoken');
+		res.clearCookie('fbs_token');
 		res.redirect('/');
 	},
 
 	getRegister: function(req, res) {
-		var defaults = { email: '', firstname: '', lastname: '', gender: 'm' };
-		res.render('register', {
-			input: req.flash('old_input') || defaults,
-			message: req.flash('message')
-		});
+		res.render('register');
 	},
 
 	postRegister: function(req, res) {

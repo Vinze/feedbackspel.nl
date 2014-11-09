@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include ../includes/head %>
+</head>
+<body>
+<% include ../includes/top %>
+<div class="content-wrapper">
+	<div class="content container" id="users">
+	</div>
+</div>
+<% include ../includes/bottom %>
+
+<script type="text/javascript" src="/js/libs/cookies.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/template" id="users-tpl">
+	{{#each users}}
+		<div class="row section">
+			<div class="box col span-12">
+				{{firstname}} {{lastname}}
+			</div>
+		</div>
+	{{/each}}
+</script>
+<script type="text/javascript">
+
+	var base_url = 'http://' + (window.location.hostname == 'localhost' ? 'localhost' : 'feedbackspel.nl');
+	var token = Cookies.get('fbs_token');
+	var socket = io(base_url + ':1337', { query: 'token=' + token + '&role=client' });
+
+	var UsersList = new Ractive({
+		el: 'users',
+		template: '#users-tpl',
+		data: { users: [] }
+	});
+
+	socket.on('users.list', function(users) {
+		UsersList.set('users', users)
+	});
+</script>
