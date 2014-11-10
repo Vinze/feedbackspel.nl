@@ -57,12 +57,12 @@ app.get('/logout', auth.isMember, UserController.getLogout);
 app.get('/register', auth.isGuest, UserController.getRegister);
 app.post('/register', auth.isGuest, UserController.postRegister);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
-app.get('/users', auth.isAdmin, UserController.getIndex);
+app.get('/profile', auth.isMember, UserController.getProfile);
 
 app.get('/game/host', auth.isMember, GameController.getHost);
 app.get('/game/client', auth.isMember, GameController.getClient);
 
-
+app.get('/users', auth.isAdmin, UserController.getIndex);
 
 app.post('/api/check-email', UserController.checkEmail);
 app.get('/api/users/all', auth.isAdmin, UserController.findAll);

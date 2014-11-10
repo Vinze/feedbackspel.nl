@@ -8,11 +8,15 @@ var db       = require('../libs/datastore');
 var UserController = {
 
 	getDashboard: function(req, res) {
-		res.render('dashboard', { message: req.flash('message') });
+		res.render('users/dashboard', { message: req.flash('message') });
 	},
 
 	getIndex: function(req, res) {
-		res.render('users');
+		res.render('users/index');
+	},
+
+	getProfile: function(req, res) {
+		res.render('users/profile');
 	},
 
 	getLogin: function(req, res) {
@@ -66,7 +70,7 @@ var UserController = {
 	},
 
 	getRegister: function(req, res) {
-		res.render('register');
+		res.render('users/register');
 	},
 
 	postRegister: function(req, res) {
