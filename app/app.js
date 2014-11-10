@@ -5,6 +5,7 @@ var server       = require('http').Server(app);
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
+var multer       = require('multer');
 var auth         = require('./libs/auth');
 var config       = require('./libs/config');
 var flash        = require('./libs/flash');
@@ -40,6 +41,9 @@ app.use(session({
 	resave: true
 }));
 
+// Use the mutler middleware for file uploads
+app.use(multer({ dest: './storage/tmp/'}));
+
 // Enable the JWToken parser
 app.use(auth.tokenParser);
 
@@ -51,13 +55,17 @@ app.use(require('./libs/locals'));
 
 // Routes
 app.get('/', HomeController.getIndex);
+
 app.get('/login', auth.isGuest, UserController.getLogin);
 app.post('/login', auth.isGuest, UserController.postLogin);
-app.get('/logout', auth.isMember, UserController.getLogout);
 app.get('/register', auth.isGuest, UserController.getRegister);
 app.post('/register', auth.isGuest, UserController.postRegister);
+app.get('/logout', auth.isMember, UserController.getLogout);
+
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
 app.get('/profile', auth.isMember, UserController.getProfile);
+app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
+app.post('/avatar', auth.isMember, UserController.postAvatar);
 
 app.get('/game/host', auth.isMember, GameController.getHost);
 app.get('/game/client', auth.isMember, GameController.getClient);
@@ -80,7 +88,6 @@ app.get('/backbone', function(req, res) {
 app.get('/chat', auth.isMember, function(req, res) {
 	res.render('testing/chat');
 });
-
 
 // Run the server
 server.listen(config.port);

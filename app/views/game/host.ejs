@@ -22,12 +22,11 @@
 	<h2>Verbonden gebruikers:</h2>
 	<ul>
 		{{#each users}}
-			<li>{{firstname}} {{lastname}} ({{email}})</li>
+			<li><img src="/avatar/{{_id}}.png" alt=""> {{firstname}} {{lastname}} ({{email}})</li>
 		{{/each}}
 	</ul>
 </script>
 <script type="text/javascript">
-
 	var base_url = 'http://' + (window.location.hostname == 'localhost' ? 'localhost' : 'feedbackspel.nl');
 	var token = Cookies.get('fbs_token');
 	var socket = io(base_url + ':1337', { query: 'token=' + token + '&role=host' });

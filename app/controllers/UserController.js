@@ -1,9 +1,15 @@
 var bcrypt   = require('bcrypt-nodejs');
 var jwt      = require('jwt-simple');
 var moment   = require('moment');
+var fs       = require('fs');
+var exec     = require('child_process').exec;
 var validate = require('../libs/validator');
 var config   = require('../libs/config');
 var db       = require('../libs/datastore');
+
+function inArray(needle, haystack) {
+	return haystack.indexOf(needle) != -1;
+}
 
 var UserController = {
 
@@ -16,11 +22,51 @@ var UserController = {
 	},
 
 	getProfile: function(req, res) {
-		res.render('users/profile');
+		res.render('users/profile', {
+			email: req.user.email,
+			firstname: req.user.firstname,
+			lastname: req.user.lastname,
+			gender: req.user.gender
+		});
+	},
+
+	postProfile: function(req, res) {
+		res.json(req.body);
+	},
+
+	getAvatar: function(req, res) {
+		var imagepath = './storage/avatars/' + req.params.image;
+		fs.exists(imagepath, function(exists) {
+			if ( ! exists) {
+				imagepath = './storage/avatars/placeholder.png';
+			}
+			var image = fs.readFileSync(imagepath);
+
+			res.writeHead(200, {'Content-Type': 'image/png' });
+			res.end(image, 'binary');
+		});
+	},
+
+	postAvatar: function(req, res) {
+		var mimetypes = ['image/jpeg', 'image/png'];
+		if (req.files.image && inArray(req.files.image.mimetype, mimetypes)) {
+			var input = req.files.image.path;
+			var output = './storage/avatars/' + req.user._id + '.png';
+			var command = 'convert ' + input + ' -resize "300x300^" -gravity center -crop 300x300+0+0 +repage ' + output;
+			
+			exec(command, function(err, stdout, stderr) {
+				if (err) console.log(err);
+				res.redirect('/profile');
+				fs.unlink(input);
+			});
+		} else {
+			fs.unlink(input);
+			res.redirect('/profile');
+		}
 	},
 
 	getLogin: function(req, res) {
-		res.render('login', {
+		res.render('users/login', {
 			email: req.flash('email')
 		});
 	},
@@ -96,7 +142,9 @@ var UserController = {
 					admin: false,
 					created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
 					updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
-				}, function(err, doc) {
+				}, function(err, user) {
+					req.flash('email', user.email);
+					req.flash('message', { type: 'success', text: 'Je kunt nu inloggen.' });
 					res.redirect('/login');
 				});
 			});

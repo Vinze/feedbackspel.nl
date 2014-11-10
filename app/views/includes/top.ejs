@@ -12,7 +12,7 @@
 			<li class="nav-item"><a href="/register"><i class="fa fa-fw fa-user"></i> Registreren</a></li>
 		<% } %>
 	</ul>
-	<% if (user.admin == true) { %>
+	<% if (user && user.admin == true) { %>
 		<ul class="admin-items">
 			<li class="nav-item"><a href="/users"><i class="fa fa-fw fa-users"></i> Gebruikers</a></li>
 		</ul>

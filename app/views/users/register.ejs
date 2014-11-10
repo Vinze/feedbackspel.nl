@@ -58,8 +58,8 @@
 				<label>Ik ben een:</label>
 			</div>
 			<div class="col span-8">
-				<label><input type="radio" name="gender" value="m" checked="{{gender.value}}" class="radio" on-blur="validateGender"> Man</label>
-				<label><input type="radio" name="gender" value="f" checked="{{gender.value}}" class="radio" on-blur="validateGender"> Vrouw</label>
+				<label><input type="radio" name="gender" value="m" class="radio" checked> Man</label>
+				<label><input type="radio" name="gender" value="f" class="radio"> Vrouw</label>
 				<i class="required"></i>
 				{{#if gender.error}}<span class="error-msg">{{gender.error}}</span>{{/if}}
 			</div>
