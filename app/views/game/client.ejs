@@ -3,54 +3,39 @@
 <head>
 	<% include ../includes/head %>
 </head>
-<body class="client">
-<% include ../includes/top %>
-<div class="content-wrapper">
-	<div class="content container" id="users">
+<body class="ingame client">
+<% include ../includes/sidebar %>
+<div class="site-wrapper">
+	<a href="#" class="nav-toggle">
+		<img src="/img/icon-menu.png" width="34px" height="26px">
+	</a>
+	<div class="content container" id="content">
 		
 	</div>
 </div>
-<% include ../includes/bottom %>
+<% include ../includes/scripts %>
 
 <script type="text/javascript" src="/js/libs/cookies.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-<script type="text/template" id="users-tpl">
-	<ul class="player-list">
-		{{#each users}}
-			<li class="player">
-				<div class="avatar"><img src="/img/avatars/{{_id}}.jpg"></div>
-				<div class="name">{{firstname}}</div>
-				<div class="rating">
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-					<i class="fa fa-star"></i>
-				</div>
-			</li>
-		{{/each}}
-	</ul>
+<script type="text/template" id="template">
+	<h1>Connected: <%=user.firstname%></h1>
+	<a href="#" on-click="ready">Ready!</a>
 </script>
 <script type="text/javascript">
-	// var base_url = 'http://' + (window.location.hostname == 'localhost' ? 'localhost' : 'feedbackspel.nl');
-	// var token = Cookies.get('fbs_token');
-	// var socket = io(base_url + ':1337', { query: 'token=' + token + '&role=client' });
+	var token = Cookies.get('fbs_token');
+	var url = 'http://' + window.location.hostname + ':1337';
+	var socket = io(url, { query: 'token=' + token + '&role=client' });
 
-	var users = [
-		{ _id: 1, firstname: 'George' },
-		{ _id: 2, firstname: 'Emma' },
-		{ _id: 3, firstname: 'Morgan' },
-		{ _id: 4, firstname: 'Zooey' },
-		{ _id: 5, firstname: 'Gerard' }
-	];
-
-	var UsersList = new Ractive({
-		el: 'users',
-		template: '#users-tpl',
-		data: { users: users }
+	var Player = new Ractive({
+		el: 'content',
+		template: '#template',
+		data: {}
 	});
 
-	// socket.on('users.list', function(users) {
-	// 	UsersList.set('users', users)
-	// });
+	Player.on({
+		ready: function(evt) {
+			socket.emit('ready');
+			evt.original.preventDefault();
+		}
+	});
 </script>

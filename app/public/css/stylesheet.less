@@ -646,12 +646,56 @@ body.show-nav {
 }
 
 //================================================
-// Profile page
+// Game (global)
 //================================================
 
-.profile {
-	.avatar {
-		margin-bottom: 10px;
+.ingame {
+	.nav-toggle {
+		position: absolute;
+		top: 0px;
+		right: 10px;
+	}
+}
+
+//================================================
+// Game (host)
+//================================================
+
+.ingame.host {
+	.card {
+		margin: 50px auto;
+		width: 400px;
+		background-color: #fff;
+		.box-shadow(0 0 5px #ccc);
+		padding: 50px 0;
+		text-align: center;
+		font-size: 2em;
+	}
+	.players {
+		position: absolute;
+		bottom: 0px;
+		padding: 10px;
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+	}
+	.player {
+		text-align: center;
+		display: inline-block;
+		margin: 0 10px;
+		opacity: 0.6;
+		.avatar {
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			border-radius: 30px;
+			overflow: hidden;
+		}
+		&.ready {
+			opacity: 1;
+		}
 	}
 }
 
@@ -659,7 +703,7 @@ body.show-nav {
 // Game (client)
 //================================================
 
-.client {
+.ingame.client {
 	.content {
 		padding: 20px 10px;
 		max-width: 500px;

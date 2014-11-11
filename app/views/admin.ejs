@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include includes/head %>
+</head>
+<body>
+<% include includes/top %>
+<div class="content-wrapper">
+	<div class="content container">
+		<div class="row">
+			<div class="box col span-9" id="content">
+				:(
+			</div>
+			<div class="box col span-3">
+				<ul>
+					<li><a href="#users">Gebruikers</a></li>
+					<li><a href="#sessions">Sessies</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<% include includes/bottom %>
+<script type="text/javascript" src="/js/libs/underscore.min.js"></script>
+<script type="text/javascript" src="/js/libs/backbone.min.js"></script>
+
+<script type="text/template" id="home-tpl">
+	<h1>Home</h1>
+	<p>Dit is de homepage</p>
+</script>
+
+<script type="text/template" id="users-tpl">
+	<h1>Gebruikers</h1>
+	<div class="responsive-table">
+		<table>
+			<thead>
+				<tr>
+					<th>Email</th>
+					<th>Naam</th>
+					<th>Gemaakt</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each items}}
+					<tr>
+						<td>{{email}}</td>
+						<td>{{firstname}} {{lastname}}</td>
+						<td>{{created_at}}</td>
+						<td class="icons">
+							<a href="#" on-click="editUser:{{this}}"><i class="fa fa-edit"></i></a>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+	{{#if editing}}
+		<div class="modal-overlay" intro-outro="fade:{ duration: 300 }" on-click="closeModal">
+			<div class="modal" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
+				<h1>Gebruiker bewerken</h1>
+				<form on-submit="save">
+					<div class="row" style="margin-bottom: 15px;">
+						<div class="col span-4"><label for="email">E-mail adres</label></div>
+						<div class="col span-8">
+							<input type="text" name="email" value="{{editing.email}}" class="text" id="email">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4"><label for="firstname">Voornaam:</label><br></div>
+						<div class="col span-8">
+							<input type="text" name="firstname" value="{{editing.firstname}}" class="text" id="firstname">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4"><label for="lastname">Achternaam:</label><br></div>
+						<div class="col span-8">
+							<input type="text" name="lastname" value="{{editing.lastname}}" class="text" id="lastname">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4"><label for="password">Nieuw wachtwoord:</label><br></div>
+						<div class="col span-8">
+							<input type="password" name="password" value="{{editing.password}}" class="text" id="password">
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-4"><label>Geslacht:</label></div>
+						<div class="col span-8">
+							<label><input type="radio" name="gender" value="m" checked="{{editing.gender}}" class="radio"> Man</label>
+							<label><input type="radio" name="gender" value="f" checked="{{editing.gender}}" class="radio"> Vrouw</label>
+							<i class="required"></i>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col span-12">
+							<button class="btn confirm"><i class="fa fa-save"></i> Opslaan</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	{{/if}}
+	{{#if deleting}}
+		<div class="modal-overlay" intro-outro="fade:{ duration: 300 }" on-click="closeModal">
+			<div class="modal" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
+				<h1>Gebruiker verwijderen?</h1>
+				<div class="row">
+					<div class="col span-12">
+						<button class="btn" on-click="closeModal"><i class="fa fa-chevron-left"></i> Annuleren</button>
+						<button class="btn confirm" on-click="delete"><i class="fa fa-trash-o"></i> Verwijderen</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/if}}
+</script>
+
+<script type="text/template" id="session-tpl">
+	<h1>Sessies</h1>
+</script>
+
+<script type="text/javascript">
+var Router = Backbone.Router.extend({
+	routes: {
+		'': 'users',
+		'users': 'users',
+		'sessions': 'sessions'
+	},
+
+	users: function() {
+		var UserController = new Ractive({
+			el: 'content',
+			template: '#users-tpl',
+			data: {
+				items: [],
+				editing: null,
+				deleting: null
+			}
+		});
+
+		UserController.on({
+			editUser: function(evt, user) {
+				console.log('edit');
+				UserController.set('editing', user);
+				evt.original.preventDefault();
+			},
+			save: function(evt) {
+				var user = UserController.get('editing');
+				$.post('/api/users/save', user, function(users) {
+					UserController.set('items', users);
+					UserController.set('editing', null);
+				});
+				evt.original.preventDefault();
+			},
+			delete: function(evt, user) {
+				console.log(user);
+			},
+			closeModal: function(evt) {
+				UserController.set('editing', null);
+				UserController.set('deleting', null);
+			},
+			stopPropagation: function(evt) {
+				evt.original.stopPropagation();
+			}
+		});
+
+		$.getJSON('/api/users/all', function(users) {
+			UserController.set('items', users);
+		});
+	},
+
+	sessions: function() {
+		var SessionController = new Ractive({
+			el: 'content',
+			template: '#session-tpl'
+		});
+	}
+});
+
+$(function() {
+	new Router();
+	Backbone.history.start();
+});
+</script>
+</body>
+</html>

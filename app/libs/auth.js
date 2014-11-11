@@ -15,7 +15,7 @@ var auth = {
 
 		if ( ! token) return next();
 
-		db.sessions.findOne({ token: token, expires: { $gt: moment().unix() } }, function(err, session) {
+		db.sessions.findByToken(token, function(err, session) {
 			if ( ! session && token) {
 				res.clearCookie('jwtoken');
 				return next();
@@ -29,6 +29,7 @@ var auth = {
 						email: user.email,
 						firstname: user.firstname,
 						lastname: user.lastname,
+						gender: user.gender,
 						admin: user.admin
 					};
 					next();

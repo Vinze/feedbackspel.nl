@@ -158,7 +158,7 @@ var UserController = {
 	},
 
 	findAll: function(req, res) {
-		db.users.find({}, { password: 0 }, function(err, users) {
+		db.users.findAll(function(err, users) {
 			res.json(users);
 		});
 	},

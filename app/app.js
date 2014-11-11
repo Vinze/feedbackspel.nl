@@ -81,8 +81,8 @@ app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten');
 });
 
-app.get('/backbone', function(req, res) {
-	res.render('testing/backbone');
+app.get(/\/admin(\/?)(.*?)/, auth.isAdmin, function(req, res) {
+	res.render('admin');
 });
 
 app.get('/chat', auth.isMember, function(req, res) {

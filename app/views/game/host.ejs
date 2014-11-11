@@ -3,41 +3,67 @@
 <head>
 	<% include ../includes/head %>
 </head>
-<body>
-<% include ../includes/top %>
-<div class="content-wrapper">
-	<div class="content container">
-		<div class="row section">
-			<div class="box col span-12" id="users">
-				<!-- UserList -->
-			</div>
-		</div>
+<body class="ingame host">
+<% include ../includes/sidebar %>
+<div class="site-wrapper">
+	<a href="#" class="nav-toggle">
+		<img src="/img/icon-menu.png" width="34px" height="26px">
+	</a>
+
+	<div id="game">
+	</div>
+
+	<div class="players" id="players">
 	</div>
 </div>
-<% include ../includes/bottom %>
+<% include ../includes/scripts %>
 
 <script type="text/javascript" src="/js/libs/cookies.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-<script type="text/template" id="users-tpl">
-	<h2>Verbonden gebruikers:</h2>
+
+<script type="text/template" id="game-tpl">
+	<div class="card">
+		{{card}}
+	</div>
+</script>
+
+<script type="text/template" id="players-tpl">
 	<ul>
 		{{#each users}}
-			<li><img src="/avatar/{{_id}}.png" alt=""> {{firstname}} {{lastname}} ({{email}})</li>
+			<li class="player {{ready ? 'ready' : ''}}">
+				<div class="avatar">
+					<img src="/avatar/{{_id}}.png">
+				</div>
+				<div class="name">
+					{{firstname}} {{lastname}}
+				</div>
+			</li>
 		{{/each}}
 	</ul>
 </script>
-<script type="text/javascript">
-	var base_url = 'http://' + (window.location.hostname == 'localhost' ? 'localhost' : 'feedbackspel.nl');
-	var token = Cookies.get('fbs_token');
-	var socket = io(base_url + ':1337', { query: 'token=' + token + '&role=host' });
 
-	var UsersList = new Ractive({
-		el: 'users',
-		template: '#users-tpl',
+<script type="text/javascript">
+	var token = Cookies.get('fbs_token');
+	var url = 'http://' + window.location.hostname + ':1337';
+	var socket = io(url, { query: 'token=' + token + '&role=host' });
+
+	var Game = new Ractive({
+		el: 'game',
+		template: '#game-tpl',
+		data: { card: null }
+	});
+
+	var PlayerList = new Ractive({
+		el: 'players',
+		template: '#players-tpl',
 		data: { users: [] }
 	});
 
-	socket.on('users.list', function(users) {
-		UsersList.set('users', users)
+	socket.on('users.updated', function(users) {
+		PlayerList.set('users', users)
+	});
+
+	socket.on('card.new', function(card) {
+		Game.set('card', card);
 	});
 </script>

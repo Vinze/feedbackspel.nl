@@ -1,23 +1,4 @@
-<div class="sidebar">
-	<a class="close close-nav"><i class="fa fa-times"></i></a>
-	<ul class="nav-items">
-		<li class="nav-title">Menu</li>
-		<% if (user) { %>
-			<li class="nav-item"><a href="/"><i class="fa fa-fw fa-globe"></i> Startpagina</a></li>
-			<li class="nav-item"><a href="/dashboard"><i class="fa fa-fw fa-home"></i> Dashboard</a></li>
-			<li class="nav-item"><a href="/profile"><i class="fa fa-fw fa-user"></i> Mijn profiel</a></li>
-			<li class="nav-item"><a href="/logout"><i class="fa fa-fw fa-sign-out"></i> Uitloggen</a></li>
-		<% } else { %>
-			<li class="nav-item"><a href="/login"><i class="fa fa-fw fa-sign-in"></i> Inloggen</a></li>
-			<li class="nav-item"><a href="/register"><i class="fa fa-fw fa-user"></i> Registreren</a></li>
-		<% } %>
-	</ul>
-	<% if (user && user.admin == true) { %>
-		<ul class="admin-items">
-			<li class="nav-item"><a href="/users"><i class="fa fa-fw fa-users"></i> Gebruikers</a></li>
-		</ul>
-	<% } %>
-</div>
+<% include sidebar %>
 <div class="site-wrapper">
 	<div class="header-wrapper">
 		<div class="header container">
