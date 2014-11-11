@@ -15,4 +15,4 @@ build/Release
 
 node_modules
 
-storage/datastores
+storage

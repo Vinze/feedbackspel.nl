@@ -1,7 +1,7 @@
 var socketio  = require('socket.io');
 var jwt       = require('jwt-simple');
 var Datastore = require('nedb');
-var async     = require('async');
+var _         = require('underscore');
 var moment    = require('moment');
 var db        = require('../libs/datastore');
 var config    = require('../libs/config');
@@ -13,9 +13,13 @@ var round = 0;
 var SocketController = function(server) {
 	var io = socketio.listen(server, { log: false });
 
-	function sendUsers() {
+	function stateChanged() {
 		players.find({}).sort({ firstname: 1 }).exec(function(err, users) {
+			var ready = _.reduce(users, function(memo, user) {
+				return user.ready ? memo + 1 : memo;
+			}, 0);
 			io.sockets.emit('users.updated', users);
+			io.sockets.emit('users.ready', ready);
 		});
 	}
 
@@ -28,21 +32,6 @@ var SocketController = function(server) {
 		}
 	}
 
-	function checkReady() {
-		players.count({}, function(err, total) {
-			players.count({ ready: true }, function(err, ready) {
-				if (total == ready) {
-					sendCard();
-					players.update({}, { $set: { ready: false } }, { multi: true }, function() {
-						sendUsers();
-					});
-				} else {
-					sendUsers();
-				}
-			});
-		});
-	}
-
 	io.on('connection', function(client) {
 		var token = client.handshake.query.token;
 		client.role = client.handshake.query.role;
@@ -50,25 +39,35 @@ var SocketController = function(server) {
 		try {
 			var data = jwt.decode(token, config.jwt_secret);
 			db.users.findById(data.user_id, function(err, user) {
-				client.user = user;
+				client.user_id = user._id;
 				if (client.role == 'client') {
+					user.ready = false;
 					players.insert(user);
+				} else {
+					// sendCard();
 				}
-				sendUsers();
-				sendCard();
+				stateChanged();
 			});
 		} catch(err) {
 			console.log(err);
 		}
 
-		client.on('ready', function() {
-			players.update({ _id: client.user._id }, { $set: { ready: true } }, checkReady);
+		client.on('user.ready', function() {
+			players.update({ _id: client.user_id }, { $set: { ready: true } }, function() {
+				stateChanged();
+			});
 		});
+
+		// client.on('round.next', function() {
+		// 	players.update({}, { $set: { ready: false } }, { multi: true }, function() {
+		// 		sendUsers();
+		// 	});
+		// });
 
 		client.on('disconnect', function() {
 			if (client.role == 'client') {
-				players.remove({_id: client.user._id});
-				checkReady();
+				players.remove({ _id: client.user_id });
+				stateChanged();
 			}
 		});
 

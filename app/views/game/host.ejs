@@ -9,61 +9,84 @@
 	<a href="#" class="nav-toggle">
 		<img src="/img/icon-menu.png" width="34px" height="26px">
 	</a>
-
 	<div id="game">
-	</div>
-
-	<div class="players" id="players">
 	</div>
 </div>
 <% include ../includes/scripts %>
 
+<script type="text/javascript" src="/js/libs/underscore.min.js"></script>
 <script type="text/javascript" src="/js/libs/cookies.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script type="text/template" id="game-tpl">
 	<div class="card">
-		{{card}}
+		{{#if ready == players.length && players.length != 0}}
+			<a href="#" on-click="next">Volgende?</a>
+		{{else}}
+			{{card}}
+		{{/if}}
+	</div>
+
+	<div class="players">
+		<ul>
+			{{#each players}}
+				<li class="player{{ready ? ' ready' : ''}}" intro-outro="fly:{ x: 0, y: -150 }">
+					<div class="avatar">
+						<img src="/avatar/{{_id}}.png">
+					</div>
+					<div class="name">
+						{{firstname}} {{lastname}}
+					</div>
+				</li>
+			{{/each}}
+		</ul>
 	</div>
 </script>
 
-<script type="text/template" id="players-tpl">
-	<ul>
-		{{#each users}}
-			<li class="player {{ready ? 'ready' : ''}}">
-				<div class="avatar">
-					<img src="/avatar/{{_id}}.png">
-				</div>
-				<div class="name">
-					{{firstname}} {{lastname}}
-				</div>
-			</li>
-		{{/each}}
-	</ul>
-</script>
 
 <script type="text/javascript">
 	var token = Cookies.get('fbs_token');
 	var url = 'http://' + window.location.hostname + ':1337';
 	var socket = io(url, { query: 'token=' + token + '&role=host' });
 
+	//==================
+
 	var Game = new Ractive({
 		el: 'game',
 		template: '#game-tpl',
-		data: { card: null }
+		data: {
+			card: 'Bescheiden',
+			ready: 0,
+			players: [],
+		}
 	});
 
-	var PlayerList = new Ractive({
-		el: 'players',
-		template: '#players-tpl',
-		data: { users: [] }
+	Game.on({
+		next: function(evt) {
+			socket.emit('round.next');
+			evt.original.preventDefault();
+		}
 	});
+
+	//==================
 
 	socket.on('users.updated', function(users) {
-		PlayerList.set('users', users)
+		// var total = users.length;
+		// var ready = _.reduce(users, function(memo, user) {
+		// 	return user.ready ? memo + 1 : memo;
+		// }, 0);
+		// Game.set('ready', ((total > 0 && ready > 0) && total == ready));
+		console.log('users.updated', users);
+		Game.set('players', users);
 	});
 
-	socket.on('card.new', function(card) {
-		Game.set('card', card);
+	socket.on('users.ready', function(ready) {
+		console.log('users.ready', ready);
+		Game.set('ready', ready);
 	});
+
+	// socket.on('card.new', function(card) {
+	// 	Game.set('ready', false);
+	// 	Game.set('card', card);
+	// });
 </script>

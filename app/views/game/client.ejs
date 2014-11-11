@@ -17,10 +17,12 @@
 
 <script type="text/javascript" src="/js/libs/cookies.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
 <script type="text/template" id="template">
-	<h1>Connected: <%=user.firstname%></h1>
+	<h1>Connected: <%= user.firstname %></h1>
 	<a href="#" on-click="ready">Ready!</a>
 </script>
+
 <script type="text/javascript">
 	var token = Cookies.get('fbs_token');
 	var url = 'http://' + window.location.hostname + ':1337';
@@ -34,7 +36,7 @@
 
 	Player.on({
 		ready: function(evt) {
-			socket.emit('ready');
+			socket.emit('user.ready');
 			evt.original.preventDefault();
 		}
 	});
