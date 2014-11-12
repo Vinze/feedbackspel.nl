@@ -13,22 +13,22 @@
 				<form action="/profile" method="post">
 					<div class="row" style="margin-bottom: 10px">
 						<div class="col span-4">E-mail adres:</div>
-						<div class="col span-8"><%= email %></div>
+						<div class="col span-8 bold"><%= email %></div>
 					</div>
 
 					<div class="row" style="margin-bottom: 10px">
 						<div class="col span-4">Voornaam:</div>
-						<div class="col span-8"><%= firstname %></div>
+						<div class="col span-8 bold"><%= firstname %></div>
 					</div>
 
 					<div class="row" style="margin-bottom: 10px">
 						<div class="col span-4">Achternaam:</div>
-						<div class="col span-8"><%= lastname %></div>
+						<div class="col span-8 bold"><%= lastname %></div>
 					</div>
 
 					<div class="row" style="margin-bottom: 10px">
 						<div class="col span-4">Ik ben een:</div>
-						<div class="col span-8"><%= gender == 'm' ? 'Man' : 'Vrouw' %></div>
+						<div class="col span-8 bold"><%= gender == 'm' ? 'Man' : 'Vrouw' %></div>
 					</div>
 				</form>
 			</div>
@@ -38,8 +38,12 @@
 				<form action="/avatar" method="post" enctype="multipart/form-data" id="upload-form">
 					<input type="file" name="image" id="upload-select" style="display:none">
 				</form>
-				<p style="margin-bottom: 8px;"><img src="/avatar/<%= user._id %>.png"></p>
-				<p class="align-center"><a href="#" id="upload-link">Selecteer afbeelding</a></p>
+				<p class="align-center" style="margin-bottom: 8px;">
+					<img src="/avatar/<%= user._id %>.png">
+				</p>
+				<p class="align-center">
+					<a href="#" id="upload-link"><i class="fa fa-picture-o"></i> Selecteer afbeelding</a>
+				</p>
 			</div>
 		</div>
 

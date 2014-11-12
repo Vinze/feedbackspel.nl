@@ -70,8 +70,6 @@ app.post('/avatar', auth.isMember, UserController.postAvatar);
 app.get('/game/host', auth.isMember, GameController.getHost);
 app.get('/game/client', auth.isMember, GameController.getClient);
 
-app.get('/users', auth.isAdmin, UserController.getIndex);
-
 app.post('/api/check-email', UserController.checkEmail);
 app.get('/api/users/all', auth.isAdmin, UserController.findAll);
 app.get('/api/users/:id', auth.isAdmin, UserController.findOne);

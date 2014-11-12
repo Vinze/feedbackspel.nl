@@ -25,7 +25,7 @@
 				<label for="email">E-mail adres:</label>
 			</div>
 			<div class="col span-8">
-				<input type="text" name="email" value="{{email.value}}" class="text{{email.error ? ' error' : ''}}" id="email" on-blur="validateEmail">
+				<input type="email" name="email" value="{{email.value}}" class="text{{email.error ? ' error' : ''}}" id="email" on-blur="validateEmail">
 				<i class="required"></i>
 				{{#if email.error}}<span class="error-msg">{{email.error}}</span>{{/if}}
 			</div>

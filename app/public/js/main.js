@@ -1,14 +1,14 @@
 function showSidebar() {
-	$('body').addClass('show-nav');
-	$('body').prepend('<div class="sidebar-overlay close-nav"></div>');
+	$('body').addClass('sidebar-open');
+	$('body').prepend('<div class="sidebar-overlay close-sidebar"></div>');
 }
 
 function hideSidebar() {
-	$('body').removeClass('show-nav');
+	$('body').removeClass('sidebar-open');
 	$('.sidebar-overlay').remove();
 }
 
-$('.nav-toggle').on('tap, click', function(evt) {
+$('.sidebar-toggle').on('tap, click', function(evt) {
 	showSidebar();
 	evt.preventDefault();
 });
@@ -17,7 +17,7 @@ $('.sidebar').on('swipeRight', function() {
 	hideSidebar();
 });
 
-$('body').on('tap, click', '.close-nav', function(evt) {
+$('body').on('tap, click', '.close-sidebar', function(evt) {
 	hideSidebar();
 	evt.preventDefault();
 });

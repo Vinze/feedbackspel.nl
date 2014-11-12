@@ -6,7 +6,7 @@
 <body class="ingame host">
 <% include ../includes/sidebar %>
 <div class="site-wrapper">
-	<a href="#" class="nav-toggle">
+	<a href="#" class="sidebar-toggle">
 		<img src="/img/icon-menu.png" width="34px" height="26px">
 	</a>
 	<div id="game">
@@ -20,8 +20,8 @@
 
 <script type="text/template" id="game-tpl">
 	<div class="card">
-		{{#if ready == players.length && players.length != 0}}
-			<a href="#" on-click="next">Volgende?</a>
+		{{#if ready}}
+			<a href="#" on-click="next">Volgende kaart</a>
 		{{else}}
 			{{card}}
 		{{/if}}
@@ -30,7 +30,7 @@
 	<div class="players">
 		<ul>
 			{{#each players}}
-				<li class="player{{ready ? ' ready' : ''}}" intro-outro="fly:{ x: 0, y: -150 }">
+				<li class="player{{ready ? ' ready' : ''}}" intro-outro="fly:{ x: 0, y: 150 }">
 					<div class="avatar">
 						<img src="/avatar/{{_id}}.png">
 					</div>
@@ -56,7 +56,7 @@
 		template: '#game-tpl',
 		data: {
 			card: 'Bescheiden',
-			ready: 0,
+			ready: false,
 			players: [],
 		}
 	});
@@ -71,18 +71,12 @@
 	//==================
 
 	socket.on('users.updated', function(users) {
-		// var total = users.length;
-		// var ready = _.reduce(users, function(memo, user) {
-		// 	return user.ready ? memo + 1 : memo;
-		// }, 0);
-		// Game.set('ready', ((total > 0 && ready > 0) && total == ready));
-		console.log('users.updated', users);
 		Game.set('players', users);
 	});
 
 	socket.on('users.ready', function(ready) {
-		console.log('users.ready', ready);
-		Game.set('ready', ready);
+		var players = Game.get('players').length;
+		Game.set('ready', (ready == players && players > 0));
 	});
 
 	// socket.on('card.new', function(card) {

@@ -1,7 +1,7 @@
 @font-color: #5F5F5F;
-@accent-color: #53BF6B;
+@accent-color: #55BE78;
 @max-page-width: 960px;
-@header-height: 60px;
+@header-height: 64px;
 @footer-height: 28px;
 @font-size: 15px;
 @sidebar-width: 250px;
@@ -79,6 +79,8 @@ table {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
 }
 
 @font-face {
@@ -307,24 +309,32 @@ button {
 }
 
 .btn, a.btn {
-	padding: 5px 15px;
+	padding: 8px 20px 10px 20px;
+	vertical-align: middle;
 	margin: 0px;
 	cursor: pointer;
-	background-color: #ccc;
+	background-color: #929292;
 	border: none;
 	display: inline-block;
 	text-decoration: none;
+	color: #fff;
+	.border-radius(4px);
 	.transition(color 0.33s);
 	.transition(background-color 0.33s);	
 	&:hover {
-		background-color: darken(#ccc, 10%);
+		background-color: darken(#929292, 7%);
 		text-decoration: none;
 	}
 	&.confirm {
 		background-color: @accent-color;
-		color: #fff;
 		&:hover {
-			background-color: darken(@accent-color, 10%);
+			background-color: darken(@accent-color, 7%);
+		}
+	}
+	&.danger {
+		background-color: #BE5555;
+		&:hover {
+			background-color: darken(#BE5555, 7%);
 		}
 	}
 }
@@ -461,6 +471,8 @@ body {
 	position: fixed;
 	background-color: #fff;
 	border-bottom: 1px solid #e5e5e5;
+	border-top: 4px solid @accent-color;
+	top: 0;
 }
 
 .header {
@@ -474,9 +486,29 @@ body {
 	display: inline-block;
 }
 
-.nav-toggle {
+.navigation {
+	float: right;
+	margin: 0;
+	padding: 0;
+	li {
+		display: inline-block;
+	}
+	a {
+		display: block;
+		padding: 18px 10px;
+		color: @font-color;
+		text-decoration: none;
+		&:hover {
+			color: @accent-color;
+			text-decoration: none;
+		}
+	}
+}
+
+.sidebar-toggle {
 	float: right;
 	padding: 15px 2px 10px 20px;
+	display: none;
 	img {
 		width: 34px;
 		height: 26px;
@@ -493,54 +525,42 @@ body {
 	z-index: 500;
 	margin: 0px;
 	background: #444 url('../img/bg-navigation.png') repeat left top;
-	color: #fff;
+	color: #ccc;
 	font-size: 1.1em;
 	.box-shadow(0 0 5px #222);
-	.close {
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		padding: 14px;
-		font-size: 1.4em;
-		color: #fff;
-	}
-	.admin-items {
-		margin-top: 10px;
-		padding-top: 10px;
-		font-size: 0.9em;
-		border-top: 1px solid #555;
-	}
 	ul {
 		margin: 0;
-	}
-	a {
-		color: #ccc;
-		&:hover {
-			color: #fff;
-			text-decoration: none;
-		}
 	}
 	li {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
 		display: block;
-		&.nav-title {
-			padding: 10px 10px 10px 64px;
+		&.title {
+			padding: 10px 10px 10px 40px;
 			font-weight: bold;
-			background-color: #51C864;
-			margin: 10px 0 5px -8px;
+			margin: 10px 0 0 0;
 		}
-		&.nav-item {
-			a {
-				display: block;
-				text-decoration: none;
-				padding: 10px 30px;
-				i {
-					margin-right: 5px;
-				}
-			}
+	}
+	a {
+		color: #ccc;
+		display: block;
+		text-decoration: none;
+		padding: 10px 30px;
+		&:hover {
+			color: #fff;
+			text-decoration: none;
 		}
+		i {
+			margin-right: 5px;
+		}
+	}
+	.close-sidebar {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding: 14px;
+		font-size: 1.4em;
 	}
 }
 
@@ -574,7 +594,7 @@ div.footer {
 	padding: 4px 0;
 }
 
-body.show-nav {
+body.sidebar-open {
 	.sidebar {
 		right: 0;
 	}
@@ -650,10 +670,11 @@ body.show-nav {
 //================================================
 
 .ingame {
-	.nav-toggle {
+	.sidebar-toggle {
 		position: absolute;
 		top: 0px;
 		right: 10px;
+		display: block;
 	}
 }
 
@@ -674,11 +695,8 @@ body.show-nav {
 	.players {
 		position: absolute;
 		width: 100%;
-		height: 100px;
 		bottom: 0px;
-		padding: 8px 15px;
-		background-color: #fff;
-		border-top: 1px solid #e5e5e5;
+		padding: 10px;
 		overflow: hidden;
 		text-align: center;
 		ul {
@@ -692,10 +710,12 @@ body.show-nav {
 		margin: 0 10px;
 		.avatar {
 			display: inline-block;
-			width: 60px;
-			height: 60px;
-			border-radius: 30px;
+			width: 75px;
+			height: 75px;
+			border-radius: 75px;
 			overflow: hidden;
+			border: 1px solid #e5e5e5;
+			background-color: #fff;
 			opacity: 0.5;
 		}
 		&.ready {
@@ -709,46 +729,58 @@ body.show-nav {
 //================================================
 
 .ingame.client {
-	.content {
-		padding: 20px 10px;
-		max-width: 500px;
+	h1 {
+		padding: 0;
+		border: none;
 	}
-	.player-list {
+	.content {
+		padding: 15px 10px 60px 15px;
+		max-width: 400px;
+	}
+	.loading {
+		text-align: center;
+		padding: 50px 0;
+		.spinner {
+			font-size: 4em;
+			margin-bottom: 20px;
+		}
+	}
+	.players {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
-	}
-	.player {
-		margin: 0 0 10px 0;
-		padding: 5px;
-		background-color: #fff;
-		border: 1px solid #e5e5e5;
-		height: 72px;
-		position: relative;
-		.avatar {
-			// background-color: #ccc;
-			width: 60px;
-			height: 60px;
-			position: absolute;
-			img {
-				max-width: 100%;
-				max-height: 100%;
-			}
+		li {
+			display: block;
+			height: 82px;
+			margin: 0 0 10px;
+			border: 1px solid #e5e5e5;
+			background-color: #fff;
+			position: relative;
 		}
 		.name {
-			display: inline-block;
-			// background-color: #808080;
-			position: absolute;
-			left: 80px;
-			top: 7px;
+			margin-left: 80px;
+			padding: 5px 10px 2px 6px;
+		}
+		.avatar {
+			width: 70px;
+			float: left;
+			margin: 5px;
 		}
 		.rating {
-			display: inline-block;
-			position: absolute;
-			left: 80px;
-			bottom: 0px;
-			font-size: 2em;
-			color: @accent-color;
+			margin-left: 80px;
+			padding-left: 5px;
+			font-size: 2.2em;
+		}
+	}
+	.actions {
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		width: 100%;
+		padding: 10px;
+		text-align: center;
+		a {
+			width: 200px;
 		}
 	}
 }
@@ -758,16 +790,22 @@ body.show-nav {
 //================================================
 
 @media (max-width: 960px) {
+	div.content {
+		padding: 20px 10px;
+	}
 	div.col {
 		width: 100%;
 		margin-left: 0 !important;
+	}
+	.sidebar-toggle {
+		display: block;
+	}
+	.navigation {
+		display: none;
 	}
 	.responsive-table {
 		width: 100%;
 		overflow-y: hidden;
 		overflow-x: auto;
 	}
-}
-
-@media (max-width: 600px) {
 }

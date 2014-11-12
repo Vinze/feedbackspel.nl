@@ -17,10 +17,6 @@ var UserController = {
 		res.render('users/dashboard', { message: req.flash('message') });
 	},
 
-	getIndex: function(req, res) {
-		res.render('users/index');
-	},
-
 	getProfile: function(req, res) {
 		res.render('users/profile', {
 			email: req.user.email,
@@ -52,7 +48,7 @@ var UserController = {
 		if (req.files.image && inArray(req.files.image.mimetype, mimetypes)) {
 			var input = req.files.image.path;
 			var output = './storage/avatars/' + req.user._id + '.png';
-			var command = 'convert ' + input + ' -resize "300x300^" -gravity center -crop 300x300+0+0 +repage ' + output;
+			var command = 'convert ' + input + ' -resize "150x150^" -gravity center -crop 150x150+0+0 +repage ' + output;
 			
 			exec(command, function(err, stdout, stderr) {
 				if (err) console.log(err);
@@ -135,7 +131,7 @@ var UserController = {
 				if (exists) return res.send('E-mail already taken');
 
 				db.users.insert({
-					email: input.email,
+					email: input.email.toLowerCase(),
 					password: bcrypt.hashSync(input.password),
 					firstname: input.firstname,
 					lastname: input.lastname,
@@ -168,7 +164,7 @@ var UserController = {
 
 	save: function(req, res) {
 		var input = {
-			email: req.body.email,
+			email: req.body.email.toLowerCase(),
 			firstname: req.body.firstname,
 			lastname: req.body.lastname
 		}

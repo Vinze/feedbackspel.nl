@@ -2,11 +2,16 @@
 <div class="site-wrapper">
 	<div class="header-wrapper">
 		<div class="header container">
-			<a href="<%= user ? '/dashboard' : '/' %>" class="header-logo">
+			<a href="/" class="header-logo">
 				<img src="/img/logo.png" width="64" height="40">
 			</a>
 			<% if (show_sidebar) { %>
-				<a href="#" class="nav-toggle">
+				<ul class="navigation">
+					<% menu_items.forEach(function(item) { %>
+						<li><a href="<%= item.url %>"><i class="fa fa-fw <%= item.classname %>"></i> <%= item.label %></a></li>
+					<% }); %>
+				</ul>
+				<a href="#" class="sidebar-toggle">
 					<img src="/img/icon-menu.png" width="34px" height="26px">
 				</a>
 			<% } %>

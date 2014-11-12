@@ -12,9 +12,9 @@
 				:(
 			</div>
 			<div class="box col span-3">
-				<ul>
-					<li><a href="#users">Gebruikers</a></li>
-					<li><a href="#sessions">Sessies</a></li>
+				<ul class="menu">
+					<li><a href="/admin/users">Gebruikers</a></li>
+					<li><a href="/admin/sessions">Sessies</a></li>
 				</ul>
 			</div>
 		</div>
@@ -131,9 +131,9 @@
 <script type="text/javascript">
 var Router = Backbone.Router.extend({
 	routes: {
-		'': 'users',
-		'users': 'users',
-		'sessions': 'sessions'
+		'admin': 'users',
+		'admin/users': 'users',
+		'admin/sessions': 'sessions'
 	},
 
 	users: function() {
@@ -187,8 +187,12 @@ var Router = Backbone.Router.extend({
 });
 
 $(function() {
-	new Router();
-	Backbone.history.start();
+	var router = new Router();
+	Backbone.history.start({ pushState: true });
+	$('.menu a').on('click', function(evt) {
+		router.navigate($(this).attr('href'),  { trigger: true });
+		evt.preventDefault();
+	});
 });
 </script>
 </body>
