@@ -351,6 +351,19 @@ i.required {
 	}
 }
 
+.form-group {
+	margin-bottom: 10px;
+}
+
+.label {
+	float: left;
+	color: lighten(@font-color, 25%);
+}
+
+.field {
+	margin-left: 140px;
+}
+
 //================================================
 // Form validation
 //================================================
@@ -537,7 +550,7 @@ body {
 		list-style-type: none;
 		display: block;
 		&.title {
-			padding: 10px 10px 10px 40px;
+			padding: 10px 10px 10px 32px;
 			font-weight: bold;
 			margin: 10px 0 0 0;
 		}
@@ -712,14 +725,27 @@ body.sidebar-open {
 			display: inline-block;
 			width: 75px;
 			height: 75px;
-			border-radius: 75px;
-			overflow: hidden;
-			border: 1px solid #e5e5e5;
-			background-color: #fff;
 			opacity: 0.5;
+			position: relative;
+			.transition(opacity 500ms);
+			img {
+				background-color: #fff;
+				border-radius: 75px;
+			}
+		}
+		.name {
+		}
+		.check {
+			position: absolute;
+			bottom:-8px;
+			right: -8px;
+			color: @accent-color;
+			font-size: 1.4em;
+			display: none;
 		}
 		&.ready {
 			.avatar { opacity: 1; }
+			.check { display: block; }
 		}
 	}
 }
@@ -734,7 +760,7 @@ body.sidebar-open {
 		border: none;
 	}
 	.content {
-		padding: 15px 10px 60px 15px;
+		padding: 15px 10px;
 		max-width: 400px;
 	}
 	.loading {
@@ -773,9 +799,7 @@ body.sidebar-open {
 		}
 	}
 	.actions {
-		position: absolute;
-		bottom: 0px;
-		left: 0px;
+		margin: 20px 0;
 		width: 100%;
 		padding: 10px;
 		text-align: center;

@@ -31,17 +31,19 @@
 			<h1>Selecteer:</h1>
 			<ul class="players">
 				{{#each players}}
-					<li intro="slide:{delay:200}">
-						<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
-						<div class="name">{{firstname}} {{lastname}}</div>
-						<div class="rating">
-							<a href="#" on-tap="setRating:1"><i class="fa {{ratings[_id] >= 1 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-							<a href="#" on-tap="setRating:2"><i class="fa {{ratings[_id] >= 2 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-							<a href="#" on-tap="setRating:3"><i class="fa {{ratings[_id] >= 3 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-							<a href="#" on-tap="setRating:4"><i class="fa {{ratings[_id] >= 4 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-							<a href="#" on-tap="setRating:5"><i class="fa {{ratings[_id] >= 5 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-						</div>
-					</li>
+					{{#if (_id != '<%= user._id %>')}}
+						<li intro="slide:{delay:200}">
+							<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
+							<div class="name">{{firstname}} {{lastname}}</div>
+							<div class="rating">
+								<a href="#" on-tap="setRating:1"><i class="fa {{ratings[_id] >= 1 ? 'fa-star' : 'fa-star-o'}}"></i></a>
+								<a href="#" on-tap="setRating:2"><i class="fa {{ratings[_id] >= 2 ? 'fa-star' : 'fa-star-o'}}"></i></a>
+								<a href="#" on-tap="setRating:3"><i class="fa {{ratings[_id] >= 3 ? 'fa-star' : 'fa-star-o'}}"></i></a>
+								<a href="#" on-tap="setRating:4"><i class="fa {{ratings[_id] >= 4 ? 'fa-star' : 'fa-star-o'}}"></i></a>
+								<a href="#" on-tap="setRating:5"><i class="fa {{ratings[_id] >= 5 ? 'fa-star' : 'fa-star-o'}}"></i></a>
+							</div>
+						</li>
+					{{/if}}
 				{{/each}}
 			</ul>
 			<div class="actions">
@@ -70,12 +72,11 @@
 	Player.on({
 		ready: function(evt) {
 			var ratings = Player.get('ratings');
-			Player.set('ratings', {});
 			Player.set('ingame', false).then(function() {
 				Player.set('waiting', true);
+				Player.set('ratings', {});
 			});
 			socket.emit('user.ready', ratings);
-			// console.log(Player.get('ratings'));
 			evt.original.preventDefault();
 		},
 		setRating: function(evt, rating) {

@@ -17,19 +17,6 @@ var UserController = {
 		res.render('users/dashboard', { message: req.flash('message') });
 	},
 
-	getProfile: function(req, res) {
-		res.render('users/profile', {
-			email: req.user.email,
-			firstname: req.user.firstname,
-			lastname: req.user.lastname,
-			gender: req.user.gender
-		});
-	},
-
-	postProfile: function(req, res) {
-		res.json(req.body);
-	},
-
 	getAvatar: function(req, res) {
 		var imagepath = './storage/avatars/' + req.params.image;
 		fs.exists(imagepath, function(exists) {
@@ -135,6 +122,7 @@ var UserController = {
 					password: bcrypt.hashSync(input.password),
 					firstname: input.firstname,
 					lastname: input.lastname,
+					gender: input.gender,
 					admin: false,
 					created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
 					updated_at: moment().format('YYYY-MM-DD HH:mm:ss')

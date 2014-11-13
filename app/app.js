@@ -63,7 +63,6 @@ app.post('/register', auth.isGuest, UserController.postRegister);
 app.get('/logout', auth.isMember, UserController.getLogout);
 
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
-app.get('/profile', auth.isMember, UserController.getProfile);
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
 

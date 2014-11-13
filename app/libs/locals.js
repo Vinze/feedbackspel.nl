@@ -7,7 +7,7 @@ module.exports = function(req, res, next) {
 	if (req.user) {
 		res.locals.menu_items = [
 			{ label: 'Dashboard', url: '/dashboard', classname: 'fa-home' },
-			{ label: 'Mijn profiel', url: '/profile', classname: 'fa-user' },
+			// { label: 'Mijn profiel', url: '/profile', classname: 'fa-user' },
 			{ label: 'Uitloggen', url: '/logout', classname: 'fa-sign-out' }
 		];
 	} else {
