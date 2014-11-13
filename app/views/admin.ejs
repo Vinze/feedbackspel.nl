@@ -12,6 +12,7 @@
 				:(
 			</div>
 			<div class="box col span-3">
+				<h1>Menu</h1>
 				<ul class="menu">
 					<li><a href="/admin/users">Gebruikers</a></li>
 					<li><a href="/admin/sessions">Sessies</a></li>
@@ -24,17 +25,13 @@
 <script type="text/javascript" src="/js/libs/underscore.min.js"></script>
 <script type="text/javascript" src="/js/libs/backbone.min.js"></script>
 
-<script type="text/template" id="home-tpl">
-	<h1>Home</h1>
-	<p>Dit is de homepage</p>
-</script>
-
 <script type="text/template" id="users-tpl">
 	<h1>Gebruikers</h1>
 	<div class="responsive-table">
 		<table>
 			<thead>
 				<tr>
+					<th></th>
 					<th>Email</th>
 					<th>Naam</th>
 					<th>Gemaakt</th>
@@ -43,6 +40,7 @@
 			<tbody>
 				{{#each items}}
 					<tr>
+						<td><i class="fa {{gender == 'm' ? 'fa-male' : 'fa-female'}}"></i></td>
 						<td>{{email}}</td>
 						<td>{{firstname}} {{lastname}}</td>
 						<td>{{created_at}}</td>
@@ -56,56 +54,70 @@
 	</div>
 	{{#if editing}}
 		<div class="modal-overlay" intro-outro="fade:{ duration: 300 }" on-click="closeModal">
-			<div class="modal" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
-				<h1>Gebruiker bewerken</h1>
-				<form on-submit="save">
-					<div class="row" style="margin-bottom: 15px;">
-						<div class="col span-4"><label for="email">E-mail adres</label></div>
-						<div class="col span-8">
-							<input type="text" name="email" value="{{editing.email}}" class="text" id="email">
-							<i class="required"></i>
-						</div>
+			<div class="modal" style="max-width: 768px" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
+				{{#if saving}}
+					<div class="align-center">
+						<h1>Gebruiker is opgeslagen!</h1>
+						<p><i class="fa fa-spin fa-4x fa-spinner"></i></p>
 					</div>
+				{{else}}
+					<div>
+						<h1>Gebruiker bewerken</h1>
+						<form on-submit="save">
+							<div class="row">
+								<div class="col span-8">
+									<div class="form-group">
+										<div class="label"><label for="email">E-mail adres:</label></div>
+										<div class="field">
+											<input type="text" name="email" value="{{editing.email}}" class="text" id="email">
+											<i class="required"></i>
+										</div>
+									</div>
 
-					<div class="row" style="margin-bottom: 15px">
-						<div class="col span-4"><label for="firstname">Voornaam:</label><br></div>
-						<div class="col span-8">
-							<input type="text" name="firstname" value="{{editing.firstname}}" class="text" id="firstname">
-							<i class="required"></i>
-						</div>
-					</div>
+									<div class="form-group">
+										<div class="label"><label for="firstname">Voornaam:</label><br></div>
+										<div class="field">
+											<input type="text" name="firstname" value="{{editing.firstname}}" class="text" id="firstname">
+											<i class="required"></i>
+										</div>
+									</div>
 
-					<div class="row" style="margin-bottom: 15px">
-						<div class="col span-4"><label for="lastname">Achternaam:</label><br></div>
-						<div class="col span-8">
-							<input type="text" name="lastname" value="{{editing.lastname}}" class="text" id="lastname">
-							<i class="required"></i>
-						</div>
-					</div>
+									<div class="form-group">
+										<div class="label"><label for="lastname">Achternaam:</label><br></div>
+										<div class="field">
+											<input type="text" name="lastname" value="{{editing.lastname}}" class="text" id="lastname">
+											<i class="required"></i>
+										</div>
+									</div>
 
-					<div class="row" style="margin-bottom: 15px">
-						<div class="col span-4"><label for="password">Nieuw wachtwoord:</label><br></div>
-						<div class="col span-8">
-							<input type="password" name="password" value="{{editing.password}}" class="text" id="password">
-							<i class="required"></i>
-						</div>
-					</div>
+									<div class="form-group">
+										<div class="label"><label for="password">Nieuw wachtwoord:</label><br></div>
+										<div class="field">
+											<input type="password" name="password" value="{{editing.password}}" class="text" id="password">
+											<i class="required"></i>
+										</div>
+									</div>
 
-					<div class="row" style="margin-bottom: 15px">
-						<div class="col span-4"><label>Geslacht:</label></div>
-						<div class="col span-8">
-							<label><input type="radio" name="gender" value="m" checked="{{editing.gender}}" class="radio"> Man</label>
-							<label><input type="radio" name="gender" value="f" checked="{{editing.gender}}" class="radio"> Vrouw</label>
-							<i class="required"></i>
-						</div>
-					</div>
+									<div class="form-group">
+										<div class="label"><label for="password">Geslacht:</label><br></div>
+										<div class="field">
+											<label><input type="radio" name="{{editing.gender}}" value="m" class="radio"> Man</label>
+											<label><input type="radio" name="{{editing.gender}}" value="f" class="radio"> Vrouw</label>
+											<i class="required"></i>
+										</div>
+									</div>
 
-					<div class="row">
-						<div class="col span-12">
-							<button class="btn confirm"><i class="fa fa-save"></i> Opslaan</button>
-						</div>
+									<div class="form-group">
+										<button class="btn confirm"><i class="fa fa-save"></i> Opslaan</button>
+									</div>
+								</div>
+								<div class="col span-4 align-right" style="padding-left: 10px">
+									<img src="/avatar/{{editing._id}}.png">
+								</div>
+							</div>
+						</form>
 					</div>
-				</form>
+				{{/if}}
 			</div>
 		</div>
 	{{/if}}
@@ -137,36 +149,41 @@ var Router = Backbone.Router.extend({
 	},
 
 	users: function() {
-		var UserController = new Ractive({
+		var Users = new Ractive({
 			el: 'content',
 			template: '#users-tpl',
 			data: {
 				items: [],
 				editing: null,
-				deleting: null
+				deleting: null,
+				saving: false
 			}
 		});
 
-		UserController.on({
+		Users.on({
 			editUser: function(evt, user) {
-				console.log('edit');
-				UserController.set('editing', user);
+				Users.set('editing', user);
 				evt.original.preventDefault();
 			},
 			save: function(evt) {
-				var user = UserController.get('editing');
+				var user = Users.get('editing');
 				$.post('/api/users/save', user, function(users) {
-					UserController.set('items', users);
-					UserController.set('editing', null);
+					Users.set('items', users);
 				});
+				Users.set('saving', true);
+				setTimeout(function() {
+					Users.set('editing', null).then(function() {
+						Users.set('saving', false);
+					});
+				}, 2000);
 				evt.original.preventDefault();
 			},
 			delete: function(evt, user) {
 				console.log(user);
 			},
 			closeModal: function(evt) {
-				UserController.set('editing', null);
-				UserController.set('deleting', null);
+				Users.set('editing', null);
+				Users.set('deleting', null);
 			},
 			stopPropagation: function(evt) {
 				evt.original.stopPropagation();
@@ -174,7 +191,7 @@ var Router = Backbone.Router.extend({
 		});
 
 		$.getJSON('/api/users/all', function(users) {
-			UserController.set('items', users);
+			Users.set('items', users);
 		});
 	},
 

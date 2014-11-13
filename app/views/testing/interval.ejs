@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include ../includes/head %>
+</head>
+<body class="ingame client">
+<% include ../includes/sidebar %>
+<div class="site-wrapper">
+	<a href="#" class="sidebar-toggle">
+		<img src="/img/icon-menu.png" width="34px" height="26px">
+	</a>
+	<div class="content container" id="content">
+		<h1>Interval</h1>
+		<h2 id="interval">0</h2>
+	</div>
+</div>
+<% include ../includes/scripts %>
+
+<script type="text/javascript">
+	var i = 1;
+	setInterval(function() {
+		$('#interval').text(i);
+		i++;
+	}, 1000);
+</script>
+</body>
+</html>

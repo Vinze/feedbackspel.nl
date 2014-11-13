@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include ../includes/head %>
+	<% include includes/head %>
 </head>
 <body class="ingame client">
-<% include ../includes/sidebar %>
+<% include includes/sidebar %>
 <div class="site-wrapper">
 	<a href="#" class="sidebar-toggle">
 		<img src="/img/icon-menu.png" width="34px" height="26px">
@@ -12,9 +12,7 @@
 	<div class="content container" id="content">
 	</div>
 </div>
-<% include ../includes/scripts %>
-
-<script type="text/javascript" src="/js/libs/cookies.min.js"></script>
+<% include includes/scripts %>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script type="text/template" id="template">
@@ -28,27 +26,29 @@
 	{{/if}}
 	{{#if ingame}}
 		<div class="player-select" intro-outro="fade">
-			<h1>Selecteer:</h1>
-			<ul class="players">
-				{{#each players}}
-					{{#if (_id != '<%= user._id %>')}}
-						<li intro="slide:{delay:200}">
-							<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
-							<div class="name">{{firstname}} {{lastname}}</div>
-							<div class="rating">
-								<a href="#" on-tap="setRating:1"><i class="fa {{ratings[_id] >= 1 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-								<a href="#" on-tap="setRating:2"><i class="fa {{ratings[_id] >= 2 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-								<a href="#" on-tap="setRating:3"><i class="fa {{ratings[_id] >= 3 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-								<a href="#" on-tap="setRating:4"><i class="fa {{ratings[_id] >= 4 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-								<a href="#" on-tap="setRating:5"><i class="fa {{ratings[_id] >= 5 ? 'fa-star' : 'fa-star-o'}}"></i></a>
-							</div>
-						</li>
-					{{/if}}
-				{{/each}}
-			</ul>
-			<div class="actions">
-				<a href="#" class="btn confirm" on-click="ready"><i class="fa fa-check"></i> Ik ben klaar</a>
-			</div>
+			{{#if players.length > 1}}
+				<h1>Selecteer:</h1>
+				<ul class="players">
+					{{#each players}}
+						{{#if (_id != '<%= user._id %>')}}
+							<li intro="slide:{delay:200}">
+								<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
+								<div class="name">{{firstname}} {{lastname}}</div>
+								<div class="rating">
+									<a href="#" on-tap="setRating:1"><i class="fa fa-star{{ratings[_id] >= 1 ? '' : '-o'}}"></i></a>
+									<a href="#" on-tap="setRating:2"><i class="fa fa-star{{ratings[_id] >= 2 ? '' : '-o'}}"></i></a>
+									<a href="#" on-tap="setRating:3"><i class="fa fa-star{{ratings[_id] >= 3 ? '' : '-o'}}"></i></a>
+									<a href="#" on-tap="setRating:4"><i class="fa fa-star{{ratings[_id] >= 4 ? '' : '-o'}}"></i></a>
+									<a href="#" on-tap="setRating:5"><i class="fa fa-star{{ratings[_id] >= 5 ? '' : '-o'}}"></i></a>
+								</div>
+							</li>
+						{{/if}}
+					{{/each}}
+				</ul>
+				<div class="actions">
+					<a href="#" class="btn confirm" on-click="ready"><i class="fa fa-check"></i> Ik ben klaar</a>
+				</div>
+			{{/if}}
 		</div>
 	{{/if}}
 </script>
@@ -90,3 +90,5 @@
 	});
 
 </script>
+</body>
+</html>

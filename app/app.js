@@ -74,8 +74,8 @@ app.get('/api/users/all', auth.isAdmin, UserController.findAll);
 app.get('/api/users/:id', auth.isAdmin, UserController.findOne);
 app.post('/api/users/save', auth.isAdmin, UserController.save);
 
-app.get('/randomize', function(req, res) {
-	res.render('randomize');
+app.get('/randomwords', function(req, res) {
+	res.render('randomwords');
 });
 
 app.get('/kernkwadranten', function(req, res) {
@@ -84,6 +84,10 @@ app.get('/kernkwadranten', function(req, res) {
 
 app.get(/\/admin(\/?)(.*?)/, auth.isAdmin, function(req, res) {
 	res.render('admin');
+});
+
+app.get('/interval', function(req, res) {
+	res.render('testing/interval');
 });
 
 app.get('/chat', auth.isMember, function(req, res) {

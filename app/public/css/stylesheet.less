@@ -1,10 +1,11 @@
-@font-color: #5F5F5F;
-@accent-color: #55BE78;
 @max-page-width: 960px;
+@sidebar-width: 250px;
 @header-height: 64px;
 @footer-height: 28px;
+@accent-color: #55BE78;
+@font-color: #5F5F5F;
 @font-size: 15px;
-@sidebar-width: 250px;
+@fonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 .transition(@props) {
 	-webkit-transition: @props;
@@ -105,8 +106,20 @@ table {
 	font-style: normal;
 }
 
+@font-face {
+    font-family: 'Lobster';
+    src: url('../fonts/Lobster/lobster_1.4-webfont.eot');
+    src: url('../fonts/Lobster/lobster_1.4-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lobster/lobster_1.4-webfont.woff') format('woff'),
+         url('../fonts/Lobster/lobster_1.4-webfont.ttf') format('truetype'),
+         url('../fonts/Lobster/lobster_1.4-webfont.svg#lobster_1.4regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body, input, textarea, select, button {
-	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", @fonts;
 	font-size: @font-size;
 	line-height: 1.5;
 	color: @font-color;
@@ -318,7 +331,7 @@ button {
 	display: inline-block;
 	text-decoration: none;
 	color: #fff;
-	.border-radius(4px);
+	.border-radius(6px);
 	.transition(color 0.33s);
 	.transition(background-color 0.33s);	
 	&:hover {
@@ -344,25 +357,31 @@ i.required {
 	font-weight: bold;
 	vertical-align: middle;
 	position: absolute;
-	right: -15px;
+	right: -12px;
 	top: 8px;
 	&:after {
 		content: "*";
 	}
 }
 
-.form-group {
-	margin-bottom: 10px;
-}
-
 .label {
-	float: left;
-	color: lighten(@font-color, 25%);
+	color: lighten(@font-color, 20%);
 }
 
-.field {
-	margin-left: 140px;
+.form-group {
+	margin-bottom: 15px;
+	&:last-child {
+		margin-bottom: 0px;
+	}
+	.label {
+		float: left;
+	}
+	.field {
+		position: relative;
+		margin-left: 175px;
+	}
 }
+
 
 //================================================
 // Form validation
@@ -493,11 +512,27 @@ body {
 	height: @header-height - 4px;
 }
 
+.header-icon {
+	height: @header-height;
+	display: inline-block;
+
+}
+
 .header-logo {
-	margin-top: 10px;
-	height: @header-height - 20px;
+	margin: 10px 0;
+	float: left;
 	display: inline-block;
 }
+
+.header-title {
+	font-family: Lobster, @fonts;
+	color: @accent-color;
+	font-size: 2em;
+	margin: 6px 0 6px 6px;
+	display: inline-block;
+	text-decoration: none;
+}
+
 
 .navigation {
 	float: right;
@@ -813,7 +848,7 @@ body.sidebar-open {
 // Media queries
 //================================================
 
-@media (max-width: 960px) {
+@media (max-width: 900px) {
 	div.content {
 		padding: 20px 10px;
 	}
@@ -831,5 +866,21 @@ body.sidebar-open {
 		width: 100%;
 		overflow-y: hidden;
 		overflow-x: auto;
+	}
+}
+
+@media (max-width: 500px) {
+	.header-title {
+		display: none;
+	}
+	.form-group {
+		margin-bottom: 10px;
+		.label {
+			display: block;
+			float: none;
+		}
+		.field {
+			margin: 0;
+		}
 	}
 }

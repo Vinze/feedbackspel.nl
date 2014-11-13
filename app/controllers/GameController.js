@@ -1,11 +1,11 @@
 var GameController = {
 
 	getHost: function(req, res) {
-		res.render('game/host');
+		res.render('game-host');
 	},
 
 	getClient: function(req, res) {
-		res.render('game/client');
+		res.render('game-client');
 	}
 
 };

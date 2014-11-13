@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include ../includes/head %>
+	<% include includes/head %>
 </head>
 <body>
-<% include ../includes/top %>
+<% include includes/top %>
 <div class="content-wrapper">
 	<div class="content container">
 		<div class="row">
@@ -14,50 +14,50 @@
 		</div>
 	</div>
 </div>
-<% include ../includes/bottom %>
+<% include includes/bottom %>
 	
 <script type="text/javascript" src="/js/libs/validator.min.js"></script>
 <script type="text/template" id="form-tpl">
 	<h1>Registreren</h1>
 	<form action="/register" method="post" id="register-form" on-submit="validate">
-		<div class="row" style="margin-bottom: 20px">
-			<div class="col span-4">
+		<div class="form-group">
+			<div class="label">
 				<label for="email">E-mail adres:</label>
 			</div>
-			<div class="col span-8">
+			<div class="field">
 				<input type="email" name="email" value="{{email.value}}" class="text{{email.error ? ' error' : ''}}" id="email" on-blur="validateEmail">
 				<i class="required"></i>
 				{{#if email.error}}<span class="error-msg">{{email.error}}</span>{{/if}}
 			</div>
 		</div>
 
-		<div class="row" style="margin-bottom: 20px">
-			<div class="col span-4">
+		<div class="form-group">
+			<div class="label">
 				<label for="firstname">Voornaam:</label><br>
 			</div>
-			<div class="col span-8">
+			<div class="field">
 				<input type="text" name="firstname" value="{{firstname.value}}" class="text{{firstname.error ? ' error' : ''}}" id="firstname" on-blur="validateFirstname">
 				<i class="required"></i>
 				{{#if firstname.error}}<span class="error-msg">{{firstname.error}}</span>{{/if}}
 			</div>
 		</div>
 
-		<div class="row" style="margin-bottom: 20px">
-			<div class="col span-4">
+		<div class="form-group">
+			<div class="label">
 				<label for="lastname">Achternaam:</label><br>
 			</div>
-			<div class="col span-8">
+			<div class="field">
 				<input type="text" name="lastname" value="{{lastname.value}}" class="text{{lastname.error ? ' error' : ''}}" id="lastname" on-blur="validateLastname">
 				<i class="required"></i>
 				{{#if lastname.error}}<span class="error-msg">{{lastname.error}}</span>{{/if}}
 			</div>
 		</div>
 
-		<div class="row" style="margin-bottom: 20px">
-			<div class="col span-4">
+		<div class="form-group">
+			<div class="label">
 				<label>Ik ben een:</label>
 			</div>
-			<div class="col span-8">
+			<div class="field">
 				<label><input type="radio" name="gender" value="m" class="radio" checked> Man</label>
 				<label><input type="radio" name="gender" value="f" class="radio"> Vrouw</label>
 				<i class="required"></i>
@@ -65,21 +65,19 @@
 			</div>
 		</div>
 
-		<div class="row" style="margin-bottom: 20px">
-			<div class="col span-4">
+		<div class="form-group">
+			<div class="label">
 				<label for="password">Wachtwoord:</label>
 			</div>
-			<div class="col span-8">
+			<div class="field">
 				<input type="password" name="password" value="{{password.value}}" class="text{{password.error ? ' error' : ''}}" id="password" on-blur="validatePassword">
 				<i class="required"></i>
 				{{#if password.error}}<span class="error-msg">{{password.error}}</span>{{/if}}
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col span-12">
-				<button class="btn confirm"><i class="fa fa-user"></i> Registreren</button>
-			</div>
+		<div class="form-group">
+			<button class="btn confirm"><i class="fa fa-user"></i> Registreren</button>
 		</div>
 	</form>
 </script>

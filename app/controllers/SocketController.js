@@ -35,7 +35,9 @@ var SocketController = function(server) {
 	}
 
 	function sendRatings() {
-		io.sockets.emit('ratings', ratings);
+		ratings.find({}, function(err, results) {
+			io.sockets.emit('ratings',  results);
+		});
 	}
 
 	io.on('connection', function(client) {
@@ -59,14 +61,11 @@ var SocketController = function(server) {
 		}
 
 		client.on('user.ready', function(data) {
-			var rating = {
-				user_id: client.user_id,
-				ratings: data
-			};
+			var rating = { user_id: client.user_id, ratings: data };
 
 			ratings.update({ user_id: client.user_id }, rating, { upsert: true }, function(err) {
 				ratings.find({}, function(err, ratings) {
-					console.log(ratings);
+					// console.log(ratings);
 				});
 			});
 			players.update({ _id: client.user_id }, { $set: { ready: true } }, function() {
@@ -78,11 +77,11 @@ var SocketController = function(server) {
 			sendRatings();
 		});
 
-		// client.on('round.next', function() {
-		// 	players.update({}, { $set: { ready: false } }, { multi: true }, function() {
-		// 		sendUsers();
-		// 	});
-		// });
+		client.on('round.next', function() {
+			// players.update({}, { $set: { ready: false } }, { multi: true }, function() {
+			// 	sendUsers();
+			// });
+		});
 
 		client.on('disconnect', function() {
 			if (client.role == 'client') {

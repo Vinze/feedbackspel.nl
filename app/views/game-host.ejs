@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include ../includes/head %>
+	<% include includes/head %>
 </head>
 <body class="ingame host">
-<% include ../includes/sidebar %>
+<% include includes/sidebar %>
 <div class="site-wrapper">
 	<a href="#" class="sidebar-toggle">
 		<img src="/img/icon-menu.png" width="34px" height="26px">
@@ -12,20 +12,30 @@
 	<div id="game">
 	</div>
 </div>
-<% include ../includes/scripts %>
+<% include includes/scripts %>
 
 <script type="text/javascript" src="/js/libs/underscore.min.js"></script>
 <script type="text/javascript" src="/js/libs/cookies.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script type="text/template" id="game-tpl">
-	<div class="card">
-		{{#if ready}}
-			<a href="#" on-click="next">Volgende kaart</a>
-		{{else}}
-			{{card}}
-		{{/if}}
-	</div>
+	{{#if results}}
+		<div class="results">
+			{{#each results}}
+				{{#each ratings}}
+					{{.}}<br>
+				{{/each}}
+			{{/each}}
+		</div>
+	{{else}}
+		<div class="card">
+			{{#if ready}}
+				<a href="#" on-click="next">Volgende kaart</a>
+			{{else}}
+				{{card}}
+			{{/if}}
+		</div>
+	{{/if}}
 
 	<div class="players">
 		<ul>
@@ -44,7 +54,6 @@
 	</div>
 </script>
 
-
 <script type="text/javascript">
 	var token = Cookies.get('fbs_token');
 	var url = 'http://' + window.location.hostname + ':1337';
@@ -57,7 +66,7 @@
 		template: '#game-tpl',
 		data: {
 			card: 'Bescheiden',
-			ready: false,
+			results: [],
 			players: [],
 		}
 	});
@@ -75,9 +84,24 @@
 		Game.set('players', users);
 	});
 
-	socket.on('users.ready', function(ready) {
+	socket.on('users.ready', function(total) {
 		var players = Game.get('players').length;
-		Game.set('ready', (ready == players && players > 0));
+		var ready = (total == players && players > 0);
+
+		if (ready) {
+			socket.emit('ratings.get');
+		}
+	});
+
+	socket.on('ratings', function(results) {
+
+		_.each(results, function(result) {
+			_.each(result.ratings, function(rating, user_id) {
+				console.log(user_id, rating);
+			});
+		});
+		console.log(results);
+		Game.set('results', results);
 	});
 
 	// socket.on('card.new', function(card) {

@@ -14,7 +14,7 @@ function inArray(needle, haystack) {
 var UserController = {
 
 	getDashboard: function(req, res) {
-		res.render('users/dashboard', { message: req.flash('message') });
+		res.render('dashboard', { message: req.flash('message') });
 	},
 
 	getAvatar: function(req, res) {
@@ -39,17 +39,17 @@ var UserController = {
 			
 			exec(command, function(err, stdout, stderr) {
 				if (err) console.log(err);
-				res.redirect('/profile');
+				res.redirect('/dashboard');
 				fs.unlink(input);
 			});
 		} else {
 			fs.unlink(input);
-			res.redirect('/profile');
+			res.redirect('/dashboard');
 		}
 	},
 
 	getLogin: function(req, res) {
-		res.render('users/login', {
+		res.render('login', {
 			email: req.flash('email')
 		});
 	},
@@ -99,7 +99,7 @@ var UserController = {
 	},
 
 	getRegister: function(req, res) {
-		res.render('users/register');
+		res.render('register');
 	},
 
 	postRegister: function(req, res) {
@@ -154,7 +154,8 @@ var UserController = {
 		var input = {
 			email: req.body.email.toLowerCase(),
 			firstname: req.body.firstname,
-			lastname: req.body.lastname
+			lastname: req.body.lastname,
+			gender: req.body.gender
 		}
 
 		if (req.body.password) {

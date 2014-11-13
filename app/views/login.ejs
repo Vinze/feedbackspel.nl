@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include ../includes/head %>
+	<% include includes/head %>
 </head>
 <body>
-<% include ../includes/top %>
+<% include includes/top %>
 <div class="content-wrapper">
 	<div class="content container">
 		<div class="row">
@@ -16,13 +16,13 @@
 				<form action="/login" method="post">
 					<div class="row" style="margin-bottom: 15px">
 						<div class="col span-12">
-							<label for="email">E-mail adres:</label><br>
+							<label for="email" class="label">E-mail adres:</label><br>
 							<input type="email" name="email" value="<%= email %>" class="text" id="email">
 						</div>
 					</div>
 					<div class="row" style="margin-bottom: 15px">
 						<div class="col span-12">
-							<label for="password">Wachtwoord:</label><br>
+							<label for="password" class="label">Wachtwoord:</label><br>
 							<input type="password" name="password" value="" class="text" id="password">
 						</div>
 					</div>
@@ -36,6 +36,6 @@
 		</div>
 	</div>
 </div>
-<% include ../includes/bottom %>
+<% include includes/bottom %>
 </body>
 </html>

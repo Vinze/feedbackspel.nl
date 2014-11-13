@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include ../includes/head %>
+	<% include includes/head %>
 </head>
 <body>
-<% include ../includes/top %>
+<% include includes/top %>
 <div class="content-wrapper">
 	<div class="content container">
 		<% if (message) { %>
@@ -26,13 +26,6 @@
 				</p>
 				<p><a href="#" id="upload-link"><i class="fa fa-picture-o"></i> Wijzig afbeelding</a></p>
 			</div>
-			<!-- <div class="box col span-4">
-				<h1>Acties</h1>
-				<ul>
-					<li><a href="/kernkwadranten">Kernkwadranten test</a></li>
-					<li><a href="/chat">Chat test</a></li>
-				</ul>
-			</div> -->
 		</div>
 
 		<div class="row">
@@ -65,11 +58,16 @@
 			<div class="box col span-12">
 				<h1>Resultaten</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente vel nostrum ad, deleniti facere iste eius error aspernatur necessitatibus illum nobis consequuntur quos earum atque ipsum, neque, pariatur numquam repellendus.</p>
+				<ul>
+					<li><a href="/kernkwadranten">Kernkwadranten test</a></li>
+					<li><a href="/randomwords">Random eigenschappen</a></li>
+					<li><a href="/chat">Chat test</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-<% include ../includes/bottom %>
+<% include includes/bottom %>
 <script type="text/javascript">
 	$('#upload-link').on('click', function(evt) {
 		$('#upload-select').click();
