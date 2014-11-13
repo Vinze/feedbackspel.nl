@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<title>Eigenschappenspel</title>
+	<style type="text/css">
+	body {
+		margin: 0;
+		padding: 0;
+		vertical-align: baseline;
+		background-color: #f2f2f2;
+		font-family: arial;
+		color: #404040;
+	}
+	div.page {
+		margin: 40px auto;
+		width: 400px;
+	}
+	div#word {
+		font: normal 36px arial;
+		text-align: center;
+		background-color: #fff;
+		padding: 60px 10px;
+		margin: 0 0 20px 0;
+		box-shadow: 0 0 10px rgba(100, 100, 100, 0.2);
+	}
+	.refresh {
+		text-align: right;
+	}
+	button {
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div id="word"></div>
+		<div class="refresh">
+			<button onclick="loadWord()">Volgende woord</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var words = ["aangenaam","aangepast","aanhankelijk","aanpassend","aantrekkelijk","agressief","achterdochtig","behendig","behoedzaam","behulpzaam","bescheiden","beschermend","creatief","contactloos","eerlijk","eigenwijs","eigenzinnig","doorzettend","dominant","flexibel","flink","gehoorzaam","gemeenschappelijk","gemoedelijk","gulzig","grappig","heftig","helder","hulpvaardig","humeurig","ijverig","imiterend","imponerend","inactief","ingenieus","ingewikkeld","innemend","intelligent","intensief","jaloers","kalm","kieskeurig","krachtig","kunstig","kwetsbaar","lawaaierig","leergierig","leerzaam","leidinggevend","lief","liefdevol","lui","luidruchtig","materialistisch","medelijdend","melancholiek","mensenschuw","merkwaardig","moedig","mooi","muzikaal","nieuwsgierig","nors","nuttig","oppervlakkig","praktisch","prikkelbaar","rustig	samenwerkend","scherpzinnig","schitterend","slim","slordig","sluw","sober","sociaal","sportief","spottend","standvastig","stil","stoutmoedig","strijdlustig","sympatiek","taai","tam","teder","temperamentvol","teruggetrokken","tevreden","toneelspelend","traag","trots","trouw","volgzaam","volhardend","volhoudend","wispelturig","wisselvallig","zeldzaam","zelfbewust","zelfstandig","zelfvertrouwend","zelfzeker","zintuigelijk","zwijgzaam","zorgzaam"];
+	var cache = [];
+	function loadWord() {
+		if (cache.length != words.length) {
+			var num = Math.floor(Math.random() * words.length);
+			var word = words[num];
+			if (cache.indexOf(word) > -1) {
+				loadWord();
+			} else {
+				cache.push(word);
+				document.getElementById('word').innerHTML = word;
+			}
+		} else {
+			document.getElementById('word').innerHTML = '...';
+		}
+	}
+	loadWord();
+</script>
+</html>

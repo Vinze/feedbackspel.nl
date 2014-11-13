@@ -74,6 +74,10 @@ app.get('/api/users/all', auth.isAdmin, UserController.findAll);
 app.get('/api/users/:id', auth.isAdmin, UserController.findOne);
 app.post('/api/users/save', auth.isAdmin, UserController.save);
 
+app.get('/randomize', function(req, res) {
+	res.render('randomize');
+});
+
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten');
 });
