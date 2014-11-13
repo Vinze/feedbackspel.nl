@@ -40,7 +40,14 @@ var SocketController = function(server) {
 		});
 	}
 
+	function newUser(client) {
+
+	}
+
 	io.on('connection', function(client) {
+
+		
+
 		var token = client.handshake.query.token;
 		client.role = client.handshake.query.role;
 
