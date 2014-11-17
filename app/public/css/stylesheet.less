@@ -7,12 +7,9 @@
 @font-size: 15px;
 @fonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-.transition(@props) {
-	-webkit-transition: @props;
-	-moz-transition: @props;
-	-o-transition: @props;
-	-ms-transition: @props;
-	transition: @props;
+.box-shadow(@props) {
+	-webkit-box-shadow: @props;
+	box-shadow: @props;
 }
 
 .border-radius(@px) {
@@ -21,9 +18,19 @@
 	border-radius: @px;
 }
 
-.box-shadow(@props) {
-	-webkit-box-shadow: @props;
-	box-shadow: @props;
+.transition(@props) {
+	-webkit-transition: @props;
+	-moz-transition: @props;
+	-o-transition: @props;
+	-ms-transition: @props;
+	transition: @props;
+}
+
+.animation(@props) {
+	animation: @props;
+	-moz-animation: @props;
+	-webkit-animation: @props;
+	-o-animation: @props;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -116,6 +123,23 @@ table {
     font-weight: normal;
     font-style: normal;
 
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-o-keyframes fadein {
+    from { opacity:0; }
+    to { opacity: 1; }
 }
 
 body, input, textarea, select, button {
@@ -516,7 +540,7 @@ body {
 .header-icon {
 	height: @header-height;
 	display: inline-block;
-
+	.animation(fadein 1000ms);
 }
 
 .header-logo {
@@ -623,6 +647,7 @@ body {
 div.content-wrapper {
 	padding-top: @header-height;
 	padding-bottom: @footer-height;
+	.animation(fadein 500ms);
 }
 
 div.content {
@@ -666,6 +691,7 @@ body.sidebar-open {
 	.logo {
 		margin: 0px auto 40px auto;
 		max-width: 400px;
+		.animation(fadein 2000ms);
 		img {
 			max-width: 100%;
 		}
@@ -731,11 +757,12 @@ body.sidebar-open {
 //================================================
 
 .ingame {
-	.sidebar-toggle {
+	.exit-button {
 		position: absolute;
 		top: 0px;
-		right: 10px;
+		right: 8px;
 		display: block;
+		font-size: 2.4em;
 	}
 }
 
@@ -746,10 +773,10 @@ body.sidebar-open {
 .ingame.host {
 	.card {
 		margin: 50px auto;
-		width: 400px;
+		width: 450px;
 		background-color: #fff;
 		.box-shadow(0 0 5px #ccc);
-		padding: 50px 0;
+		padding: 80px 0;
 		text-align: center;
 		font-size: 2em;
 	}
@@ -769,31 +796,57 @@ body.sidebar-open {
 	.player {
 		display: inline-block;
 		margin: 0 10px;
+		position: relative;
+		width: 130px;
 		.avatar {
 			display: inline-block;
-			width: 75px;
-			height: 75px;
-			opacity: 0.5;
-			position: relative;
+			width: 79px;
+			height: 79px;
+			border-radius: 75px;
+			border: 2px solid #ccc;
+			overflow: hidden;
 			.transition(opacity 500ms);
 			img {
 				background-color: #fff;
-				border-radius: 75px;
 			}
 		}
 		.name {
+			font-size: 0.9em;
 		}
-		.check {
+		.status {
+			font-size: 0.8em;
+			color: #BBBBBB;
+		}
+		.check, .remove {
 			position: absolute;
-			bottom:-8px;
-			right: -8px;
-			color: @accent-color;
 			font-size: 1.4em;
 			display: none;
 		}
+		.check {
+			top: 66px;
+			right: 18px;
+			color: @accent-color;
+		}
+		.remove {
+			font-size: 1.4em;
+			top: -10px;
+			left: 15px;
+			color: #EA6666;
+		}
 		&.ready {
-			.avatar { opacity: 1; }
 			.check { display: block; }
+		}
+		&.active {
+			.avatar { border-color: #55be78; }
+		}
+		&.disconnected {
+			.avatar { border-color: #FFD635; opacity: 0.6; }
+		}
+		&.left {
+			.avatar { border-color: #D71B1B; opacity: 0.3; }
+		}
+		&:hover .remove {
+			display: block;
 		}
 	}
 }

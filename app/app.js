@@ -67,7 +67,7 @@ app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
 
 app.get('/game/host', auth.isMember, GameController.getHost);
-app.get('/game/client', auth.isMember, GameController.getClient);
+app.get('/game/play', auth.isMember, GameController.getPlay);
 
 app.post('/api/check-email', UserController.checkEmail);
 app.get('/api/users/all', auth.isAdmin, UserController.findAll);

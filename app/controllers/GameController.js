@@ -4,8 +4,8 @@ var GameController = {
 		res.render('game-host');
 	},
 
-	getClient: function(req, res) {
-		res.render('game-client');
+	getPlay: function(req, res) {
+		res.render('game-play');
 	}
 
 };
