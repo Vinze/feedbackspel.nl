@@ -6,8 +6,8 @@ var moment    = require('moment');
 var db        = require('../libs/datastore');
 var config    = require('../libs/config');
 
-var players = new Datastore();
-var ratings = new Datastore();
+var Players = new Datastore();
+var Ratings = new Datastore();
 
 var cards = ['Betrouwbaar', 'Geduldig', 'Roekeloos'];
 var round = 0;
@@ -16,17 +16,17 @@ var SocketController = function(server) {
 	var io = socketio.listen(server, { log: false });
 
 	function sendPlayers() {
-		players.find({}).sort({ firstname: 1 }).exec(function(err, users) {
+		Players.find({}).sort({ firstname: 1 }).exec(function(err, users) {
 			var ready = _.reduce(users, function(memo, user) {
-				return user.ready && user.status != 'left' ? memo + 1 : memo;
+				return user.ready ? memo + 1 : memo;
 			}, 0);
-			io.sockets.emit('users.updated', users);
-			io.sockets.emit('users.ready', ready);
+			io.emit('users.updated', users);
+			io.emit('users.ready', ready);
 		});
 	}
 
 	function sendCard() {
-		io.sockets.emit('card.new', cards[round]);
+		io.emit('card.new', cards[round]);
 		if (round == cards.length - 1) {
 			round = 0;
 		} else {
@@ -35,8 +35,8 @@ var SocketController = function(server) {
 	}
 
 	function sendRatings() {
-		ratings.find({}, function(err, results) {
-			io.sockets.emit('ratings',  results);
+		Ratings.find({}, function(err, results) {
+			io.emit('ratings',  results);
 		});
 	}
 
@@ -57,13 +57,13 @@ var SocketController = function(server) {
 			db.users.findById(data.user_id, function(err, user) {
 				client.user_id = user._id;
 				if (client.role == 'player') {
-					players.findOne({ _id: client.user_id }, function(err, player) {
+					Players.findOne({ _id: client.user_id }, function(err, player) {
 						if ( ! player) {
 							user.ready = false;
 						}
 						user.status = 'active';
 						user.socket_id = client.id;
-						players.update({ _id: client.user_id }, { $set: user }, { upsert: true }, sendPlayers);
+						Players.update({ _id: client.user_id }, { $set: user }, { upsert: true }, sendPlayers);
 						sendStatus(client, user.ready);
 					});
 				} else {
@@ -75,16 +75,13 @@ var SocketController = function(server) {
 			console.log(err);
 		}
 
-		client.on('user.ready', function(data) {
-			var rating = { user_id: client.user_id, ratings: data };
-			players.update({ _id: client.user_id }, { $set: { ready: true } }, sendPlayers);
+		client.on('user.ready', function(ready) {
+			Players.update({ _id: client.user_id }, { $set: { ready: ready } }, sendPlayers);
+		});
 
-			ratings.update({ user_id: client.user_id }, rating, { upsert: true }, function(err) {
-				ratings.find({}, function(err, ratings) {
-					// console.log(ratings);
-				});
-			});
-			
+		client.on('user.rating', function(data) {
+			var rating = { user_id: client.user_id, ratings: data };
+			Ratings.update({ user_id: client.user_id }, rating, { upsert: true });
 		});
 
 		client.on('ratings.get', function() {
@@ -92,20 +89,24 @@ var SocketController = function(server) {
 		});
 
 		client.on('round.next', function() {
-			// players.update({}, { $set: { ready: false } }, { multi: true }, function() {
+			// Players.update({}, { $set: { ready: false } }, { multi: true }, function() {
 			// 	sendUsers();
 			// });
 		});
 
 		client.on('user.remove', function(user_id) {
 			if (user_id && client.role == 'host') {
-				players.remove({ _id: user_id }, sendPlayers);
+				Players.findOne({ _id: user_id }, function(err, player) {
+					// io.sockets.socket(player.socket_id).emit('leave');
+					Players.remove({ _id: user_id }, sendPlayers);
+				});
+
 			}
 		});
 
 		client.on('disconnect', function() {
 			if (client.role == 'player') {
-				players.update({ _id: client.user_id }, { $set: { status: 'disconnected' } }, sendPlayers);
+				Players.update({ _id: client.user_id }, { $set: { status: 'disconnected' } }, sendPlayers);
 			}
 		});
 

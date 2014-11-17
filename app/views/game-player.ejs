@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include includes/head %>
+</head>
+<body class="ingame client">
+<% include includes/sidebar %>
+<div class="site-wrapper" id="content">
+	
+	
+</div>
+<% include includes/scripts %>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+<script type="text/template" id="template">
+	<!-- <a href="/dashboard" title="Spel verlaten" class="exit-button" on-click="leave">
+		<i class="fa fa-fw fa-sign-out"></i>
+	</a> -->
+	<!-- <img src="/img/icon-menu.png" width="34px" height="26px"> -->
+	<div class="content container">
+		
+		{{#if step == 1}}
+			<div class="player-select" intro-outro="fade">
+				{{#if players.length > 1}}
+					<h1>Selecteer:</h1>
+					<ul class="players">
+						{{#each players}}
+							{{#if (_id != '<%= user._id %>')}}
+								<li intro="slide:{delay:200}">
+									<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
+									<div class="name">{{firstname}} {{lastname}}</div>
+									<div class="rating">
+										<a href="#" on-tap="setRating:1">
+											<i class="fa fa-star{{ratings[_id] >= 1 ? '' : '-o'}}"></i>
+										</a>
+										<a href="#" on-tap="setRating:2">
+											<i class="fa fa-star{{ratings[_id] >= 2 ? '' : '-o'}}"></i>
+										</a>
+										<a href="#" on-tap="setRating:3">
+											<i class="fa fa-star{{ratings[_id] >= 3 ? '' : '-o'}}"></i>
+										</a>
+										<a href="#" on-tap="setRating:4">
+											<i class="fa fa-star{{ratings[_id] >= 4 ? '' : '-o'}}"></i>
+										</a>
+										<a href="#" on-tap="setRating:5">
+											<i class="fa fa-star{{ratings[_id] >= 5 ? '' : '-o'}}"></i>
+										</a>
+									</div>
+								</li>
+							{{/if}}
+						{{/each}}
+					</ul>
+					<div class="actions">
+						<a href="#" class="btn confirm" on-click="ready"><i class="fa fa-check"></i> Ik ben klaar</a>
+					</div>
+				{{/if}}
+			</div>
+		{{/if}}
+
+		{{#if step == 2}}
+			<div class="loading" intro-outro="fade">
+				<div class="spinner"><i class="fa fa-spin fa-spinner"></i></div>
+				<p>Je feedback is verzonden, het spel gaat verder zodra alle spelers klaar zijn.</p>
+				<p><a href="#" on-click="notReady">Ga terug</a></p>
+				
+			</div>
+		{{/if}}
+	</div>
+
+</script>
+
+<script type="text/javascript">
+	var token, url, socket, step = 1, ratings = {};
+
+	token = Cookies.get('fbs_token');
+	url = 'http://' + window.location.hostname + ':1337';
+	socket = io(url, { query: 'token=' + token + '&role=player' });
+
+	try {
+		if (window.localStorage) {
+			// step = window.localStorage.getItem('step') || 1;
+			// ratings = JSON.parse(window.localStorage.getItem('ratings')) || {};
+		}
+	} catch (err) {
+		window.localStorage = {
+			setItem: function () {}
+		};
+	}
+
+	// Steps:
+	// 1 = Set rating
+	// 2 = Ready
+	// 3 = Waiting
+	// 4 = Show results
+
+	var Player = new Ractive({
+		el: 'content',
+		template: '#template',
+		data: {
+			players: [],
+			ratings: ratings,
+			step: step
+		}
+	});
+
+	Player.on({
+		ready: function(evt) {
+			var ratings = Player.get('ratings');
+			Player.set('step', null).then(function() {
+				Player.set('step', 2);
+				// Player.set('ratings', {});
+			});
+			socket.emit('user.ready', true);
+			socket.emit('user.ratings', ratings);
+
+			evt.original.preventDefault();
+		},
+		notReady: function(evt) {
+			Player.set('step', null).then(function() {
+				Player.set('step', 1);
+			});
+			socket.emit('user.ready', false);
+			evt.original.preventDefault();
+		},
+		setRating: function(evt, rating) {
+			console.log(evt);
+			Player.set('ratings.' + evt.context._id, rating);
+			evt.original.preventDefault();
+		}
+	});
+
+	socket.on('users.updated', function(users) {
+		Player.set('players', users);
+	});
+
+	socket.on('status', function(ready) {
+		// if (ready) {
+		// 	Player.set('ingame', false).then(function() {
+		// 		Player.set('waiting', true);
+		// 		Player.set('ratings', {});
+		// 	});
+		// }
+	});
+
+	Player.observe('ratings', function (new_val, old_val, keypath) {
+		// localStorage.setItem('ratings', JSON.stringify(new_val));
+	});
+
+	Player.observe('step', function (new_val, old_val, keypath) {
+		// localStorage.setItem('step', new_val);
+	});
+
+</script>
+</body>
+</html>

@@ -20,21 +20,31 @@
 		<!-- <img src="/img/icon-menu.png" width="34px" height="26px"> -->
 	</a>
 
-	{{#if results}}
-		<div class="results">
+	{{#if step == 1}}
+		<div class="step card">
+			{{#if ready}}
+				<a href="#" on-click="next">Volgende kaart</a>
+			{{else}}
+				<h1>{{card}}</h1>
+			{{/if}}
+		</div>
+	{{/if}}
+
+	{{#if step == 2}}
+		<div class="step ready">
+			<h1>Iedereen is klaar</h1>
+			Het spel gaat zo verder <i class="fa fa-spin fa-spinner"></i>
+		</div>
+	{{/if}}
+
+	{{#if step == 3}}
+		<div class="step results">
+			<h1>Resultaten</h1>
 			{{#each results}}
 				{{#each ratings}}
 					{{.}}<br>
 				{{/each}}
 			{{/each}}
-		</div>
-	{{else}}
-		<div class="card">
-			{{#if ready}}
-				<a href="#" on-click="next">Volgende kaart</a>
-			{{else}}
-				{{card}}
-			{{/if}}
 		</div>
 	{{/if}}
 
@@ -42,7 +52,6 @@
 		<ul>
 			{{#each players}}
 				<li class="player {{status}}{{ready ? ' ready' : ''}}" intro-outro="fly:{ x: 0, y: 150 }">
-					
 					<a href="#" class="remove" on-click="remove:{{this}}"><i class="fa fa-times"></i></a>
 					{{#if ready}}
 						<i class="fa fa-check check"></i>
@@ -56,7 +65,6 @@
 					<div class="status">
 						{{#if status == 'active'}}Verbonden{{/if}}
 						{{#if status == 'disconnected'}}Verbinding verbroken{{/if}}
-						{{#if status == 'left'}}Spel verlaten{{/if}}
 					</div>
 				</li>
 			{{/each}}
@@ -76,6 +84,7 @@
 		template: '#game-tpl',
 		data: {
 			card: 'Bescheiden',
+			step: 1,
 			results: [],
 			players: []
 		}
@@ -91,15 +100,18 @@
 			evt.original.preventDefault();
 		},
 		exit: function(evt) {
-			alert('Spel stoppen?');
-			evt.original.preventDefault();
+			var exit = confirm('Spel stoppen?');
+			if (exit == true) {
+				window.location = 'http://localhost:1337/dashboard';
+			} else {
+				evt.original.preventDefault();
+			}
 		}
 	});
 
 	//==================
 
 	socket.on('users.updated', function(users) {
-		console.log(users);
 		Game.set('players', users);
 	});
 
@@ -108,19 +120,41 @@
 		var ready = (total == players && players > 0);
 
 		if (ready) {
-			socket.emit('ratings.get');
+			Game.set('step', 2);
+			setTimeout(function() {
+				socket.emit('ratings.get');
+			}, 3000)
+			// socket.emit('ratings.get');
+		} else if (Game.get('step') != 1) {
+			Game.set('step', 1);
 		}
 	});
 
 	socket.on('ratings', function(results) {
+		var totals = {};
 
-		_.each(results, function(result) {
-			_.each(result.ratings, function(rating, user_id) {
-				console.log(user_id, rating);
-			});
-		});
 		console.log(results);
-		Game.set('results', results);
+
+		// Game.set('step', 3);
+		// _.each(results, function(result) {
+		// 	_.each(result.ratings, function(rating, user_id) {
+		// 		if (totals[user_id]) {
+		// 			totals[user_id] += rating;
+		// 		} else {
+		// 			totals[user_id] = rating;
+		// 		}
+		// 	});
+		// });
+		// Game.set('results', results);
+
+		// var players = Game.get('players');
+
+		// _.each(players, function(player, i) {
+		// 	Game.set('players.' + i, )
+		// 	console.log(player);
+		// });
+
+		// console.log(totals);
 	});
 
 	// socket.on('card.new', function(card) {

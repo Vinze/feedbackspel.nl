@@ -771,15 +771,33 @@ body.sidebar-open {
 //================================================
 
 .ingame.host {
-	.card {
+	.step {
 		margin: 50px auto;
-		width: 450px;
 		background-color: #fff;
 		.box-shadow(0 0 5px #ccc);
-		padding: 80px 0;
-		text-align: center;
-		font-size: 2em;
+		padding: 40px;
+		h1 {
+			padding: 0px;
+			border: none;
+		}
 	}
+	.step.card {
+		width: 450px;
+		text-align: center;
+		padding: 60px 0;
+		h1 {
+			margin: 0;
+			font-size: 2.2em;
+		}
+	}
+	.step.ready {
+		width: 450px;
+		text-align: center;
+	}
+	.step.results {
+		width: 500px;
+	}
+
 	.players {
 		position: absolute;
 		width: 100%;
@@ -793,6 +811,7 @@ body.sidebar-open {
 			list-style-type: none;
 		}
 	}
+
 	.player {
 		display: inline-block;
 		margin: 0 10px;
@@ -861,7 +880,7 @@ body.sidebar-open {
 		border: none;
 	}
 	.content {
-		padding: 15px 10px;
+		padding: 10px;
 		max-width: 400px;
 	}
 	.loading {
@@ -886,7 +905,7 @@ body.sidebar-open {
 		}
 		.name {
 			margin-left: 80px;
-			padding: 5px 10px 2px 6px;
+			padding: 5px 10px 2px 8px;
 		}
 		.avatar {
 			width: 70px;
@@ -898,7 +917,7 @@ body.sidebar-open {
 		}
 		.rating {
 			margin-left: 80px;
-			padding-left: 5px;
+			padding-left: 7px;
 			font-size: 2.2em;
 		}
 	}
