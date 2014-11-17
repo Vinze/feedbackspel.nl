@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include includes/head %>
+</head>
+<body class="ingame host">
+<% include includes/sidebar %>
+<div class="site-wrapper" id="game">
+	
+</div>
+<% include includes/scripts %>
+
+<script type="text/javascript" src="/js/libs/underscore.min.js"></script>
+<script type="text/javascript" src="/js/libs/cookies.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+<script type="text/template" id="game-tpl">
+	<a href="#" title="Spel stoppen" class="exit-button" on-click="exit">
+		<i class="fa fa-fw fa-times"></i>
+		<!-- <img src="/img/icon-menu.png" width="34px" height="26px"> -->
+	</a>
+
+	{{#if step == 1}}
+		<div class="step card">
+			{{#if ready}}
+				<a href="#" on-click="next">Volgende kaart</a>
+			{{else}}
+				<h1>{{card}}</h1>
+			{{/if}}
+		</div>
+	{{/if}}
+
+	{{#if step == 2}}
+		<div class="step ready">
+			<h1>Iedereen is klaar</h1>
+			Het spel gaat zo verder <i class="fa fa-spin fa-spinner"></i>
+		</div>
+	{{/if}}
+
+	{{#if step == 3}}
+		<div class="step results">
+			<h1>Resultaten</h1>
+			{{#each results}}
+				{{#each ratings}}
+					{{.}}<br>
+				{{/each}}
+			{{/each}}
+		</div>
+	{{/if}}
+
+	<div class="players">
+		<ul>
+			{{#each players}}
+				<li class="player {{status}}{{ready ? ' ready' : ''}}" intro-outro="fly:{ x: 0, y: 150 }">
+					<a href="#" class="remove" on-click="remove:{{this}}"><i class="fa fa-times"></i></a>
+					{{#if ready}}
+						<i class="fa fa-check check"></i>
+					{{/if}}
+					<div class="avatar">
+						<img src="/avatar/{{_id}}.png">
+					</div>
+					<div class="name">
+						{{firstname}} {{lastname}}
+					</div>
+					<div class="status">
+						{{#if status == 'active'}}Verbonden{{/if}}
+						{{#if status == 'disconnected'}}Verbinding verbroken{{/if}}
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</script>
+
+<script type="text/javascript">
+	var token = Cookies.get('fbs_token');
+	var url = 'http://' + window.location.hostname + ':1337';
+	var socket = io(url, { query: 'token=' + token + '&role=host' });
+
+	//==================
+
+	var Game = new Ractive({
+		el: 'game',
+		template: '#game-tpl',
+		data: {
+			card: 'Bescheiden',
+			step: 1,
+			results: [],
+			players: []
+		}
+	});
+
+	Game.on({
+		next: function(evt) {
+			socket.emit('round.next');
+			evt.original.preventDefault();
+		},
+		remove: function(evt, user) {
+			socket.emit('user.remove', user._id);
+			evt.original.preventDefault();
+		},
+		exit: function(evt) {
+			var exit = confirm('Spel stoppen?');
+			if (exit == true) {
+				window.location = 'http://localhost:1337/dashboard';
+			} else {
+				evt.original.preventDefault();
+			}
+		}
+	});
+
+	//==================
+
+	socket.on('users.updated', function(users) {
+		Game.set('players', users);
+	});
+
+	socket.on('users.ready', function(total) {
+		var players = Game.get('players').length;
+		var ready = (total == players && players > 0);
+
+		if (ready) {
+			Game.set('step', 2);
+			setTimeout(function() {
+				socket.emit('ratings.get');
+			}, 3000)
+			// socket.emit('ratings.get');
+		} else if (Game.get('step') != 1) {
+			Game.set('step', 1);
+		}
+	});
+
+	socket.on('ratings', function(results) {
+		var totals = {};
+
+		console.log(results);
+
+		// Game.set('step', 3);
+		// _.each(results, function(result) {
+		// 	_.each(result.ratings, function(rating, user_id) {
+		// 		if (totals[user_id]) {
+		// 			totals[user_id] += rating;
+		// 		} else {
+		// 			totals[user_id] = rating;
+		// 		}
+		// 	});
+		// });
+		// Game.set('results', results);
+
+		// var players = Game.get('players');
+
+		// _.each(players, function(player, i) {
+		// 	Game.set('players.' + i, )
+		// 	console.log(player);
+		// });
+
+		// console.log(totals);
+	});
+
+	// socket.on('card.new', function(card) {
+	// 	Game.set('ready', false);
+	// 	Game.set('card', card);
+	// });
+</script>

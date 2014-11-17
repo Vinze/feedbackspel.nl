@@ -70,9 +70,22 @@
 </script>
 
 <script type="text/javascript">
-	var token = Cookies.get('fbs_token');
-	var url = 'http://' + window.location.hostname + ':1337';
-	var socket = io(url, { query: 'token=' + token + '&role=player' });
+	var token, url, socket, step = 1, ratings = {};
+
+	token = Cookies.get('fbs_token');
+	url = 'http://' + window.location.hostname + ':1337';
+	socket = io(url, { query: 'token=' + token + '&role=player' });
+
+	try {
+		if (window.localStorage) {
+			// step = window.localStorage.getItem('step') || 1;
+			// ratings = JSON.parse(window.localStorage.getItem('ratings')) || {};
+		}
+	} catch (err) {
+		window.localStorage = {
+			setItem: function () {}
+		};
+	}
 
 	// Steps:
 	// 1 = Set rating
@@ -85,16 +98,14 @@
 		template: '#template',
 		data: {
 			players: [],
-			ratings: {},
-			step: 1
+			ratings: ratings,
+			step: step
 		}
 	});
 
 	Player.on({
 		ready: function(evt) {
 			var ratings = Player.get('ratings');
-			console.log(ratings);
-			return;
 			Player.set('step', null).then(function() {
 				Player.set('step', 2);
 				// Player.set('ratings', {});
@@ -112,6 +123,7 @@
 			evt.original.preventDefault();
 		},
 		setRating: function(evt, rating) {
+			console.log(evt);
 			Player.set('ratings.' + evt.context._id, rating);
 			evt.original.preventDefault();
 		}
@@ -122,14 +134,20 @@
 	});
 
 	socket.on('status', function(ready) {
-		// ratings
-		// step
 		// if (ready) {
 		// 	Player.set('ingame', false).then(function() {
 		// 		Player.set('waiting', true);
 		// 		Player.set('ratings', {});
 		// 	});
 		// }
+	});
+
+	Player.observe('ratings', function (new_val, old_val, keypath) {
+		// localStorage.setItem('ratings', JSON.stringify(new_val));
+	});
+
+	Player.observe('step', function (new_val, old_val, keypath) {
+		// localStorage.setItem('step', new_val);
 	});
 
 </script>
