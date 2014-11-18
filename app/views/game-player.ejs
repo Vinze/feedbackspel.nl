@@ -61,26 +61,12 @@
 		{{/if}}
 	</div>
 
-	Interval: {{counter}}
-
 </script>
 
 <script type="text/javascript">
 	var token = Cookies.get('fbs_token');
 	var url = 'http://' + window.location.hostname + ':1337';
 	var socket = io(url, { query: 'token=' + token + '&role=player' });
-
-	var i = 0;
-	setInterval(function() {
-		if (socket.disconnected) {
-			socket.socket.reconnect();
-			 Player.set('counter', i + ' (disconnected)');
-		} else {
-			Player.set('counter', i + ' (connected)');
-		}
-		i++;
-	}, 1000);
-
 
 	// Steps:
 	// 1 = Set rating
@@ -95,8 +81,7 @@
 			step: 1,
 			round: {},
 			players: [],
-			rating: {},
-			counter: 0 // test
+			rating: {}
 		}
 	});
 
