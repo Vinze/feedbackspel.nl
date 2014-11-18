@@ -147,9 +147,6 @@ var UserController = {
 		});
 	},
 
-	findOne: function(req, res) {
-	},
-
 	save: function(req, res) {
 		var input = {
 			email: req.body.email.toLowerCase(),
@@ -172,6 +169,14 @@ var UserController = {
 				res.json(users);
 			});
 		}
+	},
+
+	delete: function(req, res) {
+		db.users.remove({ _id: req.body._id }, function() {
+			db.users.find({}, { password: 0 }, function(err, users) {
+				res.json(users);
+			});
+		});
 	}
 };
 

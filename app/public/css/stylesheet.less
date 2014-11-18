@@ -204,7 +204,6 @@ hr {
 
 table {
 	width: 100%;
-	min-width: 600px;
 }
 
 th, td {
@@ -291,6 +290,10 @@ table td.icons {
 
 .align-right {
 	text-align: right;
+}
+
+.text-red, a.text-red {
+	color: #ca3d3d;
 }
 
 .bold {
@@ -390,7 +393,7 @@ i.required {
 }
 
 .label {
-	color: lighten(@font-color, 20%);
+	color: #808080;
 }
 
 .form-group {
@@ -776,6 +779,7 @@ body.sidebar-open {
 		background-color: #fff;
 		.box-shadow(0 0 5px #ccc);
 		padding: 40px;
+		font-size: 1.2em;
 		h1 {
 			padding: 0px;
 			border: none;
@@ -787,7 +791,7 @@ body.sidebar-open {
 		padding: 60px 0;
 		h1 {
 			margin: 0;
-			font-size: 2.2em;
+			font-size: 2.0em;
 		}
 	}
 	.step.ready {
@@ -796,10 +800,23 @@ body.sidebar-open {
 	}
 	.step.results {
 		width: 500px;
+		table {
+			margin-bottom: 20px;
+		}
+		th, td {
+			vertical-align: middle;
+		}
+		img {
+			width: 40px;
+			vertical-align: middle;
+		}
+	}
+	.step.end {
+		width: 500px;
 	}
 
 	.players {
-		position: absolute;
+		position: fixed;
 		width: 100%;
 		bottom: 0px;
 		padding: 10px;
@@ -816,13 +833,14 @@ body.sidebar-open {
 		display: inline-block;
 		margin: 0 10px;
 		position: relative;
-		width: 130px;
+		width: 150px;
+		text-align: center;
 		.avatar {
 			display: inline-block;
-			width: 79px;
-			height: 79px;
+			width: 83px;
+			height: 83px;
 			border-radius: 75px;
-			border: 2px solid #ccc;
+			border: 4px solid #ccc;
 			overflow: hidden;
 			.transition(opacity 500ms);
 			img {
@@ -839,30 +857,24 @@ body.sidebar-open {
 		.check, .remove {
 			position: absolute;
 			font-size: 1.4em;
-			display: none;
 		}
 		.check {
-			top: 66px;
+			top: 64px;
 			right: 18px;
 			color: @accent-color;
 		}
 		.remove {
 			font-size: 1.4em;
 			top: -10px;
-			left: 15px;
+			left: 22px;
 			color: #EA6666;
-		}
-		&.ready {
-			.check { display: block; }
+			display: none;
 		}
 		&.active {
 			.avatar { border-color: #55be78; }
 		}
 		&.disconnected {
 			.avatar { border-color: #FFD635; opacity: 0.6; }
-		}
-		&.left {
-			.avatar { border-color: #D71B1B; opacity: 0.3; }
 		}
 		&:hover .remove {
 			display: block;

@@ -3,137 +3,169 @@ var jwt       = require('jwt-simple');
 var Datastore = require('nedb');
 var _         = require('underscore');
 var moment    = require('moment');
+var async     = require('async');
 var db        = require('../libs/datastore');
 var config    = require('../libs/config');
 
 /*
 
-Players = [
-	{
-	_id:       "pbZd5ZmVyUHeEiC3"
-	email:     "john@doe.com"
-	firstname: "John"
-	lastname:  "Doe"
-	socket_id: "BFoJ7pALKkaZdQzTAAAH"
-	status:    "active"
-	step:      1
-	ratings: [
+Game status:
+1 = Show card, user fills in feedback
+2 = All users ready
+3 = Show results
+
+Player step:
+1 = Insert feedback
+2 = Feedback read
+
+Gamestate = {
+	round: 1,
+	card: 'Betrouwbaar'
+	players: [
 		{
-			_id:       "pbZd5ZmVyUHeEiC3"
-			firstname: "John"
-			lastname:  "Doe"
-			rating:    4
-		}
+			id: 1,
+			name: 'Vincent Bremer',
+			step 2,
+			ratings: [
+				{ id: 2, name: 'Koop Otten', rating: 5 },
+				{ id: 3, name: 'Tjerk Dijkstra', rating: 3 }
+			]
+		},
 		{
-			_id:       "pbZd5ZmVyUHeEiC3"
-			firstname: "John"
-			lastname:  "Doe"
-			rating:    4
+			id: 2,
+			name: 'Koop Otten',
+			step 2,
+			ratings: [
+				{ id: 1, name: 'Vincent Bremer', rating: 3 },
+				{ id: 3, name: 'Tjerk Dijkstra', rating: 4 }
+			]
 		}
 	]
-	}
-];
+}
 
 */
 
 var Players = new Datastore();
 var Ratings = new Datastore();
-
-var cards = ['Betrouwbaar', 'Geduldig', 'Roekeloos'];
+var cards = [
+	'Betrouwbaar',
+	'Geduldig',
+	'Roekeloos',
+	'Prikkelbaar',
+	'Doorzetter',
+	'Luidruchtig',
+	'Sociaal',
+	'Nieuwsgierig',
+	'Snel afgeleid'
+];
 var round = 0;
 
 var SocketController = function(server) {
 	var io = socketio.listen(server, { log: false });
 
+	function findUser(user_id, callback) {
+		var fields = { _id: 1, email: 1, firstname: 1, lastname: 1, gender: 1 };
+		db.users.findOne({ _id: user_id }, fields, callback);
+	}
+
 	function sendPlayers() {
 		Players.find({}).sort({ firstname: 1 }).exec(function(err, users) {
-			var ready = _.reduce(users, function(memo, user) {
+			var total_ready = _.reduce(users, function(memo, user) {
 				return user.step == 2 ? memo + 1 : memo;
 			}, 0);
-			io.emit('users.updated', users);
-			io.emit('users.ready', ready);
+			var ready = (total_ready == users.length && users.length > 0);
+
+			io.emit('users.updated', { users: users, ready: ready });
 		});
 	}
 
-	function sendCard() {
-		io.emit('card.new', cards[round]);
-		if (round == cards.length - 1) {
+	function pickUser(users, user_id) {
+		return _.find(users, function(user) {
+			return user._id == user_id;
+		});
+	}
+
+	function nextRound() {
+		Ratings.remove({}, { multi: true });
+		Players.update({}, { $set: { step: 1 } }, { multi: true }, sendPlayers);
+
+		if (round == cards.length) {
 			round = 0;
-		} else {
-			round++;
 		}
-	}
+		var new_card = cards[round];
 
-	function sendRatings() {
-		Ratings.find({}, function(err, results) {
-			io.emit('ratings',  results);
-		});
-	}
+		io.emit('round.next', { card: new_card, number: round });
 
-	function sendStatus(socket, status) {
-		socket.emit('status', status);
-	}
-
-	
-	function newUser(socket) {
-		Players.findOne({ _id: socket.user_id }, function(err, player) {
-			if ( ! player) {
-				user.step = 1;
-			}
-			user.status = 'active';
-			user.socket_id = socket.id;
-			Players.update({ _id: socket.user_id }, { $set: user }, { upsert: true }, sendPlayers);
-			sendStatus(socket, user.ready);
-		});
+		round++;
 	}
 
 	io.on('connection', function(socket) {
+
 		var token = socket.handshake.query.token;
 		socket.role = socket.handshake.query.role; // host or player
 
 		try {
 			var data = jwt.decode(token, config.jwt_secret);
-
-			db.users.findById(data.user_id, function(err, user) {
+			findUser(data.user_id, function(err, user) {
 				socket.user_id = user._id;
 				if (socket.role == 'player') {
-					newUser(socket, user);
+					Players.findOne({ _id: socket.user_id }, function(err, player) {
+						user.step = 1;
+						user.status = 'active';
+						user.socket_id = socket.id;
+						Players.update({ _id: socket.user_id }, { $set: user }, { upsert: true }, sendPlayers);
+					});
 				} else {
+					round = 0;
+					nextRound();
 					sendPlayers();
-					// sendCard();
 				}
 			});
 		} catch(err) {
 			console.log(err);
 		}
 
-		socket.on('user.ready', function(ready) {
-			Players.update({ _id: socket.user_id }, { $set: { step: 2 } }, sendPlayers);
+		socket.on('user.ready', function(ratings) {
+			Ratings.remove({ 'from._id': socket.user_id }, { multi: true }, function(num_removed) {
+				Players.find({}).sort({ firstname: 1 }).exec(function(err, users) {
+					_.each(ratings, function(rating, user_id) {
+						var to = pickUser(users, user_id);
+						var from = pickUser(users, socket.user_id);
+						var data = { to: to, from: from, rating: rating };
+						Ratings.insert(data);
+					});
+					Players.update({ _id: socket.user_id }, { $set: { step: 2 } }, sendPlayers);
+				});
+			});
+
 		});
 
-		socket.on('user.rating', function(data) {
-			var rating = { user_id: socket.user_id, ratings: data };
-			Ratings.update({ user_id: socket.user_id }, rating, { upsert: true });
-		});
-
-		socket.on('ratings.get', function() {
-			sendRatings();
-		});
-
-		socket.on('round.next', function() {
-			// Players.update({}, { $set: { ready: false } }, { multi: true }, function() {
-			// 	sendUsers();
-			// });
+		socket.on('ratings.get', function(callback) {
+			Ratings.find({}, function(err, docs) {
+				callback(docs);
+			});
 		});
 
 		socket.on('user.remove', function(user_id) {
 			if (user_id && socket.role == 'host') {
-				Players.findOne({ _id: user_id }, function(err, player) {
-					// io.sockets.socket(player.socket_id).emit('leave');
-					Players.remove({ _id: user_id }, sendPlayers);
-				});
-
+				async.parallel([
+					function(callback) {
+						Players.remove({ _id: user_id }, callback);
+					},
+					function(callback) {
+						Ratings.remove({
+							$or: [
+								{ 'from._id': user_id },
+								{ 'to._id': user_id }
+							]
+						}, { multi: true }, callback);
+					},
+				], sendPlayers );
 			}
+		});
+
+		socket.on('round.next', function() {
+			nextRound();
 		});
 
 		socket.on('disconnect', function() {
@@ -144,5 +176,108 @@ var SocketController = function(server) {
 
 	});
 }
+
+// var SocketController = function(server) {
+// 	var io = socketio.listen(server, { log: false });
+
+// 	function sendPlayers() {
+// 		Players.find({}).sort({ firstname: 1 }).exec(function(err, users) {
+// 			var ready = _.reduce(users, function(memo, user) {
+// 				return user.step == 2 ? memo + 1 : memo;
+// 			}, 0);
+// 			io.emit('users.updated', users);
+// 			io.emit('users.ready', ready);
+// 		});
+// 	}
+
+// 	function sendCard() {
+// 		io.emit('card.new', cards[round]);
+// 		if (round == cards.length - 1) {
+// 			round = 0;
+// 		} else {
+// 			round++;
+// 		}
+// 	}
+
+// 	function sendRatings() {
+// 		Ratings.find({}, function(err, results) {
+// 			io.emit('ratings',  results);
+// 		});
+// 	}
+
+// 	function sendStatus(socket, status) {
+// 		socket.emit('status', status);
+// 	}
+
+	
+// 	function newUser(socket) {
+// 		Players.findOne({ _id: socket.user_id }, function(err, player) {
+// 			if ( ! player) {
+// 				user.step = 1;
+// 			}
+// 			user.status = 'active';
+// 			user.socket_id = socket.id;
+// 			Players.update({ _id: socket.user_id }, { $set: user }, { upsert: true }, sendPlayers);
+// 			sendStatus(socket, user.ready);
+// 		});
+// 	}
+
+// 	io.on('connection', function(socket) {
+// 		var token = socket.handshake.query.token;
+// 		socket.role = socket.handshake.query.role; // host or player
+
+// 		try {
+// 			var data = jwt.decode(token, config.jwt_secret);
+
+// 			db.users.findById(data.user_id, function(err, user) {
+// 				socket.user_id = user._id;
+// 				if (socket.role == 'player') {
+// 					newUser(socket, user);
+// 				} else {
+// 					sendPlayers();
+// 					// sendCard();
+// 				}
+// 			});
+// 		} catch(err) {
+// 			console.log(err);
+// 		}
+
+// 		socket.on('user.ready', function(ready) {
+// 			Players.update({ _id: socket.user_id }, { $set: { step: 2 } }, sendPlayers);
+// 		});
+
+// 		socket.on('user.rating', function(data) {
+// 			var rating = { user_id: socket.user_id, ratings: data };
+// 			Ratings.update({ user_id: socket.user_id }, rating, { upsert: true });
+// 		});
+
+// 		socket.on('ratings.get', function() {
+// 			sendRatings();
+// 		});
+
+// 		socket.on('round.next', function() {
+// 			// Players.update({}, { $set: { ready: false } }, { multi: true }, function() {
+// 			// 	sendUsers();
+// 			// });
+// 		});
+
+// 		socket.on('user.remove', function(user_id) {
+// 			if (user_id && socket.role == 'host') {
+// 				Players.findOne({ _id: user_id }, function(err, player) {
+// 					// io.sockets.socket(player.socket_id).emit('leave');
+// 					Players.remove({ _id: user_id }, sendPlayers);
+// 				});
+
+// 			}
+// 		});
+
+// 		socket.on('disconnect', function() {
+// 			if (socket.role == 'player') {
+// 				Players.update({ _id: socket.user_id }, { $set: { status: 'disconnected' } }, sendPlayers);
+// 			}
+// 		});
+
+// 	});
+// }
 
 module.exports = SocketController;

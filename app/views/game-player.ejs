@@ -6,8 +6,7 @@
 <body class="ingame client">
 <% include includes/sidebar %>
 <div class="site-wrapper" id="content">
-	
-	
+	<!-- Users will be rendered here -->
 </div>
 <% include includes/scripts %>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
@@ -16,13 +15,11 @@
 	<!-- <a href="/dashboard" title="Spel verlaten" class="exit-button" on-click="leave">
 		<i class="fa fa-fw fa-sign-out"></i>
 	</a> -->
-	<!-- <img src="/img/icon-menu.png" width="34px" height="26px"> -->
 	<div class="content container">
-		
 		{{#if step == 1}}
 			<div class="player-select" intro-outro="fade">
 				{{#if players.length > 1}}
-					<h1>Selecteer:</h1>
+					<h1>{{round.card}}:</h1>
 					<ul class="players">
 						{{#each players}}
 							{{#if (_id != '<%= user._id %>')}}
@@ -31,19 +28,19 @@
 									<div class="name">{{firstname}} {{lastname}}</div>
 									<div class="rating">
 										<a href="#" on-tap="setRating:1">
-											<i class="fa fa-star{{ratings[_id] >= 1 ? '' : '-o'}}"></i>
+											<i class="fa fa-star{{rating[_id] >= 1 ? '' : '-o'}}"></i>
 										</a>
 										<a href="#" on-tap="setRating:2">
-											<i class="fa fa-star{{ratings[_id] >= 2 ? '' : '-o'}}"></i>
+											<i class="fa fa-star{{rating[_id] >= 2 ? '' : '-o'}}"></i>
 										</a>
 										<a href="#" on-tap="setRating:3">
-											<i class="fa fa-star{{ratings[_id] >= 3 ? '' : '-o'}}"></i>
+											<i class="fa fa-star{{rating[_id] >= 3 ? '' : '-o'}}"></i>
 										</a>
 										<a href="#" on-tap="setRating:4">
-											<i class="fa fa-star{{ratings[_id] >= 4 ? '' : '-o'}}"></i>
+											<i class="fa fa-star{{rating[_id] >= 4 ? '' : '-o'}}"></i>
 										</a>
 										<a href="#" on-tap="setRating:5">
-											<i class="fa fa-star{{ratings[_id] >= 5 ? '' : '-o'}}"></i>
+											<i class="fa fa-star{{rating[_id] >= 5 ? '' : '-o'}}"></i>
 										</a>
 									</div>
 								</li>
@@ -59,13 +56,12 @@
 
 		{{#if step == 2}}
 			<div class="loading" intro-outro="fade">
-				<div class="spinner"><i class="fa fa-spin fa-spinner"></i></div>
-				<p>Je feedback is verzonden, het spel gaat verder zodra alle spelers klaar zijn.</p>
-				<p><a href="#" on-click="notReady">Ga terug</a></p>
-				
+				<h1>Feedback verzonden!</h1>
 			</div>
 		{{/if}}
 	</div>
+
+	Interval: {{counter}}
 
 </script>
 
@@ -73,6 +69,18 @@
 	var token = Cookies.get('fbs_token');
 	var url = 'http://' + window.location.hostname + ':1337';
 	var socket = io(url, { query: 'token=' + token + '&role=player' });
+
+	var i = 0;
+	setInterval(function() {
+		if (socket.disconnected) {
+			socket.socket.reconnect();
+			 Player.set('counter', i + ' (disconnected)');
+		} else {
+			Player.set('counter', i + ' (connected)');
+		}
+		i++;
+	}, 1000);
+
 
 	// Steps:
 	// 1 = Set rating
@@ -84,52 +92,37 @@
 		el: 'content',
 		template: '#template',
 		data: {
+			step: 1,
+			round: {},
 			players: [],
-			ratings: {},
-			step: 1
+			rating: {},
+			counter: 0 // test
 		}
 	});
 
 	Player.on({
 		ready: function(evt) {
-			var ratings = Player.get('ratings');
-			console.log(ratings);
-			return;
+			var rating = Player.get('rating');
 			Player.set('step', null).then(function() {
 				Player.set('step', 2);
-				// Player.set('ratings', {});
 			});
-			socket.emit('user.ready', true);
-			socket.emit('user.ratings', ratings);
-
-			evt.original.preventDefault();
-		},
-		notReady: function(evt) {
-			Player.set('step', null).then(function() {
-				Player.set('step', 1);
-			});
-			socket.emit('user.ready', false);
+			socket.emit('user.ready', rating);
 			evt.original.preventDefault();
 		},
 		setRating: function(evt, rating) {
-			Player.set('ratings.' + evt.context._id, rating);
+			Player.set('rating.' + evt.context._id, rating);
 			evt.original.preventDefault();
 		}
 	});
 
-	socket.on('users.updated', function(users) {
-		Player.set('players', users);
+	socket.on('users.updated', function(players) {
+		Player.set('players', players.users);
 	});
 
-	socket.on('status', function(ready) {
-		// ratings
-		// step
-		// if (ready) {
-		// 	Player.set('ingame', false).then(function() {
-		// 		Player.set('waiting', true);
-		// 		Player.set('ratings', {});
-		// 	});
-		// }
+	socket.on('round.next', function(round) {
+		Player.set('step', 1);
+		Player.set('rating', {});
+		Player.set(round.card);
 	});
 
 </script>
