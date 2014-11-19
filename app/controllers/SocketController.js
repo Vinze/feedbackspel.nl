@@ -50,104 +50,93 @@ Gamestate = {
 
 var Room = function(room_id) {
 
+	var cards = [
+		'Betrouwbaar',
+		'Geduldig',
+		'Roekeloos',
+		'Prikkelbaar',
+		'Doorzetter',
+		'Luidruchtig',
+		'Sociaal',
+		'Nieuwsgierig',
+		'Snel afgeleid'
+	];
+
 	var room_id = room_id;
 	var step = 1;
 	var round = 1;
+	var card = null;
 	var players = [];
+	var self = this;
 
 	this.setPlayer = function(user) {
-		players.push(user);
+		var player = _.find(players, function(p) {
+			return user.id == p.id;
+		});
+		if (player) {
+			player = user;
+		} else {
+			players.push(user);
+		}
 	};
+
+	this.removePlayer = function(userId) {
+		players = _.reject(players, function(p) {
+			return p.id == userId;
+		});
+	}
 
 	this.setFeedback = function(user, rating) {
-		var player = _.find(players, function(item) {
-			return item.id == user.to.id;
+		var player = _.find(players, function(p) {
+			return p.id == user.to.id;
 		});
-		player.ratings[user.from.id] = { from: user.from, rating: rating };
+		if (player) {
+			player.ratings[user.from.id] = { from: user.from, rating: rating };
+		}
 	};
 
-	this.resetFeedback = function(user, rating) {
+	this.resetFeedback = function() {
 		_.each(players, function(player) {
 			player.ratings = {};
 		});
 	};
 
+	this.nextRound = function() {
+		self.resetFeedback();
+		round++;
+	}
+
 	this.getState = function() {
-		return players;
+		return {
+			players: players,
+			round: round,
+			card: cards[round]
+		};
 	};
 }
 
-var gamestate = new Room(1);
+var Game = new Room(1);
 
 var user1 = { id: 1, name: 'Vincent', ratings: {} };
 var user2 = { id: 2, name: 'Henk', ratings: {} };
 var user3 = { id: 3, name: 'Jantje', ratings: {} };
 
-gamestate.setPlayer(user1);
-gamestate.setPlayer(user2);
-gamestate.setPlayer(user3);
+Game.setPlayer(user1);
+Game.setPlayer(user2);
+Game.setPlayer(user3);
 
-gamestate.setFeedback({ from: user2, to: user1 }, 5);
-gamestate.setFeedback({ from: user3, to: user1 }, 3);
+Game.removePlayer(2);
 
+// Game.nextRound();
 
-// gamestate.resetFeedback();
+// Game.setFeedback({ from: user2, to: user1 }, 5);
+// Game.setFeedback({ from: user3, to: user1 }, 3);
 
-var testdata = gamestate.getState();
+// Game.resetFeedback();
+
+var testdata = Game.getState();
 
 console.log(testdata);
-
-// var Gamestate = new Datastore();
-
-// Gamestate.insert({
-// 	room: 1,
-// 	card: 'Betrouwbaar',
-// 	step: 1,
-// 	players: []
-// });
-
-// async.series([
-// 	function(callback) {
-// 		console.log(':: Adding users')
-
-// 		Gamestate.update({ room: 1 }, {
-// 			$push: { players: { name: 'Vincent', ratings: [] } } 
-// 		}, callback);
-// 	},
-// 	function(callback) {
-// 		Gamestate.update({ room: 1 }, {
-// 			$push: { players: { name: 'Henk', ratings: [] } } 
-// 		}, callback);
-// 	},
-// 	function(callback) {
-// 		Gamestate.update({ room: 1 }, {
-// 			$push: { players: { name: 'Fsdas', ratings: [] } } 
-// 		}, callback);
-// 	},
-// 	function(callback) {
-// 		console.log(':: Remove a user')
-		
-// 		Gamestate.update({ room: 1 }, {
-// 			$pull: { players: { name: 'Fsdas' } }
-// 		}, callback);
-// 	},
-// 	function(callback) {
-// 		console.log(':: Adding some feedback')
-
-// 		callback();
-
-// 		Gamestate.players.push({ 'dsa': 'dsa' })
-
-// 		// Gamestate.update({ room: 1 }, {
-
-// 		// }, callback);
-// 	},
-// ], function() {
-// 	Gamestate.findOne	({ room: 1 }, function(err, doc) {
-// 		console.log(doc);
-// 	});
-// });
-
 
 //================================================================
 // Testing testing testing testing testing testing testing testing
