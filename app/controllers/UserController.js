@@ -147,7 +147,7 @@ var UserController = {
 		});
 	},
 
-	save: function(req, res) {
+	postSave: function(req, res) {
 		var input = {
 			email: req.body.email.toLowerCase(),
 			firstname: req.body.firstname,
@@ -171,13 +171,19 @@ var UserController = {
 		}
 	},
 
-	delete: function(req, res) {
+	postDelete: function(req, res) {
+		var imagepath = './storage/avatars/' + req.body._id + '.png';
+		fs.exists(imagepath, function(exists) {
+			if (exists) fs.unlink(imagepath);
+		});
+
 		db.users.remove({ _id: req.body._id }, function() {
 			db.users.find({}, { password: 0 }, function(err, users) {
 				res.json(users);
 			});
 		});
 	}
+	
 };
 
 module.exports = UserController;

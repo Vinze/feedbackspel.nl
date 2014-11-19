@@ -71,8 +71,8 @@ app.get('/game/play', auth.isMember, GameController.getPlay);
 
 app.post('/api/check-email', UserController.checkEmail);
 app.get('/api/users/all', auth.isAdmin, UserController.findAll);
-app.post('/api/users/save', auth.isAdmin, UserController.save);
-app.post('/api/users/delete', auth.isAdmin, UserController.delete);
+app.post('/api/users/save', auth.isAdmin, UserController.postSave);
+app.post('/api/users/delete', auth.isAdmin, UserController.postDelete);
 
 app.get('/randomwords', function(req, res) {
 	res.render('randomwords');
