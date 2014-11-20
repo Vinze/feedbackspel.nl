@@ -774,8 +774,20 @@ body.sidebar-open {
 //================================================
 
 .ingame.host {
+	.game-title {
+		font-family: Lobster, @fonts;
+		color: #fff;
+		font-size: 2em;
+		padding: 4px 15px 4px 12px;
+		display: inline-block;
+		background-color: @accent-color;
+		position: fixed;
+		top: 20px;
+		left: 0;
+		.border-radius(0 5px 5px 0);
+	}
 	.step {
-		margin: 50px auto;
+		margin: 30px auto;
 		background-color: #fff;
 		.box-shadow(0 0 5px #ccc);
 		padding: 40px;
@@ -799,7 +811,7 @@ body.sidebar-open {
 		text-align: center;
 	}
 	.step.results {
-		width: 500px;
+		width: 600px;
 		table {
 			margin-bottom: 20px;
 		}
@@ -809,6 +821,10 @@ body.sidebar-open {
 		img {
 			width: 40px;
 			vertical-align: middle;
+		}
+		.rating {
+			color: @accent-color;
+			font-size: 1.25em;
 		}
 	}
 	.step.end {

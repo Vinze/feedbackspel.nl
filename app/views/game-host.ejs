@@ -20,7 +20,14 @@
 	</a> -->
 
 	{{#if step == 1}}
-		<div class="step card">
+		<div class="game-title" intro-outro="fly:{ x: 0, y: -150}">Voer je feedback in</div>
+	{{/if}}
+	{{#if step == 2}}
+		<div class="game-title" intro-outro="fly:{ x: 0, y: -150}">Resultaten</div>
+	{{/if}}
+
+	{{#if step == 1}}
+		<div class="step card" intro-outro="fade">
 			{{#if ready}}
 				<a href="#" on-click="next">Volgende kaart</a>
 			{{else}}
@@ -30,13 +37,11 @@
 	{{/if}}
 
 	{{#if step == 2}}
-		<div class="step results">
-			<h1>Resultaten voor {{round.card}}</h1>
+		<div class="step results" intro-outro="fade">
 			<table>
 				<thead>
 					<tr>
-						<th colspan="2">Voor</th>
-						<th class="align-center">Rating</th>
+						<th colspan="2">Resultaten voor xxx</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,7 +49,13 @@
 						<tr>
 							<td style="width: 70px;"><img src="/avatar/{{_id}}.png" alt=""></td>
 							<td>{{firstname}}</td>
-							<td style="width: 100px;" class="align-center">{{rating}}</td>
+							<td style="width: 170px;" class="align-right">
+								<i class="fa fa-star{{rating >= 1 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{rating >= 2 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{rating >= 3 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{rating >= 4 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{rating >= 5 ? '' : '-o'}} rating"></i>
+							</td>
 						</tr>
 					{{/each}}
 				</tbody>
@@ -55,28 +66,30 @@
 		</div>
 	{{/if}}
 
-	<div class="players">
-		<ul>
-			{{#each players}}
-				<li class="player {{status}}" intro-outro="fly:{ x: 0, y: 150 }">
-					<a href="#" class="remove" on-click="remove:{{this}}"><i class="fa fa-times"></i></a>
-					{{#if step == 2}}
-						<i class="fa fa-check check"></i>
-					{{/if}}
-					<div class="avatar">
-						<img src="/avatar/{{_id}}.png">
-					</div>
-					<div class="name">
-						{{firstname}} {{lastname}}
-					</div>
-					<div class="status">
-						{{#if status == 'active'}}Verbonden{{/if}}
-						{{#if status == 'disconnected'}}Verbinding verbroken{{/if}}
-					</div>
-				</li>
-			{{/each}}
-		</ul>
-	</div>
+	{{#if step == 1}}
+		<div class="players">
+			<ul>
+				{{#each players}}
+					<li class="player {{status}}" intro-outro="fly:{ x: 0, y: 150 }">
+						<a href="#" class="remove" on-click="remove:{{this}}"><i class="fa fa-times"></i></a>
+						{{#if step == 2}}
+							<i class="fa fa-check check"></i>
+						{{/if}}
+						<div class="avatar">
+							<img src="/avatar/{{_id}}.png">
+						</div>
+						<div class="name">
+							{{firstname}} {{lastname}}
+						</div>
+						<div class="status">
+							{{#if status == 'active'}}Verbonden{{/if}}
+							{{#if status == 'disconnected'}}Verbinding verbroken{{/if}}
+						</div>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+	{{/if}}
 </script>
 
 <script type="text/javascript">
@@ -92,8 +105,7 @@
 			round: { card: null, number: null },
 			players: [],
 			results: {}
-		},
-		noIntro: true
+		}
 	});
 
 	Game.on({
@@ -126,7 +138,9 @@
 					return total.rating;
 				}).reverse();
 				
-				Game.set('step', 2);
+				Game.set('step', null).then(function() {
+					Game.set('step', 2);
+				});
 				Game.set('results', sorted);
 			});
 			// Game.set('step', 2);
@@ -137,7 +151,54 @@
 
 	socket.on('round.next', function(round) {
 		Game.set('round', round);
+		// Game.set('step', null).then(function() {
 			Game.set('step', 1);
+		// });
 	});
+
+	// =======================================================
+	// Testing testing testing testing testing testing testing
+	// =======================================================
+
+	// $.getJSON('/api/users', function(users) {
+	// 	var results = {};
+
+	// 	Game.set('step', 1);
+	// 	Game.set('round.card', 'Poephoofd');
+
+	// 	_.each(users, function(user) {
+	// 		user.status = 'active';
+	// 		user.step = 2;
+	// 		Game.push('players', user);
+
+	// 		var random = Math.round(Math.random() * 30);
+	// 		results[user._id] = {
+	// 			_id: user._id,
+	// 			firstname: user.firstname,
+	// 			rating: Math.round(random / ( users.length - 1))
+	// 		};
+	// 	});
+
+	// 	results = _.sortBy(results, function(result) {
+	// 		return result.rating;
+	// 	}).reverse();
+
+	// 	var highest = _.max(results, function(result) {
+	// 		return result.rating;
+	// 	});
+
+	// 	console.log(highest.rating);
+		
+	// 	setTimeout(function() {
+	// 		Game.set('results', results);
+	// 		Game.set('step', null).then(function() {
+	// 			Game.set('step', 2);
+	// 		})
+	// 	}, 500);
+	// });
+
+	// =======================================================
+	// Testing testing testing testing testing testing testing
+	// =======================================================
 
 </script>
