@@ -1,15 +1,49 @@
 var assert = require('assert')
 var expect = require('expect.js');
 
-var Room = require('../libs/game.js')
+var Room = require('../libs/gameroom.js')
 
 var Game = new Room()
 
-describe('create a new game room', function() {
-	it('Shoud be able to create a new game object', function() {
+var user1 = { id: 1, name: 'Vincent' }
+var user2 = { id: 2, name: 'Henk' }
+var user3 = { id: 3, name: 'Jantje' }
+
+describe('managing users', function() {
+
+	it('should be able to insert some users', function() {
+		Game.setPlayer(user1)
+		Game.setPlayer(user2)
+		Game.setPlayer(user3)
 	})
+
+	it('retrieves all players', function() {
+		var players = Game.getPlayers()
+		expect(players.length).to.be(3)
+	})
+
+	it('retrieves a single player', function() {
+		var player = Game.getPlayer(1)
+		expect(player).to.be.object
+	})
+
+	it('should be able to remove a user', function() {
+		Game.removePlayer(2)
+
+		var players = Game.getPlayers()
+		var player = Game.getPlayer(2)
+
+		expect(players.length).to.be(2)
+		expect(player).to.be.undefined
+	})
+
 })
 
+describe('managing ratings', function() {
+
+	it('should be able to set some ratings', function() {
+	})
+})
 
 /*
 Game steps:

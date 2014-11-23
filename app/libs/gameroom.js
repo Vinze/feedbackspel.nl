@@ -1,6 +1,6 @@
 var _ = require('underscore')
 
-var Room = function() {
+var Gameroom = function() {
 
 	var cards = [
 		'Betrouwbaar', 'Geduldig', 'Roekeloos',
@@ -26,27 +26,27 @@ var Room = function() {
 		}
 	}
 
-	this.removePlayer = function(userId) {
+	this.removePlayer = function(playerId) {
 		players = _.reject(players, function(player) {
-			return player.id == userId
+			return player.id == playerId
 		})
 	}
 
-	this.setPlayerStep = function(userId, step) {
+	this.setPlayerStep = function(playerId, step) {
 		var player = _.find(players, function(player) {
-			return player.id == userId
+			return player.id == playerId
 		})
 		if (player) {
 			player.step = step
 		}
 	}
 
-	this.setFeedback = function(fromUser, toUserId, rating) {
+	this.setFeedback = function(fromPlayer, toPlayerId, rating) {
 		var player = _.find(players, function(player) {
-			return player.id == toUserId
+			return player.id == toPlayerId
 		})
 		if (player) {
-			player.ratings[fromUser.id] = { from: fromUser.name, rating: rating }
+			player.ratings[fromPlayer.id] = { from: fromPlayer.name, rating: rating }
 		}
 	}
 
@@ -59,14 +59,19 @@ var Room = function() {
 	}
 
 	this.getPlayersReady = function() {
-		var total = _.reduce(players, function(memo, p) {
-			return (p.step == 2) ? memo + 1 : memo
+		return _.reduce(players, function(memo, player) {
+			return (player.step == 2) ? memo + 1 : memo
 		}, 0)
-		return total
 	}
 
 	this.getPlayers = function() {
 		return players
+	}
+
+	this.getPlayer = function(playerId) {
+		return _.find(players, function(player) {
+			return player.id == playerId
+		})
 	}
 
 	this.getState = function() {
@@ -93,12 +98,10 @@ var Room = function() {
 			})
 		})
 
-		results = _.sortBy(results, function(result) {
+		return _.sortBy(results, function(result) {
 			return result.rating
 		}).reverse()
-
-		return results
 	}
 }
 
-module.exports = Room;
+module.exports = Gameroom;
