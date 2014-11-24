@@ -91,7 +91,7 @@
 			Player.set('step', null).then(function() {
 				Player.set('step', 2);
 			});
-			socket.emit('user.ready', rating);
+			socket.emit('player.ready', rating);
 			evt.original.preventDefault();
 		},
 		setRating: function(evt, rating) {
@@ -100,15 +100,21 @@
 		}
 	});
 
-	socket.on('users.updated', function(players) {
-		Player.set('players', players.users);
-	});
+	// socket.on('users.updated', function(players) {
+	// 	Player.set('players', players.users);
+	// });
 
-	socket.on('round.next', function(round) {
-		Player.set('step', 1);
-		Player.set('rating', {});
-		Player.set(round.card);
-	});
+	// socket.on('round.next', function(round) {
+	// 	Player.set('step', 1);
+	// 	Player.set('rating', {});
+	// 	Player.set(round.card);
+	// });
+
+	socket.on('gamestate', function(state) {
+		Player.set('players', state.players);
+
+		console.log(state);
+	})
 
 </script>
 </body>

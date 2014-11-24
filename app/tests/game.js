@@ -1,49 +1,107 @@
 var assert = require('assert')
 var expect = require('expect.js');
 
-var Room = require('../libs/gameroom.js')
+var Room = require('../libs/gameroom.js');
 
-var Game = new Room()
+var cards = [
+	'Betrouwbaar', 'Geduldig', 'Roekeloos',
+	'Prikkelbaar', 'Doorzetter', 'Luidruchtig',
+	'Sociaal', 'Nieuwsgierig', 'Snel afgeleid'
+];
 
-var user1 = { id: 1, name: 'Vincent' }
-var user2 = { id: 2, name: 'Henk' }
-var user3 = { id: 3, name: 'Jantje' }
+var Game = new Room();
 
-describe('managing users', function() {
+Game.setCards(cards);
 
-	it('should be able to insert some users', function() {
-		Game.setPlayer(user1)
-		Game.setPlayer(user2)
-		Game.setPlayer(user3)
+var player1 = { _id: 1, name: 'Vincent', role: 'player' };
+var player2 = { _id: 2, name: 'Henk', role: 'player' };
+var player3 = { _id: 3, name: 'Jantje', role: 'player' };
+
+describe('managing players', function() {
+
+	it('should be able to insert some players', function() {
+		// Insert some players
+		Game.setPlayer(player1);
+		Game.setPlayer(player2);
+		Game.setPlayer(player3);
 	})
 
-	it('retrieves all players', function() {
-		var players = Game.getPlayers()
-		expect(players.length).to.be(3)
-	})
+	it('should retrieve all players', function() {
+		var players = Game.getPlayers();
+		expect(players.length).to.be(3);
+	});
 
-	it('retrieves a single player', function() {
-		var player = Game.getPlayer(1)
-		expect(player).to.be.object
-	})
+	it('should retrieve a single player by id', function() {
+		var player = Game.getPlayer(1);
+		expect(player).to.be.object;
+	});
+
+});
+
+describe('managing feedback', function() {
+
+	it('should be able to set and get feedback', function() {
+		// Insert the feedback
+		Game.setFeedback({ from: 1, to: 2, rating: 5 }); // (from user 1 to user 2 with a rating of 5)
+		Game.setFeedback({ from: 1, to: 3, rating: 4 }); // (from user 1 to user 3 with a rating of 2)
+		Game.setFeedback({ from: 2, to: 3, rating: 4 }); // (from user 2 to user 3 with a rating of 3)
+
+		// Set the users to step 2 (= ready)
+		Game.setPlayerStep(1, 2);
+		Game.setPlayerStep(2, 2);
+
+		var feedbackPlayer1 = Game.getFeedback(1); // Get feedback of user 1
+		var feedbackPlayer2 = Game.getFeedback(2); // Get feedback of user 2
+		var feedbackPlayer3 = Game.getFeedback(3); // Get feedback of user 3
+
+		expect(feedbackPlayer1.length).to.be(0); // User 1 hasn't received any feedback
+		expect(feedbackPlayer2.length).to.be(1); // User 2 has received feedback from 1 user
+		expect(feedbackPlayer3.length).to.be(2); // User 3 has received feedback from 2 users
+
+		expect(Game.getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
+	});
+
+	it('should be able to get the results of a game', function() {
+		var summary = Game.getSummary();
+
+		expect(summary.length).to.be(2);
+		expect(summary[0]).to.eql({ name: 'Jantje', rating: 8 });
+		expect(summary[1]).to.eql({ name: 'Henk', rating: 5 });
+	});
+
+});
+
+describe('managing rounds', function() {
+
+	it('should be able to get the game state', function() {
+		var gameState = Game.getState();
+		expect(gameState.round).to.be(1);
+		expect(gameState.card).to.be('Geduldig');
+		expect(gameState.players.length).to.be(3);
+	});
+
+	it('should be able to get to the next round', function() {
+		Game.nextRound();
+		expect(Game.getSummary().length).to.be(0);
+		expect(Game.getRound()).to.be(2);
+		expect(Game.getCard()).to.be('Roekeloos');
+	});
+
+});
+
+describe('removing players', function() {
 
 	it('should be able to remove a user', function() {
-		Game.removePlayer(2)
+		Game.removePlayer(2);
 
-		var players = Game.getPlayers()
-		var player = Game.getPlayer(2)
+		var players = Game.getPlayers();
+		var player = Game.getPlayer(2);
 
-		expect(players.length).to.be(2)
-		expect(player).to.be.undefined
-	})
+		expect(players.length).to.be(2);
+		expect(typeof player).to.be('undefined');
+	});
 
-})
-
-describe('managing ratings', function() {
-
-	it('should be able to set some ratings', function() {
-	})
-})
+});
 
 /*
 Game steps:
@@ -64,49 +122,3 @@ player = {
 	]
 }
 */
-
-
-
-// Setup some testdata
-// var user1 = { id: 1, name: 'Vincent' }
-// var user2 = { id: 2, name: 'Henk' }
-// var user3 = { id: 3, name: 'Jantje' }
-
-// // Insert some players
-// Game.setPlayer(user1)
-// Game.setPlayer(user2)
-// Game.setPlayer(user3)
-
-// // Alter an user
-// user3.name = 'John';
-// Game.setPlayer(user3)
-
-// // User 1 sets feedback
-// Game.setFeedback(user1, 2, 5)
-// Game.setFeedback(user1, 3, 3)
-// Game.setPlayerStep(1, 2)
-
-// // User 2 sets feedback
-// Game.setFeedback(user2, 1, 2)
-// Game.setFeedback(user2, 3, 5)
-// Game.setPlayerStep(2, 2)
-
-// // User 3 sets feedback
-// Game.setFeedback(user3, 1, 3)
-// Game.setFeedback(user3, 2, 3)
-// Game.setPlayerStep(3, 2)
-
-// // Get the players and results of round 1
-// console.log('Players round 1:')
-// console.log(Game.getPlayers())
-// console.log('Results round 1:')
-// console.log(Game.getResults())
-
-// // Go to the next round
-// Game.nextRound()
-
-// // Get the players and results of round 2
-// console.log('Players round 2:')
-// console.log(Game.getPlayers())
-// console.log('Results round 2:')
-// console.log(Game.getResults())

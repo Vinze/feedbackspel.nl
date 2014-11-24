@@ -75,11 +75,11 @@
 						{{#if step == 2}}
 							<i class="fa fa-check check"></i>
 						{{/if}}
-						<div class="avatar">
-							<img src="/avatar/{{_id}}.png">
-						</div>
 						<div class="name">
 							{{firstname}} {{lastname}}
+						</div>
+						<div class="avatar">
+							<img src="/avatar/{{_id}}.png">
 						</div>
 						<div class="status">
 							{{#if status == 'active'}}Verbonden{{/if}}
@@ -154,6 +154,11 @@
 		// Game.set('step', null).then(function() {
 			Game.set('step', 1);
 		// });
+	});
+
+	socket.on('gamestate', function(state) {
+		Game.set('players', state.players);
+		// console.log(state);
 	});
 
 	// =======================================================

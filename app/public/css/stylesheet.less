@@ -836,7 +836,6 @@ body.sidebar-open {
 		width: 100%;
 		bottom: 0px;
 		padding: 10px;
-		overflow: hidden;
 		text-align: center;
 		ul {
 			margin: 0;
@@ -849,7 +848,7 @@ body.sidebar-open {
 		display: inline-block;
 		margin: 0 10px;
 		position: relative;
-		width: 150px;
+		width: 100px;
 		text-align: center;
 		.avatar {
 			display: inline-block;
@@ -865,6 +864,11 @@ body.sidebar-open {
 		}
 		.name {
 			font-size: 0.9em;
+			position: absolute;
+			top: -24px;
+			left: -25px;
+			width: 150px;
+			text-align: center;
 		}
 		.status {
 			font-size: 0.8em;
@@ -874,17 +878,19 @@ body.sidebar-open {
 			position: absolute;
 			font-size: 1.4em;
 		}
+		.name, .remove {
+			opacity: 0;
+			.transition(opacity 250ms);
+		}
 		.check {
-			top: 64px;
-			right: 18px;
+			bottom: 18px;
+			right: -5px;
 			color: @accent-color;
 		}
 		.remove {
-			font-size: 1.4em;
 			top: -10px;
-			left: 22px;
+			left: -5px;
 			color: #EA6666;
-			display: none;
 		}
 		&.active {
 			.avatar { border-color: #55be78; }
@@ -892,8 +898,9 @@ body.sidebar-open {
 		&.disconnected {
 			.avatar { border-color: #FFD635; opacity: 0.6; }
 		}
-		&:hover .remove {
+		&:hover .remove, &:hover .name {
 			display: block;
+			opacity: 1;
 		}
 	}
 }
