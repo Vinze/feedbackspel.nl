@@ -13,9 +13,9 @@ var Game = new Room();
 
 Game.setCards(cards);
 
-var player1 = { _id: 1, name: 'Vincent', role: 'player' };
-var player2 = { _id: 2, name: 'Henk', role: 'player' };
-var player3 = { _id: 3, name: 'Jantje', role: 'player' };
+var player1 = { _id: 1, firstname: 'Vincent', lastname: '', role: 'player' };
+var player2 = { _id: 2, firstname: 'Henk', lastname: '', role: 'player' };
+var player3 = { _id: 3, firstname: 'Jantje', lastname: '', role: 'player' };
 
 describe('managing players', function() {
 
@@ -63,10 +63,9 @@ describe('managing feedback', function() {
 
 	it('should be able to get the results of a game', function() {
 		var summary = Game.getSummary();
-
 		expect(summary.length).to.be(2);
-		expect(summary[0]).to.eql({ name: 'Jantje', rating: 8 });
-		expect(summary[1]).to.eql({ name: 'Henk', rating: 5 });
+		expect(summary[0]).to.eql({ _id: 3, firstname: 'Jantje', lastname: '', rating: 8 });
+		expect(summary[1]).to.eql({ _id: 2, firstname: 'Henk', lastname: '', rating: 5 });
 	});
 
 });

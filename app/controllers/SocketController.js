@@ -17,9 +17,9 @@ var Game = new Room();
 
 Game.setCards(cards);
 
-function findUser(user_id, callback) {
+function findUser(userId, callback) {
 	var fields = { _id: 1, email: 1, firstname: 1, lastname: 1, gender: 1 };
-	db.users.findOne({ _id: user_id }, fields, callback);
+	db.users.findOne({ _id: userId }, fields, callback);
 }
 
 var SocketController = function(server) {
@@ -43,8 +43,8 @@ var SocketController = function(server) {
 					user.socketId = socket.id;
 					user.name = user.firstname + ' ' + user.lastname;
 					Game.setPlayer(user);
-					sendState();
 				}
+				sendState();
 			});
 		} catch(err) {
 			console.log(err);
@@ -58,8 +58,22 @@ var SocketController = function(server) {
 			sendState();
 		});
 
+		socket.on('round.next', function() {
+			Game.nextRound();
+			io.emit('round.next', Game.getState());
+		});
+
+		socket.on('player.remove', function(playerId) {
+			Game.removePlayer(playerId);
+			sendState();
+		});
+
 		socket.on('disconnect', function() {
-			
+			Game.setPlayer({
+				_id: socket.playerId,
+				status: 'disconnected'
+			});
+			sendState();
 		});
 
 	});

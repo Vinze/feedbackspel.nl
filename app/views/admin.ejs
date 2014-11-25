@@ -181,7 +181,7 @@ var Router = Backbone.Router.extend({
 			}
 		});
 
-		$.getJSON('/api/users/all', function(users) {
+		$.getJSON('/api/users', function(users) {
 			Users.set('items', users);
 		});
 	},

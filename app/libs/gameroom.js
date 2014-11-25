@@ -12,16 +12,16 @@ var Gameroom = function() {
 		cards = customCards;
 	}
 
-	this.setPlayer = function(props) {
+	this.setPlayer = function(playerData) {
 		var player = _.find(players, function(player) {
-			return player._id == props._id;
+			return player._id == playerData._id;
 		});
 		if (player) {
-			player = props;
+			_.extend(player, playerData);
 		} else {
-			props.step = 1;
-			props.ratings = {};
-			players.push(props);
+			playerData.step = 1;
+			playerData.ratings = {};
+			players.push(playerData);
 		}
 	}
 
@@ -34,7 +34,7 @@ var Gameroom = function() {
 	this.setPlayerStep = function(playerId, step) {
 		var player = _.find(players, function(player) {
 			return player._id == playerId;
-		})
+		});
 		if (player) {
 			player.step = step;
 		}
@@ -93,7 +93,9 @@ var Gameroom = function() {
 					summary[player._id].rating += ratings.rating;
 				} else {
 					summary[player._id] = {
-						name: player.name,
+						_id: player._id,
+						firstname: player.firstname,
+						lastname: player.lastname,
 						rating: ratings.rating
 					};
 				}
@@ -123,10 +125,11 @@ var Gameroom = function() {
 
 	this.getState = function() {
 		return {
-			players: this.getPlayers(),
 			round: this.getRound(),
+			card: this.getCard(),
+			players: this.getPlayers(),
 			playersReady: this.getPlayersReady(),
-			card: this.getCard()
+			summary: this.getSummary()
 		};
 	}
 

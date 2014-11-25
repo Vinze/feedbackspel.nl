@@ -31,7 +31,7 @@
 			{{#if ready}}
 				<a href="#" on-click="next">Volgende kaart</a>
 			{{else}}
-				<h1>{{round.number + 1}}: {{round.card}}</h1>
+				<h1>{{card}}</h1>
 			{{/if}}
 		</div>
 	{{/if}}
@@ -41,7 +41,7 @@
 			<table>
 				<thead>
 					<tr>
-						<th colspan="2">Resultaten voor xxx</th>
+						<th colspan="2">Resultaten voor {{card}}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,19 +50,19 @@
 							<td style="width: 70px;"><img src="/avatar/{{_id}}.png" alt=""></td>
 							<td>{{firstname}}</td>
 							<td style="width: 170px;" class="align-right">
-								<i class="fa fa-star{{rating >= 1 ? '' : '-o'}} rating"></i>
-								<i class="fa fa-star{{rating >= 2 ? '' : '-o'}} rating"></i>
-								<i class="fa fa-star{{rating >= 3 ? '' : '-o'}} rating"></i>
-								<i class="fa fa-star{{rating >= 4 ? '' : '-o'}} rating"></i>
-								<i class="fa fa-star{{rating >= 5 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 1 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 2 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 3 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 4 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 5 ? '' : '-o'}} rating"></i>
 							</td>
 						</tr>
 					{{/each}}
 				</tbody>
 			</table>
-			<a href="#" class="btn confirm" on-click="next">
+			<button class="btn confirm" on-click="next">
 				Volgende ronde <i class="fa fa-angle-double-right"></i>
-			</a>
+			</button>
 		</div>
 	{{/if}}
 
@@ -101,8 +101,8 @@
 		el: 'game',
 		template: '#game-tpl',
 		data: {
-			step: 1,
-			round: { card: null, number: null },
+			step: null,
+			card: null,
 			players: [],
 			results: {}
 		}
@@ -110,55 +110,37 @@
 
 	Game.on({
 		next: function(evt) {
+			Game.set('step', 2);
 			socket.emit('round.next');
 			evt.original.preventDefault();
 		},
-		remove: function(evt, user) {
-			socket.emit('user.remove', user._id);
+		remove: function(evt, player) {
+			socket.emit('player.remove', player._id);
 			evt.original.preventDefault();
 		}
 	});
 
-	socket.on('users.updated', function(res) {
-		Game.set('players', res.users);
-
-		if (res.ready) {
-			socket.emit('ratings.get', function(results) {
-				var totals = {};
-				_.each(results, function(result) {
-					if ( ! totals[result.to._id]) {
-						totals[result.to._id] = result.to;
-						totals[result.to._id].rating = result.rating;
-					} else {
-						totals[result.to._id].rating += result.rating;
-					}
-				});
-
-				var sorted = _.sortBy(totals, function(total) {
-					return total.rating;
-				}).reverse();
-				
-				Game.set('step', null).then(function() {
-					Game.set('step', 2);
-				});
-				Game.set('results', sorted);
-			});
-			// Game.set('step', 2);
-		} else if(Game.get('step') != 1) {
+	socket.on('round.next', function(state) {
+		Game.set('step', null).then(function() {
+			Game.set('players', state.players);
+			Game.set('card', state.card);
+			Game.set('results', []);
 			Game.set('step', 1);
-		}
-	});
-
-	socket.on('round.next', function(round) {
-		Game.set('round', round);
-		// Game.set('step', null).then(function() {
-			Game.set('step', 1);
-		// });
+		});
 	});
 
 	socket.on('gamestate', function(state) {
 		Game.set('players', state.players);
-		// console.log(state);
+		Game.set('card', state.card);
+
+		if (state.players.length > 0 && state.players.length == state.playersReady) {
+			Game.set('results', state.summary);
+			Game.set('step', null).then(function() {
+				Game.set('step', 2);
+			});
+		} else {
+			Game.set('step', 1);
+		}
 	});
 
 	// =======================================================

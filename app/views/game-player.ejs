@@ -16,13 +16,14 @@
 		<i class="fa fa-fw fa-sign-out"></i>
 	</a> -->
 	<div class="content container">
+
 		{{#if step == 1}}
 			<div class="player-select" intro-outro="fade">
 				{{#if players.length > 1}}
-					<h1>{{round.card}}:</h1>
+					<h1>{{card}}:</h1>
 					<ul class="players">
 						{{#each players}}
-							{{#if (_id != '<%= user._id %>')}}
+							{{#if (_id != userId)}}
 								<li intro="slide:{delay:200}">
 									<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
 									<div class="name">{{firstname}} {{lastname}}</div>
@@ -64,8 +65,10 @@
 </script>
 
 <script type="text/javascript">
-	var token = Cookies.get('fbs_token');
-	var url = 'http://' + window.location.hostname + ':1337';
+
+	var userId = "<%= user._id %>";
+	var token  = Cookies.get('fbs_token');
+	var url    = 'http://' + window.location.hostname + ':1337';
 	var socket = io(url, { query: 'token=' + token + '&role=player' });
 
 	// Steps:
@@ -78,9 +81,10 @@
 		el: 'content',
 		template: '#template',
 		data: {
-			step: 1,
-			round: {},
+			step: null,
+			card: '',
 			players: [],
+			userId: userId,
 			rating: {}
 		}
 	});
@@ -88,9 +92,6 @@
 	Player.on({
 		ready: function(evt) {
 			var rating = Player.get('rating');
-			Player.set('step', null).then(function() {
-				Player.set('step', 2);
-			});
 			socket.emit('player.ready', rating);
 			evt.original.preventDefault();
 		},
@@ -104,17 +105,28 @@
 	// 	Player.set('players', players.users);
 	// });
 
-	// socket.on('round.next', function(round) {
-	// 	Player.set('step', 1);
-	// 	Player.set('rating', {});
-	// 	Player.set(round.card);
-	// });
+	socket.on('round.next', function(state) {
+		console.log('next round!!');
+		Player.set('step', 1);
+		Player.set('rating', {});
+		Player.set('players', state.players);
+		Player.set('card', state.card);
+	});
 
 	socket.on('gamestate', function(state) {
 		Player.set('players', state.players);
+		Player.set('card', state.card);
 
+		var currentPlayer = _.find(state.players, function(player) {
+			return player._id == userId;
+		});
+
+		var step = currentPlayer ? currentPlayer.step : 1;
+
+		Player.set('step', step);
+		
 		console.log(state);
-	})
+	});
 
 </script>
 </body>
