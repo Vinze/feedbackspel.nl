@@ -29,18 +29,18 @@ var SocketController = function(server) {
 		io.emit('gamestate', Game.getState());
 	}
 
-	io.on('connection', function(socket) {
+	io.on('connection', function(client) {
 
-		var token = socket.handshake.query.token;
-		socket.role = socket.handshake.query.role; // host or player
+		var token = client.handshake.query.token;
+		client.role = client.handshake.query.role; // host or player
 
 		try {
 			var data = jwt.decode(token, config.jwt_secret);
 			findUser(data.user_id, function(err, user) {
-				socket.playerId = user._id;
-				if (socket.role == 'player') {
+				client.playerId = user._id;
+				if (client.role == 'player') {
 					user.status = 'active';
-					user.socketId = socket.id;
+					user.socketId = client.id;
 					user.name = user.firstname + ' ' + user.lastname;
 					Game.setPlayer(user);
 				}
@@ -50,27 +50,31 @@ var SocketController = function(server) {
 			console.log(err);
 		}
 
-		socket.on('player.ready', function(rating) {
+		client.on('player.ready', function(rating) {
 			_.each(rating, function(rating, toPlayerId) {
-				Game.setFeedback({ from: socket.playerId, to: toPlayerId, rating: rating });
+				Game.setFeedback({ from: client.playerId, to: toPlayerId, rating: rating });
 			});
-			Game.setPlayerStep(socket.playerId, 2);
+			Game.setPlayerStep(client.playerId, 2);
 			sendState();
 		});
 
-		socket.on('round.next', function() {
+		client.on('round.next', function() {
 			Game.nextRound();
 			io.emit('round.next', Game.getState());
 		});
 
-		socket.on('player.remove', function(playerId) {
-			Game.removePlayer(playerId);
+		client.on('player.remove', function(playerId) {
+			if (client.role == 'host') {
+				Game.removePlayer(playerId);
+			} else {
+				// Game.removePlayer(client.playerId);
+			}
 			sendState();
 		});
 
-		socket.on('disconnect', function() {
+		client.on('disconnect', function() {
 			Game.setPlayer({
-				_id: socket.playerId,
+				_id: client.playerId,
 				status: 'disconnected'
 			});
 			sendState();

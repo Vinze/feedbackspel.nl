@@ -208,19 +208,23 @@ table {
 
 th, td {
 	text-align: left;
-	padding: 5px 10px 5px 5px;
+	padding: 5px 10px 5px 0;
 }
 
 th {
 	font-weight: bold;
 }
 
-tbody tr:nth-child(odd) td {
-	background-color: #f2f2f2;
-}
-
-tbody td {
-	border-top: 1px solid #e5e5e5;
+table.striped {
+	tbody tr:nth-child(odd) td {
+		background-color: #f2f2f2;
+	}
+	tbody td {
+		border-top: 1px solid #e5e5e5;
+	}
+	th, td {
+		padding-left: 5px;
+	}
 }
 
 table td.icons {
@@ -763,9 +767,9 @@ body.sidebar-open {
 	.exit-button {
 		position: absolute;
 		top: 0px;
-		right: 8px;
+		right: 5px;
 		display: block;
-		font-size: 2.4em;
+		font-size: 2em;
 	}
 }
 
@@ -814,16 +818,20 @@ body.sidebar-open {
 		text-align: center;
 	}
 	.step.results {
-		width: 600px;
+		width: 500px;
+		padding-top: 15px;
+		padding-bottom: 20px;
 		table {
 			margin-bottom: 20px;
 		}
-		th, td {
+		td {
 			vertical-align: middle;
+			padding: 10px 0;
 		}
 		img {
 			width: 40px;
 			vertical-align: middle;
+			.border-radius(20px);
 		}
 		.rating {
 			color: @accent-color;
@@ -850,6 +858,7 @@ body.sidebar-open {
 	.player {
 		display: inline-block;
 		margin: 0 10px;
+		padding-top: 30px;
 		position: relative;
 		width: 130px;
 		text-align: center;
@@ -858,50 +867,40 @@ body.sidebar-open {
 			width: 83px;
 			height: 83px;
 			border-radius: 75px;
-			border: 4px solid #ccc;
+			border: 4px solid @accent-color;
 			overflow: hidden;
 			.transition(opacity 500ms);
 			img {
 				background-color: #fff;
 			}
 		}
-		.name {
-			font-size: 0.9em;
-			position: absolute;
-			top: -24px;
-			left: -10px;
-			width: 150px;
-			text-align: center;
-		}
 		.status {
 			font-size: 0.8em;
 			color: #BBBBBB;
+			display: none;
 		}
-		.check, .remove {
-			position: absolute;
-			font-size: 1.4em;
-		}
-		.name, .remove {
+		.name {
 			opacity: 0;
+			font-size: 0.9em;
+			position: absolute;
+			top: 0px;
+			left: -10px;
+			width: 150px;
+			text-align: center;
 			.transition(opacity 250ms);
+			.remove {
+				color: #EA6666;
+				font-size: 1.2em;
+			}
 		}
 		.check {
-			bottom: 18px;
+			position: absolute;
+			font-size: 1.4em;
+			bottom: 2px;
 			right: 8px;
 			color: @accent-color;
 		}
-		.remove {
-			top: -10px;
-			right: 0px;
-			color: #EA6666;
-		}
-		&.active {
-			.avatar { border-color: #55be78; }
-		}
-		&.disconnected {
-			.avatar { border-color: #FFD635; opacity: 0.6; }
-		}
-		&:hover .remove, &:hover .name {
+		&:hover .name {
 			display: block;
 			opacity: 1;
 		}

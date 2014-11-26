@@ -12,19 +12,19 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script type="text/template" id="template">
-	<!-- <a href="/dashboard" title="Spel verlaten" class="exit-button" on-click="leave">
+	<a href="/dashboard" title="Spel verlaten" class="exit-button" on-click="leave">
 		<i class="fa fa-fw fa-sign-out"></i>
-	</a> -->
+	</a>
 	<div class="content container">
 
 		{{#if step == 1}}
-			<div class="player-select" intro-outro="fade">
+			<div class="player-select">
 				{{#if players.length > 1}}
 					<h1>{{card}}:</h1>
 					<ul class="players">
 						{{#each players}}
 							{{#if (_id != userId)}}
-								<li intro="slide:{delay:200}">
+								<li>
 									<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
 									<div class="name">{{firstname}} {{lastname}}</div>
 									<div class="rating">
@@ -56,7 +56,7 @@
 		{{/if}}
 
 		{{#if step == 2}}
-			<div class="loading" intro-outro="fade">
+			<div class="loading">
 				<h1>Feedback verzonden!</h1>
 			</div>
 		{{/if}}
@@ -69,19 +69,22 @@
 	var userId = "<%= user._id %>";
 	var token  = Cookies.get('fbs_token');
 	var url    = 'http://' + window.location.hostname + ':1337';
-	var socket = io(url, { query: 'token=' + token + '&role=player' });
 
-	// Steps:
-	// 1 = Set rating
-	// 2 = Ready
-	// 3 = Waiting
-	// 4 = Show results
+	function verifyConnection(callback) {
+		var socket;
+		if (socket && socket.connected) {
+			callback(socket);
+		} else {
+			socket = io(url, { query: 'token=' + token + '&role=player' });
+			callback(socket);
+		}
+	}
 
 	var Player = new Ractive({
 		el: 'content',
 		template: '#template',
 		data: {
-			step: null,
+			step: null, // 1 = set feedback // 2 = waiting
 			card: '',
 			players: [],
 			userId: userId,
@@ -92,11 +95,22 @@
 	Player.on({
 		ready: function(evt) {
 			var rating = Player.get('rating');
-			socket.emit('player.ready', rating);
+			verifyConnection(function(socket) {
+				socket.emit('player.ready', rating);
+			});
 			evt.original.preventDefault();
 		},
 		setRating: function(evt, rating) {
-			Player.set('rating.' + evt.context._id, rating);
+			verifyConnection(function(socket) {
+				Player.set('rating.' + evt.context._id, rating);
+			});
+			evt.original.preventDefault();
+		},
+		leave: function(evt) {
+			verifyConnection(function(socket) {
+				socket.emit('player.remove');
+				window.location = '/dashboard';
+			});
 			evt.original.preventDefault();
 		}
 	});
@@ -105,27 +119,27 @@
 	// 	Player.set('players', players.users);
 	// });
 
-	socket.on('round.next', function(state) {
-		console.log('next round!!');
-		Player.set('step', 1);
-		Player.set('rating', {});
-		Player.set('players', state.players);
-		Player.set('card', state.card);
-	});
-
-	socket.on('gamestate', function(state) {
-		Player.set('players', state.players);
-		Player.set('card', state.card);
-
-		var currentPlayer = _.find(state.players, function(player) {
-			return player._id == userId;
+	verifyConnection(function(socket) {
+		socket.on('round.next', function(state) {
+			console.log('next round!!');
+			Player.set('step', 1);
+			Player.set('rating', {});
+			Player.set('players', state.players);
+			Player.set('card', state.card);
 		});
 
-		var step = currentPlayer ? currentPlayer.step : 1;
+		socket.on('gamestate', function(state) {
+			Player.set('players', state.players);
+			Player.set('card', state.card);
 
-		Player.set('step', step);
-		
-		console.log(state);
+			var currentPlayer = _.find(state.players, function(player) {
+				return player._id == userId;
+			});
+
+			var step = currentPlayer ? currentPlayer.step : 1;
+
+			Player.set('step', step);
+		});
 	});
 
 </script>
