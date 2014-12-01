@@ -194,6 +194,10 @@ img {
 	border: none;
 }
 
+strong {
+	font-weight: bold;
+}
+
 hr {
 	height: 2px;
 	border: none;
@@ -754,6 +758,8 @@ body.sidebar-open {
 .profile-avatar {
 	margin-bottom: 5px;
 	display: inline-block;
+	border-radius: 75px;
+	overflow: hidden;
 	img {
 		float: left;
 	}
@@ -928,6 +934,16 @@ body.sidebar-open {
 			margin-bottom: 20px;
 		}
 	}
+	.results {
+		background-color: #fff;
+		.box-shadow(0 0 5px #ccc);
+		padding: 20px;
+		margin: 20px 0;
+		.rating {
+			color: @accent-color;
+			font-size: 1.25em;
+		}
+	}
 	.players {
 		margin: 0;
 		padding: 0;
@@ -952,11 +968,7 @@ body.sidebar-open {
 				.border-radius(70px);
 			}
 		}
-		.rating {
-			margin-left: 80px;
-			padding-left: 7px;
-			font-size: 2.2em;
-		}
+		
 	}
 	.actions {
 		margin: 20px 0;

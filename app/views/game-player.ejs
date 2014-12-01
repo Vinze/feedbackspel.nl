@@ -60,6 +60,26 @@
 				<h1>Feedback verzonden!</h1>
 			</div>
 		{{/if}}
+
+		{{#if step == 3}}
+			<div class="results">
+				<h1>Je hebt gekregen:</h1>
+				<table>
+					{{#each results}}
+						<tr>
+							<td>Van: {{from.firstname}}</td>
+							<td style="width: 170px;" class="align-right">
+								<i class="fa fa-star{{rating >= 1 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{rating >= 2 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{rating >= 3 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{rating >= 4 ? '' : '-o'}} rating"></i>
+								<i class="fa fa-star{{rating >= 5 ? '' : '-o'}} rating"></i>
+							</td>
+						</tr>
+					{{/each}}
+				</table>
+			</div>
+		{{/if}}
 	</div>
 
 </script>
@@ -88,7 +108,8 @@
 			card: '',
 			players: [],
 			userId: userId,
-			rating: {}
+			rating: {},
+			results: {}
 		}
 	});
 
@@ -138,7 +159,13 @@
 
 			var step = currentPlayer ? currentPlayer.step : 1;
 
-			Player.set('step', step);
+
+			if (state.players.length >= 1 && state.players.length == state.playersReady) {
+				Player.set('step', 3);
+				Player.set('results', currentPlayer.ratings);
+			} else {
+				Player.set('step', step);
+			}
 		});
 	});
 
