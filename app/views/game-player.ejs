@@ -68,8 +68,10 @@
 				<ul>
 					{{#each results}}
 						<li>
-							<div class="avatar"><img src="/avatar/{{from._id}}.png"></div>
-							<div class="from">Van <strong>{{from.firstname}}</strong> kreeg je:</div>
+							<div class="from">
+								<div class="avatar"><img src="/avatar/{{from._id}}.png"></div>
+								<div class="name">Van <strong>{{from.firstname}}</strong> kreeg je:</div>
+							</div>
 							<div class="rating">
 								<i class="fa fa-star{{rating >= 1 ? '' : '-o'}}"></i>
 								<i class="fa fa-star{{rating >= 2 ? '' : '-o'}}"></i>
