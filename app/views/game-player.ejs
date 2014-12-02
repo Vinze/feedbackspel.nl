@@ -56,28 +56,30 @@
 		{{/if}}
 
 		{{#if step == 2}}
-			<div class="loading">
+			<div class="waiting">
 				<h1>Feedback verzonden!</h1>
+				<p><strong>{{playersReady}}</strong> van de <strong>{{players.length}}</strong> spelers zijn klaar.. <i class="fa fa-spin fa-spinner"></i> </p>
 			</div>
 		{{/if}}
 
 		{{#if step == 3}}
 			<div class="results">
-				<h1>Je hebt gekregen:</h1>
-				<table>
+				<h1>Ontvangen feedback:</h1>
+				<ul>
 					{{#each results}}
-						<tr>
-							<td>Van: {{from.firstname}}</td>
-							<td style="width: 170px;" class="align-right">
-								<i class="fa fa-star{{rating >= 1 ? '' : '-o'}} rating"></i>
-								<i class="fa fa-star{{rating >= 2 ? '' : '-o'}} rating"></i>
-								<i class="fa fa-star{{rating >= 3 ? '' : '-o'}} rating"></i>
-								<i class="fa fa-star{{rating >= 4 ? '' : '-o'}} rating"></i>
-								<i class="fa fa-star{{rating >= 5 ? '' : '-o'}} rating"></i>
-							</td>
-						</tr>
+						<li>
+							<div class="avatar"><img src="/avatar/{{from._id}}.png"></div>
+							<div class="from">Van <strong>{{from.firstname}}</strong> kreeg je:</div>
+							<div class="rating">
+								<i class="fa fa-star{{rating >= 1 ? '' : '-o'}}"></i>
+								<i class="fa fa-star{{rating >= 2 ? '' : '-o'}}"></i>
+								<i class="fa fa-star{{rating >= 3 ? '' : '-o'}}"></i>
+								<i class="fa fa-star{{rating >= 4 ? '' : '-o'}}"></i>
+								<i class="fa fa-star{{rating >= 5 ? '' : '-o'}}"></i>
+							</div>
+						</li>
 					{{/each}}
-				</table>
+				</ul>
 			</div>
 		{{/if}}
 	</div>
@@ -104,9 +106,10 @@
 		el: 'content',
 		template: '#template',
 		data: {
-			step: null, // 1 = set feedback // 2 = waiting
+			step: null, // 1 = set feedback // 2 = waiting // 3 = show results
 			card: '',
 			players: [],
+			playersReady: 0,
 			userId: userId,
 			rating: {},
 			results: {}
@@ -136,10 +139,6 @@
 		}
 	});
 
-	// socket.on('users.updated', function(players) {
-	// 	Player.set('players', players.users);
-	// });
-
 	verifyConnection(function(socket) {
 		socket.on('round.next', function(state) {
 			console.log('next round!!');
@@ -152,13 +151,13 @@
 		socket.on('gamestate', function(state) {
 			Player.set('players', state.players);
 			Player.set('card', state.card);
+			Player.set('playersReady', state.playersReady);
 
 			var currentPlayer = _.find(state.players, function(player) {
 				return player._id == userId;
 			});
 
 			var step = currentPlayer ? currentPlayer.step : 1;
-
 
 			if (state.players.length >= 1 && state.players.length == state.playersReady) {
 				Player.set('step', 3);

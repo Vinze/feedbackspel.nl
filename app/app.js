@@ -66,8 +66,8 @@ app.get('/dashboard', auth.isMember, UserController.getDashboard)
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar)
 app.post('/avatar', auth.isMember, UserController.postAvatar)
 
-app.get('/game/host', auth.isMember, GameController.getHost)
-app.get('/game/play', auth.isMember, GameController.getPlay)
+app.get('/host', auth.isMember, GameController.getHost)
+app.get('/play', auth.isMember, GameController.getPlay)
 
 app.post('/api/check-email', UserController.checkEmail)
 app.get('/api/users', auth.isAdmin, UserController.findAll)

@@ -65,7 +65,7 @@ var Gameroom = function() {
 		});
 		if (toPlayer && fromPlayer) {
 			toPlayer.ratings[feedback.from] = {
-				from: _.pick(fromPlayer, 'email', 'firstname', 'lastname'),
+				from: _.pick(fromPlayer, '_id', 'email', 'firstname', 'lastname'),
 				rating: feedback.rating
 			};
 		}
