@@ -2,7 +2,6 @@ var _ = require('underscore');
 
 var Gameroom = function() {
 
-	var step    = 1;
 	var round   = 1;
 	var card    = null;
 	var players = [];
@@ -120,7 +119,7 @@ var Gameroom = function() {
 	}
 
 	this.getCard = function() {
-		return cards[round];
+		return cards[round - 1] || null;
 	}
 
 	this.getState = function() {

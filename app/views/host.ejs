@@ -15,9 +15,19 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script type="text/template" id="game-tpl">
-	<!-- <a href="#" title="Spel stoppen" class="exit-button" on-click="exit">
-		<i class="fa fa-fw fa-times"></i>
-	</a> -->
+	<ul class="actions">
+		<li>
+			{{#if fullscreen}}
+				<a on-click="exitFullscreen">
+					<i class="fa fa-flip-horizontal fa-compress" ></i>
+				</a>
+			{{else}}
+				<a on-click="enterFullscreen">
+					<i class="fa fa-flip-horizontal fa-expand"></i>
+				</a>
+			{{/if}}
+		</li>
+	</ul>
 
 	{{#if step == 1}}
 		<div class="game-title" intro-outro="fly:{ x: 0, y: -100 }">Voer je feedback in</div>
@@ -42,7 +52,7 @@
 							<td style="width: 35px;"><strong>{{i+1}}</strong></td>
 							<td style="width: 55px;"><img src="/avatar/{{_id}}.png"></td>
 							<td>{{firstname}} {{lastname}}</td>
-							<td style="width: 150px;" class="align-right">
+							<td style="width: 170px;" class="align-right">
 								<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 1 ? '' : '-o'}} rating"></i>
 								<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 2 ? '' : '-o'}} rating"></i>
 								<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 3 ? '' : '-o'}} rating"></i>
@@ -59,11 +69,17 @@
 		</div>
 	{{/if}}
 
+	{{#if step == 3}}
+		<div class="step end" intro-outro="fade">
+			EINDE!
+		</div>
+	{{/if}}
+
 	{{#if step == 1}}
 		<div class="players">
 			<ul>
 				{{#each players}}
-					<li class="player active" intro-outro="fly:{ x: 0, y: 150 }">
+					<li class="player {{status}}" intro-outro="fly:{ x: 0, y: 150 }">
 						{{#if step == 2}}
 							<i class="fa fa-check check"></i>
 						{{/if}}
@@ -76,10 +92,6 @@
 						<div class="avatar">
 							<img src="/avatar/{{_id}}.png">
 						</div>
-						<div class="status">
-							{{#if status == 'active'}}Verbonden{{/if}}
-							{{#if status == 'disconnected'}}Verbinding verbroken{{/if}}
-						</div>
 					</li>
 				{{/each}}
 			</ul>
@@ -87,55 +99,4 @@
 	{{/if}}
 </script>
 
-<script type="text/javascript">
-	var token = Cookies.get('fbs_token');
-	var url = 'http://' + window.location.hostname + ':1337';
-	var socket = io(url, { query: 'token=' + token + '&role=host' });
-
-	var Game = new Ractive({
-		el: 'game',
-		template: '#game-tpl',
-		data: {
-			step: null,
-			card: null,
-			players: [],
-			results: {}
-		}
-	});
-
-	Game.on({
-		next: function(evt) {
-			socket.emit('round.next');
-			evt.original.preventDefault();
-		},
-		remove: function(evt, player) {
-			console.log(player);
-			socket.emit('player.remove', player._id);
-			evt.original.preventDefault();
-		}
-	});
-
-	socket.on('round.next', function(state) {
-		Game.set('players', state.players);
-		Game.set('step', null).then(function() {
-			Game.set('card', state.card);
-			Game.set('results', []);
-			Game.set('step', 1);
-		});
-	});
-
-	socket.on('gamestate', function(state) {
-		Game.set('players', state.players);
-		Game.set('card', state.card);
-
-		if (state.players.length >= 1 && state.players.length == state.playersReady) {
-			Game.set('results', state.summary);
-			Game.set('step', null).then(function() {
-				Game.set('step', 2);
-			});
-		} else if (Game.get('step') != 1) {
-			Game.set('step', 1);
-		}
-	});
-
-</script>
+<script type="text/javascript" src="/js/host.js"></script>

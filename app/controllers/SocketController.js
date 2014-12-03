@@ -7,15 +7,14 @@ var db        = require('../libs/datastore');
 var config    = require('../libs/config');
 var Room      = require('../libs/gameroom.js');
 
-var cards = [
-	'Betrouwbaar', 'Geduldig', 'Roekeloos',
-	'Prikkelbaar', 'Doorzetter', 'Luidruchtig',
-	'Sociaal', 'Nieuwsgierig', 'Snel afgeleid'
-];
 
 var Game = new Room();
 
-Game.setCards(cards);
+Game.setCards([
+	'Betrouwbaar', 'Geduldig', 'Roekeloos',
+	'Prikkelbaar', 'Doorzetter', 'Luidruchtig',
+	'Sociaal', 'Nieuwsgierig', 'Snel afgeleid'
+]);
 
 function findUser(userId, callback) {
 	var fields = { _id: 1, email: 1, firstname: 1, lastname: 1, gender: 1 };
@@ -38,11 +37,13 @@ var SocketController = function(server) {
 			var data = jwt.decode(token, config.jwt_secret);
 			findUser(data.user_id, function(err, user) {
 				client.playerId = user._id;
+					console.log(client.role)
 				if (client.role == 'player') {
 					user.status = 'active';
 					user.socketId = client.id;
 					user.name = user.firstname + ' ' + user.lastname;
 					Game.setPlayer(user);
+					client.emit('userId', user._id);
 				}
 				sendState();
 			});
@@ -73,10 +74,12 @@ var SocketController = function(server) {
 		});
 
 		client.on('disconnect', function() {
-			Game.setPlayer({
-				_id: client.playerId,
-				status: 'disconnected'
-			});
+			if (client.role == 'player') {
+				Game.setPlayer({
+					_id: client.playerId,
+					status: 'disconnected'
+				});
+			}
 			sendState();
 		});
 

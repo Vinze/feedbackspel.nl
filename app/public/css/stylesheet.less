@@ -695,7 +695,7 @@ body.sidebar-open {
 }
 
 .home-center {
-	padding: 60px 10px 120px 10px;
+	padding: 60px 10px;
 	min-height: 750px;
 	overflow: hidden;
 	
@@ -770,13 +770,33 @@ body.sidebar-open {
 //================================================
 
 .ingame {
-	.exit-button {
+	.actions {
 		position: absolute;
-		top: 0px;
+		top: 0;
 		right: 5px;
-		display: block;
-		font-size: 2em;
+		margin: 0; padding: 0;
+		list-style-type: none;
+		li {
+			margin: 0; padding: 0;
+			display: inline-block;
+			float: left;
+		}
+		a {
+			display: block;
+			padding: 10px 5px;
+		}
+		i {
+			font-size: 2em;
+		}
 	}
+
+	// .exit-button {
+	// 	position: absolute;
+	// 	top: 0px;
+	// 	right: 5px;
+	// 	display: block;
+	// 	font-size: 2em;
+	// }
 	.avatar {
 		overflow: hidden;
 		img {
@@ -798,12 +818,12 @@ body.sidebar-open {
 		display: inline-block;
 		background-color: @accent-color;
 		position: fixed;
-		top: 20px;
+		top: 30px;
 		left: 0;
 		.border-radius(0 5px 5px 0);
 	}
 	.step {
-		font-size: 1.2em;
+		font-size: 1.5em;
 		margin: 30px auto;
 		background-color: #fff;
 		.box-shadow(0 0 5px #ccc);
@@ -830,7 +850,7 @@ body.sidebar-open {
 		text-align: center;
 	}
 	.step.results {
-		width: 540px;
+		width: 640px;
 		padding-top: 15px;
 		padding-bottom: 20px;
 		table {
@@ -838,7 +858,7 @@ body.sidebar-open {
 		}
 		td {
 			vertical-align: middle;
-			padding: 10px 0;
+			padding: 8px 0;
 		}
 		img {
 			width: 40px;
@@ -852,6 +872,9 @@ body.sidebar-open {
 	}
 	.step.end {
 		width: 500px;
+		text-align: center;
+		font-size: 4em;
+		padding: 50px;
 	}
 
 	.players {
@@ -866,7 +889,6 @@ body.sidebar-open {
 			list-style-type: none;
 		}
 	}
-
 	.player {
 		display: inline-block;
 		margin: 0 10px;
@@ -879,16 +901,11 @@ body.sidebar-open {
 			width: 83px;
 			height: 83px;
 			border-radius: 75px;
-			border: 4px solid @accent-color;
+			border: 4px solid #BBB;
 			.transition(opacity 500ms);
 			img {
 				background-color: #fff;
 			}
-		}
-		.status {
-			font-size: 0.8em;
-			color: #BBBBBB;
-			display: none;
 		}
 		.name {
 			opacity: 0;
@@ -908,8 +925,14 @@ body.sidebar-open {
 			position: absolute;
 			font-size: 1.4em;
 			bottom: 2px;
-			right: 8px;
+			right: 10px;
 			color: @accent-color;
+		}
+		&.active .avatar {
+			border: 4px solid @accent-color;
+		}
+		&.disconnected .avatar {
+			opacity: 0.6;
 		}
 		&:hover .name {
 			display: block;
@@ -930,6 +953,37 @@ body.sidebar-open {
 	.content {
 		padding: 10px;
 		max-width: 400px;
+	}
+	.players {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		li {
+			display: block;
+			height: 82px;
+			margin: 0 0 10px;
+			border: 1px solid #e5e5e5;
+			background-color: #fff;
+			position: relative;
+		}
+		.name {
+			margin-left: 80px;
+			padding: 5px 10px 2px 8px;
+		}
+		.avatar {
+			width: 70px;
+			float: left;
+			margin: 5px;
+			img {
+				.border-radius(70px);
+			}
+		}
+		.rating {
+			font-size: 2em;
+			margin-left: 80px;
+			padding-left: 5px;
+		}
+		
 	}
 	.waiting {
 		text-align: center;
@@ -970,7 +1024,7 @@ body.sidebar-open {
 			}
 		}
 		.rating {
-			margin-left: 44px;
+			margin-left: 45px;
 			i {
 				color: @accent-color;
 				font-size: 1.4em;
@@ -978,38 +1032,7 @@ body.sidebar-open {
 			}
 		}
 	}
-	.players {
-		margin: 0;
-		padding: 0;
-		list-style-type: none;
-		li {
-			display: block;
-			height: 82px;
-			margin: 0 0 10px;
-			border: 1px solid #e5e5e5;
-			background-color: #fff;
-			position: relative;
-		}
-		.name {
-			margin-left: 80px;
-			padding: 5px 10px 2px 8px;
-		}
-		.avatar {
-			width: 70px;
-			float: left;
-			margin: 5px;
-			img {
-				.border-radius(70px);
-			}
-		}
-		.rating {
-			font-size: 2em;
-			margin-left: 80px;
-			padding-left: 5px;
-		}
-		
-	}
-	.actions {
+	.button-bar {
 		margin: 20px 0;
 		width: 100%;
 		padding: 10px;
