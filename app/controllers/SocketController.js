@@ -5,7 +5,7 @@ var moment    = require('moment');
 var async     = require('async');
 var db        = require('../libs/datastore');
 var config    = require('../libs/config');
-var Room      = require('../libs/gameroom.js');
+var Room      = require('../libs/gameroom');
 
 
 var Game = new Room();
@@ -32,12 +32,12 @@ var SocketController = function(server) {
 
 		var token = client.handshake.query.token;
 		client.role = client.handshake.query.role; // host or player
+		client.room = client.handshake.query.room; // roomnumber
 
 		try {
 			var data = jwt.decode(token, config.jwt_secret);
 			findUser(data.user_id, function(err, user) {
 				client.playerId = user._id;
-					console.log(client.role)
 				if (client.role == 'player') {
 					user.status = 'active';
 					user.socketId = client.id;

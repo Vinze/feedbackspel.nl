@@ -1,6 +1,7 @@
-var token = Cookies.get('fbs_token');
-var url = 'http://' + window.location.hostname + ':1337';
-var socket = io(url, { query: 'token=' + token + '&role=host' });
+var token  = Cookies.get('fbs_token');
+var url    = 'http://' + window.location.hostname + ':1337';
+var room   = _.last(window.location.href.split('/'));
+var socket = io(url, { query: 'token=' + token + '&role=host&room=' + room });
 
 var Game = new Ractive({
 	el: 'game',

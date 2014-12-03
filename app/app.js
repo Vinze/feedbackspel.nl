@@ -66,8 +66,8 @@ app.get('/dashboard', auth.isMember, UserController.getDashboard)
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar)
 app.post('/avatar', auth.isMember, UserController.postAvatar)
 
-app.get('/host', auth.isMember, GameController.getHost)
-app.get('/play', auth.isMember, GameController.getPlay)
+app.get('/host/:room', auth.isMember, GameController.getHost)
+app.get('/play/:room', auth.isMember, GameController.getPlay)
 
 app.post('/api/check-email', UserController.checkEmail)
 app.get('/api/users', auth.isAdmin, UserController.findAll)
@@ -86,11 +86,10 @@ app.get(/\/admin(\/?)(.*?)/, auth.isAdmin, function(req, res) {
 	res.render('admin')
 })
 
-app.get('/interval', function(req, res) {
-	res.render('testing/interval')
-})
-
-app.get('/game/test', auth.isMember, GameController.getTest)
+app.get('/test', function(req, res) {
+	var User = require('./models/User');
+	res.send('test');
+});
 
 // Run the server
 server.listen(config.port)
