@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title>Passwordless login</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Users</h1>
+	<table id="users">
+		<!-- The users list will be rendered here -->
+	</table>
+
+	<% include footer %>
+
+	<script type="text/javascript" src="ractive.min.js"></script>
+	<script type="text/javascript" src="qwest.min.js"></script>
+	<script type="text/template" id="users-tpl">
+		<thead>
+			<tr>
+				<th style="width: 200px">ID</th>
+				<th style="width: 250px">E-mail</th>
+				<th style="width: 250px">Name</th>
+				<th style="width: 320px">Login code</th>
+				<th style="width: 100px"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each users}}
+				<tr>
+					<td style="width: 200px">{{_id}}</td>
+					<td style="width: 250px">{{email}}</td>
+					<td style="width: 250px">{{firstname}} {{lastname}}</td>
+					<td style="width: 150px">
+						{{#if code}}
+							<a href="/verify?email={{email}}&code={{code}}">{{code}}</a>
+						{{/if}}
+					</td>
+					<td style="width: 100px; text-align:right">
+						<a href="#" on-click="remove:{{_id}}">Remove</a>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+		<tfoot>
+			<td colspan="5"><a href="#" on-click="reload">Reload users</a></td>
+		</tfoot>
+	</script>
+	<script type="text/javascript">
+	var Users = new Ractive({
+		el: 'users',
+		template: '#users-tpl',
+		data: { users: [] }
+	});
+
+	Users.on({
+		reload: function(evt) {
+			evt.original.preventDefault();
+			getUsers();
+		},
+		remove: function(evt, userId) {
+			evt.original.preventDefault();
+			qwest.post('/api/users/delete/' + userId).then(function(users) {
+				Users.set('users', users);
+			});
+		}
+	});
+
+	function getUsers() {
+		qwest.get('/api/users').then(function(users) {
+			Users.set('users', users);
+		});
+	}
+
+	getUsers();
+
+	</script>
+</body>
+</html>

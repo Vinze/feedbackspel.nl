@@ -87,8 +87,6 @@ app.get(/\/admin(\/?)(.*?)/, auth.isAdmin, function(req, res) {
 })
 
 app.get('/test', function(req, res) {
-	var User = require('./models/User');
-	res.send('test');
 });
 
 // Run the server

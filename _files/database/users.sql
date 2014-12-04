@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 	`password` varchar(255) NOT NULL,
 	`firstname` varchar(255) NOT NULL,
 	`lastname` varchar(255) NOT NULL,
+	`gender` varchar(1) NOT NULL,
+	`admin` int(11) NOT NULL,
 	`created_at` datetime NOT NULL,
 	`updated_at` datetime NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

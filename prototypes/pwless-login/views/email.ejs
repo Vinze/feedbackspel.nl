@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Passwordless login</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>E-mail send to <%= email %></h1>
+
+	<% if (code) { %>
+		<p>Please click the following link to login:</p>
+		<p>
+			<a href="/verify?email=<%= email %>&amp;code=<%= code %>">
+				http://localhost:1337/verify?email=<%=email%>&amp;code=<%=code%>
+			</a>
+		</p>
+	<% } else { %>
+		<p>Please check your inbox for the link to login.</p>
+	<% } %>
+
+	<% include footer %>
+</body>
+</html>

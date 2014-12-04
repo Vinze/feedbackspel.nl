@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Passwordless login</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Please fill in your e-mail address</h1>
+	<p>To use this application you have to fill in your e-mail address.</p>
+	<form action="/start" method="post">
+		<p class="form-row">
+			<label for="email">E-mail address:</label>
+			<input type="text" name="email" id="email" class="text">
+		</p>
+		<p class="form-row">
+			<button type="submit" class="button">Next</button>
+		</p>
+	</form>
+
+	<% include footer %>
+</body>
+</html>

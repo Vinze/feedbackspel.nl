@@ -1,6 +1,6 @@
 var Datastore = require('nedb');
 var moment    = require('moment');
-var db = {};
+var db        = {};
 
 db.users = new Datastore({
 	autoload: true,
