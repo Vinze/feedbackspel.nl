@@ -15,9 +15,21 @@
 				<td>{{firstname}}</td>
 				<td>{{lastname}}</td>
 				<td><a href="mailto:{{email}}">{{email}}</a></td>
+				<td><a href="#" on-click="editUser:{{this}}">Edit</a></td>
 			</tr>
 		{{/each}}
 	</tbody>
 </table>
 
 <a href="#" on-click="addUser">Add user</a>
+
+{{#if modal.visible}}
+	<div class="overlay" on-click="closeModal" intro-outro="fade:{ duration: 300 }">
+		<div class="modal" style="width: 500px" on-click="stopPropagation" intro-outro="fly:{ duration: 400, x: 0, y: -300 }">
+			<div class="modal-title">{{modal.title}}</div>
+			<div class="modal-content">
+				{{editing.firstname}}
+			</div>
+		</div>
+	</div>
+{{/if}}

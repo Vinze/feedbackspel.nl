@@ -26,8 +26,31 @@ page('/users', function() {
 		var Users = new Ractive({
 			el: 'content',
 			template: html,
-			data: { items: [] }
+			data: {
+				items: [],
+				modal: { visible: false, title: null },
+				editing: {}
+			}
 		});
+
+		Users.on({
+			addUser: function(evt) {
+				Users.set('modal', { visible: true, title: 'Add user' });
+				evt.original.preventDefault();
+			},
+			editUser: function(evt, user) {
+				Users.set('modal', { visible: true, title: 'Edit user' });
+				Users.set('editing', user);
+				evt.original.preventDefault();
+			},
+			closeModal: function() {
+				Users.set('modal.visible', false);
+			},
+			stopPropagation: function(evt) {
+				evt.original.stopPropagation();
+			}
+		});
+
 		qwest.get('/api/users').then(function(items) {
 			Users.set('items', items);
 		})
