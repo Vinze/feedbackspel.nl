@@ -1,0 +1,23 @@
+<h1>Users</h1>
+<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>E-mail</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each items}}
+			<tr>
+				<td>{{_id}}</td>
+				<td>{{firstname}}</td>
+				<td>{{lastname}}</td>
+				<td><a href="mailto:{{email}}">{{email}}</a></td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
+
+<a href="#" on-click="addUser">Add user</a>

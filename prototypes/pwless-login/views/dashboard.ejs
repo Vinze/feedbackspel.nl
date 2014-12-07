@@ -4,9 +4,10 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>Dashboard</h1>
-	<p>Welcome <%= user.firstname %> <%= user.lastname %>! (<%= user.email %>)</p>
+	<% include nav %>
 
-	<% include footer %>
+	<h1>Dashboard</h1>
+	<p>Welcome <strong><%= user.firstname %> <%= user.lastname %></strong>!</p>
+	<p><%= user.email %></p>
 </body>
 </html>

@@ -4,11 +4,17 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<% include nav %>
+
 	<h1>Almost done!</h1>
 	<p>Fill in the following form to start using the application.</p>
 	<form action="/finish" method="post">
 		<p class="form-row">
-			<label for="firstname">Firstnaam:</label>
+			<label>E-mail:</label>
+			<input type="text" value="<%= user.email %>" disabled class="text">
+		</p>
+		<p class="form-row">
+			<label for="firstname">Firstname:</label>
 			<input type="text" name="firstname" id="firstname" class="text">
 		</p>
 		<p class="form-row">
@@ -19,7 +25,5 @@
 			<button type="submit" class="button">Next</button>
 		</p>
 	</form>
-
-	<% include footer %>
 </body>
 </html>

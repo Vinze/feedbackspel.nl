@@ -14,17 +14,22 @@ html, body, table, input, textarea, button, ul, li {
 	color: #444;
 }
 
+html, body {
+	background-color: #fff;
+}
+
 a {
 	color: #0072C6;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a:hover, a:active {
 	color: #005CA0;
+	text-decoration: underline;
 }
 
 h1 {
-	margin: 0 0 15px 0;
+	margin: 0 0 20px 0;
 	border-bottom: 1px solid #e5e5e5;
 	padding-bottom: 4px;
 	font-size: 2em;
@@ -37,7 +42,7 @@ h2 {
 }
 
 p, ul, table {
-	margin: 10px 0;
+	margin: 0 0 10px 0;
 }
 
 table {
@@ -46,12 +51,16 @@ table {
 }
 
 th, td {
-	padding: 6px 10px 6px 2px;
+	padding: 6px 15px 6px 4px;
 	text-align: left;
 }
 
 th {
 	font-weight: bold;
+}
+
+thead th {
+	border-bottom: 1px solid #f2f2f2;
 }
 
 tbody tr:hover td {
@@ -98,10 +107,6 @@ input.text {
 	background-color: #006CBB;
 }
 
-body {
-	margin: 20px 30px 20px 150px;
-}
-
 .nav {
 	position: fixed;
 	height: 100%;
@@ -133,4 +138,8 @@ body {
 
 .nav a:hover {
 	color: #fff;
+}
+
+.content {
+	padding: 20px 30px 20px 150px;
 }

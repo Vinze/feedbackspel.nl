@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Passwordless login</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<% include nav %>
+
+	<h1>Sessions</h1>
+	<div id="sessions">
+		<!-- The sessions list will be rendered here -->
+	</div>
+
+	<script type="text/javascript" src="ractive.min.js"></script>
+	<script type="text/javascript" src="qwest.min.js"></script>
+	<script type="text/template" id="sessions-tpl">
+		{{#each users}}
+			{{#if tokens.length > 0}}
+				<h2>{{email}}</h2>
+				<p>
+					{{#each tokens}}
+						{{this.substr(0, 30)}}...{{this.substr(125)}} [<a href="#" on-click="remove:{ _id: {{_id}}, token: {{.}} }">remove</a>]<br>
+					{{/each}}
+				</p>
+			{{/if}}
+		{{/each}}
+	</script>
+	<script type="text/javascript">
+	var Sessions = new Ractive({
+		el: 'sessions',
+		template: '#sessions-tpl',
+		data: { users: [] }
+	});
+
+	Sessions.on({
+		reload: function(evt) {
+			getUsers();
+			evt.original.preventDefault();
+		},
+		remove: function(evt, data) {
+			console.log(data);
+		}
+	});
+
+	function getUsers() {
+		qwest.get('/api/users').then(function(users) {
+			Sessions.set('users', users);
+		});
+	}
+
+	getUsers();
+
+	</script>
+</body>
+</html>
