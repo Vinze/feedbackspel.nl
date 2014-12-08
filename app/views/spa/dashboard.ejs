@@ -1,0 +1,57 @@
+<div class="content container">
+	<div class="row">
+		<div class="box col span-8">
+			<h1>Welkom, <%= user.firstname %></h1>
+			<p class="align-center"><a href="/host/1" class="btn confirm"><i class="fa fa-gamepad"></i> Nieuw spel starten</a></p>
+			<p class="align-center"><a href="/play/1" class="btn confirm"><i class="fa fa-gamepad"></i> Aan spel deelnemen</a></p>
+			
+		</div>
+		<div class="box col span-4 align-center">
+			<form action="/avatar" method="post" enctype="multipart/form-data" id="upload-form">
+				<input type="file" name="image" id="upload-select" style="display:none">
+			</form>
+			<div class="profile-avatar">
+				<img src="/avatar/<%= user._id %>.png">
+			</div>
+			<p><a href="#" id="upload-link"><i class="fa fa-picture-o"></i> Wijzig afbeelding</a></p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="box col span-12">
+			<h1>Mijn gegevens</h1>
+		
+			<div class="form-group">
+				<div class="label">E-mail adres:</div>
+				<div class="field"><%= user.email %></div>
+			</div>
+
+			<div class="form-group">
+				<div class="label">Voornaam:</div>
+				<div class="field"><%= user.firstname %></div>
+			</div>
+
+			<div class="form-group">
+				<div class="label">Achternaam:</div>
+				<div class="field"><%= user.lastname %></div>
+			</div>
+
+			<div class="form-group">
+				<div class="label">Ik ben een:</div>
+				<div class="field"><%= user.gender == 'm' ? 'Man' : 'Vrouw' %></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="box col span-12">
+			<h1>Resultaten</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente vel nostrum ad, deleniti facere iste eius error aspernatur necessitatibus illum nobis consequuntur quos earum atque ipsum, neque, pariatur numquam repellendus.</p>
+			<ul>
+				<li><a href="/kernkwadranten">Kernkwadranten test</a></li>
+				<li><a href="/randomwords">Random eigenschappen</a></li>
+				<li><a href="/chat">Chat test</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

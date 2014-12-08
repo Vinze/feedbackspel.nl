@@ -56,23 +56,23 @@ app.use(require('./libs/locals'))
 // Routes
 app.get('/', HomeController.getIndex)
 
-app.get('/login', auth.isGuest, UserController.getLogin)
-app.post('/login', auth.isGuest, UserController.postLogin)
-app.get('/register', auth.isGuest, UserController.getRegister)
-app.post('/register', auth.isGuest, UserController.postRegister)
-app.get('/logout', auth.isMember, UserController.getLogout)
+// app.get('/login', auth.isGuest, UserController.getLogin)
+// app.post('/login', auth.isGuest, UserController.postLogin);
+// app.get('/register', auth.isGuest, UserController.getRegister)
+// app.post('/register', auth.isGuest, UserController.postRegister)
+// app.get('/logout', auth.isMember, UserController.getLogout)
 
-app.get('/dashboard', auth.isMember, UserController.getDashboard)
+// app.get('/dashboard', auth.isMember, UserController.getDashboard)
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar)
-app.post('/avatar', auth.isMember, UserController.postAvatar)
+// app.post('/avatar', auth.isMember, UserController.postAvatar)
 
 app.get('/host/:room', auth.isMember, GameController.getHost)
 app.get('/play/:room', auth.isMember, GameController.getPlay)
 
-app.post('/api/check-email', UserController.checkEmail)
-app.get('/api/users', auth.isAdmin, UserController.findAll)
-app.post('/api/users/save', auth.isAdmin, UserController.postSave)
-app.post('/api/users/delete', auth.isAdmin, UserController.postDelete)
+// app.post('/api/check-email', UserController.checkEmail)
+// app.get('/api/users', auth.isAdmin, UserController.findAll)
+// app.post('/api/users/save', auth.isAdmin, UserController.postSave)
+// app.post('/api/users/delete', auth.isAdmin, UserController.postDelete)
 
 app.get('/randomwords', function(req, res) {
 	res.render('randomwords')
@@ -83,11 +83,42 @@ app.get('/kernkwadranten', function(req, res) {
 })
 
 app.get(/\/admin(\/?)(.*?)/, auth.isAdmin, function(req, res) {
-	res.render('admin')
+	res.render('admin');
 })
 
 app.get('/test', function(req, res) {
 });
+
+//==================================================
+// Single page stuff
+//==================================================
+
+app.get('/spa/views/dashboard', function(req, res) {
+	if (req.user) {
+		res.render('spa/dashboard');
+	} else {
+		res.status(403).end();
+	}
+});
+
+app.get('/spa/views/home', function(req, res) {
+	res.render('spa/home');
+});
+
+app.get('/spa/views/login', function(req, res) {
+	res.render('spa/login');
+});
+
+app.post('/api/login', UserController.postLogin);
+
+app.get(/\/spa(.*?)/, function(req, res) {
+	res.render('spa/layout');
+});
+
+//==================================================
+// Single page stuff
+//==================================================
+
 
 // Run the server
 server.listen(config.port)

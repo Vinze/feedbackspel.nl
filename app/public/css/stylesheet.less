@@ -551,7 +551,6 @@ body {
 .header-icon {
 	height: @header-height;
 	display: inline-block;
-	.animation(fadein 1000ms);
 }
 
 .header-logo {
@@ -658,7 +657,6 @@ body {
 div.content-wrapper {
 	padding-top: @header-height;
 	padding-bottom: @footer-height;
-	.animation(fadein 500ms);
 }
 
 div.content {
@@ -823,7 +821,6 @@ body.sidebar-open {
 		.border-radius(0 5px 5px 0);
 	}
 	.step {
-		font-size: 1.5em;
 		margin: 30px auto;
 		background-color: #fff;
 		.box-shadow(0 0 5px #ccc);
@@ -842,7 +839,7 @@ body.sidebar-open {
 		padding: 60px 0;
 		h1 {
 			margin: 0;
-			font-size: 2.0em;
+			font-size: 3.0em;
 		}
 	}
 	.step.ready {
@@ -853,12 +850,19 @@ body.sidebar-open {
 		width: 640px;
 		padding-top: 15px;
 		padding-bottom: 20px;
+		h1 {
+			margin: 0 0 15px;
+			font-size: 2.4em;
+			border-bottom: 1px solid #e5e5e5;
+			padding: 0 0 5px;
+		}
 		table {
 			margin-bottom: 20px;
 		}
 		td {
 			vertical-align: middle;
 			padding: 8px 0;
+			font-size: 1.8em;
 		}
 		img {
 			width: 40px;
@@ -867,7 +871,12 @@ body.sidebar-open {
 		}
 		.rating {
 			color: @accent-color;
-			font-size: 1.25em;
+			// font-size: 1.25em;
+		}
+		button {
+			font-size: 1.4em;
+			padding-top: 4px;
+			padding-bottom: 5px;
 		}
 	}
 	.step.end {
