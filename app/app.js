@@ -74,50 +74,25 @@ app.get('/play/:room', auth.isMember, GameController.getPlay)
 // app.post('/api/users/save', auth.isAdmin, UserController.postSave)
 // app.post('/api/users/delete', auth.isAdmin, UserController.postDelete)
 
+app.get('/api/user', UserController.getUser);
+
 app.get('/randomwords', function(req, res) {
 	res.render('randomwords')
 })
 
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten')
-})
-
-app.get(/\/admin(\/?)(.*?)/, auth.isAdmin, function(req, res) {
-	res.render('admin');
-})
-
-app.get('/test', function(req, res) {
 });
 
-//==================================================
-// Single page stuff
-//==================================================
+// app.get(/\/admin(\/?)(.*?)/, auth.isAdmin, function(req, res) {
+// 	res.render('admin');
+// })
 
-app.get('/spa/views/dashboard', function(req, res) {
-	if (req.user) {
-		res.render('spa/dashboard');
-	} else {
-		res.status(403).end();
-	}
-});
-
-app.get('/spa/views/home', function(req, res) {
-	res.render('spa/home');
-});
-
-app.get('/spa/views/login', function(req, res) {
-	res.render('spa/login');
-});
-
-app.post('/api/login', UserController.postLogin);
+app.post('/api/start', UserController.postStart);
 
 app.get(/\/spa(.*?)/, function(req, res) {
-	res.render('spa/layout');
+	res.sendfile('./public/views/layout.html');
 });
-
-//==================================================
-// Single page stuff
-//==================================================
 
 
 // Run the server

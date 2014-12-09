@@ -54,60 +54,33 @@ $(document).on('keyup', function(evt) {
 	}
 });
 
-var user = null;
-
-$.getJSON('/user', function(data) {
-	user = data;
-});
-
-var views = {
-	cached: {},
-	html: function(page, callback) {
-		if (views.cached[page]) {
-			callback(views.cached[page]);
-		} else {
-			$.get('/spa/views/' + page, function(html, status, xhr) {
-				views.cached[page] = html;
-				callback(html);
-			});
-		}
-	},
-	render: function(page, callback) {
-		views.html(page, function(html) {
-			$('body').scrollTop(0);
-			$('#content').html(html);
-			if (callback) callback();
-		});
-	}
-};
+var cachedViews = {};
+function loadView(page, callback) {
+	$.get('/views/' + page, function(html) {
+		cachedViews[page] = html;
+		callback(html);
+	});
+}
 
 page.base('/spa');
 
 page('/', function() {
-	views.render('home', function() {
-		$('body').attr('class', 'home');
-	});
-});
-
-page('/login', function() {
-	views.html('login', function(html) {
-		var FormController = new Ractive({
-			el: 'content',
+	loadView('home.html', function(html) {
+		var Home = new Ractive({
+			el: "content",
 			template: html,
-			data: {
-				error: null,
-				input: { email: '', password: '' }
-			}
+			data: { show: 'front' }
 		});
-		FormController.on({
-			submit: function(evt) {
-				var input = FormController.get('input');
-				$.post('/api/login', input, function(res) {
-					FormController.set('error', res.error);
-					if ( ! res.error) {
-						Cookies.set('fbs_token', res.token);
-						page.redirect('/dashboard');
-					}
+		Home.on({
+			showMore: function(evt) {
+				Home.set('show', null).then(function() {
+					Home.set('show', 'back');
+				});
+				evt.original.preventDefault();
+			},
+			back: function(evt) {
+				Home.set('show', null).then(function() {
+					Home.set('show', 'front');
 				});
 				evt.original.preventDefault();
 			}
@@ -115,26 +88,55 @@ page('/login', function() {
 	});
 });
 
-page('/dashboard', function() {
-	views.render('dashboard', function() {
-		$('body').removeClass('home');
-
-		$('#upload-link').on('click', function(evt) {
-			$('#upload-select').click();
-			evt.preventDefault();
+page('/start', function() {
+	loadView('start.html', function(html) {
+		var StartForm = new Ractive({
+			el: 'content',
+			template: html,
+			data: { email: '', error: null, submitted: false }
 		});
-		$('#upload-select').on('change', function() {
-			var image = $('#upload-select').val();
-			$('#upload-form').submit();
-			console.log(image);
+		StartForm.on('submit', function(evt) {
+			var email = StartForm.get('email');
+			$.post('/api/start', { email: email }, function(res) {
+				console.log(res);
+				StartForm.set('error', res.error);
+				if ( ! res.error) {
+					StartForm.set('submitted', true);
+				}
+			});
+			evt.original.preventDefault();
 		});
 	});
 });
 
+page('/login', function() {
+	
+});
+
 page('/logout', function() {
-	console.log('logout');
+	user = null;
 	Cookies.expire('fbs_token');
 	page.redirect('/');
+});
+
+page('/dashboard', function() {
+	if ( ! user) return page.redirect('/login');
+
+	views.render('dashboard', function() {
+		// $('#upload-link').on('click', function(evt) {
+		// 	$('#upload-select').click();
+		// 	evt.preventDefault();
+		// });
+		// $('#upload-select').on('change', function() {
+		// 	var image = $('#upload-select').val();
+		// 	$('#upload-form').submit();
+		// 	console.log(image);
+		// });
+	});
+});
+
+page('/kernkwadranten', function() {
+	views.render('kernkwadranten.html');
 });
 
 page('*', function() {
@@ -142,3 +144,4 @@ page('*', function() {
 });
 
 page();
+

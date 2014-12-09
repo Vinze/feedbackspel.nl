@@ -1,0 +1,27 @@
+<div class="content container">
+	<div class="row">
+		<div class="box col span-6 offset-3">
+			{{#if submitted}}
+				<h2>E-mail verzonden!</h2>
+				De activatie link is verstuurd naar <strong>{{email}}</strong>.
+			{{else}}
+				<h2>Voer je e-mail adres in</h2>
+				{{#if error}}
+					<div class="flash-error" intro="slide">{{error}}</div>
+				{{/if}}
+				<form action="/start" method="post" on-submit="submit">
+					<div class="row" style="margin-bottom: 15px">
+						<div class="col span-12">
+							<input type="email" name="email" value="{{email}}" class="text" id="email">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col span-12">
+							<button class="btn confirm">Volgende <i class="fa fa-angle-right"></i></button>
+						</div>
+					</div>
+				</form>
+			{{/if}}
+		</div>
+	</div>
+</div>
