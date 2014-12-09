@@ -284,6 +284,25 @@ table td.icons {
 .offset-10 { margin-left: 87%;  &:first-child { margin-left: 85%; } }
 .offset-11 { margin-left: 93.5%; }
 
+
+//================================================
+// Clear floating elements
+//================================================
+
+.clearfix {
+	zoom: 1;
+}
+
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+
 //================================================
 // Text markup
 //================================================
@@ -373,6 +392,9 @@ button {
 	&:hover {
 		background-color: darken(#929292, 7%);
 		text-decoration: none;
+	}
+	&:focus {
+		outline: none;
 	}
 	&.confirm {
 		background-color: @accent-color;
@@ -551,6 +573,7 @@ body {
 .header-icon {
 	height: @header-height;
 	display: inline-block;
+	.animation(fadein 1000ms);
 }
 
 .header-logo {
@@ -655,8 +678,9 @@ body {
 }
 
 div.content-wrapper {
-	padding-top: @header-height - 4px;
+	padding-top: @header-height;
 	padding-bottom: @footer-height;
+	.animation(fadein 500ms);
 }
 
 div.content {
@@ -687,7 +711,7 @@ body.sidebar-open {
 // Homepage
 //================================================
 
-.home {
+.home .site-wrapper {
 	background: transparent url('../img/background.jpg') no-repeat top center;
 	background-size: cover;
 }
@@ -764,31 +788,6 @@ body.sidebar-open {
 }
 
 //================================================
-// Kernkwadranten
-//================================================
-
-.kernkwadranten {
-	background: transparent url('/img/bg-kernkwadranten.png') top left no-repeat;
-	width: 902px;
-	height: 502px;
-	margin: 30px auto;
-	position: relative;
-}
-.box-1,
-.box-2,
-.box-3,
-.box-4 {
-	position: absolute;
-	width: 400px;
-	height: 200px;
-	padding: 20px 30px 0 30px;
-}
-.box-1 { top: 3px; left: 0; }
-.box-2 { top: 3px; right: 2px; }
-.box-3 { bottom: 0; left: 0; }
-.box-4 { bottom: 0; right: 2px; }
-
-//================================================
 // Game (global)
 //================================================
 
@@ -846,6 +845,7 @@ body.sidebar-open {
 		.border-radius(0 5px 5px 0);
 	}
 	.step {
+		font-size: 1.5em;
 		margin: 30px auto;
 		background-color: #fff;
 		.box-shadow(0 0 5px #ccc);
@@ -864,7 +864,7 @@ body.sidebar-open {
 		padding: 60px 0;
 		h1 {
 			margin: 0;
-			font-size: 3.0em;
+			font-size: 2.0em;
 		}
 	}
 	.step.ready {
@@ -875,19 +875,12 @@ body.sidebar-open {
 		width: 640px;
 		padding-top: 15px;
 		padding-bottom: 20px;
-		h1 {
-			margin: 0 0 15px;
-			font-size: 2.4em;
-			border-bottom: 1px solid #e5e5e5;
-			padding: 0 0 5px;
-		}
 		table {
 			margin-bottom: 20px;
 		}
 		td {
 			vertical-align: middle;
 			padding: 8px 0;
-			font-size: 1.8em;
 		}
 		img {
 			width: 40px;
@@ -896,12 +889,7 @@ body.sidebar-open {
 		}
 		.rating {
 			color: @accent-color;
-			// font-size: 1.25em;
-		}
-		button {
-			font-size: 1.4em;
-			padding-top: 4px;
-			padding-bottom: 5px;
+			font-size: 1.25em;
 		}
 	}
 	.step.end {

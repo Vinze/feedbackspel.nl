@@ -10,9 +10,10 @@ forever start /var/www/feedbackspel.nl/app.js --watch --watchDirectory /var/www/
 # Documentation
 ## Server side
 - Express.js - http://expressjs.com/4x/api.html
-- NeDB (database) - 
+- NeDB (database) - https://github.com/louischatriot/nedb
 
 ## Client side
 - Page.js (routing) - http://visionmedia.github.io/page.js
-- Ractive (Model-View binding) -
+- Ractive.js (Model-View binding) - http://ractivejs.org/
 - Cookies.js (for accessing cookies) - https://github.com/ScottHamper/Cookies
+- Zepto - http://zeptojs.com/

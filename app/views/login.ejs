@@ -8,34 +8,55 @@
 <div class="content-wrapper">
 	<div class="content container">
 		<div class="row">
-			<div class="box col span-6 offset-3">
-				<h2>Inloggen</h2>
-				<% if (message) { %>
-					<div class="flash-<%= message.type %>"><%- message.text %></div>
-				<% } %>
-				<form action="/login" method="post">
-					<div class="row" style="margin-bottom: 15px">
-						<div class="col span-12">
-							<label for="email" class="label">E-mail adres:</label><br>
-							<input type="email" name="email" value="<%= email %>" class="text" id="email">
-						</div>
-					</div>
-					<div class="row" style="margin-bottom: 15px">
-						<div class="col span-12">
-							<label for="password" class="label">Wachtwoord:</label><br>
-							<input type="password" name="password" value="" class="text" id="password">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col span-12">
-							<button class="btn confirm"><i class="fa fa-sign-in"></i> Inloggen</button>
-						</div>
-					</div>
-				</form>
+			<div class="box col span-6 offset-3" id="form">
+				<!-- The login form will be rendered here -->
 			</div>
 		</div>
 	</div>
 </div>
 <% include includes/bottom %>
+
+<script type="text/template" id="form-template">
+	<h1>Inloggen</h1>
+	{{#if error}}
+		<div class="flash-error" intro="slide">{{error}}</div>
+	{{/if}}
+	<form action="/api/login" method="post" on-submit="send">
+		<div class="form-group">
+			<label for="email" class="label">E-mail adres:</label><br>
+			<input type="email" name="email" value="{{input.email}}" class="text" id="email">
+		</div>
+		<div class="form-group">
+			<label for="password" class="label">Wachtwoord:</label><br>
+			<input type="password" name="password" value="{{input.password}}" class="text" id="password">
+		</div>
+		<div class="form-group">
+			<button class="btn confirm"><i class="fa fa-sign-in"></i> Inloggen</button>
+		</div>
+	</form>
+</script>
+<script type="text/javascript">
+var LoginForm = new Ractive({
+	el: 'form',
+	template: '#form-template',
+	data: {
+		input: { email: '', password: '' },
+		error: null
+	}
+});
+
+LoginForm.on('send', function(evt) {
+	var input = LoginForm.get('input');
+	$.post('/api/login', input, function(res) {
+		if (res.error) {
+			LoginForm.set('error', res.error);
+		} else {
+			Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
+			window.location.replace('/dashboard');
+		}
+	});
+	evt.original.preventDefault();
+})
+</script>
 </body>
 </html>

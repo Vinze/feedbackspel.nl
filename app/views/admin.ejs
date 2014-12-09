@@ -23,7 +23,7 @@
 </div>
 <% include includes/bottom %>
 <script type="text/javascript" src="/js/libs/underscore.min.js"></script>
-<script type="text/javascript" src="/js/libs/backbone.min.js"></script>
+<script type="text/javascript" src="/js/libs/page.js"></script>
 
 <script type="text/template" id="users-tpl">
 	<h1>Gebruikers</h1>
@@ -129,76 +129,76 @@
 </script>
 
 <script type="text/javascript">
-var Router = Backbone.Router.extend({
-	routes: {
-		'admin': 'users',
-		'admin/users': 'users',
-		'admin/sessions': 'sessions'
-	},
 
-	users: function() {
-		var Users = new Ractive({
-			el: 'content',
-			template: '#users-tpl',
-			data: {
-				items: [],
-				editing: null,
-				deleting: null,
-				saving: false
-			}
-		});
+page.base('/admin');
 
-		Users.on({
-			editUser: function(evt, user) {
-				Users.set('editing', user);
-				evt.original.preventDefault();
-			},
-			save: function(evt) {
-				var user = Users.get('editing');
-				$.post('/api/users/save', user, function(users) {
-					Users.set('items', users);
-				});
-				Users.set('saving', true);
-				setTimeout(function() {
-					Users.set('editing', null).then(function() {
-						Users.set('saving', false);
-					});
-				}, 2000);
-				evt.original.preventDefault();
-			},
-			delete: function(evt, user) {
-				$.post('/api/users/delete', user, function(users) {
-					Users.set('items', users);
-					Users.set('editing', null);
-				});
-				evt.original.preventDefault();
-			},
-			closeModal: function(evt) {
-				Users.set('editing', null);
-			},
-			stopPropagation: function(evt) {
-				evt.original.stopPropagation();
-			}
-		});
-
-		$.getJSON('/api/users', function(users) {
-			Users.set('items', users);
-		});
-	},
-
-	sessions: function() {
-		var SessionController = new Ractive({
-			el: 'content',
-			template: '#session-tpl'
-		});
-	}
+page('/', function() {
+	page.redirect('/users');
 });
 
+page('/users', function() {
+	var Users = new Ractive({
+		el: 'content',
+		template: '#users-tpl',
+		data: {
+			items: [],
+			editing: null,
+			deleting: null,
+			saving: false
+		}
+	});
+
+	Users.on({
+		editUser: function(evt, user) {
+			Users.set('editing', user);
+			evt.original.preventDefault();
+		},
+		save: function(evt) {
+			var user = Users.get('editing');
+			$.post('/api/users/save', user, function(users) {
+				Users.set('items', users);
+			});
+			Users.set('saving', true);
+			setTimeout(function() {
+				Users.set('editing', null).then(function() {
+					Users.set('saving', false);
+				});
+			}, 2000);
+			evt.original.preventDefault();
+		},
+		delete: function(evt, user) {
+			$.post('/api/users/delete', user, function(users) {
+				Users.set('items', users);
+				Users.set('editing', null);
+			});
+			evt.original.preventDefault();
+		},
+		closeModal: function(evt) {
+			Users.set('editing', null);
+		},
+		stopPropagation: function(evt) {
+			evt.original.stopPropagation();
+		}
+	});
+
+	$.getJSON('/api/users', function(users) {
+		Users.set('items', users);
+	});
+});
+
+page('/sessions', function() {
+	var SessionController = new Ractive({
+		el: 'content',
+		template: '#session-tpl'
+	});
+});
+
+page();
+
+
 $(function() {
-	var router = new Router();
-	Backbone.history.start({ pushState: true });
 	$('.menu a').on('click', function(evt) {
-		router.navigate($(this).attr('href'),  { trigger: true });
+		page($(this).attr('href'));
 		evt.preventDefault();
 	});
 });

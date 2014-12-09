@@ -11,10 +11,10 @@ var config       = require('./libs/config')
 var flash        = require('./libs/flash')
 
 // Load the controllers
-var GameController   = require('./controllers/GameController')
-var HomeController   = require('./controllers/HomeController')
-var SocketController = require('./controllers/SocketController')(server)
-var UserController   = require('./controllers/UserController')
+var GameController   = require('./controllers/GameController');
+var HomeController   = require('./controllers/HomeController');
+var SocketController = require('./controllers/SocketController')(server);
+var UserController   = require('./controllers/UserController');
 
 // Set the middleware
 
@@ -56,25 +56,23 @@ app.use(require('./libs/locals'))
 // Routes
 app.get('/', HomeController.getIndex)
 
-// app.get('/login', auth.isGuest, UserController.getLogin)
-// app.post('/login', auth.isGuest, UserController.postLogin);
-// app.get('/register', auth.isGuest, UserController.getRegister)
-// app.post('/register', auth.isGuest, UserController.postRegister)
-// app.get('/logout', auth.isMember, UserController.getLogout)
+app.get('/login', auth.isGuest, UserController.getLogin)
+app.get('/register', auth.isGuest, UserController.getRegister)
+app.post('/register', auth.isGuest, UserController.postRegister)
+app.get('/logout', auth.isMember, UserController.getLogout)
 
-// app.get('/dashboard', auth.isMember, UserController.getDashboard)
+app.get('/dashboard', auth.isMember, UserController.getDashboard)
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar)
-// app.post('/avatar', auth.isMember, UserController.postAvatar)
+app.post('/avatar', auth.isMember, UserController.postAvatar)
 
 app.get('/host/:room', auth.isMember, GameController.getHost)
 app.get('/play/:room', auth.isMember, GameController.getPlay)
 
-// app.post('/api/check-email', UserController.checkEmail)
-// app.get('/api/users', auth.isAdmin, UserController.findAll)
-// app.post('/api/users/save', auth.isAdmin, UserController.postSave)
-// app.post('/api/users/delete', auth.isAdmin, UserController.postDelete)
-
-app.get('/api/user', UserController.getUser);
+app.post('/api/check-email', UserController.checkEmail)
+app.get('/api/users', auth.isAdmin, UserController.findAll)
+app.post('/api/users/save', auth.isAdmin, UserController.postSave)
+app.post('/api/users/delete', auth.isAdmin, UserController.postDelete)
+app.post('/api/login', auth.isGuest, UserController.postLogin)
 
 app.get('/randomwords', function(req, res) {
 	res.render('randomwords')
@@ -82,18 +80,26 @@ app.get('/randomwords', function(req, res) {
 
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten')
+})
+
+app.get(/\/admin(.*?)/, auth.isAdmin, function(req, res) {
+	res.render('admin')
+})
+
+app.get('/test', function(req, res) {
 });
 
-// app.get(/\/admin(\/?)(.*?)/, auth.isAdmin, function(req, res) {
-// 	res.render('admin');
-// })
+//================================================
+// Testing testing testing testing testing testing
+//================================================
 
-app.post('/api/start', UserController.postStart);
+var UserController2   = require('./controllers/UserController2');
 
-app.get(/\/spa(.*?)/, function(req, res) {
-	res.sendfile('./public/views/layout.html');
-});
+app.get('/api2/users', UserController2.getUsers);
 
+//================================================
+// Testing testing testing testing testing testing
+//================================================
 
 // Run the server
 server.listen(config.port)

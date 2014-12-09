@@ -1,24 +1,22 @@
-<div class="home">
-	<div class="container">
-		<div class="home-center">
-			<div class="logo">
-				<img src="/img/banner.png">
-			</div>
-			{{#if show == 'front'}}
-				<div class="info front" intro="fly:{ x: -300, y: 0, duration: 350 }" outro="fly:{ x: -300, y: 0, duration: 350 }">
-					<h1>Werk je samen in een team en wil je graag weten hoe anderen over je denken?</h1>
-					<p>Na het registreren van een gratis account kun je op deze website een feedbacksessie starten samen met je teamgenoten.</p>
-					<p>Deze feedback maakt inzichtelijk waar je sterke en zwakke punten liggen, en bied waardevolle informatie om jezelf verder te kunnen ontwikkelen.</p>
-					<button on-tap="showMore">Meer informatie <i class="fa fa-question"></i></button>
-				</div>
-			{{/if}}
-			{{#if show == 'back'}}
-				<div class="info back" intro="fly:{ x: 300, y: 0, duration: 350 }" outro="fly:{ x: 300, y: 0, duration: 350 }">
-					<h1>Bètaversie komt binnenkort online!</h1>
-					<p>Momenteel wordt hard gewerkt om de applicatie zo spoedig mogelijk te lanceren. Kun je niet wachten en wil je nu direct een feedbacksessie houden? Kijk dan eens naar het <a href="/spa/kernkwadranten">kernkwadrantenspel</a>!</p>
-					<button on-tap="back"><i class="fa fa-angle-double-left"></i> Terug</button>
-				</div>
-			{{/if}}
+<div class="container">
+	<div class="home-center">
+		<div class="logo">
+			<img src="/img/banner.png">
 		</div>
+		{{#if show == 'front'}}
+			<div class="info front" intro="fly:{ x: -300, y: 0, duration: 350 }" outro="fly:{ x: -300, y: 0, duration: 350 }">
+				<h1>Werk je samen in een team en wil je graag weten hoe anderen over je denken?</h1>
+				<p>Na het registreren van een gratis account kun je op deze website een feedbacksessie starten samen met je teamgenoten.</p>
+				<p>Deze feedback maakt inzichtelijk waar je sterke en zwakke punten liggen, en bied waardevolle informatie om jezelf verder te kunnen ontwikkelen.</p>
+				<button on-tap="showMore">Meer informatie <i class="fa fa-question"></i></button>
+			</div>
+		{{/if}}
+		{{#if show == 'back'}}
+			<div class="info back" intro="fly:{ x: 300, y: 0, duration: 350 }" outro="fly:{ x: 300, y: 0, duration: 350 }">
+				<h1>Bètaversie komt binnenkort online!</h1>
+				<p>Momenteel wordt hard gewerkt om de applicatie zo spoedig mogelijk te lanceren. Kun je niet wachten en wil je nu direct een feedbacksessie houden? Kijk dan eens naar het <a href="/spa/kernkwadranten">kernkwadrantenspel</a>!</p>
+				<button on-tap="back"><i class="fa fa-angle-double-left"></i> Terug</button>
+			</div>
+		{{/if}}
 	</div>
 </div>
