@@ -4,9 +4,7 @@ var expect = require('expect.js');
 var Room = require('../libs/gameroom.js');
 
 var cards = [
-	'Betrouwbaar', 'Geduldig', 'Roekeloos',
-	'Prikkelbaar', 'Doorzetter', 'Luidruchtig',
-	'Sociaal', 'Nieuwsgierig', 'Snel afgeleid'
+	'Betrouwbaar', 'Geduldig', 'Roekeloos'
 ];
 
 var Game = new Room();
@@ -58,6 +56,8 @@ describe('managing feedback', function() {
 		expect(feedbackPlayer2.length).to.be(1); // User 2 has received feedback from 1 user
 		expect(feedbackPlayer3.length).to.be(2); // User 3 has received feedback from 2 users
 
+		expect(feedbackPlayer2[0].from).to.eql({ _id: 1, firstname: 'Vincent', lastname: '' });
+
 		expect(Game.getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
 	});
 
@@ -75,7 +75,7 @@ describe('managing rounds', function() {
 	it('should be able to get the game state', function() {
 		var gameState = Game.getState();
 		expect(gameState.round).to.be(1);
-		expect(gameState.card).to.be('Geduldig');
+		expect(gameState.card).to.be('Betrouwbaar');
 		expect(gameState.players.length).to.be(3);
 	});
 
@@ -83,7 +83,7 @@ describe('managing rounds', function() {
 		Game.nextRound();
 		expect(Game.getSummary().length).to.be(0);
 		expect(Game.getRound()).to.be(2);
-		expect(Game.getCard()).to.be('Roekeloos');
+		expect(Game.getCard()).to.be('Geduldig');
 	});
 
 });
