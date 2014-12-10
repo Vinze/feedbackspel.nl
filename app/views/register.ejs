@@ -111,12 +111,12 @@
 		el: 'content',
 		template: '#form-tpl',
 		data: {
-			email:     { value: '', error: '' },
-			firstname: { value: '', error: '' },
-			lastname:  { value: '', error: '' },
-			gender:    { value: 'm', error: '' },
-			password:  { value: '', error: '' },
-			password2: { value: '', error: '' },
+			email:     { value: '', error: null },
+			firstname: { value: '', error: null },
+			lastname:  { value: '', error: null },
+			gender:    { value: 'm', error: null },
+			password:  { value: '', error: null },
+			password2: { value: '', error: null },
 			errors:    false
 		}
 	});
@@ -144,7 +144,7 @@
 						form.set('email.error', 'Dit e-mail adres is al in gebruikt');
 						form.set('errors', true);
 					} else {
-						form.set('email.error', '');
+						form.set('email.error', null);
 					}
 				});
 			}
@@ -154,7 +154,7 @@
 				form.set('firstname.error', 'Dit veld is verplicht');
 				form.set('errors', true);
 			} else {
-				form.set('firstname.error', '');
+				form.set('firstname.error', null);
 			}
 		},
 		validateLastname: function() {
@@ -162,7 +162,7 @@
 				form.set('lastname.error', 'Dit veld is verplicht');
 				form.set('errors', true);
 			} else {
-				form.set('lastname.error', '');
+				form.set('lastname.error', null);
 			}
 		},
 		validateGender: function() {
@@ -170,7 +170,7 @@
 				form.set('gender.error', 'Dit veld is verplicht');
 				form.set('errors', true);
 			} else {
-				form.set('gender.error', '');
+				form.set('gender.error', null);
 			}
 		},
 		validatePassword: function() {
@@ -178,11 +178,11 @@
 				form.set('password.error', 'Het wachtwoord moet minimaal 4 karakters lang zijn');
 				form.set('errors', true);
 			} else if (form.get('password.value') != form.get('password2.value')) {
-				form.set('password.error', '');
+				form.set('password.error', null);
 				form.set('password2.error', 'Wachtwoorden komen niet overeen!');
 			} else {
-				form.set('password.error', '');
-				form.set('password2.error', '');
+				form.set('password.error', null);
+				form.set('password2.error', null);
 			}
 		}
 	});

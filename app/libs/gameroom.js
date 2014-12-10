@@ -1,5 +1,15 @@
 var _ = require('underscore');
 
+/*
+2 players = 5 stars
+3 players = 9 stars (1x5, 1x4)
+4 players = 12 stars (1x5, 1x4, 1x3)
+5 players = ?
+
+
+*/
+
+
 var Gameroom = function() {
 
 	var round   = 1;
