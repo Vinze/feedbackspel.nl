@@ -12,13 +12,11 @@
     "cookie-parser": "1.*",
     "ejs": "1.*",
     "socket.io": "1.*",
-    "mysql": "^2.5.2",
     "validator": "^3.22.1",
     "bcrypt-nodejs": "0.0.*",
     "jwt-simple": "0.2.*",
     "underscore": "^1.7.0",
     "moment": "^2.8.3",
-    "orm": "^2.1.20",
     "nedb": "^0.11.1",
     "multer": "^0.1.6",
     "async": "^0.9.0"

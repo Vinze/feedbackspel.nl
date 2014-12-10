@@ -19,13 +19,4 @@ db.users.findAll = function(callback) {
 	db.users.find({}).sort({ email: 1 }).projection({ password: 0 }).exec(callback);
 };
 
-db.sessions = new Datastore({
-	autoload: true,
-	filename: __dirname + '/../storage/datastores/sessions.db'
-});
-
-db.sessions.findByToken = function(token, callback) {
-	db.sessions.findOne({ token: token, expires: { $gt: moment().unix() } }, callback);
-};
-
 module.exports = db;

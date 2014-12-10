@@ -15,30 +15,50 @@ var auth = {
 
 		if ( ! token) return next();
 
-		db.sessions.findByToken(token, function(err, session) {
-			if ( ! session && token) {
-				res.clearCookie('jwtoken');
-				return next();
-			}
-			try {
-				var data = jwt.decode(session.token, config.jwt_secret);
-				db.users.findById(data.user_id, function(err, user) {
-					if ( ! user) return next();
-					req.user = {
-						_id: user._id,
-						email: user.email,
-						firstname: user.firstname,
-						lastname: user.lastname,
-						gender: user.gender,
-						admin: user.admin
-					};
+		function setUser(user) {
+			req.user = {
+				_id: user._id,
+				email: user.email,
+				firstname: user.firstname,
+				lastname: user.lastname,
+				gender: user.gender,
+				admin: user.admin
+			};
+		}
+
+		function validateToken(tokenData) {
+			var age = moment().unix() - tokenData.iss;
+			var maxAge = 3600 * 24 * 365;
+			return (age < maxAge && tokenData.ip == req.connection.remoteAddress);
+		}
+
+		try {
+			var tokenData = jwt.decode(token, config.jwt_secret);
+			if (validateToken(tokenData)) {
+				db.users.findById(tokenData.user_id, function(err, user) {
+					if (user) setUser(user);
 					next();
 				});
-			} catch(err) {
-				console.log(err);
+			} else {
+				console.log('INVALID TOKEN!!!!!!!')
+				// res.clearCookie('fbs_token');
 				next();
 			}
-		});
+		} catch(err) {
+			console.log(err);
+			next();
+		}
+	},
+
+	setToken: function(user, req) {
+		var tokenData = {
+			user_id: user._id,
+			ip: req.connection.remoteAddress,
+			iss: moment().unix()
+		};
+		var token = jwt.encode(tokenData, config.jwt_secret);
+
+		return token;
 	},
 
 	isMember: function(req, res, next) {

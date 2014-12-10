@@ -23,11 +23,11 @@
 	{{/if}}
 	<form action="/api/login" method="post" on-submit="send">
 		<div class="form-group">
-			<label for="email" class="label">E-mail adres:</label><br>
+			<label for="email">E-mail adres:</label><br>
 			<input type="email" name="email" value="{{input.email}}" class="text" id="email">
 		</div>
 		<div class="form-group">
-			<label for="password" class="label">Wachtwoord:</label><br>
+			<label for="password">Wachtwoord:</label><br>
 			<input type="password" name="password" value="{{input.password}}" class="text" id="password">
 		</div>
 		<div class="form-group">
@@ -47,16 +47,28 @@ var LoginForm = new Ractive({
 
 LoginForm.on('send', function(evt) {
 	var input = LoginForm.get('input');
-	$.post('/api/login', input, function(res) {
-		if (res.error) {
-			LoginForm.set('error', res.error);
-		} else {
-			Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
-			window.location.replace('/dashboard');
-		}
-	});
+	if (input.email.length > 2 && input.password) {
+		$.post('/api/login', input, function(res) {
+			if (res.error) {
+				LoginForm.set('error', res.error);
+			} else {
+				Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
+				window.location.replace('/dashboard');
+			}
+		});
+	} else {
+		LoginForm.set('error', 'Voer een e-mail adres & wachtwoord in!');
+	}
 	evt.original.preventDefault();
-})
+});
+
+if (location.search) {
+	var params = location.search.split('=');
+	if (params.length == 2) {
+		LoginForm.set('input.email', params[1]);
+	}
+}
+
 </script>
 </body>
 </html>

@@ -1,10 +1,9 @@
 var bcrypt   = require('bcrypt-nodejs');
-var jwt      = require('jwt-simple');
 var moment   = require('moment');
 var fs       = require('fs');
 var exec     = require('child_process').exec;
+var auth     = require('../libs/auth');
 var validate = require('../libs/validator');
-var config   = require('../libs/config');
 var db       = require('../libs/datastore');
 
 function inArray(needle, haystack) {
@@ -21,7 +20,7 @@ var UserController = {
 		var imagepath = './storage/avatars/' + req.params.image;
 		fs.exists(imagepath, function(exists) {
 			if ( ! exists) {
-				imagepath = './storage/avatars/placeholder.png';
+				imagepath = './public/img/placeholder.png';
 			}
 			var image = fs.readFileSync(imagepath);
 
@@ -43,15 +42,13 @@ var UserController = {
 				fs.unlink(input);
 			});
 		} else {
-			fs.unlink(input);
+			fs.unlink(req.files.image.path);
 			res.redirect('/dashboard');
 		}
 	},
 
 	getLogin: function(req, res) {
-		res.render('login', {
-			email: req.flash('email')
-		});
+		res.render('login');
 	},
 
 	postLogin: function(req, res) {
@@ -64,17 +61,7 @@ var UserController = {
 				if ( ! match) {
 					return res.json({ error: 'Het opgegeven wachtwoord is onjuist.' });
 				}
-				var expires = moment().add(1, 'years');
-				var token = jwt.encode({ user_id: user._id }, config.jwt_secret);
-
-				db.sessions.insert({
-					user_id: user._id,
-					token: token,
-					expires: expires.unix(),
-					ipaddress: req.connection.remoteAddress
-				}, function(err, doc) {
-					if (err) console.log('error inserting token', err);
-				});
+				var token = auth.setToken(user, req);
 
 				res.json({ error: null, token: token });
 			});
@@ -82,9 +69,6 @@ var UserController = {
 	},
 
 	getLogout: function(req, res) {
-		db.sessions.remove({ token: req.token }, function(err, removed) {
-			if (err) console.log(err);
-		});
 		res.clearCookie('fbs_token');
 		res.redirect('/');
 	},
@@ -120,19 +104,19 @@ var UserController = {
 				}, function(err, user) {
 					req.flash('email', user.email);
 					req.flash('message', { type: 'success', text: 'Je kunt nu inloggen.' });
-					res.redirect('/login');
+					res.redirect('/login?email=' + input.email);
 				});
 			});
 		});
 	},
 
-	checkEmail: function(req, res) {
+	getEmail: function(req, res) {
 		db.users.findOne({ email: req.body.email }, function(err, exists) {
 			res.json({ exists: exists ? true : false });
 		});
 	},
 
-	findAll: function(req, res) {
+	getUsers: function(req, res) {
 		db.users.findAll(function(err, users) {
 			res.json(users);
 		});

@@ -12,8 +12,8 @@ module.exports = function(req, res, next) {
 		];
 	} else {
 		res.locals.menu_items = [
-			{ label: 'Inloggen', url: '/login', classname: 'fa-sign-in' },
 			{ label: 'Registreren', url: '/register', classname: 'fa-user' },
+			{ label: 'Inloggen', url: '/login', classname: 'fa-sign-in' },
 		];
 	}
 
