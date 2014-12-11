@@ -88,7 +88,7 @@ app.get('/kernkwadranten', function(req, res) {
 // })
 
 app.get('/test', function(req, res) {
-	res.redirect('/');
+	res.render('test')
 });
 
 //================================================

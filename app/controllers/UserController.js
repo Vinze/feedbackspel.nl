@@ -17,10 +17,10 @@ var UserController = {
 	},
 
 	getAvatar: function(req, res) {
-		var imagepath = './storage/avatars/' + req.params.image;
+		var imagepath = __dirname + '/../storage/avatars/' + req.params.image;
 		fs.exists(imagepath, function(exists) {
 			if ( ! exists) {
-				imagepath = './public/img/placeholder.png';
+				imagepath = __dirname + '/../public/img/placeholder.png';
 			}
 			var image = fs.readFileSync(imagepath);
 
@@ -33,7 +33,7 @@ var UserController = {
 		var mimetypes = ['image/jpeg', 'image/png'];
 		if (req.files.image && inArray(req.files.image.mimetype, mimetypes)) {
 			var input = req.files.image.path;
-			var output = './storage/avatars/' + req.user._id + '.png';
+			var output = '/var/www/feedbackspel.nl/storage/avatars/' + req.user._id + '.png';
 			var command = 'convert ' + input + ' -resize "150x150^" -gravity center -crop 150x150+0+0 +repage ' + output;
 			
 			exec(command, function(err, stdout, stderr) {

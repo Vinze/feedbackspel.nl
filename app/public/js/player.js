@@ -12,6 +12,15 @@ function verifyConnection(callback) {
 	}
 }
 
+var stars = 0;
+function getStars(players) {
+	if (players == 2) {
+		return 5;
+	} else {
+		return (players * 5) - players;
+	}
+}
+
 var Player = new Ractive({
 	el: 'content',
 	template: '#template',
