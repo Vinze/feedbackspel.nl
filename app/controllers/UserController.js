@@ -13,7 +13,7 @@ function inArray(needle, haystack) {
 var UserController = {
 
 	getDashboard: function(req, res) {
-		res.render('dashboard', { message: req.flash('message') });
+		res.render('users/dashboard', { message: req.flash('message') });
 	},
 
 	getAvatar: function(req, res) {
@@ -48,7 +48,7 @@ var UserController = {
 	},
 
 	getLogin: function(req, res) {
-		res.render('login');
+		res.render('users/login');
 	},
 
 	postLogin: function(req, res) {
@@ -74,7 +74,7 @@ var UserController = {
 	},
 
 	getRegister: function(req, res) {
-		res.render('register');
+		res.render('users/register');
 	},
 
 	postRegister: function(req, res) {
