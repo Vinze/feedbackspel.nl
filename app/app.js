@@ -76,19 +76,19 @@ app.post('/api/users/delete', auth.isAdmin, UserController.postDelete);
 
 
 app.get('/randomwords', function(req, res) {
-	res.render('randomwords')
+	res.render('pages/randomwords')
 })
 
 app.get('/kernkwadranten', function(req, res) {
-	res.render('kernkwadranten')
+	res.render('pages/kernkwadranten')
 })
 
 // app.get(/\/admin(.*?)/, auth.isAdmin, function(req, res) {
-// 	res.render('admin')
+// 	res.render('pages/admin')
 // })
 
 app.get('/test', function(req, res) {
-	res.render('test')
+	res.render('pages/test')
 });
 
 //================================================
