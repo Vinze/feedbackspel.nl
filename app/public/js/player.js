@@ -49,6 +49,9 @@ Player.on({
 		});
 		evt.original.preventDefault();
 	},
+	setRating2: function(evt) {
+		console.log(evt)
+	},
 	leave: function(evt) {
 		verifyConnection(function(socket) {
 			socket.emit('player.remove');
