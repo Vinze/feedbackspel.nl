@@ -22,49 +22,55 @@
 	</ul>
 
 	<div class="content container">
-
 		{{#if step == 1}}
-			<div class="player-select">
-				{{#if players.length > 1}}
-					<h1>{{card}}:</h1>
-					<ul class="players">
-						{{#each players}}
-							{{#if (_id != userId)}}
-								<li>
-									<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
-									<div class="name">{{firstname}} {{lastname}}</div>
-									<div class="rating stars">
-										<a href="#" on-tap="setRating:1">
-											<i class="fa fa-star{{rating[_id] >= 1 ? '' : '-o'}}"></i>
-										</a>
-										<a href="#" on-tap="setRating:2">
-											<i class="fa fa-star{{rating[_id] >= 2 ? '' : '-o'}}"></i>
-										</a>
-										<a href="#" on-tap="setRating:3">
-											<i class="fa fa-star{{rating[_id] >= 3 ? '' : '-o'}}"></i>
-										</a>
-										<a href="#" on-tap="setRating:4">
-											<i class="fa fa-star{{rating[_id] >= 4 ? '' : '-o'}}"></i>
-										</a>
-										<a href="#" on-tap="setRating:5">
-											<i class="fa fa-star{{rating[_id] >= 5 ? '' : '-o'}}"></i>
-										</a>
-									</div>
-								</li>
-							{{/if}}
-						{{/each}}
-					</ul>
-					<div class="button-bar">
-						<a href="#" class="btn confirm" on-click="ready"><i class="fa fa-check"></i> Ik ben klaar</a>
-					</div>
-				{{/if}}
-			</div>
+			{{#if opponents.length > 0}}
+				<h1>{{card}}:</h1>
+				<p class="stars-desc">
+					{{#if stars.available > 0}}
+						Je mag nog maximaal <strong>{{stars.available}} ster{{stars.available > 1 ? 'ren' : ''}}</strong> uitgeven.
+					{{else}}
+						Je hebt alle sterren uitgegeven.
+					{{/if}}
+				</p>
+				<ul class="opponents">
+					{{#each opponents}}
+						<li class="clearfix">
+							<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
+							<div class="name">{{firstname}} {{lastname}}</div>
+							<div class="rating stars">
+								<label class="star{{rating[_id] >= 1 ? ' selected' : ''}}{{(rating[_id] + stars.available < 1) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="rating[{{_id}}]" value="1" {{(rating[_id] + stars.available < 1) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								</label>
+	
+								<label class="star{{rating[_id] >= 2 ? ' selected' : ''}}{{(rating[_id] + stars.available < 2) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="rating[{{_id}}]" value="2" {{(rating[_id] + stars.available < 2) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								</label>
+
+								<label class="star{{rating[_id] >= 3 ? ' selected' : ''}}{{(rating[_id] + stars.available < 3) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="rating[{{_id}}]" value="3" {{(rating[_id] + stars.available < 3) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								</label>
+								
+								<label class="star{{rating[_id] >= 4 ? ' selected' : ''}}{{(rating[_id] + stars.available < 4) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="rating[{{_id}}]" value="4" {{(rating[_id] + stars.available < 4) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								</label>
+
+								<label class="star{{rating[_id] >= 5 ? ' selected' : ''}}{{(rating[_id] + stars.available < 5) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="rating[{{_id}}]" value="5" {{(rating[_id] + stars.available < 5) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								</label>
+							</div>
+						</li>
+					{{/each}}
+				</ul>
+				<div class="button-bar">
+					<button class="btn confirm" on-click="ready"><i class="fa fa-check"></i> Ik ben klaar</button>
+				</div>
+			{{/if}}
 		{{/if}}
 
 		{{#if step == 2}}
 			<div class="waiting">
 				<h1>Feedback verzonden!</h1>
-				<p><strong>{{playersReady}}</strong> van de <strong>{{players.length}}</strong> spelers zijn klaar.. <i class="fa fa-spin fa-spinner"></i> </p>
+				<p><strong>{{playersReady}}</strong> van de <strong>{{opponents.length + 1}}</strong> spelers zijn klaar.. <i class="fa fa-spin fa-spinner"></i> </p>
 			</div>
 		{{/if}}
 
@@ -91,6 +97,11 @@
 			</div>
 		{{/if}}
 	</div>
+
+	<p class="reload">
+		Blijft de pagina hangen..?<br>
+		<a on-click="reload">Klik dan hier</a> om te vernieuwen.
+	</p>
 
 </script>
 

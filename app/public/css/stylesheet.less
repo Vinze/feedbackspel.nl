@@ -198,6 +198,10 @@ strong {
 	font-weight: bold;
 }
 
+em {
+	font-style: italic;
+}
+
 hr {
 	height: 2px;
 	border: none;
@@ -858,6 +862,7 @@ body.sidebar-open {
 		padding: 40px;
 		button {
 			font-size: inherit;
+			padding: 3px 20px 5px 20px;
 		}
 		h1 {
 			padding: 0px;
@@ -975,28 +980,29 @@ body.sidebar-open {
 
 .ingame.client {
 	h1 {
+		margin-bottom: 10px;
 		padding: 0;
 		border: none;
 	}
 	.content {
-		padding: 10px;
+		padding: 10px 10px 70px 10px;
 		max-width: 400px;
 	}
-	.players {
-		margin: 0;
+
+	.stars-desc {
+		margin-bottom: 10px;
+	}
+
+	.opponents {
+		margin: 0 0 10px;
 		padding: 0;
 		list-style-type: none;
 		li {
 			display: block;
-			height: 82px;
 			margin: 0 0 10px;
 			border: 1px solid #e5e5e5;
 			background-color: #fff;
 			position: relative;
-		}
-		.name {
-			margin-left: 80px;
-			padding: 5px 10px 2px 8px;
 		}
 		.avatar {
 			width: 70px;
@@ -1006,23 +1012,24 @@ body.sidebar-open {
 				.border-radius(70px);
 			}
 		}
-		.rating {
+		.name {
+			margin-left: 80px;
+			padding: 8px 10px 5px 8px;
+		}
+		.rating.stars {
 			margin-left: 80px;
 			padding-left: 5px;
-		}
-
-		.stars {
 			.star {
-				margin: 0;
-				height: 32px;
-				width: 32px;
-				background: url('../img/sprite-stars.png') -32px 0;
+				margin: 0; padding: 0;
+				width: 32px; height: 32px;
+				background: url('../img/sprite-stars.png') 0 0 no-repeat;
 				background-size: 96px 32px;
 				&.selected {
-					background-position: 0 0;
+					background-position: -32px 0;
 				}
 				&.disabled {
-					background-position: -64px 0;	
+					cursor: default;
+					background-position: -64px 0;
 				}
 				input {
 					visibility: hidden;
@@ -1078,13 +1085,21 @@ body.sidebar-open {
 		}
 	}
 	.button-bar {
-		margin: 20px 0;
+		margin: 0px;
 		width: 100%;
 		padding: 10px;
 		text-align: center;
-		a {
+		.btn {
 			width: 200px;
 		}
+	}
+
+	.reload {
+		position: absolute;
+		bottom: 0;
+		text-align: center;
+		width: 100%;
+		padding: 5px 10px;
 	}
 }
 

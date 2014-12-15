@@ -21,7 +21,7 @@ module.exports = function(req, res, next) {
 	if (req.user || os.hostname() != 'UbuntuVPS1') {
 		res.locals.show_sidebar = true;
 	} else {
-		res.locals.show_sidebar = false;
+		res.locals.show_sidebar = true;
 	}
 
 	next();

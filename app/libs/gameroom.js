@@ -56,7 +56,9 @@ var Gameroom = function() {
 	}
 
 	this.getPlayers = function() {
-		return players;
+		return _.sortBy(players, function(player) {
+			return player.firstname;
+		});
 	}
 
 	this.getPlayer = function(playerId) {
