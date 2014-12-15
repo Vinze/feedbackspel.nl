@@ -5,7 +5,7 @@ var GameController = {
 	},
 
 	getPlay: function(req, res) {
-		res.render('game/player');
+		res.render('game/player2');
 	}
 	
 };

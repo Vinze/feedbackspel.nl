@@ -11,9 +11,21 @@ var Room      = require('../libs/gameroom');
 var Game = new Room();
 
 Game.setCards([
-	'Betrouwbaar', 'Geduldig', 'Roekeloos',
-	'Prikkelbaar', 'Doorzetter', 'Luidruchtig',
-	'Sociaal', 'Nieuwsgierig', 'Snel afgeleid'
+	'Betrouwbaar',
+	'Geduldig',
+	'Roekeloos',
+	'Creatief',
+	'Prikkelbaar',
+	'Saai',
+	'Doorzetter',
+	'Kritisch',
+	'Onzichtbaar',
+	'Luidruchtig',
+	'Sociaal',
+	'Optimistisch',
+	'Gedisciplineerd',
+	'Nieuwsgierig',
+	'Snel afgeleid'
 ]);
 
 function findUser(userId, callback) {
