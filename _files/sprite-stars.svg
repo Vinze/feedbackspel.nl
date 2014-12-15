@@ -15,7 +15,7 @@
    version="1.1"
    inkscape:version="0.48.5 r10040"
    sodipodi:docname="sprite-stars.svg"
-   inkscape:export-filename="/home/vincent/Node/feedbackspel.nl/app/public/img/sprite-stars.png"
+   inkscape:export-filename="D:\Node\feedbackspel.nl\app\public\img\sprite-stars.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="127.89356"
-     inkscape:cy="20.408589"
+     inkscape:zoom="3.45"
+     inkscape:cx="145.19787"
+     inkscape:cy="10.996877"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -53,7 +53,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
         <dc:title />
       </cc:Work>
     </rdf:RDF>
@@ -64,12 +64,26 @@
      id="layer1"
      transform="translate(0,-988.36218)">
     <rect
+       style="color:#000000;fill:#fddada;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3776-3"
+       width="64"
+       height="64"
+       x="64"
+       y="1052.3622" />
+    <rect
        style="color:#000000;fill:#daecfd;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3774"
-       width="192"
+       id="rect3776"
+       width="64"
        height="64"
        x="0"
-       y="988.36218" />
+       y="1052.3622" />
+    <rect
+       style="color:#000000;fill:#daecfd;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3776-9"
+       width="64"
+       height="64"
+       x="128"
+       y="1052.3622" />
     <path
        sodipodi:type="arc"
        style="color:#000000;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
@@ -81,14 +95,14 @@
        d="m 270.2158,-38.530483 a 12.626906,12.626906 0 1 1 -25.25381,0 12.626906,12.626906 0 1 1 25.25381,0 z"
        transform="matrix(0.95035154,0,0,0.95035154,-84.800006,1056.9797)" />
     <path
-       d="m 32,1000.6121 6.67648,13.7734 15.16264,2.0937 -11.03638,10.6062 2.69452,15.0673 L 32,1034.9344 l -13.49742,7.2184 2.694519,-15.0672 -11.036379,-10.6063 15.16266,-2.0936 L 32,1000.6121 z M 32,989.92845 22.21706,1010.1101 0,1013.1777 16.17096,1028.7183 12.223,1050.7959 32,1040.2189 51.777,1050.7959 47.82904,1028.7183 64,1013.1777 41.78294,1010.1101 32,989.92845 z"
+       d="m 32,1000.2446 6.46784,14.0297 14.688807,2.1327 -10.691493,10.8035 2.610317,15.3477 L 32,1035.2056 l -13.075626,7.3527 2.610316,-15.3476 -10.691492,-10.8036 14.688826,-2.1326 L 32,1000.2446 z M 32,989.36216 22.522777,1009.9194 1,1013.044 16.665618,1028.8738 12.841031,1051.3622 32,1040.5884 51.158969,1051.3622 47.334382,1028.8738 63,1013.044 41.477223,1009.9194 32,989.36216 z"
        id="star-2-outline-icon"
        inkscape:connector-curvature="0"
        style="fill:#55be78;fill-opacity:1" />
     <polygon
-       points="357.9,309.793 383.315,451.918 256,383.828 128.685,451.918 154.1,309.793 49.999,209.75 193.021,190.002 256,60.082 318.979,190.002 462.001,209.75 "
+       points="49.999,209.75 193.021,190.002 256,60.082 318.979,190.002 462.001,209.75 357.9,309.793 383.315,451.918 256,383.828 128.685,451.918 154.1,309.793 "
        id="star-2-icon"
-       transform="matrix(0.15533905,0,0,0.15533905,56.233203,980.59536)"
+       transform="matrix(0.15048471,0,0,0.15822946,57.475914,979.85544)"
        style="fill:#55be78;fill-opacity:1" />
   </g>
 </svg>
