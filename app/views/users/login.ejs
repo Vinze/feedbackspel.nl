@@ -53,7 +53,7 @@ LoginForm.on('send', function(evt) {
 				LoginForm.set('error', res.error);
 			} else {
 				Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
-				window.location.replace('/dashboard');
+				window.location.replace('/start');
 			}
 		});
 	} else {

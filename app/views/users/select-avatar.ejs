@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include ../includes/head %>
+</head>
+<body>
+<% include ../includes/top %>
+<div class="content-wrapper">
+	<div class="content container">
+		<div class="row">
+			<div class="box col span-6 offset-3 align-center" style="overflow:hidden">
+				<h1>Upload je profielfoto</h1>
+				<p><img src="/img/placeholder.png"></p>
+				<form action="/avatar" method="post" enctype="multipart/form-data" id="form">
+					<p><input type="file" name="image" id="file-input"></p>
+					<button type="submit" class="btn confirm">
+						Volgende <i class="fa fa-angle-double-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<% include ../includes/bottom %>
+<script type="text/javascript">
+	$('#file-input').on('change', function() {
+		// var image = $('#file-input').val();
+		// $('#form').submit();
+		// console.log(image);
+	});
+</script>
+</body>
+</html>

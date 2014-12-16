@@ -54,7 +54,7 @@ Player.on({
 	leave: function(evt) {
 		verifyConnection(function(socket) {
 			socket.emit('player.remove');
-			window.location = '/dashboard';
+			window.location = '/start';
 		});
 		evt.original.preventDefault();
 	}

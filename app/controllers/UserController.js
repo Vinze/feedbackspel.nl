@@ -1,7 +1,7 @@
 var bcrypt   = require('bcrypt-nodejs');
 var moment   = require('moment');
 var fs       = require('fs');
-var gm       = require('gm');
+var spawn    = require('child_process').spawn;
 var auth     = require('../libs/auth');
 var validate = require('../libs/validator');
 var db       = require('../libs/datastore');
@@ -12,8 +12,16 @@ function inArray(needle, haystack) {
 
 var UserController = {
 
-	getDashboard: function(req, res) {
-		res.render('users/dashboard', { message: req.flash('message') });
+	getStart: function(req, res) {
+		if (req.user) {
+			if (req.user.image) {
+				res.render('users/dashboard');
+			} else {
+				res.render('users/select-avatar');
+			}
+		} else {
+			res.render('users/start');
+		}
 	},
 
 	getAvatar: function(req, res) {
@@ -22,28 +30,35 @@ var UserController = {
 			if ( ! exists) {
 				imagepath = __dirname + '/../public/img/placeholder.png';
 			}
-			var image = fs.readFileSync(imagepath);
-
-			res.writeHead(200, {'Content-Type': 'image/png' });
-			res.end(image, 'binary');
+			fs.readFile(imagepath, function(err, data) {
+				res.writeHead(200, {'Content-Type': 'image/png' });
+				res.end(data, 'binary');
+			});
 		});
 	},
 
 	postAvatar: function(req, res) {
 		var mimetypes = ['image/jpeg', 'image/png'];
-		if (req.files.image && inArray(req.files.image.mimetype, mimetypes)) {
+
+		if (req.files && req.files.image) {
+			if ( ! inArray(req.files.image.mimetype, mimetypes)) {
+				fs.unlink(req.files.image.path);
+				return res.redirect('/start');
+			}
 			var input = __dirname + '/../' + req.files.image.path;
 			var output = __dirname + '/../storage/avatars/' + req.user._id + '.png';
+			var convert = spawn('convert', [input, '-resize', '150x150^', '-gravity', 'center', '-crop', '150x150+0+0', '+repage', '-auto-orient', output]);
 
-			gm(input).out('-gravity', 'center').autoOrient().geometry(150, 150, '^').crop(150, 150).write(output, function(err) {
-				if (err) console.log(err);
-				res.redirect('/dashboard');
+			convert.on('close', function (code) {
+				res.redirect('/start');
 				fs.unlink(input);
 			});
-			// var command = 'convert ' + input + ' -resize "150x150^" -gravity center -crop 150x150+0+0 +repage ' + output;
+
+			db.users.update({ _id: req.user._id }, { $set: { image: true } }, function(err) {
+				if (err) console.log(err);
+			});
 		} else {
-			fs.unlink(req.files.image.path);
-			res.redirect('/dashboard');
+			res.redirect('/start');
 		}
 	},
 
@@ -98,6 +113,7 @@ var UserController = {
 					firstname: input.firstname,
 					lastname: input.lastname,
 					gender: input.gender,
+					avatar: false,
 					admin: false,
 					created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
 					updated_at: moment().format('YYYY-MM-DD HH:mm:ss')

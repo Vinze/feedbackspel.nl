@@ -22,6 +22,7 @@ var auth = {
 				firstname: user.firstname,
 				lastname: user.lastname,
 				gender: user.gender,
+				image: user.image,
 				admin: user.admin
 			};
 		}
