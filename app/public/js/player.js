@@ -28,18 +28,24 @@ var Player = new Ractive({
 });
 
 Player.on({
+	setRating: function(evt, user) {
+		var rating = parseInt(evt.node.value);
+		verifyConnection(function(socket) {
+			Player.set('rating.' + user._id, rating);
+		});
+	},
+	changeRating: function(evt) {
+		verifyConnection(function(socket) {
+			socket.emit('player.notready');
+		});
+		evt.original.preventDefault();
+	},
 	ready: function(evt) {
 		var rating = Player.get('rating');
 		verifyConnection(function(socket) {
 			socket.emit('player.ready', rating);
 		});
 		evt.original.preventDefault();
-	},
-	setRating: function(evt, user) {
-		var rating = parseInt(evt.node.value);
-		verifyConnection(function(socket) {
-			Player.set('rating.' + user._id, rating);
-		});
 	},
 	reload: function(evt) {
 		window.location.reload();

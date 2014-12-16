@@ -11,6 +11,7 @@ forever start /var/www/feedbackspel.nl/app.js --watch --watchDirectory /var/www/
 ## Server side
 - Express.js - http://expressjs.com/4x/api.html
 - NeDB (database) - https://github.com/louischatriot/nedb
+- GM (imagemagick wrapper) - https://github.com/aheckmann/gm
 
 ## Client side
 - Page.js (routing) - http://visionmedia.github.io/page.js

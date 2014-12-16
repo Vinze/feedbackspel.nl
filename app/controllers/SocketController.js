@@ -2,11 +2,9 @@ var socketio  = require('socket.io');
 var jwt       = require('jwt-simple');
 var _         = require('underscore');
 var moment    = require('moment');
-var async     = require('async');
 var db        = require('../libs/datastore');
 var config    = require('../libs/config');
 var Room      = require('../libs/gameroom');
-
 
 var Game = new Room();
 
@@ -68,6 +66,11 @@ var SocketController = function(server) {
 				Game.setFeedback({ from: client.playerId, to: toPlayerId, rating: rating });
 			});
 			Game.setPlayerStep(client.playerId, 2);
+			sendState();
+		});
+
+		client.on('player.notready', function(rating) {
+			Game.setPlayerStep(client.playerId, 1);
 			sendState();
 		});
 

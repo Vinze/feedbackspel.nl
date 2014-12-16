@@ -3,7 +3,7 @@
 <head>
 	<% include ../includes/head %>
 </head>
-<body>
+<body class="dashboard">
 <% include ../includes/top %>
 <div class="content-wrapper">
 	<div class="content container">
@@ -18,13 +18,14 @@
 				
 			</div>
 			<div class="box col span-4 align-center">
-				<form action="/avatar" method="post" enctype="multipart/form-data" id="upload-form">
-					<input type="file" name="image" id="upload-select" style="display:none">
-				</form>
-				<div class="profile-avatar">
+				<div class="avatar">
 					<img src="/avatar/<%= user._id %>.png">
 				</div>
-				<p><a href="#" id="upload-link"><i class="fa fa-picture-o"></i> Wijzig afbeelding</a></p>
+				<form action="/avatar" method="post" enctype="multipart/form-data" class="upload" id="upload-form">
+					<!-- <p><a href="#" id="upload-link"><i class="fa fa-picture-o"></i> Wijzig afbeelding</a></p> -->
+					<input type="file" name="image" id="upload-select">
+					<span><i class="fa fa-picture-o"></i> Wijzig afbeelding</span>
+				</form>
 			</div>
 		</div>
 
@@ -69,10 +70,10 @@
 </div>
 <% include ../includes/bottom %>
 <script type="text/javascript">
-	$('#upload-link').on('click', function(evt) {
-		$('#upload-select').click();
-		evt.preventDefault();
-	});
+	// $('#upload-link').on('click', function(evt) {
+	// 	$('#upload-select').click();
+	// 	evt.preventDefault();
+	// });
 	$('#upload-select').on('change', function() {
 		var image = $('#upload-select').val();
 		$('#upload-form').submit();

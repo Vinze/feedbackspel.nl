@@ -3,7 +3,7 @@
 <head>
 	<% include ../includes/head %>
 </head>
-<body class="ingame client">
+<body class="ingame player">
 <% include ../includes/sidebar %>
 <div class="site-wrapper" id="content">
 	<!-- Users will be rendered here -->
@@ -37,7 +37,7 @@
 						<li class="clearfix">
 							<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
 							<div class="name">{{firstname}} {{lastname}}</div>
-							<div class="rating stars">
+							<div class="rating">
 								<label class="star{{rating[_id] >= 1 ? ' selected' : ''}}{{(rating[_id] + stars.available < 1) ? ' disabled' : ''}}">
 									<input type="radio" class="radio" name="rating[{{_id}}]" value="1" {{(rating[_id] + stars.available < 1) ? ' disabled' : '' }} on-click="setRating:{{this}}">
 								</label>
@@ -70,7 +70,8 @@
 		{{#if step == 2}}
 			<div class="waiting">
 				<h1>Feedback verzonden!</h1>
-				<p><strong>{{playersReady}}</strong> van de <strong>{{opponents.length + 1}}</strong> spelers zijn klaar.. <i class="fa fa-spin fa-spinner"></i> </p>
+				<p><strong>{{playersReady}}</strong> van de <strong>{{opponents.length + 1}}</strong> spelers zijn klaar.. <i class="fa fa-spin fa-spinner"></i></p>
+				<p><a href="#" on-click="changeRating">Mijn feedback aanpassen <i class="fa fa-edit"></i></a></p>
 			</div>
 		{{/if}}
 

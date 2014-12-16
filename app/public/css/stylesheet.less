@@ -787,15 +787,36 @@ body.sidebar-open {
 // Profile page
 //================================================
 
-.profile-avatar {
-	margin-bottom: 5px;
-	display: inline-block;
-	border-radius: 75px;
-	overflow: hidden;
-	img {
-		float: left;
+.dashboard {
+	.avatar {
+		margin-bottom: 5px;
+		display: inline-block;
+		border-radius: 75px;
+		overflow: hidden;
+		img {
+			float: left;
+		}
+	}
+	.upload {
+		position: relative;
+		color: @accent-color;
+		cursor: pointer;
+		display: block;
+		&:hover {
+			text-decoration: underline;
+		}
+		span {
+		}
+		input {
+			top: 0;
+			left: -100%;
+			position: absolute;
+			opacity: 0;
+			width: 200%;
+		}
 	}
 }
+
 
 //================================================
 // Game (global)
@@ -845,7 +866,7 @@ body.sidebar-open {
 	.game-title {
 		font-family: Lobster, @fonts;
 		color: #fff;
-		font-size: 2em;
+		font-size: 2.2em;
 		padding: 4px 15px 4px 12px;
 		display: inline-block;
 		background-color: @accent-color;
@@ -855,7 +876,7 @@ body.sidebar-open {
 		.border-radius(0 5px 5px 0);
 	}
 	.step {
-		font-size: 1.5em;
+		font-size: 2em;
 		margin: 30px auto;
 		background-color: #fff;
 		.box-shadow(0 0 5px #ccc);
@@ -866,51 +887,66 @@ body.sidebar-open {
 		}
 		h1 {
 			padding: 0px;
+			margin-bottom: 10px;
 			border: none;
 		}
 	}
-	.step.card {
+	.card {
 		width: 450px;
 		text-align: center;
 		padding: 60px 0;
 		h1 {
 			margin: 0;
-			font-size: 2.0em;
+			font-size: 1.6em;
 		}
 	}
-	.step.ready {
-		width: 450px;
-		text-align: center;
+	.results {
+		width: 680px;
+		padding: 15px 30px 20px 30px;
+		h1 {
+			font-size: 1.3em;
+		}
+		.result {
+			margin-bottom: 10px;
+			&>div {
+				vertical-align: middle;
+				display: inline-block;
+			}
+			.position {
+				width: 30px;
+				font-weight: bold;
+				font-size: 1.25em;
+				color: @accent-color;
+			}
+			.avatar {
+				width: 40px;
+				margin-right: 5px;
+				.border-radius(20px);
+			}
+			.name {
+				max-width: 300px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			.stars {
+				float: right;
+				color: @accent-color;
+				font-size: 1.25em;
+			}
+		}
+		button {
+			margin-top: 10px;
+			font-size: 0.8em;
+		}
 	}
-	.step.results {
-		width: 640px;
-		padding-top: 15px;
-		padding-bottom: 20px;
-		table {
-			margin-bottom: 20px;
-		}
-		td {
-			vertical-align: middle;
-			padding: 8px 0;
-		}
-		img {
-			width: 40px;
-			vertical-align: middle;
-			.border-radius(20px);
-		}
-		.rating {
-			color: @accent-color;
-			font-size: 1.25em;
-		}
-	}
-	.step.end {
+	.end {
 		width: 500px;
 		text-align: center;
 		font-size: 4em;
 		padding: 50px;
 	}
-
-	.players {
+	.players-list {
 		position: fixed;
 		width: 100%;
 		bottom: 0px;
@@ -956,9 +992,9 @@ body.sidebar-open {
 		}
 		.check {
 			position: absolute;
-			font-size: 1.4em;
-			bottom: 2px;
-			right: 10px;
+			font-size: 2em;
+			bottom: -5px;
+			right: 5px;
 			color: @accent-color;
 		}
 		&.active .avatar {
@@ -986,15 +1022,15 @@ body.sidebar-open {
 }
 
 //================================================
-// Game (client)
+// Game (player)
 //================================================
 
-.ingame.client {
+.ingame.player {
 	h1 {
-		margin-bottom: 10px;
 		padding: 0;
 		border: none;
 	}
+
 	.content {
 		padding: 10px 10px 70px 10px;
 		max-width: 400px;
@@ -1027,7 +1063,7 @@ body.sidebar-open {
 			margin-left: 80px;
 			padding: 8px 10px 5px 8px;
 		}
-		.rating.stars {
+		.rating {
 			margin-left: 80px;
 			padding-left: 5px;
 			.star {
@@ -1048,14 +1084,15 @@ body.sidebar-open {
 			}
 		}
 	}
+
 	.waiting {
 		text-align: center;
 		padding: 50px 0;
-		.spinner {
-			font-size: 4em;
-			margin-bottom: 20px;
+		p {
+			margin: 20px 0;
 		}
 	}
+
 	.results {
 		margin: 0px;
 		ul {

@@ -1,7 +1,7 @@
 var bcrypt   = require('bcrypt-nodejs');
 var moment   = require('moment');
 var fs       = require('fs');
-var exec     = require('child_process').exec;
+var gm       = require('gm');
 var auth     = require('../libs/auth');
 var validate = require('../libs/validator');
 var db       = require('../libs/datastore');
@@ -32,15 +32,15 @@ var UserController = {
 	postAvatar: function(req, res) {
 		var mimetypes = ['image/jpeg', 'image/png'];
 		if (req.files.image && inArray(req.files.image.mimetype, mimetypes)) {
-			var input = req.files.image.path;
-			var output = '/var/www/feedbackspel.nl/storage/avatars/' + req.user._id + '.png';
-			var command = 'convert ' + input + ' -resize "150x150^" -gravity center -crop 150x150+0+0 +repage ' + output;
-			
-			exec(command, function(err, stdout, stderr) {
+			var input = __dirname + '/../' + req.files.image.path;
+			var output = __dirname + '/../storage/avatars/' + req.user._id + '.png';
+
+			gm(input).out('-gravity', 'center').autoOrient().geometry(150, 150, '^').crop(150, 150).write(output, function(err) {
 				if (err) console.log(err);
 				res.redirect('/dashboard');
 				fs.unlink(input);
 			});
+			// var command = 'convert ' + input + ' -resize "150x150^" -gravity center -crop 150x150+0+0 +repage ' + output;
 		} else {
 			fs.unlink(req.files.image.path);
 			res.redirect('/dashboard');
