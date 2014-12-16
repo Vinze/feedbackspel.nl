@@ -2,8 +2,9 @@ var socketio  = require('socket.io');
 var jwt       = require('jwt-simple');
 var _         = require('underscore');
 var moment    = require('moment');
-var db        = require('../libs/datastore');
 var config    = require('../libs/config');
+var auth      = require('../libs/auth');
+var db        = require('../libs/datastore');
 var Room      = require('../libs/gameroom');
 
 var Game = new Room();
@@ -45,8 +46,8 @@ var SocketController = function(server) {
 		client.room = client.handshake.query.room; // roomnumber
 
 		try {
-			var data = jwt.decode(token, config.jwt_secret);
-			findUser(data.user_id, function(err, user) {
+			var tokenData = jwt.decode(token, config.jwt_secret);
+			findUser(tokenData.userId, function(err, user) {
 				client.playerId = user._id;
 				if (client.role == 'player') {
 					user.status = 'active';

@@ -27,22 +27,15 @@ var auth = {
 			};
 		}
 
-		function validateToken(tokenData) {
-			var age = moment().unix() - tokenData.iss;
-			var maxAge = 3600 * 24 * 365;
-			return (age < maxAge && tokenData.ip == req.connection.remoteAddress);
-		}
-
 		try {
 			var tokenData = jwt.decode(token, config.jwt_secret);
-			if (validateToken(tokenData)) {
-				db.users.findById(tokenData.user_id, function(err, user) {
+			if (auth.validateToken(tokenData, req)) {
+				db.users.findById(tokenData.userId, function(err, user) {
 					if (user) setUser(user);
 					next();
 				});
 			} else {
-				console.log('INVALID TOKEN!!!!!!!')
-				// res.clearCookie('fbs_token');
+				res.clearCookie('fbs_token');
 				next();
 			}
 		} catch(err) {
@@ -51,9 +44,15 @@ var auth = {
 		}
 	},
 
+	validateToken: function(tokenData, req) {
+		var age = moment().unix() - tokenData.iss;
+		var maxAge = 3600 * 24 * 365;
+		return (age < maxAge && tokenData.ip == req.connection.remoteAddress);
+	},
+
 	setToken: function(user, req) {
 		var tokenData = {
-			user_id: user._id,
+			userId: user._id,
 			ip: req.connection.remoteAddress,
 			iss: moment().unix()
 		};
@@ -72,7 +71,7 @@ var auth = {
 
 	isGuest: function(req, res, next) {
 		if (req.user) {
-			res.redirect('/dashboard');
+			res.redirect('/start');
 		} else {
 			next();
 		}
