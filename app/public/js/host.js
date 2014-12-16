@@ -32,6 +32,13 @@ Game.on({
 	exitFullscreen: function() {
 		Game.set('fullscreen', false);
 		exitFullscreen();
+	},
+	restart: function(evt) {
+		var restart = confirm('Spel herstarten?');
+		if (restart) {
+			socket.emit('game.restart');
+		}
+		evt.original.preventDefault();
 	}
 });
 

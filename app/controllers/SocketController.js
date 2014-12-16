@@ -85,6 +85,11 @@ var SocketController = function(server) {
 			sendState();
 		});
 
+		client.on('game.restart', function() {
+			Game.resetState();
+			sendState();
+		});
+
 		client.on('disconnect', function() {
 			if (client.role == 'player') {
 				Game.setPlayer({

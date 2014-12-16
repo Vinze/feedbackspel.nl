@@ -13,9 +13,8 @@ var _ = require('underscore');
 var Gameroom = function() {
 
 	var round   = 1;
-	var card    = null;
-	var players = [];
 	var cards   = [];
+	var players = [];
 
 	this.setCards = function(customCards) {
 		cards = customCards;
@@ -142,6 +141,14 @@ var Gameroom = function() {
 			playersReady: this.getPlayersReady(),
 			summary: this.getSummary()
 		};
+	}
+
+	this.resetState = function() {
+		_.each(players, function(player) {
+			player.ratings = {};
+			player.step = 1;
+		});
+		round = 1;
 	}
 
 }
