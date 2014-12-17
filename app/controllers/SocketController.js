@@ -35,32 +35,42 @@ function findUser(userId, callback) {
 var SocketController = function(server) {
 	var io = socketio.listen(server, { log: false });
 
+	io.use(function(client, next) {
+		var token = client.handshake.query.token;
+
+		auth.validateToken(token, function(err, tokenData) {
+			if (err) {
+				console.log('Token error:', err);
+				return;
+			}
+
+			findUser(tokenData.userId, function(err, user) {
+				if (user) {
+					client.playerId = user._id;
+					client.role = client.handshake.query.role; // host or player
+					client.room = client.handshake.query.room; // roomnumber
+
+					if (client.role == 'player') {
+						user.status = 'active';
+						user.socketId = client.id;
+						user.name = user.firstname + ' ' + user.lastname;
+						Game.setPlayer(user);
+						client.emit('userId', user._id);
+					}
+					
+					next();
+				}
+			});
+		});
+	});
+
 	function sendState() {
 		io.emit('gamestate', Game.getState());
 	}
 
 	io.on('connection', function(client) {
 
-		var token = client.handshake.query.token;
-		client.role = client.handshake.query.role; // host or player
-		client.room = client.handshake.query.room; // roomnumber
-
-		try {
-			var tokenData = jwt.decode(token, config.jwt_secret);
-			findUser(tokenData.userId, function(err, user) {
-				client.playerId = user._id;
-				if (client.role == 'player') {
-					user.status = 'active';
-					user.socketId = client.id;
-					user.name = user.firstname + ' ' + user.lastname;
-					Game.setPlayer(user);
-					client.emit('userId', user._id);
-				}
-				sendState();
-			});
-		} catch(err) {
-			console.log(err);
-		}
+		sendState();
 
 		client.on('player.ready', function(rating) {
 			_.each(rating, function(rating, toPlayerId) {

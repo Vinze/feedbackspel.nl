@@ -18,8 +18,11 @@
 
 <script type="text/template" id="form-template">
 	<h1>Inloggen</h1>
-	{{#if error}}
-		<div class="flash-error" intro="slide">{{error}}</div>
+	{{#if message.error}}
+		<div class="flash-error" intro="slide">{{message.error}}</div>
+	{{/if}}
+	{{#if message.success}}
+		<div class="flash-success" intro="slide">{{message.success}}</div>
 	{{/if}}
 	<form action="/api/login" method="post" on-submit="send">
 		<div class="form-group">
@@ -41,7 +44,7 @@ var LoginForm = new Ractive({
 	template: '#form-template',
 	data: {
 		input: { email: '', password: '' },
-		error: null
+		message: { error: null, success: null }
 	}
 });
 
@@ -50,14 +53,14 @@ LoginForm.on('send', function(evt) {
 	if (input.email.length > 2 && input.password) {
 		$.post('/api/login', input, function(res) {
 			if (res.error) {
-				LoginForm.set('error', res.error);
+				LoginForm.set('message.error', res.error);
 			} else {
 				Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
 				window.location.replace('/start');
 			}
 		});
 	} else {
-		LoginForm.set('error', 'Voer een e-mail adres & wachtwoord in!');
+		LoginForm.set('message.error', 'Voer een e-mail adres & wachtwoord in!');
 	}
 	evt.original.preventDefault();
 });
@@ -66,6 +69,7 @@ if (location.search) {
 	var params = location.search.split('=');
 	if (params.length == 2) {
 		LoginForm.set('input.email', params[1]);
+		LoginForm.set('message.success', 'Je kunt nu inloggen!');
 	}
 }
 

@@ -452,7 +452,7 @@ i.required {
 .flash-error,
 .flash-notice {
 	color: #555;
-	padding: 10px;
+	padding: 10px 15px;
 	margin-bottom: 15px;
 	.border-radius(5px);
 	a {
@@ -534,6 +534,29 @@ div.box {
 	.box-shadow(0 0 5px #444);
 }
 
+.avatar {
+	display: inline-block;
+	overflow: hidden;
+	border: 4px solid @accent-color;
+	.border-radius(1000px);
+	img {
+		float: left;
+	}
+}
+
+.file-input {
+	cursor: pointer;
+	margin: 0; padding: 0;
+	color: @accent-color;
+	display: block;
+	&:hover {
+		text-decoration: underline;
+	}
+	input {
+		display: none;
+	}
+}
+
 //================================================
 // Site layout
 //================================================
@@ -606,9 +629,10 @@ body {
 	}
 	a {
 		display: block;
-		padding: 18px 10px;
+		padding: 22px 10px 23px 10px;
 		color: @font-color;
 		text-decoration: none;
+		line-height: 1;
 		&:hover {
 			color: @accent-color;
 			text-decoration: none;
@@ -783,37 +807,35 @@ body.sidebar-open {
 	}
 }
 
+
+//================================================
+// Profile image select
+//================================================
+
+.select-avatar {
+	.file-input {
+		margin-bottom: 15px;
+	}
+	.avatar-preview {
+		width: 158px; height: 158px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-image: url('../img/placeholder.png');
+	}
+}
+
+
+
 //================================================
 // Profile page
 //================================================
 
 .dashboard {
 	.avatar {
+		width: 158px;
+		height: 158px;
 		margin-bottom: 5px;
-		display: inline-block;
-		border-radius: 75px;
-		overflow: hidden;
-		img {
-			float: left;
-		}
-	}
-	.upload {
-		position: relative;
-		color: @accent-color;
-		cursor: pointer;
-		display: block;
-		&:hover {
-			text-decoration: underline;
-		}
-		span {
-		}
-		input {
-			top: 0;
-			left: -100%;
-			position: absolute;
-			opacity: 0;
-			width: 200%;
-		}
 	}
 }
 
@@ -850,12 +872,7 @@ body.sidebar-open {
 	// 	display: block;
 	// 	font-size: 2em;
 	// }
-	.avatar {
-		overflow: hidden;
-		img {
-			float: left;
-		}
-	}
+	
 }
 
 //================================================
@@ -920,8 +937,8 @@ body.sidebar-open {
 			}
 			.avatar {
 				width: 40px;
-				margin-right: 5px;
-				.border-radius(20px);
+				margin: 0 5px 0 0;
+				border: none;
 			}
 			.name {
 				max-width: 300px;
@@ -971,6 +988,7 @@ body.sidebar-open {
 			height: 83px;
 			border-radius: 75px;
 			border: 4px solid #BBB;
+			margin: 0;
 			.transition(opacity 500ms);
 			img {
 				background-color: #fff;
@@ -1055,9 +1073,7 @@ body.sidebar-open {
 			width: 70px;
 			float: left;
 			margin: 5px;
-			img {
-				.border-radius(70px);
-			}
+			border: none;
 		}
 		.name {
 			margin-left: 80px;
@@ -1116,11 +1132,10 @@ body.sidebar-open {
 				display: inline-block;
 			}
 			.avatar {
-				display: inline-block;
 				vertical-align: middle;
-				margin-right: 5px;
-				.border-radius(36px);
+				margin-right: 5px;				
 				width: 36px;
+				border: none;
 			}
 		}
 		.rating {

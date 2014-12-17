@@ -15,39 +15,68 @@ var auth = {
 
 		if ( ! token) return next();
 
-		function setUser(user) {
-			req.user = {
-				_id: user._id,
-				email: user.email,
-				firstname: user.firstname,
-				lastname: user.lastname,
-				gender: user.gender,
-				image: user.image,
-				admin: user.admin
-			};
-		}
-
-		try {
-			var tokenData = jwt.decode(token, config.jwt_secret);
-			if (auth.validateToken(tokenData, req)) {
-				db.users.findById(tokenData.userId, function(err, user) {
-					if (user) setUser(user);
-					next();
-				});
-			} else {
-				res.clearCookie('fbs_token');
-				next();
+		auth.validateToken(token, function(err, tokenData) {
+			if (err) {
+				console.log('Invalid token:', err);
+				return next();
 			}
-		} catch(err) {
-			console.log(err);
-			next();
-		}
+			db.users.findById(tokenData.userId, function(err, user) {
+				if (user) {
+					req.user = {
+						_id: user._id,
+						email: user.email,
+						firstname: user.firstname,
+						lastname: user.lastname,
+						gender: user.gender,
+						image: user.image,
+						admin: user.admin
+					};
+				}
+				next();
+			});
+		});
+
+		// try {
+		// 	var tokenData = jwt.decode(token, config.jwt_secret);
+		// 	if (auth.validateToken(tokenData, req)) {
+		// 		db.users.findById(tokenData.userId, function(err, user) {
+		// 			if (user) setUser(user);
+		// 			next();
+		// 		});
+		// 	} else {
+		// 		res.clearCookie('fbs_token');
+		// 		next();
+		// 	}
+		// } catch(err) {
+		// 	console.log(err);
+		// 	next();
+		// }
 	},
 
-	validateToken: function(tokenData, req) {
-		var age = moment().unix() - tokenData.iss;
-		var maxAge = 3600 * 24 * 365;
-		return (age < maxAge && tokenData.ip == req.connection.remoteAddress);
+	// validateToken: function(tokenData, req) {
+	// 	var age = moment().unix() - tokenData.iss;
+	// 	var maxAge = 3600 * 24 * 365;
+	// 	return (age < maxAge && tokenData.ip == req.connection.remoteAddress);
+	// },
+
+	validateToken: function(token, callback) {
+		if (token) {
+			try {
+				var tokenData = jwt.decode(token, config.jwt_secret);
+				var age = moment().unix() - tokenData.iss;
+				var maxAge = 3600 * 24 * 365;
+
+				if (age < maxAge) {
+					callback(null, tokenData);
+				} else {
+					callback('max age expired');
+				}
+			} catch(err) {
+				callback(err);
+			}
+		} else {
+			callback('no token');
+		}
 	},
 
 	setToken: function(user, req) {

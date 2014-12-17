@@ -15,13 +15,16 @@
 				
 			</div>
 			<div class="box col span-4 align-center">
-				<div class="avatar">
-					<img src="/avatar/<%= user._id %>.png">
-				</div>
-				<form action="/avatar" method="post" enctype="multipart/form-data" class="upload" id="upload-form">
-					<!-- <p><a href="#" id="upload-link"><i class="fa fa-picture-o"></i> Wijzig afbeelding</a></p> -->
-					<input type="file" name="image" id="upload-select">
-					<span><i class="fa fa-picture-o"></i> Wijzig afbeelding</span>
+				<form action="/avatar" method="post" enctype="multipart/form-data" id="upload-form">
+					<label class="file-input">
+					<div>
+						<div class="avatar">
+							<img src="/avatar/<%= user._id %>.png">
+						</div>
+					</div>
+						<input type="file" name="image" id="upload-select">
+						<i class="fa fa-picture-o"></i> Wijzig afbeelding
+					</label>
 				</form>
 			</div>
 		</div>

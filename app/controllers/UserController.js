@@ -41,11 +41,13 @@ var UserController = {
 		var mimetypes = ['image/jpeg', 'image/png'];
 
 		if (req.files && req.files.image) {
+			var input = __dirname + '/../' + req.files.image.path;
+			
 			if ( ! inArray(req.files.image.mimetype, mimetypes)) {
-				fs.unlink(req.files.image.path);
+				fs.unlink(input);
 				return res.redirect('/start');
 			}
-			var input = __dirname + '/../' + req.files.image.path;
+
 			var output = __dirname + '/../storage/avatars/' + req.user._id + '.png';
 			var convert = spawn('convert', [input, '-resize', '150x150^', '-gravity', 'center', '-crop', '150x150+0+0', '+repage', '-auto-orient', output]);
 
@@ -113,7 +115,7 @@ var UserController = {
 					firstname: input.firstname,
 					lastname: input.lastname,
 					gender: input.gender,
-					avatar: false,
+					image: false,
 					admin: false,
 					created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
 					updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
