@@ -122,10 +122,14 @@ var UserController = {
 				}, function(err, user) {
 					req.flash('email', user.email);
 					req.flash('message', { type: 'success', text: 'Je kunt nu inloggen.' });
-					res.redirect('/login?email=' + input.email);
+					res.redirect('/inloggen?email=' + input.email);
 				});
 			});
 		});
+	},
+
+	getForgetPassword: function(req, res) {
+		res.render('users/forgot-password');
 	},
 
 	getEmail: function(req, res) {

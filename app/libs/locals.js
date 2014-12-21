@@ -8,12 +8,12 @@ module.exports = function(req, res, next) {
 		res.locals.menu_items = [
 			{ label: 'Dashboard', url: '/start', classname: 'fa-home' },
 			// { label: 'Mijn profiel', url: '/profile', classname: 'fa-user' },
-			{ label: 'Uitloggen', url: '/logout', classname: 'fa-sign-out' }
+			{ label: 'Uitloggen', url: '/uitloggen', classname: 'fa-sign-out' }
 		];
 	} else {
 		res.locals.menu_items = [
-			{ label: 'Registreren', url: '/register', classname: 'fa-user' },
-			{ label: 'Inloggen', url: '/login', classname: 'fa-sign-in' },
+			{ label: 'Registreren', url: '/registreren', classname: 'fa-user' },
+			{ label: 'Inloggen', url: '/inloggen', classname: 'fa-sign-in' },
 		];
 	}
 

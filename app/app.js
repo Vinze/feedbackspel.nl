@@ -56,10 +56,11 @@ app.use(require('./libs/locals'))
 // Routes
 app.get('/', HomeController.getIndex)
 
-app.get('/login', auth.isGuest, UserController.getLogin);
-app.get('/register', auth.isGuest, UserController.getRegister);
-app.post('/register', auth.isGuest, UserController.postRegister);
-app.get('/logout', auth.isMember, UserController.getLogout);
+app.get('/inloggen', auth.isGuest, UserController.getLogin);
+app.get('/registreren', auth.isGuest, UserController.getRegister);
+app.post('/registreren', auth.isGuest, UserController.postRegister);
+app.get('/wachtwoord-vergeten', auth.isGuest, UserController.getForgetPassword);
+app.get('/uitloggen', auth.isMember, UserController.getLogout);
 
 app.get('/start', auth.isMember, UserController.getStart);
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar);

@@ -15,9 +15,6 @@
 	</div>
 </div>
 <% include ../includes/bottom %>
-
-<script type="text/javascript" src="/js/libs/validator.min.js"></script>
-
 <script type="text/template" id="form-tpl">
 	<h1>Registreren</h1>
 	<form action="/register" method="post" id="register-form" on-submit="validate">
@@ -105,87 +102,7 @@
 		</div>
 	</form>
 </script>
-
-<script type="text/javascript">
-	var form = new Ractive({
-		el: 'content',
-		template: '#form-tpl',
-		data: {
-			email:     { value: '', error: null },
-			firstname: { value: '', error: null },
-			lastname:  { value: '', error: null },
-			gender:    { value: 'm', error: null },
-			password:  { value: '', error: null },
-			password2: { value: '', error: null },
-			errors:    false
-		}
-	});
-
-	form.on({
-		validate: function(evt, field) {
-			form.set('errors', false);
-			form.fire('validateEmail');
-			form.fire('validateFirstname');
-			form.fire('validateLastname');
-			form.fire('validateGender');
-			form.fire('validatePassword');
-
-			if (form.get('errors')) {
-				evt.original.preventDefault();
-			}
-		},
-		validateEmail: function() {
-			if ( ! validator.isEmail(form.get('email.value'))) {
-				form.set('email.error', 'Geen geldig e-mail adres');
-				form.set('errors', true);
-			} else {
-				$.post('/api/users/check-email', { email: form.get('email.value') }, function(res) {
-					if (res.exists) {
-						form.set('email.error', 'Dit e-mail adres is al in gebruikt');
-						form.set('errors', true);
-					} else {
-						form.set('email.error', null);
-					}
-				});
-			}
-		},
-		validateFirstname: function() {
-			if ( ! validator.isLength(form.get('firstname.value'), 2)) {
-				form.set('firstname.error', 'Dit veld is verplicht');
-				form.set('errors', true);
-			} else {
-				form.set('firstname.error', null);
-			}
-		},
-		validateLastname: function() {
-			if ( ! validator.isLength(form.get('lastname.value'), 2)) {
-				form.set('lastname.error', 'Dit veld is verplicht');
-				form.set('errors', true);
-			} else {
-				form.set('lastname.error', null);
-			}
-		},
-		validateGender: function() {
-			if ( ! validator.isIn(form.get('gender.value'), ['m', 'f'])) {
-				form.set('gender.error', 'Dit veld is verplicht');
-				form.set('errors', true);
-			} else {
-				form.set('gender.error', null);
-			}
-		},
-		validatePassword: function() {
-			if ( ! validator.isLength(form.get('password.value'), 4)) {
-				form.set('password.error', 'Het wachtwoord moet minimaal 4 karakters lang zijn');
-				form.set('errors', true);
-			} else if (form.get('password.value') != form.get('password2.value')) {
-				form.set('password.error', null);
-				form.set('password2.error', 'Wachtwoorden komen niet overeen!');
-			} else {
-				form.set('password.error', null);
-				form.set('password2.error', null);
-			}
-		}
-	});
-</script>
+<script type="text/javascript" src="/js/libs/validator.min.js"></script>
+<script type="text/javascript" src="/js/register.js"></script>
 </body>
 </html>
