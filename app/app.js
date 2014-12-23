@@ -42,7 +42,7 @@ app.use(session({
 }))
 
 // Use the mutler middleware for file uploads
-app.use(multer({ dest: './storage/tmp/'}))
+app.use(multer({ dest: 'storage/tmp/' }))
 
 // Enable the JWToken parser
 app.use(auth.tokenParser)
