@@ -1,11 +1,8 @@
 var assert = require('assert')
 var expect = require('expect.js');
 
-var Room = require('../libs/gameroom.js');
-
-var cards = ['Betrouwbaar', 'Geduldig', 'Roekeloos'];
-
-var Game = new Room();
+var Gameroom = require('../libs/gameroom.js');
+// var Game = new Room();
 
 var player1 = { _id: 1, firstname: 'Vincent', lastname: '', role: 'player', room: 10 };
 var player2 = { _id: 2, firstname: 'Henk', lastname: '', role: 'player', room: 10 };
@@ -15,33 +12,40 @@ var player4 = { _id: 4, firstname: 'Nienke', lastname: '', role: 'player', room:
 describe('managing cards', function() {
 
 	it('should be able to set and get the cards', function() {
-		Game.room(10).setCards(cards);
-		var gameCards = Game.room(10).getCards();
+		Gameroom(10).setCards(['Betrouwbaar', 'Geduldig', 'Roekeloos']);
+		Gameroom(5).setCards(['Zelfverzekerd']);
+	});
 
-		expect(gameCards.length).to.be(3);
+	it('should be able to retrieve the cards', function() {
+		var cardsRoom10 = Gameroom(10).getCards();
+		var cardsRoom5 = Gameroom(5).getCards();
+
+		expect(cardsRoom10.length).to.be(3);
+		expect(cardsRoom5.length).to.be(1);
 	});
 
 });
 
+
 describe('managing players', function() {
 
 	it('should be able to insert some players', function() {
-		Game.setPlayer(player1);
-		Game.setPlayer(player2);
-		Game.setPlayer(player3);
-		Game.setPlayer(player4);
+		Gameroom().setPlayer(player1);
+		Gameroom().setPlayer(player2);
+		Gameroom().setPlayer(player3);
+		Gameroom().setPlayer(player4);
 	})
 
 	it('should retrieve all players', function() {
-		var players = Game.room(10).getPlayers();
+		var players = Gameroom(10).getPlayers();
 		expect(players.length).to.be(3);
 
-		var players = Game.room(5).getPlayers();
+		var players = Gameroom(5).getPlayers();
 		expect(players.length).to.be(1);
 	});
 
 	it('should retrieve a single player by id', function() {
-		var player = Game.getPlayer(1);
+		var player = Gameroom().getPlayer(1);
 		expect(player).to.be.object;
 	});
 
@@ -51,31 +55,38 @@ describe('managing rooms', function() {
 
 	it('should only return players in a specific room', function() {
 		// Get the players from room 10
-		var playersRoom10 = Game.room(10).getPlayers();
+		var playersRoom10 = Gameroom(10).getPlayers();
 		expect(playersRoom10.length).to.be(3);
 
 		// Get the players from room 5
-		var playersRoom5 = Game.room(5).getPlayers();
-		expect(playersRoom5.length).to.be(1);
+		Gameroom().setPlayer({ _id: 3, room : 5 });
+		var playersRoom5 = Gameroom(5).getPlayers();
+		expect(playersRoom5.length).to.be(2);
+	});
+
+
+	after(function() {
+		Gameroom().setPlayer({ _id: 3, room : 10 });
 	});
 
 });
+
 
 describe('managing feedback', function() {
 
 	it('should be able to set and get feedback', function() {
 		// Insert the feedback
-		Game.setFeedback({ from: 1, to: 2, rating: 5 }); // (from user 1 to user 2 with a rating of 5)
-		Game.setFeedback({ from: 1, to: 3, rating: 4 }); // (from user 1 to user 3 with a rating of 2)
-		Game.setFeedback({ from: 2, to: 3, rating: 4 }); // (from user 2 to user 3 with a rating of 3)
+		Gameroom().setFeedback({ from: 1, to: 2, rating: 5 }); // (from user 1 to user 2 with a rating of 5)
+		Gameroom().setFeedback({ from: 1, to: 3, rating: 4 }); // (from user 1 to user 3 with a rating of 2)
+		Gameroom().setFeedback({ from: 2, to: 3, rating: 4 }); // (from user 2 to user 3 with a rating of 3)
 
 		// Set the users to step 2 (= ready)
-		Game.setPlayerStep(1, 2);
-		Game.setPlayerStep(2, 2);
+		Gameroom().setPlayerStep(1, 2);
+		Gameroom().setPlayerStep(2, 2);
 
-		var feedbackPlayer1 = Game.getFeedback(1); // Get feedback of user 1
-		var feedbackPlayer2 = Game.getFeedback(2); // Get feedback of user 2
-		var feedbackPlayer3 = Game.getFeedback(3); // Get feedback of user 3
+		var feedbackPlayer1 = Gameroom().getFeedback(1); // Get feedback of user 1
+		var feedbackPlayer2 = Gameroom().getFeedback(2); // Get feedback of user 2
+		var feedbackPlayer3 = Gameroom().getFeedback(3); // Get feedback of user 3
 
 		expect(feedbackPlayer1.length).to.be(0); // User 1 hasn't received any feedback
 		expect(feedbackPlayer2.length).to.be(1); // User 2 has received feedback from 1 user
@@ -83,11 +94,11 @@ describe('managing feedback', function() {
 
 		expect(feedbackPlayer2[0].from).to.eql({ _id: 1, firstname: 'Vincent', lastname: '' });
 
-		expect(Game.room(10).getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
+		expect(Gameroom(10).getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
 	});
 
 	it('should be able to get the results of a game', function() {
-		var summary = Game.getSummary();
+		var summary = Gameroom(10).getSummary();
 		expect(summary.length).to.be(2);
 		expect(summary[0]).to.eql({ _id: 3, firstname: 'Jantje', lastname: '', rating: 8 });
 		expect(summary[1]).to.eql({ _id: 2, firstname: 'Henk', lastname: '', rating: 5 });
@@ -98,17 +109,19 @@ describe('managing feedback', function() {
 describe('managing rounds', function() {
 
 	it('should be able to get the game state', function() {
-		var gameState = Game.room(10).getState();
+		var gameState = Gameroom(10).getState();
+
 		expect(gameState.round).to.be(1);
 		expect(gameState.card).to.be('Betrouwbaar');
 		expect(gameState.players.length).to.be(3);
 	});
 
 	it('should be able to get to the next round', function() {
-		Game.room(10).nextRound();
-		expect(Game.getSummary().length).to.be(0);
-		expect(Game.getRound()).to.be(2);
-		expect(Game.getCard()).to.be('Geduldig');
+		Gameroom(10).nextRound();
+
+		expect(Gameroom(10).getSummary().length).to.be(0);
+		expect(Gameroom(10).getRound()).to.be(2);
+		expect(Gameroom(10).getCard()).to.be('Geduldig');
 	});
 
 });
@@ -116,13 +129,25 @@ describe('managing rounds', function() {
 describe('removing players', function() {
 
 	it('should be able to remove a user', function() {
-		Game.removePlayer(2);
+		Gameroom().removePlayer(2);
 
-		var players = Game.getPlayers();
-		var player = Game.getPlayer(2);
+		var players = Gameroom(10).getPlayers();
+		var player = Gameroom().getPlayer(2);
 
 		expect(players.length).to.be(2);
 		expect(typeof player).to.be('undefined');
+	});
+
+});
+
+describe('managing games', function() {
+
+	it('should be able to reset a game', function() {
+		// resetState
+		Gameroom(10).resetState();
+
+		var gameState = Gameroom(10).getState();
+
 	});
 
 });
