@@ -66,6 +66,7 @@ app.get('/start', auth.isMember, UserController.getStart);
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
 
+app.get('/host', auth.isMember, GameController.getCreate);
 app.get('/host/:room', auth.isMember, GameController.getHost);
 app.get('/play/:room', auth.isMember, GameController.getPlay);
 

@@ -9,7 +9,7 @@ var Room      = require('../libs/gameroom');
 
 var Game = new Room();
 
-Game.setCards([
+var cards = [
 	'Betrouwbaar',
 	'Geduldig',
 	'Roekeloos',
@@ -25,7 +25,9 @@ Game.setCards([
 	'Gedisciplineerd',
 	'Nieuwsgierig',
 	'Snel afgeleid'
-]);
+];
+
+Game.setCards(cards);
 
 function findUser(userId, callback) {
 	var fields = { _id: 1, email: 1, firstname: 1, lastname: 1, gender: 1 };
@@ -45,30 +47,33 @@ var SocketController = function(server) {
 			}
 
 			findUser(tokenData.userId, function(err, user) {
-				if (user) {
-					client.playerId = user._id;
-					client.role = client.handshake.query.role; // host or player
-					client.room = client.handshake.query.room; // roomnumber
+				if ( ! user) return;
 
-					if (client.role == 'player') {
-						user.status = 'active';
-						user.socketId = client.id;
-						user.name = user.firstname + ' ' + user.lastname;
-						Game.setPlayer(user);
-						client.emit('userId', user._id);
-					}
-					
-					next();
+				client.playerId = user._id;
+				client.role = client.handshake.query.role; // host or player
+				client.room = client.handshake.query.room; // roomnumber
+
+				client.join(client.room);
+
+				if (client.role == 'player') {
+					user.status = 'active';
+					user.socketId = client.id;
+					user.name = user.firstname + ' ' + user.lastname;
+					user.room = client.room;
+					Game.setPlayer(user);
+					client.emit('userId', user._id);
 				}
+				
+				next();
 			});
 		});
 	});
 
-	function sendState() {
-		io.emit('gamestate', Game.getState());
-	}
-
 	io.on('connection', function(client) {
+
+		function sendState() {
+			io.in(client.room).emit('gamestate', Game.getState());
+		}
 
 		sendState();
 
@@ -87,7 +92,7 @@ var SocketController = function(server) {
 
 		client.on('round.next', function() {
 			Game.nextRound();
-			io.emit('round.next', Game.getState());
+			io.in(client.room).emit('round.next', Game.getState());
 		});
 
 		client.on('player.remove', function(playerId) {

@@ -3,35 +3,60 @@ var expect = require('expect.js');
 
 var Room = require('../libs/gameroom.js');
 
-var cards = [
-	'Betrouwbaar', 'Geduldig', 'Roekeloos'
-];
+var cards = ['Betrouwbaar', 'Geduldig', 'Roekeloos'];
 
 var Game = new Room();
 
-Game.setCards(cards);
+var player1 = { _id: 1, firstname: 'Vincent', lastname: '', role: 'player', room: 10 };
+var player2 = { _id: 2, firstname: 'Henk', lastname: '', role: 'player', room: 10 };
+var player3 = { _id: 3, firstname: 'Jantje', lastname: '', role: 'player', room: 10 };
+var player4 = { _id: 4, firstname: 'Nienke', lastname: '', role: 'player', room: 5 };
 
-var player1 = { _id: 1, firstname: 'Vincent', lastname: '', role: 'player' };
-var player2 = { _id: 2, firstname: 'Henk', lastname: '', role: 'player' };
-var player3 = { _id: 3, firstname: 'Jantje', lastname: '', role: 'player' };
+describe('managing cards', function() {
+
+	it('should be able to set and get the cards', function() {
+		Game.room(10).setCards(cards);
+		var gameCards = Game.room(10).getCards();
+
+		expect(gameCards.length).to.be(3);
+	});
+
+});
 
 describe('managing players', function() {
 
 	it('should be able to insert some players', function() {
-		// Insert some players
 		Game.setPlayer(player1);
 		Game.setPlayer(player2);
 		Game.setPlayer(player3);
+		Game.setPlayer(player4);
 	})
 
 	it('should retrieve all players', function() {
-		var players = Game.getPlayers();
+		var players = Game.room(10).getPlayers();
 		expect(players.length).to.be(3);
+
+		var players = Game.room(5).getPlayers();
+		expect(players.length).to.be(1);
 	});
 
 	it('should retrieve a single player by id', function() {
 		var player = Game.getPlayer(1);
 		expect(player).to.be.object;
+	});
+
+});
+
+describe('managing rooms', function() {
+
+	it('should only return players in a specific room', function() {
+		// Get the players from room 10
+		var playersRoom10 = Game.room(10).getPlayers();
+		expect(playersRoom10.length).to.be(3);
+
+		// Get the players from room 5
+		var playersRoom5 = Game.room(5).getPlayers();
+		expect(playersRoom5.length).to.be(1);
 	});
 
 });
@@ -58,7 +83,7 @@ describe('managing feedback', function() {
 
 		expect(feedbackPlayer2[0].from).to.eql({ _id: 1, firstname: 'Vincent', lastname: '' });
 
-		expect(Game.getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
+		expect(Game.room(10).getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
 	});
 
 	it('should be able to get the results of a game', function() {
@@ -73,14 +98,14 @@ describe('managing feedback', function() {
 describe('managing rounds', function() {
 
 	it('should be able to get the game state', function() {
-		var gameState = Game.getState();
+		var gameState = Game.room(10).getState();
 		expect(gameState.round).to.be(1);
 		expect(gameState.card).to.be('Betrouwbaar');
 		expect(gameState.players.length).to.be(3);
 	});
 
 	it('should be able to get to the next round', function() {
-		Game.nextRound();
+		Game.room(10).nextRound();
 		expect(Game.getSummary().length).to.be(0);
 		expect(Game.getRound()).to.be(2);
 		expect(Game.getCard()).to.be('Geduldig');

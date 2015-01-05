@@ -12,12 +12,24 @@ var _ = require('underscore');
 
 var Gameroom = function() {
 
-	var round   = 1;
-	var cards   = [];
-	var players = [];
+	// var round   = 1;
+	// var cards   = [];
+	// var room = null;
 
-	this.setCards = function(customCards) {
-		cards = customCards;
+	var players = [];
+	var room = null;
+	var state = {};
+
+	this.room = function(roomId) {
+		room = roomId;
+		if ( ! state[room]) {
+			state[room] = { round: 1, cards: [] };
+		}
+		return this;
+	}
+
+	this.setCards = function(cards) {
+		state[room].cards = _.clone(cards);
 	}
 
 	this.setPlayer = function(playerData) {
@@ -49,13 +61,18 @@ var Gameroom = function() {
 	}
 	
 	this.getPlayersReady = function() {
+		var players = this.getPlayers();
+
 		return _.reduce(players, function(memo, player) {
 			return (player.step == 2) ? memo + 1 : memo;
 		}, 0);
 	}
 
 	this.getPlayers = function() {
-		return _.sortBy(players, function(player) {
+		var playersInRoom = _.filter(players, function(player) {
+			return player.room == room;
+		});
+		return _.sortBy(playersInRoom, function(player) {
 			return player.firstname;
 		});
 	}
@@ -96,6 +113,7 @@ var Gameroom = function() {
 
 	this.getSummary = function() {
 		var summary = {};
+		var players = this.getPlayers();
 
 		_.each(players, function(player) {
 			_.each(player.ratings, function(ratings) {
@@ -118,19 +136,26 @@ var Gameroom = function() {
 	}
 
 	this.nextRound = function() {
+		var players = this.getPlayers();
+
 		_.each(players, function(player) {
 			player.ratings = {};
 			player.step = 1;
 		});
-		round++;
+
+		state[room].round++;
 	}
 
 	this.getRound = function() {
-		return round;
+		return state[room].round;
 	}
 
 	this.getCard = function() {
-		return cards[round - 1] || null;
+		return state[room].cards[state[room].round - 1] || null;
+	}
+
+	this.getCards = function() {
+		return state[room].cards;
 	}
 
 	this.getState = function() {
@@ -148,7 +173,7 @@ var Gameroom = function() {
 			player.ratings = {};
 			player.step = 1;
 		});
-		round = 1;
+		state[room].round = 1;
 	}
 
 }
