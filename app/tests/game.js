@@ -2,14 +2,13 @@ var assert = require('assert')
 var expect = require('expect.js');
 
 var Gameroom = require('../libs/gameroom.js');
-// var Game = new Room();
 
 var player1 = { _id: 1, firstname: 'Vincent', lastname: '', role: 'player', room: 10 };
 var player2 = { _id: 2, firstname: 'Henk', lastname: '', role: 'player', room: 10 };
 var player3 = { _id: 3, firstname: 'Jantje', lastname: '', role: 'player', room: 10 };
 var player4 = { _id: 4, firstname: 'Nienke', lastname: '', role: 'player', room: 5 };
 
-describe('managing cards', function() {
+describe('cards', function() {
 
 	it('should be able to set and get the cards', function() {
 		Gameroom(10).setCards(['Betrouwbaar', 'Geduldig', 'Roekeloos']);
@@ -27,7 +26,7 @@ describe('managing cards', function() {
 });
 
 
-describe('managing players', function() {
+describe('players', function() {
 
 	it('should be able to insert some players', function() {
 		Gameroom().setPlayer(player1);
@@ -49,9 +48,23 @@ describe('managing players', function() {
 		expect(player).to.be.object;
 	});
 
+	it('should be able to remove a user', function() {
+		Gameroom().removePlayer(2);
+
+		var players = Gameroom(10).getPlayers();
+		var player = Gameroom().getPlayer(2);
+
+		expect(players.length).to.be(2);
+		expect(typeof player).to.be('undefined');
+	});
+
+	after(function() {
+		Gameroom().setPlayer(player2);
+	});
+
 });
 
-describe('managing rooms', function() {
+describe('rooms', function() {
 
 	it('should only return players in a specific room', function() {
 		// Get the players from room 10
@@ -72,7 +85,7 @@ describe('managing rooms', function() {
 });
 
 
-describe('managing feedback', function() {
+describe('feedback', function() {
 
 	it('should be able to set and get feedback', function() {
 		// Insert the feedback
@@ -106,7 +119,7 @@ describe('managing feedback', function() {
 
 });
 
-describe('managing rounds', function() {
+describe('rounds', function() {
 
 	it('should be able to get the game state', function() {
 		var gameState = Gameroom(10).getState();
@@ -126,28 +139,21 @@ describe('managing rounds', function() {
 
 });
 
-describe('removing players', function() {
-
-	it('should be able to remove a user', function() {
-		Gameroom().removePlayer(2);
-
-		var players = Gameroom(10).getPlayers();
-		var player = Gameroom().getPlayer(2);
-
-		expect(players.length).to.be(2);
-		expect(typeof player).to.be('undefined');
-	});
-
-});
-
-describe('managing games', function() {
+describe('games', function() {
 
 	it('should be able to reset a game', function() {
-		// resetState
-		Gameroom(10).resetState();
+		Gameroom(10).reset();
 
 		var gameState = Gameroom(10).getState();
 
+		expect(gameState.round).to.be(1);
+		expect(gameState.card).to.be('Betrouwbaar');
+		expect(gameState.playersReady).to.be(0);
+		expect(gameState.summary.length).to.be(0);
+	});
+
+	it('should be possible to remove a complete game', function() {
+		Gameroom(10).remove();
 	});
 
 });
