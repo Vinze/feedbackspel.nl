@@ -10,10 +10,14 @@ var Game = new Ractive({
 		step: null,
 		card: null,
 		fullscreen: false,
+		showHelp: false,
 		players: [],
-		results: {}
+		results: {},
+		room: room
 	}
 });
+
+Game.set('showHelp', true);
 
 Game.on({
 	next: function(evt) {
@@ -24,6 +28,9 @@ Game.on({
 		console.log(player);
 		socket.emit('player.remove', player._id);
 		evt.original.preventDefault();
+	},
+	toggleHelp: function() {
+		Game.toggle('showHelp');
 	},
 	enterFullscreen: function() {
 		Game.set('fullscreen', true);
@@ -58,8 +65,6 @@ socket.on('round.next', function(state) {
 socket.on('gamestate', function(state) {
 	Game.set('players', state.players);
 	Game.set('card', state.card);
-
-	console.log(state);
 
 	if (state.players.length >= 1 && state.players.length == state.playersReady) {
 		Game.set('results', state.summary);

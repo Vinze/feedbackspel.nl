@@ -170,11 +170,16 @@ h2 {
 	margin-bottom: 10px;
 }
 
-p, ul {
+p, ul, ol {
 	margin-bottom: 15px;
 	&:last-child {
 		margin-bottom: 0px;
 	}
+}
+
+ol {
+	margin-left: 20px;
+	list-style-type: decimal;
 }
 
 ul {
@@ -413,6 +418,25 @@ button {
 	}
 }
 
+.big-button {
+	display: block;
+	width: 100%;
+	max-width: 200px;
+	padding: 8px 10px;
+	margin: 30px auto 0 auto;
+	background-color: transparent;
+	color: #fff;
+	border: 2px solid #fff;
+	text-align: center;
+	font-size: 1.2em;
+	text-decoration: none;
+	.transition(background-color 0.2s, color 0.2s;);
+	&:hover {
+		color: @font-color;
+		background-color: #fff;
+	}
+}
+
 i.required {
 	color: #CA3D3D;
 	font-weight: bold;
@@ -524,6 +548,14 @@ div.box {
 	overflow-y: auto;
 }
 
+.modal-close {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
 .modal {
 	background-color: #fff;
 	min-height: 100px;
@@ -531,6 +563,8 @@ div.box {
 	width: 100%;
 	margin: 20px auto;
 	padding: 30px;
+	z-index: 700;
+	position: relative;
 	.box-shadow(0 0 5px #444);
 	input.text, select.select {
 		border: 1px solid #e5e5e5;
@@ -787,24 +821,6 @@ body.sidebar-open {
 			color: #fff;
 			text-decoration: underline;
 		}
-		button {
-			display: block;
-			width: 100%;
-			max-width: 200px;
-			padding: 8px 10px;
-			margin: 30px auto 0 auto;
-			background-color: transparent;
-			color: #fff;
-			border: 2px solid #fff;
-			text-align: center;
-			font-size: 1.2em;
-			text-decoration: none;
-			.transition(background-color 0.2s, color 0.2s;);
-			&:hover {
-				color: @font-color;
-				background-color: #fff;
-			}
-		}
 	}
 }
 
@@ -853,7 +869,7 @@ body.sidebar-open {
 		margin: 0; padding: 0;
 		list-style-type: none;
 		li {
-			margin: 0; padding: 0;
+			margin: 0 0 0 10px; padding: 0;
 			display: inline-block;
 			float: left;
 		}
@@ -881,6 +897,10 @@ body.sidebar-open {
 //================================================
 
 .ingame.host {
+	h1 {
+		border: none;
+		margin: 0 0 15px;
+	}
 	.game-title {
 		font-family: Lobster, @fonts;
 		color: #fff;
@@ -893,34 +913,72 @@ body.sidebar-open {
 		left: 0;
 		.border-radius(0 5px 5px 0);
 	}
-	.step {
-		font-size: 2em;
-		margin: 30px auto;
-		background-color: #fff;
-		.box-shadow(0 0 5px #ccc);
-		padding: 40px;
-		button {
-			font-size: inherit;
-			padding: 3px 20px 5px 20px;
-		}
+	// .step {
+	// 	font-size: 2em;
+	// 	margin: 30px auto;
+	// 	background-color: #fff;
+	// 	.box-shadow(0 0 5px #ccc);
+	// 	padding: 40px;
+	// 	button {
+	// 		font-size: inherit;
+	// 		padding: 3px 20px 5px 20px;
+	// 	}
+	// 	h1 {
+	// 		padding: 0px;
+	// 		margin-bottom: 10px;
+	// 		border: none;
+	// 	}
+	// }
+	.help {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.85);
+		top: 0;
+		left: 0;
+	}
+	.help-content {
+		padding: 20px 10px;
+		color: #e5e5e5;
+		max-width: 960px;
+		margin: 0px auto;
 		h1 {
-			padding: 0px;
-			margin-bottom: 10px;
-			border: none;
+			margin: 0 0 15px;
+			padding: 0;
+			font-size: 2em;
+		}
+		a {
+			color: #e5e5e5;
+			text-decoration: underline;
+			&:hover {
+				color: #fff;
+			}
+		}
+		.col {
+			margin-bottom: 30px;
 		}
 	}
+	.help-dismiss {
+		position: absolute;
+		bottom: 0px;
+		text-align: center;
+		width: 100%;
+		padding: 30px;
+	}
 	.card {
+		font-size: 3em;
 		width: 450px;
 		text-align: center;
 		padding: 60px 0;
-		h1 {
-			margin: 0;
-			font-size: 1.6em;
-		}
+		margin: 30px auto;
+		background-color: #fff;
+		.box-shadow(0 0 5px #ccc);
 	}
 	.results {
 		width: 680px;
-		padding: 15px 30px 20px 30px;
+		padding: 10px;
+		margin: 0px auto;
+		font-size: 2em;
 		h1 {
 			font-size: 1.3em;
 		}

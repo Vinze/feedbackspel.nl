@@ -10,8 +10,8 @@ You may NOT sub-license, resell, rent, redistribute or otherwise transfer the ic
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="banner.svg"
-   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="banner.png"
+   inkscape:version="0.48.4 r9939"
    id="svg2"
    xml:space="preserve"
    enable-background="new 0 0 512 512"
@@ -21,12 +21,12 @@ You may NOT sub-license, resell, rent, redistribute or otherwise transfer the ic
    y="0px"
    x="0px"
    version="1.1"
-   inkscape:export-filename="D:\Node\feedbackspel.nl\app\public\img\banner.png"
+   inkscape:export-filename="/home/vincent/Node/feedbackspel.nl/app/public/img/banner.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"><metadata
      id="metadata9"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
      id="defs7"><marker
        inkscape:stockid="DotS"
        orient="auto"
@@ -80,8 +80,8 @@ You may NOT sub-license, resell, rent, redistribute or otherwise transfer the ic
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1148"
+     inkscape:window-width="1366"
+     inkscape:window-height="719"
      id="namedview5"
      showgrid="false"
      fit-margin-top="10"
@@ -90,18 +90,14 @@ You may NOT sub-license, resell, rent, redistribute or otherwise transfer the ic
      fit-margin-bottom="10"
      inkscape:zoom="0.65186406"
      inkscape:cx="708.93474"
-     inkscape:cy="52.759716"
-     inkscape:window-x="-5"
-     inkscape:window-y="-5"
+     inkscape:cy="101.84971"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:showpageshadow="false" /><path
-     style="fill:#55be78;fill-opacity:1;stroke:none"
-     d="M 668.02936,10 529.62316,10.3124 566.31056,38 520.37316,70.5312 C 491.70726,42.6949 446.18856,25.625 397.93556,25.625 c -80.887,0 -153.125,47.7078 -153.125,112.96867 0,23.14674 9.4355,45.86484 26.125,63.50004 0.7049,20.6655 -13.049,50.3134 -25.4374,71.9063 33.2028,-5.3073 80.4045,-17.028 101.8124,-28.625 117.2775,25.2383 202.8955,-37.81 203.75,-105.75004 l 59.375,-42.06257 15.8438,44.40627 L 668.02936,10 z m -21.9062,16.75 -23.3126,73.6562 -9.3437,-26.2188 -142.375,97.34381 a 20.002,20.002 0 0 1 -20.4063,1.2812 l -53.9374,-27.59374 -61.5938,47.81254 a 20.002,20.002 0 1 1 -24.5312,-31.5938 l 71.6562,-55.62501 a 20.002,20.002 0 0 1 21.375,-2 l 54.6875,28 130.9063,-89.5 -20.375,-15.375 77.25,-0.1874 z"
-     id="speech-bubble-2-icon-3-35-9-94-6-0-6-3-7-0-2-2-0"
-     inkscape:connector-curvature="0" /><flowRoot
+     inkscape:showpageshadow="false" /><flowRoot
      xml:space="preserve"
      id="flowRoot3754"
      style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Poiret One;-inkscape-font-specification:Poiret One"
@@ -125,4 +121,8 @@ You may NOT sub-license, resell, rent, redistribute or otherwise transfer the ic
        x="8.9695024"
        y="407.62991"
        style="font-size:144px;font-family:'Lobster 1.4';-inkscape-font-specification:'Lobster 1.4';fill:#55be78;fill-opacity:1">Feedbackspel.nl</tspan></text>
-</svg>
+<path
+     inkscape:connector-curvature="0"
+     style="fill:#55be78;fill-opacity:1"
+     d="m 670.294,13.885143 -138.40632,0.3126 36.6876,27.6874 -45.9376,32.5313 c -28.6658,-27.8363 -74.1844,-44.9063 -122.4374,-44.9063 -80.88705,0 -153.12505,47.7079 -153.12505,112.968797 0,23.1467 9.4355,45.8648 26.125,63.5 0.7049,20.6655 -13.0492,50.3133 -25.4376,71.9062 33.2029,-5.3072 80.4047,-17.028 101.81265,-28.625 117.2775,25.2383 202.8955,-37.8099 203.75,-105.75 l 59.375,-42.0624 15.84372,44.4062 41.75,-131.968797 z m -21.9063,16.75 -23.3124,73.656297 -9.34382,-26.218697 -142.375,97.343697 a 20.002,20.002 0 0 1 -20.4062,1.2813 l -53.9376,-27.5938 -61.59375,47.8125 a 20.002,20.002 0 1 1 -24.5313,-31.5937 l 71.65635,-55.625 a 20.002,20.002 0 0 1 21.375,-2 l 54.6875,28 130.9062,-89.499997 -20.375,-15.375 77.25002,-0.1876 z m -244.28122,18.5313 c 12.4718,-0.037 24.5329,1.2774 35.875,3.75 -11.5478,0.7032 -23.5478,2.3224 -35.7812,4.9063 -68.09615,14.3825 -122.68275,54.404397 -136.50005,96.249997 -2.8558,-50.7446 49.6449,-96.948197 119.15625,-103.999997 5.8167,-0.5902 11.581,-0.8894 17.25,-0.9063 z"
+     id="speech-bubble-2-icon-3-35-9-94-6-0-6-3-7-0-2-2-0-1" /></svg>

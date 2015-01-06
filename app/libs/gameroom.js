@@ -144,8 +144,11 @@ var Gameroom = function(room) {
 	}
 
 	this.getRound = function() {
-		
 		return state[room].round;
+	}
+
+	this,getModified = function() {
+		return state[room].modified;
 	}
 
 	this.getState = function() {
@@ -154,7 +157,8 @@ var Gameroom = function(room) {
 			card: this.getCard(),
 			players: this.getPlayers(),
 			playersReady: this.getPlayersReady(),
-			summary: this.getSummary()
+			summary: this.getSummary(),
+			modified: this.getModified()
 		};
 	}
 

@@ -1,4 +1,3 @@
-var assert = require('assert')
 var expect = require('expect.js');
 
 var Gameroom = require('../libs/gameroom.js');
@@ -144,12 +143,14 @@ describe('games', function() {
 	it('should be able to reset a game', function() {
 		Gameroom(10).reset();
 
-		var gameState = Gameroom(10).getState();
+		var gamestate = Gameroom(10).getState();
 
-		expect(gameState.round).to.be(1);
-		expect(gameState.card).to.be('Betrouwbaar');
-		expect(gameState.playersReady).to.be(0);
-		expect(gameState.summary.length).to.be(0);
+		expect(gamestate.round).to.be(1);
+		expect(gamestate.card).to.be('Betrouwbaar');
+		expect(gamestate.playersReady).to.be(0);
+		expect(gamestate.summary.length).to.be(0);
+
+		console.log(gamestate);
 	});
 
 	it('should be possible to remove a complete game', function() {

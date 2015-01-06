@@ -20,9 +20,12 @@
 <script type="text/template" id="game-tpl">
 	<ul class="actions">
 		<li>
+			<a on-click="toggleHelp"><i class="fa fa-question"></i></a>
+		</li>
+		<li>
 			{{#if fullscreen}}
 				<a on-click="exitFullscreen">
-					<i class="fa fa-flip-horizontal fa-compress" ></i>
+					<i class="fa fa-flip-horizontal fa-compress"></i>
 				</a>
 			{{else}}
 				<a on-click="enterFullscreen">
@@ -40,13 +43,13 @@
 	{{/if}}
 
 	{{#if step == 1}}
-		<div class="step card" intro-outro="fade">
-			<h1>{{card}}</h1>
+		<div class="card" intro-outro="fade">
+			{{card}}
 		</div>
 	{{/if}}
 
 	{{#if step == 2}}
-		<div class="step results" intro-outro="fade">
+		<div class="results" intro-outro="fade">
 			<h1>{{card}}:</h1>
 			{{#each results:i}}
 				<div class="result clearfix">
@@ -62,9 +65,15 @@
 					</div>
 				</div>
 			{{/each}}
+
+			<p style="font-size: 0.7em; margin: 10px 0; color: #808080">
+				{{results[0].firstname}} kreeg {{results[0].rating}} sterren voor de eigenschap {{card.toLowerCase()}}, waarom past deze eigenschap bij {{results[0].firstname}}?
+			</p>
+
 			<button class="btn confirm" on-click="next">
 				Volgende ronde <i class="fa fa-angle-double-right"></i>
 			</button>
+
 		</div>
 	{{/if}}
 
@@ -100,6 +109,47 @@
 	<div class="restart">
 		<a href="#" on-click="restart">Restart</a>
 	</div>
+
+	{{#if showHelp}}
+		<div class="help" intro-outro="fade:{ duration: 300 }">
+			<div class="help-content">
+				<h1>Spel uitleg:</h1>
+				<div class="row">
+					<div class="col span-6">
+						<h2>Aan spel deelnemen:</h2>
+						<ol>
+							<li>Ga op je smartphone of tablet naar <a href="http://localhost:1337/start">feedbackspel.nl/start</a>.</li>
+							<li>Indien nodig log je hier in, of klik je op "Registreren" om een nieuw account aan te maken.</li>
+							<li>Wanneer je bent inlogt klik je op "Aan spel deelnemen" en voer je de onderstaande spelcode in. <a href="/play/{{room}}" target="_blank"><i class="fa fa-external-link"></i></a></li>
+						</ol>
+						<!-- <p><img src="/{{room}}/qrcode.png"></p> -->
+					</div>
+					<div class="col span-6">
+						<h2>Speelwijze:</h2>
+						<p>Iedere deelnemer gaat op zijn smartphone of tablet naar deze webapplicatie en verbind met dit spel. Wanneer alle spelers verbonden zijn kan het spel direct gespeeld worden. Klik hieronder op "Sluiten" om deze informatie te verbergen.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col span-12 align-center">
+						<h1 style="font-size: 3em; margin: 0;">Spelcode: {{room}}</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col span-12">
+						<h2>Deelnemers verbonden:</h2>
+						<ul>
+							{{#each players}}
+								<li>{{firstname}} {{lastname}}</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="help-dismiss">
+				<button class="big-button" on-click="toggleHelp">Sluiten <i class="fa fa-check"></i></button>
+			</div>
+		</div>
+	{{/if}}
 </script>
 
 <script type="text/javascript" src="/js/host.js"></script>

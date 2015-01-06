@@ -70,6 +70,8 @@ app.get('/host', auth.isMember, GameController.getCreate);
 app.get('/host/:room', auth.isMember, GameController.getHost);
 app.get('/play/:room', auth.isMember, GameController.getPlay);
 
+app.get('/:room/qrcode.png', auth.isMember, GameController.getQRCode);
+
 app.post('/api/login', auth.isGuest, UserController.postLogin);
 app.get('/api/users', auth.isAdmin, UserController.getUsers);
 app.post('/api/users/save', auth.isAdmin, UserController.postSave);

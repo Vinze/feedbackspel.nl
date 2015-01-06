@@ -1,8 +1,11 @@
 var os = require('os');
+var config = require('./config');
 
 module.exports = function(req, res, next) {
 	res.locals.user = req.user;
 	res.locals.message = req.flash('message');
+
+	res.locals.baseUrl = config.base;
 
 	if (req.user) {
 		res.locals.menu_items = [

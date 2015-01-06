@@ -7,6 +7,24 @@ var auth     = require('../libs/auth');
 var db       = require('../libs/datastore');
 var Gameroom = require('../libs/gameroom');
 
+var cards = [
+	'Betrouwbaar',
+	'Geduldig',
+	'Roekeloos',
+	'Creatief',
+	'Prikkelbaar',
+	'Saai',
+	'Doorzetter',
+	'Kritisch',
+	'Onzichtbaar',
+	'Luidruchtig',
+	'Sociaal',
+	'Optimistisch',
+	'Gedisciplineerd',
+	'Nieuwsgierig',
+	'Snel afgeleid'
+];
+
 function findUser(userId, callback) {
 	var fields = { _id: 1, email: 1, firstname: 1, lastname: 1, gender: 1 };
 	db.users.findOne({ _id: userId }, fields, callback);
@@ -38,26 +56,10 @@ var SocketController = function(server) {
 					user.socketId = client.id;
 					user.name = user.firstname + ' ' + user.lastname;
 					user.room = client.room;
-					Gameroom().setPlayer(user);
+					Gameroom(client.room).setPlayer(user);
 					client.emit('userId', user._id);
 				} else if (client.role == 'host') {
-					Gameroom(client.room).setCards([
-						'Betrouwbaar',
-						'Geduldig',
-						'Roekeloos',
-						'Creatief',
-						'Prikkelbaar',
-						'Saai',
-						'Doorzetter',
-						'Kritisch',
-						'Onzichtbaar',
-						'Luidruchtig',
-						'Sociaal',
-						'Optimistisch',
-						'Gedisciplineerd',
-						'Nieuwsgierig',
-						'Snel afgeleid'
-					]);
+					Gameroom(client.room).setCards(cards);
 				}
 				
 				next();
@@ -66,11 +68,6 @@ var SocketController = function(server) {
 	});
 
 	io.on('connection', function(client) {
-
-		if (client.role == 'player') {
-			console.log(client);
-		}
-
 
 		function sendState() {
 			var gamestate = Gameroom(client.room).getState();
@@ -83,23 +80,23 @@ var SocketController = function(server) {
 			_.each(rating, function(rating, toPlayerId) {
 				Gameroom(client.room).setFeedback({ from: client.playerId, to: toPlayerId, rating: rating });
 			});
-			Gameroom().setPlayerStep(client.playerId, 2);
+			Gameroom(client.room).setPlayerStep(client.playerId, 2);
 			sendState();
 		});
 
 		client.on('player.notready', function(rating) {
-			Gameroom().setPlayerStep(client.playerId, 1);
+			Gameroom(client.room).setPlayerStep(client.playerId, 1);
 			sendState();
 		});
 
 		client.on('round.next', function() {
 			Gameroom(client.room).nextRound();
-			io.in(client.room).emit('round.next', Game.getState());
+			io.in(client.room).emit('round.next', Gameroom(client.room).getState());
 		});
 
 		client.on('player.remove', function(playerId) {
 			if (client.role == 'host') {
-				Gameroom().removePlayer(playerId);
+				Gameroom(client.room).removePlayer(playerId);
 			} else {
 				// Game.removePlayer(client.playerId);
 			}
@@ -113,7 +110,7 @@ var SocketController = function(server) {
 
 		client.on('disconnect', function() {
 			if (client.role == 'player') {
-				Gameroom().setPlayer({
+				Gameroom(client.room).setPlayer({
 					_id: client.playerId,
 					status: 'disconnected'
 				});
