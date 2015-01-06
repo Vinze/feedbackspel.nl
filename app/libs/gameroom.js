@@ -5,17 +5,19 @@ var state = {};
 
 var Gameroom = function(room) {
 
-	if (room && ! state[room]) {
-		state[room] = { round: 1, cards: [] };
+	if ( ! room) throw new Error('No room has been specific!');
+
+	if (state[room]) {
+		state[room].modified = Math.floor(Date.now() / 1000);
+	} else {
+		state[room] = { round: 1, cards: [], modified: Math.floor(Date.now() / 1000) };
 	}
 	
 	this.setCards = function(cards) {
-		if ( ! room) throw new Error('No room has been specific!');
 		state[room].cards = cards;
 	}
 
 	this.getCard = function() {
-		if ( ! room) throw new Error('No room has been specific!');
 		if (state[room] && state[room].cards.length > 0) {
 			return state[room].cards[state[room].round - 1] || null;
 		} else {
@@ -24,7 +26,6 @@ var Gameroom = function(room) {
 	}
 
 	this.getCards = function() {
-		if ( ! room) throw new Error('No room has been specific!');
 		return state[room].cards;
 	}
 
@@ -65,7 +66,6 @@ var Gameroom = function(room) {
 	}
 
 	this.getPlayers = function() {
-		if ( ! room) throw new Error('No room has been specific!');
 		var playersInRoom = _.filter(players, function(player) {
 			return player.room == room;
 		});
@@ -144,7 +144,7 @@ var Gameroom = function(room) {
 	}
 
 	this.getRound = function() {
-		if ( ! room) throw new Error('No room has been specific!');
+		
 		return state[room].round;
 	}
 
@@ -168,8 +168,6 @@ var Gameroom = function(room) {
 	}
 
 	this.remove = function() {
-		if ( ! room) throw new Error('No room has been specific!');
-
 		players = _.reject(players, function(player) {
 			return player.room == room;
 		});

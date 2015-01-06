@@ -29,10 +29,10 @@ describe('cards', function() {
 describe('players', function() {
 
 	it('should be able to insert some players', function() {
-		Gameroom().setPlayer(player1);
-		Gameroom().setPlayer(player2);
-		Gameroom().setPlayer(player3);
-		Gameroom().setPlayer(player4);
+		Gameroom(10).setPlayer(player1);
+		Gameroom(10).setPlayer(player2);
+		Gameroom(10).setPlayer(player3);
+		Gameroom(10).setPlayer(player4);
 	})
 
 	it('should retrieve all players', function() {
@@ -44,22 +44,22 @@ describe('players', function() {
 	});
 
 	it('should retrieve a single player by id', function() {
-		var player = Gameroom().getPlayer(1);
+		var player = Gameroom(10).getPlayer(1);
 		expect(player).to.be.object;
 	});
 
 	it('should be able to remove a user', function() {
-		Gameroom().removePlayer(2);
+		Gameroom(10).removePlayer(2);
 
 		var players = Gameroom(10).getPlayers();
-		var player = Gameroom().getPlayer(2);
+		var player = Gameroom(10).getPlayer(2);
 
 		expect(players.length).to.be(2);
 		expect(typeof player).to.be('undefined');
 	});
 
 	after(function() {
-		Gameroom().setPlayer(player2);
+		Gameroom(10).setPlayer(player2);
 	});
 
 });
@@ -72,14 +72,14 @@ describe('rooms', function() {
 		expect(playersRoom10.length).to.be(3);
 
 		// Get the players from room 5
-		Gameroom().setPlayer({ _id: 3, room : 5 });
+		Gameroom(10).setPlayer({ _id: 3, room : 5 });
 		var playersRoom5 = Gameroom(5).getPlayers();
 		expect(playersRoom5.length).to.be(2);
 	});
 
 
 	after(function() {
-		Gameroom().setPlayer({ _id: 3, room : 10 });
+		Gameroom(10).setPlayer({ _id: 3, room : 10 });
 	});
 
 });
@@ -89,17 +89,17 @@ describe('feedback', function() {
 
 	it('should be able to set and get feedback', function() {
 		// Insert the feedback
-		Gameroom().setFeedback({ from: 1, to: 2, rating: 5 }); // (from user 1 to user 2 with a rating of 5)
-		Gameroom().setFeedback({ from: 1, to: 3, rating: 4 }); // (from user 1 to user 3 with a rating of 2)
-		Gameroom().setFeedback({ from: 2, to: 3, rating: 4 }); // (from user 2 to user 3 with a rating of 3)
+		Gameroom(10).setFeedback({ from: 1, to: 2, rating: 5 }); // (from user 1 to user 2 with a rating of 5)
+		Gameroom(10).setFeedback({ from: 1, to: 3, rating: 4 }); // (from user 1 to user 3 with a rating of 2)
+		Gameroom(10).setFeedback({ from: 2, to: 3, rating: 4 }); // (from user 2 to user 3 with a rating of 3)
 
 		// Set the users to step 2 (= ready)
-		Gameroom().setPlayerStep(1, 2);
-		Gameroom().setPlayerStep(2, 2);
+		Gameroom(10).setPlayerStep(1, 2);
+		Gameroom(10).setPlayerStep(2, 2);
 
-		var feedbackPlayer1 = Gameroom().getFeedback(1); // Get feedback of user 1
-		var feedbackPlayer2 = Gameroom().getFeedback(2); // Get feedback of user 2
-		var feedbackPlayer3 = Gameroom().getFeedback(3); // Get feedback of user 3
+		var feedbackPlayer1 = Gameroom(10).getFeedback(1); // Get feedback of user 1
+		var feedbackPlayer2 = Gameroom(10).getFeedback(2); // Get feedback of user 2
+		var feedbackPlayer3 = Gameroom(10).getFeedback(3); // Get feedback of user 3
 
 		expect(feedbackPlayer1.length).to.be(0); // User 1 hasn't received any feedback
 		expect(feedbackPlayer2.length).to.be(1); // User 2 has received feedback from 1 user
