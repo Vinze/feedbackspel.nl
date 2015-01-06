@@ -94,6 +94,7 @@ var auth = {
 		if (req.user) {
 			next();
 		} else {
+			req.flash('intendedURL', req.url);
 			res.redirect('/inloggen');
 		}
 	},

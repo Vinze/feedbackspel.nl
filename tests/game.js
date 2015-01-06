@@ -7,14 +7,22 @@ var player2 = { _id: 2, firstname: 'Henk', lastname: '', role: 'player', room: 1
 var player3 = { _id: 3, firstname: 'Jantje', lastname: '', role: 'player', room: 10 };
 var player4 = { _id: 4, firstname: 'Nienke', lastname: '', role: 'player', room: 5 };
 
-describe('cards', function() {
+describe('Game', function() {
+
+	it('Gameroom should be a function', function() {
+		expect(Gameroom).to.be.a('function');
+	});
+
+});
+
+describe('Cards', function() {
 
 	it('should be able to set and get the cards', function() {
 		Gameroom(10).setCards(['Betrouwbaar', 'Geduldig', 'Roekeloos']);
 		Gameroom(5).setCards(['Zelfverzekerd']);
 	});
 
-	it('should be able to retrieve the cards', function() {
+	it('should retrieve the cards', function() {
 		var cardsRoom10 = Gameroom(10).getCards();
 		var cardsRoom5 = Gameroom(5).getCards();
 
@@ -24,10 +32,9 @@ describe('cards', function() {
 
 });
 
+describe('Players', function() {
 
-describe('players', function() {
-
-	it('should be able to insert some players', function() {
+	it('should insert some players', function() {
 		Gameroom(10).setPlayer(player1);
 		Gameroom(10).setPlayer(player2);
 		Gameroom(10).setPlayer(player3);
@@ -47,7 +54,7 @@ describe('players', function() {
 		expect(player).to.be.object;
 	});
 
-	it('should be able to remove a user', function() {
+	it('should remove a user', function() {
 		Gameroom(10).removePlayer(2);
 
 		var players = Gameroom(10).getPlayers();
@@ -63,19 +70,17 @@ describe('players', function() {
 
 });
 
-describe('rooms', function() {
+describe('Rooms', function() {
 
 	it('should only return players in a specific room', function() {
-		// Get the players from room 10
 		var playersRoom10 = Gameroom(10).getPlayers();
 		expect(playersRoom10.length).to.be(3);
 
-		// Get the players from room 5
 		Gameroom(10).setPlayer({ _id: 3, room : 5 });
+
 		var playersRoom5 = Gameroom(5).getPlayers();
 		expect(playersRoom5.length).to.be(2);
 	});
-
 
 	after(function() {
 		Gameroom(10).setPlayer({ _id: 3, room : 10 });
@@ -83,10 +88,9 @@ describe('rooms', function() {
 
 });
 
+describe('Feedback', function() {
 
-describe('feedback', function() {
-
-	it('should be able to set and get feedback', function() {
+	it('should be able to set some feedback', function() {
 		// Insert the feedback
 		Gameroom(10).setFeedback({ from: 1, to: 2, rating: 5 }); // (from user 1 to user 2 with a rating of 5)
 		Gameroom(10).setFeedback({ from: 1, to: 3, rating: 4 }); // (from user 1 to user 3 with a rating of 2)
@@ -96,6 +100,10 @@ describe('feedback', function() {
 		Gameroom(10).setPlayerStep(1, 2);
 		Gameroom(10).setPlayerStep(2, 2);
 
+		expect(Gameroom(10).getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
+	});
+
+	it('should be able to get the feedback', function() {
 		var feedbackPlayer1 = Gameroom(10).getFeedback(1); // Get feedback of user 1
 		var feedbackPlayer2 = Gameroom(10).getFeedback(2); // Get feedback of user 2
 		var feedbackPlayer3 = Gameroom(10).getFeedback(3); // Get feedback of user 3
@@ -105,8 +113,6 @@ describe('feedback', function() {
 		expect(feedbackPlayer3.length).to.be(2); // User 3 has received feedback from 2 users
 
 		expect(feedbackPlayer2[0].from).to.eql({ _id: 1, firstname: 'Vincent', lastname: '' });
-
-		expect(Gameroom(10).getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
 	});
 
 	it('should be able to get the results of a game', function() {
@@ -118,9 +124,9 @@ describe('feedback', function() {
 
 });
 
-describe('rounds', function() {
+describe('Rounds', function() {
 
-	it('should be able to get the game state', function() {
+	it('should get the gamestate', function() {
 		var gameState = Gameroom(10).getState();
 
 		expect(gameState.round).to.be(1);
@@ -128,7 +134,7 @@ describe('rounds', function() {
 		expect(gameState.players.length).to.be(3);
 	});
 
-	it('should be able to get to the next round', function() {
+	it('should go to the next round', function() {
 		Gameroom(10).nextRound();
 
 		expect(Gameroom(10).getSummary().length).to.be(0);
@@ -138,7 +144,7 @@ describe('rounds', function() {
 
 });
 
-describe('games', function() {
+describe('Games', function() {
 
 	it('should be able to reset a game', function() {
 		Gameroom(10).reset();
@@ -149,8 +155,6 @@ describe('games', function() {
 		expect(gamestate.card).to.be('Betrouwbaar');
 		expect(gamestate.playersReady).to.be(0);
 		expect(gamestate.summary.length).to.be(0);
-
-		console.log(gamestate);
 	});
 
 	it('should be possible to remove a complete game', function() {
@@ -158,23 +162,3 @@ describe('games', function() {
 	});
 
 });
-
-/*
-Game steps:
-1 = Show card, user fills in feedback
-2 = All users ready
-3 = Show results
-
-Player steps:
-1 = Insert feedback
-2 = Feedback ready
-
-player = {
-	id: 1,
-	step: 1,
-	name: 'John',
-	ratings: [
-		{}
-	]
-}
-*/

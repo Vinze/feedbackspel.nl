@@ -41,10 +41,12 @@ var UserController = {
 		var mimetypes = ['image/jpeg', 'image/png'];
 
 		if (req.files && req.files.image) {
-			var input = __dirname + '/../' + req.files.image.path;
+ 			var input = req.files.image.path;
 			
 			if ( ! inArray(req.files.image.mimetype, mimetypes)) {
-				fs.unlink(input);
+				fs.unlink(input, function(err) {
+					if (err) console.log(err);
+				});
 				return res.redirect('/start');
 			}
 
@@ -80,7 +82,7 @@ var UserController = {
 				}
 				var token = auth.setToken(user, req);
 
-				res.json({ error: null, token: token });
+				res.json({ error: null, token: token, redirectURL: req.flash('intendedURL') || '/start' });
 			});
 		});
 	},
@@ -120,8 +122,8 @@ var UserController = {
 					created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
 					updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
 				}, function(err, user) {
-					req.flash('email', user.email);
-					req.flash('message', { type: 'success', text: 'Je kunt nu inloggen.' });
+					// req.flash('email', user.email);
+					// req.flash('message', { type: 'success', text: 'Je kunt nu inloggen.' });
 					res.redirect('/inloggen?email=' + input.email);
 				});
 			});

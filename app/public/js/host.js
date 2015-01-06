@@ -13,7 +13,13 @@ var Game = new Ractive({
 		showHelp: false,
 		players: [],
 		results: {},
-		room: room
+		room: room,
+		randomQuestion: function() {
+			var results = Game.get('results');
+			var card = Game.get('card');
+
+			return results[0].firstname + ' kreeg ' + results[0].rating + ' sterren voor de eigenschap ' + card.toLowerCase() + ', waarom past deze eigenschap bij ' + results[0].firstname + '?';
+		}
 	}
 });
 
