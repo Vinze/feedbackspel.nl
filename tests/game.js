@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 
-var Gameroom = require('../libs/gameroom.js');
+var Gameroom = require('../app/libs/gameroom.js');
 
 var player1 = { _id: 1, firstname: 'Vincent', lastname: '', role: 'player', room: 10 };
 var player2 = { _id: 2, firstname: 'Henk', lastname: '', role: 'player', room: 10 };

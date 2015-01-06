@@ -3,7 +3,7 @@ forever start /var/www/feedbackspel.nl/app.js --watch --watchDirectory /var/www/
 
 # Running tests
 - Install mocha globally using `sudo npm install -g mocha`
-- Install expect.js local with `npm install expect.js`
+- Install expect.js local with `npm install expect.js` (in the 'tests' folder)
 - `mocha tests/game.js`
 
 

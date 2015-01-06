@@ -1,0 +1,9 @@
+{
+  "name": "feedbackspel.nl tests",
+  "version": "0.0.1",
+  "description": "tests written for the feedbackspel.nl app",
+  "author": "Vincent Bremer",
+  "dependencies": {
+    "expect.js": "^0.3.1"
+  }
+}
