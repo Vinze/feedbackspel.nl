@@ -1,3 +1,9 @@
+baseURL = 'http://' + window.location.hostname;
+if (window.location.port) {
+	baseURL += ':' + window.location.port;
+}
+baseURL += '/';
+
 function showSidebar() {
 	$('body').addClass('sidebar-open');
 	$('body').prepend('<div class="sidebar-overlay close-sidebar"></div>');

@@ -118,7 +118,7 @@
 					<div class="col span-6">
 						<h2>Aan spel deelnemen:</h2>
 						<ol>
-							<li>Ga op je smartphone of tablet naar: <a href="http://feedbackspel.nl/{{room}}">feedbackspel.nl/{{room}}</a></li>
+							<li>Ga op je smartphone of tablet naar: <a href="{{baseURL}}{{room}}">feedbackspel.nl/{{room}}</a></li>
 							<li>Indien nodig log je nu in met je e-mail adres &amp; wachtwoord, of klik op "Registreren" om een nieuw account aan te maken.</li>
 							<!-- <li>Wanneer je bent inlogt klik je op de knop "Aan spel deelnemen" en voer je de onderstaande spelcode in.</li> -->
 						</ol>
@@ -140,7 +140,7 @@
 						<h2>Deelnemers verbonden ({{players.length}}):</h2>
 						<ul class="players">
 							{{#each players}}
-								<li intro-outro="slide">
+								<li intro-outro="fade">
 									<div class="avatar">
 										<img src="/avatar/{{_id}}.png">
 									</div>

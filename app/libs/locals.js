@@ -5,7 +5,7 @@ module.exports = function(req, res, next) {
 	res.locals.user = req.user;
 	res.locals.message = req.flash('message');
 
-	res.locals.baseUrl = config.base;
+	res.locals.baseURL = config.baseURL;
 
 	if (req.user) {
 		res.locals.menu_items = [

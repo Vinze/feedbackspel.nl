@@ -14,6 +14,7 @@ var Game = new Ractive({
 		players: [],
 		results: {},
 		room: room,
+		baseURL: baseURL,
 		randomQuestion: function() {
 			var results = Game.get('results');
 			var card = Game.get('card');
