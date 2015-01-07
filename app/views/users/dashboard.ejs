@@ -87,46 +87,6 @@
 </script>
 
 <% include ../includes/bottom %>
-<script type="text/javascript">
-	var JoinModal = Ractive.extend({
-		el: document.body,
-		append: true,
-		template: '#join-tpl',
-		oncomplete: function() {
-			var self = this;
-			this.on('send', function(evt) {
-				var code = self.get('code');
-				window.location.href = '/play/' + code;
-				evt.original.preventDefault();
-			});
-
-			this.on('closeModal', function() {
-				this.teardown();
-			});
-
-			this.on('stopPropagation', function(evt) {
-				evt.original.stopPropagation();
-			})
-
-			this.find('#code').focus();
-		},
-		data: { code: '' }
-	});
-
-
-	$('#upload-select').on('change', function() {
-		var image = $('#upload-select').val();
-		$('#upload-form').submit();
-		console.log(image);
-	});
-
-	$('#join').on('click', function(evt) {
-		new JoinModal();
-		evt.preventDefault();
-	});
-
-
-
-</script>
+<script type="text/javascript" src="/js/dashboard.js"></script>
 </body>
 </html>

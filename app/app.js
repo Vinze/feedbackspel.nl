@@ -69,8 +69,7 @@ app.post('/avatar', auth.isMember, UserController.postAvatar);
 app.get('/host', auth.isMember, GameController.getCreate);
 app.get('/host/:room', auth.isMember, GameController.getHost);
 app.get('/play/:room', auth.isMember, GameController.getPlay);
-
-app.get('/:room/qrcode.png', auth.isMember, GameController.getQRCode);
+app.get('/qrcode/:room.png', auth.isMember, GameController.getQRCode);
 
 app.post('/api/login', auth.isGuest, UserController.postLogin);
 app.get('/api/users', auth.isAdmin, UserController.getUsers);
@@ -87,25 +86,13 @@ app.get('/kernkwadranten', function(req, res) {
 	res.render('pages/kernkwadranten')
 })
 
-// app.get(/\/admin(.*?)/, auth.isAdmin, function(req, res) {
-// 	res.render('pages/admin')
-// })
-
 app.get('/test', function(req, res) {
 	res.render('pages/test')
 });
 
-//================================================
-// Testing testing testing testing testing testing
-//================================================
-
-// var UserController2   = require('./controllers/UserController2');
-
-// app.get('/api2/users', UserController2.getUsers);
-
-//================================================
-// Testing testing testing testing testing testing
-//================================================
+app.get('/:room', function(req, res) {
+	res.redirect('/play/' + req.params.room);
+});
 
 // Run the server
 server.listen(config.port)

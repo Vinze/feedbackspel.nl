@@ -118,28 +118,33 @@
 					<div class="col span-6">
 						<h2>Aan spel deelnemen:</h2>
 						<ol>
-							<li>Ga op je smartphone of tablet naar: <a href="http://localhost:1337/start">feedbackspel.nl/start</a></li>
+							<li>Ga op je smartphone of tablet naar: <a href="http://feedbackspel.nl/{{room}}">feedbackspel.nl/{{room}}</a></li>
 							<li>Indien nodig log je nu in met je e-mail adres &amp; wachtwoord, of klik op "Registreren" om een nieuw account aan te maken.</li>
-							<li>Wanneer je bent inlogt klik je op de knop "Aan spel deelnemen" en voer je de onderstaande spelcode in.</li>
+							<!-- <li>Wanneer je bent inlogt klik je op de knop "Aan spel deelnemen" en voer je de onderstaande spelcode in.</li> -->
 						</ol>
 						<!-- <p><img src="/{{room}}/qrcode.png"></p> -->
 					</div>
 					<div class="col span-6">
 						<h2>Speelwijze:</h2>
-						<p>Iedere deelnemer gaat op zijn of haar smartphone/tablet naar deze webapplicatie en verbind met het spel. Wanneer alle spelers verbonden zijn kan het spel direct gespeeld worden. Klik hieronder op "<a on-click="toggleHelp">Gereed</a>" om deze informatie te verbergen en verder te gaan met het spel.</p>
+						<p>Iedere deelnemer gaat op zijn of haar smartphone/tablet naar deze webapplicatie en verbind met het spel. Wanneer alle spelers verbonden zijn kan het spel direct gespeeld worden.</p>
+						<p>Klik hieronder op "<a on-click="toggleHelp">Gereed</a>" om deze informatie te verbergen en verder te gaan met het spel.</p>
 					</div>
 				</div>
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col span-12 align-center">
 						<h1 style="font-size: 3em; margin: 0;">Spelcode: <a href="/play/{{room}}" target="_blank">{{room}}</a></h1>
 					</div>
-				</div>
+				</div> -->
 				<div class="row">
 					<div class="col span-12">
-						<h2>Deelnemers verbonden:</h2>
-						<ul>
+						<h2>Deelnemers verbonden ({{players.length}}):</h2>
+						<ul class="players">
 							{{#each players}}
-								<li>{{firstname}} {{lastname}}</li>
+								<li intro-outro="slide">
+									<div class="avatar">
+										<img src="/avatar/{{_id}}.png">
+									</div>
+								 </li>
 							{{/each}}
 						</ul>
 					</div>

@@ -7,15 +7,11 @@ var player2 = { _id: 2, firstname: 'Henk', lastname: '', role: 'player', room: 1
 var player3 = { _id: 3, firstname: 'Jantje', lastname: '', role: 'player', room: 10 };
 var player4 = { _id: 4, firstname: 'Nienke', lastname: '', role: 'player', room: 5 };
 
-describe('Game', function() {
+describe('When playing the game', function() {
 
 	it('Gameroom should be a function', function() {
 		expect(Gameroom).to.be.a('function');
 	});
-
-});
-
-describe('Cards', function() {
 
 	it('should be able to set and get the cards', function() {
 		Gameroom(10).setCards(['Betrouwbaar', 'Geduldig', 'Roekeloos']);
@@ -29,10 +25,6 @@ describe('Cards', function() {
 		expect(cardsRoom10.length).to.be(3);
 		expect(cardsRoom5.length).to.be(1);
 	});
-
-});
-
-describe('Players', function() {
 
 	it('should insert some players', function() {
 		Gameroom(10).setPlayer(player1);
@@ -62,15 +54,9 @@ describe('Players', function() {
 
 		expect(players.length).to.be(2);
 		expect(typeof player).to.be('undefined');
-	});
 
-	after(function() {
 		Gameroom(10).setPlayer(player2);
 	});
-
-});
-
-describe('Rooms', function() {
 
 	it('should only return players in a specific room', function() {
 		var playersRoom10 = Gameroom(10).getPlayers();
@@ -80,15 +66,9 @@ describe('Rooms', function() {
 
 		var playersRoom5 = Gameroom(5).getPlayers();
 		expect(playersRoom5.length).to.be(2);
-	});
 
-	after(function() {
 		Gameroom(10).setPlayer({ _id: 3, room : 10 });
 	});
-
-});
-
-describe('Feedback', function() {
 
 	it('should be able to set some feedback', function() {
 		// Insert the feedback
@@ -122,10 +102,6 @@ describe('Feedback', function() {
 		expect(summary[1]).to.eql({ _id: 2, firstname: 'Henk', lastname: '', rating: 5 });
 	});
 
-});
-
-describe('Rounds', function() {
-
 	it('should get the gamestate', function() {
 		var gameState = Gameroom(10).getState();
 
@@ -142,10 +118,6 @@ describe('Rounds', function() {
 		expect(Gameroom(10).getCard()).to.be('Geduldig');
 	});
 
-});
-
-describe('Games', function() {
-
 	it('should be able to reset a game', function() {
 		Gameroom(10).reset();
 
@@ -161,4 +133,7 @@ describe('Games', function() {
 		Gameroom(10).remove();
 	});
 
+});
+
+describe('API calls', function() {
 });

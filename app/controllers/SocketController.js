@@ -51,6 +51,8 @@ var SocketController = function(server) {
 
 				client.join(client.room);
 
+				console.log(moment().format('HH:mm:ss') + ' connected:', { email: user.email, role: client.role, room: client.room  });
+
 				if (client.role == 'player') {
 					user.status = 'active';
 					user.socketId = client.id;

@@ -35,29 +35,7 @@ var auth = {
 				next();
 			});
 		});
-
-		// try {
-		// 	var tokenData = jwt.decode(token, config.jwt_secret);
-		// 	if (auth.validateToken(tokenData, req)) {
-		// 		db.users.findById(tokenData.userId, function(err, user) {
-		// 			if (user) setUser(user);
-		// 			next();
-		// 		});
-		// 	} else {
-		// 		res.clearCookie('fbs_token');
-		// 		next();
-		// 	}
-		// } catch(err) {
-		// 	console.log(err);
-		// 	next();
-		// }
 	},
-
-	// validateToken: function(tokenData, req) {
-	// 	var age = moment().unix() - tokenData.iss;
-	// 	var maxAge = 3600 * 24 * 365;
-	// 	return (age < maxAge && tokenData.ip == req.connection.remoteAddress);
-	// },
 
 	validateToken: function(token, callback) {
 		if (token) {

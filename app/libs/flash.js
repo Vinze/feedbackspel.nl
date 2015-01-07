@@ -7,7 +7,7 @@ module.exports = function flash() {
 				flash[name] = value;
 				this.session.flash = flash;
 			} else if (name) {
-				var value = flash[name] || '';
+				var value = flash[name] || undefined;
 				delete flash[name];
 				this.session.flash = flash;
 				return value;
