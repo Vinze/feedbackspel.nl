@@ -15,7 +15,7 @@ build/Release
 
 node_modules
 
-app/libs/config.js
+libs/config.js
 
 storage
 
