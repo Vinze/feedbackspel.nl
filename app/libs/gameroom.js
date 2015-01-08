@@ -147,7 +147,7 @@ var Gameroom = function(room) {
 		return state[room].round;
 	}
 
-	this,getModified = function() {
+	this.getModified = function() {
 		return state[room].modified;
 	}
 

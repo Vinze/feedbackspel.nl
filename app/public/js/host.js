@@ -3,6 +3,57 @@ var url    = 'http://' + window.location.hostname + ':1337';
 var room   = _.last(window.location.href.split('/'));
 var socket = io(url, { query: 'token=' + token + '&role=host&room=' + room });
 
+function replaceTags(content, tags) {
+	return content.replace(/\[(.*?)\]/gi, function(match, text) {
+		if (tags[text]) {
+			return tags[text];
+		} else {
+			return match;
+		}
+	});
+}
+
+function randomQuestion(card, results) {
+	var questions = [
+		function() {
+			var question = '<strong>[name]</strong> kreeg [stars] sterren voor de eigenschap [card], waarom past deze eigenschap bij [name]?';
+			return replaceTags(question, {
+				card: card,
+				name: results[0].firstname,
+				stars: Math.round(results[0].rating / ( results.length - 1))
+			});
+		}, function() {
+			var question = '<strong>[name]</strong> kreeg slechts [stars] sterren voor de eigenschap [card], waarom zo weinig?';
+			return replaceTags(question, {
+				card: card,
+				name: results[results.length - 1].firstname,
+				stars: Math.round(results[0].rating / ( results.length - 1))
+			});
+		}, function() {
+			var question = '<strong>[name]</strong>, je kreeg de eigenschap [card] toegeschreven, ben je het hier mee eens?';
+			return replaceTags(question, {
+				card: card,
+				name: results[0].firstname,
+				stars: Math.round(results[0].rating / ( results.length - 1))
+			});
+		},
+		function() {
+			var random = Math.floor(Math.random() * results.length);
+			var question = '<strong>[name]</strong> je kreeg [stars] sterren voor [card], zou jij jezelf ook [stars] sterren geven?';
+
+			return replaceTags(question, {
+				card: card,
+				name: results[random].firstname,
+				stars: Math.round(results[random].rating / ( results.length - 1))
+			});
+				
+		}
+	];
+
+	var random = Math.floor(Math.random() * questions.length);
+	return questions[random]();
+}
+
 var Game = new Ractive({
 	el: 'game',
 	template: '#game-tpl',
@@ -17,9 +68,9 @@ var Game = new Ractive({
 		baseURL: baseURL,
 		randomQuestion: function() {
 			var results = Game.get('results');
-			var card = Game.get('card');
+			var card = Game.get('card').toLowerCase();
 
-			return results[0].firstname + ' kreeg ' + results[0].rating + ' sterren voor de eigenschap ' + card.toLowerCase() + ', waarom past deze eigenschap bij ' + results[0].firstname + '?';
+			return randomQuestion(card, results);
 		}
 	}
 });

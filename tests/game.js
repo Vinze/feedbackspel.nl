@@ -31,7 +31,7 @@ describe('When playing the game', function() {
 		Gameroom(10).setPlayer(player2);
 		Gameroom(10).setPlayer(player3);
 		Gameroom(10).setPlayer(player4);
-	})
+	});
 
 	it('should retrieve all players', function() {
 		var players = Gameroom(10).getPlayers();
@@ -136,4 +136,5 @@ describe('When playing the game', function() {
 });
 
 describe('API calls', function() {
+	
 });

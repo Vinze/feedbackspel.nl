@@ -15,7 +15,12 @@ var UserController = {
 	getStart: function(req, res) {
 		if (req.user) {
 			if (req.user.image) {
-				res.render('users/dashboard');
+				var intendedURL = req.flash('intendedURL');
+				if (intendedURL) {
+					res.redirect(intendedURL);
+				} else {
+					res.render('users/dashboard');
+				}
 			} else {
 				res.render('users/select-avatar');
 			}
@@ -82,7 +87,7 @@ var UserController = {
 				}
 				var token = auth.setToken(user, req);
 
-				res.json({ error: null, token: token, redirectURL: req.flash('intendedURL') || '/start' });
+				res.json({ error: null, token: token });
 			});
 		});
 	},

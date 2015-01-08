@@ -15,7 +15,7 @@ LoginForm.on('send', function(evt) {
 				LoginForm.set('message.error', res.error);
 			} else {
 				Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
-				window.location.replace(res.redirectURL);
+				window.location.replace('/start');
 			}
 		});
 	} else {

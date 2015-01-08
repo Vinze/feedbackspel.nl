@@ -46,12 +46,14 @@ var SocketController = function(server) {
 				if ( ! user) return;
 
 				client.playerId = user._id;
+				client.email = user.email;
 				client.role = client.handshake.query.role; // host or player
 				client.room = client.handshake.query.room; // roomnumber
 
 				client.join(client.room);
 
-				console.log(moment().format('HH:mm:ss') + ' connected:', { email: user.email, role: client.role, room: client.room  });
+				// var now = moment().format('D MMM HH:mm:ss')
+				// console.log(now + (' [' + client.role + ' connected]').green, { email: client.email, room: client.room  });
 
 				if (client.role == 'player') {
 					user.status = 'active';

@@ -19,20 +19,19 @@
 
 <script type="text/template" id="game-tpl">
 	<ul class="actions">
-		<li>
-			<a on-click="toggleHelp"><i class="fa fa-question"></i></a>
-		</li>
+		<li><a on-click="toggleHelp" title="Uitleg &amp; informatie tonen"><i class="fa fa-info-circle"></i></a></li>
 		<li>
 			{{#if fullscreen}}
-				<a on-click="exitFullscreen">
+				<a on-click="exitFullscreen" title="Volledig scherm sluiten">
 					<i class="fa fa-flip-horizontal fa-compress"></i>
 				</a>
 			{{else}}
-				<a on-click="enterFullscreen">
+				<a on-click="enterFullscreen" title="Spel in volledig scherm openen">
 					<i class="fa fa-flip-horizontal fa-expand"></i>
 				</a>
 			{{/if}}
 		</li>
+		<li><a href="/start" title="Spel sluiten"><i class="fa fa-times"></i></a></li>
 	</ul>
 
 	{{#if step == 1}}
@@ -50,7 +49,12 @@
 
 	{{#if step == 2}}
 		<div class="results" intro-outro="fade">
-			<h1>{{card}}:</h1>
+			<h1>{{card}}</h1>
+
+			<p class="question">
+				{{{randomQuestion()}}}
+			</p>
+
 			{{#each results:i}}
 				<div class="result clearfix">
 					<div class="position">{{i+1}}</div>
@@ -66,12 +70,8 @@
 				</div>
 			{{/each}}
 
-			<p style="font-size: 0.7em; margin: 10px 0; color: #808080">
-				{{randomQuestion()}}
-			</p>
-
 			<button class="btn confirm" on-click="next">
-				Volgende ronde <i class="fa fa-angle-double-right"></i>
+				Resultaten besproken <i class="fa fa-check"></i>
 			</button>
 
 		</div>
@@ -93,8 +93,8 @@
 						{{/if}}
 						<div class="name">
 							{{firstname}} {{lastname}}
-							<a href="#" class="remove" on-click="remove:{{this}}">
-								<i class="fa fa-times"></i>
+							<a href="#" class="remove" on-click="remove:{{this}}" title="Deelnemer verwijderen uit spel">
+								<i class="fa fa-sign-out"></i>
 							</a>
 						</div>
 						<div class="avatar">
@@ -113,7 +113,7 @@
 	{{#if showHelp}}
 		<div class="help" intro-outro="fade:{ duration: 300 }">
 			<div class="help-content">
-				<h1>Spel uitleg:</h1>
+				<h1><i class="fa fa-info-circle"></i> Spel uitleg:</h1>
 				<div class="row">
 					<div class="col span-6">
 						<h2>Aan spel deelnemen:</h2>
@@ -128,6 +128,7 @@
 						<h2>Speelwijze:</h2>
 						<p>Iedere deelnemer gaat op zijn of haar smartphone/tablet naar deze webapplicatie en verbind met het spel. Wanneer alle spelers verbonden zijn kan het spel direct gespeeld worden.</p>
 						<p>Klik hieronder op "<a on-click="toggleHelp">Gereed</a>" om deze informatie te verbergen en verder te gaan met het spel.</p>
+						<p>Spelcode: <strong>{{room}}</strong></p>
 					</div>
 				</div>
 				<!-- <div class="row">
@@ -151,7 +152,7 @@
 				</div>
 			</div>
 			<div class="help-dismiss">
-				<button class="big-button" on-click="toggleHelp">Gereed <i class="fa fa-check"></i></button>
+				<button class="big-button" on-click="toggleHelp">Gelezen <i class="fa fa-check"></i></button>
 			</div>
 		</div>
 	{{/if}}
