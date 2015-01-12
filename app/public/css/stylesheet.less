@@ -758,13 +758,13 @@ div.footer-wrapper {
 	bottom: 0;
 	width: 100%;
 	height: @footer-height;
-	font-size: 0.8em;
-	color: #404040;
 }
 
 div.footer {
 	text-align: center;
 	padding: 4px 0;
+	font-size: 0.8em;
+	color: #404040;
 }
 
 body.sidebar-open {
@@ -845,6 +845,16 @@ body.sidebar-open {
 //================================================
 
 .dashboard {
+	a.game-btn {
+		width: 220px;
+		text-align: center;
+		padding: 4px 10px 6px 10px;
+		margin: 10px 15px 5px 0;
+		i {
+			font-size: 5em;	
+			display: block;
+		}
+	}
 	.avatar {
 		width: 158px;
 		height: 158px;
@@ -1229,6 +1239,7 @@ body.sidebar-open {
 	div.col {
 		width: 100%;
 		margin-left: 0 !important;
+		margin-bottom: 20px;
 	}
 	.sidebar-toggle {
 		display: block;
