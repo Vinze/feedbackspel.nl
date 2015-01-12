@@ -61,7 +61,7 @@ var Game = new Ractive({
 		step: null,
 		card: null,
 		fullscreen: false,
-		showHelp: false,
+		showHelp: true,
 		players: [],
 		results: {},
 		room: room,
@@ -74,8 +74,6 @@ var Game = new Ractive({
 		}
 	}
 });
-
-Game.set('showHelp', true);
 
 Game.on({
 	next: function(evt) {
