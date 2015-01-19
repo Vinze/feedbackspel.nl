@@ -9,7 +9,7 @@ var player4 = { _id: 4, firstname: 'Nienke', lastname: '', role: 'player', room:
 
 describe('When playing the game', function() {
 
-	it('Gameroom should be a function', function() {
+	it('gameroom.js should export a function', function() {
 		expect(Gameroom).to.be.a('function');
 	});
 
