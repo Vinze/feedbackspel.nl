@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Passwordless - Email</title>
+	<title>Passwordless - Step 2</title>
 </head>
 <body>
-	<a href="http://localhost:1337/auth/<%= authcode %>">http://localhost:1337/auth/<%= authcode %></a>
+	<h1>E-mail send to <%= email %></h1>
+	<p>Please login with the following link:</p>
+	<p><a href="http://localhost:1337/auth/<%= authcode %>">http://localhost:1337/auth/<%= authcode %></a></p>
 </body>
 </html>
