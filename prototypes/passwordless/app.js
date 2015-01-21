@@ -25,11 +25,7 @@ app.use(bodyParser.json());
 
 app.use(cookieParser(secret));
 
-app.use(session({
-	secret: secret,
-	saveUninitialized: true, 
-	resave: true
-}));
+app.use(session({ secret: secret, saveUninitialized: true, resave: true }));
 
 app.use(function decodeToken(req, res, next) {
 	req.user = null;
@@ -52,6 +48,10 @@ app.use(function decodeToken(req, res, next) {
 		next();
 	}
 });
+
+function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min)) + min;
+}
 
 function memberRoute(req, res, next) {
 	if ( ! req.user) return res.redirect('/');
@@ -78,11 +78,9 @@ app.get('/', guestRoute, function(req, res) {
 
 app.post('/', guestRoute, function(req, res) {
 	var email = req.body.email;
-	crypto.randomBytes(16, function(ex, buf) {
-		var authcode = buf.toString('hex');
-		db.users.update({ email: email }, { $set: { authcode: authcode } }, { upsert: true }, function(err, doc) {
-			res.redirect('/email/' + email);
-		});
+	var authcode = getRandomInt(1000, 10000);
+	db.users.update({ email: email }, { $set: { authcode: authcode } }, { upsert: true }, function(err, doc) {
+		res.redirect('/email/' + email);
 	});
 });
 
@@ -100,7 +98,10 @@ app.get('/auth/:authcode', guestRoute, function(req, res) {
 		if ( ! user) return res.redirect('/');
 		var tokenData = { iat: Math.round(Date.now() / 1000), userId: user._id };
 		var token = jwt.encode(tokenData, secret);
-		db.users.update({ _id: user._id }, { $push: { tokens: token }, $set: { authcode: '' }  }, function(err, num) {
+		db.users.update({ _id: user._id },{
+			$push: { tokens: token },
+			$set: { authcode: '' }
+		}, function(err, num) {
 			res.cookie('pwlesslogintoken', token);
 			res.redirect('/dashboard');
 		});
