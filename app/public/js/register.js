@@ -77,3 +77,5 @@ RegisterForm.on({
 		}
 	}
 });
+
+RegisterForm.find('#email').focus();

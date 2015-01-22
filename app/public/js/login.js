@@ -31,3 +31,5 @@ if (location.search) {
 		LoginForm.set('message.success', 'Je kunt nu inloggen!');
 	}
 }
+
+LoginForm.find('#email').focus();
