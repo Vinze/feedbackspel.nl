@@ -1,7 +1,7 @@
 var HomeController = {
 
 	getIndex: function(req, res) {
-		res.render('pages/home');
+		res.render('home');
 	}
 
 };

@@ -1,4 +1,5 @@
-var os = require('os');
+var os     = require('os');
+var moment = require('moment');
 var config = require('./config');
 
 module.exports = function(req, res, next) {
@@ -9,14 +10,14 @@ module.exports = function(req, res, next) {
 
 	if (req.user) {
 		res.locals.menu_items = [
-			{ label: 'Dashboard', url: '/start', classname: 'fa-home' },
-			// { label: 'Mijn profiel', url: '/profile', classname: 'fa-user' },
+			{ label: 'Dashboard', url: '/dashboard', classname: 'fa-home' },
 			{ label: 'Uitloggen', url: '/uitloggen', classname: 'fa-sign-out' }
 		];
 	} else {
 		res.locals.menu_items = [
 			{ label: 'Registreren', url: '/registreren', classname: 'fa-user' },
 			{ label: 'Inloggen', url: '/inloggen', classname: 'fa-sign-in' },
+			{ label: 'Start', url: '/start', classname: 'fa-home' }
 		];
 	}
 
@@ -26,6 +27,8 @@ module.exports = function(req, res, next) {
 	} else {
 		res.locals.show_sidebar = true;
 	}
+
+	res.locals.currentYear = moment().format('YYYY');
 
 	next();
 }

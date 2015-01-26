@@ -8,11 +8,11 @@ var GameController = {
 	},
 
 	getHost: function(req, res) {
-		res.render('game/host');
+		res.render('game-host');
 	},
 
 	getPlay: function(req, res) {
-		res.render('game/player');
+		res.render('game-player');
 	},
 
 	getQRCode: function(req, res) {

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include includes/head %>
+</head>
+<body class="dashboard">
+<% include includes/top %>
+<div class="content-wrapper">
+	<div class="content container">
+		<div class="row" id="content">
+
+		</div>
+	</div>
+</div>
+<% include includes/bottom %>
+
+<script type="text/template" id="template">
+	{{#if action == 'login'}}
+		<div class="col span-6 offset-3 box">
+			<h1>Inloggen</h1>
+			{{#if error}}
+				<div class="flash-error">{{error}}</div>
+			{{/if}}
+			<p>Voer hieronder je e-mail adres in zodat we kunnen controleren of je reeds een account bij ons hebt.</p>
+			<form on-submit="validateEmail">
+				<div class="form-group">
+					<input value="{{input.email}}" type="text" class="text" id="email">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn confirm">Volgende <i class="fa fa-chevron-right"></i></button>
+				</div>
+			</form>
+		</div>
+	{{/if}}
+
+	{{#if action == 'register'}}
+		<div class="col span-8 offset-2 box">
+			<h1>Registreren</h1>
+			<p>Vul de onderstaande gegevens in</p>
+			<form on-submit="validateRegister">
+				<div class="form-group">
+					<div class="label">E-mail adres:</div>
+					<div class="field bold">{{input.email}}</div>
+				</div>
+
+				<div class="form-group">
+					<div class="label"><label for="firstname">Voornaam:</label></div>
+					<div class="field">
+						<input type="text" value="{{input.firstname}}" class="text" id="firstname">
+						<i class="required"></i>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="label"><label for="lastname">Achternaam:</label></div>
+					<div class="field">
+						<input type="text" value="{{input.lastname}}" class="text" id="lastname">
+						<i class="required"></i>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="label"><label for="password">Wachtwoord:</label></div>
+					<div class="field">
+						<input type="password" value="{{input.password}}" class="text" id="password">
+						<i class="required"></i>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="label"><label for="password">Herhaal wachtwoord:</label></div>
+					<div class="field">
+						<input type="password" value="{{input.password2}}" class="text" id="password2">
+						<i class="required"></i>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn confirm">Volgende <i class="fa fa-chevron-right"></i></button>
+				</div>
+			</form>
+		</div>
+	{{/if}}
+
+	{{#if action == 'password'}}
+		<div class="col span-8 offset-2 box">
+			<h1>Wachtwoord</h1>
+			<p>Voer je wachtwoord in.</p>
+			<form on-submit="send">
+				<div class="form-group">
+					<input type="password" value="{{password}}" class="text" id="password">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn confirm">Volgende <i class="fa fa-chevron-right"></i></button>
+				</div>
+			</form>
+		</div>
+	{{/if}}
+
+	{{#if action == 'loggedin'}}
+		INGELOGD!!
+	{{/if}}
+</script>
+
+<script type="text/javascript" src="/js/libs/validator.min.js"></script>
+<script type="text/javascript" src="/js/start.js"></script>
+</body>
+</html>

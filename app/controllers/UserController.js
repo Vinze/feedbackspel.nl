@@ -13,19 +13,23 @@ function inArray(needle, haystack) {
 var UserController = {
 
 	getStart: function(req, res) {
+		res.render('start');
+	},
+
+	getDashboard: function(req, res) {
 		if (req.user) {
 			if (req.user.image) {
 				var intendedURL = req.flash('intendedURL');
 				if (intendedURL) {
 					res.redirect(intendedURL);
 				} else {
-					res.render('users/dashboard');
+					res.render('dashboard');
 				}
 			} else {
-				res.render('users/select-avatar');
+				res.render('select-avatar');
 			}
 		} else {
-			res.render('users/start');
+			res.redirect('/login');
 		}
 	},
 
@@ -72,7 +76,7 @@ var UserController = {
 	},
 
 	getLogin: function(req, res) {
-		res.render('users/login');
+		res.render('login');
 	},
 
 	postLogin: function(req, res) {
@@ -98,7 +102,7 @@ var UserController = {
 	},
 
 	getRegister: function(req, res) {
-		res.render('users/register');
+		res.render('register');
 	},
 
 	postRegister: function(req, res) {
@@ -136,10 +140,10 @@ var UserController = {
 	},
 
 	getForgetPassword: function(req, res) {
-		res.render('users/forgot-password');
+		res.render('forgot-password');
 	},
 
-	getEmail: function(req, res) {
+	postCheckEmail: function(req, res) {
 		db.users.findOne({ email: req.body.email }, function(err, exists) {
 			res.json({ exists: exists ? true : false });
 		});

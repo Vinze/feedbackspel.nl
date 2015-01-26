@@ -17,7 +17,6 @@ var SocketController = require('./controllers/SocketController')(server);
 var UserController   = require('./controllers/UserController');
 
 // Set the middleware
-
 // View directory
 app.set('views', __dirname + '/views');
 
@@ -62,7 +61,8 @@ app.post('/registreren', auth.isGuest, UserController.postRegister);
 app.get('/wachtwoord-vergeten', auth.isGuest, UserController.getForgetPassword);
 app.get('/uitloggen', auth.isMember, UserController.getLogout);
 
-app.get('/start', auth.isMember, UserController.getStart);
+app.get('/start', UserController.getStart);
+app.get('/dashboard', auth.isMember, UserController.getDashboard);
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
 
@@ -74,7 +74,7 @@ app.get('/qrcode/:room.png', auth.isMember, GameController.getQRCode);
 app.post('/api/login', auth.isGuest, UserController.postLogin);
 app.get('/api/users', auth.isAdmin, UserController.getUsers);
 app.post('/api/users/save', auth.isAdmin, UserController.postSave);
-app.post('/api/users/check-email', UserController.getEmail);
+app.post('/api/users/check-email', UserController.postCheckEmail);
 app.post('/api/users/delete', auth.isAdmin, UserController.postDelete);
 
 
