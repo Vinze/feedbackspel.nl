@@ -1,19 +1,18 @@
-var StartFrom = new Ractive({
+var Form = new Ractive({
 	el: 'content',
 	template: '#template',
 	data: {
 		action: 'login',
 		error: null,
-		input: { email: 'v-br@live.nl' }
+		input: { email: '' }
 	},
 	onrender: function() {
 		var self = this;
-
 		self.find('#email').focus();
 	}
 });
 
-StartFrom.on('validateEmail', function(evt) {
+Form.on('validateEmail', function(evt) {
 	evt.original.preventDefault();
 
 	var self = this;
@@ -25,6 +24,7 @@ StartFrom.on('validateEmail', function(evt) {
 	}
 
 	$.post('/api/users/check-email', { email: email }, function(email) {
+		self.set('error', null);
 		if (email.exists) {
 			self.set('action', 'password').then(function() {
 				self.find('#password').focus();
@@ -38,77 +38,66 @@ StartFrom.on('validateEmail', function(evt) {
 
 });
 
-StartFrom.on('validateRegister', function(evt) {
+Form.on('validateRegister', function(evt) {
 	evt.original.preventDefault();
+	var self = this;
+	var input = self.get('input');
+	var errors = false;
 
-	console.log(this.get('input'));
+	if ( ! validator.isLength(input.firstname, 2)) {
+		self.set('error', 'Er is geen voornaam ingevuld!');
+		self.find('#firstname').focus();
+		return;
+	}
+	if ( ! validator.isLength(input.lastname, 2)) {
+		self.set('error', 'Er is geen achternaam ingevuld!');
+		self.find('#lastname').focus();
+		return;
+	}
+	if ( ! validator.isLength(input.password, 4)) {
+		self.set('error', 'Het wachtwoord moet minimaal 4 karakters lang zijn');
+		self.find('#password').focus();
+		return;
+	}
+	if (input.password != input.password2) {
+		self.set('error', 'Wachtwoorden komen niet overeen!');
+		self.find('#password2').focus();
+		return;
+	}
+
+	$.post('/api/register', input, function(res) {
+		if (res.error) {
+			self.set('error', res.error);
+		} else {
+			Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
+			window.location.replace('/dashboard');
+		}
+	});
+});
+
+Form.on('validatePassword', function(evt) {
+	evt.original.preventDefault();
 
 	var self = this;
+	var input = self.get('input');
 
-	self.set('action', 'loggedin');
+	if (input.email.length > 2 && input.password) {
+		$.post('/api/login', input, function(res) {
+			if (res.error) {
+				self.set('error', res.error);
+			} else {
+				Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
+				window.location.replace('/dashboard');
+			}
+		});
+	} else {
+		self.set('error', 'Voer een wachtwoord in!');
+	}
 });
 
-StartFrom.on('validatePassword', function(evt) {
-	evt.original.preventDefault();
-	console.log(this.get('input'));
-
+Form.on('gotoLogin', function(evt, action) {
+	var self  = this;
+	self.set('action', 'login').then(function() {
+		self.find('#email').focus();
+	});
 });
-
-// var EmailForm = Ractive.extend({
-// 	el: 'content',
-// 	template: '#email-template',
-// 	data: { email: 'v-br@live.nl', error: null },
-// 	oninit: function() {
-// 		var self = this;
-
-// 		self.on('send', function(evt) {
-// 			evt.original.preventDefault();
-
-// 			var email = self.get('email');
-
-// 			if ( ! validator.isEmail(email)) {
-// 				self.set('error', 'Geen geldig e-mail adres.');
-// 				return;
-// 			}
-
-// 			$.post('/api/users/check-email', { email: email }, function(res) {
-// 				if (res.exists) {
-// 					new PasswordForm({
-// 						data: { email: email }
-// 					});
-// 				} else {
-// 					new RegisterForm({
-// 						data: { email: email }
-// 					});
-// 				}
-// 			});
-
-// 		});
-// 	},
-// 	onrender: function() {
-// 		this.find('#email').focus();
-// 	}
-// });
-
-// var RegisterForm = Ractive.extend({
-// 	el: 'content',
-// 	template: '#register-template',
-// 	oninit: function() {
-// 		var self = this;
-// 		self.on('send', function(evt) {
-// 			evt.original.preventDefault();
-// 			new PasswordForm();
-
-// 		});
-// 	},
-// 	onrender: function() {
-// 		this.find('#firstname').focus();
-// 	}
-// });
-
-// var PasswordForm = Ractive.extend({
-// 	el: 'content',
-// 	template: '#password-template'
-// });
-
-// // new EmailForm();

@@ -79,7 +79,7 @@ var auth = {
 
 	isGuest: function(req, res, next) {
 		if (req.user) {
-			res.redirect('/start');
+			res.redirect('/dashboard');
 		} else {
 			next();
 		}

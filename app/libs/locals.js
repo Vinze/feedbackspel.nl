@@ -15,9 +15,7 @@ module.exports = function(req, res, next) {
 		];
 	} else {
 		res.locals.menu_items = [
-			{ label: 'Registreren', url: '/registreren', classname: 'fa-user' },
-			{ label: 'Inloggen', url: '/inloggen', classname: 'fa-sign-in' },
-			{ label: 'Start', url: '/start', classname: 'fa-home' }
+			{ label: 'Start', url: '/start', classname: 'fa-sign-in' }
 		];
 	}
 

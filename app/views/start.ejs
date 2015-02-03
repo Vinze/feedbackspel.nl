@@ -19,9 +19,9 @@
 		<div class="col span-6 offset-3 box">
 			<h1>Inloggen</h1>
 			{{#if error}}
-				<div class="flash-error">{{error}}</div>
+				<div class="flash-error" intro-outro="slide">{{error}}</div>
 			{{/if}}
-			<p>Voer hieronder je e-mail adres in zodat we kunnen controleren of je reeds een account bij ons hebt.</p>
+			<p>Voer hieronder je e-mail adres in zodat we kunnen controleren of je reeds een account hebt.</p>
 			<form on-submit="validateEmail">
 				<div class="form-group">
 					<input value="{{input.email}}" type="text" class="text" id="email">
@@ -36,13 +36,22 @@
 	{{#if action == 'register'}}
 		<div class="col span-8 offset-2 box">
 			<h1>Registreren</h1>
-			<p>Vul de onderstaande gegevens in</p>
+			{{#if error}}
+				<div class="flash-error" intro-outro="slide">{{error}}</div>
+			{{/if}}
+			<p>Het opgegeven e-mail adres is bij ons nog niet bekend, voer de onderstaande velden in om een nieuw account te registreren.</p>
 			<form on-submit="validateRegister">
-				<div class="form-group">
+			<div class="form-group">
 					<div class="label">E-mail adres:</div>
-					<div class="field bold">{{input.email}}</div>
+					<div class="field">{{input.email}}</div>
 				</div>
-
+				<!-- <div class="form-group">
+					<div class="label"><label for="email">E-mail adres:</label></div>
+					<div class="field">
+						<input type="email" value="{{input.email}}" class="text" id="email">
+						<i class="required"></i>
+					</div>
+				</div> -->
 				<div class="form-group">
 					<div class="label"><label for="firstname">Voornaam:</label></div>
 					<div class="field">
@@ -50,7 +59,6 @@
 						<i class="required"></i>
 					</div>
 				</div>
-
 				<div class="form-group">
 					<div class="label"><label for="lastname">Achternaam:</label></div>
 					<div class="field">
@@ -58,7 +66,6 @@
 						<i class="required"></i>
 					</div>
 				</div>
-
 				<div class="form-group">
 					<div class="label"><label for="password">Wachtwoord:</label></div>
 					<div class="field">
@@ -66,7 +73,6 @@
 						<i class="required"></i>
 					</div>
 				</div>
-
 				<div class="form-group">
 					<div class="label"><label for="password">Herhaal wachtwoord:</label></div>
 					<div class="field">
@@ -74,9 +80,11 @@
 						<i class="required"></i>
 					</div>
 				</div>
-
 				<div class="form-group">
 					<button type="submit" class="btn confirm">Volgende <i class="fa fa-chevron-right"></i></button>
+				</div>
+				<div class="form-group">
+					<a on-click="gotoLogin"><i class="fa fa-angle-left"></i> Ga terug</a>
 				</div>
 			</form>
 		</div>
@@ -85,20 +93,22 @@
 	{{#if action == 'password'}}
 		<div class="col span-8 offset-2 box">
 			<h1>Wachtwoord</h1>
+			{{#if error}}
+				<div class="flash-error" intro-outro="slide">{{error}}</div>
+			{{/if}}
 			<p>Voer je wachtwoord in.</p>
-			<form on-submit="send">
+			<form on-submit="validatePassword">
 				<div class="form-group">
-					<input type="password" value="{{password}}" class="text" id="password">
+					<input type="password" value="{{input.password}}" class="text" id="password">
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn confirm">Volgende <i class="fa fa-chevron-right"></i></button>
 				</div>
+				<div class="form-group">
+					<a on-click="gotoLogin"><i class="fa fa-angle-left"></i> Ga terug</a>
+				</div>
 			</form>
 		</div>
-	{{/if}}
-
-	{{#if action == 'loggedin'}}
-		INGELOGD!!
 	{{/if}}
 </script>
 

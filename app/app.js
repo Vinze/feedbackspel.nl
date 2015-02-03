@@ -55,16 +55,17 @@ app.use(require('./libs/locals'))
 // Routes
 app.get('/', HomeController.getIndex)
 
-app.get('/inloggen', auth.isGuest, UserController.getLogin);
-app.get('/registreren', auth.isGuest, UserController.getRegister);
-app.post('/registreren', auth.isGuest, UserController.postRegister);
-app.get('/wachtwoord-vergeten', auth.isGuest, UserController.getForgetPassword);
-app.get('/uitloggen', auth.isMember, UserController.getLogout);
+// app.get('/inloggen', auth.isGuest, UserController.getLogin);
+// app.get('/registreren', auth.isGuest, UserController.getRegister);
+// app.post('/registreren', auth.isGuest, UserController.postRegister);
 
-app.get('/start', UserController.getStart);
+
+app.get('/start', auth.isGuest, UserController.getStart);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
+app.get('/wachtwoord-vergeten', auth.isGuest, UserController.getForgetPassword);
+app.get('/uitloggen', auth.isMember, UserController.getLogout);
 
 app.get('/host', auth.isMember, GameController.getCreate);
 app.get('/host/:room', auth.isMember, GameController.getHost);
@@ -72,6 +73,7 @@ app.get('/play/:room', auth.isMember, GameController.getPlay);
 app.get('/qrcode/:room.png', auth.isMember, GameController.getQRCode);
 
 app.post('/api/login', auth.isGuest, UserController.postLogin);
+app.post('/api/register', auth.isGuest, UserController.postRegister);
 app.get('/api/users', auth.isAdmin, UserController.getUsers);
 app.post('/api/users/save', auth.isAdmin, UserController.postSave);
 app.post('/api/users/check-email', UserController.postCheckEmail);

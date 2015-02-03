@@ -75,10 +75,6 @@ var UserController = {
 		}
 	},
 
-	getLogin: function(req, res) {
-		res.render('login');
-	},
-
 	postLogin: function(req, res) {
 		var input = req.body;
 		db.users.findOne({ email: input.email }, function(err, user) {
@@ -96,15 +92,6 @@ var UserController = {
 		});
 	},
 
-	getLogout: function(req, res) {
-		res.clearCookie('fbs_token');
-		res.redirect('/');
-	},
-
-	getRegister: function(req, res) {
-		res.render('register');
-	},
-
 	postRegister: function(req, res) {
 		var input = req.body;
 		var rules = {
@@ -112,30 +99,31 @@ var UserController = {
 			firstname: { required: true },
 			lastname: { required: true },
 			password: { required: true, minlength: 3 },
-			gender: { in: ['m', 'f'] }
+			password2: { required: true, same: 'password' }
 		};
 		validate(input, rules, function(errors) {
-			if (errors) return res.send('Validation failed');
+			if (errors) return res.json({ error: 'Validatie mislukt.' });
 
-			db.users.findOne({ email: input.email }, function(err, exists) {
-				if (exists) return res.send('E-mail already taken');
+			db.users.findOne({ email: input.email.toLowerCase() }, function(err, user) {
+				if (user) return res.json({ error: 'E-mail adres is reeks in gebruik.' });
 
 				db.users.insert({
 					email: input.email.toLowerCase(),
 					password: bcrypt.hashSync(input.password),
 					firstname: input.firstname,
 					lastname: input.lastname,
-					gender: input.gender,
 					image: false,
 					admin: false,
 					created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
 					updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
 				}, function(err, user) {
-					// req.flash('email', user.email);
-					// req.flash('message', { type: 'success', text: 'Je kunt nu inloggen.' });
-					res.redirect('/inloggen?email=' + input.email);
+					if (err) return res.json({ error: 'Fout bij het registeren van het account.' });
+					var token = auth.setToken(user, req);
+					res.json({ error: false, token: token });
 				});
 			});
+
+
 		});
 	},
 
@@ -190,6 +178,11 @@ var UserController = {
 				res.json(users);
 			});
 		});
+	},
+
+	getLogout: function(req, res) {
+		res.clearCookie('fbs_token');
+		res.redirect('/');
 	}
 	
 };
