@@ -3,13 +3,11 @@
 <head>
 	<% include includes/head %>
 </head>
-<body class="dashboard">
+<body class="users">
 <% include includes/top %>
 <div class="content-wrapper">
-	<div class="content container">
-		<div class="row" id="content">
-			<!-- Content will be rendered here -->
-		</div>
+	<div class="content container" id="content">
+		<!-- Content will be rendered here -->
 	</div>
 </div>
 <% include includes/bottom %>
@@ -41,12 +39,11 @@
 						<input type="checkbox" checked="{{admin}}" class="checkbox">
 					</td>
 					<td style="width: 75px" class="align-center">
-						<input type="checkbox" checked="{{image}}" class="checkbox">
+						<input type="checkbox" checked="{{image}}" class="checkbox" on-click="save:{{this}}">
 					</td>
 					<td style="width: 130px" class="align-right small">
 						<a on-click="remove:{{this}}">Delete user</a><br>
 						{{updated_at}}
-						
 					</td>
 				</tr>
 			{{/each}}
@@ -56,25 +53,25 @@
 
 <script type="text/javascript" src="/js/libs/moment.min.js"></script>
 <script type="text/javascript">
-	var Users = new Ractive({
+	var UserList = new Ractive({
 		el: 'content',
 		template: '#template'
 	});
-	Users.on({
+	UserList.on({
 		save: function(evt, user) {
 			$.post('/api/users/save', user, function(res) {
-				Users.set(evt.keypath + '.updated_at', moment().format('YYYY-MM-DD HH:mm:ss'));
+				UserList.set(evt.keypath + '.updated_at', moment().format('YYYY-MM-DD HH:mm:ss'));
 			});
 		},
 		remove: function(evt, user) {
-			var index = Users.get('users').indexOf(user);
+			var index = UserList.get('users').indexOf(user);
 			$.post('/api/users/delete', user, function(res) {
-				Users.splice('users', index, 1);
+				UserList.splice('users', index, 1);
 			});
 		}
-	})
+	});
 	$.getJSON('/api/users', function(users) {
-		Users.set('users', users);
+		UserList.set('users', users);
 		// console.log(users);
 	});
 </script>

@@ -147,6 +147,8 @@ var UserController = {
 	},
 
 	postSave: function(req, res) {
+		if ( ! req.body._id) return;
+
 		var input = {
 			email: req.body.email.toLowerCase(),
 			firstname: req.body.firstname,
@@ -154,7 +156,9 @@ var UserController = {
 			updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
 		}
 
-		if ( ! req.body._id) return;
+		if (typeof req.body.image !== 'undefined') {
+			input.image = req.body.image == 'true' ? true : false;
+		}
 
 		db.users.update({ _id: req.body._id }, { $set: input }, {}, function(err, numUpdated) {
 			if (err) console.log(err);
