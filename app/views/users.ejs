@@ -43,8 +43,9 @@
 					<td style="width: 75px" class="align-center">
 						<input type="checkbox" checked="{{image}}" class="checkbox">
 					</td>
-					<td style="width: 130px">
-						<small>{{updated_at}}</small>
+					<td style="width: 130px" class="align-right small">
+						<a on-click="remove:{{this}}">Delete user</a><br>
+						{{updated_at}}
 						
 					</td>
 				</tr>
@@ -63,6 +64,12 @@
 		save: function(evt, user) {
 			$.post('/api/users/save', user, function(res) {
 				Users.set(evt.keypath + '.updated_at', moment().format('YYYY-MM-DD HH:mm:ss'));
+			});
+		},
+		remove: function(evt, user) {
+			var index = Users.get('users').indexOf(user);
+			$.post('/api/users/delete', user, function(res) {
+				Users.splice('users', index, 1);
 			});
 		}
 	})
