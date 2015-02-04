@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
 		];
 	} else {
 		res.locals.menu_items = [
-			{ label: 'Start', url: '/start', classname: 'fa-sign-in' }
+			{ label: 'Inloggen', url: '/start', classname: 'fa-sign-in' }
 		];
 	}
 

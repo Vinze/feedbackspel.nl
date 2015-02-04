@@ -33,6 +33,10 @@ var UserController = {
 		}
 	},
 
+	getIndex: function(req, res) {
+		res.render('users');
+	},
+
 	getAvatar: function(req, res) {
 		var imagepath = __dirname + '/../storage/avatars/' + req.params.image;
 		fs.exists(imagepath, function(exists) {
@@ -81,14 +85,17 @@ var UserController = {
 			if ( ! user) {
 				return res.json({ error: 'Het opgegeven e-mail adres werd niet gevonden.' });
 			}
-			bcrypt.compare(input.password, user.password, function(err, match) {
-				if ( ! match) {
-					return res.json({ error: 'Het opgegeven wachtwoord is onjuist.' });
-				}
-				var token = auth.setToken(user, req);
+			var token = auth.setToken(user, req);
+			res.json({ error: null, token: token });
 
-				res.json({ error: null, token: token });
-			});
+			// bcrypt.compare(input.password, user.password, function(err, match) {
+			// 	if ( ! match) {
+			// 		return res.json({ error: 'Het opgegeven wachtwoord is onjuist.' });
+			// 	}
+			// 	var token = auth.setToken(user, req);
+
+			// 	res.json({ error: null, token: token });
+			// });
 		});
 	},
 
@@ -97,9 +104,9 @@ var UserController = {
 		var rules = {
 			email: { required: true, email: true, minlength: 4, maxlength: 60 },
 			firstname: { required: true },
-			lastname: { required: true },
-			password: { required: true, minlength: 3 },
-			password2: { required: true, same: 'password' }
+			lastname: { required: true }
+			// password: { required: true, minlength: 3 },
+			// password2: { required: true, same: 'password' }
 		};
 		validate(input, rules, function(errors) {
 			if (errors) return res.json({ error: 'Validatie mislukt.' });
@@ -127,10 +134,6 @@ var UserController = {
 		});
 	},
 
-	getForgetPassword: function(req, res) {
-		res.render('forgot-password');
-	},
-
 	postCheckEmail: function(req, res) {
 		db.users.findOne({ email: req.body.email }, function(err, exists) {
 			res.json({ exists: exists ? true : false });
@@ -148,23 +151,17 @@ var UserController = {
 			email: req.body.email.toLowerCase(),
 			firstname: req.body.firstname,
 			lastname: req.body.lastname,
-			gender: req.body.gender
+			updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
 		}
 
-		if (req.body.password) {
-			input.password = bcrypt.hashSync(req.body.password);
-		}
+		if ( ! req.body._id) return;
 
-		if (req.body._id) {
-			db.users.update({ _id: req.body._id }, { $set: input }, {}, done);
-		}
-
-		function done(err) {
+		db.users.update({ _id: req.body._id }, { $set: input }, {}, function(err, numUpdated) {
 			if (err) console.log(err);
 			db.users.find({}, { password: 0 }, function(err, users) {
 				res.json(users);
 			});
-		}
+		});
 	},
 
 	postDelete: function(req, res) {

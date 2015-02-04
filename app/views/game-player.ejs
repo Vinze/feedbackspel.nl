@@ -15,6 +15,11 @@
 
 	<ul class="actions">
 		<li>
+			<a on-click="toggleHelp" title="Uitleg &amp; informatie tonen">
+				<i class="fa fa-info-circle"></i>
+			</a>
+		</li>
+		<li>
 			<a href="/dashboard" title="Spel verlaten" on-click="leave">
 				<i class="fa fa-fw fa-sign-out"></i>
 			</a>
@@ -109,6 +114,27 @@
 		Blijft de pagina hangen?<br>
 		<a on-click="reload">Klik hier</a> om te vernieuwen.
 	</p>
+
+	{{#if showHelp}}
+		<div class="help modal-overlay" intro-outro="fade:{ duration: 300 }">
+			<div class="help-content">
+				<h1><i class="fa fa-info-circle"></i> Spel uitleg:</h1>
+				<div class="row">
+					<div class="col span-12">
+						<ol>
+							<li>Je gebruikt je telefoon als afstandbediening voor de laptop.</li>
+							<li>Op de laptop krijg je een eigenschap te zien, verdeel de sterren over je medespelers.</li>
+							<li>Wanneer alle deelnemers feedback hebben ingevuld worden de resultaten op de laptop getoond.</li>
+							<li>Beantwoord de vraag en bespreek de resultaten met elkaar.</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+			<div class="help-dismiss">
+				<button class="big-button" on-click="toggleHelp">Gelezen <i class="fa fa-check"></i></button>
+			</div>
+		</div>
+	{{/if}}
 
 </script>
 

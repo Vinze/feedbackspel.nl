@@ -19,6 +19,7 @@ var Player = new Ractive({
 	data: {
 		step: null, // 1 = set feedback // 2 = waiting // 3 = show results
 		card: '',
+		showHelp: true,
 		opponents: [],
 		players: [],
 		playersReady: 0,
@@ -47,6 +48,9 @@ Player.on({
 			socket.emit('player.ready', rating);
 		});
 		evt.original.preventDefault();
+	},
+	toggleHelp: function() {
+		Player.toggle('showHelp');
 	},
 	reload: function(evt) {
 		window.location.reload();

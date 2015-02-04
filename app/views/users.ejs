@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include includes/head %>
+</head>
+<body class="dashboard">
+<% include includes/top %>
+<div class="content-wrapper">
+	<div class="content container">
+		<div class="row" id="content">
+			<!-- Content will be rendered here -->
+		</div>
+	</div>
+</div>
+<% include includes/bottom %>
+<script type="text/template" id="template">
+	<table>
+		<thead>
+			<tr>
+				<th>Email</th>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th class="align-center">Admin</th>
+				<th class="align-center">Avatar</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each users}}
+				<tr>
+					<td>
+						<input type="text" class="text" value="{{email}}" on-change="save:{{this}}">
+					</td>
+					<td style="width: 180px">
+						<input type="text" class="text" value="{{firstname}}" on-change="save:{{this}}">
+					</td>
+					<td style="width: 180px">
+						<input type="text" class="text" value="{{lastname}}" on-change="save:{{this}}">
+					</td>
+					<td style="width: 75px" class="align-center">
+						<input type="checkbox" checked="{{admin}}" class="checkbox">
+					</td>
+					<td style="width: 75px" class="align-center">
+						<input type="checkbox" checked="{{image}}" class="checkbox">
+					</td>
+					<td style="width: 130px">
+						<small>{{updated_at}}</small>
+						
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</script>
+
+<script type="text/javascript" src="/js/libs/moment.min.js"></script>
+<script type="text/javascript">
+	var Users = new Ractive({
+		el: 'content',
+		template: '#template'
+	});
+	Users.on({
+		save: function(evt, user) {
+			$.post('/api/users/save', user, function(res) {
+				Users.set(evt.keypath + '.updated_at', moment().format('YYYY-MM-DD HH:mm:ss'));
+			});
+		}
+	})
+	$.getJSON('/api/users', function(users) {
+		Users.set('users', users);
+		// console.log(users);
+	});
+</script>
+</body>
+</html>

@@ -9,49 +9,21 @@
 		<div class="container">
 			<div class="home-center">
 				<div id="info">
-					<!-- Info will be rendered here -->					
+					<div class="info front">
+						<div class="logo"><img src="/img/banner.png"></div>
+						<h1>Werk je samen in een team en wil je graag weten hoe anderen over je denken?</h1>
+						<p>Na het registreren van een gratis account kun je op deze website een feedbacksessie starten samen met je teamgenoten.</p>
+						<p>Deze feedback maakt inzichtelijk waar je sterke en zwakke punten liggen, en bied waardevolle informatie om jezelf verder te kunnen ontwikkelen.</p>
+						<% if (user) { %>
+							<a href="/dashboard" class="big-button"><i class="fa fa-home"></i> Dashboard</a>
+						<% } else { %>
+							<a href="/start" class="big-button"><i class="fa fa-sign-in"></i> Inloggen</a>
+						<% } %>
+					</div>			
 				</div>
 			</div>
 		</div>
 	</div>
 	<% include includes/bottom %>
-	<script type="text/template" id="info-tpl">
-		{{#if side == 1}}
-			<div class="info front" intro="fly:{ x: -300, y: 0, duration: 350 }" outro="fly:{ x: -300, y: 0, duration: 350 }">
-				<div class="logo"><img src="/img/banner.png"></div>
-				<h1>Werk je samen in een team en wil je graag weten hoe anderen over je denken?</h1>
-				<p>Na het registreren van een gratis account kun je op deze website een feedbacksessie starten samen met je teamgenoten.</p>
-				<p>Deze feedback maakt inzichtelijk waar je sterke en zwakke punten liggen, en bied waardevolle informatie om jezelf verder te kunnen ontwikkelen.</p>
-				<button class="big-button" on-tap="showMore">Meer informatie <i class="fa fa-angle-double-right"></i></button>
-			</div>
-		{{/if}}
-		{{#if side == 2}}
-			<div class="info back" intro="fly:{ x: 300, y: 0, duration: 350 }" outro="fly:{ x: 300, y: 0, duration: 350 }">
-				<h1>Bètaversie komt binnenkort online!</h1>
-				<p>Momenteel wordt hard gewerkt om de applicatie zo spoedig mogelijk te lanceren. Kun je niet wachten en wil je nu direct een feedbacksessie houden? Kijk dan eens naar het <a href="/kernkwadranten">kernkwadrantenspel</a>!</p>
-				<button class="big-button" on-tap="showLess"><i class="fa fa-angle-double-left"></i> Terug</button>
-			</div>
-		{{/if}}
-	</script>
-	<script type="text/javascript">
-	var info = new Ractive({
-		el: "info",
-		template: '#info-tpl',
-		data: { side: 1 }
-	});
-
-	info.on({
-		showMore: function(evt) {
-			info.set('side', null).then(function() {
-				info.set('side', 2);
-			});
-		},
-		showLess: function(evt) {
-			info.set('side', null).then(function() {
-				info.set('side', 1);
-			});
-		}
-	});
-	</script>
 </body>
 </html>

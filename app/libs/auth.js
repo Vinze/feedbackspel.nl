@@ -1,5 +1,6 @@
 var jwt     = require('jwt-simple');
 var moment  = require('moment');
+var _       = require('underscore');
 var config  = require('../libs/config');
 var db      = require('../libs/datastore');
 
@@ -7,9 +8,9 @@ var auth = {
 
 	tokenParser: function(req, res, next) {
 		var token = (req.cookies && req.cookies.fbs_token) || 
-		            (req.body && req.body.fbs_token) ||
-		            (req.query && req.query.fbs_token) ||
-		            req.headers['x-fbs_token'];
+		            (req.body && req.body.token) ||
+		            (req.query && req.query.token) ||
+		            req.headers['x-token'];
 		req.token = token || null;
 		req.user = null;
 
@@ -22,15 +23,7 @@ var auth = {
 			}
 			db.users.findById(tokenData.userId, function(err, user) {
 				if (user) {
-					req.user = {
-						_id: user._id,
-						email: user.email,
-						firstname: user.firstname,
-						lastname: user.lastname,
-						gender: user.gender,
-						image: user.image,
-						admin: user.admin
-					};
+					req.user = _.pick(user, '_id', 'email', 'firstname', 'lastname', 'image', 'admin');
 				}
 				next();
 			});
@@ -73,7 +66,7 @@ var auth = {
 			next();
 		} else {
 			req.flash('intendedURL', req.url);
-			res.redirect('/inloggen');
+			res.redirect('/start');
 		}
 	},
 

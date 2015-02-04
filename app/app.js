@@ -52,19 +52,22 @@ app.use(flash())
 // Make the user available
 app.use(require('./libs/locals'))
 
+app.param('room', function(req, res, next) {
+	// app.param('room', /^[0-9]{4}$/);
+	if (req.params.room >= 1000 && req.params.room <= 9999) {
+		next();
+	} else {
+		res.end('Invalid room: ' + req.params.room);
+	}
+});
+
 // Routes
 app.get('/', HomeController.getIndex)
-
-// app.get('/inloggen', auth.isGuest, UserController.getLogin);
-// app.get('/registreren', auth.isGuest, UserController.getRegister);
-// app.post('/registreren', auth.isGuest, UserController.postRegister);
-
 
 app.get('/start', auth.isGuest, UserController.getStart);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
-app.get('/wachtwoord-vergeten', auth.isGuest, UserController.getForgetPassword);
 app.get('/uitloggen', auth.isMember, UserController.getLogout);
 
 app.get('/host', auth.isMember, GameController.getCreate);
@@ -72,9 +75,11 @@ app.get('/host/:room', auth.isMember, GameController.getHost);
 app.get('/play/:room', auth.isMember, GameController.getPlay);
 app.get('/qrcode/:room.png', auth.isMember, GameController.getQRCode);
 
+app.get('/users', auth.isAdmin, UserController.getIndex);
+
+app.get('/api/users', auth.isAdmin, UserController.getUsers);
 app.post('/api/login', auth.isGuest, UserController.postLogin);
 app.post('/api/register', auth.isGuest, UserController.postRegister);
-app.get('/api/users', auth.isAdmin, UserController.getUsers);
 app.post('/api/users/save', auth.isAdmin, UserController.postSave);
 app.post('/api/users/check-email', UserController.postCheckEmail);
 app.post('/api/users/delete', auth.isAdmin, UserController.postDelete);
@@ -87,10 +92,6 @@ app.get('/randomwords', function(req, res) {
 app.get('/kernkwadranten', function(req, res) {
 	res.render('pages/kernkwadranten')
 })
-
-app.get('/test', function(req, res) {
-	res.render('pages/test')
-});
 
 app.get('/:room', function(req, res) {
 	res.redirect('/play/' + req.params.room);
