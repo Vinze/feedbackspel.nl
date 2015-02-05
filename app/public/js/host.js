@@ -13,48 +13,6 @@ function replaceTags(content, tags) {
 	});
 }
 
-function randomQuestion(card, summary) {
-	return 'test';
-	// var questions = [
-	// 	function() {
-	// 		var question = '<strong>[name]</strong> kreeg [stars] sterren voor de eigenschap [card], waarom past deze eigenschap bij [name]?';
-	// 		return replaceTags(question, {
-	// 			card: card,
-	// 			name: summary[0].firstname,
-	// 			stars: Math.round(summary[0].rating / ( summary.length - 1))
-	// 		});
-	// 	}, function() {
-	// 		var question = '<strong>[name]</strong> kreeg slechts [stars] sterren voor de eigenschap [card], waarom zo weinig?';
-	// 		return replaceTags(question, {
-	// 			card: card,
-	// 			name: summary[summary.length - 1].firstname,
-	// 			stars: Math.round(summary[0].rating / ( summary.length - 1))
-	// 		});
-	// 	}, function() {
-	// 		var question = '<strong>[name]</strong>, je kreeg de eigenschap [card] toegeschreven, ben je het hier mee eens?';
-	// 		return replaceTags(question, {
-	// 			card: card,
-	// 			name: summary[0].firstname,
-	// 			stars: Math.round(summary[0].rating / ( summary.length - 1))
-	// 		});
-	// 	},
-	// 	function() {
-	// 		var random = Math.floor(Math.random() * summary.length);
-	// 		var question = '<strong>[name]</strong> je kreeg [stars] sterren voor [card], zou jij jezelf ook [stars] sterren geven?';
-
-	// 		return replaceTags(question, {
-	// 			card: card,
-	// 			name: summary[random].firstname,
-	// 			stars: Math.round(summary[random].rating / ( summary.length - 1))
-	// 		});
-				
-	// 	}
-	// ];
-
-	// var random = Math.floor(Math.random() * questions.length);
-	// return questions[random]();
-}
-
 var Game = new Ractive({
 	el: 'game',
 	template: '#game-tpl',
