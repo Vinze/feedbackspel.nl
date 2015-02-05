@@ -52,15 +52,6 @@ app.use(flash())
 // Make the user available
 app.use(require('./libs/locals'))
 
-app.param('room', function(req, res, next) {
-	// app.param('room', /^[0-9]{4}$/);
-	if (req.params.room >= 1000 && req.params.room <= 9999) {
-		next();
-	} else {
-		res.end('Invalid room: ' + req.params.room);
-	}
-});
-
 // Routes
 app.get('/', HomeController.getIndex)
 
@@ -91,10 +82,16 @@ app.get('/randomwords', function(req, res) {
 
 app.get('/kernkwadranten', function(req, res) {
 	res.render('pages/kernkwadranten')
-})
+});
+
+app.get('/test', function(req, res) {
+	res.render('test');
+});
 
 app.get('/:room', function(req, res) {
-	res.redirect('/play/' + req.params.room);
+	if (req.params.room >= 1000 && req.params.room <= 9999) {
+		res.redirect('/play/' + req.params.room);
+	}
 });
 
 // Run the server

@@ -52,26 +52,26 @@
 			<h1>{{card}}</h1>
 
 			<p class="question">
-				{{{randomQuestion()}}}
+				{{{question()}}}
 			</p>
 
-			{{#each results:i}}
+			{{#each summary:i}}
 				<div class="result clearfix">
 					<div class="position">{{i+1}}</div>
 					<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
 					<div class="name">{{firstname}} {{lastname}}</div>
 					<div class="stars">
-						<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 1 ? '' : '-o'}} rating"></i>
-						<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 2 ? '' : '-o'}} rating"></i>
-						<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 3 ? '' : '-o'}} rating"></i>
-						<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 4 ? '' : '-o'}} rating"></i>
-						<i class="fa fa-star{{Math.round(rating / ( players.length - 1)) >= 5 ? '' : '-o'}} rating"></i>
+						<i class="fa fa-star{{(rating >= 1) ? '' : '-o'}} rating"></i>
+						<i class="fa fa-star{{(rating >= 2) ? '' : '-o'}} rating"></i>
+						<i class="fa fa-star{{(rating >= 3) ? '' : '-o'}} rating"></i>
+						<i class="fa fa-star{{(rating >= 4) ? '' : '-o'}} rating"></i>
+						<i class="fa fa-star{{(rating >= 5) ? '' : '-o'}} rating"></i>
 					</div>
 				</div>
 			{{/each}}
 
 			<button class="btn confirm" on-click="next">
-				Resultaten besproken <i class="fa fa-check"></i>
+				Resultaten besproken <i class="fa fa-check-square-o"></i>
 			</button>
 
 		</div>
@@ -152,4 +152,5 @@
 	{{/if}}
 </script>
 
+<script type="text/javascript" src="/js/questionary.js"></script>
 <script type="text/javascript" src="/js/host.js"></script>

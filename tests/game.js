@@ -97,9 +97,10 @@ describe('When playing the game', function() {
 
 	it('should be able to get the results of a game', function() {
 		var summary = Gameroom(10).getSummary();
-		expect(summary.length).to.be(2);
-		expect(summary[0]).to.eql({ _id: 3, firstname: 'Jantje', lastname: '', rating: 8 });
-		expect(summary[1]).to.eql({ _id: 2, firstname: 'Henk', lastname: '', rating: 5 });
+		expect(summary.length).to.be(3);
+		expect(summary[0]).to.eql({ _id: 3, firstname: 'Jantje', lastname: '', rating: 4 });
+		expect(summary[1]).to.eql({ _id: 2, firstname: 'Henk', lastname: '', rating: 3 });
+		expect(summary[2]).to.eql({ _id: 1, firstname: 'Vincent', lastname: '', rating: 0 });
 	});
 
 	it('should get the gamestate', function() {
@@ -113,9 +114,14 @@ describe('When playing the game', function() {
 	it('should go to the next round', function() {
 		Gameroom(10).nextRound();
 
-		expect(Gameroom(10).getSummary().length).to.be(0);
-		expect(Gameroom(10).getRound()).to.be(2);
-		expect(Gameroom(10).getCard()).to.be('Geduldig');
+		var gamestate = Gameroom(10).getState();
+
+		expect(gamestate.round).to.be(2);
+		expect(gamestate.card).to.be('Geduldig');
+
+		for (var i = 0; i < gamestate.players.length; i++) {
+			expect(gamestate.summary[i].rating).to.be(0);
+		}
 	});
 
 	it('should be able to reset a game', function() {
@@ -126,7 +132,10 @@ describe('When playing the game', function() {
 		expect(gamestate.round).to.be(1);
 		expect(gamestate.card).to.be('Betrouwbaar');
 		expect(gamestate.playersReady).to.be(0);
-		expect(gamestate.summary.length).to.be(0);
+
+		for (var i = 0; i < gamestate.players.length; i++) {
+			expect(gamestate.summary[i].rating).to.be(0);
+		}
 	});
 
 	it('should be possible to remove a complete game', function() {
@@ -136,5 +145,4 @@ describe('When playing the game', function() {
 });
 
 describe('API calls', function() {
-	
 });

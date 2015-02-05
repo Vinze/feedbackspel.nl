@@ -113,18 +113,17 @@ var Gameroom = function(room) {
 		var players = this.getPlayers();
 
 		_.each(players, function(player) {
-			_.each(player.ratings, function(ratings) {
-				if (summary[player._id]) {
-					summary[player._id].rating += ratings.rating;
-				} else {
-					summary[player._id] = {
-						_id: player._id,
-						firstname: player.firstname,
-						lastname: player.lastname,
-						rating: ratings.rating
-					};
-				}
-			});
+
+			var sum = _.reduce(player.ratings, function(memo, ratings) {
+				return memo + ratings.rating;
+			}, 0)
+			
+			summary[player._id] = {
+				_id: player._id,
+				firstname: player.firstname,
+				lastname: player.lastname,
+				rating: Math.round(sum / ((players.length - 1) * 5) * 5)
+			};
 		});
 
 		return _.sortBy(summary, function(result) {

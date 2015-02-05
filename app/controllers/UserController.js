@@ -17,19 +17,15 @@ var UserController = {
 	},
 
 	getDashboard: function(req, res) {
-		if (req.user) {
-			if (req.user.image) {
-				var intendedURL = req.flash('intendedURL');
-				if (intendedURL) {
-					res.redirect(intendedURL);
-				} else {
-					res.render('dashboard');
-				}
+		if (req.user.image) {
+			var intendedURL = req.flash('intendedURL');
+			if (intendedURL) {
+				res.redirect(intendedURL);
 			} else {
-				res.render('select-avatar');
+				res.render('dashboard');
 			}
 		} else {
-			res.redirect('/login');
+			res.render('select-avatar');
 		}
 	},
 

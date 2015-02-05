@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+</head>
+<body>
+<div id="content"></div>
+
+<script type="text/javascript" src="/js/libs/underscore.min.js"></script>
+<script type="text/javascript" src="/js/questionary.js"></script>
+<script type="text/javascript">
+var summary = [
+	{ _id: 1, firstname: 'Tjisse', lastname: 'Reitsma', rating: 3 },
+	{ _id: 2, firstname: 'Koop', lastname: 'Otten', rating: 3 },
+	{ _id: 3, firstname: 'Tjerk', lastname: 'Dijkstra', rating: 3 },
+	{ _id: 4, firstname: 'Vincent', lastname: 'Bremer', rating: 3 },
+	{ _id: 5, firstname: 'Ronald', lastname: 'Groot Jebbink', rating: 3 },
+	{ _id: 6, firstname: 'Harold', lastname: 'Mulder', rating: 3 }
+];
+var card = 'zelfverzekerd';
+
+var q = questionary(summary, card);
+
+console.log(q);
+</script>
+</body>
+</html>

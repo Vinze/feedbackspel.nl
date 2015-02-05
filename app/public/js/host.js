@@ -13,45 +13,46 @@ function replaceTags(content, tags) {
 	});
 }
 
-function randomQuestion(card, results) {
-	var questions = [
-		function() {
-			var question = '<strong>[name]</strong> kreeg [stars] sterren voor de eigenschap [card], waarom past deze eigenschap bij [name]?';
-			return replaceTags(question, {
-				card: card,
-				name: results[0].firstname,
-				stars: Math.round(results[0].rating / ( results.length - 1))
-			});
-		}, function() {
-			var question = '<strong>[name]</strong> kreeg slechts [stars] sterren voor de eigenschap [card], waarom zo weinig?';
-			return replaceTags(question, {
-				card: card,
-				name: results[results.length - 1].firstname,
-				stars: Math.round(results[0].rating / ( results.length - 1))
-			});
-		}, function() {
-			var question = '<strong>[name]</strong>, je kreeg de eigenschap [card] toegeschreven, ben je het hier mee eens?';
-			return replaceTags(question, {
-				card: card,
-				name: results[0].firstname,
-				stars: Math.round(results[0].rating / ( results.length - 1))
-			});
-		},
-		function() {
-			var random = Math.floor(Math.random() * results.length);
-			var question = '<strong>[name]</strong> je kreeg [stars] sterren voor [card], zou jij jezelf ook [stars] sterren geven?';
+function randomQuestion(card, summary) {
+	return 'test';
+	// var questions = [
+	// 	function() {
+	// 		var question = '<strong>[name]</strong> kreeg [stars] sterren voor de eigenschap [card], waarom past deze eigenschap bij [name]?';
+	// 		return replaceTags(question, {
+	// 			card: card,
+	// 			name: summary[0].firstname,
+	// 			stars: Math.round(summary[0].rating / ( summary.length - 1))
+	// 		});
+	// 	}, function() {
+	// 		var question = '<strong>[name]</strong> kreeg slechts [stars] sterren voor de eigenschap [card], waarom zo weinig?';
+	// 		return replaceTags(question, {
+	// 			card: card,
+	// 			name: summary[summary.length - 1].firstname,
+	// 			stars: Math.round(summary[0].rating / ( summary.length - 1))
+	// 		});
+	// 	}, function() {
+	// 		var question = '<strong>[name]</strong>, je kreeg de eigenschap [card] toegeschreven, ben je het hier mee eens?';
+	// 		return replaceTags(question, {
+	// 			card: card,
+	// 			name: summary[0].firstname,
+	// 			stars: Math.round(summary[0].rating / ( summary.length - 1))
+	// 		});
+	// 	},
+	// 	function() {
+	// 		var random = Math.floor(Math.random() * summary.length);
+	// 		var question = '<strong>[name]</strong> je kreeg [stars] sterren voor [card], zou jij jezelf ook [stars] sterren geven?';
 
-			return replaceTags(question, {
-				card: card,
-				name: results[random].firstname,
-				stars: Math.round(results[random].rating / ( results.length - 1))
-			});
+	// 		return replaceTags(question, {
+	// 			card: card,
+	// 			name: summary[random].firstname,
+	// 			stars: Math.round(summary[random].rating / ( summary.length - 1))
+	// 		});
 				
-		}
-	];
+	// 	}
+	// ];
 
-	var random = Math.floor(Math.random() * questions.length);
-	return questions[random]();
+	// var random = Math.floor(Math.random() * questions.length);
+	// return questions[random]();
 }
 
 var Game = new Ractive({
@@ -63,14 +64,14 @@ var Game = new Ractive({
 		fullscreen: false,
 		showHelp: true,
 		players: [],
-		results: {},
+		summary: {},
 		room: room,
 		baseURL: baseURL,
-		randomQuestion: function() {
-			var results = Game.get('results');
+		question: function() {
+			var summary = Game.get('summary');
 			var card = Game.get('card').toLowerCase();
-
-			return randomQuestion(card, results);
+			console.log(summary);
+			return questionary(summary, card);
 		}
 	}
 });
@@ -110,7 +111,7 @@ socket.on('round.next', function(state) {
 	Game.set('step', null).then(function() {
 		if (state.card) {
 			Game.set('card', state.card);
-			Game.set('results', []);
+			Game.set('summary', {});
 			Game.set('step', 1);
 		} else {
 			Game.set('step', 3);
@@ -123,7 +124,7 @@ socket.on('gamestate', function(state) {
 	Game.set('card', state.card);
 
 	if (state.players.length >= 1 && state.players.length == state.playersReady) {
-		Game.set('results', state.summary);
+		Game.set('summary', state.summary);
 		if (state.card) {
 			Game.set('step', null).then(function() {
 				Game.set('step', 2);
