@@ -2,6 +2,7 @@
 <html lang="nl">
 <head>
 	<% include includes/head %>
+	<link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
 </head>
 <body class="users">
 <% include includes/top %>
@@ -12,6 +13,11 @@
 </div>
 <% include includes/bottom %>
 <script type="text/template" id="template">
+	{{#if message}}
+		<div class="flash-success" intro-outro="slide">
+			{{message}}
+		</div>
+	{{/if}}
 	<table>
 		<thead>
 			<tr>
@@ -52,21 +58,39 @@
 </script>
 
 <script type="text/javascript" src="/js/libs/moment.min.js"></script>
+<script type="text/javascript" src="/js/libs/sweet-alert.min.js"></script>
 <script type="text/javascript">
 	var UserList = new Ractive({
 		el: 'content',
-		template: '#template'
+		template: '#template',
+		data: { users: [], message: null }
 	});
 	UserList.on({
 		save: function(evt, user) {
 			$.post('/api/users/save', user, function(res) {
+				UserList.set('message', 'De gebruiker is gewijzigd!');
+				setTimeout(function() {
+					UserList.set('message', null);
+				}, 2500);
 				UserList.set(evt.keypath + '.updated_at', moment().format('YYYY-MM-DD HH:mm:ss'));
 			});
 		},
 		remove: function(evt, user) {
-			var index = UserList.get('users').indexOf(user);
-			$.post('/api/users/delete', user, function(res) {
-				UserList.splice('users', index, 1);
+			swal({
+				title: "Gebruiker verwijderen?",
+				text: "Let op, deze actie kan niet ongedaan gedaan worden!",
+				type: "warning",
+				showCancelButton: true,
+				cancelButtonColor: "#929292",
+				cancelButtonText: "Annuleren",
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Verwijderen",
+				closeOnConfirm: true,
+			}, function() {
+				var index = UserList.get('users').indexOf(user);
+				// $.post('/api/users/delete', user, function(res) {
+					UserList.splice('users', index, 1);
+				// });
 			});
 		}
 	});

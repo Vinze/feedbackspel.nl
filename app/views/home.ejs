@@ -4,26 +4,68 @@
 	<% include includes/head %>
 </head>
 <body class="home">
-	<% include includes/top %>
-	<div class="content-wrapper">
-		<div class="container">
-			<div class="home-center">
-				<div id="info">
-					<div class="info front">
-						<div class="logo"><img src="/img/banner.png"></div>
-						<h1>Werk je samen in een team en wil je graag weten hoe anderen over je denken?</h1>
-						<p>Na het registreren van een gratis account kun je op deze website een feedbacksessie starten samen met je teamgenoten.</p>
-						<p>Deze feedback maakt inzichtelijk waar je sterke en zwakke punten liggen, en bied waardevolle informatie om jezelf verder te kunnen ontwikkelen.</p>
-						<% if (user) { %>
-							<a href="/dashboard" class="big-button"><i class="fa fa-home"></i> Dashboard</a>
-						<% } else { %>
-							<a href="/start" class="big-button"><i class="fa fa-sign-in"></i> Inloggen</a>
-						<% } %>
-					</div>			
-				</div>
+<% include includes/top %>
+<div class="content-wrapper">
+	
+	<div class="banner" id="banner">
+		<div class="info">
+			<img src="/img/banner.png" class="logo">
+			<p class="first">Werk je samen in een team en wil je graag weten hoe anderen over je denken?</p>
+			<p>Na het registreren van een gratis account kun je op deze website een feedbacksessie starten samen met je teamgenoten.</p>
+			<p>Deze feedback maakt inzichtelijk waar je sterke en zwakke punten liggen, en bied waardevolle informatie om jezelf verder te kunnen ontwikkelen.</p>
+			<% if (user) { %>
+				<!-- <a href="/dashboard" class="big-button"><i class="fa fa-home"></i> Dashboard</a> -->
+			<% } else { %>
+				<!-- <a href="/start" class="big-button"><i class="fa fa-sign-in"></i> Inloggen</a> -->
+			<% } %>
+		</div>
+	</div>
+
+	<div class="content container">
+
+		<h1>Het spel</h1>
+		<div class="row">
+			<div class="col span-6">
+				
+			</div>
+			<div class="col span-6">
+				<img src="/img/screenshots/1.png">
+			</div>
+		</div>
+
+		<h1>Feedback geven</h1>
+		<div class="row">
+			<div class="col span-8">
+				<p>Door een aantal sterren te verdelen over je medespelers kan je aangeven in hoeverre je een bepaalde eigenschap wel of niet bij een persoon vind horen.</p>
+			</div>
+			<div class="col span-4">
+				<img src="/img/screenshots/2.png" class="thumb">
+			</div>
+		</div>
+
+		<h1>Feedback ontvangen</h1>
+		<div class="row">
+			<div class="col span-8">
+				<p>Nadat alle spelers feedback hebben gegeven gaat het spel verder en krijg je je persoonlijke feedback op het scherm van je smartphone te zien.</p>
+			</div>
+			<div class="col span-4">
+				<img src="/img/screenshots/3.png" class="thumb">
+			</div>
+		</div>
+
+		<h1>Resultaten</h1>
+		<div class="row">
+			<div class="col span-6">
+				<p>Na iedere ronde worden de resultaten op het scherm getoond. </p>
+			</div>
+			<div class="col span-6">
+				<img src="/img/screenshots/4.png" class="thumb">
 			</div>
 		</div>
 	</div>
-	<% include includes/bottom %>
+
+</div>
+<% include includes/bottom %>
+<script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>
