@@ -8,6 +8,8 @@ module.exports = function(req, res, next) {
 
 	res.locals.baseURL = config.baseURL;
 
+	res.locals.pageTitle = 'Feedbackspel.nl';
+
 	if (req.user) {
 		res.locals.menu_items = [
 			{ label: 'Dashboard', url: '/dashboard', classname: 'fa-home' },

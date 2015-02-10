@@ -39,11 +39,6 @@ Game.on({
 		socket.emit('round.next');
 		evt.original.preventDefault();
 	},
-	remove: function(evt, player) {
-		console.log(player);
-		socket.emit('player.remove', player._id);
-		evt.original.preventDefault();
-	},
 	toggleHelp: function() {
 		Game.toggle('showHelp');
 	},
@@ -55,12 +50,40 @@ Game.on({
 		Game.set('fullscreen', false);
 		exitFullscreen();
 	},
-	restart: function(evt) {
+	removePlayer: function(evt, player) {
+		swal({
+			title: 'Deelnemer verwijderen',
+			text: 'Weet je zeker dat je ' + player.firstname + ' wilt verwijderen uit het spel?',
+			showCancelButton: true,
+			cancelButtonText: 'Terug',
+			confirmButtonColor: '#DD5755',
+			confirmButtonText: 'Verwijderen',
+			closeOnConfirm: true
+		}, function() {
+			socket.emit('player.leave', player._id);
+		});
+		
+		evt.original.preventDefault();
+	},
+	restartGame: function(evt) {
 		var restart = confirm('Spel herstarten?');
 		if (restart) {
 			socket.emit('game.restart');
 		}
 		evt.original.preventDefault();
+	},
+	removeGame: function(evt) {
+		swal({
+			title: "Spel beëindigen?",
+			text: "Weet je zeker dat je wilt stoppen met het spel?",
+			showCancelButton: true,
+			cancelButtonText: "Terug",
+			confirmButtonColor: "#DD5755",
+			confirmButtonText: "Stoppen",
+			closeOnConfirm: false
+		}, function() {
+			socket.emit('game.remove');
+		});
 	}
 });
 
@@ -93,4 +116,8 @@ socket.on('gamestate', function(state) {
 	} else if (Game.get('step') != 1) {
 		Game.set('step', 1);
 	}
+});
+
+socket.on('game.leave', function() {
+	window.location.replace('/dashboard');
 });

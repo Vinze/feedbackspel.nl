@@ -58,8 +58,17 @@ Player.on({
 	},
 	leave: function(evt) {
 		verifyConnection(function(socket) {
-			socket.emit('player.remove');
-			window.location = '/start';
+			swal({
+				title: "Spel verlaten",
+				text: "Weet je zeker dat je het spel wilt verlaten?",
+				showCancelButton: true,
+				cancelButtonText: "Terug",
+				confirmButtonColor: "#DD5755",
+				confirmButtonText: "Verlaten",
+				closeOnConfirm: false,
+			}, function() {
+				socket.emit('player.leave');
+			});
 		});
 		evt.original.preventDefault();
 	}
@@ -120,6 +129,10 @@ verifyConnection(function(socket) {
 		} else {
 			Player.set('step', step);
 		}
+	});
+
+	socket.on('game.leave', function() {
+		window.location = '/dashboard';
 	});
 });
 

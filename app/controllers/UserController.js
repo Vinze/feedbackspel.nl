@@ -156,6 +156,10 @@ var UserController = {
 			input.image = req.body.image == 'true' ? true : false;
 		}
 
+		if (typeof req.body.admin !== 'undefined') {
+			input.admin = req.body.admin == 'true' ? true : false;
+		}
+
 		db.users.update({ _id: req.body._id }, { $set: input }, {}, function(err, numUpdated) {
 			if (err) console.log(err);
 			db.users.find({}, { password: 0 }, function(err, users) {

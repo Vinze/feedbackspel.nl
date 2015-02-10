@@ -2,7 +2,6 @@
 <html lang="nl">
 <head>
 	<% include includes/head %>
-	<link rel="stylesheet" type="text/css" href="/css/sweet-alert.css">
 </head>
 <body class="users">
 <% include includes/top %>
@@ -42,13 +41,13 @@
 						<input type="text" class="text" value="{{lastname}}" on-change="save:{{this}}">
 					</td>
 					<td style="width: 75px" class="align-center">
-						<input type="checkbox" checked="{{admin}}" class="checkbox">
+						<input type="checkbox" checked="{{admin}}" class="checkbox" on-click="save:{{this}}">
 					</td>
 					<td style="width: 75px" class="align-center">
 						<input type="checkbox" checked="{{image}}" class="checkbox" on-click="save:{{this}}">
 					</td>
 					<td style="width: 130px" class="align-right small">
-						<a on-click="remove:{{this}}">Delete user</a><br>
+						<a class="text-red" on-click="remove:{{this}}">Delete user</a><br>
 						{{updated_at}}
 					</td>
 				</tr>
@@ -77,20 +76,25 @@
 		},
 		remove: function(evt, user) {
 			swal({
-				title: "Gebruiker verwijderen?",
-				text: "Let op, deze actie kan niet ongedaan gedaan worden!",
-				type: "warning",
+				title: 'Gebruiker verwijderen?',
+				text: 'Let op, deze actie kan niet ongedaan gedaan worden!',
 				showCancelButton: true,
-				cancelButtonColor: "#929292",
-				cancelButtonText: "Annuleren",
-				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "Verwijderen",
-				closeOnConfirm: true,
+				cancelButtonText: 'Annuleren',
+				confirmButtonColor: '#DD5755',
+				confirmButtonText: 'Verwijderen',
+				closeOnConfirm: false,
+				allowOutsideClick: true
 			}, function() {
-				var index = UserList.get('users').indexOf(user);
-				// $.post('/api/users/delete', user, function(res) {
+				$.post('/api/users/delete', user, function(res) {
+					swal({
+						title: 'Verwijderd!',
+						text: 'De gebruiker is succesvol verwijderd.',
+						type: 'success',
+						timer: 1500
+					});
+					var index = UserList.get('users').indexOf(user);
 					UserList.splice('users', index, 1);
-				// });
+				});
 			});
 		}
 	});

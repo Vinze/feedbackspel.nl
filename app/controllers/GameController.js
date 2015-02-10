@@ -8,11 +8,13 @@ var GameController = {
 	},
 
 	getHost: function(req, res) {
-		res.render('game-host');
+		var room = req.params.room;
+		res.render('game-host', { pageTitle: 'Feedbackspel: ' + room });
 	},
 
 	getPlay: function(req, res) {
-		res.render('game-player');
+		var room = req.params.room;
+		res.render('game-player', { pageTitle: 'Feedbackspel: ' + room });
 	},
 
 	getQRCode: function(req, res) {

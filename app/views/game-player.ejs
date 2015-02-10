@@ -9,6 +9,7 @@
 	<!-- Users will be rendered here -->
 </div>
 <% include includes/scripts %>
+<script type="text/javascript" src="/js/libs/sweet-alert.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 <script type="text/template" id="template">
@@ -20,7 +21,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/dashboard" title="Spel verlaten" on-click="leave">
+			<a title="Spel verlaten" on-click="leave">
 				<i class="fa fa-fw fa-sign-out"></i>
 			</a>
 		</li>
@@ -110,10 +111,10 @@
 		</div>
 	{{/if}}
 
-	<p class="reload">
+	<div class="reload">
 		Blijft de pagina hangen?<br>
 		<a on-click="reload">Klik hier</a> om te vernieuwen.
-	</p>
+	</div>
 
 	{{#if showHelp}}
 		<div class="help modal-overlay" intro-outro="fade:{ duration: 300 }">

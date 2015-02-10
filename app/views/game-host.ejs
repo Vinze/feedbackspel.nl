@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<title>Feedbackspel.nl</title>
-	<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
-	<link rel="stylesheet" href="/css/stylesheet.css" type="text/css">
-	<link rel="shortcut icon" href="/favicon.png">
+	<% include includes/head %>
 </head>
 <body class="ingame host">
 <% include includes/sidebar %>
@@ -14,6 +11,7 @@
 <% include includes/scripts %>
 
 <script type="text/javascript" src="/js/libs/underscore.min.js"></script>
+<script type="text/javascript" src="/js/libs/sweet-alert.min.js"></script>
 <script type="text/javascript" src="/js/libs/cookies.min.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
@@ -31,7 +29,7 @@
 				</a>
 			{{/if}}
 		</li>
-		<li><a href="/start" title="Spel sluiten"><i class="fa fa-times"></i></a></li>
+		<li><a on-click="removeGame" title="Spel sluiten"><i class="fa fa-times"></i></a></li>
 	</ul>
 
 	{{#if step == 1}}
@@ -93,7 +91,7 @@
 						{{/if}}
 						<div class="name">
 							{{firstname}} {{lastname}}
-							<a href="#" class="remove" on-click="remove:{{this}}" title="Deelnemer verwijderen uit spel">
+							<a href="#" class="remove" on-click="removePlayer:{{this}}" title="Deelnemer verwijderen uit spel">
 								<i class="fa fa-sign-out"></i>
 							</a>
 						</div>
@@ -106,9 +104,9 @@
 		</div>
 	{{/if}}
 
-	<div class="restart">
-		<a href="#" on-click="restart">Restart</a>
-	</div>
+	<!-- <div class="restart">
+		<a href="#" on-click="restartGame">Restart</a>
+	</div> -->
 
 	<div class="game-room">
 		Spelcode: <span>{{room}}</span>
@@ -121,7 +119,7 @@
 				<div class="row">
 					<div class="col span-9">
 						<ol>
-							<li>Als je wilt meespelen met dit spel ga je op je smartphone of tablet naar: <a href="{{baseURL}}{{room}}">feedbackspel.nl/{{room}}</a></li>
+							<li>Als je wilt meespelen met dit spel ga je op je smartphone of tablet naar: <a href="{{baseURL}}{{room}}" target="_blank">feedbackspel.nl/{{room}}</a></li>
 							<li>Vul je e-mail adres in en volg de stappen op het scherm.</li>
 						</ol>
 					</div>
