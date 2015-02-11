@@ -28,7 +28,6 @@ var Game = new Ractive({
 		question: function() {
 			var summary = Game.get('summary');
 			var card = Game.get('card').toLowerCase();
-			console.log(summary);
 			return questionary(summary, card);
 		}
 	}
@@ -58,7 +57,8 @@ Game.on({
 			cancelButtonText: 'Terug',
 			confirmButtonColor: '#DD5755',
 			confirmButtonText: 'Verwijderen',
-			closeOnConfirm: true
+			closeOnConfirm: true,
+			allowOutsideClick: true
 		}, function() {
 			socket.emit('player.leave', player._id);
 		});
@@ -80,7 +80,8 @@ Game.on({
 			cancelButtonText: "Terug",
 			confirmButtonColor: "#DD5755",
 			confirmButtonText: "Stoppen",
-			closeOnConfirm: false
+			closeOnConfirm: false,
+			allowOutsideClick: true
 		}, function() {
 			socket.emit('game.remove');
 		});

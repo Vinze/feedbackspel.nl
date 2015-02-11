@@ -17,43 +17,42 @@
 			{{message}}
 		</div>
 	{{/if}}
-	<table>
-		<thead>
-			<tr>
-				<th>Email</th>
-				<th>Firstname</th>
-				<th>Lastname</th>
-				<th class="align-center">Admin</th>
-				<th class="align-center">Avatar</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each users}}
+	<div class="responsive-table">
+		<table>
+			<thead>
 				<tr>
-					<td>
-						<input type="text" class="text" value="{{email}}" on-change="save:{{this}}">
-					</td>
-					<td style="width: 180px">
-						<input type="text" class="text" value="{{firstname}}" on-change="save:{{this}}">
-					</td>
-					<td style="width: 180px">
-						<input type="text" class="text" value="{{lastname}}" on-change="save:{{this}}">
-					</td>
-					<td style="width: 75px" class="align-center">
-						<input type="checkbox" checked="{{admin}}" class="checkbox" on-click="save:{{this}}">
-					</td>
-					<td style="width: 75px" class="align-center">
-						<input type="checkbox" checked="{{image}}" class="checkbox" on-click="save:{{this}}">
-					</td>
-					<td style="width: 130px" class="align-right small">
-						<a class="text-red" on-click="remove:{{this}}">Delete user</a><br>
-						{{updated_at}}
-					</td>
+					<th>Email</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th></th>
+					<th></th>
 				</tr>
-			{{/each}}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{{#each users}}
+					<tr>
+						<td>
+							<input type="text" class="text" value="{{email}}" on-change="save:{{this}}">
+						</td>
+						<td style="width: 170px">
+							<input type="text" class="text" value="{{firstname}}" on-change="save:{{this}}">
+						</td>
+						<td style="width: 170px">
+							<input type="text" class="text" value="{{lastname}}" on-change="save:{{this}}">
+						</td>
+						<td style="width: 100px" class="align-center">
+							<label><input type="checkbox" checked="{{admin}}" class="checkbox" on-click="save:{{this}}"> admin</label><br>
+							<label><input type="checkbox" checked="{{image}}" class="checkbox" on-click="save:{{this}}"> avatar</label>
+						</td>
+						<td style="width: 110px" class="align-right small">
+							<a class="text-red" on-click="remove:{{this}}">Delete user <i class="fa fa-trash-o"></i></a><br>
+							{{moment(updated_at).format('D-M-\'YY HH:mm')}} <i class="fa fa-clock-o"></i>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
 </script>
 
 <script type="text/javascript" src="/js/libs/moment.min.js"></script>

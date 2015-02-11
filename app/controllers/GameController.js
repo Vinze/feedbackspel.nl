@@ -1,20 +1,21 @@
 var qr = require('qr-image');
+var _  = require('underscore');
 
 var GameController = {
 
 	getCreate: function(req, res) {
-		var randomNumber = Math.floor(Math.random() * 9000) + 1000;
+		var randomNumber = _.random(1000, 9000);
 		res.redirect('host/' + randomNumber);
 	},
 
 	getHost: function(req, res) {
 		var room = req.params.room;
-		res.render('game-host', { pageTitle: 'Feedbackspel: ' + room });
+		res.render('game-host', { pageTitle: 'Feedbackspel - ' + room });
 	},
 
 	getPlay: function(req, res) {
 		var room = req.params.room;
-		res.render('game-player', { pageTitle: 'Feedbackspel: ' + room });
+		res.render('game-player', { pageTitle: 'Feedbackspel - ' + room });
 	},
 
 	getQRCode: function(req, res) {

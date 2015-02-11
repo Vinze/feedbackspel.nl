@@ -77,11 +77,11 @@ app.post('/api/users/delete', auth.isAdmin, UserController.postDelete);
 
 
 app.get('/randomwords', function(req, res) {
-	res.render('pages/randomwords')
+	res.render('randomwords')
 })
 
 app.get('/kernkwadranten', function(req, res) {
-	res.render('pages/kernkwadranten')
+	res.render('kernkwadranten')
 });
 
 app.get('/test', function(req, res) {

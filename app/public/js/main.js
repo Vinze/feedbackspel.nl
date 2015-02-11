@@ -55,3 +55,13 @@ function exitFullscreen() {
 		document.webkitExitFullscreen();
 	}
 }
+
+var helpers = Ractive.defaults.data;
+
+helpers.moment = function(timeString) {
+	 return moment(timeString);
+}
+
+helpers.nl2br = function(text) {
+	return text.replace(/\n/g, '<br>');
+}
