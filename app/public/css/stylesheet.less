@@ -511,6 +511,20 @@ i.required {
 	color: #9D8F25;
 }
 
+.flash-fixed {
+	top: 12px;
+	position: fixed;
+	max-width: @max-page-width;
+	width: 100%;
+	padding: 0 20px;
+	z-index: 500;
+	&>div {
+		width: 250px;
+		float: right;
+		text-align: center;
+	}
+}
+
 .has-error {
 	input.text {
 		border-color: #FF9898 !important;
@@ -806,13 +820,16 @@ body.sidebar-open {
 	hr {
 		margin: 64px 0;
 	}
+	.content {
+		padding-bottom: 50px;
+	}
 }
 
 .banner {
 	background: transparent url('../img/background.jpg') no-repeat top center;
 	background-size: cover;
 	padding: 50px 10px;
-	.box-shadow(0 0 8px #404040);
+	.box-shadow(0 0 8px #808080);
 
 	.info {
 		margin: 0px auto;
@@ -873,6 +890,17 @@ body.sidebar-open {
 		width: 158px;
 		height: 158px;
 		margin-bottom: 5px;
+	}
+}
+
+//================================================
+// Users
+//================================================
+
+
+.users {
+	table th {
+		padding-left: 5px;
 	}
 }
 
@@ -1275,16 +1303,6 @@ body.sidebar-open {
 		text-align: center;
 		width: 100%;
 		padding: 5px 10px;
-	}
-}
-
-//================================================
-// Users
-//================================================
-
-.users {
-	tbody td {
-		border-top: 1px solid #e5e5e5;
 	}
 }
 

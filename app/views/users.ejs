@@ -13,8 +13,10 @@
 <% include includes/bottom %>
 <script type="text/template" id="template">
 	{{#if message}}
-		<div class="flash-success" intro-outro="slide">
-			{{message}}
+		<div class="flash-fixed" intro="fly:{ x: 0, y: -100 }" outro="fade">
+			<div class="flash-success">
+				{{message}}
+			</div>
 		</div>
 	{{/if}}
 	<div class="responsive-table">
@@ -32,12 +34,12 @@
 				{{#each users}}
 					<tr>
 						<td>
-							<input type="text" class="text" value="{{email}}" on-change="save:{{this}}">
+							<input type="email" class="text" value="{{email}}" on-change="save:{{this}}">
 						</td>
-						<td style="width: 170px">
+						<td style="width: 160px">
 							<input type="text" class="text" value="{{firstname}}" on-change="save:{{this}}">
 						</td>
-						<td style="width: 170px">
+						<td style="width: 160px">
 							<input type="text" class="text" value="{{lastname}}" on-change="save:{{this}}">
 						</td>
 						<td style="width: 100px" class="align-center">
@@ -54,53 +56,6 @@
 		</table>
 	</div>
 </script>
-
-<script type="text/javascript" src="/js/libs/moment.min.js"></script>
-<script type="text/javascript" src="/js/libs/sweet-alert.min.js"></script>
-<script type="text/javascript">
-	var UserList = new Ractive({
-		el: 'content',
-		template: '#template',
-		data: { users: [], message: null }
-	});
-	UserList.on({
-		save: function(evt, user) {
-			$.post('/api/users/save', user, function(res) {
-				UserList.set('message', 'De gebruiker is gewijzigd!');
-				setTimeout(function() {
-					UserList.set('message', null);
-				}, 2500);
-				UserList.set(evt.keypath + '.updated_at', moment().format('YYYY-MM-DD HH:mm:ss'));
-			});
-		},
-		remove: function(evt, user) {
-			swal({
-				title: 'Gebruiker verwijderen?',
-				text: 'Let op, deze actie kan niet ongedaan gedaan worden!',
-				showCancelButton: true,
-				cancelButtonText: 'Annuleren',
-				confirmButtonColor: '#DD5755',
-				confirmButtonText: 'Verwijderen',
-				closeOnConfirm: false,
-				allowOutsideClick: true
-			}, function() {
-				$.post('/api/users/delete', user, function(res) {
-					swal({
-						title: 'Verwijderd!',
-						text: 'De gebruiker is succesvol verwijderd.',
-						type: 'success',
-						timer: 1500
-					});
-					var index = UserList.get('users').indexOf(user);
-					UserList.splice('users', index, 1);
-				});
-			});
-		}
-	});
-	$.getJSON('/api/users', function(users) {
-		UserList.set('users', users);
-		// console.log(users);
-	});
-</script>
+<script type="text/javascript" src="/js/users.js"></script>
 </body>
 </html>

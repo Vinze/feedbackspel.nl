@@ -4,35 +4,47 @@ if (window.location.port) {
 }
 baseURL += '/';
 
-function showSidebar() {
-	$('body').addClass('sidebar-open');
-	$('body').prepend('<div class="sidebar-overlay close-sidebar"></div>');
-}
+var Sidebar = new function() {
+	var self = this;
 
-function hideSidebar() {
-	$('body').removeClass('sidebar-open');
-	$('.sidebar-overlay').remove();
-}
-
-$('.sidebar-toggle').on('tap, click', function(evt) {
-	showSidebar();
-	evt.preventDefault();
-});
-
-$('.sidebar').on('swipeRight', function() {
-	hideSidebar();
-});
-
-$('body').on('tap, click', '.close-sidebar', function(evt) {
-	hideSidebar();
-	evt.preventDefault();
-});
-
-$(document).on('keyup', function(evt) {
-	if (evt.keyCode == 27) {
-		hideSidebar();
+	self.show = function() {
+		$('body').addClass('sidebar-open');
+		$('body').prepend('<div class="sidebar-overlay close-sidebar"></div>');
 	}
-});
+	
+	self.hide = function() {
+		$('body').removeClass('sidebar-open');
+		$('.sidebar-overlay').remove();
+	}
+
+	self.init = function() {
+		$('.sidebar-toggle').on('tap, click', function(evt) {
+			self.show();
+			evt.preventDefault();
+		});
+
+		$('.sidebar-toggle').on('swipeLeft', function() {
+			self.show();
+		});
+
+		$('.sidebar').on('swipeRight', function() {
+			self.hide();
+		});
+
+		$('body').on('tap, click', '.close-sidebar', function(evt) {
+			self.hide();
+			evt.preventDefault();
+		});
+
+		$(document).on('keyup', function(evt) {
+			if (evt.keyCode == 27) {
+				self.hide();
+			}
+		});
+	}
+}
+
+Sidebar.init();
 
 function enterFullscreen() {
 	if (document.documentElement.requestFullscreen) {
@@ -59,7 +71,7 @@ function exitFullscreen() {
 var helpers = Ractive.defaults.data;
 
 helpers.moment = function(timeString) {
-	 return moment(timeString);
+	return moment(timeString);
 }
 
 helpers.nl2br = function(text) {
