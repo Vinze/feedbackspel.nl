@@ -1,15 +1,22 @@
-var UserList = new Ractive({
+var UserList, flashTimeout;
+
+UserList = new Ractive({
 	el: 'content',
 	template: '#template',
 	data: { users: [], message: null }
 });
+
 UserList.on({
 	save: function(evt, user) {
 		$.post('/api/users/save', user, function(res) {
 			UserList.set('message', user.firstname + ' ' + user.lastname + ' is gewijzigd!');
-			setTimeout(function() {
+
+			if (flashTimeout) clearTimeout(flashTimeout);
+
+			flashTimeout = setTimeout(function() {
 				UserList.set('message', null);
 			}, 2500);
+			
 			UserList.set(evt.keypath + '.updated_at', moment().format('YYYY-MM-DD HH:mm:ss'));
 		});
 	},
