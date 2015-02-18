@@ -1,10 +1,10 @@
 // Load the framework modules
-var express      = require('express');
+var express      = require('../../app/node_modules/express');
 var app          = express();
-var bodyParser   = require('body-parser');
-var cookieParser = require('cookie-parser');
-var session      = require('express-session');
-var _            = require('underscore');
+var bodyParser   = require('../../app/node_modules/body-parser');
+var cookieParser = require('../../app/node_modules/cookie-parser');
+var session      = require('../../app/node_modules/express-session');
+var _            = require('../../app/node_modules/underscore');
 
 var config = {
 	cookieSecret: 'CksFPbCnlzdRv3dr5hvSPR8pfaP41vdu',
@@ -51,8 +51,8 @@ function findUser(userId) {
 }
 
 // Routes
-app.get('/views/:page', function(req, res) {
-	res.render(req.params.page);
+app.get('/views/*', function(req, res) {
+	res.render(req.path.substring(7) + '.ejs');
 });
 
 app.get('/api/users', function(req, res) {

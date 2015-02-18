@@ -17,42 +17,51 @@ var View = {
 	}
 };
 
+var UserList = Ractive.extend({
+	el: 'content',
+	data: {
+		items: [],
+		modal: { visible: false, title: null },
+		editing: {}
+	},
+	oninit: function() {
+		this.on({
+			addUser: function(evt) {
+				this.set('modal', { visible: true, title: 'Add user' });
+				evt.original.preventDefault();
+			},
+			editUser: function(evt, user) {
+				this.set('modal', { visible: true, title: 'Edit user' });
+				this.set('editing', user);
+				evt.original.preventDefault();
+			},
+			closeModal: function() {
+				this.set('modal.visible', false);
+			},
+			stopPropagation: function(evt) {
+				evt.original.stopPropagation();
+			}
+		});
+	}
+});
+
+var UserModal = Ractive.extend({
+	el: document.body,
+	append: true
+})
+
 page('/', function() {
 	View.render('home');
 });
 
 page('/users', function() {
 	View.getHTML('users', function(html) {
-		var Users = new Ractive({
-			el: 'content',
-			template: html,
-			data: {
-				items: [],
-				modal: { visible: false, title: null },
-				editing: {}
-			}
-		});
-
-		Users.on({
-			addUser: function(evt) {
-				Users.set('modal', { visible: true, title: 'Add user' });
-				evt.original.preventDefault();
-			},
-			editUser: function(evt, user) {
-				Users.set('modal', { visible: true, title: 'Edit user' });
-				Users.set('editing', user);
-				evt.original.preventDefault();
-			},
-			closeModal: function() {
-				Users.set('modal.visible', false);
-			},
-			stopPropagation: function(evt) {
-				evt.original.stopPropagation();
-			}
+		var userList = new UserList({
+			template: html
 		});
 
 		qwest.get('/api/users').then(function(items) {
-			Users.set('items', items);
+			userList.set('items', items);
 		})
 	});
 });
