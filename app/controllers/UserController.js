@@ -136,6 +136,10 @@ var UserController = {
 		});
 	},
 
+	getUser: function(req, res) {
+		res.json(req.user);
+	},
+
 	getUsers: function(req, res) {
 		db.users.findAll(function(err, users) {
 			res.json(users);
@@ -143,7 +147,7 @@ var UserController = {
 	},
 
 	postSave: function(req, res) {
-		if ( ! req.body._id) return;
+		if ( ! req.body._id) return res.json({error: 'No user._id'});
 
 		var input = {
 			email: req.body.email.toLowerCase(),
@@ -152,20 +156,33 @@ var UserController = {
 			updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
 		}
 
-		if (typeof req.body.image !== 'undefined') {
-			input.image = req.body.image == 'true' ? true : false;
-		}
+		if (req.user.admin == true) {
+			var userId = req.body._id;
 
-		if (typeof req.body.admin !== 'undefined') {
-			input.admin = req.body.admin == 'true' ? true : false;
-		}
+			if (typeof req.body.image !== 'undefined') {
+				input.image = req.body.image == 'true' ? true : false;
+			}
 
-		db.users.update({ _id: req.body._id }, { $set: input }, {}, function(err, numUpdated) {
-			if (err) console.log(err);
-			db.users.find({}, { password: 0 }, function(err, users) {
-				res.json(users);
+			if (typeof req.body.admin !== 'undefined') {
+				input.admin = req.body.admin == 'true' ? true : false;
+			}
+
+			db.users.update({ _id: userId }, { $set: input }, {}, function(err, numUpdated) {
+				if (err) console.log(err);
+				db.users.find({}, { password: 0 }, function(err, users) {
+					res.json({ errors: null, users: users });
+				});
 			});
-		});
+		} else {
+			var userId = req.user._id;
+			db.users.update({ _id: userId }, { $set: input }, {}, function(err, numUpdated) {
+				if (err) console.log(err);
+				db.users.findById(req.user._id, function(err, user) {
+					res.json({ error: null, user: user });
+				});
+			});
+		}
+
 	},
 
 	postDelete: function(req, res) {

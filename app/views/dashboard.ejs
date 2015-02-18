@@ -34,22 +34,9 @@
 				</form>
 			</div>
 		</div>
-
 		<div class="row">
-			<div class="col span-12 box">
-				<h1>Mijn gegevens</h1>
-				<div class="form-group">
-					<div class="label">E-mail adres:</div>
-					<div class="field"><%= user.email %></div>
-				</div>
-				<div class="form-group">
-					<div class="label">Voornaam:</div>
-					<div class="field"><%= user.firstname %></div>
-				</div>
-				<div class="form-group">
-					<div class="label">Achternaam:</div>
-					<div class="field"><%= user.lastname %></div>
-				</div>
+			<div class="col span-12 box" id="profile">
+				<!-- Profile will be rendered here -->
 			</div>
 		</div>
 	</div>
@@ -72,6 +59,52 @@
 			</div>
 		</div>
 	</div>
+</script>
+
+<script type="text/template" id="profile-tpl">
+	{{#if editing}}
+		<div intro-outro="slide:{ duration: 200 }">
+			<h1>Gegevens bewerken</h1>
+			<form on-submit="save" style="max-width: 500px">
+				<div class="form-group">
+					<div class="label">E-mail adres:</div>
+					<div class="field"><input type="text" value="{{editing.email}}" id="email" class="text"></div>
+				</div>
+				<div class="form-group">
+					<div class="label">Voornaam:</div>
+					<div class="field"><input type="text" value="{{editing.firstname}}" id="firstname" class="text"></div>
+				</div>
+				<div class="form-group">
+					<div class="label">Achternaam:</div>
+					<div class="field"><input type="text" value="{{editing.lastname}}" id="lastname" class="text"></div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn confirm"><i class="fa fa-save"></i> Opslaan</button>
+				</div>
+				<div class="form-group">
+					<a on-click="cancel"><i class="fa fa-angle-double-left"></i> Terug</a>
+				</div>
+			</form>
+		</div>
+	{{else}}
+		<div intro-outro="slide:{ duration: 200 }">
+			<h1>Mijn gegevens <a class="icon" on-click="edit"><i class="fa fa-edit"></i></a></h1>
+			<div style="max-width: 600px">
+				<div class="form-group">
+					<div class="label">E-mail adres:</div>
+					<div class="field">{{user.email}}</div>
+				</div>
+				<div class="form-group">
+					<div class="label">Voornaam:</div>
+					<div class="field">{{user.firstname}}</div>
+				</div>
+				<div class="form-group">
+					<div class="label">Achternaam:</div>
+					<div class="field">{{user.lastname}}</div>
+				</div>
+			</div>
+		</div>
+	{{/if}}
 </script>
 
 <% include includes/bottom %>

@@ -69,9 +69,10 @@ app.get('/qrcode/:room.png', auth.isMember, GameController.getQRCode);
 app.get('/users', auth.isAdmin, UserController.getIndex);
 
 app.get('/api/users', auth.isAdmin, UserController.getUsers);
+app.get('/api/user', auth.isMember, UserController.getUser);
 app.post('/api/login', auth.isGuest, UserController.postLogin);
 app.post('/api/register', auth.isGuest, UserController.postRegister);
-app.post('/api/users/save', auth.isAdmin, UserController.postSave);
+app.post('/api/users/save', auth.isMember, UserController.postSave);
 app.post('/api/users/check-email', UserController.postCheckEmail);
 app.post('/api/users/delete', auth.isAdmin, UserController.postDelete);
 
