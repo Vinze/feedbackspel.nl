@@ -101,8 +101,6 @@ var UserController = {
 			email: { required: true, email: true, minlength: 4, maxlength: 60 },
 			firstname: { required: true },
 			lastname: { required: true }
-			// password: { required: true, minlength: 3 },
-			// password2: { required: true, same: 'password' }
 		};
 		validate(input, rules, function(errors) {
 			if (errors) return res.json({ error: 'Validatie mislukt.' });
@@ -147,17 +145,15 @@ var UserController = {
 	},
 
 	postSave: function(req, res) {
-		if ( ! req.body._id) return res.json({error: 'No user._id'});
-
 		var input = {
-			email: req.body.email.toLowerCase(),
+			_id: (req.user.admin == true) ? req.body._id : req.user._id,
 			firstname: req.body.firstname,
 			lastname: req.body.lastname,
 			updated_at: moment().format('YYYY-MM-DD HH:mm:ss')
 		}
 
 		if (req.user.admin == true) {
-			var userId = req.body._id;
+			input.email = req.body.email.toLowerCase();
 
 			if (typeof req.body.image !== 'undefined') {
 				input.image = req.body.image == 'true' ? true : false;
@@ -167,20 +163,30 @@ var UserController = {
 				input.admin = req.body.admin == 'true' ? true : false;
 			}
 
-			db.users.update({ _id: userId }, { $set: input }, {}, function(err, numUpdated) {
-				if (err) console.log(err);
-				db.users.find({}, { password: 0 }, function(err, users) {
-					res.json({ errors: null, users: users });
-				});
-			});
-		} else {
-			var userId = req.user._id;
-			db.users.update({ _id: userId }, { $set: input }, {}, function(err, numUpdated) {
+			db.users.update({ _id: input._id }, { $set: input }, {}, function(err, numUpdated) {
 				if (err) console.log(err);
 				db.users.findById(req.user._id, function(err, user) {
 					res.json({ error: null, user: user });
 				});
 			});
+		} else {
+			var rules = {
+				_id: { required: true },
+				firstname: { required: true },
+				lastname: { required: true }
+			};
+
+			validate(input, rules, function(errors) {
+				if (errors) return res.json({ error: 'Niet alle verplichte velden zijn (correct) ingevuld.' });
+
+				db.users.update({ _id: input._id }, { $set: input }, {}, function(err, numUpdated) {
+					if (err) console.log(err);
+					db.users.findById(req.user._id, function(err, user) {
+						res.json({ error: null, user: user });
+					});
+				});
+			});
+
 		}
 
 	},

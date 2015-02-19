@@ -62,9 +62,9 @@ Player.on({
 				title: "Spel verlaten",
 				text: "Weet je zeker dat je het spel wilt verlaten?",
 				showCancelButton: true,
-				cancelButtonText: "Terug",
+				cancelButtonText: "Nee",
 				confirmButtonColor: "#DD5755",
-				confirmButtonText: "Verlaten",
+				confirmButtonText: "Ja",
 				closeOnConfirm: false,
 			}, function() {
 				socket.emit('player.leave');
@@ -87,10 +87,12 @@ verifyConnection(function(socket) {
 			if (userId != player._id) ratings[player._id] = 1;
 		});
 
-		Player.set('step', 1);
-		Player.set('rating', ratings);
-		Player.set('players', state.players);
-		Player.set('card', state.card);
+		Player.set({
+			step: 1,
+			ratings: ratings,
+			players: state.players,
+			card: state.card
+		});
 	});
 
 	socket.on('gamestate', function(state) {

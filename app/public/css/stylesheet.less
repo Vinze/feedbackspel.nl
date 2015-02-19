@@ -1,6 +1,7 @@
 @max-page-width: 960px;
 @sidebar-width: 250px;
-@header-height: 64px;
+@topper-height: 4px;
+@header-height: 60px;
 @footer-height: 28px;
 @accent-color: #55BE78;
 @font-color: #5F5F5F;
@@ -369,6 +370,10 @@ input.text {
 		outline: none;
 		.box-shadow(0 0 4px lighten(@accent-color, 30%));
 	}
+	&:disabled {
+		color: #AAA;
+		cursor: not-allowed;
+	}
 }
 
 input.checkbox, input.radio {
@@ -640,7 +645,7 @@ body {
 }
 
 .site-wrapper {
-	border-top: 4px solid @accent-color;
+	border-top: @topper-height solid @accent-color;
 	min-height: 100%;
 	position: absolute;
 	width: 100%;
@@ -652,6 +657,16 @@ body {
 	margin: 0px auto;
 }
 
+.topper {
+	// background: transparent url('../img/bg-top.png') repeat center center;
+	background-color: @accent-color;
+	height: @topper-height;
+	width: 100%;
+	position: fixed;
+	z-index: 400;
+	top: 0;
+}
+
 .header-wrapper {
 	height: @header-height;
 	width: 100%;
@@ -659,13 +674,12 @@ body {
 	position: fixed;
 	background-color: #fff;
 	border-bottom: 1px solid #e5e5e5;
-	border-top: 4px solid @accent-color;
-	top: 0;
+	top: @topper-height;
 }
 
 .header {
 	padding: 0 10px;
-	height: @header-height - 4px;
+	height: @header-height;
 }
 
 .header-icon {
@@ -777,7 +791,7 @@ body {
 }
 
 div.content-wrapper {
-	padding-top: @header-height - 4;
+	padding-top: @header-height;
 	padding-bottom: @footer-height;
 	.animation(fadein 500ms);
 }

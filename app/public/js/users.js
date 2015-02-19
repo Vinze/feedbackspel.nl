@@ -23,20 +23,22 @@ UserList.on({
 	remove: function(evt, user) {
 		swal({
 			title: 'Gebruiker verwijderen?',
-			text: 'Let op, deze actie kan niet ongedaan gedaan worden!',
+			text: 'Weet je zeker dat je ' + user.firstname + ' ' + user.lastname + ' wilt verwijderen?',
 			showCancelButton: true,
-			cancelButtonText: 'Annuleren',
+			cancelButtonText: 'Nee',
 			confirmButtonColor: '#DD5755',
-			confirmButtonText: 'Verwijderen',
+			confirmButtonText: 'Ja',
 			closeOnConfirm: false,
 			allowOutsideClick: true
 		}, function() {
 			$.post('/api/users/delete', user, function(res) {
 				swal({
-					title: 'Verwijderd!',
+					title: 'Gebruiker verwijderd',
 					text: 'De gebruiker is succesvol verwijderd.',
 					type: 'success',
-					timer: 1500
+					confirmButtonColor: '#55be78',
+					confirmButtonText: "OK",
+					timer: 2000
 				});
 				var index = UserList.get('users').indexOf(user);
 				UserList.splice('users', index, 1);

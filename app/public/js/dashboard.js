@@ -42,31 +42,35 @@ ProfileEditor = new Ractive({
 	el: 'profile',
 	template: '#profile-tpl',
 	noIntro: true,
-	data: { user: null, editing: null }
+	data: { user: null, editing: null, error: null }
 });
 
 ProfileEditor.on({
 	edit: function(evt) {
 		var user = ProfileEditor.get('user');
-
-		ProfileEditor.set('editing', _.clone(user)).then(function() {
-			// ProfileEditor.find('#email').focus();
-		});
+		ProfileEditor.set('editing', _.clone(user));
 	},
 	cancel: function(evt) {
 		ProfileEditor.set('editing', null);
-
 		evt.original.preventDefault();
 	},
 	save: function(evt) {
 		var editing = ProfileEditor.get('editing');
-		console.log(editing);
 		
 		$.post('/api/users/save', editing, function(res) {
-			ProfileEditor.set({ user: editing, editing: null });
+			if (res.error) return ProfileEditor.set('error', res.error);
+
+			ProfileEditor.set({ user: res.user, editing: null });
+			$('#title span').text(res.user.firstname);
 		});
 
 		evt.original.preventDefault();
+	}
+});
+
+$(window).on('keydown', function(evt) {
+	if (evt.which == 27) {
+		ProfileEditor.set('editing', null);
 	}
 });
 
@@ -87,4 +91,17 @@ $('#upload-select').on('change', function() {
 $('#join').on('click', function(evt) {
 	new JoinModal();
 	evt.preventDefault();
+});
+
+$('#host').on('click', function(evt) {
+	if (navigator.userAgent.match(/Android|iPhone|IEMobile/i)) {
+		swal({
+			title: 'Spel starten',
+			text: 'Let op! Op de PC of laptop maak je een nieuw spel aan, en op je telefoon moet je hieraan deelnemen.',
+			confirmButtonColor: '#55be78',
+			confirmButtonText: "OK",
+			allowOutsideClick: true
+		});
+		evt.preventDefault();
+	}
 });

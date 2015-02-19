@@ -54,9 +54,9 @@ Game.on({
 			title: 'Deelnemer verwijderen',
 			text: 'Weet je zeker dat je ' + player.firstname + ' wilt verwijderen uit het spel?',
 			showCancelButton: true,
-			cancelButtonText: 'Terug',
+			cancelButtonText: 'Nee',
 			confirmButtonColor: '#DD5755',
-			confirmButtonText: 'Verwijderen',
+			confirmButtonText: 'Ja',
 			closeOnConfirm: true,
 			allowOutsideClick: true
 		}, function() {
@@ -77,9 +77,9 @@ Game.on({
 			title: "Spel beëindigen?",
 			text: "Weet je zeker dat je wilt stoppen met het spel?",
 			showCancelButton: true,
-			cancelButtonText: "Terug",
+			cancelButtonText: "Nee",
 			confirmButtonColor: "#DD5755",
-			confirmButtonText: "Stoppen",
+			confirmButtonText: "Ja",
 			closeOnConfirm: false,
 			allowOutsideClick: true
 		}, function() {
