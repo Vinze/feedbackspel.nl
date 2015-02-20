@@ -2,11 +2,15 @@
 var express      = require('express');
 var app          = express();
 var server       = require('http').Server(app);
+var fs           = require('fs');
+var path         = require('path');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var multer       = require('multer');
+var moment       = require('moment');
 var auth         = require('./libs/auth');
+var db           = require('./libs/datastore');
 var config       = require('./libs/config');
 var flash        = require('./libs/flash');
 
@@ -52,6 +56,17 @@ app.use(flash())
 // Make the user available
 app.use(require('./libs/locals'))
 
+// Redirect to a game room if nessesary
+app.use(function(req, res, next) {
+	var room = parseInt(req.path.substr(1,4).replace(/[^0-9.]/g, '') || 0);
+
+	if (room >= 1000 && room <= 9999) {
+		return res.redirect('/play/' + room);
+	}
+
+	next();
+});
+
 // Routes
 app.get('/', HomeController.getIndex)
 
@@ -89,10 +104,60 @@ app.get('/test', function(req, res) {
 	res.render('test');
 });
 
-app.get('/:room', function(req, res) {
-	if (req.params.room >= 1000 && req.params.room <= 9999) {
-		res.redirect('/play/' + req.params.room);
+app.get('/scriptie*', function(req, res) {
+	if (req.path == '/scriptie' || req.path == '/scriptie/') {
+		if (req.ip != '127.0.0.1') {
+			// Get the current date and time
+			var now = moment();
+
+			// Access log
+			db.access.insert({
+				timestamp: now.unix(),
+				visited: now.format('DD-MM-YYYY HH:mm:ss'),
+				ipaddress: req.ip,
+				path: req.path,
+				useragent: req.headers['user-agent']
+			});
+		}
+
+		// Get the path to index.html
+		var filepath = path.resolve(__dirname, '..', 'scriptie', 'index.html');
+
+		// Send index.html to the client
+		res.sendfile(filepath);
+	} else {
+		// Get the path to the requested file
+		var filepath = path.resolve(__dirname, '..', 'scriptie', req.path.substr(10));
+
+		// Check if the requested file exists
+		fs.exists(filepath, function(exists) {
+			if ( ! exists) // File not found! (404)
+				return res.status(404).end();
+
+			// Send the file
+			res.sendfile(filepath);
+		});
 	}
+});
+
+app.get('/access/:action?', auth.isAdmin, function(req, res) {
+	if (req.params.action && req.params.action == 'clear') {
+		// Clear the logfile
+		db.access.remove({}, { multi: true }, function (err, numRemoved) {
+			res.json({ removed: numRemoved });
+		});
+	} else {
+		// Return the logfile
+		db.access.find({}).sort({ timestamp: -1 }).projection({ timestamp: 0 }).exec(function(err, docs) {
+			res.json(docs);
+		});
+	}
+});
+
+
+app.get('*', function(req, res) {
+	res.status(404);
+	res.render('404');
 });
 
 // Run the server

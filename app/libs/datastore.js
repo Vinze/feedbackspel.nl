@@ -7,6 +7,11 @@ db.users = new Datastore({
 	filename: __dirname + '/../storage/datastores/users.db'
 });
 
+db.access = new Datastore({
+	autoload: true,
+	filename: __dirname + '/../storage/datastores/access.db'
+});
+
 db.users.findById = function(user_id, callback) {
 	db.users.findOne({ _id: user_id }, { password: 0 }, callback);
 };
