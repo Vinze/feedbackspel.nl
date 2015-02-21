@@ -34,7 +34,7 @@ var Game = new Ractive({
 });
 
 Game.on({
-	next: function(evt) {
+	nextRound: function(evt) {
 		socket.emit('round.next');
 		evt.original.preventDefault();
 	},
@@ -94,9 +94,9 @@ socket.on('round.next', function(state) {
 		if (state.card) {
 			Game.set('card', state.card);
 			Game.set('summary', {});
-			Game.set('step', 1);
+			Game.set('step', 'showCard');
 		} else {
-			Game.set('step', 3);
+			Game.set('step', 'gameFinished');
 		}
 	});
 });
@@ -109,13 +109,13 @@ socket.on('gamestate', function(state) {
 		Game.set('summary', state.summary);
 		if (state.card) {
 			Game.set('step', null).then(function() {
-				Game.set('step', 2);
+				Game.set('step', 'showResults');
 			});
 		} else {
-			Game.set('step', 3);
+			Game.set('step', 'gameFinished');
 		}
-	} else if (Game.get('step') != 1) {
-		Game.set('step', 1);
+	} else if (Game.get('step') != 'showCard') {
+		Game.set('step', 'showCard');
 	}
 });
 

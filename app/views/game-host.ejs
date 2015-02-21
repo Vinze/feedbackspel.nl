@@ -29,20 +29,20 @@
 		<li><a on-click="removeGame" title="Spel sluiten"><i class="fa fa-times"></i></a></li>
 	</ul>
 
-	{{#if step == 1}}
+	{{#if step == 'showCard'}}
 		<div class="game-title" intro-outro="fly:{ x: 0, y: -100 }">Voer je feedback in</div>
 	{{/if}}
-	{{#if step == 2}}
+	{{#if step == 'showResults'}}
 		<div class="game-title" intro-outro="fly:{ x: 0, y: -100 }">Resultaten</div>
 	{{/if}}
 
-	{{#if step == 1}}
+	{{#if step == 'showCard'}}
 		<div class="card" intro-outro="fade">
 			{{card}}
 		</div>
 	{{/if}}
 
-	{{#if step == 2}}
+	{{#if step == 'showResults'}}
 		<div class="results" intro-outro="fade">
 			<h1>{{card}}</h1>
 
@@ -65,26 +65,26 @@
 				</div>
 			{{/each}}
 
-			<button class="btn confirm" on-click="next">
+			<button class="btn confirm" on-click="nextRound">
 				Resultaten besproken <i class="fa fa-check-square-o"></i>
 			</button>
 
 		</div>
 	{{/if}}
 
-	{{#if step == 3}}
+	{{#if step == 'gameFinished'}}
 		<div class="end" intro-outro="fade">
 			<h1>Spel afgelopen</h1>
 			<h2>Bedankt voor het spelen!</h2>
 		</div>
 	{{/if}}
 
-	{{#if step == 1}}
+	{{#if step == 'showCard'}}
 		<div class="players-list">
 			<ul>
 				{{#each players}}
 					<li class="player {{status}}" intro-outro="fly:{ x: 0, y: 150 }">
-						{{#if step == 2}}
+						{{#if step == 'feedbackSend'}}
 							<i class="fa fa-check check"></i>
 						{{/if}}
 						<div class="name">

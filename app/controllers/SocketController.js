@@ -77,16 +77,16 @@ var SocketController = function(server) {
 
 		sendState();
 
-		client.on('player.ready', function(rating) {
-			_.each(rating, function(rating, toPlayerId) {
+		client.on('player.ready', function(ratings) {
+			_.each(ratings, function(rating, toPlayerId) {
 				Gameroom(client.room).setFeedback({ from: client.playerId, to: toPlayerId, rating: rating });
 			});
-			Gameroom(client.room).setPlayerStep(client.playerId, 2);
+			Gameroom(client.room).setPlayerStep(client.playerId, 'feedbackSend');
 			sendState();
 		});
 
 		client.on('player.notready', function(rating) {
-			Gameroom(client.room).setPlayerStep(client.playerId, 1);
+			Gameroom(client.room).setPlayerStep(client.playerId, 'setRating');
 			sendState();
 		});
 

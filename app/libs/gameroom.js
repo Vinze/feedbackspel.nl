@@ -8,16 +8,20 @@ var Gameroom = function(room) {
 	if ( ! room) throw new Error('No room has been specific!');
 
 	if (state[room]) {
+		// If the room already exists, set the timestamp when it was last updated
 		state[room].modified = Math.floor(Date.now() / 1000);
 	} else {
+		// The gameroom doesn't exist yet, create a new one
 		state[room] = { round: 1, cards: [], modified: Math.floor(Date.now() / 1000) };
 	}
 	
 	this.setCards = function(cards) {
+		// Set the feedback cards
 		state[room].cards = cards;
 	}
 
 	this.getCard = function() {
+		// Return the card
 		if (state[room] && state[room].cards.length > 0) {
 			return state[room].cards[state[room].round - 1] || null;
 		} else {
@@ -36,8 +40,8 @@ var Gameroom = function(room) {
 		if (player) {
 			_.extend(player, playerData);
 		} else {
-			playerData.step = 1;
-			playerData.ratings = {};
+			playerData.step = 'setRating';
+			playerData.results = {};
 			players.push(playerData);
 		}
 	}
@@ -49,6 +53,7 @@ var Gameroom = function(room) {
 	}
 
 	this.setPlayerStep = function(playerId, step) {
+		// setRating - feedbackSend - showResults - gameFinished
 		var player = _.find(players, function(player) {
 			return player._id == playerId;
 		});
@@ -61,7 +66,7 @@ var Gameroom = function(room) {
 		var players = this.getPlayers();
 
 		return _.reduce(players, function(memo, player) {
-			return (player.step == 2) ? memo + 1 : memo;
+			return (player.step == 'feedbackSend') ? memo + 1 : memo;
 		}, 0);
 	}
 
@@ -88,7 +93,7 @@ var Gameroom = function(room) {
 			return player._id == feedback.from;
 		});
 		if (toPlayer && fromPlayer) {
-			toPlayer.ratings[feedback.from] = {
+			toPlayer.results[feedback.from] = {
 				from: _.pick(fromPlayer, '_id', 'email', 'firstname', 'lastname'),
 				rating: feedback.rating
 			};
@@ -99,8 +104,8 @@ var Gameroom = function(room) {
 		var player = _.find(players, function(player) {
 			return player._id == playerId;
 		});
-		if (player && player.ratings) {
-			return _.map(player.ratings, function(rating) {
+		if (player && player.results) {
+			return _.map(player.results, function(rating) {
 				return rating;
 			});
 		} else {
@@ -114,8 +119,8 @@ var Gameroom = function(room) {
 
 		_.each(players, function(player) {
 
-			var sum = _.reduce(player.ratings, function(memo, ratings) {
-				return memo + ratings.rating;
+			var sum = _.reduce(player.results, function(memo, results) {
+				return memo + results.rating;
 			}, 0)
 			
 			summary[player._id] = {
@@ -135,8 +140,8 @@ var Gameroom = function(room) {
 		var players = this.getPlayers();
 
 		_.each(players, function(player) {
-			player.ratings = {};
-			player.step = 1;
+			player.results = {};
+			player.step = 'setRating';
 		});
 
 		state[room].round++;
@@ -164,8 +169,8 @@ var Gameroom = function(room) {
 	this.reset = function() {
 		var players = this.getPlayers();
 		_.each(players, function(player) {
-			player.ratings = {};
-			player.step = 1;
+			player.results = {};
+			player.step = 'setRating';
 		});
 		state[room].round = 1;
 	}

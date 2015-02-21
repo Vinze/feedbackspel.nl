@@ -24,7 +24,7 @@
 	</ul>
 
 	<div class="content container">
-		{{#if step == 1}}
+		{{#if step == 'setRating'}}
 			{{#if opponents.length > 0}}
 				<h1>{{card}}:</h1>
 				<p class="stars-desc">
@@ -40,24 +40,24 @@
 							<div class="avatar"><img src="/avatar/{{_id}}.png"></div>
 							<div class="name">{{firstname}} {{lastname}}</div>
 							<div class="rating">
-								<label class="star{{rating[_id] >= 1 ? ' selected' : ''}}{{(rating[_id] + stars.available < 1) ? ' disabled' : ''}}">
-									<input type="radio" class="radio" name="rating[{{_id}}]" value="1" {{(rating[_id] + stars.available < 1) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								<label class="star{{ratings[_id] >= 1 ? ' selected' : ''}}{{(ratings[_id] + stars.available < 1) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="ratings[{{_id}}]" value="1" {{(ratings[_id] + stars.available < 1) ? ' disabled' : '' }} on-click="setRating:{{this}}">
 								</label>
 	
-								<label class="star{{rating[_id] >= 2 ? ' selected' : ''}}{{(rating[_id] + stars.available < 2) ? ' disabled' : ''}}">
-									<input type="radio" class="radio" name="rating[{{_id}}]" value="2" {{(rating[_id] + stars.available < 2) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								<label class="star{{ratings[_id] >= 2 ? ' selected' : ''}}{{(ratings[_id] + stars.available < 2) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="ratings[{{_id}}]" value="2" {{(ratings[_id] + stars.available < 2) ? ' disabled' : '' }} on-click="setRating:{{this}}">
 								</label>
 
-								<label class="star{{rating[_id] >= 3 ? ' selected' : ''}}{{(rating[_id] + stars.available < 3) ? ' disabled' : ''}}">
-									<input type="radio" class="radio" name="rating[{{_id}}]" value="3" {{(rating[_id] + stars.available < 3) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								<label class="star{{ratings[_id] >= 3 ? ' selected' : ''}}{{(ratings[_id] + stars.available < 3) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="ratings[{{_id}}]" value="3" {{(ratings[_id] + stars.available < 3) ? ' disabled' : '' }} on-click="setRating:{{this}}">
 								</label>
 								
-								<label class="star{{rating[_id] >= 4 ? ' selected' : ''}}{{(rating[_id] + stars.available < 4) ? ' disabled' : ''}}">
-									<input type="radio" class="radio" name="rating[{{_id}}]" value="4" {{(rating[_id] + stars.available < 4) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								<label class="star{{ratings[_id] >= 4 ? ' selected' : ''}}{{(ratings[_id] + stars.available < 4) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="ratings[{{_id}}]" value="4" {{(ratings[_id] + stars.available < 4) ? ' disabled' : '' }} on-click="setRating:{{this}}">
 								</label>
 
-								<label class="star{{rating[_id] >= 5 ? ' selected' : ''}}{{(rating[_id] + stars.available < 5) ? ' disabled' : ''}}">
-									<input type="radio" class="radio" name="rating[{{_id}}]" value="5" {{(rating[_id] + stars.available < 5) ? ' disabled' : '' }} on-click="setRating:{{this}}">
+								<label class="star{{ratings[_id] >= 5 ? ' selected' : ''}}{{(ratings[_id] + stars.available < 5) ? ' disabled' : ''}}">
+									<input type="radio" class="radio" name="ratings[{{_id}}]" value="5" {{(ratings[_id] + stars.available < 5) ? ' disabled' : '' }} on-click="setRating:{{this}}">
 								</label>
 							</div>
 						</li>
@@ -69,7 +69,7 @@
 			{{/if}}
 		{{/if}}
 
-		{{#if step == 2}}
+		{{#if step == 'feedbackSend'}}
 			<div class="waiting">
 				<h1>Feedback verzonden!</h1>
 				<p><strong>{{playersReady}}</strong> van de <strong>{{opponents.length + 1}}</strong> spelers zijn klaar.. <i class="fa fa-spin fa-spinner"></i></p>
@@ -77,7 +77,7 @@
 			</div>
 		{{/if}}
 
-		{{#if step == 3}}
+		{{#if step == 'showResults'}}
 			<div class="results">
 				<h1>Ontvangen:</h1>
 				<ul>
@@ -101,7 +101,7 @@
 		{{/if}}
 	</div>
 
-	{{#if step == 4}}
+	{{#if step == 'gameFinished'}}
 		<div class="end">
 			EINDE!
 		</div>

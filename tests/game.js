@@ -77,8 +77,8 @@ describe('When playing the game', function() {
 		Gameroom(10).setFeedback({ from: 2, to: 3, rating: 4 }); // (from user 2 to user 3 with a rating of 3)
 
 		// Set the users to step 2 (= ready)
-		Gameroom(10).setPlayerStep(1, 2);
-		Gameroom(10).setPlayerStep(2, 2);
+		Gameroom(10).setPlayerStep(1, 'feedbackSend');
+		Gameroom(10).setPlayerStep(2, 'feedbackSend');
 
 		expect(Gameroom(10).getPlayersReady()).to.be(2); // 2 users should be at step 2 (= ready)
 	});

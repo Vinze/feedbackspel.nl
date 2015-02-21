@@ -13,27 +13,26 @@ function verifyConnection(callback) {
 	}
 }
 
-var Player = new Ractive({
+var Game = new Ractive({
 	el: 'content',
 	template: '#template',
 	data: {
-		step: null, // 1 = set feedback // 2 = waiting // 3 = show results
+		step: null, // setRating - feedbackSend - showResults - gameFinished
 		card: '',
 		showHelp: true,
 		opponents: [],
-		players: [],
 		playersReady: 0,
-		rating: {},
+		ratings: {},
 		stars: { available: 0, total: 0 },
 		results: {}
 	}
 });
 
-Player.on({
+Game.on({
 	setRating: function(evt, user) {
 		var rating = parseInt(evt.node.value);
 		verifyConnection(function(socket) {
-			Player.set('rating.' + user._id, rating);
+			Game.set('ratings.' + user._id, rating);
 		});
 	},
 	changeRating: function(evt) {
@@ -43,14 +42,14 @@ Player.on({
 		evt.original.preventDefault();
 	},
 	ready: function(evt) {
-		var rating = Player.get('rating');
+		var ratings = Game.get('ratings');
 		verifyConnection(function(socket) {
-			socket.emit('player.ready', rating);
+			socket.emit('player.ready', ratings);
 		});
 		evt.original.preventDefault();
 	},
 	toggleHelp: function() {
-		Player.toggle('showHelp');
+		Game.toggle('showHelp');
 	},
 	reload: function(evt) {
 		window.location.reload();
@@ -78,19 +77,23 @@ verifyConnection(function(socket) {
 
 	socket.on('userId', function(id) {
 		userId = id;
-		Player.set('userId', userId);
+		Game.set('userId', userId);
 	});
 
 	socket.on('round.next', function(state) {
-		var ratings = {};
-		_.each(state.players, function(player) {
-			if (userId != player._id) ratings[player._id] = 1;
+		var opponents = _.filter(state.players, function(player) {
+			return player._id != userId;
 		});
 
-		Player.set({
-			step: 1,
+		var ratings = {};
+		_.each(opponents, function(opponent) {
+			ratings[opponent._id] = 1;
+		});
+
+		Game.set({
+			step: 'setRating',
 			ratings: ratings,
-			players: state.players,
+			opponents: opponents,
 			card: state.card
 		});
 	});
@@ -100,7 +103,7 @@ verifyConnection(function(socket) {
 			return player._id != userId;
 		});
 
-		if (Player.get('opponents').length != opponents.length) {
+		if (Game.get('opponents').length != opponents.length) {
 			var total = (opponents.length == 1) ? 5 : (opponents.length * 3) + 1;
 			var ratings = {};
 
@@ -108,28 +111,28 @@ verifyConnection(function(socket) {
 				ratings[player._id] = 1;
 			});
 
-			Player.set('rating', ratings);
-			Player.set('stars', {
+			Game.set('ratings', ratings);
+			Game.set('stars', {
 				'available': total - opponents.length,
 				'total': total
 			});
 		}
 
-		Player.set('card', state.card);
-		Player.set('opponents', opponents);
-		Player.set('playersReady', state.playersReady);
+		Game.set('card', state.card);
+		Game.set('opponents', opponents);
+		Game.set('playersReady', state.playersReady);
 
 		var currentPlayer = _.find(state.players, function(player) {
 			return player._id == userId;
 		});
 
-		var step = currentPlayer ? currentPlayer.step : 1;
+		var step = currentPlayer ? currentPlayer.step : 'setRating';
 
 		if (opponents.length > 0 && (opponents.length + 1) == state.playersReady) {
-			Player.set('step', 3);
-			Player.set('results', currentPlayer.ratings);
+			Game.set('step', 'showResults');
+			Game.set('results', currentPlayer.results);
 		} else {
-			Player.set('step', step);
+			Game.set('step', step);
 		}
 	});
 
@@ -138,10 +141,10 @@ verifyConnection(function(socket) {
 	});
 });
 
-Player.observe('rating', function() {
-	var rating = Player.get('rating');
-	var given = _.reduce(rating, function(memo, num) {
+Game.observe('ratings', function() {
+	var ratings = Game.get('ratings');
+	var given = _.reduce(ratings, function(memo, num) {
 		return memo + num;
 	}, 0);
-	Player.set('stars.available', Player.get('stars.total') - given);
+	Game.set('stars.available', Game.get('stars.total') - given);
 });
