@@ -1,5 +1,7 @@
 # Afstudeerscriptie
 
+<img src="scriptie/bijlagen/logo.png">
+
 Opleiding Communication & Multimedia Design
 
 NHL Hogeschool  
@@ -378,10 +380,210 @@ Kwam niet echt op gang
 
 
 Feedforward
-dsa
 
----
 
+Hoe vind je het geven van feedback met behulp van deze applicatie?
+
+Begrijp je waarom je bepaalde eigenschappen wel of niet toegeschreven kreeg?
+
+Heb je de behoefte om door te vragen over de gegeven of ontvangen feedback?
+[   ] Ja [   ] Nee  –  Omdat:
+
+Kan je de resultaten uit de feedback sessie gebruiken in, bijvoorbeeld, een reflectieverslag?
+
+Zou je deze applicatie in de toekomst vaker willen gebruiken?
+[   ] Ja [   ] Nee  –  Omdat:
+
+Als je medespelers niet konden zien welke feedback jij gegeven hebt, zou je de feedback (sterren) dan anders ingevuld hebben?
+[   ] Ja [   ] Nee
+
+Heb je tips of ideeën om de applicatie te verbeteren?
+
+# Iteratie #4 – webapp versie 1.2
+Tussen versie
+Spel uitleg
+Test met ouders/collega's/vrienden/familie
+
+
+# Iteratie #5 – webapp versie 2.0
+Dit moet nog uitgewerkt worden!
+
+Verbeteringen
+Systeem stelt vragen
+Registratieproces versimpeld
+Meerdere spellen
+Uitleg verbeterd
+Uitleg tonen op smartphone
+
+# Technisch ontwerp
+
+## Platform
+De applicatie zal geschreven worden op het Node.js softwareplatform wat inhoud dat de programmeertaal JavaScript gebruikt wordt. Er wordt gebruikt gemaakt van de opmaak talen HTML5 en CSS3 om de applicatie vorm te geven. Er is gekozen om gebruik te maken van Node.js omdat dit nieuwe technieken ondersteund welke zullen helpen bij het realtime laten werken van het feedbackspel. Verder bied Node.js de volgende voordelen:
+Uitstekende 'package manager' om additionele modules te installeren (NPM).
+Ondersteuning voor zogenaamde 'websockets', deze maken het mogelijk om de applicatie realtime te laten werken.
+Uiterst schaalbaar aangezien het single-threaded en event-based werkt, wat inhoud dat de applicatie nooit hoeft te wachten op bepaalde taken zoals het opslaan van gegevens in de database.
+De geschreven code en modules kunnen zowel op de server als in de webbrowser draaien.
+
+## Mappenstructuur
+
+- **controllers** (hierin staan de controllers)
+  - **GameController.js** (beheerd de spel pagina's)
+  - **HomeController.js** (statische homepage)
+  - **SocketController.js** (websocket verbindingen komen hier binnen)
+  - **UserController.js** (gebruikersbeheer)
+- **libs** (diverse zelfschreven modules)
+  - **auth.js** (authenticatie en token parser)
+  - **config.js** (bevat de configuratie)
+  - **datastore.js** (laad de database bestanden)
+  - **gameroom.js** (bevat de logica voor het feedbackspel)
+  - **locals.js** (globale variabelen voor in de views)
+  - **validator.js** (verzorgt de validatie van objecten)
+- **node_modules** (hier worden de third party modules geïnstalleerd)
+  - (...)
+- **public** (publieke bestanden)
+  - (...)
+- **storage** (hierin worden bestanden opgeslagen)
+  - **avatars** (opslag van avatars)
+  - **datastores** (database bestanden)
+  - **tmp** (tijdelijke bestanden zoals uploads)
+- **views** (bevat alle view (html) bestanden)
+  - (...)
+- **app.js** (hier staan de routes en het script start de applicatie met `node app.js`)
+- **package.json** (bevat applicatie specifieke informatie)
+
+
+## Modules
+```
+Module              Omschrijving                                       Server  Client
+- Express           Server framework                                   [x]     [ ]
+- Ractive           Front end framework (model-view binding)           [ ]     [x]
+- Ractive-plugins   Diverse plugins voor Ractive                       [ ]     [x]
+- Zepto             AJAX / DOM manipulatie                             [ ]     [x]
+- Zepto-touch       Plugin voor Zepto om touch te ondersteuren         [ ]     [x]
+- Underscore        Bevat diverse technische hulpmiddelen              [x]     [x]
+- Socket.io         Websocket implemantatie                            [x]     [x]
+- Moment            Hulpmiddel bij het werken met datum/tijd           [x]     [x]
+- SweetAlert        Popup meldingen                                    [ ]     [x]
+- Cookies           Cookies ophalen en setten                          [ ]     [x]
+- EJS               Templating op de server                            [x]     [ ]
+- NeDB              Lichtgewicht object georienteerde database         [x]     [ ]
+- JWT               JSON Web Tokens voor authenticatie en API keys     [x]     [ ]
+```
+
+## Hosting
+De applicatie wordt gehost op DigitalOcean (https://www.digitalocean.com/) en draait op Ubuntu Server versie 13.10. Hiervoor is gekozen omdat DigitalOcean een VPS (Virtual Private Server) aanbied voor slechts vijf dollar per maand en deze VPS erg makkelijk uit te bereiden is in capaciteit. Daarnaast bied een VPS vele voordelen over de standaard hosting, zo is het mogelijk om zelf software te installeren en is de server volledig naar wens te configureren. Voor het besturingssysteem Ubuntu Linux is gekozen omdat ik hier al veel ervaring mee heb en het een stabiel en bewezen platform is.
+
+### Lighttpd webserver
+Op de server wordt [Lighttpd](http://www.lighttpd.net/) gebruikt als webserver software. Dit is een lichtgewicht en snel alternatief voor het alom bekende Apache. Hiervoor is gekozen omdat Lighttpd in dit geval slechts dient als proxy server, en diverse domeinen kan koppelt aan verschillende poorten. Op deze poorten draaien meerdere Node.js applicaties.
+
+## Code conventies
+
+### DRY
+Don’t Repeat Yourself, dit houd in dat er zo geprogrammeerd dient te worden dat iedere functie ook losstaand kan functioneren en dus niet steeds opnieuw geschreven hoeft te worden.
+
+### KISS
+Keep It Short and Simple, voeg geen overbodige dingen toe, en schijf je code zo simpel mogelijk. Als iets op meerdere manieren opgelost kan worden, kies dat voor de meest eenvoudige oplossing. De geschreven code moet zichzelf wijzen, dus geef vanzelfsprekende functienamen en waar nodig voeg commentaar toe.
+
+### Variabelen
+Variabelen starten met een kleine letter en ieder opvolgend woord begint met een hoofdletter.  
+```
+var userProfile;
+var camelCase;
+```
+
+### Classes
+Classes of grote functies beginnen met een hoofdletter en alle opvolgende woorden beginnen eveneens met een hoofdletter.
+```
+var UsersView = Ractive.extend({
+	el: 'content',
+	template: '#template'
+});
+
+var Users = new DB();
+
+var Gameroom = function(room) {
+	this.getRoom = function() {
+		return room;
+	}
+}
+```
+
+### Functies
+Losse functies worden geschreven volgens dezelfde conventies als variabelen.
+```
+function nl2br(text) {
+	return text.replace(/\n/g, '<br>');
+}
+
+function colorHeadings(color) {
+	$(':header').css({ color: color });
+}
+```
+### Controllers
+Controllers worden in de map 'controllers' geplaatst en hebben dezelfde naamgeving als classes.
+```
+UserController.js
+HomeController.js
+```
+
+De naamgeving van de functies in een controller zijn afhankelijk van de actie en de route.
+```
+var UserController = {
+	getIndex: function() {
+		GET /users
+	},
+	postCreate: function() {
+		POST /users/create
+	},
+	postUpdate: function() {
+		POST /users/update
+	},
+	getView: function() {
+		GET /users/view
+	}
+}
+```
+
+### HTML/CSS classes en ID's
+De naamgeving van classes en ID's in HTML en css is als volgt; alles in kleine letters, en woorden worden gescheiden door een  minteken.
+```
+<div class"header-wrapper">
+	<div class="header-content">Content</div>
+</div>
+<div class="title">
+	Hello <span id="user-firstname"></span>
+</div>
+```
+
+### Database
+Kleine letter en woorden gescheiden door een liggend streepje.
+```
+firstname
+created_at
+user_id
+```
+
+<!--
+# Reflectieverslag
+
+Afstuderen
+- Alleen = kut
+- Motivatie problemen
+- Programmeren prima
+- Documenteren kut
+- 
+
+Gehele opleiding
+- Gegroeit op persoonlijk vlak
+- Technisch enorme verdieping
+-->
+
+
+
+
+
+
+<!--
 Feedback herstellen
 
 Max sterren wel duidelijk
@@ -472,114 +674,4 @@ Aan het einde zetten: ‘Bespreek de resultaten met je groepsgenoten’!
 Resultaten terug kunnen zien. Voortgang.
 
 Duurt niet ‘lang’. Was ‘leuk’.
-
-Hoe vind je het geven van feedback met behulp van deze applicatie?
-
-Begrijp je waarom je bepaalde eigenschappen wel of niet toegeschreven kreeg?
-
-Heb je de behoefte om door te vragen over de gegeven of ontvangen feedback?
-[   ] Ja [   ] Nee  –  Omdat:
-
-Kan je de resultaten uit de feedback sessie gebruiken in, bijvoorbeeld, een reflectieverslag?
-
-Zou je deze applicatie in de toekomst vaker willen gebruiken?
-[   ] Ja [   ] Nee  –  Omdat:
-
-Als je medespelers niet konden zien welke feedback jij gegeven hebt, zou je de feedback (sterren) dan anders ingevuld hebben?
-[   ] Ja [   ] Nee
-
-Heb je tips of ideeën om de applicatie te verbeteren?
-
-# Iteratie #4 – webapp versie 1.2
-Tussen versie
-Spel uitleg
-Test met ouders/collega's/vrienden/familie
-
-
-# Iteratie #5 – webapp versie 2.0
-Dit moet nog uitgewerkt worden!
-
-Verbeteringen
-Systeem stelt vragen
-Registratieproces versimpeld
-Meerdere spellen
-Uitleg verbeterd
-Uitleg tonen op smartphone
-
-# Technisch ontwerp
-
-## Platform
-De applicatie zal geschreven worden op het Node.js softwareplatform wat inhoud dat de programmeertaal JavaScript gebruikt wordt. Er wordt gebruikt gemaakt van de opmaak talen HTML5 en CSS3 om de applicatie vorm te geven. Er is gekozen om gebruik te maken van Node.js omdat dit nieuwe technieken ondersteund welke zullen helpen bij het realtime laten werken van het feedbackspel. Verder bied Node.js de volgende voordelen:
-Uitstekende 'package manager' om additionele modules te installeren (NPM).
-Ondersteuning voor zogenaamde 'websockets', deze maken het mogelijk om de applicatie realtime te laten werken.
-Uiterst schaalbaar aangezien het single-threaded en event-based werkt, wat inhoud dat de applicatie nooit hoeft te wachten op bepaalde taken zoals het opslaan van gegevens in de database.
-De geschreven code en modules kunnen zowel op de server als in de webbrowser draaien.
-
-## Mappenstructuur
-
-- **controllers** (hierin staan de controllers)
-  - **GameController.js** (beheerd de spel pagina's)
-  - **HomeController.js** (statische homepage)
-  - **SocketController.js** (websocket verbindingen komen hier binnen)
-  - **UserController.js** (gebruikersbeheer)
-- **libs** (diverse zelfschreven modules)
-  - **auth.js** (authenticatie en token parser)
-  - **config.js** (bevat de configuratie)
-  - **datastore.js** (laad de database bestanden)
-  - **gameroom.js** (bevat de logica voor het feedbackspel)
-  - **locals.js** (globale variabelen voor in de views)
-  - **validator.js** (verzorgt de validatie van objecten)
-- **node_modules** (hier worden de third party modules geïnstalleerd)
-  - (...)
-- **public** (publieke bestanden)
-  - (...)
-- **storage** (hierin worden bestanden opgeslagen)
-  - **avatars** (opslag van avatars)
-  - **datastores** (database bestanden)
-  - **tmp** (tijdelijke bestanden zoals uploads)
-- **views** (bevat alle view (html) bestanden)
-  - (...)
-- **app.js** (vanuit dit bestand start de applicatie met `node app.js`)
-- **package.json** (bevat applicatie specifieke informatie)
-
-
-## Modules
-```
-Module              Omschrijving                                       Server  Client
-- Express           Server framework                                   [x]     [ ]
-- Ractive           Front end framework (model-view binding)           [ ]     [x]
-- Ractive-plugins   Diverse plugins voor Ractive                       [ ]     [x]
-- Zepto             AJAX / DOM manipulatie                             [ ]     [x]
-- Zepto-touch       Plugin voor Zepto om touch te ondersteuren         [ ]     [x]
-- Underscore        Bevat diverse technische hulpmiddelen              [x]     [x]
-- Socket.io         Websocket implemantatie                            [x]     [x]
-- Moment            Hulpmiddel bij het werken met datum/tijd           [x]     [x]
-- SweetAlert        Popup meldingen                                    [ ]     [x]
-- Cookies           Cookies ophalen en setten                          [ ]     [x]
-- EJS               Templating op de server                            [x]     [ ]
-- NeDB              Lichtgewicht object georienteerde database         [x]     [ ]
-- JWT               JSON Web Tokens                                    [x]     [ ]
-```
-
-## Hosting
-De applicatie wordt gehost op DigitalOcean (https://www.digitalocean.com/) en draait op Ubuntu Server versie 13.10. Hiervoor is gekozen omdat DigitalOcean een VPS (Virtual Private Server) aanbied voor slechts vijf dollar per maand en deze VPS erg makkelijk uit te bereiden is in capaciteit. Daarnaast bied een VPS vele voordelen over de standaard hosting, zo is het mogelijk om zelf software te installeren en is de server volledig naar wens te configureren. Voor het besturingssysteem Ubuntu Linux is gekozen omdat ik hier al veel ervaring mee heb en het een stabiel en bewezen platform is.
-
-## Beveiliging
-
-### JSON Web Tokens
-
-### API
-
-## Code conventies
-
-### Variabelen & functies
-```
-var userProfile;
-var camelCase;
-```
-
-### Classes
-```
-var Users = new DB();
-var UserList = new View();
-```
+-->

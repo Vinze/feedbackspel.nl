@@ -1,34 +1,50 @@
+// Find and parse all H1 and H2 headings
 function parseHeadings() {
 	var toc = {}
 	var index = 1;
-	var prev;
+	var prevH1;
 
+	// Loop over each heading
 	$(':header').each(function() {
+		// Get the tag name
 		var tagName = $(this)[0].tagName;
+
+		// Only process H1 and H2 headings
 		if (tagName == 'H1' || tagName =='H2') {
+
+			// Get the heading text
 			var title = $(this).text();
+
+			// Create a URL save slug
 			var slug = index + '-' + title.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+
+			// Set the ID of the heading
 			$(this).attr('id', slug);
 
+			// Check if we found an H1 or and H2
 			if (tagName == 'H1') {
+				// Add it to the table of content
 				toc[index] = {
 					title: title,
 					slug: slug,
 					sub: []
 				};
-				prev = index;
+				prevH1 = index;
 			} else if (tagName == 'H2') {
-				toc[prev].sub.push({
+				// Push it to the sub items of the parent H1
+				toc[prevH1].sub.push({
 					title: title,
 					slug: slug
 				});
 			}
+			// Increment the index used for the ID
 			index++;
 		}
 	});
 	return toc;
 }
 
+// Create the HTML for the table of contents
 function buildTOC(headings) {
 	var html = '';
 	for (var i in headings) {

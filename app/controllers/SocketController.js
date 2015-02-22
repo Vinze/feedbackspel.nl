@@ -96,15 +96,12 @@ var SocketController = function(server) {
 		});
 
 		client.on('player.leave', function(playerId) {
-			var player = Gameroom(client.room).getPlayer(client.playerId);
+			var player = Gameroom(client.room).getPlayer(playerId);
 
 			if (player.status == 'disconnected') {
-				Gameroom(client.room).removePlayer(client.playerId);
+				Gameroom(client.room).removePlayer(playerId);
 			} else {
-				Gameroom(client.room).setPlayer({
-					_id: (client.role == 'host' ? playerId : client.playerId),
-					status: 'left'
-				});
+				Gameroom(client.room).setPlayer({ _id: playerId, status: 'left' });
 			}
 			if (io.sockets.connected[player.socketId]) {
 				io.sockets.connected[player.socketId].emit('game.leave');

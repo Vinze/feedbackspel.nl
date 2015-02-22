@@ -66,7 +66,7 @@ Game.on({
 				confirmButtonText: "Ja",
 				closeOnConfirm: false,
 			}, function() {
-				socket.emit('player.leave');
+				socket.emit('player.leave', userId);
 			});
 		});
 		evt.original.preventDefault();
