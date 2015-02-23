@@ -245,6 +245,7 @@ Er zijn een aantal vereisten waaraan het eindproduct moet voldoen, namelijk;
 
 ![webapp1](scriptie/bijlagen/i1-overview.png)
 
+## Inleiding
 Het eerste prototype is een zogenaamd “paper prototype”. Dit houd in dat het prototype is getekend op de computer en vervolgens wordt uitgeprint op papier. Van de testpersonen wordt verwacht dat zij met een pen het prototype “bedienen”. Het prototype bestaat uit twee delen, namelijk een webapplicatie, en een pagina welke op de laptop getoond wordt. De testgebruikers vullen de webapplicatie in, en ik zal de rol van de computer vervullen en de uitslagen verwerken.
 
 ## Opdrachtomschrijving
@@ -377,10 +378,10 @@ Het was niet meteen duidelijk wat de bedoeling was van het feedbackspel. De deel
 Het geven van sterren aan medespelers leverde verder geen problemen op. Het was duidelijk dat wanneer je meer sterren aan iemand toekend, deze eigenschap beter bij die persoon past. Het maximaal uit te geven sterren wees zichzelf ook, iedereen vond het duidelijk dat wanneer de sterren veranderen in een stip deze niet meer beschikbaar waren om uit te geven. Wel werd de vraag nog gesteld of het verplicht was om alle sterren uit te geven. Hieruit blijkt dat de zin "Je mag nog maximaal (..) sterren uitgeven" niet voor iedereen duidelijk is, of dat ze deze zin compleet over het hoofd gezien hebben. Deze vraag werd vervolgens wel door de deelnemers zelf beantwoord. Mocht blijken dat dit in meerdere gevallen niet duidelijk is, dan zal dit duidelijk uitgelegd moeten worden. Bijvoorbeeld door het woord 'mag' dikgedrukt te maken, of in de uitleg aan te geven dat je niet verplicht bent om alle sterren uit te geven.
 
 ### Persoonlijk ontvangen feedback
-Nadat alle deelnemers feedback hebben ingevuld werd ook de persoonlijk onvangen feedback getoond.
+Door inzichtelijk te maken hoeveel sterren de deelnemer van zijn of haar medespelers gekregen heeft zou een gesprek op gang moeten komen. Het wordt namelijk mogelijk om iemand op de man af te vragen waarom hij of zij een bepaalde eigenschap wel of niet toegeschreven kreeg. Hierbij viel op dat dit alleen het geval was bij negatieve eigenschappen en bij uitspringers. Wanneer iemand allemaal positieve beoordelingen kreeg vond diegene het niet nodig om door te vragen. Bij een negatieve beoordeling werd er wel sneller naar gevraagd. Hierna werd er vanuit de groep wel toegelicht waarom diegene een eigenschap wel of niet bezat.
 
 ### Groepsgesprek
-Kwam niet echt op gang
+
 
 
 
@@ -397,28 +398,16 @@ Feedforward
 - [Enquête ingevuld #6](scriptie/bijlagen/i3-enquete-6.jpg)
 
 
----
-
-Hoe vind je het geven van feedback met behulp van deze applicatie?
-
-Begrijp je waarom je bepaalde eigenschappen wel of niet toegeschreven kreeg?
-
-Heb je de behoefte om door te vragen over de gegeven of ontvangen feedback?  
-[   ] Ja [   ] Nee  –  Omdat:
-
-Kan je de resultaten uit de feedback sessie gebruiken in, bijvoorbeeld, een reflectieverslag?  
-
-Zou je deze applicatie in de toekomst vaker willen gebruiken?  
-[   ] Ja [   ] Nee  –  Omdat:
-
-Als je medespelers niet konden zien welke feedback jij gegeven hebt, zou je de feedback (sterren) dan anders ingevuld hebben?  
-[   ] Ja [   ] Nee
-
-Heb je tips of ideeën om de applicatie te verbeteren?  
-
----
-
 # Iteratie #4 – webapp versie 1.2
+## Inleiding
+Voor deze versie zijn slechts een klein aantal wijzigingen doorgevoerd..
+
+Spel inhoudelijk niet veranderd
+
+Meer gericht op gebruiksvriendelijkheid
+
+...
+
 - Tussen versie
 - Spel uitleg
 - Test met ouders/collega's/vrienden/familie
