@@ -1,5 +1,3 @@
-# Afstudeerscriptie
-
 <img src="scriptie/bijlagen/logo.png">
 
 Opleiding Communication & Multimedia Design
@@ -10,10 +8,10 @@ Rengerslaan 10
 
 Tel. secretariaat 058 2511107 / 06 46065567
 
-<table>
+<table style="margin-top:60px;">
 	<tr>
 		<th colspan="2">Student</th>
-		<th colspan="2">Afstudeerdocent / mentor</th>
+		<th colspan="2">Onderwijs instelling</th>
 	</tr>
 	<tr>
 		<td>Naam:</td>
@@ -22,22 +20,27 @@ Tel. secretariaat 058 2511107 / 06 46065567
 		<td>Jan-Wessel Hovingh</td>
 	</tr>
 	<tr>
-		<td>Adres:</td>
-		<td>Valkstraat 33<br>8605 AV Sneek</td>
-		<td></td>
+		<td rowspan="2">Adres:</td>
+		<td rowspan="2">Valkstraat 33<br>8605 AV Sneek</td>
+		<td>Telefoonnr.:</td>
 		<td>06 460 648 30</td>
 	</tr>
 	<tr>
-		<td>Studentnr.:</td>
-		<td>205133</td>
 		<th>Vakdocent:</th>
 		<td>Dirk Sierd de Vries</td>
 	</tr>
 	<tr>
 		<td>Cohort:</td>
 		<td>2010</td>
-		<td></td>
+		<td>Telefoonnr.:</td>
 		<td>06 485 940 00</td>
+		
+	</tr>
+	<tr>
+		<td>Studentnr.:</td>
+		<td>205133</td>
+		<td></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Tel:</td>
@@ -369,10 +372,12 @@ Het registratie en inlog proces verliep zonder problemen en het wees zichzelf. E
 Door het uploaden van een profielfoto verplicht te maken werd dit netjes door alle testpersonen gedaan. Het dashboard, vanuit waar een spel gespeeld kan worden, wordt niet eerder getoond dan wanneer er een foto is toegevoegd. Het enige punt van kritiek was dat het uploaden van een afbeelding soms wat lang kon duren op een mobiele telefoon. Hierdoor hadden de testpersonen het idee dat de pagina vast liep of dat het niet zou werken. Dit is mogelijk op te lossen door te laten zien dat de applicatie bezig is met het verwerken van de afbeelding. (bijvoorbeeld een laad icoontje)
 
 ### Speelwijze
-Het was niet meteen duidelijk wat de bedoeling was van het feedbackspel. De deelnemers vroegen zich af hoe het spel gespeeld moest worden en welke handelingen ze moeten uitvoeren. Vooral wat de rol van de PC of laptop is en waarvoor de smartphone dient, bleek niet duidelijk te zijn. Het spel moet namelijk aangemaakt worden op een PC of laptop, waarna de smartphone deelneemt aan het reeds aangemaakte spel. Het geven van sterren aan medespelers leverde geen problemen op. Het zal dus nodig zijn om voorafgaand aan het spelen van het spel een uitleg te geven over hoe het spel gestart en gespeeld moet worden.
+Het was niet meteen duidelijk wat de bedoeling was van het feedbackspel. De deelnemers vroegen zich af hoe het spel gespeeld moest worden en welke handelingen ze moeten uitvoeren. Vooral wat de rol van de PC of laptop is en waarvoor de smartphone dient, bleek niet duidelijk te zijn. Het spel moet namelijk aangemaakt worden op een PC of laptop, waarna de smartphone deelneemt aan het reeds aangemaakte spel. Het zal dus nodig zijn om voorafgaand aan het spelen van het spel meer uitleg te geven over hoe het spel gestart en gespeeld moet worden.
+
+Het geven van sterren aan medespelers leverde verder geen problemen op. Het was duidelijk dat wanneer je meer sterren aan iemand toekend, deze eigenschap beter bij die persoon past. Het maximaal uit te geven sterren wees zichzelf ook, iedereen vond het duidelijk dat wanneer de sterren veranderen in een stip deze niet meer beschikbaar waren om uit te geven. Wel werd de vraag nog gesteld of het verplicht was om alle sterren uit te geven. Hieruit blijkt dat de zin "Je mag nog maximaal (..) sterren uitgeven" niet voor iedereen duidelijk is, of dat ze deze zin compleet over het hoofd gezien hebben. Deze vraag werd vervolgens wel door de deelnemers zelf beantwoord. Mocht blijken dat dit in meerdere gevallen niet duidelijk is, dan zal dit duidelijk uitgelegd moeten worden. Bijvoorbeeld door het woord 'mag' dikgedrukt te maken, of in de uitleg aan te geven dat je niet verplicht bent om alle sterren uit te geven.
 
 ### Persoonlijk ontvangen feedback
-Nadat alle spelers feedback hebben ingevuld werd ook de persoonlijk onvangen feedback getoond.
+Nadat alle deelnemers feedback hebben ingevuld werd ook de persoonlijk onvangen feedback getoond.
 
 ### Groepsgesprek
 Kwam niet echt op gang
@@ -381,39 +386,53 @@ Kwam niet echt op gang
 
 Feedforward
 
+## Bijlages
+
+
+- [Enquête ingevuld #1](scriptie/bijlagen/i3-enquete-1.jpg)
+- [Enquête ingevuld #2](scriptie/bijlagen/i3-enquete-2.jpg)
+- [Enquête ingevuld #3](scriptie/bijlagen/i3-enquete-3.jpg)
+- [Enquête ingevuld #4](scriptie/bijlagen/i3-enquete-4.jpg)
+- [Enquête ingevuld #5](scriptie/bijlagen/i3-enquete-5.jpg)
+- [Enquête ingevuld #6](scriptie/bijlagen/i3-enquete-6.jpg)
+
+
+---
 
 Hoe vind je het geven van feedback met behulp van deze applicatie?
 
 Begrijp je waarom je bepaalde eigenschappen wel of niet toegeschreven kreeg?
 
-Heb je de behoefte om door te vragen over de gegeven of ontvangen feedback?
+Heb je de behoefte om door te vragen over de gegeven of ontvangen feedback?  
 [   ] Ja [   ] Nee  –  Omdat:
 
-Kan je de resultaten uit de feedback sessie gebruiken in, bijvoorbeeld, een reflectieverslag?
+Kan je de resultaten uit de feedback sessie gebruiken in, bijvoorbeeld, een reflectieverslag?  
 
-Zou je deze applicatie in de toekomst vaker willen gebruiken?
+Zou je deze applicatie in de toekomst vaker willen gebruiken?  
 [   ] Ja [   ] Nee  –  Omdat:
 
-Als je medespelers niet konden zien welke feedback jij gegeven hebt, zou je de feedback (sterren) dan anders ingevuld hebben?
+Als je medespelers niet konden zien welke feedback jij gegeven hebt, zou je de feedback (sterren) dan anders ingevuld hebben?  
 [   ] Ja [   ] Nee
 
-Heb je tips of ideeën om de applicatie te verbeteren?
+Heb je tips of ideeën om de applicatie te verbeteren?  
+
+---
 
 # Iteratie #4 – webapp versie 1.2
-Tussen versie
-Spel uitleg
-Test met ouders/collega's/vrienden/familie
+- Tussen versie
+- Spel uitleg
+- Test met ouders/collega's/vrienden/familie
 
 
 # Iteratie #5 – webapp versie 2.0
 Dit moet nog uitgewerkt worden!
 
-Verbeteringen
-Systeem stelt vragen
-Registratieproces versimpeld
-Meerdere spellen
-Uitleg verbeterd
-Uitleg tonen op smartphone
+- Verbeteringen
+- Systeem stelt vragen
+- Registratieproces versimpeld
+- Meerdere spellen
+- Uitleg verbeterd
+- Uitleg tonen op smartphone
 
 # Technisch ontwerp
 
@@ -450,7 +469,6 @@ De geschreven code en modules kunnen zowel op de server als in de webbrowser dra
   - (...)
 - **app.js** (hier staan de routes en het script start de applicatie met `node app.js`)
 - **package.json** (bevat applicatie specifieke informatie)
-
 
 ## Modules
 ```

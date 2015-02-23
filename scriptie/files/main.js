@@ -67,7 +67,7 @@ $.get('/scriptie/afstudeerscriptie.md', function(content) {
 
 	var toc = buildTOC(headings);
 
-	$('#toc').html(toc);
+	$('#toc').append(toc);
 
 	if (window.location.hash) {
 		window.scrollTo(0, $(window.location.hash).offset().top - 20);
@@ -84,3 +84,13 @@ $('#toc').on('click', 'a', function(evt) {
 
 	evt.preventDefault();
 });
+
+var seconds = 0;
+
+setInterval(function() {
+	seconds++;
+}, 1000);
+
+window.onbeforeunload = function() {
+	$.post('/access/update', { seconds: seconds });
+}

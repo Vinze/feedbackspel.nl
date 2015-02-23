@@ -106,20 +106,6 @@ app.get('/test', function(req, res) {
 
 app.get('/scriptie*', function(req, res) {
 	if (req.path == '/scriptie' || req.path == '/scriptie/') {
-		if (req.ip != '127.0.0.1') {
-			// Get the current date and time
-			var now = moment();
-
-			// Access log
-			db.access.insert({
-				timestamp: now.unix(),
-				visited: now.format('DD-MM-YYYY HH:mm:ss'),
-				ipaddress: req.ip,
-				path: req.path,
-				useragent: req.headers['user-agent']
-			});
-		}
-
 		// Get the path to index.html
 		var filepath = path.resolve(__dirname, '..', 'scriptie', 'index.html');
 
@@ -140,18 +126,44 @@ app.get('/scriptie*', function(req, res) {
 	}
 });
 
-app.get('/access/:action?', auth.isAdmin, function(req, res) {
-	if (req.params.action && req.params.action == 'clear') {
-		// Clear the logfile
-		db.access.remove({}, { multi: true }, function (err, numRemoved) {
-			res.json({ removed: numRemoved });
-		});
-	} else {
-		// Return the logfile
-		db.access.find({}).sort({ timestamp: -1 }).projection({ timestamp: 0 }).exec(function(err, docs) {
-			res.json(docs);
-		});
-	}
+app.get('/access', auth.isAdmin, function(req, res) {
+	// Return the logfile
+	db.access.find({}).sort({ timestamp: -1 }).projection({ timestamp: 0 }).exec(function(err, docs) {
+		res.json(docs);
+	});
+});
+
+app.post('/access/update', function(req, res) {
+	var ipaddress = req.headers['x-forwarded-for'] || 
+		                req.connection.remoteAddress || 
+		                req.socket.remoteAddress ||
+		                req.connection.socket.remoteAddress;
+
+	// Get the current date and time
+	var now = moment();
+
+	// Access log
+	db.access.update({
+		ipaddress: ipaddress,
+		useragent: req.headers['user-agent']
+	}, {
+		$set: {
+			timestamp: now.unix(),
+			last_visit: now.format('DD-MM-YYYY HH:mm:ss')
+		},
+		$inc: {
+			seconds: parseInt(req.body.seconds)
+		}
+	}, { upsert: true });
+
+});
+
+app.get('/access/clear', auth.isAdmin, function(req, res) {
+	// Clear the logfile
+	db.access.remove({}, { multi: true }, function (err, numRemoved) {
+		// res.json({ removed: numRemoved });
+		res.redirect('/access');
+	});
 });
 
 
