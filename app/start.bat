@@ -1,1 +1,0 @@
-start nodemon app.js

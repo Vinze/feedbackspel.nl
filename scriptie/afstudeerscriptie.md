@@ -239,6 +239,8 @@ Er zijn een aantal vereisten waaraan het eindproduct moet voldoen, namelijk;
 
 ### Low Fidelity Prototype Kit (171)
 
+https://uxchecklist.github.io/
+
 <span class="text-red">Dit moet nog uitgewerkt worden!</span>
 
 # Iteratie #1 – paper prototype
