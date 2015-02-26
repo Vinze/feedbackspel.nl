@@ -1,4 +1,4 @@
-<img src="scriptie/bijlagen/logo.png">
+![Logo](scriptie/bijlagen/logo.svg)
 
 Opleiding Communication & Multimedia Design
 
@@ -73,7 +73,7 @@ Het idee voor een feedback spel is ontstaan uit eigen ongenoegen met de bestaand
 
 Er zijn diverse feedback methodieken, vragenlijsten, spellen en boeken beschikbaar welke kunnen helpen bij het houden van een feedback sessie. Deze producten proberen een bepaalde structuur aan te brengen in een feedback sessie, en geven informatie over hoe je met feedback om moet gaan. Dit zijn vrijwel allemaal fysieke en analoge producten welke (bijvoorbeeld) op papier staan. Ik heb de afgelopen jaren diverse producten toegepast en ben tot de conclusie gekomen dat ik en vele studenten met mij de bestaande producten omslachtig of onnodig moeilijk vinden. Een leuke manier om feedback te geven is in de vorm van een zogenaamd feedback spel. Zelf heb ik praktijk ervaring met “Het feedbackspel” en het “Kernkwadranten spel”. Deze feedback spellen zorgen ervoor dat een feedback sessie gestructureerd wordt en weten bepaalde (gevoelige) onderwerpen op tafel te krijgen. Een nadeel van zo'n spel is dat er redelijk wat voorbereidingen getroffen moeten worden zoals het begrijpen en opzetten van een spel. Dit heeft als gevolg dat er de nodige tijd moet worden uitgetrokken voor een feedback spel.
 
-Ik ben van mening dat dit veel makkelijker moet kunnen in de vorm van, bijvoorbeeld, een digitaal feedback spel. Na uitgebreid zoeken op internet en in de [App store](https://itunes.apple.com/nl/genre/ios/id36?mt=8) van Apple en de [Play Store](https://play.google.com/store) van Android ben ik tot de conclusie gekomen dat er eigenlijk nog geen applicaties hiervoor beschikbaar zijn. Hier ligt mogelijk een grote kans om met een nieuw en innovatief concept op de markt te komen.
+Ik ben van mening dat dit veel makkelijker moet kunnen in de vorm van, bijvoorbeeld, een digitaal feedback spel. Na uitgebreid zoeken op internet en in de [App Store](https://itunes.apple.com/nl/genre/ios/id36?mt=8) van Apple en de [Play Store](https://play.google.com/store) van Android ben ik tot de conclusie gekomen dat er eigenlijk nog geen applicaties hiervoor beschikbaar zijn. Hier ligt mogelijk een grote kans om met een nieuw en innovatief concept op de markt te komen.
 
 # Doelstellingen
 Het geven en ontvangen van feedback binnen een team moet toegankelijker en leuker worden. Er moet een dialoog ontstaan over de gegeven en ontvangen feedback.
@@ -129,13 +129,19 @@ Feedback wordt nogal eens verward met kritiek. Mensen voelen zich aangevallen of
 
 ## Regels
 Er zijn een aantal regels bij het geven en ontvangen van feedback. Door deze regels in acht te nemen zal het leerproces verbeteren en zal een feedback sessie nuttigere resultaten opleveren. Een aantal belangrijke regels zijn:
+
+### Bij feedback geven
 - Denk goed na over de feedback die je gaat geven en hoe je dit gaat brengen.
-- Wees duidelijk.
+- Geef voorbeelden en licht je feedback toe.
 - Geef opbouwende kritiek.
+- Wees duidelijk.
 - Geef zowel positief als negatief commentaar.
 - Hou rekening met de gevoelens van een ander.
-- Geef voorbeelden en licht je feedback toe.
+
+### Bij feedback ontvangen
 - Luister goed en vraag indien nodig om toelichting.
+- Schiet niet meteen in de verdediging en sta op voor kritiek van anderen.
+- Probeer je in de ander te verplaatsen om erachter te komen waarom je bepaalde feedback krijgt.
 
 http://www.counselling.nl/coaching/feedbackregels.html
 

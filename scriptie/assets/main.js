@@ -45,8 +45,10 @@ function parseHeadings() {
 }
 
 // Create the HTML for the table of contents
-function buildTOC(headings) {
+function buildTOC() {
+	var headings = parseHeadings();
 	var html = '';
+
 	for (var i in headings) {
 		var h1 = headings[i];
 		html += '<li class="heading-1"><a href="#' + h1.slug + '">' + h1.title + '</a></li>';
@@ -58,16 +60,22 @@ function buildTOC(headings) {
 	return html;
 }
 
+function editLinks() {
+	$('#content a').each(function() {
+		if ($(this).attr('href').substr(0, 4) == 'http') {
+			$(this).attr({ 'target': '_blank' });
+		}
+	});
+}
+
 $.get('/scriptie/afstudeerscriptie.md', function(content) {
 	var html = marked(content);
-
 	$('#content').html(html);
-
-	var headings = parseHeadings();
-
-	var toc = buildTOC(headings);
-
+	
+	var toc = buildTOC();
 	$('#toc').append(toc);
+
+	editLinks();
 
 	hljs.initHighlightingOnLoad();
 

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="700"
+   height="400"
+   id="svg3266"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs3268" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.54038749"
+     inkscape:cx="678.23815"
+     inkscape:cy="61.389661"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="719"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3271">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(435.02567,96.54379)">
+    <text
+       xml:space="preserve"
+       style="font-size:66.55287933px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#55be78;fill-opacity:1;stroke:none;font-family:'Lobster 1.4';-inkscape-font-specification:'Lobster 1.4'"
+       x="-286.51364"
+       y="228.2753"
+       id="text3248"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3250"
+         x="-286.51364"
+         y="228.2753"><tspan
+   style="fill:#55be78;fill-opacity:1"
+   id="tspan3270">Feedback</tspan>spel.nl</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#55be78;fill-opacity:1"
+       d="M 20.409046,46.044122 -44.006648,46.189608 -26.931867,59.075611 -48.311691,74.216 c -13.341354,-12.955298 -34.52617,-20.899844 -56.983599,-20.899844 -37.64563,0 -71.26592,22.203744 -71.26592,52.576824 0,10.7727 4.39136,21.34595 12.15881,29.55354 0.32808,9.61793 -6.07321,23.41632 -11.8389,33.46587 15.45298,-2.47001 37.42117,-7.925 47.38462,-13.32236 54.582133,11.74617 94.429615,-17.5971 94.827307,-49.21711 L -6.3956459,86.79666 0.97817252,107.46373 20.409046,46.044122 z M 10.213631,53.839751 -0.63619715,88.12013 -4.9848949,75.91769 -71.24766,121.22243 a 9.3091339,9.3091339 0 0 1 -9.497253,0.59633 l -25.103097,-12.84244 -28.66634,22.25242 a 9.3091339,9.3091339 0 1 1 -11.41712,-14.70402 l 33.34956,-25.88844 a 9.3091339,9.3091339 0 0 1 9.94816,-0.93083 l 25.45211,13.03149 60.92507,-41.654208 -9.482731,-7.155675 35.952932,-0.08729 z m -113.690951,8.624643 c 5.804509,-0.01721 11.417867,0.594525 16.696594,1.745299 -5.374459,0.327268 -10.959387,1.080865 -16.652924,2.283427 -31.69262,6.69376 -57.09778,25.32037 -63.52849,44.79573 -1.32911,-23.61705 23.10523,-45.120675 55.45651,-48.402651 2.70714,-0.274683 5.38992,-0.413936 8.02831,-0.421805 z"
+       id="speech-bubble-2-icon-3-35-9-94-6-0-6-3-7-0-2-2-0-1" />
+    <text
+       xml:space="preserve"
+       style="font-size:41.16241455px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#888888;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans"
+       x="-412.5173"
+       y="-34.359924"
+       id="text2987"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2989"
+         x="-412.5173"
+         y="-34.359924"
+         style="font-weight:600;fill:#888888;fill-opacity:1;-inkscape-font-specification:Open Sans Semi-Bold">Afstudeerscriptie Vincent Bremer</tspan></text>
+  </g>
+</svg>
