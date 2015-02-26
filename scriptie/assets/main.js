@@ -69,6 +69,8 @@ $.get('/scriptie/afstudeerscriptie.md', function(content) {
 
 	$('#toc').append(toc);
 
+	hljs.initHighlightingOnLoad();
+
 	if (window.location.hash) {
 		window.scrollTo(0, $(window.location.hash).offset().top - 20);
 	}

@@ -144,7 +144,7 @@ Bij een goede feedback sessie is het van belang dat de deelnemers een dialoog me
 
 http://www.inc.com/magazine/20110401/competitive-intelligence-how-to-make-people-talk.html
 
-# Doelgroep(en)
+# Doelgroep
 De doelgroep waar ik me in eerste instantie op zal richting zijn studenten die de opleiding Communication & Multimedia Design volgen. Op deze opleiding wordt erg veel gewerkt in groepsverband en is het reflecteren en groeien op persoonlijk vlak erg belangrijk. Uit eigen onderzoek blijkt dat vrijwel alle studenten van de opleiding bekend zijn met het geven en ontvangen van feedback spellen. 
 
 ## User stories
@@ -160,7 +160,31 @@ Hebben over het algemeen nog maar weinig ervaring met feedback systemen/spellen 
 ### PPO docenten
 PPO docenten houden zich bezig met de persoonlijke ontwikkeling van studenten en hebben veel ervaring met diverse feedback methodieken. Bij het spelen van een feedback spel kijken vanuit een professioneel oogpunt. 
 
-## Personas
+## Persona
+![Johan](scriptie/bijlagen/johan-steenstra.jpg)
+
+**Naam:**  
+Johan Steenstra (19 jaar)
+
+**Demografisch:**  
+Woont nog thuis bij zijn ouders in Stiens. Hij gaat dagelijks met de bus op en neer naar Leeuwarden omdat hij de opleiding Communication & Multimedia Design volgt aan de NHL Hogeschool.
+
+**Karakteristieken:**  
+Bescheiden, eigenwijs, leergierig, rustig, trots, zelfstandig
+
+**Doelen:**  
+Na de havo afgerond te hebben wil hij graag zijn bachelor halen om verder te kunnen komen in de multimedia.
+
+**Ambities:**  
+Wil graag cameraman worden bij een groot en bekend TV station. Daarnaast zou hij graag als freelancer wat extra geld willen verdienen met zijn camera werk.
+
+**Invloeden en activiteiten:**  
+Twee keer per week gaat Johan voetballen met VV de Renners en hij doet dit vooral om lekker fit te blijven en het contact te onderhouden met zijn medespelers. Op zaterdag werkt hij in een tuincentrum om wat geld bij te verdienen. Hier is hij verantwoordelijk voor het vullen van de winkel, en hij helpt de klanten als ze iets zoeken.
+
+**Scenarios:**  
+
+
+## Persoonlijkheden
 Om een goed beeld te krijgen van de doelgroep zijn een drietal personas opgesteld. Door de doelgroep te observeren tijdens het uitvoeren van tests en op basis van het vooronderzoek zijn de onderstaande personas tot stand gekomen. Deze personas zijn weer gebaseerd op de Myers-Briggs Type Indicator (MBTI). Op internet staan diverse tests (1) om erachter te komen wat voor persoonlijkheidstype bij een bepaald persoon hoort. Door de test driemaal in te vullen, en de vragen zo te beantwoorden op een manier die bij de verschillende type mensen uit de doelgroep past, zijn de volgende eigenschappen naar voren gekomen.
 
 ### Vivian Bootsma (ESTP)
@@ -229,15 +253,23 @@ Er zijn een aantal vereisten waaraan het eindproduct moet voldoen, namelijk;
 </table>
 
 # Design thinking
-### Fly-on-the-wall (242)
-
 ### Iteration (52)
+Het iteractieve process houd in dat het product zich ontwikkeld op basis van de opgedane kennis uit het testen met gebruikers. Dit proces bestaat uit een aantal stappen die zich herhalen in een cyclus en ervoor zorgt dat het product als het ware om de gebruiker heen ontwikkeld wordt.
 
-### Develop Personas (152)
+![webapp1](scriptie/bijlagen/iteration.svg)
+
+### Low Fidelity Prototype Kit (171)
+Een low fidelity prototype is een eenvoudige versie van het product dat ontwikkeld wordt. Dit soort prototype is zeer snel te maken en komt niet in de buurt van de kwaliteit van het uiteindelijke product. Een low fidelity prototype kan bestaan uit bijvoorbeeld papier, karton, post-its en andere eenvoudige materialen. Hiermee kan heel snel getest worden en bied een goede basis om een volgend prototype op verder te ontwikkelen.
+
+### Develop Personas (151)
+
 
 ### Observation (265)
 
-### Low Fidelity Prototype Kit (171)
+
+### Fly-on-the-wall (242)
+
+
 
 https://uxchecklist.github.io/
 
@@ -462,7 +494,7 @@ De geschreven code en modules kunnen zowel op de server als in de webbrowser dra
 - **package.json** (bevat applicatie specifieke informatie)
 
 ## Modules
-```
+```nohighlight
 Module              Omschrijving                                       Server  Client
 - Express           Server framework                                   [x]     [ ]
 - Ractive           Front end framework (model-view binding)           [ ]     [x]
@@ -502,7 +534,7 @@ var camelCase;
 
 ### Classes
 Classes of grote functies beginnen met een hoofdletter en alle opvolgende woorden beginnen eveneens met een hoofdletter.
-```
+```js
 var UsersView = Ractive.extend({
 	el: 'content',
 	template: '#template'
@@ -519,7 +551,7 @@ var Gameroom = function(room) {
 
 ### Functies
 Losse functies worden geschreven volgens dezelfde conventies als variabelen.
-```
+```js
 function nl2br(text) {
 	return text.replace(/\n/g, '<br>');
 }
@@ -536,7 +568,7 @@ HomeController.js
 ```
 
 De naamgeving van de functies in een controller zijn afhankelijk van de actie en de route.
-```
+```js
 var UserController = {
 	getIndex: function() {
 		GET /users
@@ -555,7 +587,7 @@ var UserController = {
 
 ### HTML/CSS classes en ID's
 De naamgeving van classes en ID's in HTML en css is als volgt; alles in kleine letters, en woorden worden gescheiden door een  minteken.
-```
+```html
 <div class"header-wrapper">
 	<div class="header-content">Content</div>
 </div>

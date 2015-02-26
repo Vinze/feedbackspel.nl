@@ -206,9 +206,9 @@ code {
 }
 
 pre code {
-	padding: 0;
+	padding: 0 !important;
 	border: none;
-	background-color: transparent;
+	background-color: transparent !important;
 }
 
 .text-red {
