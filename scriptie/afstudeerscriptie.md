@@ -55,14 +55,14 @@ Tel. secretariaat 058 2511107 / 06 46065567
 		<td></td>
 	</tr>
 	<tr>
-		<td>Afstudeeropdracht:</td>
+		<td>Afstudeerproject:</td>
 		<td>Feedbackspel.nl</td>
 		<td></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>Periode:</td>
-		<td>1 september 2014 – februari 2015</td>
+		<td>sept 2014 – mrt 2015</td>
 		<td></td>
 		<td></td>
 	</tr>

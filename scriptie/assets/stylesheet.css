@@ -266,3 +266,45 @@ div.content {
 	width: 720px;
 	padding: 10px 10px 30px 10px;
 }
+
+@page { 
+	size: auto;
+	margin: 20mm 20mm 20mm 20mm;  
+} 
+
+
+@media print {
+	body {
+		font-size: 12px;
+	}
+
+	h1 {
+		page-break-before: always;
+		margin: 0 0 20px 0;
+		padding: 0;
+		color: #444;
+		border-bottom: none;
+	}
+
+	h1:first-child {
+		page-break-before: auto;
+	}
+
+	h2 {
+		page-break-after: avoid;
+	}
+
+	div.container-left {
+		display: none;
+	}
+
+	div.container-right {
+		margin: 0;
+	}
+
+	div.content {
+		padding: 0;
+		margin: 0;
+		width: 100%;
+	}
+}
