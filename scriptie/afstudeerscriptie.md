@@ -94,13 +94,15 @@ Hoe kan ik het feedback geven en ontvangen makkelijker en toegankelijker maken, 
 - Welke doelen hebben de bestaande feedback spellen of methodieken?
 
 ## Vooronderzoek
-Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geven en ontvangen van feedback is een enquête opgesteld met 17 vragen over dit onderwerp. Deze enquête is in de periode van 7 en met 9 april 2014 via mijn eigen Facebook verspreid (http://facebook.com/vbremer89/posts/722083571157120). In totaal is de enquête ingevuld door 32 personen en globaal bestaat mijn vriendenlijst op Facebook uit:
+Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geven en ontvangen van feedback is een enquête opgesteld met 17 vragen over dit onderwerp. Deze enquête is in de periode van 7 en met 9 april 2014 via mijn eigen Facebook verspreid (1). In totaal is de enquête ingevuld door 32 personen en globaal bestaat mijn vriendenlijst op Facebook uit:
 
 - Mensen van ongeveer 20 tot 50 jaar oud
 - Grotendeels HBO studenten en een aantal MBO studenten
 - Voornamelijk werkzaam in de IT sector
 
-Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke kunnen helpen bij de verdere ontwikkeling van een feedback systeem. 
+Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke kunnen helpen bij de verdere ontwikkeling van een feedback systeem.
+
+(1) http://facebook.com/vbremer89/posts/722083571157120
 
 ### Feedback systemen
 Er wordt voornamelijk feedback gegeven en ontvangen in de vorm van;
@@ -143,7 +145,9 @@ Er zijn een aantal regels bij het geven en ontvangen van feedback. Door deze reg
 - Schiet niet meteen in de verdediging en sta op voor kritiek van anderen.
 - Probeer je in de ander te verplaatsen om erachter te komen waarom je bepaalde feedback krijgt.
 
-http://www.counselling.nl/coaching/feedbackregels.html
+[http://www.counselling.nl/coaching/feedbackregels.html](http://www.counselling.nl/coaching/feedbackregels.html)
+
+[feedback uitgebreid.doc](scriptie/bijlagen/feedback uitgebreid.doc)
 
 ## Een dialoog tot stand brengen
 Bij een goede feedback sessie is het van belang dat de deelnemers een dialoog met elkaar aangaan over het functioneren van de individuen. Door een gesprek aan te gaan over de gegeven en ontvangen feedback is het makkelijker om dingen te onderbouwen of toe te lichten met voorbeelden. Het feedback systeem moet de deelnemers dus motiveren tot het hebben van een dialoog en hiervoor zullen diverse 'triggers' nodig zijn. Het stimuleren van een gesprek kan gedaan worden door de deelnemers te belonen, bijvoorbeeld met (digitale) medailles of een score waardoor iemand hoger in een ranglijst kan komen. Daarnaast zijn mensen ook aan het praten te krijgen door ze simpelweg vragen te stellen. Bij het stellen van de juiste (open) vragen zal iemand met een antwoord moeten komen, dit kan helpen bij het opzetten van een gesprek.
@@ -188,7 +192,7 @@ Wil graag cameraman worden bij een groot en bekend TV station. Daarnaast zou hij
 Twee keer per week gaat Johan voetballen met VV de Renners en hij doet dit vooral om lekker fit te blijven en het contact te onderhouden met zijn medespelers. Op zaterdag werkt hij in een tuincentrum om wat geld bij te verdienen. Hier is hij verantwoordelijk voor het vullen van de winkel, en hij helpt de klanten als ze iets zoeken.
 
 **Scenarios:**  
-
+<span style="color:red">Dit moet nog verder uitgetypt worden!</span>
 
 ## Persoonlijkheden
 Om een goed beeld te krijgen van de doelgroep zijn een drietal personas opgesteld. Door de doelgroep te observeren tijdens het uitvoeren van tests en op basis van het vooronderzoek zijn de onderstaande personas tot stand gekomen. Deze personas zijn weer gebaseerd op de Myers-Briggs Type Indicator (MBTI). Op internet staan diverse tests (1) om erachter te komen wat voor persoonlijkheidstype bij een bepaald persoon hoort. Door de test driemaal in te vullen, en de vragen zo te beantwoorden op een manier die bij de verschillende type mensen uit de doelgroep past, zijn de volgende eigenschappen naar voren gekomen.
@@ -279,7 +283,7 @@ Een low fidelity prototype is een eenvoudige versie van het product dat ontwikke
 
 https://uxchecklist.github.io/
 
-<span class="text-red">Dit moet nog uitgewerkt worden!</span>
+<span style="color:red">Dit moet nog uitgewerkt worden!</span>
 
 # Iteratie #1 – paper prototype
 
@@ -295,7 +299,7 @@ Op het scherm van de laptop laat ik een eigenschap zien. Het is de bedoeling dat
 Het spel wordt gespeeld door 5 testpersonen, dit zijn medestudenten die net als ik de opleiding Communication & Multimedia Design volgen op de NHL Hogeschool. Aangezien deze groep iedere dag in het zelfde lokaal zit, en in het verleden geregeld in een team samengewerkt hebben mag aangenomen worden dat iedereen elkaar goed (genoeg) kent om onderbouwde feedback te geven.
 
 ## Uitvoering
-Ik heb drie eigenschappen uit de kernkwadranten1 van Daniel Ofman gepakt. Twee hiervan waren kwaliteiten (betrokken en besluitvaardig) en één was een valkuil (afwachtend). Ik heb gekozen om te testen met slechts drie eigenschappen omdat het uitvoeren van een paper prototype relatief veel tijd kost, en ik verwacht dat de eventuele knelpunten al snel naar boven komen. Door zowel positieve als negatieve eigenschappen te behandelen kan ik erachter komen of hier anders op gereageerd wordt. Alle spelers hebben een papieren kopie gekregen van de webapplicatie. Hierop vult men de namen van de medespelers in, en nadat ik de eigenschap heb laten zien krijgt iedereen de tijd om de sterretjes in te vullen. Zodra iedereen klaar is loop ik langs om de uitslag te noteren en een uiteindelijke top 3 samen te stellen. Deze top 3 zal ik laten zien aan de groep en observeren of er een gesprek ontstaat en wat men met de feedback doet.
+Ik heb drie eigenschappen uit de kernkwadranten van Daniel Ofman gepakt. Twee hiervan waren kwaliteiten (betrokken en besluitvaardig) en één was een valkuil (afwachtend). Ik heb gekozen om te testen met slechts drie eigenschappen omdat het uitvoeren van een paper prototype relatief veel tijd kost, en ik verwacht dat de eventuele knelpunten al snel naar boven komen. Door zowel positieve als negatieve eigenschappen te behandelen kan ik erachter komen of hier anders op gereageerd wordt. Alle spelers hebben een papieren kopie gekregen van de webapplicatie. Hierop vult men de namen van de medespelers in, en nadat ik de eigenschap heb laten zien krijgt iedereen de tijd om de sterretjes in te vullen. Zodra iedereen klaar is loop ik langs om de uitslag te noteren en een uiteindelijke top 3 samen te stellen. Deze top 3 zal ik laten zien aan de groep en observeren of er een gesprek ontstaat en wat men met de feedback doet.
 
 ## Welke vragen wil ik beantwoord hebben?
 - In hoeverre stimuleert het prototype het hebben van een dialoog?
@@ -328,7 +332,16 @@ Zoals ik al had verwacht kwamen er behoorlijk wat knelpunten naar boven. Zo blee
 ## Inleiding
 Aangezien het vorige paper prototype niet de gewenste resultaten heeft opgeleverd wordt deze keer een hogere kwaliteit webapplicatie getest. (high fidelity prototyping) Het grootste probleem met het papieren prototype was het feit dat een hoop informatie handmatig moest worden verwerkt en het spel daardoor erg omslachtig en chaotisch verliep. Het nieuwe prototype zal veel zaken automatisch verwerken en moet inzicht geven in hoeverre een webapplicatie de ervaring van een feedback sessie kan verbeteren.
 
-## Aanpassingen na het vorige prototype
+## Doelstellingen
+- Het is binnen enkele minuten mogelijk om een feedback sessie te starten.
+- Het invullen van feedback neemt slechts enkele seconden in beslag.
+Bij het tonen van de resultaten zal er een gesprek opgang komen doordat men vraagt waarom hij of zij bepaalde feedback - ontvangen heeft.
+- De applicatie zit niet in de weg, en wordt gezien als hulpmiddel welke de groep helpt bij het hebben van gesprekken.
+
+## Hypotese
+Het is makkelijk en eenvoudig om de feedback sessie te starten en het invullen van de feedback gaat zonder problemen. Bij het tonen van de resultaten zullen de deelnemers vragen waarom ze op een bepaalde positie in de resultaten eindige en wordt er gediscussieerd of dit wel of niet terecht is.
+
+## Aanpassingen
 Dit prototype is een volledig werkende webapplicatie welke het gehele proces van het geven en ontvangen van feedback moet vergemakkelijken. Qua functionaliteit is er vrijwel niks veranderd, zo wordt nog steeds het feedback kaartje getoond, en moeten de spelers elkaar een aantal sterren geven. Het grote verschil zit hem echter in het feit dat de applicatie de resultaten direct verwerkt en het niet meer nodig is om de resultaten handmatig te berekenen. 
 
 ## Testpersonen
@@ -336,15 +349,6 @@ Net zoals het vorige prototype zal ook dit prototype getest worden in samenwerke
 
 ## Testmethodiek
 Er is gekozen om gebruik te maken van een “focus group” omdat ik graag een open mening over de applicatie wil horen van de testpersonen. Ik zal zelf ook deelnemen aan de feedback sessie en hoop hiermee een goed beeld te krijgen hoe de spel ervaring is. Een risico van zelf meespelen is echter wel dat ik slechts beperkt kan observeren hoe anderen het spel spelen en mogelijk dingen over het hoofd kan zien.
-
-## Hypotese
-Het is makkelijk en eenvoudig om de feedback sessie te starten en het invullen van de feedback gaat zonder problemen. Bij het tonen van de resultaten zullen de deelnemers vragen waarom ze op een bepaalde positie in de resultaten eindige en wordt er gediscussieerd of dit wel of niet terecht is.
-
-## Doelstellingen
-- Het is binnen enkele minuten mogelijk om een feedback sessie te starten.
-- Het invullen van feedback neemt slechts enkele seconden in beslag.
-Bij het tonen van de resultaten zal er een gesprek opgang komen doordat men vraagt waarom hij of zij bepaalde feedback - ontvangen heeft.
-- De applicatie zit niet in de weg, en wordt gezien als hulpmiddel welke de groep helpt bij het hebben van gesprekken.
 
 ## Resultaten
 ### Feedback sessie starten
@@ -366,14 +370,14 @@ Een van de speerpunten van het feedback spel is het aanzetten tot dialoog, en he
 ## Inleiding
 Dit prototype is gebaseerd op het vorige prototype en bied grotendeels dezelfde functionaliteit. Er zijn echter een aantal wijzigingen doorgevoerd welke moeten helpen bij het aanzetten tot een dialoog. Het prototype zijn getest worden met een aantal eerstejaars studenten van de opleiding Communication & Multimedia Design.
 
-## Testpersonen
-Er is voor deze test gekozen om te gaan testen met een projectgroep van zes eerste jaarstudenten die de opleiding Communication & Multimedia Design volgen. De eerste jaarstudenten hebben over het algemeen nog niet erg veel ervaring met het geven en ontvangen van feedback, en slechts twee van de zes personen gaven aan ooit iets met een feedbackspel (kernkwadrantenspel) gedaan te hebben.
-Op het eerste gezicht hing er goede sfeer in de groep en werd er gemakkelijk en open met elkaar gepraat. In het inleidende gesprek en tijdens het spel kwamen niet echt signalen naar boven waaruit bleek dat er mogelijk problemen of knelpunten in de groep aanwezig waren. Dit leidt ertoe dat er vrij gemakkelijk en open gecommuniceerd wordt, en dan men niet bang is om bepaalde dingen ter sprake te brengen. Het nadeel van een projectgroep met zo'n goede sfeer is dat er dan niet goed getest kan worden in hoeverre het feedback spel helpt bij het aangaan van een dialoog over gevoelige onderwerpen.
+## Doelstellingen
+Het is binnen enkele minuten mogelijk om een feedback sessie te starten.
+Het invullen van feedback neemt slechts enkele seconden in beslag.
+Bij het tonen van de resultaten zal er een gesprek opgang komen doordat men vraagt waarom hij of zij bepaalde feedback ontvangen heeft.
+De applicatie zit niet in de weg, en wordt gezien als hulpmiddel welke de groep helpt bij het hebben van gesprekken.
 
-## Testmethodiek
-Voorafgaand aan het testen wordt in een korte inleiding uitgelegd dat ze een digitaal feedback spel gaan spelen. Ze krijgen de link naar de webapplicatie en worden verzocht om deze link via hun telefoon te bezoeken. Door slechts een minimum aan informatie te geven kan getest worden of de navigatie door de applicatie duidelijk is. Het testen is uitgevoerd in een voor de studenten vertrouwde omgeving. Ze zitten dagelijks aan een tafel op de gang in een rustig gedeelte van de school. Voor de test heb ik Ronald Groot Jebbink, een medestudent die ook aan het afstuderen is, gevraagd om mee te gaan om te notuleren. Door deze taak uit handen te geven kon ik mezelf focussen op het verloop van de test en kon ik rondlopen om te observeren.
-
-Nadat groep het spel doorlopen heeft zal een korte vragenlijst verspreid worden en wordt verzocht deze individueel in te vullen. Doordat de testpersonen deze vragenlijst individueel invullen wordt voorkomen dat hun mening wordt beïnvloed door de antwoorden van anderen. Na het invullen van de vragenlijst wordt nog even kort geëvalueerd hoe ze het vonden om feedback te geven en ontvangen met behulp van de applicatie.
+## Hypotese
+Doordat er een limiet zit op het maximaal uit te geven sterren gaan de deelnemers beter nadenken over hoe ze de sterren verdelen over de medespelers. Dit zorgt ervoor dat er een realistischer beeld ontstaat van de verhoudingen in de groep. Doordat de spelers na iedere ronde kunnen zien welke feedback ze van wie gekregen hebben zal er op de man af gevraagd worden een eigenschap wel of niet toegeschreven kregen. Het knopje “Resultaten besproken” geeft aan dat de resultaten besproken moeten worden, en de deelnemers gaan eerst het gesprek aan voor ze op deze knop drukken.
 
 ## Aanpassingen
 ### Persoonlijke feedback
@@ -396,14 +400,14 @@ Bij het vorige prototype bleek dat het niet duidelijk was dat er een profielfoto
 
 ![afbeelding](scriptie/bijlagen/i3-upload.png)
 
-## Hypotese
-Doordat er een limiet zit op het maximaal uit te geven sterren gaan de deelnemers beter nadenken over hoe ze de sterren verdelen over de medespelers. Dit zorgt ervoor dat er een realistischer beeld ontstaat van de verhoudingen in de groep. Doordat de spelers na iedere ronde kunnen zien welke feedback ze van wie gekregen hebben zal er op de man af gevraagd worden een eigenschap wel of niet toegeschreven kregen. Het knopje “Resultaten besproken” geeft aan dat de resultaten besproken moeten worden, en de deelnemers gaan eerst het gesprek aan voor ze op deze knop drukken.
+## Testpersonen
+Er is voor deze test gekozen om te gaan testen met een projectgroep van zes eerste jaarstudenten die de opleiding Communication & Multimedia Design volgen. De eerste jaarstudenten hebben over het algemeen nog niet erg veel ervaring met het geven en ontvangen van feedback, en slechts twee van de zes personen gaven aan ooit iets met een feedbackspel (kernkwadrantenspel) gedaan te hebben.
+Op het eerste gezicht hing er goede sfeer in de groep en werd er gemakkelijk en open met elkaar gepraat. In het inleidende gesprek en tijdens het spel kwamen niet echt signalen naar boven waaruit bleek dat er mogelijk problemen of knelpunten in de groep aanwezig waren. Dit leidt ertoe dat er vrij gemakkelijk en open gecommuniceerd wordt, en dan men niet bang is om bepaalde dingen ter sprake te brengen. Het nadeel van een projectgroep met zo'n goede sfeer is dat er dan niet goed getest kan worden in hoeverre het feedback spel helpt bij het aangaan van een dialoog over gevoelige onderwerpen.
 
-## Doelstellingen
-Het is binnen enkele minuten mogelijk om een feedback sessie te starten.
-Het invullen van feedback neemt slechts enkele seconden in beslag.
-Bij het tonen van de resultaten zal er een gesprek opgang komen doordat men vraagt waarom hij of zij bepaalde feedback ontvangen heeft.
-De applicatie zit niet in de weg, en wordt gezien als hulpmiddel welke de groep helpt bij het hebben van gesprekken.
+## Testmethodiek
+Voorafgaand aan het testen wordt in een korte inleiding uitgelegd dat ze een digitaal feedback spel gaan spelen. Ze krijgen de link naar de webapplicatie en worden verzocht om deze link via hun telefoon te bezoeken. Door slechts een minimum aan informatie te geven kan getest worden of de navigatie door de applicatie duidelijk is. Het testen is uitgevoerd in een voor de studenten vertrouwde omgeving. Ze zitten dagelijks aan een tafel op de gang in een rustig gedeelte van de school. Voor de test heb ik Ronald Groot Jebbink, een medestudent die ook aan het afstuderen is, gevraagd om mee te gaan om te notuleren. Door deze taak uit handen te geven kon ik mezelf focussen op het verloop van de test en kon ik rondlopen om te observeren.
+
+Nadat groep het spel doorlopen heeft zal een korte vragenlijst verspreid worden en wordt verzocht deze individueel in te vullen. Doordat de testpersonen deze vragenlijst individueel invullen wordt voorkomen dat hun mening wordt beïnvloed door de antwoorden van anderen. Na het invullen van de vragenlijst wordt nog even kort geëvalueerd hoe ze het vonden om feedback te geven en ontvangen met behulp van de applicatie.
 
 ## Resultaten
 ### Registreren en inloggen
@@ -421,15 +425,11 @@ Het geven van sterren aan medespelers leverde verder geen problemen op. Het was 
 Door inzichtelijk te maken hoeveel sterren de deelnemer van zijn of haar medespelers gekregen heeft zou een gesprek op gang moeten komen. Het wordt namelijk mogelijk om iemand op de man af te vragen waarom hij of zij een bepaalde eigenschap wel of niet toegeschreven kreeg. Hierbij viel op dat dit alleen het geval was bij negatieve eigenschappen en bij uitspringers. Wanneer iemand allemaal positieve beoordelingen kreeg vond diegene het niet nodig om door te vragen. Bij een negatieve beoordeling werd er wel sneller naar gevraagd. Hierna werd er vanuit de groep wel toegelicht waarom diegene een eigenschap wel of niet bezat.
 
 ### Groepsgesprek
+Helaas kwam bij het tonen van de [uitslagen](scriptie/bijlagen/i3-overview.png) niet meteen een groepsgesprek op gang. De deelnemers bekeken de uitslagen en de feedback die ze ontvangen hadden, maar vroegen niet uit zichzelf waarom ze die feedback kregen. Er werd af en toe wel een opmerking gemaakt waaruit blijkt dat iemand niet eens was met de ontvangen feedback, maar hier werd verder niet op in gegaan. Dit kwam vaak omdat de deelnemers vaak wel wisten waarom ze bepaalde feedback kregen, of omdat het ze simpelweg niet zoveel kon schelen.
 
+Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag van een feedback ronde. Als iemand bijvoorbeeld onderaan eindigde stelde ik de vraag waarom diegene zo laag scoorde. Door na iedere ronde een vraag te stellen over de resultaten begon er wel een gesprek op gang te komen en werd uitgelegd waarom iemand bepaalde feedback kreeg.
 
-
-
-Feedforward
-
-## Bijlages
-
-
+## Bijlagen
 - [Enquête ingevuld #1](scriptie/bijlagen/i3-enquete-1.jpg)
 - [Enquête ingevuld #2](scriptie/bijlagen/i3-enquete-2.jpg)
 - [Enquête ingevuld #3](scriptie/bijlagen/i3-enquete-3.jpg)
@@ -439,17 +439,28 @@ Feedforward
 
 
 # Iteratie #4 – webapp versie 1.2
+
+<span style="color:red">Dit moet nog verder uitgetypt worden!</span>
+
 ## Inleiding
-Voor deze versie zijn slechts een klein aantal wijzigingen doorgevoerd..
+In tegenstelling tot de vorige drie prototypes is het huidige prototype ietwat anders tot stand gekomen. Doordat ik de applicatie al diverse malen getoond heb aan familie, kennissen en collega's zijn er een aantal knelpunten naar voren gekomen die niet voor een specifieke doelgroep (studenten) gelden. Bij bijna alle personen kwamen deze punten naar boven en hieruit blijkt dat er een aantal dingen structereel mis gaan bij het gebruiken van de applicatie.
+
+## Aanpassingen
+Een van de grotere problemen met de applicatie was het feit dat 
+
+
+Daardat de applicatie op dit moment al aan diverse personen getoond en gedemonstreerd is 
+
 
 Spel inhoudelijk niet veranderd
 
 Meer gericht op gebruiksvriendelijkheid
 
-...
 
 - Tussen versie
-- Spel uitleg
+- Spel uitleg starten spel
+- Spel uitleg op telefoon/desktop
+- Homepage uitgebreid
 - Test met ouders/collega's/vrienden/familie
 
 
@@ -500,6 +511,7 @@ De geschreven code en modules kunnen zowel op de server als in de webbrowser dra
 - **package.json** (bevat applicatie specifieke informatie)
 
 ## Modules
+
 ```nohighlight
 Module              Omschrijving                                       Server  Client
 - Express           Server framework                                   [x]     [ ]
@@ -609,6 +621,9 @@ firstname
 created_at
 user_id
 ```
+
+## Tests
+De test suites zijn geschreven in het [Mocha](http://mochajs.org/) test framework en er wordt gebruik gemaakt van [Expect.js](https://github.com/Automattic/expect.js) om te testen. Er is voor Mocha gekozen omdat hier zowel server-side én client-side code mee getest kan worden. De combinatie van Mocha met Expect is bijna gelijk aan het testen met Jasmine, een framework waar ik reeds bekend mee ben. De tests zijn te vinden in de map 'tests' en kunnen uitgevoerd worden met het commando `mocha tests/game.js`.
 
 <!--
 # Reflectieverslag

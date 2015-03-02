@@ -23,6 +23,7 @@
 		<table>
 			<thead>
 				<tr>
+					<th></th>
 					<th>Email</th>
 					<th>Firstname</th>
 					<th>Lastname</th>
@@ -33,6 +34,11 @@
 			<tbody>
 				{{#each users}}
 					<tr>
+						<td style="width: 45px">
+							<div class="avatar">
+								<img src="/avatar/{{_id}}.png">
+							</div>
+						</td>
 						<td>
 							<input type="email" class="text" value="{{email}}" on-change="save:{{this}}">
 						</td>
@@ -42,7 +48,7 @@
 						<td style="width: 160px">
 							<input type="text" class="text" value="{{lastname}}" on-change="save:{{this}}">
 						</td>
-						<td style="width: 100px" class="align-center">
+						<td style="width: 90px" class="align-center">
 							<label><input type="checkbox" checked="{{admin}}" class="checkbox" on-click="save:{{this}}"> admin</label><br>
 							<label><input type="checkbox" checked="{{image}}" class="checkbox" on-click="save:{{this}}"> avatar</label>
 						</td>

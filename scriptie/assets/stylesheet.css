@@ -211,12 +211,8 @@ pre code {
 	background-color: transparent !important;
 }
 
-.text-red {
-	color: red;
-}
-
 div.container-left {
-	width: 260px;
+	width: 300px;
 	position: fixed;
 	left: 0;
 	height: 100%;
@@ -225,7 +221,7 @@ div.container-left {
 }
 
 div.container-right {
-	margin-left: 260px;
+	margin-left: 300px;
 }
 
 ul.toc {
@@ -272,6 +268,23 @@ div.content {
 	margin: 20mm 20mm 20mm 20mm;  
 } 
 
+@media (min-width: 1010px) and (max-width: 1200px) {
+	div.container-left {
+		width: 250px;
+	}
+	div.container-right {
+		margin-left: 250px;
+	}
+}
+
+@media (max-width: 1010px) {
+	div.container-left {
+		display: none;
+	}
+	div.container-right {
+		margin-left: 0;
+	}
+}
 
 @media print {
 	body {
