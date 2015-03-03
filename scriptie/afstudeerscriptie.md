@@ -8,7 +8,7 @@ Rengerslaan 10
 
 Tel. secretariaat 058 2511107 / 06 46065567
 
-<table style="margin-top:60px;">
+<table style="margin-top:60px">
 	<tr>
 		<th colspan="2">Student</th>
 		<th colspan="2">Onderwijs instelling</th>
@@ -285,7 +285,7 @@ https://uxchecklist.github.io/
 
 <span style="color:red">Dit moet nog uitgewerkt worden!</span>
 
-# Iteratie #1 – paper prototype
+# Iteratie 1 – paper prototype
 
 ![webapp1](scriptie/bijlagen/i1-overview.png)
 
@@ -363,7 +363,7 @@ In verhouding tot het papieren prototype is dit prototype een enorme verbetering
 ### Aanzetten tot dialoog
 Een van de speerpunten van het feedback spel is het aanzetten tot dialoog, en helaas verliep dat nog wat moeizaam. Nadat de uitkomst van een feedback ronde op het scherm getoond werd bleef een conversatie vaak uit. Men zag dat iemand op bijvoorbeeld boven of onderaan eindigde, maar hij of zij vroeg vervolgens niet waarom dit zo was.
 
-# Iteratie #3 – webapp versie 1.1
+# Iteratie 3 – webapp versie 1.1
 
 ![webapp1](scriptie/bijlagen/i3-overview.png)
 
@@ -438,19 +438,18 @@ Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag v
 - [Enquête ingevuld #6](scriptie/bijlagen/i3-enquete-6.jpg)
 
 
-# Iteratie #4 – webapp versie 1.2
+# Iteratie 4 – webapp versie 1.2
 
 <span style="color:red">Dit moet nog verder uitgetypt worden!</span>
 
 ## Inleiding
-In tegenstelling tot de vorige drie prototypes is het huidige prototype ietwat anders tot stand gekomen. Doordat ik de applicatie al diverse malen getoond heb aan familie, kennissen en collega's zijn er een aantal knelpunten naar voren gekomen die niet voor een specifieke doelgroep (studenten) gelden. Bij bijna alle personen kwamen deze punten naar boven en hieruit blijkt dat er een aantal dingen structereel mis gaan bij het gebruiken van de applicatie.
+In tegenstelling tot de vorige drie prototypes is het huidige prototype ietwat anders tot stand gekomen. Doordat ik de applicatie al diverse malen getoond heb aan familie, kennissen en collega's zijn er een aantal knelpunten naar voren gekomen die niet voor een specifieke doelgroep (studenten) gelden. Bij bijna alle personen kwamen deze punten naar boven en hieruit blijkt dat er een aantal dingen structureel mis gaan bij het gebruiken van de applicatie.
 
 ## Aanpassingen
+
 Een van de grotere problemen met de applicatie was het feit dat 
 
-
 Daardat de applicatie op dit moment al aan diverse personen getoond en gedemonstreerd is 
-
 
 Spel inhoudelijk niet veranderd
 
@@ -464,15 +463,14 @@ Meer gericht op gebruiksvriendelijkheid
 - Test met ouders/collega's/vrienden/familie
 
 
-# Iteratie #5 – webapp versie 2.0
+# Iteratie 5 – webapp versie 2.0
 Dit moet nog uitgewerkt worden!
 
 - Verbeteringen
 - Systeem stelt vragen
 - Registratieproces versimpeld
 - Meerdere spellen
-- Uitleg verbeterd
-- Uitleg tonen op smartphone
+- Blokkeren host op smartphone
 
 # Technisch ontwerp
 

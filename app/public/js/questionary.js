@@ -61,6 +61,13 @@ function questionary(summary, card) {
 			return questionary(summary, card);
 		},
 		function() {
+			// Wat maakt [randomHigh] [card]?
+			if (randomHigh) {
+				return 'Wat maakt ' + randomHigh.firstname + ' ' + card + '?';
+			}
+			return questionary(summary, card);
+		},
+		function() {
 			// [randomHigh] kreeg 4 sterren voor de eigenschap betrouwbaar, waaruit blijkt dat deze eigenschap zo goed past?
 			if (randomHigh) {
 				return randomHigh.firstname + ' kreeg ' + randomHigh.rating + ' sterren voor de eigenschap betrouwbaar, waaruit blijkt dat deze eigenschap goed bij ' + randomHigh.firstname + ' past?'
