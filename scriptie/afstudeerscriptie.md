@@ -440,36 +440,42 @@ Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag v
 
 # Iteratie 4 – webapp versie 1.2
 
-<span style="color:red">Dit moet nog verder uitgetypt worden!</span>
-
 ## Inleiding
 In tegenstelling tot de vorige drie prototypes is het huidige prototype ietwat anders tot stand gekomen. Doordat ik de applicatie al diverse malen getoond heb aan familie, kennissen en collega's zijn er een aantal knelpunten naar voren gekomen die niet voor een specifieke doelgroep (studenten) gelden. Bij bijna alle personen kwamen deze punten naar boven en hieruit blijkt dat er een aantal dingen structureel mis gaan bij het gebruiken van de applicatie.
 
+## Testmethodiek
+Er is in deze iteratie niet aan de hand van een bepaalde methodiek getest. Door de applicatie te tonen aan geïnteresseerden kon ik observeren welke handelingen de gebruiker uitvoerde. Hier kwamen geregeld dingen naar boven die bijvoorbeeld niet logisch waren of dingen die niet naar behoren werkte. Deze knelpunten of tips werden opgeschreven in een notitie blokje en vervolgens werd er gekeken hoe dit opgelost kan worden.
+
 ## Aanpassingen
 
-Een van de grotere problemen met de applicatie was het feit dat 
+### Meerdere spellen tegelijkertijd
+Om het spel met meerdere groepen tegelijkertijd te kunnen spelen is het vereist om meerdere feedback spellen afzonderlijk van elkaar te kunnen starten. Een gebruiker maakt vervolgens verbinding met een specifiek spel aan de hand van een unieke identificatie. In eerste instantie leek het makkelijk om de gebruikers een zogenaamde QR code te laten scannen, waarna ze naar een URL gestuurd werden. Echter heeft niet iedereen een applicatie op de telefoon staan om een QR code te scannen, en bleek het scannen van zo'n QR code onnodig veel stappen te vereisen. Zo moet eerst de applicatie gestart worden, vervolgens moet de code gescand worden, daarna moet op de URL geklikt worden, en dan pas opent het feedbackspel.
 
-Daardat de applicatie op dit moment al aan diverse personen getoond en gedemonstreerd is 
+Daarom is er gekozen om een vier cijferige spelcode te laten zien. Deze code staat altijd rechtsonder op het laptopscherm in beeld, en gebruikers hoeven nu alleen maar via hun webbrowser naar feedbackspel.nl/*[spelcode]* te gaan. Vervolgens moeten ze, indien nodig, inloggen en komen ze in het spel terecht.
 
-Spel inhoudelijk niet veranderd
+![Spelcode](scriptie/bijlagen/i4-spelcode.png)  
+*De unieke spelcode staat rechtsonderin in beeld.*
 
-Meer gericht op gebruiksvriendelijkheid
+![Spelcode invoeren](scriptie/bijlagen/i4-spelcode-invoeren.png)  
+*Gebruikers kunnen vanuit het dashboard ook klikken op de knop "Aan spel deelnemen", vervolgens moet de gebruiker de spelcode invullen en wordt hij of zij toegevoegd aan het spel.*
 
+### Spel uitleg
+In de vorige iteratie en bij het tonen aan geïnteresseerden werd duidelijk dat men de uitleg op het scherm van de laptop (1)  niet las. Hierdoor was het voor veel mensen verwarrend wat nou de bedoeling is en hoe het spel gespeelt dient te worden. Door de speluitleg te verplaatsen van de laptop naar de telefoon van de gebruiker (2) moet dit minder snel over het hoofd gezien worden. Bijkomend voordeel is dat de uitleg op een mobiele telefoon altijd leesbaar is en de deelnemer dus niet vlak voor de laptop hoeft te zitten. Op het scherm van de laptop wordt nu alleen nog uitgelegd hoe de gebruiker kan verbinden met het huidige spel. (3)
 
-- Tussen versie
-- Spel uitleg starten spel
-- Spel uitleg op telefoon/desktop
-- Homepage uitgebreid
-- Test met ouders/collega's/vrienden/familie
+![Spel uitleg](scriptie/bijlagen/i4-uitleg-samengevoegd.png)
+
+### Meer info op homepage
+Vrijwel alle nieuwe bezoekers scrollen eerst naar beneden om te kijken of er op de homepage al wat informatie staat over het feedbackspel. Deze informatie was in eerste instantie pas te vinden nadat de gebruiker was ingelogd. Door wat meer informatie te geven in de vorm van een korte uitleg en screenshots zal het voor veel mensen eerder duidelijk worden wat het feedbackspel inhoud.
+
+## Resultaten
 
 
 # Iteratie 5 – webapp versie 2.0
-Dit moet nog uitgewerkt worden!
+<span style="color:red">Dit moet nog verder uitgetypt worden!</span>
 
 - Verbeteringen
 - Systeem stelt vragen
 - Registratieproces versimpeld
-- Meerdere spellen
 - Blokkeren host op smartphone
 
 # Technisch ontwerp

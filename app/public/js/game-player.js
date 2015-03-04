@@ -1,6 +1,5 @@
 var userId = null;
 var token  = Cookies.get('fbs_token');
-var url    = 'http://' + window.location.hostname + ':1337';
 var room   = _.last(window.location.href.split('/'));
 
 function verifyConnection(callback) {
@@ -8,7 +7,7 @@ function verifyConnection(callback) {
 	if (socket && socket.connected) {
 		callback(socket);
 	} else {
-		socket = io(url, { query: 'token=' + token + '&role=player&room=' + room });
+		socket = io(baseURL, { query: 'token=' + token + '&role=player&room=' + room });
 		callback(socket);
 	}
 }

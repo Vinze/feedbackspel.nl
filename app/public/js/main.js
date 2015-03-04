@@ -1,8 +1,4 @@
-baseURL = 'http://' + window.location.hostname;
-if (window.location.port) {
-	baseURL += ':' + window.location.port;
-}
-baseURL += '/';
+baseURL = /localhost/.test(window.location) ? 'http://localhost:1337' : 'http://feedbackspel.nl';
 
 var Sidebar = new function() {
 	var self = this;
