@@ -472,6 +472,28 @@ In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spe
 - Spel werd helaas nog steeds gehost op mobiel
 - Meerdere rooms werkte prima
 
+# Dankwoord
+
+<table>
+	<tr>
+		<td>Alice ter Veldt</td>
+		<td>Derek Kuiper</td>
+		<td>Dirk Sierd de Vries</td>
+	</tr>
+	<tr>
+		<td>Harold Mulder</td>
+		<td>Jan-Wessel Hovingh</td>
+		<td>Koop Otten</td>
+	</tr>
+	<tr>
+		<td>Ronald Groot Jebbink</td>
+		<td>Tjerk Dijkstra</td>
+		<td>Tjisse Reitsma</td>
+	</tr>
+</table>
+
+
+
 <!-- 
 # Iteratie 5 – webapp versie 2.0
 <span style="color:red">Dit moet nog verder uitgetypt worden!</span>
@@ -487,10 +509,10 @@ In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spe
 
 ## Platform
 De applicatie zal geschreven worden op het Node.js softwareplatform wat inhoud dat de programmeertaal JavaScript gebruikt wordt. Er wordt gebruikt gemaakt van de opmaak talen HTML5 en CSS3 om de applicatie vorm te geven. Er is gekozen om gebruik te maken van Node.js omdat dit nieuwe technieken ondersteund welke zullen helpen bij het realtime laten werken van het feedbackspel. Verder bied Node.js de volgende voordelen:
-Uitstekende 'package manager' om additionele modules te installeren (NPM).
-Ondersteuning voor zogenaamde 'websockets', deze maken het mogelijk om de applicatie realtime te laten werken.
-Uiterst schaalbaar aangezien het single-threaded en event-based werkt, wat inhoud dat de applicatie nooit hoeft te wachten op bepaalde taken zoals het opslaan van gegevens in de database.
-De geschreven code en modules kunnen zowel op de server als in de webbrowser draaien.
+- Uitstekende 'package manager' om additionele modules te installeren (NPM).
+- Ondersteuning voor zogenaamde 'websockets', deze maken het mogelijk om de applicatie realtime te laten werken.
+- Uiterst schaalbaar aangezien het single-threaded en event-based werkt, wat inhoud dat de applicatie nooit hoeft te wachten op bepaalde taken zoals het opslaan van gegevens in de database.
+- De geschreven code en modules kunnen zowel op de server als in de webbrowser draaien.
 
 ## Mappenstructuur
 
