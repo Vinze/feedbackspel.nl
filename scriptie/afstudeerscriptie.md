@@ -191,9 +191,6 @@ Wil graag cameraman worden bij een groot en bekend TV station. Daarnaast zou hij
 **Invloeden en activiteiten:**  
 Twee keer per week gaat Johan voetballen met VV de Renners en hij doet dit vooral om lekker fit te blijven en het contact te onderhouden met zijn medespelers. Op zaterdag werkt hij in een tuincentrum om wat geld bij te verdienen. Hier is hij verantwoordelijk voor het vullen van de winkel, en hij helpt de klanten als ze iets zoeken.
 
-**Scenarios:**  
-<span style="color:red">Dit moet nog verder uitgetypt worden!</span>
-
 ## Persoonlijkheden
 Om een goed beeld te krijgen van de doelgroep zijn een drietal personas opgesteld. Door de doelgroep te observeren tijdens het uitvoeren van tests en op basis van het vooronderzoek zijn de onderstaande personas tot stand gekomen. Deze personas zijn weer gebaseerd op de Myers-Briggs Type Indicator (MBTI). Op internet staan diverse tests (1) om erachter te komen wat voor persoonlijkheidstype bij een bepaald persoon hoort. Door de test driemaal in te vullen, en de vragen zo te beantwoorden op een manier die bij de verschillende type mensen uit de doelgroep past, zijn de volgende eigenschappen naar voren gekomen.
 
@@ -437,7 +434,6 @@ Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag v
 - [Enquête ingevuld #5](scriptie/bijlagen/i3-enquete-5.jpg)
 - [Enquête ingevuld #6](scriptie/bijlagen/i3-enquete-6.jpg)
 
-
 # Iteratie 4 – webapp versie 1.2
 
 ## Inleiding
@@ -464,20 +460,19 @@ In de vorige iteratie en bij het tonen aan geïnteresseerden werd duidelijk dat 
 Vrijwel alle nieuwe bezoekers scrollen eerst naar beneden om te kijken of er op de homepage al wat informatie staat over het feedbackspel. Deze informatie was in eerste instantie pas te vinden nadat de gebruiker was ingelogd. Door wat meer informatie te geven in de vorm van een korte uitleg en screenshots zal het voor veel mensen eerder duidelijk worden wat het feedbackspel inhoud.
 
 ### Registreren en inloggen
-In het vorige prototype waren een aantal stappen benodigd om in te kunnen loggen bij de applicatie, namelijk:
+In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spelen, namelijk:
 
 1. Registreren
 2. Inloggen
 3. Instellen profiel foto
-4. 
+4. Deelnemen aan spel
 
 ## Resultaten
 - Speluitleg werd beter gelezen
 - Spel werd helaas nog steeds gehost op mobiel
 - Meerdere rooms werkte prima
 
-
-
+<!-- 
 # Iteratie 5 – webapp versie 2.0
 <span style="color:red">Dit moet nog verder uitgetypt worden!</span>
 
@@ -486,6 +481,7 @@ In het vorige prototype waren een aantal stappen benodigd om in te kunnen loggen
 
 - Blokkeren host op smartphone
 - Inloggen vs Registreren vs Inloggen / Registreren
+ -->
 
 # Technisch ontwerp
 
