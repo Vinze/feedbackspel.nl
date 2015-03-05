@@ -139,23 +139,23 @@ app.post('/access/update', function(req, res) {
 		                req.socket.remoteAddress ||
 		                req.connection.socket.remoteAddress;
 
-	// Get the current date and time
-	var now = moment();
+	var data = {
+		timestamp: moment().unix(),
+		last_visit: moment().format('DD-MM-YYYY HH:mm:ss')
+	};
 
+	if (req.user) data.user = req.user.email;
+	
 	// Access log
 	db.access.update({
 		ipaddress: ipaddress,
 		useragent: req.headers['user-agent']
 	}, {
-		$set: {
-			timestamp: now.unix(),
-			last_visit: now.format('DD-MM-YYYY HH:mm:ss')
-		},
-		$inc: {
-			seconds: parseInt(req.body.seconds)
-		}
-	}, { upsert: true });
-
+		$set: data,
+		$inc: { seconds: parseInt(req.body.seconds) }
+	}, {
+		upsert: true
+	});
 });
 
 app.get('/access/clear', auth.isAdmin, function(req, res) {
