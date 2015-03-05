@@ -1,22 +1,15 @@
+# Feedbackspel.nl
+## Installation
+1. Download or clone this repository
+2. Navigate to the **app** folder in your terminal
+3. Install the modules with `npm install`
 
-# Running the application
-Run the following command on the server:  
-`forever start /var/www/feedbackspel.nl/app.js --watch --watchDirectory /var/www/feedbackspel.nl/`
+## Running the application
+1. Navigate to the **app** folder in your terminal
+2. Start the application with `node app.js`
+3. Go to http://localhost:1337 with your webbrowser
 
-# Running tests
+## Running tests
 - Install mocha globally using `sudo npm install -g mocha`
 - Install expect.js local with `npm install expect.js` (in the 'tests' folder)
 - `mocha tests/game.js`
-
-
-# Documentation
-## Server side
-- Express.js - http://expressjs.com/4x/api.html
-- NeDB (database) - https://github.com/louischatriot/nedb
-- GM (imagemagick wrapper) - https://github.com/aheckmann/gm
-
-## Client side
-- Page.js (routing) - http://visionmedia.github.io/page.js
-- Ractive.js (Model-View binding) - http://ractivejs.org/
-- Cookies.js (for accessing cookies) - https://github.com/ScottHamper/Cookies
-- Zepto - http://zeptojs.com/

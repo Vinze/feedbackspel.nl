@@ -454,10 +454,6 @@ Om het spel met meerdere groepen tegelijkertijd te kunnen spelen is het vereist 
 Daarom is er gekozen om een vier cijferige spelcode te laten zien. Deze code staat altijd rechtsonder op het laptopscherm in beeld, en gebruikers hoeven nu alleen maar via hun webbrowser naar feedbackspel.nl/*[spelcode]* te gaan. Vervolgens moeten ze, indien nodig, inloggen en komen ze in het spel terecht.
 
 ![Spelcode](scriptie/bijlagen/i4-spelcode.png)  
-*De unieke spelcode staat rechtsonderin in beeld.*
-
-![Spelcode invoeren](scriptie/bijlagen/i4-spelcode-invoeren.png)  
-*Gebruikers kunnen vanuit het dashboard ook klikken op de knop "Aan spel deelnemen", vervolgens moet de gebruiker de spelcode invullen en wordt hij of zij toegevoegd aan het spel.*
 
 ### Spel uitleg
 In de vorige iteratie en bij het tonen aan geïnteresseerden werd duidelijk dat men de uitleg op het scherm van de laptop (1)  niet las. Hierdoor was het voor veel mensen verwarrend wat nou de bedoeling is en hoe het spel gespeelt dient te worden. Door de speluitleg te verplaatsen van de laptop naar de telefoon van de gebruiker (2) moet dit minder snel over het hoofd gezien worden. Bijkomend voordeel is dat de uitleg op een mobiele telefoon altijd leesbaar is en de deelnemer dus niet vlak voor de laptop hoeft te zitten. Op het scherm van de laptop wordt nu alleen nog uitgelegd hoe de gebruiker kan verbinden met het huidige spel. (3)
@@ -467,7 +463,19 @@ In de vorige iteratie en bij het tonen aan geïnteresseerden werd duidelijk dat 
 ### Meer info op homepage
 Vrijwel alle nieuwe bezoekers scrollen eerst naar beneden om te kijken of er op de homepage al wat informatie staat over het feedbackspel. Deze informatie was in eerste instantie pas te vinden nadat de gebruiker was ingelogd. Door wat meer informatie te geven in de vorm van een korte uitleg en screenshots zal het voor veel mensen eerder duidelijk worden wat het feedbackspel inhoud.
 
+### Registreren en inloggen
+In het vorige prototype waren een aantal stappen benodigd om in te kunnen loggen bij de applicatie, namelijk:
+
+1. Registreren
+2. Inloggen
+3. Instellen profiel foto
+4. 
+
 ## Resultaten
+- Speluitleg werd beter gelezen
+- Spel werd helaas nog steeds gehost op mobiel
+- Meerdere rooms werkte prima
+
 
 
 # Iteratie 5 – webapp versie 2.0
@@ -475,8 +483,9 @@ Vrijwel alle nieuwe bezoekers scrollen eerst naar beneden om te kijken of er op 
 
 - Verbeteringen
 - Systeem stelt vragen
-- Registratieproces versimpeld
+
 - Blokkeren host op smartphone
+- Inloggen vs Registreren vs Inloggen / Registreren
 
 # Technisch ontwerp
 
