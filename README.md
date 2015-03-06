@@ -3,6 +3,7 @@
 1. Download or clone this repository
 2. Navigate to the **app** folder in your terminal
 3. Install the modules with `npm install`
+4. Rename or copy **app/libs/config.example.js** to **app/libs/config.js** and set the application variables in this file
 
 ## Running the application
 1. Navigate to the **app** folder in your terminal
