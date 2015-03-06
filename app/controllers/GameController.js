@@ -16,6 +16,16 @@ var GameController = {
 	getPlay: function(req, res) {
 		var room = req.params.room;
 		res.render('game-player', { pageTitle: 'Feedbackspel - ' + room });
+	},
+
+	roomParser: function(req, res, next) {
+		var room = parseInt(req.path.substr(1,4).replace(/[^0-9.]/g, '') || 0);
+
+		if (room >= 1000 && room <= 9999) {
+			return res.redirect('/play/' + room);
+		}
+
+		next();
 	}
 
 	// getQRCode: function(req, res) {

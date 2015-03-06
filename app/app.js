@@ -55,16 +55,8 @@ app.use(flash())
 // Make the user available
 app.use(require('./libs/locals'))
 
-// Redirect to a game room if nessesary
-app.use(function(req, res, next) {
-	var room = parseInt(req.path.substr(1,4).replace(/[^0-9.]/g, '') || 0);
-
-	if (room >= 1000 && room <= 9999) {
-		return res.redirect('/play/' + room);
-	}
-
-	next();
-});
+// Redirect to a game room if the route is four digits
+app.use(GameController.roomParser)
 
 // Home route
 app.get('/', function(req, res) {
