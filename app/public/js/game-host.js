@@ -109,6 +109,7 @@ socket.on('gamestate', function(state) {
 		Game.set('summary', state.summary);
 		if (state.card) {
 			Game.set('step', null).then(function() {
+				Game.set('showHelp', false);
 				Game.set('step', 'showResults');
 			});
 		} else {

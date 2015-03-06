@@ -1,9 +1,8 @@
 var socketio = require('socket.io');
-var jwt      = require('jwt-simple');
+var jwt      = require('jsonwebtoken');
 var _        = require('underscore');
 var moment   = require('moment');
 var config   = require('../libs/config');
-var auth     = require('../libs/auth');
 var db       = require('../libs/datastore');
 var Gameroom = require('../libs/gameroom');
 
@@ -36,9 +35,9 @@ var SocketController = function(server) {
 	io.use(function(client, next) {
 		var token = client.handshake.query.token;
 
-		auth.validateToken(token, function(err, tokenData) {
+		jwt.verify(token, config.jwt_secret, function(err, tokenData) {
 			if (err) {
-				console.log('Token error:', err);
+				console.err('Invalid token:', err);
 				return;
 			}
 

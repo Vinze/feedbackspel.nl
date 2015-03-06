@@ -473,25 +473,26 @@ In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spe
 - Meerdere rooms werkte prima
 
 # Dankwoord
+Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mijn scriptie en het eindproduct. Ik heb de laatste maanden van mijn opleiding nog ontzettend veel geleerd, zowel op vakinhoudelijk als persoonlijk vlak. Hiervoor wil ik graag mijn familie, vrienden, collega's en alle betrokken docenten van de opleiding CMD bedanken.
 
 <table>
 	<tr>
-		<td>Alice ter Veldt</td>
-		<td>Derek Kuiper</td>
 		<td>Dirk Sierd de Vries</td>
+		<td>Koop Otten</td>
+		<td>Tjisse Reitsma</td>
 	</tr>
 	<tr>
 		<td>Harold Mulder</td>
-		<td>Jan-Wessel Hovingh</td>
-		<td>Koop Otten</td>
+		<td>Ronald Groot Jebbink</td>
+		<td></td>
 	</tr>
 	<tr>
-		<td>Ronald Groot Jebbink</td>
+		<td>Jan-Wessel Hovingh</td>
 		<td>Tjerk Dijkstra</td>
-		<td>Tjisse Reitsma</td>
 	</tr>
 </table>
 
+Zonder jullie steun, (kritische) meningen en tips had ik dit 
 
 
 <!-- 

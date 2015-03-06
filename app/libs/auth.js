@@ -1,4 +1,4 @@
-var jwt     = require('jwt-simple');
+var jwt     = require('jsonwebtoken');
 var moment  = require('moment');
 var _       = require('underscore');
 var config  = require('../libs/config');
@@ -7,20 +7,21 @@ var db      = require('../libs/datastore');
 var auth = {
 
 	tokenParser: function(req, res, next) {
-		var token = (req.cookies && req.cookies.fbs_token) || 
-		            (req.body && req.body.token) ||
-		            (req.query && req.query.token) ||
-		            req.headers['x-token'];
-		req.token = token || null;
+		var token = (req.cookies && req.cookies.fbs_token) || // Get token from cookie
+		            (req.body && req.body.token) || // Get token from POST data
+		            (req.query && req.query.token) ||  // Get token from GET data
+		            req.headers['x-token'] || null; // Get token from headers
+		req.token = token;
 		req.user = null;
 
 		if ( ! token) return next();
 
-		auth.validateToken(token, function(err, tokenData) {
+		jwt.verify(token, config.jwt_secret, function(err, tokenData) {
 			if (err) {
-				console.log('Invalid token:', err);
+				console.error('Invalid token:', err);
 				return next();
 			}
+
 			db.users.findById(tokenData.userId, function(err, user) {
 				if (user) {
 					req.user = _.pick(user, '_id', 'email', 'firstname', 'lastname', 'image', 'admin');
@@ -28,35 +29,16 @@ var auth = {
 				next();
 			});
 		});
-	},
 
-	validateToken: function(token, callback) {
-		if (token) {
-			try {
-				var tokenData = jwt.decode(token, config.jwt_secret);
-				var age = moment().unix() - tokenData.iss;
-				var maxAge = 3600 * 24 * 365;
-
-				if (age < maxAge) {
-					callback(null, tokenData);
-				} else {
-					callback('max age expired');
-				}
-			} catch(err) {
-				callback(err);
-			}
-		} else {
-			callback('no token');
-		}
 	},
 
 	setToken: function(user, req) {
-		var tokenData = {
+		var payload = {
 			userId: user._id,
 			ip: req.connection.remoteAddress,
-			iss: moment().unix()
+			exp: moment().add(6, 'months').unix()
 		};
-		var token = jwt.encode(tokenData, config.jwt_secret);
+		var token = jwt.sign(payload, config.jwt_secret);
 
 		return token;
 	},

@@ -2,23 +2,22 @@
 var express      = require('express');
 var app          = express();
 var server       = require('http').Server(app);
-var fs           = require('fs');
-var path         = require('path');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var multer       = require('multer');
 var moment       = require('moment');
+var jwt          = require('jsonwebtoken');
 var auth         = require('./libs/auth');
 var db           = require('./libs/datastore');
 var config       = require('./libs/config');
 var flash        = require('./libs/flash');
 
 // Load the controllers
-var GameController   = require('./controllers/GameController');
-var HomeController   = require('./controllers/HomeController');
-var SocketController = require('./controllers/SocketController')(server);
-var UserController   = require('./controllers/UserController');
+var GameController     = require('./controllers/GameController');
+var SocketController   = require('./controllers/SocketController')(server);
+var UserController     = require('./controllers/UserController');
+var ScriptieController = require('./controllers/ScriptieController');
 
 // Set the middleware
 // View directory
@@ -67,22 +66,28 @@ app.use(function(req, res, next) {
 	next();
 });
 
-// Routes
-app.get('/', HomeController.getIndex)
+// Home route
+app.get('/', function(req, res) {
+	res.render('home');
+});
 
+// UserController
 app.get('/start', auth.isGuest, UserController.getStart);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
 app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
 app.get('/uitloggen', auth.isMember, UserController.getLogout);
 
+// GameController
 app.get('/host', auth.isMember, GameController.getCreate);
 app.get('/host/:room', auth.isMember, GameController.getHost);
 app.get('/play/:room', auth.isMember, GameController.getPlay);
-app.get('/qrcode/:room.png', auth.isMember, GameController.getQRCode);
+// app.get('/qrcode/:room.png', auth.isMember, GameController.getQRCode);
 
+// Secure user index
 app.get('/users', auth.isAdmin, UserController.getIndex);
 
+// API routes
 app.get('/api/users', auth.isAdmin, UserController.getUsers);
 app.get('/api/user', auth.isMember, UserController.getUser);
 app.post('/api/login', auth.isGuest, UserController.postLogin);
@@ -91,6 +96,11 @@ app.post('/api/users/save', auth.isMember, UserController.postSave);
 app.post('/api/users/check-email', UserController.postCheckEmail);
 app.post('/api/users/delete', auth.isAdmin, UserController.postDelete);
 
+// ScriptieController
+app.get('/scriptie*', ScriptieController.getIndex);
+app.get('/access', auth.isAdmin, ScriptieController.getAccess);
+app.post('/access/update', auth.isAdmin, ScriptieController.postAccess);
+app.get('/access/clear', auth.isAdmin, ScriptieController.getClearAccess);
 
 app.get('/randomwords', function(req, res) {
 	res.render('randomwords')
@@ -99,73 +109,6 @@ app.get('/randomwords', function(req, res) {
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten')
 });
-
-app.get('/test', function(req, res) {
-	res.render('test');
-});
-
-app.get('/scriptie*', function(req, res) {
-	if (req.path == '/scriptie' || req.path == '/scriptie/') {
-		// Get the path to index.html
-		var filepath = path.resolve(__dirname, '..', 'scriptie', 'index.html');
-
-		// Send index.html to the client
-		res.sendfile(filepath);
-	} else {
-		// Get the path to the requested file
-		var filepath = path.resolve(__dirname, '..', 'scriptie', req.path.substr(10));
-
-		// Check if the requested file exists
-		fs.exists(filepath, function(exists) {
-			if ( ! exists) // File not found! (404)
-				return res.status(404).end();
-
-			// Send the file
-			res.sendfile(filepath);
-		});
-	}
-});
-
-app.get('/access', auth.isAdmin, function(req, res) {
-	// Return the logfile
-	db.access.find({}).sort({ timestamp: -1 }).projection({ timestamp: 0 }).exec(function(err, docs) {
-		res.json(docs);
-	});
-});
-
-app.post('/access/update', function(req, res) {
-	var ipaddress = req.headers['x-forwarded-for'] || 
-		                req.connection.remoteAddress || 
-		                req.socket.remoteAddress ||
-		                req.connection.socket.remoteAddress;
-
-	var data = {
-		timestamp: moment().unix(),
-		last_visit: moment().format('DD-MM-YYYY HH:mm:ss')
-	};
-
-	if (req.user) data.user = req.user.email;
-	
-	// Access log
-	db.access.update({
-		ipaddress: ipaddress,
-		useragent: req.headers['user-agent']
-	}, {
-		$set: data,
-		$inc: { seconds: parseInt(req.body.seconds) }
-	}, {
-		upsert: true
-	});
-});
-
-app.get('/access/clear', auth.isAdmin, function(req, res) {
-	// Clear the logfile
-	db.access.remove({}, { multi: true }, function (err, numRemoved) {
-		// res.json({ removed: numRemoved });
-		res.redirect('/access');
-	});
-});
-
 
 app.get('*', function(req, res) {
 	res.status(404);

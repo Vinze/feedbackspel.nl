@@ -13,12 +13,10 @@
     "ejs": "1.*",
     "socket.io": "1.*",
     "validator": "^3.22.1",
-    "bcrypt-nodejs": "0.0.*",
-    "jwt-simple": "0.2.*",
+    "jsonwebtoken": "^3.2.2",
     "underscore": "^1.7.0",
     "moment": "^2.8.3",
     "nedb": "^0.11.1",
-    "multer": "^0.1.6",
-    "qr-image": "^3.0.2"
+    "multer": "^0.1.6"
   }
 }
