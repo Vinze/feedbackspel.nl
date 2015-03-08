@@ -41,22 +41,22 @@ app.use(session({
 	secret: config.session_secret,
 	saveUninitialized: true, 
 	resave: true
-}))
+}));
 
 // Use the mutler middleware for file uploads
-app.use(multer({ dest: __dirname + '/storage/tmp/' }))
+app.use(multer({ dest: __dirname + '/storage/tmp/' }));
 
 // Enable the JWToken parser
-app.use(auth.tokenParser)
+app.use(auth.tokenParser);
 
 // Rendering flash messages
-app.use(flash())
+app.use(flash());
 
 // Make the user available
-app.use(require('./libs/locals'))
+app.use(require('./libs/locals'));
 
 // Redirect to a game room if the route is four digits
-app.use(GameController.roomParser)
+app.use(GameController.roomParser);
 
 // Home route
 app.get('/', function(req, res) {
@@ -108,4 +108,4 @@ app.get('*', function(req, res) {
 });
 
 // Run the server
-server.listen(config.port)
+server.listen(config.port);
