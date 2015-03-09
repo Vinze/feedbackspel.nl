@@ -8,7 +8,7 @@ var session      = require('express-session');
 var multer       = require('multer');
 var auth         = require('./libs/auth');
 var config       = require('./libs/config');
-// var flash        = require('./libs/flash');
+var flash        = require('./libs/flash');
 
 // Load the controllers
 var GameController     = require('./controllers/GameController');
@@ -47,7 +47,7 @@ app.use(multer({ dest: __dirname + '/storage/tmp/' }));
 app.use(auth.tokenParser);
 
 // Rendering flash messages
-// app.use(flash());
+app.use(flash());
 
 // Make the user available
 app.use(require('./libs/locals'));
