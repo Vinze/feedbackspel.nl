@@ -257,6 +257,20 @@ table td.icons {
 	}
 }
 
+table.box {
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	th {
+		padding: 10px;
+	}
+	td {
+		padding: 2px 10px;
+	}
+	tr:last-child td {
+		padding-bottom: 10px;
+	}
+}
+
 //================================================
 // 12 column grid system
 //================================================
@@ -363,7 +377,7 @@ input.text {
 	display: block;
 	width: 100%;
 	border: 1px solid #e5e5e5;
-	background-color: #fff;
+	background-color: #f2f2f2;
 	padding: 5px 10px;
 	margin: 0;
 	&:focus {
@@ -384,7 +398,7 @@ input.checkbox, input.radio {
 select.select {
 	width: 100%;
 	border: 1px solid #e5e5e5;
-	background-color: #fff;
+	background-color: #f2f2f2;
 	padding: 5px 6px;
 	margin: 0;
 	&:focus {
@@ -568,10 +582,6 @@ div.box {
 	border: 1px solid #e5e5e5;
 	padding: 20px 30px;
 	margin-bottom: 20px;
-	input.text, select.select {
-		border: 1px solid #e5e5e5;
-		background-color: #f2f2f2;
-	}
 }
 
 .modal-overlay {
@@ -602,10 +612,6 @@ div.box {
 	z-index: 700;
 	position: relative;
 	.box-shadow(0 0 5px #444);
-	input.text, select.select {
-		border: 1px solid #e5e5e5;
-		background-color: #f2f2f2;
-	}
 }
 
 .avatar {
@@ -931,22 +937,6 @@ body.sidebar-open {
 		width: 158px;
 		height: 158px;
 		margin-bottom: 5px;
-	}
-}
-
-//================================================
-// Users
-//================================================
-
-
-.users {
-	.avatar {
-		width: 32px;
-		height: 32px;
-		border: none;
-	}
-	table th {
-		padding-left: 5px;
 	}
 }
 

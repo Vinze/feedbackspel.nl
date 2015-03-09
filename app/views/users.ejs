@@ -3,7 +3,7 @@
 <head>
 	<% include includes/head %>
 </head>
-<body class="users">
+<body>
 <% include includes/top %>
 <div class="content-wrapper">
 	<div class="content container" id="content">
@@ -20,7 +20,7 @@
 		</div>
 	{{/if}}
 	<div class="responsive-table">
-		<table>
+		<table class="box">
 			<thead>
 				<tr>
 					<th></th>
@@ -35,7 +35,7 @@
 				{{#each users}}
 					<tr>
 						<td style="width: 45px">
-							<div class="avatar">
+							<div class="avatar" style="width:32px;height:32px;border:none">
 								<img src="/avatar/{{_id}}.png">
 							</div>
 						</td>
@@ -52,7 +52,7 @@
 							<label><input type="checkbox" checked="{{admin}}" class="checkbox" on-click="save:{{this}}"> admin</label><br>
 							<label><input type="checkbox" checked="{{image}}" class="checkbox" on-click="save:{{this}}"> avatar</label>
 						</td>
-						<td style="width: 110px" class="align-right small">
+						<td style="width: 115px" class="align-right small">
 							<a class="text-red" on-click="remove:{{this}}">Delete user <i class="fa fa-trash-o"></i></a><br>
 							{{moment(updated_at).format('D-M-\'YY HH:mm')}} <i class="fa fa-clock-o"></i>
 						</td>

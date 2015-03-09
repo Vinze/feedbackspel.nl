@@ -460,17 +460,21 @@ In de vorige iteratie en bij het tonen aan geïnteresseerden werd duidelijk dat 
 Vrijwel alle nieuwe bezoekers scrollen eerst naar beneden om te kijken of er op de homepage al wat informatie staat over het feedbackspel. Deze informatie was in eerste instantie pas te vinden nadat de gebruiker was ingelogd. Door wat meer informatie te geven in de vorm van een korte uitleg en screenshots zal het voor veel mensen eerder duidelijk worden wat het feedbackspel inhoud.
 
 ### Registreren en inloggen
-In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spelen, namelijk:
-
-1. Registreren
-2. Inloggen
-3. Instellen profiel foto
-4. Deelnemen aan spel
+In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spelen, namelijk:  
+1. Registreren - Als de gebruiker nog geen account heeft moet een nieuw account geregisteerd worden. Bij het registreren van een nieuw moeten de volgende velden ingevuld worden: e-mail, voornaam, achternaam, geslacht, wachtwoord.  
+2. Inloggen - Na het registreren kan een gebruiker inloggen met zijn of haar e-mail adres en het juiste wachtwoord.
+3. Instellen profielfoto - Indien een gebruiker nog geen profielfoto heeft ingesteld moet hij of zij dit doen voor een feedbackspel gespeelt kan worden.
+4. Deelnemen aan spel - Nadat alle stappen zijn doorlopen kan de gebruiker kiezen om aan een nieuw spel te starten of aan een bestaand spel deel te nemen.
 
 ## Resultaten
 - Speluitleg werd beter gelezen
 - Spel werd helaas nog steeds gehost op mobiel
 - Meerdere rooms werkte prima
+- Registreren
+	- Wachtwoord vergeten
+	- Moet ik registreren?
+	- Had ik al een account?
+
 
 # Dankwoord
 Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mijn scriptie en het eindproduct. Ik heb de laatste maanden van mijn opleiding nog ontzettend veel geleerd, zowel op vakinhoudelijk als persoonlijk vlak. Hiervoor wil ik graag mijn familie, vrienden, collega's en alle betrokken docenten van de opleiding CMD bedanken.

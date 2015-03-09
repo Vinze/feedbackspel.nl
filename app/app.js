@@ -6,12 +6,9 @@ var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var multer       = require('multer');
-var moment       = require('moment');
-var jwt          = require('jsonwebtoken');
 var auth         = require('./libs/auth');
-var db           = require('./libs/datastore');
 var config       = require('./libs/config');
-var flash        = require('./libs/flash');
+// var flash        = require('./libs/flash');
 
 // Load the controllers
 var GameController     = require('./controllers/GameController');
@@ -50,7 +47,7 @@ app.use(multer({ dest: __dirname + '/storage/tmp/' }));
 app.use(auth.tokenParser);
 
 // Rendering flash messages
-app.use(flash());
+// app.use(flash());
 
 // Make the user available
 app.use(require('./libs/locals'));
@@ -100,6 +97,10 @@ app.get('/randomwords', function(req, res) {
 
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten')
+});
+
+app.get('/test', function(req, res) {
+	res.render('testing/index');
 });
 
 app.get('*', function(req, res) {

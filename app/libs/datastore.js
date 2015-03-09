@@ -7,6 +7,11 @@ db.users = new Datastore({
 	filename: __dirname + '/../storage/datastores/users.db'
 });
 
+db.feedback = new Datastore({
+	autoload: true,
+	filename: __dirname + '/../storage/datastores/feedback.db'
+});
+
 db.access = new Datastore({
 	autoload: true,
 	filename: __dirname + '/../storage/datastores/access.db'
