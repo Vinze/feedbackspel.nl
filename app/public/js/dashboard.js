@@ -103,5 +103,7 @@ $('#host').on('click', function(evt) {
 			allowOutsideClick: true
 		});
 		evt.preventDefault();
+	} else {
+		document.location.href = '/host';
 	}
 });

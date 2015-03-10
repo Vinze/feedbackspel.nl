@@ -40,6 +40,13 @@ var Sidebar = new function() {
 	}
 }
 
+$('a').on('tap, click', function(evt) {
+	if (this.href.length > 2) {
+		document.location.href = this.href;
+		evt.preventDefault();
+	}
+});
+
 Sidebar.init();
 
 function enterFullscreen() {

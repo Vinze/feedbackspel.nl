@@ -1,0 +1,51 @@
+<div class="content container">
+	{{#if message}}
+		<div class="flash-fixed" intro="fly:{ x: 0, y: -100 }" outro="fade">
+			<div class="flash-success">
+				{{message}}
+			</div>
+		</div>
+	{{/if}}
+	<div class="responsive-table">
+		<table class="box">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Email</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each users}}
+					<tr>
+						<td style="width: 45px">
+							<div class="avatar" style="width:32px;height:32px;border:none">
+								<img src="/avatar/{{_id}}.png">
+							</div>
+						</td>
+						<td>
+							<input type="email" class="text" value="{{email}}" on-change="save:{{this}}">
+						</td>
+						<td style="width: 160px">
+							<input type="text" class="text" value="{{firstname}}" on-change="save:{{this}}">
+						</td>
+						<td style="width: 160px">
+							<input type="text" class="text" value="{{lastname}}" on-change="save:{{this}}">
+						</td>
+						<td style="width: 90px" class="align-center">
+							<label><input type="checkbox" checked="{{admin}}" class="checkbox" on-click="save:{{this}}"> admin</label><br>
+							<label><input type="checkbox" checked="{{image}}" class="checkbox" on-click="save:{{this}}"> avatar</label>
+						</td>
+						<td style="width: 115px" class="align-right small">
+							<a class="text-red" on-click="remove:{{this}}">Delete user <i class="fa fa-trash-o"></i></a><br>
+							{{moment(updated_at).format('D-M-\'YY HH:mm')}} <i class="fa fa-clock-o"></i>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>

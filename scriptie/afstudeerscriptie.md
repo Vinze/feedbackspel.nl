@@ -496,7 +496,7 @@ Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mij
 	</tr>
 </table>
 
-Zonder jullie steun, (kritische) meningen en tips had ik dit 
+Zonder jullie steun, (kritische) meningen en tips had ik dit project nooit tot een succesvol einde kunnen brengen, bedankt!
 
 
 <!-- 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="192"
+   height="192"
+   id="svg2997"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="apple-touch-icon.svg"
+   inkscape:export-filename="/home/vincent/Node/feedbackspel.nl/app/public/img/apple-touch-icon.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="719"
+     id="namedview7"
+     showgrid="false"
+     inkscape:zoom="2"
+     inkscape:cx="92.084327"
+     inkscape:cy="111.42712"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2999" />
+  <metadata
+     id="metadata3002">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-72)">
+    <rect
+       style="color:#000000;fill:#55be78;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect2984"
+       width="192"
+       height="192"
+       x="0"
+       y="72"
+       ry="0" />
+    <path
+       style="fill:#3fa762;fill-opacity:1"
+       d="M 176 46.09375 L 123.6875 46.21875 L 137.53125 56.6875 L 120.1875 68.96875 C 109.35026 58.44508 92.117299 52 73.875 52 C 43.295249 52 16 70.04653 16 94.71875 C 16 103.46947 19.565452 112.05168 25.875 118.71875 C 26.141495 126.53144 20.933504 137.74294 16.25 145.90625 C 17.174449 145.75848 18.1804 145.54808 19.15625 145.375 L 76.40625 192 L 192 192 L 192 62.71875 L 175.15625 48.78125 L 176 46.09375 z "
+       id="speech-bubble-2-icon-3-35-9-94-6-0-6-3-7-0-2-2-0-1-6"
+       transform="translate(0,72)" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;fill-opacity:1"
+       d="m 176,118.09674 -52.32521,0.11817 13.86992,10.46736 -17.36694,12.29863 C 109.34053,130.45723 92.131999,124.00384 73.8897,124.00384 c -30.579751,0 -57.889698,18.03621 -57.889698,42.70843 0,8.75072 3.567144,17.33941 9.876692,24.00648 0.266495,7.81269 -4.933313,19.0212 -9.616817,27.18451 12.552525,-2.00641 30.397403,-6.43751 38.490785,-10.82183 44.337361,9.54148 76.705678,-14.29421 77.028708,-39.97933 l 22.44703,-15.90189 5.9898,16.78798 L 176,118.09674 z m -8.28179,6.33241 -8.81336,27.84613 -3.53248,-9.91212 -53.82559,36.80127 a 7.5618573,7.5618573 0 0 1 -7.714663,0.48441 L 73.440724,169.21687 50.154901,187.29263 a 7.5618573,7.5618573 0 1 1 -9.27419,-11.94417 l 27.090052,-21.02931 a 7.5618573,7.5618573 0 0 1 8.080922,-0.75611 l 20.674897,10.58555 49.489738,-33.83593 -7.70287,-5.8126 29.20476,-0.0709 z m -92.351747,7.00586 c 4.715025,-0.014 9.274787,0.48291 13.562728,1.41769 -4.36571,0.26585 -8.902368,0.878 -13.527265,1.85485 -25.744096,5.43738 -46.380837,20.56786 -51.604537,36.3878 -1.079653,-19.18424 18.768508,-36.65175 45.047625,-39.31773 2.199035,-0.22312 4.378252,-0.33623 6.521449,-0.34261 z"
+       id="speech-bubble-2-icon-3-35-9-94-6-0-6-3-7-0-2-2-0-1" />
+  </g>
+</svg>

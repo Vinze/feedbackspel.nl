@@ -1,0 +1,94 @@
+<div class="dashboard content container">
+	<div class="row">
+		<div class="col span-8 box" style="min-height: 240px;">
+			<h1 id="title">
+				Welkom, <span>{{user.firstname}}</span>
+				{{#if user.admin}}
+					(<a href="/spa/users"><i class="fa fa-lock"></i></a>)
+				{{/if}}
+			</h1>
+			<p class="align-center">
+				<a class="game-btn btn confirm" id="host"><i class="fa fa-laptop"></i> Nieuw spel starten</a>
+				<a class="game-btn btn confirm" id="join"><i class="fa fa-mobile"></i> Aan spel deelnemen</a>
+			</p>
+		</div>
+		<div class="col span-4 box align-center" style="min-height: 240px;">
+			<form action="/avatar" method="post" enctype="multipart/form-data" id="upload-form">
+				<label class="file-input">
+				<div>
+					<div class="avatar">
+						<img src="/avatar/{{user._id}}.png">
+					</div>
+				</div>
+					<input type="file" name="image" id="upload-select">
+					<i class="fa fa-picture-o"></i> Wijzig afbeelding
+				</label>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col span-12 box" id="profile">
+			{{#if editing}}
+				<h1>Gegevens bewerken</h1>
+				{{#if error}}
+					<div class="flash-error" intro="slide">{{error}}</div>
+				{{/if}}
+				<form on-submit="save" style="max-width: 500px">
+					<div class="form-group">
+						<div class="label"><label for="email">E-mail adres:</label></div>
+						<div class="field"><input type="text" value="{{editing.email}}" id="email" class="text" disabled></div>
+					</div>
+					<div class="form-group">
+						<div class="label"><label for="firstname">Voornaam:</label></div>
+						<div class="field"><input type="text" value="{{editing.firstname}}" id="firstname" class="text"></div>
+					</div>
+					<div class="form-group">
+						<div class="label"><label for="lastname">Achternaam:</label></div>
+						<div class="field"><input type="text" value="{{editing.lastname}}" id="lastname" class="text"></div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn confirm"><i class="fa fa-save"></i> Opslaan</button>
+					</div>
+					<div class="form-group">
+						<a on-click="cancel"><i class="fa fa-angle-double-left"></i> Terug</a>
+					</div>
+				</form>
+			{{else}}
+				<h1>Mijn gegevens <a class="icon" on-click="edit"><i class="fa fa-edit"></i></a></h1>
+				<div style="max-width: 600px">
+					<div class="form-group">
+						<div class="label">E-mail adres:</div>
+						<div class="field">{{user.email}}</div>
+					</div>
+					<div class="form-group">
+						<div class="label">Voornaam:</div>
+						<div class="field">{{user.firstname}}</div>
+					</div>
+					<div class="form-group">
+						<div class="label">Achternaam:</div>
+						<div class="field">{{user.lastname}}</div>
+					</div>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</div>
+
+<script type="text/template" id="join-tpl">
+	<div class="modal-overlay" on-click="closeModal" intro-outro="fade:{ duration: 300 }">
+		<div style="padding: 0 10px">
+			<!-- <div class="modal-close" on-click="closeModal"></div> -->
+			<div class="modal" style="max-width: 400px" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
+				<h1>Voer de spelcode in:</h1>
+				<form on-submit="send">
+					<div class="form-group">
+						<input type="tel" maxlength="4" value="{{code}}" id="code" class="text" autofocus>
+					</div>
+					<div class="form-group">
+						<button class="btn confirm"><i class="fa fa-sign-in"></i> Deelnemen</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</script>

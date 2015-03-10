@@ -103,6 +103,10 @@ app.get('/test', function(req, res) {
 	res.render('testing/index');
 });
 
+app.get('/spa*', function(req, res) {
+	res.sendfile('public/templates/layout.html');
+});
+
 app.get('*', function(req, res) {
 	res.status(404);
 	res.render('404');
