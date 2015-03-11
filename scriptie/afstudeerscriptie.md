@@ -130,9 +130,11 @@ Feedback betekent letterlijk terugkoppeling. Het geven van feedback is een belan
 Feedback wordt nogal eens verward met kritiek. Mensen voelen zich aangevallen of ervaren de feedback als een teken van falen. Dit is erg jammer want feedback bied kansen om over jezelf te leren en laat zien op welke punten je jezelf nog kan ontwikkelen.
 
 ## Regels
+
 Er zijn een aantal regels bij het geven en ontvangen van feedback. Door deze regels in acht te nemen zal het leerproces verbeteren en zal een feedback sessie nuttigere resultaten opleveren. Een aantal belangrijke regels zijn:
 
 ### Bij feedback geven
+
 - Denk goed na over de feedback die je gaat geven en hoe je dit gaat brengen.
 - Geef voorbeelden en licht je feedback toe.
 - Geef opbouwende kritiek.
@@ -141,6 +143,7 @@ Er zijn een aantal regels bij het geven en ontvangen van feedback. Door deze reg
 - Hou rekening met de gevoelens van een ander.
 
 ### Bij feedback ontvangen
+
 - Luister goed en vraag indien nodig om toelichting.
 - Schiet niet meteen in de verdediging en sta op voor kritiek van anderen.
 - Probeer je in de ander te verplaatsen om erachter te komen waarom je bepaalde feedback krijgt.
@@ -150,27 +153,35 @@ Er zijn een aantal regels bij het geven en ontvangen van feedback. Door deze reg
 [feedback uitgebreid.doc](scriptie/bijlagen/feedback uitgebreid.doc)
 
 ## Een dialoog tot stand brengen
+
 Bij een goede feedback sessie is het van belang dat de deelnemers een dialoog met elkaar aangaan over het functioneren van de individuen. Door een gesprek aan te gaan over de gegeven en ontvangen feedback is het makkelijker om dingen te onderbouwen of toe te lichten met voorbeelden. Het feedback systeem moet de deelnemers dus motiveren tot het hebben van een dialoog en hiervoor zullen diverse 'triggers' nodig zijn. Het stimuleren van een gesprek kan gedaan worden door de deelnemers te belonen, bijvoorbeeld met (digitale) medailles of een score waardoor iemand hoger in een ranglijst kan komen. Daarnaast zijn mensen ook aan het praten te krijgen door ze simpelweg vragen te stellen. Bij het stellen van de juiste (open) vragen zal iemand met een antwoord moeten komen, dit kan helpen bij het opzetten van een gesprek.
 
 http://www.inc.com/magazine/20110401/competitive-intelligence-how-to-make-people-talk.html
 
 # Doelgroep
+
 De doelgroep waar ik me in eerste instantie op zal richting zijn studenten die de opleiding Communication & Multimedia Design volgen. Op deze opleiding wordt erg veel gewerkt in groepsverband en is het reflecteren en groeien op persoonlijk vlak erg belangrijk. Uit eigen onderzoek blijkt dat vrijwel alle studenten van de opleiding bekend zijn met het geven en ontvangen van feedback spellen. 
 
 ## User stories
+
 Tim (22 jaar) is een 2e jaars student die de opleiding Communication & Multimedia Design volgt aan de NHL Hogeschool. Hier zit hij in de minor Multimedia Reclame Bureau en werkt samen met nog 4 anderen aan een project. Inmiddels is hij halverwege het semester en hij wil graag eerlijke feedback van zijn medestudenten ontvangen. Deze feedback wil hij gebruiken om erachter te komen wat zijn goede/zwakke punten zijn, en de resultaten verwerken in een reflectieverslag. Hij wil graag weten hoe anderen over hem denken, en vind het belangrijk dat de feedback wordt toegelicht met (praktijk) voorbeelden. Hiervoor plant hij samen met zijn teamgenoten een uurtje in om even samen te gaan zitten en een feedbacksessie te organiseren.
 
 ## User patterns
+
 ### Vierdejaars CMD studenten
+
 Aangezien deze studenten al een aantal jaar op de opleiding zitten is de kans groot dat ze al de nodige ervaring hebben met het geven en ontvangen van feedback. Door met deze doelgroep te gaan testen is het mogelijk om erachter te komen hoe het spel zich verhoud in vergelijking met papieren feedbackspellen en/of andere feedbackmethodes. Daarnaast heeft deze doelgroep al een bepaalde verwachting van wat een feedbackspel moet bieden, en kan getest worden of een applicatie hieraan voldoet. Bij deze doelgroep dient wel rekening gehouden te worden met het feit dat ze ook op technisch gebied een prototype gaan beoordelen. Vanwege hun ervaring en expertise zullen ze mogelijk vallen over technische imperfecties die andere gebruikers niet eens opvallen.
 
 ### Eerstejaars CMD studenten
+
 Hebben over het algemeen nog maar weinig ervaring met feedback systemen/spellen en zullen minder naar het technische aspect van een applicatie kijken. Deze doelgroep is perfect om te testen in hoeverre het een applicatie het proces van feedback geven en ontvangen in teamverband kan bevorderen. Ze zijn niet bevooroordeeld hoe een feedback spel zou moeten werken, en hebben nog geen beeld van hoe dit georganiseerd zou moeten worden.
 
 ### PPO docenten
+
 PPO docenten houden zich bezig met de persoonlijke ontwikkeling van studenten en hebben veel ervaring met diverse feedback methodieken. Bij het spelen van een feedback spel kijken vanuit een professioneel oogpunt. 
 
 ## Persona
+
 ![Johan](scriptie/bijlagen/johan-steenstra.jpg)
 
 **Naam:**  
@@ -192,20 +203,25 @@ Wil graag cameraman worden bij een groot en bekend TV station. Daarnaast zou hij
 Twee keer per week gaat Johan voetballen met VV de Renners en hij doet dit vooral om lekker fit te blijven en het contact te onderhouden met zijn medespelers. Op zaterdag werkt hij in een tuincentrum om wat geld bij te verdienen. Hier is hij verantwoordelijk voor het vullen van de winkel, en hij helpt de klanten als ze iets zoeken.
 
 ## Persoonlijkheden
+
 Om een goed beeld te krijgen van de doelgroep zijn een drietal personas opgesteld. Door de doelgroep te observeren tijdens het uitvoeren van tests en op basis van het vooronderzoek zijn de onderstaande personas tot stand gekomen. Deze personas zijn weer gebaseerd op de Myers-Briggs Type Indicator (MBTI). Op internet staan diverse tests (1) om erachter te komen wat voor persoonlijkheidstype bij een bepaald persoon hoort. Door de test driemaal in te vullen, en de vragen zo te beantwoorden op een manier die bij de verschillende type mensen uit de doelgroep past, zijn de volgende eigenschappen naar voren gekomen.
 
 ### Vivian Bootsma (ESTP)
+
 Vind het belangrijk dat een feedback sessie to-the-point is en er niet teveel omheen gedraaid wordt. Ze zegt waar het op staat en heeft er geen problemen mee om dit uit te spreken in een groep. Ze moet wel oppassen dat ze niet te aanwezig is en de rest van de deelnemers overstemd.
 
 ### Thomas de Groot (INFJ)
+
 Houd ervan om een feedback sessie volgens een vooropgezette goed georganiseerde methode uit te voeren. Hij wil graag iedereen te vriend houden en probeert de vrede te bewaren in de groep. Voor hij iets zegt denkt hij eerst na, en staat liever niet in het middelpunt van de aandacht.
 
 ### Cor Bakker (ESTJ)
+
 Werkt graag in een steeds veranderende omgeving en vind het geen probleem in het middelpunt van de aandacht te staan. Hij kijkt naar wat realistisch is en ontvangt graag feedback onderbouwd door voorbeelden uit de praktijk. Binnen de groep is hij degene die een feedback sessie zou organiseren en hij vind het prettig als het er serieus en georganiseerd aan toe gaat.
 
 (1) http://tests.psychologiemagazine.nl/Persoonlijkheid/Test%20persoonlijkheidstype%20MBTI
 
 # Definition of Done
+
 Er zijn een aantal vereisten waaraan het eindproduct moet voldoen, namelijk;
 
 - Unit tests zijn uitgevoerd en geven geen foutmeldingen.
@@ -260,27 +276,32 @@ Er zijn een aantal vereisten waaraan het eindproduct moet voldoen, namelijk;
 </table>
 
 # Design thinking
-### Iteration (52)
-Het iteractieve process houd in dat het product zich ontwikkeld op basis van de opgedane kennis uit het testen met gebruikers. Dit proces bestaat uit een aantal stappen die zich herhalen in een cyclus en ervoor zorgt dat het product als het ware om de gebruiker heen ontwikkeld wordt.
+
+Het project is volgens het design thinking proces uitgevoerd en hiervoor zijn diverse beproefde methodieken gebruikt. Hieronder staan enkele gebruikte methodieken en wordt uitgelegd wat deze methodieken inhouden en waarom deze toegepast zijn. 
+
+### Iteration
+
+Het iteractieve proces houd in dat het product zich ontwikkeld op basis van de opgedane kennis uit het testen met gebruikers. Dit proces bestaat uit een aantal stappen die zich herhalen in een cyclus en ervoor zorgt dat het product als het ware om de gebruiker heen ontwikkeld wordt.
 
 ![webapp1](scriptie/bijlagen/iteration.svg)
 
-### Low Fidelity Prototype Kit (171)
+### Low Fidelity Prototype Kit
+
 Een low fidelity prototype is een eenvoudige versie van het product dat ontwikkeld wordt. Dit soort prototype is zeer snel te maken en komt niet in de buurt van de kwaliteit van het uiteindelijke product. Een low fidelity prototype kan bestaan uit bijvoorbeeld papier, karton, post-its en andere eenvoudige materialen. Hiermee kan heel snel getest worden en bied een goede basis om een volgend prototype op verder te ontwikkelen.
 
-### Develop Personas (151)
+### Develop Personas
 
+Een persona is een profiel van de gebruiker en beschrijft diverse karakterestieken en eigenschappen die bij de gebruiker horen. Dit helpt bij het ontwikkelen van het product en kan helpen bij het gebruiksvriendelijk maken.
 
-### Observation (265)
+### Observation
 
+Iedere iteratie moet het product getest worden en hiervoor zijn diverse technieken beschikbaar. Een van deze technieken is observeren. Terwijl de gebruikers het product aan het testen zijn zal één of meerdere personen meekijken en observeren welke handelingen de gebruikers uitvoeren. Dit is een eenvoudige manier om snel informatie te vergaren en vergt vrij weinig voorbereiding. Een nadeel is wel dat er snel informatie over het hoofd gezien kan worden, en de aanwezigheid van de persoon die de test afneemt kan het testen (onbewust) beïnvloeden.
 
 ### Fly-on-the-wall (242)
 
-
-
 https://uxchecklist.github.io/
 
-<span style="color:red">Dit moet nog uitgewerkt worden!</span>
+<span style="color:red;font-size:20px">Dit moet nog uitgewerkt worden!</span>
 
 # Iteratie 1 – paper prototype
 
@@ -336,25 +357,33 @@ Bij het tonen van de resultaten zal er een gesprek opgang komen doordat men vraa
 - De applicatie zit niet in de weg, en wordt gezien als hulpmiddel welke de groep helpt bij het hebben van gesprekken.
 
 ## Hypotese
+
 Het is makkelijk en eenvoudig om de feedback sessie te starten en het invullen van de feedback gaat zonder problemen. Bij het tonen van de resultaten zullen de deelnemers vragen waarom ze op een bepaalde positie in de resultaten eindige en wordt er gediscussieerd of dit wel of niet terecht is.
 
 ## Aanpassingen
+
 Dit prototype is een volledig werkende webapplicatie welke het gehele proces van het geven en ontvangen van feedback moet vergemakkelijken. Qua functionaliteit is er vrijwel niks veranderd, zo wordt nog steeds het feedback kaartje getoond, en moeten de spelers elkaar een aantal sterren geven. Het grote verschil zit hem echter in het feit dat de applicatie de resultaten direct verwerkt en het niet meer nodig is om de resultaten handmatig te berekenen. 
 
 ## Testpersonen
+
 Net zoals het vorige prototype zal ook dit prototype getest worden in samenwerken met een aantal medestudenten die ook aan het afstuderen zijn. Hiervoor is gekozen omdat deze personen ook op de hoogte zijn van de knelpunten van het paper prototype en dus gericht feedback kunnen geven op de speelwijze van het feedback spel. Daarnaast wil ik het spel graag ook zelf meespelen om te ervaren hoe dit in zijn werk gaat en tegen welke knelpunten ik zelf aanloop. Dit kan alleen met deze testpersonen omdat we elkaar kennen en dus inhoudelijk gedegen feedback kunnen geven.
 
 ## Testmethodiek
+
 Er is gekozen om gebruik te maken van een “focus group” omdat ik graag een open mening over de applicatie wil horen van de testpersonen. Ik zal zelf ook deelnemen aan de feedback sessie en hoop hiermee een goed beeld te krijgen hoe de spel ervaring is. Een risico van zelf meespelen is echter wel dat ik slechts beperkt kan observeren hoe anderen het spel spelen en mogelijk dingen over het hoofd kan zien.
 
 ## Resultaten
+
 ### Feedback sessie starten
+
 Het opzetten van de feedback sessie verliep zonder problemen. Alle testpersonen wisten dat ze eerst een account moesten registreren en vervolgens konden inloggen. Eenmaal ingelogd was de knop met de tekst “Aan spel deelnemen” voldoende op de testpersonen te laten deelnemen aan het spel.
 
 ### Geven van feedback
+
 Het was voor iedereen duidelijk dat je aan de hand van een vijftal sterren kon aangeven in hoeverre een bepaalde eigenschap van toepassing was op een medespeler. Hierbij moet wel opgemerkt worden dat de testpersonen allemaal technisch onderlegd zijn, en dat ze weten hoe het waarderingssysteem met sterren werkt. Bij een groep personen die minder technisch zijn, en nog niet zoveel ervaring met het geven en ontvangen van feedback hebben kan dit anders uitpakken.
 
 ### Het spel wordt eenvoudiger
+
 In verhouding tot het papieren prototype is dit prototype een enorme verbetering op het gebied van eenvoud en toegankelijkheid. Doordat de testpersonen slechts een aantal keer hoeven te klikken op de sterretjes en het systeem de feedback automatisch verwerkt hoeven de gebruikers geen extra handelingen meer uit te voeren.
 
 ### Aanzetten tot dialoog
@@ -407,26 +436,33 @@ Voorafgaand aan het testen wordt in een korte inleiding uitgelegd dat ze een dig
 Nadat groep het spel doorlopen heeft zal een korte vragenlijst verspreid worden en wordt verzocht deze individueel in te vullen. Doordat de testpersonen deze vragenlijst individueel invullen wordt voorkomen dat hun mening wordt beïnvloed door de antwoorden van anderen. Na het invullen van de vragenlijst wordt nog even kort geëvalueerd hoe ze het vonden om feedback te geven en ontvangen met behulp van de applicatie.
 
 ## Resultaten
+
 ### Registreren en inloggen
+
 Het registratie en inlog proces verliep zonder problemen en het wees zichzelf. Echter voelde het voor de testpersonen wat omslachtig aan dat ze eerst moesten registreren en een wachtwoord instellen, en daarna nog eens moesten inloggen. Vooral op een smartphone waar het typen niet zo snel als op een computer gaat kon dit vervelend zijn. Daarnaast wist niet iedereen dat ze eerst moesten registreren voor ze konden inloggen.
 
 ### Instellen profielfoto
+
 Door het uploaden van een profielfoto verplicht te maken werd dit netjes door alle testpersonen gedaan. Het dashboard, vanuit waar een spel gespeeld kan worden, wordt niet eerder getoond dan wanneer er een foto is toegevoegd. Het enige punt van kritiek was dat het uploaden van een afbeelding soms wat lang kon duren op een mobiele telefoon. Hierdoor hadden de testpersonen het idee dat de pagina vast liep of dat het niet zou werken. Dit is mogelijk op te lossen door te laten zien dat de applicatie bezig is met het verwerken van de afbeelding. (bijvoorbeeld een laad icoontje)
 
 ### Speelwijze
+
 Het was niet meteen duidelijk wat de bedoeling was van het feedbackspel. De deelnemers vroegen zich af hoe het spel gespeeld moest worden en welke handelingen ze moeten uitvoeren. Vooral wat de rol van de PC of laptop is en waarvoor de smartphone dient, bleek niet duidelijk te zijn. Het spel moet namelijk aangemaakt worden op een PC of laptop, waarna de smartphone deelneemt aan het reeds aangemaakte spel. Het zal dus nodig zijn om voorafgaand aan het spelen van het spel meer uitleg te geven over hoe het spel gestart en gespeeld moet worden.
 
 Het geven van sterren aan medespelers leverde verder geen problemen op. Het was duidelijk dat wanneer je meer sterren aan iemand toekend, deze eigenschap beter bij die persoon past. Het maximaal uit te geven sterren wees zichzelf ook, iedereen vond het duidelijk dat wanneer de sterren veranderen in een stip deze niet meer beschikbaar waren om uit te geven. Wel werd de vraag nog gesteld of het verplicht was om alle sterren uit te geven. Hieruit blijkt dat de zin "Je mag nog maximaal (..) sterren uitgeven" niet voor iedereen duidelijk is, of dat ze deze zin compleet over het hoofd gezien hebben. Deze vraag werd vervolgens wel door de deelnemers zelf beantwoord. Mocht blijken dat dit in meerdere gevallen niet duidelijk is, dan zal dit duidelijk uitgelegd moeten worden. Bijvoorbeeld door het woord 'mag' dikgedrukt te maken, of in de uitleg aan te geven dat je niet verplicht bent om alle sterren uit te geven.
 
 ### Persoonlijk ontvangen feedback
+
 Door inzichtelijk te maken hoeveel sterren de deelnemer van zijn of haar medespelers gekregen heeft zou een gesprek op gang moeten komen. Het wordt namelijk mogelijk om iemand op de man af te vragen waarom hij of zij een bepaalde eigenschap wel of niet toegeschreven kreeg. Hierbij viel op dat dit alleen het geval was bij negatieve eigenschappen en bij uitspringers. Wanneer iemand allemaal positieve beoordelingen kreeg vond diegene het niet nodig om door te vragen. Bij een negatieve beoordeling werd er wel sneller naar gevraagd. Hierna werd er vanuit de groep wel toegelicht waarom diegene een eigenschap wel of niet bezat.
 
 ### Groepsgesprek
+
 Helaas kwam bij het tonen van de [uitslagen](scriptie/bijlagen/i3-overview.png) niet meteen een groepsgesprek op gang. De deelnemers bekeken de uitslagen en de feedback die ze ontvangen hadden, maar vroegen niet uit zichzelf waarom ze die feedback kregen. Er werd af en toe wel een opmerking gemaakt waaruit blijkt dat iemand niet eens was met de ontvangen feedback, maar hier werd verder niet op in gegaan. Dit kwam vaak omdat de deelnemers vaak wel wisten waarom ze bepaalde feedback kregen, of omdat het ze simpelweg niet zoveel kon schelen.
 
 Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag van een feedback ronde. Als iemand bijvoorbeeld onderaan eindigde stelde ik de vraag waarom diegene zo laag scoorde. Door na iedere ronde een vraag te stellen over de resultaten begon er wel een gesprek op gang te komen en werd uitgelegd waarom iemand bepaalde feedback kreeg.
 
 ## Bijlagen
+
 - [Enquête ingevuld #1](scriptie/bijlagen/i3-enquete-1.jpg)
 - [Enquête ingevuld #2](scriptie/bijlagen/i3-enquete-2.jpg)
 - [Enquête ingevuld #3](scriptie/bijlagen/i3-enquete-3.jpg)
@@ -437,14 +473,17 @@ Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag v
 # Iteratie 4 – webapp versie 1.2
 
 ## Inleiding
+
 In tegenstelling tot de vorige drie prototypes is het huidige prototype ietwat anders tot stand gekomen. Doordat ik de applicatie al diverse malen getoond heb aan familie, kennissen en collega's zijn er een aantal knelpunten naar voren gekomen die niet voor een specifieke doelgroep (studenten) gelden. Bij bijna alle personen kwamen deze punten naar boven en hieruit blijkt dat er een aantal dingen structureel mis gaan bij het gebruiken van de applicatie.
 
 ## Testmethodiek
+
 Er is in deze iteratie niet aan de hand van een bepaalde methodiek getest. Door de applicatie te tonen aan geïnteresseerden kon ik observeren welke handelingen de gebruiker uitvoerde. Hier kwamen geregeld dingen naar boven die bijvoorbeeld niet logisch waren of dingen die niet naar behoren werkte. Deze knelpunten of tips werden opgeschreven in een notitie blokje en vervolgens werd er gekeken hoe dit opgelost kan worden.
 
 ## Aanpassingen
 
 ### Meerdere spellen tegelijkertijd
+
 Om het spel met meerdere groepen tegelijkertijd te kunnen spelen is het vereist om meerdere feedback spellen afzonderlijk van elkaar te kunnen starten. Een gebruiker maakt vervolgens verbinding met een specifiek spel aan de hand van een unieke identificatie. In eerste instantie leek het makkelijk om de gebruikers een zogenaamde QR code te laten scannen, waarna ze naar een URL gestuurd werden. Echter heeft niet iedereen een applicatie op de telefoon staan om een QR code te scannen, en bleek het scannen van zo'n QR code onnodig veel stappen te vereisen. Zo moet eerst de applicatie gestart worden, vervolgens moet de code gescand worden, daarna moet op de URL geklikt worden, en dan pas opent het feedbackspel.
 
 Daarom is er gekozen om een vier cijferige spelcode te laten zien. Deze code staat altijd rechtsonder op het laptopscherm in beeld, en gebruikers hoeven nu alleen maar via hun webbrowser naar feedbackspel.nl/*[spelcode]* te gaan. Vervolgens moeten ze, indien nodig, inloggen en komen ze in het spel terecht.
@@ -452,19 +491,32 @@ Daarom is er gekozen om een vier cijferige spelcode te laten zien. Deze code sta
 ![Spelcode](scriptie/bijlagen/i4-spelcode.png)  
 
 ### Spel uitleg
+
 In de vorige iteratie en bij het tonen aan geïnteresseerden werd duidelijk dat men de uitleg op het scherm van de laptop (1)  niet las. Hierdoor was het voor veel mensen verwarrend wat nou de bedoeling is en hoe het spel gespeelt dient te worden. Door de speluitleg te verplaatsen van de laptop naar de telefoon van de gebruiker (2) moet dit minder snel over het hoofd gezien worden. Bijkomend voordeel is dat de uitleg op een mobiele telefoon altijd leesbaar is en de deelnemer dus niet vlak voor de laptop hoeft te zitten. Op het scherm van de laptop wordt nu alleen nog uitgelegd hoe de gebruiker kan verbinden met het huidige spel. (3)
 
 ![Spel uitleg](scriptie/bijlagen/i4-uitleg-samengevoegd.png)
 
 ### Meer info op homepage
+
 Vrijwel alle nieuwe bezoekers scrollen eerst naar beneden om te kijken of er op de homepage al wat informatie staat over het feedbackspel. Deze informatie was in eerste instantie pas te vinden nadat de gebruiker was ingelogd. Door wat meer informatie te geven in de vorm van een korte uitleg en screenshots zal het voor veel mensen eerder duidelijk worden wat het feedbackspel inhoud.
 
 ### Registreren en inloggen
+
 In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spelen, namelijk:  
-1. Registreren - Als de gebruiker nog geen account heeft moet een nieuw account geregisteerd worden. Bij het registreren van een nieuw moeten de volgende velden ingevuld worden: e-mail, voornaam, achternaam, geslacht, wachtwoord.  
+
+1. Registreren - Als de gebruiker nog geen account heeft moet een nieuw account geregisteerd worden. Bij het registreren van een nieuw account moeten de volgende velden ingevuld worden: e-mail, voornaam, achternaam, geslacht, wachtwoord.  
 2. Inloggen - Na het registreren kan een gebruiker inloggen met zijn of haar e-mail adres en het juiste wachtwoord.
-3. Instellen profielfoto - Indien een gebruiker nog geen profielfoto heeft ingesteld moet hij of zij dit doen voor een feedbackspel gespeelt kan worden.
-4. Deelnemen aan spel - Nadat alle stappen zijn doorlopen kan de gebruiker kiezen om aan een nieuw spel te starten of aan een bestaand spel deel te nemen.
+3. Instellen profielfoto - Indien een gebruiker nog geen profielfoto heeft ingesteld moet dit nu ingesteld worden voordat de gebruiker verder kan.
+4. Nadat alle stappen zijn doorlopen kan de gebruiker kiezen om aan een nieuw spel te starten of aan een bestaand spel deel te nemen.
+
+In principe is dit een vrij standaard proces dat op veel websites en applicaties toegepast wordt. Echter blijkt dit toch nog wel de nodige problemen op te leveren. Zo vergaten gebruikers geregeld of ze wel of niet een account aangemaakt hadden, en daardoor wisten ze niet of ze nou op inloggen of registreren moesten klikken. Daarnaast komt het geregeld voor dat gebruikers hun e-mail adres of wachtwoord vergaten, en ze deze dus moeten laten resetten.
+
+Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door het registreren en inloggen samen te voegen in een stappenplan word
+
+<span style="color:red;font-size:20px">Dit moet nog uitgewerkt worden!</span>
+
+
+
 
 ## Resultaten
 - Speluitleg werd beter gelezen
@@ -501,7 +553,7 @@ Zonder jullie steun, (kritische) meningen en tips had ik dit project nooit tot e
 
 <!-- 
 # Iteratie 5 – webapp versie 2.0
-<span style="color:red">Dit moet nog verder uitgetypt worden!</span>
+<span style="color:red;font-size:20px">Dit moet nog verder uitgetypt worden!</span>
 
 - Verbeteringen
 - Systeem stelt vragen
@@ -670,6 +722,9 @@ Afstuderen
 - Programmeren prima
 - Documenteren kut
 - 
+
+big five
+mbti
 
 Gehele opleiding
 - Gegroeit op persoonlijk vlak

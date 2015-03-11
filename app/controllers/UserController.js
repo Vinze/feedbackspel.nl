@@ -110,7 +110,7 @@ var UserController = {
 
 				db.users.insert({
 					email: input.email.toLowerCase(),
-					password: bcrypt.hashSync(input.password),
+					// password: bcrypt.hashSync(input.password),
 					firstname: input.firstname,
 					lastname: input.lastname,
 					image: false,

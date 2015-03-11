@@ -708,6 +708,25 @@ body {
 .header {
 	padding: 0 10px;
 	height: @header-height;
+	ul {
+		float: right;
+		margin: 0;
+		padding: 0;
+		li {
+			display: inline-block;
+		}
+		a {
+			display: block;
+			padding: 22px 10px 23px 10px;
+			color: @font-color;
+			text-decoration: none;
+			line-height: 1;
+			&:hover {
+				color: @accent-color;
+				text-decoration: none;
+			}
+		}
+	}
 }
 
 .header-icon {
@@ -732,25 +751,6 @@ body {
 }
 
 
-.navigation {
-	float: right;
-	margin: 0;
-	padding: 0;
-	li {
-		display: inline-block;
-	}
-	a {
-		display: block;
-		padding: 22px 10px 23px 10px;
-		color: @font-color;
-		text-decoration: none;
-		line-height: 1;
-		&:hover {
-			color: @accent-color;
-			text-decoration: none;
-		}
-	}
-}
 
 .sidebar-toggle {
 	float: right;
@@ -775,7 +775,14 @@ body {
 	color: #ccc;
 	font-size: 1.1em;
 	.box-shadow(0 0 5px #222);
-	ul {
+	h1 {
+		padding: 10px 10px 10px 32px;
+		font-weight: bold;
+		margin: 10px 0 0 0;
+		border: none;
+		font-size: inherit;
+	}
+	ul.nav {
 		margin: 0;
 	}
 	li {
@@ -783,11 +790,7 @@ body {
 		padding: 0;
 		list-style-type: none;
 		display: block;
-		&.title {
-			padding: 10px 10px 10px 32px;
-			font-weight: bold;
-			margin: 10px 0 0 0;
-		}
+		
 	}
 	a {
 		color: #ccc;
@@ -1360,7 +1363,7 @@ body.sidebar-open {
 	.sidebar-toggle {
 		display: block;
 	}
-	.navigation {
+	.header ul.nav {
 		display: none;
 	}
 	.responsive-table {

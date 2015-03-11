@@ -78,7 +78,7 @@ app.get('/users', auth.isAdmin, UserController.getIndex);
 
 // API routes
 app.get('/api/users', auth.isAdmin, UserController.getUsers);
-app.get('/api/user', auth.isMember, UserController.getUser);
+app.get('/api/user', UserController.getUser);
 app.post('/api/login', auth.isGuest, UserController.postLogin);
 app.post('/api/register', auth.isGuest, UserController.postRegister);
 app.post('/api/users/save', auth.isMember, UserController.postSave);
@@ -104,7 +104,8 @@ app.get('/test', function(req, res) {
 });
 
 app.get('/spa*', function(req, res) {
-	res.sendfile('public/templates/layout.html');
+	// Single page app
+	res.sendfile('public/views/layout.html');
 });
 
 app.get('*', function(req, res) {

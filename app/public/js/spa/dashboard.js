@@ -20,7 +20,6 @@ var Dashboard = Ractive.extend({
 						return self.set('error', res.error);
 
 					self.set({ user: res.user, editing: null });
-					currentUser = res.user;
 				});
 
 				evt.original.preventDefault();

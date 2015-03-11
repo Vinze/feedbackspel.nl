@@ -1,7 +1,7 @@
 <div class="sidebar">
 	<a class="close-sidebar"><i class="fa fa-times"></i></a>
-	<ul>
-		<li class="title">Menu</li>
+	<h1>Menu</h1>
+	<ul class="nav">
 		<% menu_items.forEach(function(item) { %>
 			<li><a href="<%= item.url %>"><i class="fa fa-fw <%= item.classname %>"></i> <%= item.label %></a></li>
 		<% }); %>
