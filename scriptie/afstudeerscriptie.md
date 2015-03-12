@@ -511,7 +511,9 @@ In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spe
 
 In principe is dit een vrij standaard proces dat op veel websites en applicaties toegepast wordt. Echter blijkt dit toch nog wel de nodige problemen op te leveren. Zo vergaten gebruikers geregeld of ze wel of niet een account aangemaakt hadden, en daardoor wisten ze niet of ze nou op inloggen of registreren moesten klikken. Daarnaast komt het geregeld voor dat gebruikers hun e-mail adres of wachtwoord vergaten, en ze deze dus moeten laten resetten.
 
-Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door het registreren en inloggen samen te voegen in een stappenplan word
+Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door het registreren en inloggen samen te voegen in een wizard wordt het mogelijk om op basis van de ingevulde gegevens alleen de velden te tonen die van toepassing zijn.
+
+![dixons](scriptie/bijlagen/i4-dixons.png)
 
 <span style="color:red;font-size:20px">Dit moet nog uitgewerkt worden!</span>
 
