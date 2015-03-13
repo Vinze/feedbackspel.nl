@@ -49,6 +49,16 @@ $('a').on('tap, click', function(evt) {
 
 Sidebar.init();
 
+function replaceTags(content, tags) {
+	return content.replace(/\[(.*?)\]/gi, function(match, text) {
+		if (tags[text]) {
+			return tags[text];
+		} else {
+			return match;
+		}
+	});
+}
+
 function enterFullscreen() {
 	if (document.documentElement.requestFullscreen) {
 		document.documentElement.requestFullscreen();

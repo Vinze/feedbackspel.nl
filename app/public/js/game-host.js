@@ -2,17 +2,6 @@ var token  = Cookies.get('fbs_token');
 var room   = _.last(window.location.href.split('/'));
 var socket = io(baseURL, { query: 'token=' + token + '&role=host&room=' + room });
 
-
-function replaceTags(content, tags) {
-	return content.replace(/\[(.*?)\]/gi, function(match, text) {
-		if (tags[text]) {
-			return tags[text];
-		} else {
-			return match;
-		}
-	});
-}
-
 var Game = new Ractive({
 	el: 'game',
 	template: '#game-tpl',
@@ -66,10 +55,18 @@ Game.on({
 		evt.original.preventDefault();
 	},
 	restartGame: function(evt) {
-		var restart = confirm('Spel herstarten?');
-		if (restart) {
+		swal({
+			title: 'Spel herstarten',
+			text: 'Weet je zeker dat je het spel wilt herstarten?',
+			showCancelButton: true,
+			cancelButtonText: 'Nee',
+			confirmButtonColor: '#DD5755',
+			confirmButtonText: 'Ja',
+			closeOnConfirm: true,
+			allowOutsideClick: true
+		}, function() {
 			socket.emit('game.restart');
-		}
+		});
 		evt.original.preventDefault();
 	},
 	removeGame: function(evt) {

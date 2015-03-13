@@ -518,8 +518,6 @@ Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door
 <span style="color:red;font-size:20px">Dit moet nog uitgewerkt worden!</span>
 
 
-
-
 ## Resultaten
 - Speluitleg werd beter gelezen
 - Spel werd helaas nog steeds gehost op mobiel
@@ -529,6 +527,21 @@ Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door
 	- Moet ik registreren?
 	- Had ik al een account?
 
+# Iteratie 5 – webapp versie 2.0
+
+<!-- 
+<span style="color:red;font-size:20px">Dit moet nog verder uitgetypt worden!</span>
+
+
+
+- Verbeteringen
+- Systeem stelt vragen
+
+- Blokkeren host op smartphone
+- Inloggen vs Registreren vs Inloggen / Registreren
+ -->
+
+# Samenvatting
 
 # Dankwoord
 Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mijn scriptie en het eindproduct. Ik heb de laatste maanden van mijn opleiding nog ontzettend veel geleerd, zowel op vakinhoudelijk als persoonlijk vlak. Hiervoor wil ik graag mijn familie, vrienden, collega's en alle betrokken docenten van de opleiding CMD bedanken.
@@ -553,16 +566,6 @@ Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mij
 Zonder jullie steun, (kritische) meningen en tips had ik dit project nooit tot een succesvol einde kunnen brengen, bedankt!
 
 
-<!-- 
-# Iteratie 5 – webapp versie 2.0
-<span style="color:red;font-size:20px">Dit moet nog verder uitgetypt worden!</span>
-
-- Verbeteringen
-- Systeem stelt vragen
-
-- Blokkeren host op smartphone
-- Inloggen vs Registreren vs Inloggen / Registreren
- -->
 
 # Technisch ontwerp
 

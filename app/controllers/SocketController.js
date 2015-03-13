@@ -7,21 +7,15 @@ var db       = require('../libs/datastore');
 var Gameroom = require('../libs/gameroom');
 
 var cards = [
-	'Betrouwbaar',
-	'Geduldig',
-	'Roekeloos',
-	'Creatief',
-	'Prikkelbaar',
-	'Saai',
-	'Doorzetter',
-	'Kritisch',
-	'Onzichtbaar',
-	'Luidruchtig',
-	'Sociaal',
-	'Optimistisch',
-	'Gedisciplineerd',
-	'Nieuwsgierig',
-	'Snel afgeleid'
+	'Saai', 'Grappig', 'Flexibel',
+	'Sociaal', 'Creatief', 'Geduldig',
+	'Dominant', 'Kritisch', 'Roekeloos',
+	'Eigenwijs', 'Agressief', 'Ingetogen',
+	'Doorzetter', 'Gehoorzaam', 'Betrouwbaar',
+	'Prikkelbaar', 'Zelfstandig', 'Intelligent',
+	'Luidruchtig', 'Onzichtbaar', 'Nieuwsgierig',
+	'Optimistisch', 'Snel afgeleid', 'Zelfverzekerd',
+	'Gestructureerd', 'Initiatiefrijk', 'Gedisciplineerd',
 ];
 
 function findUser(userId, callback) {
@@ -59,7 +53,7 @@ var SocketController = function(server) {
 					Gameroom(client.room).setPlayer(user);
 					client.emit('userId', user._id);
 				} else if (client.role == 'host') {
-					Gameroom(client.room).setCards(cards);
+					Gameroom(client.room).setCards(cards, true);
 				}
 				
 				next();
