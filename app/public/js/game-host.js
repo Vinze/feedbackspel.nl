@@ -2,8 +2,6 @@ var token  = Cookies.get('fbs_token');
 var room   = _.last(window.location.href.split('/'));
 var socket = io(baseURL, { query: 'token=' + token + '&role=host&room=' + room });
 
-var output = Mustache.render('Hallo {{name}}', { name: 'Vincent' });
-
 function getQuestion(summary, card) {
 
 	var data = {};

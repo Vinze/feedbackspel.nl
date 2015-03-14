@@ -511,23 +511,33 @@ In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spe
 
 In principe is dit een vrij standaard proces dat op veel websites en applicaties toegepast wordt. Echter blijkt dit toch nog wel de nodige problemen op te leveren. Zo vergaten gebruikers geregeld of ze wel of niet een account aangemaakt hadden, en daardoor wisten ze niet of ze nou op inloggen of registreren moesten klikken. Daarnaast komt het geregeld voor dat gebruikers hun e-mail adres of wachtwoord vergaten, en ze deze dus moeten laten resetten.
 
-Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door het registreren en inloggen samen te voegen in een wizard wordt het mogelijk om op basis van de ingevulde gegevens alleen de velden te tonen die van toepassing zijn.
+Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door het registreren en inloggen samen te voegen in een wizard wordt het mogelijk om op basis van de ingevulde gegevens alleen de velden te tonen die van toepassing zijn. De website van Dixons gebruikt een soortgelijk systeem en bepaalde aan de hand van een wel of niet bestaand e-mail adres of de gebruiker moet inloggen of registreren.
 
 ![dixons](scriptie/bijlagen/i4-dixons.png)
 
-<span style="color:red;font-size:20px">Dit moet nog uitgewerkt worden!</span>
-
+Daarnaast is besloten om niet langer een wachtwoord te vereisen bij het registreren van een account. De feedback wordt namelijk nog niet opgeslagen, en behalve de voor en achternaam zijn er privé gegevens gekoppeld. Hierdoor hoeft een geregistreerde gebruiker geen wachtwoord te onthouden en alleen maar een e-mail adres in te vullen. Dit zorgt ervoor dat de drempel om de applicatie te gebruiken erg laag komt te liggen.
 
 ## Resultaten
-- Speluitleg werd beter gelezen
-- Spel werd helaas nog steeds gehost op mobiel
-- Meerdere rooms werkte prima
-- Registreren
-	- Wachtwoord vergeten
-	- Moet ik registreren?
-	- Had ik al een account?
+
+### Speluitleg werd beter gelezen
+
+Door de speluitleg te verplaatsen naar de telefoon werd dit aandachtiger gelezen. Aangezien de spelers toch moesten wachten tot iedereen verbonden was, werd de uitleg in deze wachttijd gelezen.
+
+### Meerdere spellen tegelijkertijd
+
+Het spelen van meerderde spellen tegelijkertijd ging vlekkeloos en het invoeren van een zogenaamde 'spelcode' leverde geen problemen op.
+
+### Registreren / inloggen
+Door eerst om een e-mail adres te vragen, en indien nodig daarna pas om de overige gegevens te vragen werd het inlog/registratie proces een stuk eenvoudiger.
+
+![start](scriptie/bijlagen/i4-start.png)
+
+### Spel starten
+Helaas kwam het nog wel vaak voor dat de gebruikers een nieuw spel probeerde aan te maken op hun mobiele telefoon. Het is essentieel dat dit op de computer gedaan wordt, aangezien het scherm van een telefoon veel te klein is. Wellicht is het een optie om de knop in het volgende prototype te verwijderen, of een melding te geven dat het spel op een computer of laptop gestart moeten worden.
 
 # Iteratie 5 – webapp versie 2.0
+
+![start](scriptie/bijlagen/i5-testen-camera.jpg)
 
 <!-- 
 <span style="color:red;font-size:20px">Dit moet nog verder uitgetypt worden!</span>
