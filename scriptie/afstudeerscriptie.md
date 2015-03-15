@@ -527,17 +527,37 @@ Door de speluitleg te verplaatsen naar de telefoon werd dit aandachtiger gelezen
 
 Het spelen van meerderde spellen tegelijkertijd ging vlekkeloos en het invoeren van een zogenaamde 'spelcode' leverde geen problemen op.
 
-### Registreren / inloggen
+### Registratie en inloggen
+
 Door eerst om een e-mail adres te vragen, en indien nodig daarna pas om de overige gegevens te vragen werd het inlog/registratie proces een stuk eenvoudiger.
 
 ![start](scriptie/bijlagen/i4-start.png)
 
 ### Spel starten
+
 Helaas kwam het nog wel vaak voor dat de gebruikers een nieuw spel probeerde aan te maken op hun mobiele telefoon. Het is essentieel dat dit op de computer gedaan wordt, aangezien het scherm van een telefoon veel te klein is. Wellicht is het een optie om de knop in het volgende prototype te verwijderen, of een melding te geven dat het spel op een computer of laptop gestart moeten worden.
 
 # Iteratie 5 – webapp versie 2.0
 
 ![start](scriptie/bijlagen/i5-testen-camera.jpg)
+
+## Inleiding
+
+Dit is de laatste iteratie welke nog tijdens het afstuderen uitgevoerd wordt. Er zal vooral 
+
+## Doelstellingen
+
+## Hypothese
+
+## Aanpassingen
+
+![start](scriptie/bijlagen/i5-spel-starten.png)
+
+## Testpersonen
+
+## Testmethodiek
+
+## Resultaten
 
 <!-- 
 <span style="color:red;font-size:20px">Dit moet nog verder uitgetypt worden!</span>

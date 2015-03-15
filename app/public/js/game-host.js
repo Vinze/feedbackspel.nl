@@ -2,6 +2,18 @@ var token  = Cookies.get('fbs_token');
 var room   = _.last(window.location.href.split('/'));
 var socket = io(baseURL, { query: 'token=' + token + '&role=host&room=' + room });
 
+var cards = _.shuffle([
+	'Saai', 'Grappig', 'Flexibel',
+	'Sociaal', 'Creatief', 'Geduldig',
+	'Dominant', 'Kritisch', 'Roekeloos',
+	'Eigenwijs', 'Agressief', 'Ingetogen',
+	'Doorzetter', 'Gehoorzaam', 'Betrouwbaar',
+	'Prikkelbaar', 'Zelfstandig', 'Intelligent',
+	'Luidruchtig', 'Onzichtbaar', 'Nieuwsgierig',
+	'Optimistisch', 'Snel afgeleid', 'Zelfverzekerd',
+	'Gestructureerd', 'Initiatiefrijk', 'Gedisciplineerd',
+]);
+
 function getQuestion(summary, card) {
 
 	var data = {};
@@ -162,6 +174,10 @@ Game.on({
 	}
 });
 
+socket.on('connect', function() {
+	socket.emit('game.cards', cards);
+});
+
 socket.on('round.next', function(state) {
 	Game.set('players', state.players);
 	Game.set('step', null).then(function() {
@@ -201,3 +217,4 @@ socket.on('gamestate', function(state) {
 socket.on('game.leave', function() {
 	window.location.replace('/dashboard');
 });
+
