@@ -1,4 +1,4 @@
-baseURL = /localhost/.test(window.location) ? 'http://localhost:1337' : 'http://feedbackspel.nl';
+baseURL = 'http://' + window.location.host;
 
 var Sidebar = new function() {
 	var self = this;
@@ -90,3 +90,5 @@ helpers.moment = function(timeString) {
 helpers.nl2br = function(text) {
 	return text.replace(/\n/g, '<br>');
 }
+
+helpers.baseURL = baseURL;

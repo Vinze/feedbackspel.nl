@@ -4,41 +4,34 @@
 	<title>Test</title>
 </head>
 <body>
-<div id="content"></div>
+<div id="content">
+	<!-- content -->
+</div>
 
-<script type="text/javascript" src="/js/libs/zepto.min.js"></script>
-<script type="text/javascript" src="/js/libs/underscore.min.js"></script>
-<script type="text/javascript" src="/js/libs/moment.min.js"></script>
-<script type="text/javascript" src="/js/testing/mustache.min.js"></script>
+<script type="text/javascript" src="/js/libs/ractive.min.js"></script>
 
 <script type="text/template" id="template">
-	<ul>
-		{{#feedback}}
-			<li>{{date}}</li>
-		{{/feedback}}
-	</ul>
+	<h1>Test</h1>
+	<p>Medespelers: <input type="text" size="5" value="{{opponents}}"></p>
+	<p>{{available}} ({{available - opponents}})</p>
 </script>
 
 <script type="text/javascript">
-	var moment1 = moment().subtract(3, 'months').format('YYYY-MM-DD');
-	var moment2 = moment().subtract(1, 'months').format('YYYY-MM-DD');
-	var moment3 = moment().format('YYYY-MM-DD');
+	var ractive = new Ractive({
+		el: 'content',
+		template: '#template',
+		data: { opponents: 5, available: 0 }
+	});
 
-	var feedback = [
-		{ _id: 1, user_id: 1, card: 'Betrouwbaar', stars: 3, date: moment1 },
-		{ _id: 2, user_id: 1, card: 'Betrouwbaar', stars: 4, date: moment2 },
-		{ _id: 3, user_id: 1, card: 'Betrouwbaar', stars: 2, date: moment3 },
-		{ _id: 4, user_id: 1, card: 'Arrogant', stars: 1, date: moment1 },
-		{ _id: 5, user_id: 1, card: 'Arrogant', stars: 2, date: moment2 },
-		{ _id: 6, user_id: 1, card: 'Arrogant', stars: 2, date: moment1 },
-		{ _id: 7, user_id: 1, card: 'Kritisch', stars: 3, date: moment3 }
-	];
+	ractive.observe('opponents', function(newValue, oldValue, keypath) {
+		if (newValue) {
+			var opponents = parseInt(newValue);
+			var available = (opponents == 1) ? 5 : opponents * 3 + (Math.floor(opponents / 2));
 
-	var template = $('#template').html();
-	
-	var html = Mustache.render(template, { feedback: feedback });
+			ractive.set('available', available);
+		}
+	});
 
-	$('#content').html(html);
 </script>
 </body>
 </html>

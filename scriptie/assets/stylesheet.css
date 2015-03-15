@@ -86,19 +86,15 @@ body {
 	background-color: #fff;
 }
 
-p,
-ul,
-ol,
-pre {
-	margin-top: 10px;
+p, ul, ol, pre, table {
 	margin-bottom: 10px;
 }
 
 p:last-child,
 ul:last-child,
 ol:last-child,
-pre:last-child {
-	margin-top: 0;
+pre:last-child,
+table:last-child {
 	margin-bottom: 0;
 }
 

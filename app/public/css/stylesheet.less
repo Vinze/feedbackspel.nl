@@ -1155,9 +1155,9 @@ body.sidebar-open {
 		.player {
 			display: inline-block;
 			margin: 0 10px;
-			padding-top: 30px;
+			padding-top: 25px;
 			position: relative;
-			width: 140px;
+			width: 120px;
 			text-align: center;
 			.avatar {
 				display: inline-block;
@@ -1167,25 +1167,30 @@ body.sidebar-open {
 				margin: 0;
 				.transition(opacity 500ms);
 			}
-			.name {
+			.name, .remove {
 				opacity: 0;
-				font-size: 0.9em;
 				position: absolute;
+				.transition(opacity 250ms);
+			}
+			.name {
 				top: 0px;
-				left: -25px;
+				left: -30px;
 				width: 180px;
 				text-align: center;
-				.transition(opacity 250ms);
-				.remove {
-					color: #EA6666;
-					font-size: 1.2em;
-				}
+				font-size: 0.9em;
+			}
+			.remove {
+				bottom: -12px;
+  				left: 12px;
+				color: #EA6666;
+				font-size: 3em;
+				text-shadow: 0 0 5px #000;
 			}
 			.check {
 				position: absolute;
 				font-size: 2em;
 				bottom: -5px;
-				right: 5px;
+				right: 0px;
 				color: @accent-color;
 			}
 			&.active .avatar {
@@ -1194,9 +1199,10 @@ body.sidebar-open {
 			&.disconnected .avatar {
 				opacity: 0.6;
 			}
-			&:hover .name {
-				display: block;
-				opacity: 1;
+			&:hover {
+				.name, .remove {
+					opacity: 1;
+				}
 			}
 		}
 	}

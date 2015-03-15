@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include includes/head %>
+	<% include partials/head %>
 </head>
 <body class="ingame host">
-<% include includes/sidebar %>
+<% include partials/sidebar %>
 <div class="site-wrapper" id="game">
 	<!-- The game will be rendered here -->
 </div>
-<% include includes/scripts %>
+<% include partials/scripts %>
 
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
@@ -46,9 +46,7 @@
 		<div class="results" intro-outro="fade">
 			<h1>{{card}}</h1>
 
-			<p class="question">
-				{{{question()}}}
-			</p>
+			<p class="question">{{question}}</p>
 
 			{{#each summary:i}}
 				<div class="result clearfix">
@@ -89,13 +87,13 @@
 						{{/if}}
 						<div class="name">
 							{{firstname}} {{lastname}}
-							<a href="#" class="remove" on-click="removePlayer:{{this}}" title="Deelnemer verwijderen uit spel">
-								<i class="fa fa-sign-out"></i>
-							</a>
 						</div>
 						<div class="avatar">
 							<img src="/avatar/{{_id}}.png">
 						</div>
+						<a href="#" class="remove" on-click="removePlayer:{{this}}" title="Deelnemer verwijderen uit spel">
+							<i class="fa fa-sign-out"></i>
+						</a>
 					</li>
 				{{/each}}
 			</ul>
@@ -148,5 +146,5 @@
 	{{/if}}
 </script>
 
-<script type="text/javascript" src="/js/questionary.js"></script>
+<script type="text/javascript" src="/js/libs/mustache.min.js"></script>
 <script type="text/javascript" src="/js/game-host.js"></script>

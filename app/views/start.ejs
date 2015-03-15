@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<% include includes/head %>
+	<% include partials/head %>
 </head>
 <body class="dashboard">
-<% include includes/top %>
+<% include partials/top %>
 <div class="content-wrapper">
 	<div class="content container">
 		<div class="row" id="content">
@@ -12,7 +12,7 @@
 		</div>
 	</div>
 </div>
-<% include includes/bottom %>
+<% include partials/bottom %>
 
 <script type="text/template" id="template">
 	{{#if action == 'login'}}
@@ -21,7 +21,7 @@
 			{{#if error}}
 				<div class="flash-error" intro-outro="slide">{{error}}</div>
 			{{/if}}
-			<p>Voer hieronder je e-mail adres in zodat we kunnen controleren of je reeds een account hebt.</p>
+			<p>Voer hieronder je e-mail adres in zodat we kunnen controleren of je al een account bij ons hebt.</p>
 			<form on-submit="validateEmail">
 				<div class="form-group">
 					<input value="{{input.email}}" type="email" class="text" id="email">

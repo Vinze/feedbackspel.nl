@@ -15,10 +15,7 @@ var Gameroom = function(room) {
 		state[room] = { round: 1, cards: [], modified: Math.floor(Date.now() / 1000) };
 	}
 	
-	this.setCards = function(cards, shuffle) {
-		// Shuffle the cards
-		if (shuffle == true) cards = _.shuffle(cards);
-		
+	this.setCards = function(cards) {
 		// Set the feedback cards
 		state[room].cards = cards;
 	}

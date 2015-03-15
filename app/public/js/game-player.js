@@ -103,7 +103,7 @@ verifyConnection(function(socket) {
 		});
 
 		if (Game.get('opponents').length != opponents.length) {
-			var total = (opponents.length == 1) ? 5 : (opponents.length * 3) + 1;
+			var total = (opponents.length == 1) ? 5 : (opponents.length * 3) + (Math.floor(opponents.length / 2));
 			var ratings = {};
 
 			_.each(opponents, function(player) {
