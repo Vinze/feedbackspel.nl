@@ -97,7 +97,7 @@ $('#host').on('click', function(evt) {
 	if (navigator.userAgent.match(/Android|iPhone|IEMobile/i)) {
 		swal({
 			title: 'Spel starten',
-			text: 'Let op! Op de PC of laptop maak je een nieuw spel aan, en op je telefoon moet je hieraan deelnemen.',
+			text: 'Let op! Op de computer of laptop maak je een nieuw spel aan, en op je telefoon moet je hieraan deelnemen.',
 			confirmButtonColor: '#55be78',
 			confirmButtonText: "OK",
 			allowOutsideClick: true

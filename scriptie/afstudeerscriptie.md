@@ -69,6 +69,7 @@ Tel. secretariaat 058 2511107 / 06 46065567
 </table>
 
 # Voorwoord
+
 Het idee voor een feedback spel is ontstaan uit eigen ongenoegen met de bestaande producten om feedback te geven en ontvangen. De afgelopen vier jaar heb ik me op de opleiding Communication & Multimedia Design onder andere bezig gehouden de competenties Growth & Reflection en Multidisciplinary Teamwork. Voor deze competenties is het vereist om behulp van de mensen uit de projectgroep erachter te komen waar je sterke en zwakke punten liggen en hoe je functioneert in een team. De feedback die je van teamgenoten ontvangt kan waardevolle informatie bieden om jezelf verder te ontwikkelen op zowel persoonlijk als professioneel vlak.
 
 Er zijn diverse feedback methodieken, vragenlijsten, spellen en boeken beschikbaar welke kunnen helpen bij het houden van een feedback sessie. Deze producten proberen een bepaalde structuur aan te brengen in een feedback sessie, en geven informatie over hoe je met feedback om moet gaan. Dit zijn vrijwel allemaal fysieke en analoge producten welke (bijvoorbeeld) op papier staan. Ik heb de afgelopen jaren diverse producten toegepast en ben tot de conclusie gekomen dat ik en vele studenten met mij de bestaande producten omslachtig of onnodig moeilijk vinden. Een leuke manier om feedback te geven is in de vorm van een zogenaamd feedback spel. Zelf heb ik praktijk ervaring met “Het feedbackspel” en het “Kernkwadranten spel”. Deze feedback spellen zorgen ervoor dat een feedback sessie gestructureerd wordt en weten bepaalde (gevoelige) onderwerpen op tafel te krijgen. Een nadeel van zo'n spel is dat er redelijk wat voorbereidingen getroffen moeten worden zoals het begrijpen en opzetten van een spel. Dit heeft als gevolg dat er de nodige tijd moet worden uitgetrokken voor een feedback spel.
@@ -76,16 +77,21 @@ Er zijn diverse feedback methodieken, vragenlijsten, spellen en boeken beschikba
 Ik ben van mening dat dit veel makkelijker moet kunnen in de vorm van, bijvoorbeeld, een digitaal feedback spel. Na uitgebreid zoeken op internet en in de [App Store](https://itunes.apple.com/nl/genre/ios/id36?mt=8) van Apple en de [Play Store](https://play.google.com/store) van Android ben ik tot de conclusie gekomen dat er eigenlijk nog geen applicaties hiervoor beschikbaar zijn. Hier ligt mogelijk een grote kans om met een nieuw en innovatief concept op de markt te komen.
 
 # Doelstellingen
+
 Het geven en ontvangen van feedback binnen een team moet toegankelijker en leuker worden. Er moet een dialoog ontstaan over de gegeven en ontvangen feedback.
 
 # Concept omschrijving
+
 Mensen die feedback willen geven en ontvangen in een team kunnen dit nu via een applicatie op hun smartphone en/of laptop doen. Deze applicatie zal in spelvorm assisteren bij het organiseren en houden van een feedback sessie. Alle deelnemers zitten tezamen in dezelfde ruimte, en geven middels de applicatie feedback aan elkaar. Na iedere ronde wordt een samenvatting van de resultaten getoond. Deze resultaten zullen aansporen tot het hebben van een dialoog over de gegeven en ontvangen feedback.
 
 # Research
+
 ## Hoofdvraag
+
 Hoe kan ik het feedback geven en ontvangen makkelijker en toegankelijker maken, en wat heeft het product nodig om de deelnemers aan te zetten tot dialoog?
 
 ## Deelvragen
+
 - Welke feedback methodes worden er zoal gebruikt?
 - Welke manier van feedback geven/ontvangen vindt men prettig?
 - Waarom wordt aan feedback gedaan?
@@ -94,6 +100,7 @@ Hoe kan ik het feedback geven en ontvangen makkelijker en toegankelijker maken, 
 - Welke doelen hebben de bestaande feedback spellen of methodieken?
 
 ## Vooronderzoek
+
 Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geven en ontvangen van feedback is een enquête opgesteld met 17 vragen over dit onderwerp. Deze enquête is in de periode van 7 en met 9 april 2014 via mijn eigen Facebook verspreid (1). In totaal is de enquête ingevuld door 32 personen en globaal bestaat mijn vriendenlijst op Facebook uit:
 
 - Mensen van ongeveer 20 tot 50 jaar oud
@@ -105,6 +112,7 @@ Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke ku
 (1) http://facebook.com/vbremer89/posts/722083571157120
 
 ### Feedback systemen
+
 Er wordt voornamelijk feedback gegeven en ontvangen in de vorm van;
 
 - functioneringsgesprekken,
@@ -121,12 +129,15 @@ Verder hebben de meeste ondervraagden ervaring met een feedback formulier of enq
 Slechts een klein aantal ondervraagden heeft gebruik gemaakt van een feedback spel. Dit komt omdat men vaak niet bewust zijn van het bestaan van dit soort spellen of omdat ze het niet direct voor handen hebben. De ondervraagden die wel gebruik hebben gemaakt van een feedback spel vinden het wel leuk om eens geprobeerd te hebben, maar vaak komt het te geforceerd over. Daarnaast dienen de uitgebreidere spellen goed bestudeerd te worden, en duurt het dus even voor het spel goed gespeeld kan worden.
 
 ### Manieren van feedback geven en ontvangen
+
 Vrijwel alle ondervraagden geven aan dat ze graag onderbouwde feedback willen ontvangen met voorbeelden van situaties waarin het van toepassing is. Opvallend is dat men het liefst de feedback schriftelijk ontvangt, maar bij het feedback geven doen ze dit het liefst mondeling. Mogelijk heeft dit ermee te maken dat het mondeling feedback geven makkelijker is dan het op te moeten schrijven. Bij het ontvangen is het voor degene die de feedback ontvangt makkelijker dat het schriftelijk gegeven wordt, omdat diegene het dan zelf niet meer op hoeft te schrijven.
 
 # Feedback geven en ontvangen
+
 Feedback betekent letterlijk terugkoppeling. Het geven van feedback is een belangrijke vaardigheid voor iedereen die samenwerkt in een team. Door middel van feedback wissel je informatie uit over elkaars houding en gedrag.
 
 ## Waarom?
+
 Feedback wordt nogal eens verward met kritiek. Mensen voelen zich aangevallen of ervaren de feedback als een teken van falen. Dit is erg jammer want feedback bied kansen om over jezelf te leren en laat zien op welke punten je jezelf nog kan ontwikkelen.
 
 ## Regels
@@ -308,39 +319,50 @@ https://uxchecklist.github.io/
 ![webapp1](scriptie/bijlagen/i1-overview.png)
 
 ## Inleiding
+
 Het eerste prototype is een zogenaamd “paper prototype”. Dit houd in dat het prototype is getekend op de computer en vervolgens wordt uitgeprint op papier. Van de testpersonen wordt verwacht dat zij met een pen het prototype “bedienen”. Het prototype bestaat uit twee delen, namelijk een webapplicatie, en een pagina welke op de laptop getoond wordt. De testgebruikers vullen de webapplicatie in, en ik zal de rol van de computer vervullen en de uitslagen verwerken.
 
 ## Opdrachtomschrijving
+
 Op het scherm van de laptop laat ik een eigenschap zien. Het is de bedoeling dat je door middel van de sterretjes aangeeft in hoeverre je deze bij de medespelers vind passen. Eén ster betekend dat de eigenschap helemaal niet bij iemand past, en vijf sterren betekend dat een eigenschap heel erg bij iemand past. Nadat je het voor iedereen hebt ingevuld kom ik de totalen noteren en wordt de top 3 getoond op de laptop.
 
 ## Testpersonen
+
 Het spel wordt gespeeld door 5 testpersonen, dit zijn medestudenten die net als ik de opleiding Communication & Multimedia Design volgen op de NHL Hogeschool. Aangezien deze groep iedere dag in het zelfde lokaal zit, en in het verleden geregeld in een team samengewerkt hebben mag aangenomen worden dat iedereen elkaar goed (genoeg) kent om onderbouwde feedback te geven.
 
 ## Uitvoering
+
 Ik heb drie eigenschappen uit de kernkwadranten van Daniel Ofman gepakt. Twee hiervan waren kwaliteiten (betrokken en besluitvaardig) en één was een valkuil (afwachtend). Ik heb gekozen om te testen met slechts drie eigenschappen omdat het uitvoeren van een paper prototype relatief veel tijd kost, en ik verwacht dat de eventuele knelpunten al snel naar boven komen. Door zowel positieve als negatieve eigenschappen te behandelen kan ik erachter komen of hier anders op gereageerd wordt. Alle spelers hebben een papieren kopie gekregen van de webapplicatie. Hierop vult men de namen van de medespelers in, en nadat ik de eigenschap heb laten zien krijgt iedereen de tijd om de sterretjes in te vullen. Zodra iedereen klaar is loop ik langs om de uitslag te noteren en een uiteindelijke top 3 samen te stellen. Deze top 3 zal ik laten zien aan de groep en observeren of er een gesprek ontstaat en wat men met de feedback doet.
 
 ## Welke vragen wil ik beantwoord hebben?
+
 - In hoeverre stimuleert het prototype het hebben van een dialoog?
 - Welke informatie vind men belangrijk om te behandelen in een gesprek?
 - Wat voor uitslagen moet eruit komen?
 - In hoeverre houd het prototype de aandacht van de groep?
 
 ## Resultaten
+
 Er zijn een aantal opvallende punten die al snel naar boven kwamen, namelijk;
 
 ### Paper prototype versus digitaal prototype
+
 Het testen op papier geeft niet echt een goede representatie van de meerwaarde die een webapplicatie kan bieden. Zo was het moeilijk om de aandacht erbij te houden, ik moest namelijk zelf de uitslagen verwerken en dit kost tijd. Bij een webapplicatie zou dit volledig automatisch gaan en dit houd de snelheid in het spel.
 
 ### Resultaten tonen
+
 Nadat alle spelers de sterren hadden toegekend werden de resultaten weergegeven in een top 3. De testpersonen gaven aan dat ze ook graag willen weten wie onderaan de lijst eindigen. Daarnaast wilde ze graag ook een persoonlijk overzicht willen hebben van de ontvangen feedback.
 
 ### Anoniem feedback geven
+
 In dit geval werd de feedback anoniem verwerkt en was het niet inzichtelijk van wie je de feedback hebt ontvangen. De spelers gaven aan dat ze dit graag wilde zien zodat ze konden vragen waarom een bepaalde eigenschap wel of niet op hun van toepassing was.
 
 ### Voeren van een gesprek
+
 Het grootste knelpunt was het feit dat er niet echt een gesprek op gang kwam. De insteek van het spel is juist om een dialoog te beginnen en te praten over de feedback. De feedback werd ingevuld, en de resultaten werden getoond, maar er werd niet echt gestimuleerd om erover te gaan praten.
 
 ## Conclusie
+
 Zoals ik al had verwacht kwamen er behoorlijk wat knelpunten naar boven. Zo bleek dat de gesprekken niet goed op gang kwamen, duurde het te lang om iedereen bij het spel te houden, en kwam het te geforceerd over. Ik denk dat dit mede komt omdat een paper prototype heel statisch is en veel handmatig werk vereist. Een digitale variant kan een hoop dingen automatiseren en houd de vaart in het spel. Daarnaast mogen de resultaten wel wat uitgebreider worden, simpel weg een lijstje geven 
 
 # Iteratie 2 – webapp versie 1.0
@@ -348,12 +370,14 @@ Zoals ik al had verwacht kwamen er behoorlijk wat knelpunten naar boven. Zo blee
 ![webapp1](scriptie/bijlagen/i2-overview.png)
 
 ## Inleiding
+
 Aangezien het vorige paper prototype niet de gewenste resultaten heeft opgeleverd wordt deze keer een hogere kwaliteit webapplicatie getest. (high fidelity prototyping) Het grootste probleem met het papieren prototype was het feit dat een hoop informatie handmatig moest worden verwerkt en het spel daardoor erg omslachtig en chaotisch verliep. Het nieuwe prototype zal veel zaken automatisch verwerken en moet inzicht geven in hoeverre een webapplicatie de ervaring van een feedback sessie kan verbeteren.
 
 ## Doelstellingen
+
 - Het is binnen enkele minuten mogelijk om een feedback sessie te starten.
 - Het invullen van feedback neemt slechts enkele seconden in beslag.
-Bij het tonen van de resultaten zal er een gesprek opgang komen doordat men vraagt waarom hij of zij bepaalde feedback - ontvangen heeft.
+- Bij het tonen van de resultaten moet er een gesprek opgang komen doordat men vraagt waarom hij of zij bepaalde feedback ontvangen heeft.
 - De applicatie zit niet in de weg, en wordt gezien als hulpmiddel welke de groep helpt bij het hebben van gesprekken.
 
 ## Hypotese
@@ -505,17 +529,17 @@ Vrijwel alle nieuwe bezoekers scrollen eerst naar beneden om te kijken of er op 
 In het vorige prototype waren een aantal stappen nodig om het spel te kunnen spelen, namelijk:  
 
 1. Registreren - Als de gebruiker nog geen account heeft moet een nieuw account geregisteerd worden. Bij het registreren van een nieuw account moeten de volgende velden ingevuld worden: e-mail, voornaam, achternaam, geslacht, wachtwoord.  
-2. Inloggen - Na het registreren kan een gebruiker inloggen met zijn of haar e-mail adres en het juiste wachtwoord.
+2. Inloggen - Na het registreren kan een gebruiker inloggen met zijn of haar e-mailadres en het juiste wachtwoord.
 3. Instellen profielfoto - Indien een gebruiker nog geen profielfoto heeft ingesteld moet dit nu ingesteld worden voordat de gebruiker verder kan.
 4. Nadat alle stappen zijn doorlopen kan de gebruiker kiezen om aan een nieuw spel te starten of aan een bestaand spel deel te nemen.
 
-In principe is dit een vrij standaard proces dat op veel websites en applicaties toegepast wordt. Echter blijkt dit toch nog wel de nodige problemen op te leveren. Zo vergaten gebruikers geregeld of ze wel of niet een account aangemaakt hadden, en daardoor wisten ze niet of ze nou op inloggen of registreren moesten klikken. Daarnaast komt het geregeld voor dat gebruikers hun e-mail adres of wachtwoord vergaten, en ze deze dus moeten laten resetten.
+In principe is dit een vrij standaard proces dat op veel websites en applicaties toegepast wordt. Echter blijkt dit toch nog wel de nodige problemen op te leveren. Zo vergaten gebruikers geregeld of ze wel of niet een account aangemaakt hadden, en daardoor wisten ze niet of ze nou op inloggen of registreren moesten klikken. Daarnaast komt het geregeld voor dat gebruikers hun e-mailadres of wachtwoord vergaten, en ze deze dus moeten laten resetten.
 
-Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door het registreren en inloggen samen te voegen in een wizard wordt het mogelijk om op basis van de ingevulde gegevens alleen de velden te tonen die van toepassing zijn. De website van Dixons gebruikt een soortgelijk systeem en bepaalde aan de hand van een wel of niet bestaand e-mail adres of de gebruiker moet inloggen of registreren.
+Aan de hand van deze knelpunten is er gezocht naar een mogelijke oplossing. Door het registreren en inloggen samen te voegen in een wizard wordt het mogelijk om op basis van de ingevulde gegevens alleen de velden te tonen die van toepassing zijn. De website van Dixons gebruikt een soortgelijk systeem (zie onderstaande afbeelding) en bepaald aan de hand van een wel of niet bestaand e-mailadres of de gebruiker moet inloggen of registreren.
 
 ![dixons](scriptie/bijlagen/i4-dixons.png)
 
-Daarnaast is besloten om niet langer een wachtwoord te vereisen bij het registreren van een account. De feedback wordt namelijk nog niet opgeslagen, en behalve de voor en achternaam zijn er privé gegevens gekoppeld. Hierdoor hoeft een geregistreerde gebruiker geen wachtwoord te onthouden en alleen maar een e-mail adres in te vullen. Dit zorgt ervoor dat de drempel om de applicatie te gebruiken erg laag komt te liggen.
+Daarnaast is besloten om niet langer een wachtwoord te vereisen bij het registreren van een account. De feedback wordt namelijk nog niet opgeslagen, en behalve de voor en achternaam zijn er privé gegevens gekoppeld. Hierdoor hoeft een geregistreerde gebruiker geen wachtwoord te onthouden en alleen maar een e-mailadres in te vullen. Dit zorgt ervoor dat de drempel om de applicatie te gebruiken erg laag komt te liggen.
 
 ## Resultaten
 
@@ -529,7 +553,7 @@ Het spelen van meerderde spellen tegelijkertijd ging vlekkeloos en het invoeren 
 
 ### Registratie en inloggen
 
-Door eerst om een e-mail adres te vragen, en indien nodig daarna pas om de overige gegevens te vragen werd het inlog/registratie proces een stuk eenvoudiger.
+Door eerst om een e-mailadres te vragen, en indien nodig daarna pas om de overige gegevens te vragen werd het inlog/registratie proces een stuk eenvoudiger.
 
 ![start](scriptie/bijlagen/i4-start.png)
 
@@ -543,21 +567,72 @@ Helaas kwam het nog wel vaak voor dat de gebruikers een nieuw spel probeerde aan
 
 ## Inleiding
 
-Dit is de laatste iteratie welke nog tijdens het afstuderen uitgevoerd wordt. Er zal vooral 
+Dit is de laatste iteratie welke nog tijdens het afstuderen uitgevoerd wordt. In deze iteratie ligt de nadruk vooral op het toevoegen van kleine verbeteringen en het gebruiksklaar maken van de applicatie. Daarnaast moeten de aanpassingen uit iteratie 4 ook nog getest worden. Tevens is deze laatste testsessie het meetpunt om erachter te komen of het doel bereikt is om een groepsgesprek op gang te brengen.
 
 ## Doelstellingen
 
+- Binnen enkele minuten moet het spel te spelen zijn.
+- De applicatie moet werken op recente mobiele telefoons.
+- Het spel moet een groepsgesprek opgang brengen.
+- Eventuele gevoelige onderwerpen moeten op tafel komen.
+- De uitleg op de laptop en mobiele telefoon moeten voldoende informatie bieden om te begrijpen hoe het spel gespeeld moet worden.
+
 ## Hypothese
+
+Aangezien het inloggen en registreren is samengevoegd zal het voor de gebruikers geen moeite kosten om een nieuw account aan te maken. De uitleg op het laptopscherm voldoende zijn om een gebruiker deel te laten nemen aan een spel. Eenmaal in het spel wijst alles zichzelf en zullen de spelers hun feedback invullen. Nadat de spelers hun sterren hebben uitgegeven en de resultaten getoond worden zal de gestelde vraag door de groep beantwoord worden. Dit zet aan tot het hebben van een dialoog en er zal over en weer om toelichting gevraagd worden.
 
 ## Aanpassingen
 
+### Feedbackspel starten
+
+Een probleem wat steeds naar voren kwam was het feit dat gebruikers een nieuw feedbackspel probeerde te starten op een mobiele telefoon. Het is essentieel dat een spel gestart wordt op een laptop of computer, aangezien het scherm van een telefoon veel te klein is. Hiervoor zijn twee mogelijke oplossingen bedacht:
+
+1. Het verbergen van de knop "Nieuw spel starten".
+2. Een melding tonen wanneer een gebruiker op een mobiele telefoon klikt op "Nieuw spel starten".
+
+Er is gekozen voor oplossing nummer twee. Wanneer de knop niet zichtbaar is weet de gebruiker nooit waar een spel gestart kan worden. Daarnaast bied dit de mogelijkheid om wat extra informatie te geven in de melding.
+
 ![start](scriptie/bijlagen/i5-spel-starten.png)
+
+### Vragen stellen
+
+Een van de belangrijkste doelen is het stimuleren van een groepsgesprek en dit is tot dusver nog niet goed gelukt. Er waren blijkbaar niet genoeg "triggers" om de gebruikers aan te zetten tot het hebben van een gesprek. Het tonen van de resultaten in een lijst bood niet voldoende stof om over te praten, en de gebruikers wisten niet wat ze met deze informatie aan moesten. Daarom zijn er diverse vragen bedacht die getoond worden bij de uitslagen. Deze vragen dienen beantwoord te worden en moeten helpen bij het houden van een gesprek. Daarnaast kan de applicatie bepaalde vragen stellen waar de gebruikers zelf niet zo snel op zouden komen. Een aantal voorbeelden van vragen die gesteld kunnen worden:
+
+- Waarom is Christiaan betrouwbaar?
+- Jan kreeg 4 sterren voor de eigenschap sociaal, waaruit blijkt dat deze eigenschap goed bij Jan past?
+- Mieke kreeg slechts 1 ster voor de eigenschap roekeloos, waarom past deze eigenschap niet bij Mieke?
+- Freddy, je kreeg 2 sterren voor de eigenschap creatief, ben je het hiermee eens?
+
+![vraag](scriptie/bijlagen/i5-vraag.png)
 
 ## Testpersonen
 
+Er is deze keer gekozen om af te wijken van de vooraf bepaalde doelgroep. In eerste instantie was het concept bedacht voor studenten van de opleiding Communication & Multimedia Design maar na diverse malen testen bleek het spel niet erg goed te werken bij deze doelgroep. Er kwam niet echt een groepsgesprek om gang omdat de studenten vrij laks waren en het ze niet echt interesseerde wat voor feedback ze kregen.
+
+Daarom is dit prototype getest bij de medewerkers van een bedrijf. In dit geval gaat het om een ICT bedrijf en werd het spel getest door een groep van 4 personen. Deze personen verschillen nogal van elkaar en dit kan interessante resultaten opleveren. Zo was één persoon vrij aanwezig en nam snel het voortouw. Een andere jongen liep stage bij het bedrijf en was wat meer in zichzelf gekeerd. Daarnaast had één persoon een wat hogere functie binnen het bedrijf (projectleider).
+
 ## Testmethodiek
 
+Om de test zo realistisch mogelijk te maken wordt het spel gespeeld bij het bedrijf zelf. Er is een vergaderruimte gereserveerd en er staat drinken voor de testpersonen klaar op tafel. In de ruimte staat een camera opgesteld om de testsessie vast te leggen. Deze beelden dienen later als bewijsvoering en helpen bij het evalueren van de test. Vooraf heb ik de laptop klaar gezet met daarop de applicatie en ik heb een zeer korte uitleg gegeven over wat ze gaan doen. Inhoudelijk ben ik niet ingegaan over hoe het spel gespeeld moet worden, dit zou zichzelf moeten wijzen en geen verdere uitleg nodig hebben. Tijdens het testen ben ik in de hoek van de ruimte gaan zitten en heb ik me niet bemoeid met het spel. Eventuele vragen of problemen moesten de testpersonen in eerste instantie zelf proberen op te lossen, en mocht er echt wat fout gaat zou ik pas ingrijpen.
+
+![testopstelling](scriptie/bijlagen/i5-testopstelling.jpg)
+
 ## Resultaten
+
+### Toegankelijkheid
+
+Binnen 5 minuten hadden alle testpersonen een account aangemaakt en waren ze verbonden met het spel. Niemand had moeite met het registreren, inloggen en deelnemen aan een spel. De enige vraag die gesteld werd was waarom het verplicht is om een profielfoto in te stellen.
+
+### Feedbackspel starten
+
+Twee van de vier testpersonen klikte op hun mobiele telefoon op de knop "Nieuw spel starten". Doordat er nu een melding getoond wordt was het meteen duidelijk dat ze op de verkeerde knop drukte.
+
+### Groepgesprek op gang brengen
+
+Het eindresultaat is zéér positief en de test verliep een stuk beter dan vooraf gedacht. De gebruikers vulde de feedback serieus in en dachten goed na over hoe ze de sterren gingen verdelen over hun collega's. Nadat iedereen de feedback had ingevuld en de resultaten getoond werden, werd de vraag op het scherm opgelezen en beantwoord. Iedereen had wel een antwoord op deze vraag, en er werd goed doorgevraagd over de feedback. Opvallend was dat de feedback vooral werd gericht op het functioneren binnen het bedrijf. Er werden praktijk voorbeelden aangehaald, en er werd omschreven wanneer ze vonden dat een bepaalde eigenschap bij iemand naar voren kwam.
+
+
+## Bijlagen
 
 <!-- 
 <span style="color:red;font-size:20px">Dit moet nog verder uitgetypt worden!</span>

@@ -11,7 +11,7 @@ var cards = _.shuffle([
 	'Prikkelbaar', 'Zelfstandig', 'Intelligent',
 	'Luidruchtig', 'Onzichtbaar', 'Nieuwsgierig',
 	'Optimistisch', 'Snel afgeleid', 'Zelfverzekerd',
-	'Gestructureerd', 'Initiatiefrijk', 'Gedisciplineerd',
+	'Gestructureerd', 'Initiatiefrijk', 'Gedisciplineerd'
 ]);
 
 function getQuestion(summary, card) {
