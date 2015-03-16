@@ -363,7 +363,7 @@ Het grootste knelpunt was het feit dat er niet echt een gesprek op gang kwam. De
 
 ## Conclusie
 
-Zoals ik al had verwacht kwamen er behoorlijk wat knelpunten naar boven. Zo bleek dat de gesprekken niet goed op gang kwamen, duurde het te lang om iedereen bij het spel te houden, en kwam het te geforceerd over. Ik denk dat dit mede komt omdat een paper prototype heel statisch is en veel handmatig werk vereist. Een digitale variant kan een hoop dingen automatiseren en houd de vaart in het spel. Daarnaast mogen de resultaten wel wat uitgebreider worden, simpel weg een lijstje geven 
+Zoals verwacht kwamen er behoorlijk wat knelpunten naar boven. Zo bleek dat de gesprekken niet goed op gang kwamen, duurde het te lang om iedereen met de aandacht bij het spel te houden, en kwam het te geforceerd over. Vermoedelijk komt dit mede omdat een paper prototype heel statisch is en nog veel handmatig werk vereist. Een digitale variant kan een hoop dingen automatiseren en houd de vaart in het spel. Daarnaast mogen de resultaten wel wat uitgebreider worden, simpel wegeen lijstje geven bied vooralsnog niet veel stof om een gesprek over te hebben.
 
 # Iteratie 2 – webapp versie 1.0
 
@@ -621,13 +621,15 @@ Om de test zo realistisch mogelijk te maken wordt het spel gespeeld bij het bedr
 
 ### Toegankelijkheid
 
-Binnen 5 minuten hadden alle testpersonen een account aangemaakt en waren ze verbonden met het spel. Niemand had moeite met het registreren, inloggen en deelnemen aan een spel. De enige vraag die gesteld werd was waarom het verplicht is om een profielfoto in te stellen.
+Binnen 5 minuten hadden alle testpersonen een account aangemaakt en waren ze verbonden met het spel. Niemand had moeite met het registreren, inloggen en deelnemen aan een spel. De enige vraag die gesteld werd was het verplicht is om een profielfoto in te stellen.
 
 ### Feedbackspel starten
 
 Twee testpersonen klikte op hun mobiele telefoon meteen op de knop "Nieuw spel starten". Doordat er nu een melding getoond wordt, was het voor de gebruiker meteen duidelijk dat ze een spel niet op een telefoon moeten starten. Na het lezen van deze melding klikten de testpersonen op de knop "Aan spel deelnemen" en ging het goed.
 
 ### Speelwijze
+
+De speelwijze werd vrij snel duidelijk voor de gebruikers. Ze snapte dat meer sterren betekende dat een eigenschap in meer of mindere mate bij iemand past. Het was echter niet meteen voor iedereen duidelijk dat ze niet per se alle sterren uit moeten geven. De zin "Je mag nog xx sterren uitgeven" wordt wel gelezen, maar het feit dat er "mag" staat blijkt toch nog niet voldoende.
 
 ### Groepgesprek op gang brengen
 

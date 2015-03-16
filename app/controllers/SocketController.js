@@ -19,12 +19,15 @@ var SocketController = function(server) {
 
 		jwt.verify(token, config.jwt_secret, function(err, tokenData) {
 			if (err) {
-				console.err('Invalid token:', err);
+				console.log('Invalid token:', err);
 				return;
 			}
 
 			findUser(tokenData.userId, function(err, user) {
-				if ( ! user) return;
+				if ( ! user) {
+					console.log('User not found:', tokenData.userId);
+					return;
+				}
 
 				client.playerId = user._id;
 				client.email = user.email;
