@@ -625,7 +625,9 @@ Binnen 5 minuten hadden alle testpersonen een account aangemaakt en waren ze ver
 
 ### Feedbackspel starten
 
-Twee van de vier testpersonen klikte op hun mobiele telefoon op de knop "Nieuw spel starten". Doordat er nu een melding getoond wordt was het meteen duidelijk dat ze op de verkeerde knop drukte.
+Twee testpersonen klikte op hun mobiele telefoon meteen op de knop "Nieuw spel starten". Doordat er nu een melding getoond wordt, was het voor de gebruiker meteen duidelijk dat ze een spel niet op een telefoon moeten starten. Na het lezen van deze melding klikten de testpersonen op de knop "Aan spel deelnemen" en ging het goed.
+
+### Speelwijze
 
 ### Groepgesprek op gang brengen
 
