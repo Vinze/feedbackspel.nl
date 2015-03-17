@@ -325,4 +325,12 @@ div.content {
 		margin: 0;
 		width: 100%;
 	}
+
+	.show-print {
+		display: inherit;
+	}
+
+	.hide-print {
+		display: none;
+	}
 }

@@ -83,6 +83,10 @@ $.get('/scriptie/afstudeerscriptie.md', function(content) {
 		window.scrollTo(0, $(window.location.hash).offset().top - 20);
 	}
 
+	if ( ! /localhost/.test(window.location)) {
+		$('#test-vid').prepend('<iframe width="700" height="418" src="https://www.youtube.com/embed/ahAJmDIjdII" frameborder="0" allowfullscreen class="hide-print"></iframe>');
+	}
+
 });
 
 $('#toc').on('click', 'a', function(evt) {

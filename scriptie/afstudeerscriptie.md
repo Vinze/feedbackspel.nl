@@ -82,7 +82,7 @@ Het geven en ontvangen van feedback binnen een team moet toegankelijker en leuke
 
 # Concept omschrijving
 
-Mensen die feedback willen geven en ontvangen in een team kunnen dit nu via een applicatie op hun smartphone en/of laptop doen. Deze applicatie zal in spelvorm assisteren bij het organiseren en houden van een feedback sessie. Alle deelnemers zitten tezamen in dezelfde ruimte, en geven middels de applicatie feedback aan elkaar. Na iedere ronde wordt een samenvatting van de resultaten getoond. Deze resultaten zullen aansporen tot het hebben van een dialoog over de gegeven en ontvangen feedback.
+Mensen die feedback willen geven en ontvangen in een team kunnen dit nu via een applicatie op hun smartphone en/of laptop doen. Deze applicatie zal in spelvorm assisteren bij het organiseren en houden van een feedback sessie. Alle deelnemers zitten tezamen in dezelfde ruimte, en geven middels de applicatie feedback aan elkaar. Na iedere ronde wordt een samenvatting van de resultaten getoond. Deze resultaten zullen aansporen tot het hebben van een dialoog over de gegeven en ontvangen feedback en bieden stof om over te praten in een groepsgesprek.
 
 # Research
 
@@ -101,7 +101,7 @@ Hoe kan ik het feedback geven en ontvangen makkelijker en toegankelijker maken, 
 
 ## Vooronderzoek
 
-Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geven en ontvangen van feedback is een enquête opgesteld met 17 vragen over dit onderwerp. Deze enquête is in de periode van 7 en met 9 april 2014 via mijn eigen Facebook verspreid (1). In totaal is de enquête ingevuld door 32 personen en globaal bestaat mijn vriendenlijst op Facebook uit:
+Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geven en ontvangen van feedback is een enquête opgesteld met 17 vragen over dit onderwerp. Deze enquête is in de periode van 7 en met 9 april 2014 via mijn eigen Facebook verspreid (1). In totaal is de enquête ingevuld (2) door 32 personen en globaal bestaat mijn vriendenlijst op Facebook uit:
 
 - Mensen van ongeveer 20 tot 50 jaar oud
 - Grotendeels HBO studenten en een aantal MBO studenten
@@ -109,7 +109,8 @@ Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geve
 
 Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke kunnen helpen bij de verdere ontwikkeling van een feedback systeem.
 
-(1) http://facebook.com/vbremer89/posts/722083571157120
+(1) http://facebook.com/vbremer89/posts/722083571157120  
+(2) [Feedback onderzoek - Google Formulieren.pdf](scriptie/bijlagen/Feedback onderzoek - Google Formulieren.pdf)
 
 ### Feedback systemen
 
@@ -159,15 +160,18 @@ Er zijn een aantal regels bij het geven en ontvangen van feedback. Door deze reg
 - Schiet niet meteen in de verdediging en sta op voor kritiek van anderen.
 - Probeer je in de ander te verplaatsen om erachter te komen waarom je bepaalde feedback krijgt.
 
-[http://www.counselling.nl/coaching/feedbackregels.html](http://www.counselling.nl/coaching/feedbackregels.html)
 
-[feedback uitgebreid.doc](scriptie/bijlagen/feedback uitgebreid.doc)
+### Bronvermelding
+
+(1) Academie voor Counselling en Coaching Opleidingen. Geraadpleegd op 12 oktober 2014, van http://www.counselling.nl/coaching/feedbackregels.html
+
+(2) Feedbackformulier Alice ter Veld. Dit document is opgesteld door PPO docenten van de opleiding Communication & Multimedia Design en wordt gebruikt als hulpmiddel bij het geven en ontvangen van feedback. [feedback uitgebreid.doc](scriptie/bijlagen/feedback uitgebreid.doc)
 
 ## Een dialoog tot stand brengen
 
 Bij een goede feedback sessie is het van belang dat de deelnemers een dialoog met elkaar aangaan over het functioneren van de individuen. Door een gesprek aan te gaan over de gegeven en ontvangen feedback is het makkelijker om dingen te onderbouwen of toe te lichten met voorbeelden. Het feedback systeem moet de deelnemers dus motiveren tot het hebben van een dialoog en hiervoor zullen diverse 'triggers' nodig zijn. Het stimuleren van een gesprek kan gedaan worden door de deelnemers te belonen, bijvoorbeeld met (digitale) medailles of een score waardoor iemand hoger in een ranglijst kan komen. Daarnaast zijn mensen ook aan het praten te krijgen door ze simpelweg vragen te stellen. Bij het stellen van de juiste (open) vragen zal iemand met een antwoord moeten komen, dit kan helpen bij het opzetten van een gesprek.
 
-http://www.inc.com/magazine/20110401/competitive-intelligence-how-to-make-people-talk.html
+<!-- http://www.inc.com/magazine/20110401/competitive-intelligence-how-to-make-people-talk.html -->
 
 # Doelgroep
 
@@ -237,7 +241,8 @@ Er zijn een aantal vereisten waaraan het eindproduct moet voldoen, namelijk;
 
 - Unit tests zijn uitgevoerd en geven geen foutmeldingen.
 - Broncode staat op GitHub.
-- Er is getest en er zijn geen bugs naar voren gekomen.
+- Er is getest en er zijn geen grote bugs naar voren gekomen die de applicatie laten crashen of onbruikbaar maken.
+- De applicatie werkt op moderne smartphones die draaien op iOS, Android of Windows Phone.
 - Laatste versie draait live op http://feedbackspel.nl
 - Documentatie is bijgewerkt tot waar de applicatie af.
 
@@ -275,12 +280,15 @@ Er zijn een aantal vereisten waaraan het eindproduct moet voldoen, namelijk;
 			<ul>
 				<li>Geluidsopname maken tijdens spelen van het feedbackspel</li>
 				<li>Opgeslagen feedback tonen in bijvoorbeeld grafieken</li>
+				<li>De gebruiker zelf feedback kaartjes (eigenschapen) laten toevoegen en/of bewerken</li>
 			</ul>
 		</td>
 		<td>
 			<ul>
-				<li>Zelf vorm en vragen van het spel instellen</li>
+				<li>De gebruiker zelf feedback vragen laten toevoegen</li>
 				<li>Op basis van de ontvangen feedback een advies gegeven voor de toekomst</li>
+				<li>Uitgebreide statistieken over de ontvangen feedback</li>
+				<li>Koppelingen met social media</li>
 			</ul>
 		</td>
 	</tr>
@@ -288,7 +296,7 @@ Er zijn een aantal vereisten waaraan het eindproduct moet voldoen, namelijk;
 
 # Design thinking
 
-Het project is volgens het design thinking proces uitgevoerd en hiervoor zijn diverse beproefde methodieken gebruikt. Hieronder staan enkele gebruikte methodieken en wordt uitgelegd wat deze methodieken inhouden en waarom deze toegepast zijn. 
+Het project is volgens het design thinking proces uitgevoerd en hiervoor zijn diverse beproefde methodieken gebruikt. (1) Hieronder staan enkele gebruikte methodieken en wordt uitgelegd wat deze methodieken inhouden en waarom deze toegepast zijn. 
 
 ### Iteration
 
@@ -310,9 +318,17 @@ Iedere iteratie moet het product getest worden en hiervoor zijn diverse techniek
 
 ### Fly-on-the-wall (242)
 
-https://uxchecklist.github.io/
+Observation method where the observer
+remains as unobtrusive as possible and
+observes and collects data relevant to a
+research study in context with no interaction
+with the participants being observed. Ihe name
+derived from the documentary film technique
+of the same name.
 
-<span style="color:red;font-size:20px">Dit moet nog uitgewerkt worden!</span>
+- Iteratie 5
+
+(1) Robert Curedale. (2013) *Design Thinking - Process and methods manual*
 
 # Iteratie 1 – paper prototype
 
@@ -576,6 +592,7 @@ Dit is de laatste iteratie welke nog tijdens het afstuderen uitgevoerd wordt. In
 - Het spel moet een groepsgesprek opgang brengen.
 - Eventuele gevoelige onderwerpen moeten op tafel komen.
 - De uitleg op de laptop en mobiele telefoon moeten voldoende informatie bieden om te begrijpen hoe het spel gespeeld moet worden.
+- Alle deelnemers aan het feedbackspel moeten behandeld worden.
 
 ## Hypothese
 
@@ -607,9 +624,9 @@ Een van de belangrijkste doelen is het stimuleren van een groepsgesprek en dit i
 
 ## Testpersonen
 
-Er is deze keer gekozen om af te wijken van de vooraf bepaalde doelgroep. In eerste instantie was het concept bedacht voor studenten van de opleiding Communication & Multimedia Design maar na diverse malen testen bleek het spel niet erg goed te werken bij deze doelgroep. Er kwam niet echt een groepsgesprek om gang omdat de studenten vrij laks waren en het ze niet echt interesseerde wat voor feedback ze kregen.
+Er is deze keer gekozen om af te wijken van de vooraf bepaalde doelgroep. In eerste instantie was het concept bedacht voor studenten van de opleiding Communication & Multimedia Design maar na diverse malen testen bleek het spel niet erg goed aan te slaan bij deze doelgroep. Het groepsgesprek kwam maar moeizaam op gang, en het interesseerde veel studenten niet echt wat voor feedback ze kregen.
 
-Daarom is dit prototype getest bij de medewerkers van een bedrijf. In dit geval gaat het om een ICT bedrijf en werd het spel getest door een groep van 4 personen. Deze personen verschillen nogal van elkaar en dit kan interessante resultaten opleveren. Zo was één persoon vrij aanwezig en nam snel het voortouw. Een andere jongen liep stage bij het bedrijf en was wat meer in zichzelf gekeerd. Daarnaast had één persoon een wat hogere functie binnen het bedrijf (projectleider).
+Daarom is dit prototype getest bij de medewerkers van een bedrijf. In dit geval gaat het om een ICT bedrijf en wordt het spel getest in een groep van 4 personen. Deze personen verschillen nogal van elkaar en dit kan interessante resultaten opleveren. Zo was één persoon vrij aanwezig en nam snel het voortouw. Een andere jongen liep stage bij het bedrijf en was wat meer in zichzelf gekeerd. Daarnaast had één persoon een wat hogere functie binnen het bedrijf (projectleider). Eén van de doelen is om alle deelnemers te betrekken bij het feedbackspel. Iemand die wat meer op de achtergrond staat moet net zo goed feedback ontvangen als iemand die erg aanwezig is.
 
 ## Testmethodiek
 
@@ -633,24 +650,43 @@ De speelwijze werd vrij snel duidelijk voor de gebruikers. Ze snapte dat meer st
 
 ### Groepgesprek op gang brengen
 
-Het eindresultaat is zéér positief en de test verliep een stuk beter dan vooraf gedacht. De gebruikers vulde de feedback serieus in en dachten goed na over hoe ze de sterren gingen verdelen over hun collega's. Nadat iedereen de feedback had ingevuld en de resultaten getoond werden, werd de vraag op het scherm opgelezen en beantwoord. Iedereen had wel een antwoord op deze vraag, en er werd goed doorgevraagd over de feedback. Opvallend was dat de feedback vooral werd gericht op het functioneren binnen het bedrijf. Er werden praktijk voorbeelden aangehaald, en er werd omschreven wanneer ze vonden dat een bepaalde eigenschap bij iemand naar voren kwam.
+Tegen alle verwachtingen in kwam al na twee rondes het gesprek goed op gang. De gebruikers vulden de feedback in en bij het tonen van de resultaten werd de vraag beantwoord. Er werd gericht gevraagd waarom iemand een bepaald aantal sterren kreeg bij de verschillende eigenschappen. Doordat de vraag steeds verschillende personen behandelde kwamen alle deelnemers aan bod, en daarnaast werd de vraag vaak ook nog voor andere deelnemers beantwoord. Vooral bij de wat minder positieve eigenschappen zoals 'prikkelbaar' werd wat langer stilgestaan en wat meer doorgevraagd.
 
+## Conclusie
+
+Het eindresultaat is zéér positief en de test verliep een stuk beter dan vooraf gedacht. De gebruikers vulde de feedback serieus in en dachten goed na over hoe ze de sterren gingen verdelen over hun collega's. Nadat iedereen de feedback had ingevuld en de resultaten getoond werden, werd de vraag op het scherm opgelezen en beantwoord. Iedereen had wel een antwoord op deze vraag, en er werd goed doorgevraagd over de gegeven en ontvangen feedback. Opvallend was dat de feedback vooral werd gericht op het functioneren binnen het bedrijf. Er werden praktijk voorbeelden aangehaald, en er werd omschreven wanneer ze vonden dat een bepaalde eigenschap bij iemand naar voren kwam. De medewerkers van het bedrijf gaven aan dat ze in de toekomst wel vaker dit feedbackspel willen gebruiken, ook samen met andere collega's.
 
 ## Bijlagen
 
-<!-- 
-<span style="color:red;font-size:20px">Dit moet nog verder uitgetypt worden!</span>
+### Testen prototype 13 maart 2015
+<p id="test-vid">Youtube link: http://youtu.be/ahAJmDIjdII</p>
 
-
-
-- Verbeteringen
-- Systeem stelt vragen
-
-- Blokkeren host op smartphone
-- Inloggen vs Registreren vs Inloggen / Registreren
- -->
 
 # Samenvatting
+
+## Vooronderzoek
+
+In het vooronderzoek is naar voren gekomen dat een aantal mensen wel eens wat gedaan hebben met feedback spellen, maar hier over het algemeen niet veel ervaring mee hebben. De mensen die wel ervaring hebben met feedback spellen vinden het vaak wat geforceerd overkomen of vinden het teveel werk om uit te voeren. Mensen ontvangen graag feedback omdat ze dan weten hoe ze in de groep liggen, en op welke vlakken ze zichzelf kunnen verbeteren. Deze feedback krijgen ze het liefst mondeling of uitgeschreven op papier. Ze willen hierbij graag een toelichting met praktijkvoorbeelden waarom de ontvangen feedback op hun van toepassing is.
+
+## Doelgroep
+In eerste instantie studenten van CMD, maar misschien zijn bedrijven veel gezichter nav laatste testsessie
+
+## Iteratie 1
+Papier
+
+## Iteratie 2
+App / afstudeerder
+
+## Iteratie 3
+App / 1e jaars
+
+## Iteratie 4
+Tussenversie
+
+## Iteratie 5
+Eind
+
+
 
 # Dankwoord
 Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mijn scriptie en het eindproduct. Ik heb de laatste maanden van mijn opleiding nog ontzettend veel geleerd, zowel op vakinhoudelijk als persoonlijk vlak. Hiervoor wil ik graag mijn familie, vrienden, collega's en alle betrokken docenten van de opleiding CMD bedanken.

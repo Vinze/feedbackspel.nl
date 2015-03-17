@@ -1,0 +1,42 @@
+{{#if editing}}
+	<h1>Gegevens bewerken</h1>
+	{{#if error}}
+		<div class="flash-error" intro="slide">{{error}}</div>
+	{{/if}}
+	<form on-submit="save" style="max-width: 500px">
+		<div class="form-group">
+			<div class="label"><label for="email">E-mailadres:</label></div>
+			<div class="field"><input type="text" value="{{editing.email}}" id="email" class="text" disabled></div>
+		</div>
+		<div class="form-group">
+			<div class="label"><label for="firstname">Voornaam:</label></div>
+			<div class="field"><input type="text" value="{{editing.firstname}}" id="firstname" class="text"></div>
+		</div>
+		<div class="form-group">
+			<div class="label"><label for="lastname">Achternaam:</label></div>
+			<div class="field"><input type="text" value="{{editing.lastname}}" id="lastname" class="text"></div>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn confirm"><i class="fa fa-save"></i> Opslaan</button>
+		</div>
+		<div class="form-group">
+			<a on-click="cancel"><i class="fa fa-angle-double-left"></i> Terug</a>
+		</div>
+	</form>
+{{else}}
+	<h1>Mijn gegevens <a class="icon" on-click="edit"><i class="fa fa-edit"></i></a></h1>
+	<div style="max-width: 600px">
+		<div class="form-group">
+			<div class="label">E-mailadres:</div>
+			<div class="field">{{user.email}}</div>
+		</div>
+		<div class="form-group">
+			<div class="label">Voornaam:</div>
+			<div class="field">{{user.firstname}}</div>
+		</div>
+		<div class="form-group">
+			<div class="label">Achternaam:</div>
+			<div class="field">{{user.lastname}}</div>
+		</div>
+	</div>
+{{/if}}

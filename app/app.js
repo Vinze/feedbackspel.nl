@@ -103,10 +103,10 @@ app.get('/test', function(req, res) {
 	res.render('testing/index');
 });
 
-app.get('/spa*', function(req, res) {
+// app.get('/spa*', function(req, res) {
 	// Single page app
-	res.sendfile('public/views/layout.html');
-});
+	// res.sendfile('public/views/layout.html');
+// });
 
 app.get('*', function(req, res) {
 	res.status(404);

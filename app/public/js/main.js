@@ -49,6 +49,23 @@ $('a').on('tap, click', function(evt) {
 
 Sidebar.init();
 
+(function(window) {
+	var viewCache = {};
+
+	function loadView(view, callback) {
+		if (viewCache[view])
+			return callback(viewCache[view]);
+		
+		$.get(baseURL + '/views/' + view, function(html) {
+			viewCache[view] = html;
+			callback(html);
+		});
+	}
+
+	window.loadView = loadView;
+	
+} (window));
+
 function replaceTags(content, tags) {
 	return content.replace(/\[(.*?)\]/gi, function(match, text) {
 		if (tags[text]) {

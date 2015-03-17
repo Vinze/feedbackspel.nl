@@ -1,0 +1,16 @@
+<div class="modal-overlay" on-click="closeModal" intro-outro="fade:{ duration: 300 }">
+	<div style="padding: 0 10px">
+		<!-- <div class="modal-close" on-click="closeModal"></div> -->
+		<div class="modal" style="max-width: 400px" on-click="stopPropagation" intro-outro="fly:{ x: 0, y: -200, duration: 400 }">
+			<h1>Voer de spelcode in:</h1>
+			<form on-submit="send">
+				<div class="form-group">
+					<input type="tel" maxlength="4" value="{{code}}" id="code" class="text" autofocus>
+				</div>
+				<div class="form-group">
+					<button class="btn confirm"><i class="fa fa-sign-in"></i> Deelnemen</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
