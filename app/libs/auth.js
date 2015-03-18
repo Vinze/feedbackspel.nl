@@ -10,7 +10,7 @@ var auth = {
 		var token = (req.cookies && req.cookies.fbs_token) || // Get token from cookie
 		            (req.body && req.body.token) || // Get token from POST data
 		            (req.query && req.query.token) ||  // Get token from GET data
-		            req.headers['x-token'] || null; // Get token from headers
+		            req.headers['x-auth-token'] || null; // Get token from headers
 		req.token = token;
 		req.user = null;
 

@@ -725,19 +725,17 @@ body {
 	}
 }
 
-.header-logo {
+a.header-logo {
 	position: absolute;
 	top: 0;
 	left: 2px;
 	display: inline-block;
-	overflow: hidden;
 	width: 300px;
-	img {
-		width: 300px;
-		height: 62px;
-		max-width: 300px;
-		float: left;
-	}
+	height: 62px;
+	background-image: url('../img/logo.svg');
+	background-position: left center;
+	text-decoration: none !important;
+	background-size: 300px 62px;
 }
 
 .sidebar-toggle, .sidebar, .sidebar-overlay {
@@ -746,7 +744,7 @@ body {
 
 .sidebar-toggle {
 	float: right;
-	padding: 13px 2px 6px 20px;
+	padding: 11px 2px 4px 20px;
 	img {
 		width: 34px;
 		height: 26px;
@@ -1379,8 +1377,8 @@ body.sidebar-open {
 }
 
 @media (max-width: 500px) {
-	.header-logo {
-		width: 90px;
+	a.header-logo {
+		width: 95px;
 	}
 	.form-group {
 		margin-bottom: 10px;

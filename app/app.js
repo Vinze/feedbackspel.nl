@@ -63,7 +63,7 @@ app.get('/', function(req, res) {
 // UserController
 app.get('/start', auth.isGuest, UserController.getStart);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
-app.get('/avatar/:image', auth.isMember, UserController.getAvatar);
+app.get('/avatar/:image', UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
 app.get('/uitloggen', auth.isMember, UserController.getLogout);
 

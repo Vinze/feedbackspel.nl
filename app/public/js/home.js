@@ -1,5 +1,5 @@
 function resizeHandler(evt) {
-	var height = $(window).height() - 57;
+	var height = $(window).height() - 53;
 
 	$('#banner').css({ 'min-height': height });
 

@@ -1,0 +1,13 @@
+{
+	"lang": "nl",
+	"name": "Feedbackspel",
+	"icons": [
+	    {
+	      "src": "img/apple-touch-icon.png",
+	      "sizes": "192x192",
+	      "type": "image/png"
+	    }
+    ],
+	"display": "fullscreen",
+	"orientation": "portrait"
+}
