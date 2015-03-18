@@ -1,6 +1,6 @@
 @max-page-width: 960px;
 @sidebar-width: 250px;
-@header-height: 52px;
+@header-height: 48px;
 @footer-height: 28px;
 @accent-color: #55BE78;
 @font-color: #5F5F5F;
@@ -705,9 +705,9 @@ body {
 	padding: 0 10px;
 	height: @header-height;
 	position: relative;
-	ul {
+	ul.nav {
 		float: right;
-		margin: 4px 0 0 0;
+		margin: 2px 0 0 0;
 		padding: 0;
 		li {
 			display: inline-block;
@@ -734,16 +734,19 @@ body {
 	width: 300px;
 	img {
 		width: 300px;
-		height: 68px;
+		height: 62px;
 		max-width: 300px;
 		float: left;
 	}
 }
 
+.sidebar-toggle, .sidebar, .sidebar-overlay {
+	display: none;
+}
+
 .sidebar-toggle {
 	float: right;
 	padding: 13px 2px 6px 20px;
-	display: none;
 	img {
 		width: 34px;
 		height: 26px;
@@ -1039,7 +1042,7 @@ body.sidebar-open {
 	
 	.game-room {
 		position: absolute;
-		bottom: 10px;
+		bottom: 20px;
 		right: 10px;
 		font-size: 1.6em;
 		text-align: right;
@@ -1142,7 +1145,7 @@ body.sidebar-open {
 			margin: 0 10px;
 			padding-top: 25px;
 			position: relative;
-			width: 120px;
+			width: 100px;
 			text-align: center;
 			.avatar {
 				display: inline-block;
@@ -1159,7 +1162,7 @@ body.sidebar-open {
 			}
 			.name {
 				top: 0px;
-				left: -30px;
+				left: -40px;
 				width: 180px;
 				text-align: center;
 				font-size: 0.9em;
@@ -1168,7 +1171,7 @@ body.sidebar-open {
 			.remove {
 				line-height: 1;
 				bottom: -3px;
-				left: 10px;
+				left: 0px;
 				color: #EA6666;
 				font-size: 1.6em;
 				// text-shadow: 0 0 1px #000;
@@ -1177,7 +1180,7 @@ body.sidebar-open {
 				position: absolute;
 				font-size: 2em;
 				bottom: -5px;
-				right: 0px;
+				right: -8px;
 				color: @accent-color;
 			}
 			&.active .avatar {
@@ -1356,7 +1359,7 @@ body.sidebar-open {
 		margin-left: 0 !important;
 		margin-bottom: 20px;
 	}
-	.sidebar-toggle {
+	.sidebar-toggle, .sidebar, .sidebar-overlay {
 		display: block;
 	}
 	.header ul.nav {
@@ -1377,7 +1380,7 @@ body.sidebar-open {
 
 @media (max-width: 500px) {
 	.header-logo {
-		width: 100px;
+		width: 90px;
 	}
 	.form-group {
 		margin-bottom: 10px;

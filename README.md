@@ -14,3 +14,18 @@
 - Install mocha globally using `sudo npm install -g mocha`
 - Install expect.js local with `npm install expect.js` (in the 'tests' folder)
 - `mocha tests/game.js`
+
+## Redbird proxyserver
+Install the proxyserver with: `npm install redbird`
+
+Create a file named `run.js` and copy the following code in there:
+```js
+var proxy = require('redbird')({ port: 80 });
+
+proxy.register("feedbackspel.nl", "http://127.0.0.1:1337");
+proxy.register("www.feedbackspel.nl", "http://127.0.0.1:1337");
+
+proxy.register("test.feedbackspel.nl", "http://127.0.0.1:1338");
+```
+
+Start the proxyserver with `sudo forever start /var/www/proxy/run.js`

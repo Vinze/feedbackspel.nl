@@ -632,8 +632,6 @@ Daarom is dit prototype getest bij de medewerkers van een bedrijf. In dit geval 
 
 Om de test zo realistisch mogelijk te maken wordt het spel gespeeld bij het bedrijf zelf. Er is een vergaderruimte gereserveerd en er staat drinken voor de testpersonen klaar op tafel. In de ruimte staat een camera opgesteld om de testsessie vast te leggen. Deze beelden dienen later als bewijsvoering en helpen bij het evalueren van de test. Vooraf heb ik de laptop klaar gezet met daarop de applicatie en ik heb een zeer korte uitleg gegeven over wat ze gaan doen. Inhoudelijk ben ik niet ingegaan over hoe het spel gespeeld moet worden, dit zou zichzelf moeten wijzen en geen verdere uitleg nodig hebben. Tijdens het testen ben ik in de hoek van de ruimte gaan zitten en heb ik me niet bemoeid met het spel. Eventuele vragen of problemen moesten de testpersonen in eerste instantie zelf proberen op te lossen, en mocht er echt wat fout gaat zou ik pas ingrijpen.
 
-![testopstelling](scriptie/bijlagen/i5-testopstelling.jpg)
-
 ## Resultaten
 
 ### Toegankelijkheid
