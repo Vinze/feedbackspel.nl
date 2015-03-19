@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<% include partials/head %>
+	<style type="text/css">
+		.avaaatar {
+			width: 64px;
+			height: 64px;
+			line-height: 64px;
+			border-radius: 50%;
+			color: #fff;
+			text-align: center;
+			font-size: 50px;
+			font-weight: bold;
+			display: inline-block;
+		}
+
+		.avaaatar.v { background-color: rgb(255, 116, 116); }
+		.avaaatar.n { background-color: rgb(255, 195, 116); }
+		.avaaatar.t { background-color: rgb(116, 197, 255); }
+		.avaaatar.r { background-color: rgb(137, 232, 178); }
+	</style>
+</head>
+<body>
+
+<% include partials/top %>
+
+<div class="content-wrapper">
+	<div class="home content container">
+		<p><span class="avaaatar v">V</span></p>
+		<p><span class="avaaatar n">N</span></p>
+		<p><span class="avaaatar t">T</span></p>
+		<p><span class="avaaatar r">R</span></p>
+		
+	</div>
+</div>
+
+<% include partials/bottom %>
+
+<script type="text/javascript" src="/js/home.js"></script>
+</body>
+</html>

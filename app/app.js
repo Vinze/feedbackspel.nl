@@ -100,7 +100,7 @@ app.get('/kernkwadranten', function(req, res) {
 });
 
 app.get('/test', function(req, res) {
-	res.render('testing/index');
+	res.render('test');
 });
 
 // app.get('/spa*', function(req, res) {
