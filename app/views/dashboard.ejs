@@ -85,9 +85,8 @@
 			<div class="form-group">
 				<button type="submit" class="btn confirm"><i class="fa fa-save"></i> Opslaan</button>
 			</div>
-			<div class="form-group">
-				<a on-click="cancel"><i class="fa fa-angle-double-left"></i> Terug</a>
-			</div>
+			<hr>
+			<a on-click="cancel"><i class="fa fa-angle-double-left"></i> Terug</a>
 		</form>
 	{{else}}
 		<h1>Mijn gegevens <a class="icon" on-click="edit"><i class="fa fa-edit"></i></a></h1>
@@ -105,6 +104,8 @@
 				<div class="field">{{user.lastname}}</div>
 			</div>
 		</div>
+		<hr>
+		<a href="/uitloggen"><i class="fa fa-sign-out"></i> Uitloggen</a>
 	{{/if}}
 </script>
 <script type="text/javascript" src="/js/dashboard.js"></script>

@@ -1,17 +1,15 @@
-<% include sidebar %>
 <div class="site-wrapper">
 	<div class="header-wrapper">
 		<div class="header container">
 			<a href="/" class="header-logo">&nbsp;</a>
-			<% if (show_sidebar) { %>
-				<ul class="nav">
-					<% menu_items.forEach(function(item) { %>
-						<li><a href="<%= item.url %>"><i class="fa fa-fw <%= item.classname %>"></i> <%= item.label %></a></li>
-					<% }); %>
-				</ul>
-				<a class="sidebar-toggle">
-					<img src="/img/icon-menu.png" width="34px" height="26px">
-				</a>
-			<% } %>
+			<ul class="header-nav">
+				<% menuItems.forEach(function(item) { %>
+					<li>
+						<a href="<%= item.url %>">
+							<i class="fa fa-fw <%= item.classname %>"></i> <span><%= item.label %></span>
+						</a>
+					</li>
+				<% }); %>
+			</ul>
 		</div>
 	</div>

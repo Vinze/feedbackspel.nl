@@ -1,4 +1,5 @@
 @max-page-width: 960px;
+@sidebar-width: 250px;
 @header-height: 48px;
 @footer-height: 28px;
 @accent-color: #55BE78;
@@ -224,11 +225,11 @@ small, .small {
 }
 
 hr {
-	height: 1px;
+	height: 2px;
 	border: none;
-	background-color: #e5e5e5;
+	border-top: 1px solid #ccc;
+	background-color: #fff;
 	width: 100%;
-	margin: 15px 0;
 }
 
 table {
@@ -704,6 +705,24 @@ body {
 	padding: 0 10px;
 	height: @header-height;
 	position: relative;
+	ul.nav {
+		float: right;
+		margin: 0;
+		padding: 0;
+		li {
+			display: inline-block;
+		}
+		a {
+			display: block;
+			padding: 10px 10px;
+			color: @font-color;
+			text-decoration: none;
+			&:hover {
+				color: @accent-color;
+				text-decoration: none;
+			}
+		}
+	}
 }
 
 a.header-logo {
@@ -719,23 +738,76 @@ a.header-logo {
 	background-size: 300px 62px;
 }
 
-ul.header-nav {
+.sidebar-toggle, .sidebar, .sidebar-overlay {
+	display: none;
+}
+
+.sidebar-toggle {
 	float: right;
-	margin: 0;
-	padding: 0;
+	padding: 11px 2px 4px 20px;
+	img {
+		width: 34px;
+		height: 26px;
+	}
+}
+
+.sidebar {
+	width: @sidebar-width;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: -@sidebar-width - 10px;
+	transition: right 300ms;
+	z-index: 500;
+	margin: 0px;
+	background: #444 url('../img/bg-navigation.png') repeat left top;
+	color: #ccc;
+	font-size: 1.1em;
+	.box-shadow(0 0 5px #222);
+	h1 {
+		padding: 10px 10px 10px 32px;
+		font-weight: bold;
+		margin: 10px 0 0 0;
+		border: none;
+		font-size: inherit;
+	}
+	ul.nav {
+		margin: 0;
+	}
 	li {
-		display: inline-block;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		display: block;
+		
 	}
 	a {
+		color: #ccc;
 		display: block;
-		padding: 12px 10px 10px 10px;
-		color: @font-color;
 		text-decoration: none;
+		padding: 10px 30px;
 		&:hover {
-			color: @accent-color;
+			color: #fff;
 			text-decoration: none;
 		}
+		i {
+			margin-right: 5px;
+		}
 	}
+	.close-sidebar {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding: 14px;
+		font-size: 1.4em;
+	}
+}
+
+.sidebar-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 450;
 }
 
 div.content-wrapper {
@@ -760,6 +832,12 @@ div.footer {
 	padding: 4px 0;
 	font-size: 0.8em;
 	color: #404040;
+}
+
+body.sidebar-open {
+	.sidebar {
+		right: 0;
+	}
 }
 
 //================================================
@@ -1279,14 +1357,21 @@ div.footer {
 		margin-left: 0 !important;
 		margin-bottom: 20px;
 	}
-	ul.header-nav {
-		a {
-			font-size: 2em;
-			padding: 8px 10px 6px 10px;
-			line-height: 1;
+	.header {
+		ul.nav {
+			a {
+				font-size: 1.5em;
+				padding: 6px 10px 3px 10px;
+			}
+			span { display: none; }
 		}
-		span { display: none; }
 	}
+	// .sidebar-toggle, .sidebar, .sidebar-overlay {
+	// 	display: block;
+	// }
+	// .header ul.nav {
+	// 	display: none;
+	// }
 	.responsive-table {
 		width: 100%;
 		overflow-y: hidden;

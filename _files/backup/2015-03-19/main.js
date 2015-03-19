@@ -1,11 +1,53 @@
 baseURL = 'http://' + window.location.host;
 
+var Sidebar = new function() {
+	var self = this;
+
+	self.show = function() {
+		$('body').addClass('sidebar-open');
+		$('body').prepend('<div class="sidebar-overlay close-sidebar"></div>');
+	}
+	
+	self.hide = function() {
+		$('body').removeClass('sidebar-open');
+		$('.sidebar-overlay').remove();
+	}
+
+	self.init = function() {
+		$('.sidebar-toggle').on('tap, click', function(evt) {
+			self.show();
+			evt.preventDefault();
+		});
+
+		$('.sidebar-toggle').on('swipeLeft', function() {
+			self.show();
+		});
+
+		$('.sidebar').on('swipeRight', function() {
+			self.hide();
+		});
+
+		$('body').on('tap, click', '.close-sidebar', function(evt) {
+			self.hide();
+			evt.preventDefault();
+		});
+
+		$(document).on('keyup', function(evt) {
+			if (evt.keyCode == 27) {
+				self.hide();
+			}
+		});
+	}
+}
+
 $('a').on('tap, click', function(evt) {
 	if (this.href.length > 2) {
 		document.location.href = this.href;
 		evt.preventDefault();
 	}
 });
+
+Sidebar.init();
 
 (function(window) {
 	var viewCache = {};
@@ -67,6 +109,3 @@ helpers.nl2br = function(text) {
 }
 
 helpers.baseURL = baseURL;
-
-$(function() {
-});

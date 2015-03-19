@@ -304,29 +304,28 @@ Het iteractieve proces houd in dat het product zich ontwikkeld op basis van de o
 
 ![webapp1](scriptie/bijlagen/iteration.svg)
 
-### Low Fidelity Prototype Kit
+### Low Fidelity Prototype Kit (171)
 
 Een low fidelity prototype is een eenvoudige versie van het product dat ontwikkeld wordt. Dit soort prototype is zeer snel te maken en komt niet in de buurt van de kwaliteit van het uiteindelijke product. Een low fidelity prototype kan bestaan uit bijvoorbeeld papier, karton, post-its en andere eenvoudige materialen. Hiermee kan heel snel getest worden en bied een goede basis om een volgend prototype op verder te ontwikkelen.
 
-### Develop Personas
+### Develop Personas (151)
 
 Een persona is een profiel van de gebruiker en beschrijft diverse karakterestieken en eigenschappen die bij de gebruiker horen. Dit helpt bij het ontwikkelen van het product en kan helpen bij het gebruiksvriendelijk maken.
 
-### Observation
+### Observation (265)
 
 Iedere iteratie moet het product getest worden en hiervoor zijn diverse technieken beschikbaar. Een van deze technieken is observeren. Terwijl de gebruikers het product aan het testen zijn zal één of meerdere personen meekijken en observeren welke handelingen de gebruikers uitvoeren. Dit is een eenvoudige manier om snel informatie te vergaren en vergt vrij weinig voorbereiding. Een nadeel is wel dat er snel informatie over het hoofd gezien kan worden, en de aanwezigheid van de persoon die de test afneemt kan het testen (onbewust) beïnvloeden.
 
 ### Fly-on-the-wall (242)
 
-Observation method where the observer
-remains as unobtrusive as possible and
-observes and collects data relevant to a
-research study in context with no interaction
-with the participants being observed. Ihe name
-derived from the documentary film technique
-of the same name.
+Observatie methode waarbij de toezichthouder zich zo afstandig mogelijk houdt en informatie verzameld zonder met de testpersonen te communiceren. Dit is een vrij eenvoudige methode en heeft als voordeel dat degene die de test afneemt de test niet kan beïnvloeden. Door de test ook op te nemen met een videocamera zou er bij deze methodie helemaal geen toezichthouder aanwezig hoeven te zijn. Dit heeft weer als voordeel dat de test achteraf rustig bekeken kan worden.
 
-- Iteratie 5
+<!--
+### Interview: Extreme user (252)
+### Interview: Group (253)
+
+-->
+
 
 (1) Robert Curedale. (2013) *Design Thinking - Process and methods manual*
 
@@ -381,7 +380,7 @@ Het grootste knelpunt was het feit dat er niet echt een gesprek op gang kwam. De
 
 Zoals verwacht kwamen er behoorlijk wat knelpunten naar boven. Zo bleek dat de gesprekken niet goed op gang kwamen, duurde het te lang om iedereen met de aandacht bij het spel te houden, en kwam het te geforceerd over. Vermoedelijk komt dit mede omdat een paper prototype heel statisch is en nog veel handmatig werk vereist. Een digitale variant kan een hoop dingen automatiseren en houd de vaart in het spel. Daarnaast mogen de resultaten wel wat uitgebreider worden, simpel wegeen lijstje geven bied vooralsnog niet veel stof om een gesprek over te hebben.
 
-# Iteratie 2 – webapp versie 1.0
+# Iteratie 2 – WebApp v0.1
 
 ![webapp1](scriptie/bijlagen/i2-overview.png)
 
@@ -429,7 +428,7 @@ In verhouding tot het papieren prototype is dit prototype een enorme verbetering
 ### Aanzetten tot dialoog
 Een van de speerpunten van het feedback spel is het aanzetten tot dialoog, en helaas verliep dat nog wat moeizaam. Nadat de uitkomst van een feedback ronde op het scherm getoond werd bleef een conversatie vaak uit. Men zag dat iemand op bijvoorbeeld boven of onderaan eindigde, maar hij of zij vroeg vervolgens niet waarom dit zo was.
 
-# Iteratie 3 – webapp versie 1.1
+# Iteratie 3 – WebApp v0.2
 
 ![webapp1](scriptie/bijlagen/i3-overview.png)
 
@@ -510,7 +509,7 @@ Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag v
 - [Enquête ingevuld #5](scriptie/bijlagen/i3-enquete-5.jpg)
 - [Enquête ingevuld #6](scriptie/bijlagen/i3-enquete-6.jpg)
 
-# Iteratie 4 – webapp versie 1.2
+# Iteratie 4 – WebApp v0.3
 
 ## Inleiding
 
@@ -577,7 +576,7 @@ Door eerst om een e-mailadres te vragen, en indien nodig daarna pas om de overig
 
 Helaas kwam het nog wel vaak voor dat de gebruikers een nieuw spel probeerde aan te maken op hun mobiele telefoon. Het is essentieel dat dit op de computer gedaan wordt, aangezien het scherm van een telefoon veel te klein is. Wellicht is het een optie om de knop in het volgende prototype te verwijderen, of een melding te geven dat het spel op een computer of laptop gestart moeten worden.
 
-# Iteratie 5 – webapp versie 2.0
+# Iteratie 5 – WebApp v1.0
 
 ![start](scriptie/bijlagen/i5-testen-camera.jpg)
 
@@ -657,6 +656,7 @@ Het eindresultaat is zéér positief en de test verliep een stuk beter dan voora
 ## Bijlagen
 
 ### Testen prototype 13 maart 2015
+
 <p id="test-vid">Youtube link: http://youtu.be/ahAJmDIjdII</p>
 
 
@@ -664,27 +664,45 @@ Het eindresultaat is zéér positief en de test verliep een stuk beter dan voora
 
 ## Vooronderzoek
 
-In het vooronderzoek is naar voren gekomen dat een aantal mensen wel eens wat gedaan hebben met feedback spellen, maar hier over het algemeen niet veel ervaring mee hebben. De mensen die wel ervaring hebben met feedback spellen vinden het vaak wat geforceerd overkomen of vinden het teveel werk om uit te voeren. Mensen ontvangen graag feedback omdat ze dan weten hoe ze in de groep liggen, en op welke vlakken ze zichzelf kunnen verbeteren. Deze feedback krijgen ze het liefst mondeling of uitgeschreven op papier. Ze willen hierbij graag een toelichting met praktijkvoorbeelden waarom de ontvangen feedback op hun van toepassing is.
+In het vooronderzoek is naar voren gekomen dat een aantal mensen wel eens wat gedaan hebben met feedback spellen, maar hier over het algemeen niet veel ervaring mee hebben. De mensen die wel ervaring hebben met feedback spellen vinden het vaak wat geforceerd overkomen of vinden het teveel werk om een feedbacksessie te organiseren. Andere feedback methodes waar vrijwel iedereen ervaring mee heeft zijn functioneringsgesprekken, groepsgesprekken en vragenlijsten.
+
+Mensen ontvangen graag feedback omdat ze dan weten hoe ze in de groep liggen, en op welke vlakken ze zichzelf kunnen verbeteren. Deze feedback krijgen ze het liefst mondeling of uitgeschreven op papier. Ze willen hierbij graag een toelichting met praktijkvoorbeelden waarom de ontvangen feedback op hun van toepassing is.
+
+Het is dus belangrijk dat een feedback spel eenvoudig en snel te spelen moet zijn, en weinig voorbereiding van de spelers vereist. Het spel moet niet in de weg zitten en slechts dienen als hulpmiddel die helpt bij het op gang brengen van een groepsgesprek.
 
 ## Doelgroep
-In eerste instantie studenten van CMD, maar misschien zijn bedrijven veel gezichter nav laatste testsessie
+
+De primaire doelgroep was in eerste instantie studenten van de opleiding Communication & Multimedia Design. Op deze opleiding speelt het geven en ontvangen van feedback een grote rol en wordt veel tijd besteed aan de persoonlijke ontwikkeling. Na diverse malen testen bleek dat veel studenten toch enigzins laks zijn en vaak niet de moeite willen nemen om een feedbackspel te spelen.
+
+Het prototype is daarom ook een keer getest is in het bedrijfsleven en de resultaten die hieruit kwamen waren veel positiever dan vooraf gedacht. Het spel werd serieuzer gespeeld, de deelnemers aan het spel waren oprecht geïnteresseerd in de ontvangen feedback, en er kwam snel een groepsgesprek op gang. Daarom zal de applicatie in de toekomst meer gericht worden op het bedrijfsleven, en wordt is dit dus de primaire doelgroep. Daarnaast is er vermoedelijk ook meer geld beschikbaar bij deze doelgroep, wat gunstig kan uitpakken bij de verdere ontwikkeling van de applicatie.
 
 ## Iteratie 1
-Papier
+
+In de eerste iteratie is een simpel papieren prototype ontwikkeld en getest. Dit prototype bevatte de meest simpele elementen van een feedback spel en was vooral bedoeld om erachter te komen in hoeverre een papieren versie zich verhoud tegenover een digitale versie. Bij het testen kwam naar voren dat het spelen van het feedbackspel op papier veel tijd kost, onnodig moeilijk is en een groepsgesprek niet op gang kwam. Hieruit kon geconcludeerd worden dat een papieren feedbackspel niet voldoende is om de vooraf gestelde doelen te bereiken.
 
 ## Iteratie 2
-App / afstudeerder
+
+Aangezien het papieren prototype bij lange na niet de ervaring van een (web-)applicatie kan benaderen is besloten om vanaf deze iteratie te starten met het ontwikkelen van een hoge kwaliteit prototype. In iteratie twee is de basis hiervoor gelegd en dit prototype bevatte dezelfde functionaliteit als het papieren prototype. In de test kwam naar voren dat het geven van feedback met behulp van sterren voor alle gebruikers duidelijk was. Bij het tonen van de resulaten klikten de gebruikers echter meteen op de knop "Volgende" zonder te bespreken waarom iedereen een bepaald aantal sterren kreeg. Het was dus niet duidelijk dat men in gesprek moest gaan over de gegeven en ontvangen feedback.
 
 ## Iteratie 3
-App / 1e jaars
+
+Tegenover het vorige prototype zijn enkele wijzigingen doorgevoerd welke moeten helpen om een groepsgesprek op gang te brengen. Zo wordt de persoonlijk ontvangen feedback nu getoond aan de gebruikers, en is de knop onder de resultaten hernoemd van "Volgende" naar "Resultaten besproken". Daarnaast is er nu een maximaal aantal te verdelen sterren ingesteld. Dit moet ervoor zorgen dat de gebruikers beter gaan nadenken over hoe ze de sterren gaan verdelen over de medespelers.
+
+Het prototype is uitgebreid getest met een groep van 6 eerstejaars studenten. Wederom kwam een groepsgesprek niet echt op gang, het leek erop dat het de studenten niet zoveel uitmaakte welke feedback ze kregen. Nadat ik zelf een aantal vragen ging stellen waarom iemand bovenaan of onderaan eindigde, kwam er wel een gesprek op gang en werd verdere toelichting gegeven door de gebruikers. In deze iteratie kwam het idee naar voren dat de applicatie meer als hulpmiddel moet dienen, en ervoor moet zorgen dat er gespreksonderwerpen op tafel moeten komen.
 
 ## Iteratie 4
-Tussenversie
+
+In iteratie vier zijn vooral een hoop kleine wijzigingen doorgevoerd welke de gebruiksvriendelijkheid en de gebruikerservaring moeten verbeteren. Zo werd de speluitleg in de voorgaande prototypes vrijwel niet gelezen, en dit had als gevolg dat de het voor de gebruikers niet meteen duidelijk was wat de bedoeling is. Door te te verplaatsen van het laptop scherm naar de telefoon van de gebruiker moet dit sneller de aandacht trekken. Daarnaast is het registreren en inloggen samengevoegd en is de homepage van feedbackspel.nl onderhanden genomen en gevuld met uitleg over het spel. De wijzigingen uit deze iteratie zullen bij de volgende iteratie getest worden.
 
 ## Iteratie 5
-Eind
 
+In de vijfde en laatste iteratie zitten alle aanpassingen uit de voorgaande prototypes en wordt de applicatie volledig gebruiksklaar gemaakt. De grootste verandering is dat de applicatie nu vragen gaat stellen bij het tonen van de resultaten. Doormiddel van een algoritme wordt een vraag over de ontvangen feedback van een gebruiker gegenereerd. Deze vraag dient door de deelnemers beantwoord te worden en moet een groepsgesprek opgang brengen.
 
+Dit prototype is nu niet bij de primaire doelgroep (CMD studenten) getest, maar bij mensen uit het bedrijfsleven. Hiervoor is gekozen omdat deze vermoedelijk niet zoveel ervaring met feedback(spellen) hebben, en ze dus zonder enige voorkennis het spel zullen spelen. Daarnaast is het erg interessant om te kijken hoe deze doelgroep met het geven en ontvangen van feedback omgaat.
+
+Geheel onverwacht zijn de uitkomsten uit deze testsessie ontzettend positief. De gebruikers hadden slechts enkele minuten nodig voor het inloggen, registreren en deelnemen aan een feedbackspel. Ook het spelen van het spel leverde weinig problemen op, al na twee rondes kwamen de gesprekken op gang en werd uitgebreid besproken waarom bepaalde eigenschappen wel of niet bij iemand hoorde.
+
+## Conclusie
 
 # Dankwoord
 Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mijn scriptie en het eindproduct. Ik heb de laatste maanden van mijn opleiding nog ontzettend veel geleerd, zowel op vakinhoudelijk als persoonlijk vlak. Hiervoor wil ik graag mijn familie, vrienden, collega's en alle betrokken docenten van de opleiding CMD bedanken.
@@ -861,8 +879,33 @@ user_id
 ## Tests
 De test suites zijn geschreven in het [Mocha](http://mochajs.org/) test framework en er wordt gebruik gemaakt van [Expect.js](https://github.com/Automattic/expect.js) om te testen. Er is voor Mocha gekozen omdat hier zowel server-side én client-side code mee getest kan worden. De combinatie van Mocha met Expect is bijna gelijk aan het testen met Jasmine, een framework waar ik reeds bekend mee ben. De tests zijn te vinden in de map 'tests' en kunnen uitgevoerd worden met het commando `mocha tests/game.js`.
 
-<!--
 # Reflectieverslag
+
+Dit reflectieverslag zal opgesplits worden in twee delen. In deel één zal ik terugblikken op de afgelopen vier jaar op de opleiding CMD en hoe ik hier gegroeit ben. In het tweede deel zal ik reflecteren hoe het afstuderen het afgelopen halfjaar is verlopen. Om op expert niveau te reflecteren zal ik proberen zoveel mogelijk bestaande methodieken te gebruiken.
+
+## Afgelopen vier jaar
+
+## Afstuderen van CMD
+
+## Big Five persoonlijkheidsrapport
+
+De Big Five persoonlijkheidstest geeft je inzicht in de vijf hoofddimensies van persoonlijkheid. Dit inzicht kun je gebruiken om jezelf beter te leren kennen of jezelf voor te bereiden op een assessment bij een sollicitatie. Dit kan voor een werksituatie, in een relatie of welke andere sociale situatie dan ook, van belang zijn. Er wordt hieronder verteld wat de dimensies grofweg zijn en hoe jij scoorde.
+
+Scores lopen van 1 tot 20.
+
+### Onbaatzuchtigheid
+Deze schaal heeft betrekking op inschikkelijkheid. Je scoorde 15 op deze schaal. Hoogscorers staan meer open voor de belangen en wensen van anderen. Laagscorers gaan meer uit van hun eigen belang.
+
+### Gewetensvolheid
+Deze schaal heeft betrekking op doelgerichtheid. Je scoorde 14 op deze schaal. Hoogscorers hebben een sterke 'drive' om zaken op orde, geregeld te hebben. Laagscorers hebben een meer flexibele houding en kunnen beter tegen chaos.
+
+### Extravertheid
+Deze schaal heeft betrekking op het nodig hebben van sociale prikkels. Je scoorde 11 op deze schaal. Hoogscorers zijn op zoek naar gezelligheid en treden graag op de voorgrond. Laagscorers treden minder snel op de voorgrond.
+
+### Openheid
+Deze schaal heeft betrekking op originaliteit en intellectualiteit. Je scoorde 13 op deze schaal. Hoogscorers treden graag buiten de betreden paden en zitten vol ideeën. Laagscorers hebben een meer praktische instelling.
+
+## Belbin
 
 Afstuderen
 - Alleen = kut
@@ -877,102 +920,7 @@ mbti
 Gehele opleiding
 - Gegroeit op persoonlijk vlak
 - Technisch enorme verdieping
--->
 
+# Bijlagen
 
-
-
-
-
-<!--
-Feedback herstellen
-
-Max sterren wel duidelijk
-
-Voorspellen (die en die staan vast weer bovenaan)
-
-Daarnaast geeft dit prototype ook de ontvanghts een minimum aan informatie vooraf te verstrekken kan goed getest worden of het gehele proces, van registreren/inloggen tot het spelen van het spel logisch is. Er werd een laptop meegenomen waarop de applicatie draaide en alle deelnemers moesten hun mobiele telefoon gebruiken om te verbinden met de laptop.
-
-Tijdens het testen waren we met 2 personen om de test af te nemen, ik zelf heb me bezig gehouden met observeren en liep rond in het lokaal, en een medestudent zat achter de laptop om notulen te maken van wat er gezegd werd.
-
-
-Instellen van plaatje
-en feedback per speler weer. Dit moet aanzetten tot dialoog aangezien met op het man af kunnen vragen waarom de ontvangen feedback wel of niet van toepassing is.
-
-Feedbackspel
-
-Stap 1: Website bezoeken met telefoon en registreren.
-Stap 2: Inloggen
-Stap 3: Foto selecteren (‘Moet dat persee een van onszelf zijn’)
-Stap 4: Aan spel deelnemen
-
-Foto’s vallen op en trekken de aandacht.
-Iemand zeg: ‘Moeten we nu sterren aan elkaar geven?’
-‘En nu op ‘ik ben klaar’ klikken’
-‘Je hoeft ze niet allemaal te verdelen toch?’
-‘Vet dat het real-time update’
-‘Werkt lekker snel’
-‘Waar heb je dit in gemaakt’
-‘Ziet er vet uit’
-
-‘Op wie is weer het wachten… Coen’
-
-‘Coen WTF’ - Coen deed maar wat.. 
-
-‘Je kunt ook zien van wie je het krijg’ —> Super vet.
-
-‘Vat het niet persoonlijk op’
-‘Groepssfeer verneukt, haha’
-
-Ze kijken interesserend.
-
-‘Joooo super snel’.
-
-Wordt positief ontvangen. Ze besteden er aandacht aan.
-
-‘ROEKELOOS’ -> ‘Siebren je scoort hoog, haha’.
-
-De woorden / eigenschappen worden steeds goed bekeken en nagedacht. Ze denken dus echt even na wat het woord inhoudt en wij wie het hoort.
-
-‘CREATIEF’ -> ‘Jezus’
-
-Lijstje wordt nog even goed nagekeken of het een beetje klopt zo. Mensen zijn wel snel klaar, duurt niet al te lang.
-
-Er komt geen discussie van ‘waarom’ krijg ik deze sterren. Waarom zoveel of zo weinig.
-
-‘SAAI’ —> Ook leuke omschrijving.
-‘DOORZETTER’ —> Iemand die laag scoort is ‘grappig’. Geeft natuurlijk ook wel aan hoe zo iemand in de groep valt. Hij zegt ook ‘weet wel beter’.
-
-‘LUIDRUCHTIG’ —> Weer lachen. ‘Is niet zo moeilijk’
-
-‘SOCIAAL, OPTIMISTISCH’ —> Weer rustig.
-
-‘Sorry jongens, had geen sterren meer over, haha’.
-
-Knopje om terug te gaan is wel makkelijk, want eentje was te snel.
-
-‘Versprong van NIEUWSGIERIG naar SNEL AFGELEID’.
-Nu kleine, heel kleine discussie over wat het resultaat zal zijn. <— RONALD RONALD
-Resultaat is weer leuk.
-
-‘Krijg je nog een gemiddelde?’
-
-Korte feedback gelijk naar de test vragen ‘dwingt’ ze wel een beetje om in te vullen.
-
-
-Na de test
-Je kan gelijk zien wat mensen je geven. Veel leuker dan invullen van een ‘saai’ lijstje. 
-Misschien een soort ‘podium’. Goud, zilver.
-
-Als je gaat vragen ‘waarom’ dan kun je wat aan de feedback hebben.
-
-Als mensen het niet konden zien had ik het eerlijk ingevuld. Anoniem ga je niet praten, en nu wel. Omdat hij het wel ‘moet’ uitleggen.
-
-Per persoon feedback omschrijving.
-
-Aan het einde zetten: ‘Bespreek de resultaten met je groepsgenoten’!
-
-Resultaten terug kunnen zien. Voortgang.
-
-Duurt niet ‘lang’. Was ‘leuk’.
--->
+[Afstudeerplan Vincent Bremer.pdf](Afstudeerplan Vincent Bremer.pdf)

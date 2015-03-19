@@ -69,6 +69,7 @@ function editLinks() {
 }
 
 $.get('/scriptie/afstudeerscriptie.md', function(content) {
+	
 	var html = marked(content);
 	$('#content').html(html);
 	
@@ -78,10 +79,6 @@ $.get('/scriptie/afstudeerscriptie.md', function(content) {
 	editLinks();
 
 	hljs.initHighlightingOnLoad();
-
-	if (window.location.hash) {
-		window.scrollTo(0, $(window.location.hash).offset().top - 20);
-	}
 
 	if ( ! /localhost/.test(window.location)) {
 		$('#test-vid').prepend('<iframe width="700" height="418" src="https://www.youtube.com/embed/ahAJmDIjdII" frameborder="0" allowfullscreen class="hide-print"></iframe>');

@@ -52,7 +52,7 @@ var ScriptieController = {
 		
 		// Access log
 		db.access.update({
-			ipaddress: ipaddress,
+			// ipaddress: ipaddress,
 			useragent: useragent
 		}, {
 			$set: data,
