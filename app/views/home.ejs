@@ -10,11 +10,18 @@
 <div class="content-wrapper">
 	
 	<div class="banner" id="banner">
-		<div class="info">
+		<div class="banner-info">
 			<img src="/img/banner.png" class="logo">
 			<p class="first">Werk je samen in een team en wil je graag weten hoe anderen over je denken?</p>
 			<p>Na het registreren van een gratis account kun je op deze website een feedbacksessie starten samen met je teamgenoten.</p>
 			<p>Deze feedback maakt inzichtelijk waar je sterke en zwakke punten liggen, en bied waardevolle informatie om jezelf verder te kunnen ontwikkelen.</p>
+			<p class="align-center" style="margin-top: 25px">
+				<% if (user) { %>
+					<a href="/dashboard" class="big-button"><i class="fa fa-fw fa-home"></i> Mijn dashboard</a>
+				<% } else { %>
+					<a href="/start" class="big-button"><i class="fa fa-fw fa-sign-in"></i> Spel starten</a>
+				<% } %>
+			</p>
 		</div>
 	</div>
 
