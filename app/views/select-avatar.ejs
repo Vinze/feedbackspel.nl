@@ -3,78 +3,55 @@
 <head>
 	<% include partials/head %>
 </head>
-<body class="select-avatar">
+<body>
+
 <% include partials/top %>
+
 <div class="content-wrapper">
 	<div class="content container">
 		<div class="row">
-			<div class="box col span-6 offset-3 align-center">
-				<h1>Upload je profielfoto</h1>
-				<form action="/avatar" method="post" enctype="multipart/form-data" class="upload-form" id="upload-form">
-					<label class="file-input">
-						<div>
-							<div class="avatar avatar-preview" id="preview"></div>
-						</div>
-						<i class="fa fa-picture-o"></i> Selecteer afbeelding
-						<input type="file" name="image" id="file-input">
-					</label>
-					<button type="submit" class="btn confirm" id="upload-buttom">
-						Volgende <i class="fa fa-angle-double-right"></i>
-					</button>
-				</form>
+			<div class="box col span-6 offset-3 align-center" id="avatar">
+				<!-- AvatarSelect -->
 			</div>
 		</div>
 	</div>
 </div>
+
 <% include partials/bottom %>
+
+<script type="text/template" id="avatar-tpl">
+	<div class="select-avatar">
+		{{#uploading}}
+			<div class="message" intro="fade:{ duration: 250 }">
+				<p><i class="fa fa-spinner fa-spin fa-4x"></i></p>
+				<p>Afbeelding uploaden...</p>
+			</div>
+		{{/uploading}}
+		{{#uploaded}}
+			<div class="message" outro="fade:{ duration: 250 }">
+				<p><i class="fa fa-check-circle fa-4x accent-color"></i></p>
+				<p>Afbeelding geupload!</p>
+			</div>
+		{{/uploaded}}
+		<h1>Upload je profielfoto</h1>
+		<form on-submit="upload" class="upload-form">
+			<label class="file-input">
+				<div>
+					<div class="avatar avatar-preview"{{#if image.base64}} style="background-image: url('{{image.base64}}')"{{/if}}></div>
+				</div>
+				<i class="fa fa-picture-o"></i> Selecteer afbeelding
+				<input type="file" value="{{file}}" on-change="updatePreview">
+			</label>
+		</form>
+	</div>
+</script>
+
+<script type="text/javascript" src="/js/select-avatar.js"></script>
 <script type="text/javascript">
-
-	;(function() {
-		var uploading = false;
-
-		var image = { name: null, base64: null };
-
-		var allowedFiles = ['image/jpeg', 'image/png'];
-
-		$('#file-input').on('click', function(evt) {
-			if (uploading) evt.preventDefault();
-		});
-
-		$('#file-input').on('change', function(evt) {
-			if (this.files && this.files[0]) {
-				var reader = new FileReader();
-				var file = this.files[0];
-
-				if (allowedFiles.indexOf(file.type) != -1) {
-					reader.readAsDataURL(file);
-				}
-				reader.onload = function(evt) {
-					image.name = file.name;
-					image.base64 = evt.target.result;
-					$('#preview').css({ 'background-image': 'url(' + evt.target.result + ')' });
-				}
-			}
-		});
-
-		$('#upload-form').on('submit', function(evt) {
-			evt.preventDefault();
-
-			if (uploading) return;
-
-			uploading = true;
-
-			$('#upload-buttom').html('<i class="fa fa-spin fa-spinner"></i> Uploaden..');
-
-			$.post('/avatar2', image, function(res) {
-				if (res.succes == true) {
-					uploading = false;
-					$('#upload-buttom').html('Volgende <i class="fa fa-angle-double-right"></i>');
-				}
-			});
-
-
-		});
-	}());
+	var avatarSelect = new AvatarSelect({
+		el: 'avatar',
+		template: '#avatar-tpl'
+	});
 </script>
 </body>
 </html>

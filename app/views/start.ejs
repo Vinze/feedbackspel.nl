@@ -3,20 +3,18 @@
 <head>
 	<% include partials/head %>
 </head>
-<body class="dashboard">
+<body class="start">
 <% include partials/top %>
 <div class="content-wrapper">
-	<div class="content container">
-		<div class="row" id="content">
-			<!-- Content will be rendered here -->
-		</div>
+	<div class="content container" id="content">
+		<!-- Content will be rendered here -->
 	</div>
 </div>
 <% include partials/bottom %>
 
 <script type="text/template" id="template">
 	{{#if action == 'login'}}
-		<div class="col span-6 offset-3 box">
+		<div class="box email-form">
 			<h1>Inloggen / registreren</h1>
 			{{#if error}}
 				<div class="flash-error" intro-outro="slide">{{error}}</div>
@@ -34,7 +32,7 @@
 	{{/if}}
 
 	{{#if action == 'register'}}
-		<div class="col span-8 offset-2 box">
+		<div class="box register-form">
 			<h1>Registreren</h1>
 			{{#if error}}
 				<div class="flash-error" intro-outro="slide">{{error}}</div>
@@ -48,23 +46,22 @@
 				<div class="form-group">
 					<div class="label"><label for="firstname">Voornaam:</label></div>
 					<div class="field">
-						<input type="text" value="{{input.firstname}}" class="text" id="firstname">
+						<input type="text" value="{{input.firstname}}" class="text" id="firstname"autocomplete="off"autocomplete="off">
 						<i class="required"></i>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="label"><label for="lastname">Achternaam:</label></div>
 					<div class="field">
-						<input type="text" value="{{input.lastname}}" class="text" id="lastname">
+						<input type="text" value="{{input.lastname}}" class="text" id="lastname"autocomplete="off">
 						<i class="required"></i>
 					</div>
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn confirm">Volgende <i class="fa fa-chevron-right"></i></button>
 				</div>
-				<div class="form-group">
-					<a on-click="gotoLogin"><i class="fa fa-angle-left"></i> Ga terug</a>
-				</div>
+				<hr>
+				<a on-click="gotoLogin"><i class="fa fa-angle-left"></i> Ga terug</a>
 			</form>
 		</div>
 	{{/if}}

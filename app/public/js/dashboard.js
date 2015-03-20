@@ -107,3 +107,10 @@ $('#host').on('click', function(evt) {
 		document.location.href = '/host';
 	}
 });
+
+var avatarSelect = new AvatarSelect({
+	el: 'avatar',
+	template: '#avatar-tpl'
+});
+
+avatarSelect.set('reload', false);

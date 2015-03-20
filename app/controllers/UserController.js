@@ -1,6 +1,7 @@
 // var bcrypt   = require('bcrypt-nodejs');
 var moment   = require('moment');
 var fs       = require('fs');
+var path     = require('path');
 var spawn    = require('child_process').spawn;
 var auth     = require('../libs/auth');
 var validate = require('../libs/validator');
@@ -12,16 +13,22 @@ function inArray(needle, haystack) {
 
 function decodeBase64Image(dataString) {
 	var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-	var response = {};
+	var decoded = {};
 
 	if (matches.length !== 3) {
 		return new Error('Invalid input string');
 	}
 
-	response.type = matches[1];
-	response.data = new Buffer(matches[2], 'base64');
+	decoded.type = matches[1];
+	decoded.data = new Buffer(matches[2], 'base64');
 
-	return response.data;
+	return decoded;
+}
+
+function capitalizeWords(str) {
+	return str.replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
 }
 
 var UserController = {
@@ -92,14 +99,35 @@ var UserController = {
 	postAvatar2: function(req, res) {
 		var image = req.body;
 
-		var base64 = decodeBase64Image(image.base64);
+		if ( ! image.base64)
+			return res.json({ error: 'No image selected' });
 
-		console.log(base64);
+		var decoded = decodeBase64Image(image.base64);
 
-		fs.writeFile(__dirname + '/' + image.name, base64, function (err) {
+		var filepath = path.resolve(__dirname, '..', 'storage', 'tmp', Date.now() + '-' + image.name);
+
+		var output = path.resolve(__dirname, '..', 'storage', 'avatars', req.user._id + '.png');
+
+		if ( ! inArray(decoded.type, ['image/jpeg', 'image/png']))
+			return res.json({ error: 'Uploaded file is no image' });
+		
+		fs.writeFile(filepath, decoded.data, function (err) {
 			if (err) console.log(err);
-			res.json({ succes: true });
+			
+			var convert = spawn('convert', [filepath, '-resize', '150x150^', '-gravity', 'center', '-crop', '150x150+0+0', '+repage', '-auto-orient', output]);
+
+			convert.on('close', function (code) {
+				db.users.update({ _id: req.user._id }, { $set: { image: true } }, function(err) {
+					if (err) console.log(err);
+				});
+
+				res.json({ success: 'Image saved' });
+
+				fs.unlink(filepath);
+			});
 		});
+
+
 	},
 
 	postLogin: function(req, res) {
@@ -138,8 +166,8 @@ var UserController = {
 				db.users.insert({
 					email: input.email.toLowerCase(),
 					// password: bcrypt.hashSync(input.password),
-					firstname: input.firstname,
-					lastname: input.lastname,
+					firstname: capitalizeWords(input.firstname),
+					lastname: capitalizeWords(input.lastname),
 					image: false,
 					admin: false,
 					created_at: moment().format('YYYY-MM-DD HH:mm:ss'),

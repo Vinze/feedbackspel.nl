@@ -20,18 +20,8 @@
 					<a class="game-btn btn confirm" id="join"><i class="fa fa-mobile"></i> Aan spel deelnemen</a>
 				</p>
 			</div>
-			<div class="col span-4 box align-center" style="min-height: 240px;">
-				<form action="/avatar" method="post" enctype="multipart/form-data" id="upload-form">
-					<label class="file-input">
-					<div>
-						<div class="avatar">
-							<img src="/avatar/<%= user._id %>.png">
-						</div>
-					</div>
-						<input type="file" name="image" id="upload-select">
-						<i class="fa fa-picture-o"></i> Wijzig afbeelding
-					</label>
-				</form>
+			<div class="col span-4 box align-center" id="avatar" style="min-height: 240px;">
+				<!-- AvatarSelect -->
 			</div>
 		</div>
 		<div class="row">
@@ -43,6 +33,34 @@
 </div>
 
 <% include partials/bottom %>
+
+<script type="text/template" id="avatar-tpl">
+	<div class="select-avatar">
+		{{#uploading}}
+			<div class="message" intro="fade:{ duration: 250 }">
+				<p><i class="fa fa-spinner fa-spin fa-4x"></i></p>
+				<p>Afbeelding uploaden...</p>
+			</div>
+		{{/uploading}}
+		{{#uploaded}}
+			<div class="message" outro="fade:{ duration: 250 }">
+				<p><i class="fa fa-check-circle fa-4x accent-color"></i></p>
+				<p>Afbeelding geupload!</p>
+			</div>
+		{{/uploaded}}
+		<form on-submit="upload" class="upload-form">
+			<label class="file-input">
+				<div>
+					<div class="avatar avatar-preview" style="background-image: url('{{ image.base64 ? image.base64 : '/avatar/<%= user._id %>.png' }}')">
+						
+					</div>
+				</div>
+				<i class="fa fa-picture-o"></i> Selecteer afbeelding
+				<input type="file" value="{{file}}" on-change="updatePreview">
+			</label>
+		</form>
+	</div>
+</script>
 
 <script type="text/template" id="join-tpl">
 	<div class="modal-overlay" on-click="closeModal" intro-outro="fade:{ duration: 300 }">
@@ -76,11 +94,11 @@
 			</div>
 			<div class="form-group">
 				<div class="label"><label for="firstname">Voornaam:</label></div>
-				<div class="field"><input type="text" value="{{editing.firstname}}" id="firstname" class="text"></div>
+				<div class="field"><input type="text" value="{{editing.firstname}}" id="firstname" class="text" autocomplete="off"></div>
 			</div>
 			<div class="form-group">
 				<div class="label"><label for="lastname">Achternaam:</label></div>
-				<div class="field"><input type="text" value="{{editing.lastname}}" id="lastname" class="text"></div>
+				<div class="field"><input type="text" value="{{editing.lastname}}" id="lastname" class="text" autocomplete="off"></div>
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn confirm"><i class="fa fa-save"></i> Opslaan</button>
@@ -108,6 +126,7 @@
 		<a href="/uitloggen"><i class="fa fa-sign-out"></i> Uitloggen</a>
 	{{/editing}}
 </script>
+<script type="text/javascript" src="/js/select-avatar.js"></script>
 <script type="text/javascript" src="/js/dashboard.js"></script>
 </body>
 </html>
