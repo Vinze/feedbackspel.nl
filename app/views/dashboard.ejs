@@ -64,7 +64,7 @@
 </script>
 
 <script type="text/template" id="profile-tpl">
-	{{#if editing}}
+	{{#editing}}
 		<h1>Gegevens bewerken</h1>
 		{{#if error}}
 			<div class="flash-error" intro="slide">{{error}}</div>
@@ -106,7 +106,7 @@
 		</div>
 		<hr>
 		<a href="/uitloggen"><i class="fa fa-sign-out"></i> Uitloggen</a>
-	{{/if}}
+	{{/editing}}
 </script>
 <script type="text/javascript" src="/js/dashboard.js"></script>
 </body>

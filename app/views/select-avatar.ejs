@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="box col span-6 offset-3 align-center">
 				<h1>Upload je profielfoto</h1>
-				<form action="/avatar" method="post" enctype="multipart/form-data" class="upload-form">
+				<form action="/avatar" method="post" enctype="multipart/form-data" class="upload-form" id="upload-form">
 					<label class="file-input">
 						<div>
 							<div class="avatar avatar-preview" id="preview"></div>
@@ -18,7 +18,7 @@
 						<i class="fa fa-picture-o"></i> Selecteer afbeelding
 						<input type="file" name="image" id="file-input">
 					</label>
-					<button type="submit" class="btn confirm">
+					<button type="submit" class="btn confirm" id="upload-buttom">
 						Volgende <i class="fa fa-angle-double-right"></i>
 					</button>
 				</form>
@@ -28,19 +28,53 @@
 </div>
 <% include partials/bottom %>
 <script type="text/javascript">
-	var allowedFiles = ['image/jpeg', 'image/png'];
-	$('#file-input').on('change', function(evt) {
-		if (this.files && this.files[0]) {
-			var file = this.files[0];
-			var reader = new FileReader();
-			if (allowedFiles.indexOf(file.type) != -1) {
-				reader.readAsDataURL(file);
+
+	;(function() {
+		var uploading = false;
+
+		var image = { name: null, base64: null };
+
+		var allowedFiles = ['image/jpeg', 'image/png'];
+
+		$('#file-input').on('click', function(evt) {
+			if (uploading) evt.preventDefault();
+		});
+
+		$('#file-input').on('change', function(evt) {
+			if (this.files && this.files[0]) {
+				var reader = new FileReader();
+				var file = this.files[0];
+
+				if (allowedFiles.indexOf(file.type) != -1) {
+					reader.readAsDataURL(file);
+				}
+				reader.onload = function(evt) {
+					image.name = file.name;
+					image.base64 = evt.target.result;
+					$('#preview').css({ 'background-image': 'url(' + evt.target.result + ')' });
+				}
 			}
-			reader.onload = function(e) {
-				$('#preview').css({ 'background-image': 'url(' + e.target.result + ')' });
-			}
-		}
-	});
+		});
+
+		$('#upload-form').on('submit', function(evt) {
+			evt.preventDefault();
+
+			if (uploading) return;
+
+			uploading = true;
+
+			$('#upload-buttom').html('<i class="fa fa-spin fa-spinner"></i> Uploaden..');
+
+			$.post('/avatar2', image, function(res) {
+				if (res.succes == true) {
+					uploading = false;
+					$('#upload-buttom').html('Volgende <i class="fa fa-angle-double-right"></i>');
+				}
+			});
+
+
+		});
+	}());
 </script>
 </body>
 </html>

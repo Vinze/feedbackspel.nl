@@ -27,7 +27,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 // Enabled the bodyparser middleware for accessing POST data
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(bodyParser.json());
 
 // Enable the cookieparser middleware for accessing cookies
@@ -65,6 +65,7 @@ app.get('/start', auth.isGuest, UserController.getStart);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
 app.get('/avatar/:image', UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
+app.post('/avatar2', auth.isMember, UserController.postAvatar2);
 app.get('/uitloggen', auth.isMember, UserController.getLogout);
 
 // GameController
