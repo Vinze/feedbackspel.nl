@@ -3,13 +3,11 @@
 		<div class="header container">
 			<a href="/" class="header-logo">&nbsp;</a>
 			<ul class="header-nav">
-				<% menuItems.forEach(function(item) { %>
-					<li>
-						<a href="<%= item.url %>">
-							<i class="fa fa-fw <%= item.classname %>"></i> <span><%= item.label %></span>
-						</a>
-					</li>
-				<% }); %>
+				<% if (user) { %>
+					<li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
+				<% } else { %>
+					<li><a href="/start"><i class="fa fa-sign-in"></i> Spel starten</a></li>
+				<% } %>
 			</ul>
 		</div>
 	</div>

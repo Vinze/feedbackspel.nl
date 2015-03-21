@@ -68,35 +68,6 @@ var UserController = {
 	},
 
 	postAvatar: function(req, res) {
-		var mimetypes = ['image/jpeg', 'image/png'];
-
-		if (req.files && req.files.image) {
- 			var input = req.files.image.path;
-			
-			if ( ! inArray(req.files.image.mimetype, mimetypes)) {
-				fs.unlink(input, function(err) {
-					if (err) console.log(err);
-				});
-				return res.redirect('/start');
-			}
-
-			var output = __dirname + '/../storage/avatars/' + req.user._id + '.png';
-			var convert = spawn('convert', [input, '-resize', '150x150^', '-gravity', 'center', '-crop', '150x150+0+0', '+repage', '-auto-orient', output]);
-
-			convert.on('close', function (code) {
-				res.redirect('/start');
-				fs.unlink(input);
-			});
-
-			db.users.update({ _id: req.user._id }, { $set: { image: true } }, function(err) {
-				if (err) console.log(err);
-			});
-		} else {
-			res.redirect('/start');
-		}
-	},
-
-	postAvatar2: function(req, res) {
 		var image = req.body;
 
 		if ( ! image.base64)

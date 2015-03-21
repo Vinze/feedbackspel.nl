@@ -2,10 +2,12 @@
 var express      = require('express');
 var app          = express();
 var server       = require('http').Server(app);
+var fs           = require('fs');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 var multer       = require('multer');
+var moment       = require('moment');
 var auth         = require('./libs/auth');
 var config       = require('./libs/config');
 var flash        = require('./libs/flash');
@@ -55,6 +57,28 @@ app.use(require('./libs/locals'));
 // Redirect to a game room if the route is four digits
 app.use(GameController.roomParser);
 
+app.use(function (req, res, next) {
+
+	var time = moment().format('YYYY-MM-DD HH:mm:ss');
+
+	var writeLine = [
+		time,
+		req.method,
+		req.url,
+		(req.user ? req.user.email : 'guest'),
+		(req.headers['user-agent'] || '?'),
+		(req.headers['x-forwarded-for'] || req.connection.remoteAddress || '?')
+	].join('\t');
+
+	if (req.url.substr(0, 10) != '/scriptie/' && req.url.substr(0, 8) != '/avatar/') {
+		fs.appendFile(__dirname + '/storage/access.log', writeLine + '\n', function (err) {
+			if (err) console.log(err);
+		});
+	}
+
+	next();
+});
+
 // Home route
 app.get('/', function(req, res) {
 	res.render('home');
@@ -65,7 +89,6 @@ app.get('/start', auth.isGuest, UserController.getStart);
 app.get('/dashboard', auth.isMember, UserController.getDashboard);
 app.get('/avatar/:image', UserController.getAvatar);
 app.post('/avatar', auth.isMember, UserController.postAvatar);
-app.post('/avatar2', auth.isMember, UserController.postAvatar2);
 app.get('/uitloggen', auth.isMember, UserController.getLogout);
 
 // GameController

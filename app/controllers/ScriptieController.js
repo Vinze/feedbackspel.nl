@@ -35,24 +35,22 @@ var ScriptieController = {
 	},
 
 	postAccess: function(req, res) {
-		var ipaddress = req.headers['x-forwarded-for'] ||
-		                req.connection.remoteAddress ||
-		                req.socket.remoteAddress ||
-		                req.connection.socket.remoteAddress ||
-		                null;
+		var ipaddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-		var useragent =req.headers['user-agent'] || null;
+		var useragent = req.headers['user-agent'] || null;
 		
 		var data = {
 			timestamp: moment().unix(),
-			last_visit: moment().format('DD-MM-YYYY HH:mm:ss')
+			last_visit: moment().format('DD-MM-YYYY HH:mm:ss'),
+			ipaddress: ipaddress,
+			useragent: useragent
 		};
 
 		if (req.user) data.user = req.user.email;
 		
 		// Access log
 		db.access.update({
-			// ipaddress: ipaddress,
+			ipaddress: ipaddress,
 			useragent: useragent
 		}, {
 			$set: data,
