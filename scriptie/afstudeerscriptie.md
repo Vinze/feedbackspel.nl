@@ -879,108 +879,141 @@ De test suites zijn geschreven in het [Mocha](http://mochajs.org/) test framewor
 
 # Reflectieverslag
 
-Dit reflectieverslag zal opgesplits worden in twee delen. In deel één zal ik terugblikken op de afgelopen vier jaar op de opleiding CMD en hoe ik hier gegroeit ben. In het tweede deel zal ik reflecteren hoe het afstuderen het afgelopen halfjaar is verlopen. Om op expert niveau te reflecteren zal ik proberen zoveel mogelijk bestaande methodieken te gebruiken.
-
-## Afgelopen vier jaar
-
-## Afstuderen van CMD
+In dit reflectieverslag zal ik zowel terugblikken op de afgelopen vier jaar als op het afstuderen van de opleiding CMD.
 
 ## Big Five persoonlijkheidsrapport
 
-De Big Five persoonlijkheidstest geeft je inzicht in de vijf hoofddimensies van persoonlijkheid. Dit inzicht kun je gebruiken om jezelf beter te leren kennen of jezelf voor te bereiden op een assessment bij een sollicitatie. Dit kan voor een werksituatie, in een relatie of welke andere sociale situatie dan ook, van belang zijn. Er wordt hieronder verteld wat de dimensies grofweg zijn en hoe jij scoorde. (1)
+"De Big Five persoonlijkheidstest geeft je inzicht in de vijf hoofddimensies van persoonlijkheid. Dit inzicht kun je gebruiken om jezelf beter te leren kennen of jezelf voor te bereiden op een assessment bij een sollicitatie. Dit kan voor een werksituatie, in een relatie of welke andere sociale situatie dan ook, van belang zijn. Er wordt hieronder verteld wat de dimensies grofweg zijn en hoe jij scoorde." (1)
 
 Scores lopen van 1 tot 20.
 
 ### Onbaatzuchtigheid
-Deze schaal heeft betrekking op inschikkelijkheid. Je scoorde 15 op deze schaal. Hoogscorers staan meer open voor de belangen en wensen van anderen. Laagscorers gaan meer uit van hun eigen belang.
+
+*Deze schaal heeft betrekking op inschikkelijkheid. Je scoorde 15 op deze schaal. Hoogscorers staan meer open voor de belangen en wensen van anderen. Laagscorers gaan meer uit van hun eigen belang.*
+
+Hier kan ik me zeker in vinden, ik zet mezelf namelijk niet zo snel op de eerste plaats.
 
 ### Gewetensvolheid
-Deze schaal heeft betrekking op doelgerichtheid. Je scoorde 14 op deze schaal. Hoogscorers hebben een sterke 'drive' om zaken op orde, geregeld te hebben. Laagscorers hebben een meer flexibele houding en kunnen beter tegen chaos.
+
+*Deze schaal heeft betrekking op doelgerichtheid. Je scoorde 14 op deze schaal. Hoogscorers hebben een sterke 'drive' om zaken op orde, geregeld te hebben. Laagscorers hebben een meer flexibele houding en kunnen beter tegen chaos.*
 
 ### Extravertheid
-Deze schaal heeft betrekking op het nodig hebben van sociale prikkels. Je scoorde 11 op deze schaal. Hoogscorers zijn op zoek naar gezelligheid en treden graag op de voorgrond. Laagscorers treden minder snel op de voorgrond.
+
+*Deze schaal heeft betrekking op het nodig hebben van sociale prikkels. Je scoorde 11 op deze schaal. Hoogscorers zijn op zoek naar gezelligheid en treden graag op de voorgrond. Laagscorers treden minder snel op de voorgrond.*
 
 ### Openheid
-Deze schaal heeft betrekking op originaliteit en intellectualiteit. Je scoorde 13 op deze schaal. Hoogscorers treden graag buiten de betreden paden en zitten vol ideeën. Laagscorers hebben een meer praktische instelling.
 
-(1) 123.test - Gratis psychologische tests. Geraadpleegd op 18 maart 2015, van https://www.123test.nl/bigfive
+*Deze schaal heeft betrekking op originaliteit en intellectualiteit. Je scoorde 13 op deze schaal. Hoogscorers treden graag buiten de betreden paden en zitten vol ideeën. Laagscorers hebben een meer praktische instelling.*
 
+(1) 123test - Gratis psychologische tests. Geraadpleegd op 18 maart 2015, van https://www.123test.nl/bigfive
 
 
 ## Belbin test
 
+http://www.thesis.nl/testen/test/belbin-test
+
 <table>
-	<tr>
-		<th>Teamrol</th>
-		<th>2011</th>
-		<th>2015</th>
-		<th>Verschil</th>
-	</tr>
-	<tr>
-		<td>Bedrijfsman</td>
-		<td>20%</td>
-		<td>18.6%</td>
-		<td>−1.4%</td>
-	</tr>
-	<tr>
-		<td>Groepswerker</td>
-		<td>12.8%</td>
-		<td>10%</td>
-		<td>−2.8%</td>
-	</tr>
-	<tr>
-		<td>Onderzoeker</td>
-		<td>14.2%</td>
-		<td>17.1%</td>
-		<td>+2.9%</td>
-	</tr>
-	<tr>
-		<td>Plant</td>
-		<td>8.5%</td>
-		<td>8.6%</td>
-		<td>+0.1%</td>
-	</tr>
-	<tr>
-		<td>Voorzitter</td>
-		<td>8.5%</td>
-		<td>2.9%</td>
-		<td>−5.6%</td>
-	</tr>
-	<tr>
-		<td>Vormer</td>
-		<td>11.4%</td>
-		<td>10%</td>
-		<td>-1.4%</td>
-	</tr>
-	<tr>
-		<td>Waarschuwer</td>
-		<td>11.4%</td>
-		<td>11.4%</td>
-		<td>0%</td>
-	</tr>
-	<tr>
-		<td>Zorgdrager</td>
-		<td>12.8%</td>
-		<td>21.4%</td>
-		<td>+8.6%</td>
-	</tr>
+	<tr><th>Teamrol</th>      <th>2011</th>  <th>2015</th>  <th>Verschil</th></tr>
+	<tr><td>Bedrijfsman</td>  <td>20%</td>   <td>18.6%</td> <td>−1.4%</td></tr>
+	<tr><td>Groepswerker</td> <td>12.8%</td> <td>10%</td>   <td>−2.8%</td></tr>
+	<tr><td>Onderzoeker</td>  <td>14.2%</td> <td>17.1%</td> <td>+2.9%</td></tr>
+	<tr><td>Plant</td>        <td>8.5%</td>  <td>8.6%</td>  <td>+0.1%</td></tr>
+	<tr><td>Voorzitter</td>   <td>8.5%</td>  <td>2.9%</td>  <td>−5.6%</td></tr>
+	<tr><td>Vormer</td>       <td>11.4%</td> <td>10%</td>   <td>-1.4%</td></tr>
+	<tr><td>Waarschuwer</td>  <td>11.4%</td> <td>11.4%</td> <td>0%</td></tr>
+	<tr><td>Zorgdrager</td>   <td>12.8%</td> <td>21.4%</td> <td>+8.6%</td></tr>
 </table>
 
-### Bedrijfsman 
+### Bedrijfsman (−1.4%)
 
-### Groepswerker
+*Stabiel en beheerst. Een praktische organisator, die beslissingen in concrete werkzaamheden omzet. Heeft een goed ontwikkeld zelfbeeld en beheerst zijn gevoelens. Noest en gedisciplineerd maar met flair in het organiseren, zeker onder druk of in verwarrende situaties.*
 
-### Onderzoeker
+### Groepswerker (−2.8%)
 
-### Plant
+*Stabiel, extrovert, weinig overheersen. Stimuleert en ondersteunt de teamleden, bevordert de communicatie en de teamgeest. Hij integreert mensen en hun activiteiten, is sociaal opmerkzaam en kan goed luisteren. Geschikt voor een leidinggevende rol: groepswerkers hebben een sterk verlichtend effect op teams.*
 
-### Voorzitter
+### Onderzoeker (+2.9%)
 
-### Vormer
+*Stabiel, dominant, extrovert. Gaat op zoek naar ideeën, ontwikkelingen en informatie buiten de deur en beschikt daarvoor over talloze contacten: ontspannen, sociaal, gezellig. Is niet zozeer zelf de bron van ideeën, maar pikt ze gemakkelijk op bij anderen.*
 
-### Waarschuwer
+### Plant (+0.1%)
 
-### Zorgdrager
+*Dominant, zeer hoge intelligentie, introvert. De man met de plotselinge ideeën. ‘Ingeplant’ in rustige teams om creativiteit te genereren: hij maakt de nieuwe openingen. Een Plant roept weerstanden op door gebrek aan praktische zin en door kritische houding ten opzichte van ‘domheid’.*
+
+### Voorzitter (−5.6%)
+
+*Stabiel, dominant, extrovert. De Voorzitter houdt de werkwijze van het team onder controle en laat de kracht van ieder teamlid zo goed mogelijk tot zijn recht komen. Geen buitengewone intelligentie, evenmin bijzondere creatieve gaven. Wel kalmte, realisme en nuchterheid. Tolerantie om te luisteren naar anderen, sterk genoeg om adviezen naast zich neer te leggen.*
+
+### Vormer (-1.4%)
+
+*Onrustig, dominant, extrovert. Hij geeft vorm aan de inspanningen van het team en zoekt patronen in de discussies. Uitdagend, ruziënd, snel gefrustreerd en onrustig. Eerder hard dan zachtmoedig, niet bang voor risico’s. Productief onder druk en bij hoge snelheid: verkoopleiders, uitgevers, voetbaltrainers.*
+
+### Waarschuwer (0%)
+
+*Hoge intelligentie, stabiel, introvert. Analyseert de problemen en houdt de ideeën kritische tegen het licht. Serieus, voorzichtig en immuun voor enthousiasme. Hij wantrouwt de euforie en zijn prestatiemotivatie is gering.*
+
+### Zorgdrager (+8.6%)
+
+*Rustig introvert. Houdt in de gaten dat er niets wordt overgeslagen: hij volgt alleen iedereen rusteloos, consciëntieus, zorgelijk en wat beschroomd ten opzichte van anderen. Ze ‘absorberen’ als het ware de stress (maagzweertype); de man achter de schermen die het planmatige verloop voor zijn rekening neemt.*
+
+## KOLB
+
+![KOLB test 2011 vs 2015](scriptie/bijlagen/reflectie-kolb.png)
+
+### Beslisser
+De beslisser durft besluiten te nemen. Hij koppelt graag de theorie aan de praktijk.
+
+Als het gaat om een probleem op te lossen waar één juiste oplossing voor gezocht moet worden, ben je bij de beslisser aan het goede adres. Hij gebruikt hierbij graag technologische begrippen, modellen en theorieën.
+
+De beslisser is praktisch ingesteld. Hij werkt graag volgens een plan zodat hij stap voor stap tot het juiste resultaat kan komen. In de planfase van een project weegt hij zorgvuldig voors en tegens tegen elkaar af. Hij gaat doelgericht en planmatig te werk en zet ideeën om in daden.
+
+De beslisser leert van praktijkvoorbeelden. Hij leert optimaal als hij onder begeleiding van een expert kan oefenen. De expert kan hem de technieken tonen en staven met duidelijke praktische voorbeelden
+
+De beslisser doet het goed in conventionele intelligentietesten. Hij houdt zich liever bezig met technische problemen en dingen dan met mensen en weet zijn emoties goed in toom te houden.
+
+## STARRT
+
+### Situatie
+
+Afgelopen halfjaar heb ik vanaf september 2014 gewerkt aan mijn afstudeerproject 'Feedbackspel.nl'. Het idee was om een digitaal feedbackspel te gaan ontwikkelen in de vorm van een (web-)applicatie. Ik ben op dit idee gekomen omdat ik er zelf vaak tegenaan liep dat de bestaande analoge feedback spellen te ingewikkeld waren of deze teveel tijd koste om even samen met de projectgroep te spelen. Naar mijn mening zou een digitaal feedbackspel veel voordelen kunnen bieden, en tot mijn verbazing heb ik nog geen digitale feedbackspellen kunnen vinden. Er is op dit gebied dus ruimte om met een nieuw en innovatief product op de markt te komen.
+
+Na het idee op papier (afstudeerplan) te hebben gezet, heb ik deze ingediend bij mijn afstudeerdocenten Jan-Wessel Hovingh (mentor) en Dirk Sierd de Vries (vakdocent). Samen met nog vijf medestudenten hebben we een eigen afstudeerlokaal geregeld achter het minorlokaal van concepting. Hier heb ik tot en met maart 2015 gewerkt aan de webapplicatie en de bijbehorende documentatie. 
+
+- Beschrijf de situatie. Wat is er gebeurd?
+- Wie waren de betrokkenen?
+- Waar speelde het zich af?
+- Waarover ging het precies?
+
+
+### Taak
+
+- Wat was de taak ?
+- Wat was je rol? Wat was je functie?
+- Wat moest je doen ?
+- Wat werd er van je verwacht?
+- Wat was je doel? Wat waren je doelen?
+- Wat was je voornemen? Had je een plan?
+
+### Actie
+
+- Wat heb je werkelijk gedaan?
+- Hoe heb je het aangepakt?
+- Welke afwegingen hebben daarin op dat moment een rol gespeeld?
+- Wat dacht je? Wat voelde je? Wat zag je voor je?
+- Wat was precies jouw aandeel of inbreng?
+
+### Resultaat
+
+- Wat was het gevolg van jouw actie bij jezelf en wat was het gevolg bij andere betrokkenen?
+- Wat was het gevolg op de sfeer?
+- Wat was de invloed op het proces? Konden jullie nog goed verder werken?
+- Wat was de invloed van jouw aandeel (van je actie) op het resultaat dat je wilde bereiken.
+
+### Reflectie
+
+- Was het resultaat van je actie dat wat je er mee wilde bereiken?
+- Heb je er iets van geleerd ?
+- Kun je deze situatie en je handelen daarin koppelen aan een competentie uit het profiel  van de beroepsbeoefenaar uit de opdracht? Als je dat kan, hoe scoorde je dan voor deze competentie?
 
 
 Afstuderen
@@ -999,4 +1032,4 @@ Gehele opleiding
 
 # Bijlagen
 
-[Afstudeerplan Vincent Bremer.pdf](Afstudeerplan Vincent Bremer.pdf)
+[Afstudeerplan Vincent Bremer.pdf](scriptie/bijlagen/Afstudeerplan Vincent Bremer.pdf)

@@ -16,8 +16,8 @@
 	{{#if action == 'login'}}
 		<div class="box email-form">
 			<h1>Vul je e-mailadres in</h1>
-			{{#if error}}
-				<div class="flash-error" intro-outro="slide">{{error}}</div>
+			{{#if emailError}}
+				<div class="flash-error" intro-outro="slide">{{emailError}}</div>
 			{{/if}}
 			<p>Voer hieronder je e-mailadres in zodat we kunnen controleren of je al een account bij ons hebt.</p>
 			<form on-submit="validateEmail">
@@ -34,8 +34,8 @@
 	{{#if action == 'register'}}
 		<div class="box register-form">
 			<h1>Registreren</h1>
-			{{#if error}}
-				<div class="flash-error" intro-outro="slide">{{error}}</div>
+			{{#if registerError}}
+				<div class="flash-error" intro-outro="slide">{{registerError}}</div>
 			{{/if}}
 			<p>Het opgegeven e-mailadres is nog niet bij ons bekend, vul de onderstaande velden in om een nieuw account te registreren.</p>
 			<form on-submit="validateRegister">

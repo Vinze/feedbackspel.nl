@@ -22,11 +22,9 @@ var AvatarSelect = Ractive.extend({
 					base64: evt.target.result
 				});
 
-				var image = self.get('image');
-
 				self.set('uploading', true);
 
-				$.post('/avatar', image, function(res) {
+				$.post('/avatar', self.get('image'), function(res) {
 					if (res.error) return alert('Er is een fout opgetreden!');
 
 					self.set('uploading', null).then(function() {

@@ -55,16 +55,28 @@ ProfileEditor.on({
 		evt.original.preventDefault();
 	},
 	save: function(evt) {
+		evt.original.preventDefault();
+		
 		var editing = ProfileEditor.get('editing');
+		var self = this;
+
+		if ( ! validator.isLength(editing.firstname, 1)) {
+			self.set('error', 'Er is geen voornaam ingevuld!');
+			self.find('#firstname').focus();
+			return;
+		}
+		if ( ! validator.isLength(editing.lastname, 1)) {
+			self.set('error', 'Er is geen achternaam ingevuld!');
+			self.find('#lastname').focus();
+			return;
+		}
 		
 		$.post('/api/users/save', editing, function(res) {
-			if (res.error) return ProfileEditor.set('error', res.error);
+			if (res.error) return self.set('error', res.error);
 
-			ProfileEditor.set({ user: res.user, editing: null });
+			self.set({ user: res.user, editing: null });
 			$('#title span').text(res.user.firstname);
 		});
-
-		evt.original.preventDefault();
 	}
 });
 
