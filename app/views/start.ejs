@@ -15,7 +15,7 @@
 <script type="text/template" id="template">
 	{{#if action == 'login'}}
 		<div class="box email-form">
-			<h1>Inloggen / registreren</h1>
+			<h1>Vul je e-mailadres in</h1>
 			{{#if error}}
 				<div class="flash-error" intro-outro="slide">{{error}}</div>
 			{{/if}}
@@ -37,10 +37,10 @@
 			{{#if error}}
 				<div class="flash-error" intro-outro="slide">{{error}}</div>
 			{{/if}}
-			<p>Het opgegeven e-mailadres is bij ons nog niet bekend, vul de onderstaande velden in om een nieuw account te registreren.</p>
+			<p>Het opgegeven e-mailadres is nog niet bij ons bekend, vul de onderstaande velden in om een nieuw account te registreren.</p>
 			<form on-submit="validateRegister">
-			<div class="form-group">
-					<div class="label">e-mailadres:</div>
+				<div class="form-group">
+					<div class="label">E-mailadres:</div>
 					<div class="field bold">{{input.email}}</div>
 				</div>
 				<div class="form-group">

@@ -1,4 +1,4 @@
-var Form = new Ractive({
+var Start = new Ractive({
 	el: 'content',
 	template: '#template',
 	data: {
@@ -12,7 +12,7 @@ var Form = new Ractive({
 	}
 });
 
-Form.on('validateEmail', function(evt) {
+Start.on('validateEmail', function(evt) {
 	evt.original.preventDefault();
 
 	var self = this;
@@ -43,7 +43,7 @@ Form.on('validateEmail', function(evt) {
 
 });
 
-Form.on('validateRegister', function(evt) {
+Start.on('validateRegister', function(evt) {
 	evt.original.preventDefault();
 	var self = this;
 	var input = self.get('input');
@@ -70,7 +70,7 @@ Form.on('validateRegister', function(evt) {
 	});
 });
 
-Form.on('gotoLogin', function(evt, action) {
+Start.on('gotoLogin', function(evt, action) {
 	var self  = this;
 	self.set('action', 'login').then(function() {
 		self.find('#email').focus();

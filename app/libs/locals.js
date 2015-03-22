@@ -9,6 +9,8 @@ module.exports = function(req, res, next) {
 
 	res.locals.pageTitle = 'Feedbackspel.nl';
 
+	res.locals.metaDescription = 'Welkom op feedbackspel.nl! Hier kun je gratis en eenvoudig een online feedback spelen met je collega\'s, medestudenten of vrienden.';
+
 	res.locals.currentYear = moment().format('YYYY');
 
 	next();

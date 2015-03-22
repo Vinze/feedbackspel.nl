@@ -702,8 +702,6 @@ Dit prototype is nu niet bij de primaire doelgroep (CMD studenten) getest, maar 
 
 Geheel onverwacht zijn de uitkomsten uit deze testsessie ontzettend positief. De gebruikers hadden slechts enkele minuten nodig voor het inloggen, registreren en deelnemen aan een feedbackspel. Ook het spelen van het spel leverde weinig problemen op, al na twee rondes kwamen de gesprekken op gang en werd uitgebreid besproken waarom bepaalde eigenschappen wel of niet bij iemand hoorde.
 
-## Conclusie
-
 # Dankwoord
 Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mijn scriptie en het eindproduct. Ik heb de laatste maanden van mijn opleiding nog ontzettend veel geleerd, zowel op vakinhoudelijk als persoonlijk vlak. Hiervoor wil ik graag mijn familie, vrienden, collega's en alle betrokken docenten van de opleiding CMD bedanken.
 
@@ -889,7 +887,7 @@ Dit reflectieverslag zal opgesplits worden in twee delen. In deel één zal ik t
 
 ## Big Five persoonlijkheidsrapport
 
-De Big Five persoonlijkheidstest geeft je inzicht in de vijf hoofddimensies van persoonlijkheid. Dit inzicht kun je gebruiken om jezelf beter te leren kennen of jezelf voor te bereiden op een assessment bij een sollicitatie. Dit kan voor een werksituatie, in een relatie of welke andere sociale situatie dan ook, van belang zijn. Er wordt hieronder verteld wat de dimensies grofweg zijn en hoe jij scoorde.
+De Big Five persoonlijkheidstest geeft je inzicht in de vijf hoofddimensies van persoonlijkheid. Dit inzicht kun je gebruiken om jezelf beter te leren kennen of jezelf voor te bereiden op een assessment bij een sollicitatie. Dit kan voor een werksituatie, in een relatie of welke andere sociale situatie dan ook, van belang zijn. Er wordt hieronder verteld wat de dimensies grofweg zijn en hoe jij scoorde. (1)
 
 Scores lopen van 1 tot 20.
 
@@ -905,7 +903,85 @@ Deze schaal heeft betrekking op het nodig hebben van sociale prikkels. Je scoord
 ### Openheid
 Deze schaal heeft betrekking op originaliteit en intellectualiteit. Je scoorde 13 op deze schaal. Hoogscorers treden graag buiten de betreden paden en zitten vol ideeën. Laagscorers hebben een meer praktische instelling.
 
-## Belbin
+(1) 123.test - Gratis psychologische tests. Geraadpleegd op 18 maart 2015, van https://www.123test.nl/bigfive
+
+
+
+## Belbin test
+
+<table>
+	<tr>
+		<th>Teamrol</th>
+		<th>2011</th>
+		<th>2015</th>
+		<th>Verschil</th>
+	</tr>
+	<tr>
+		<td>Bedrijfsman</td>
+		<td>20%</td>
+		<td>18.6%</td>
+		<td>−1.4%</td>
+	</tr>
+	<tr>
+		<td>Groepswerker</td>
+		<td>12.8%</td>
+		<td>10%</td>
+		<td>−2.8%</td>
+	</tr>
+	<tr>
+		<td>Onderzoeker</td>
+		<td>14.2%</td>
+		<td>17.1%</td>
+		<td>+2.9%</td>
+	</tr>
+	<tr>
+		<td>Plant</td>
+		<td>8.5%</td>
+		<td>8.6%</td>
+		<td>+0.1%</td>
+	</tr>
+	<tr>
+		<td>Voorzitter</td>
+		<td>8.5%</td>
+		<td>2.9%</td>
+		<td>−5.6%</td>
+	</tr>
+	<tr>
+		<td>Vormer</td>
+		<td>11.4%</td>
+		<td>10%</td>
+		<td>-1.4%</td>
+	</tr>
+	<tr>
+		<td>Waarschuwer</td>
+		<td>11.4%</td>
+		<td>11.4%</td>
+		<td>0%</td>
+	</tr>
+	<tr>
+		<td>Zorgdrager</td>
+		<td>12.8%</td>
+		<td>21.4%</td>
+		<td>+8.6%</td>
+	</tr>
+</table>
+
+### Bedrijfsman 
+
+### Groepswerker
+
+### Onderzoeker
+
+### Plant
+
+### Voorzitter
+
+### Vormer
+
+### Waarschuwer
+
+### Zorgdrager
+
 
 Afstuderen
 - Alleen = kut
