@@ -127,11 +127,6 @@ app.get('/test', function(req, res) {
 	res.render('test');
 });
 
-// app.get('/spa*', function(req, res) {
-	// Single page app
-	// res.sendfile('public/views/layout.html');
-// });
-
 app.get('*', function(req, res) {
 	res.status(404);
 	res.render('404');

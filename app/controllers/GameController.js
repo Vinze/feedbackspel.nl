@@ -1,6 +1,22 @@
 // var qr = require('qr-image');
 var _  = require('underscore');
 
+function isNumber(n) {
+	return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function inRange(num, start, end) {
+	return parseInt(num) >= start && parseInt(num) <= end;
+}
+
+function getRoom(num) {
+	if ( ! isNumber(num) || ! inRange(num, 1000, 9999)) {
+		return null;
+	}
+
+	return parseInt(num);
+}
+
 var GameController = {
 
 	getCreate: function(req, res) {
@@ -9,21 +25,25 @@ var GameController = {
 	},
 
 	getHost: function(req, res) {
-		var room = req.params.room;
+		var room = getRoom(req.path.substr(6));
+
+		if ( ! room) return res.redirect('/dashboard');
+
 		res.render('game-host', { pageTitle: 'Feedbackspel - ' + room });
 	},
 
 	getPlay: function(req, res) {
-		var room = req.params.room;
+		var room = getRoom(req.path.substr(6));
+
+		if ( ! room) return res.redirect('/dashboard');
+
 		res.render('game-player', { pageTitle: 'Feedbackspel - ' + room });
 	},
 
 	roomParser: function(req, res, next) {
-		var room = parseInt(req.path.substr(1,4).replace(/[^0-9.]/g, '') || 0);
+		var room = getRoom(req.path.substr(1));
 
-		if (room >= 1000 && room <= 9999) {
-			return res.redirect('/play/' + room);
-		}
+		if (room) return res.redirect('/play/' + room);
 
 		next();
 	}
