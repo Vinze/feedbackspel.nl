@@ -21,6 +21,7 @@ var auth = {
 				console.error('Invalid token:', err);
 				return next();
 			}
+			
 
 			db.users.findById(tokenData.userId, function(err, user) {
 				if (user) {

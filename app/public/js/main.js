@@ -68,5 +68,17 @@ helpers.nl2br = function(text) {
 
 helpers.baseURL = baseURL;
 
-$(function() {
+function getQueryParam(name) {
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
+$(document).on('ajaxBeforeSend', function(e, xhr, options) {
+	var token = Cookies.get('fbs_token') || getQueryParam('token');
+
+	if (token) {
+		xhr.setRequestHeader('X-Auth-Token', token);
+	}
 });
