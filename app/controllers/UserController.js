@@ -55,10 +55,11 @@ var UserController = {
 	},
 
 	getAvatar: function(req, res) {
-		var imagepath = __dirname + '/../storage/avatars/' + req.params.image;
+		var imagepath = path.resolve('storage/avatars', req.params.image);
+
 		fs.exists(imagepath, function(exists) {
 			if ( ! exists) {
-				imagepath = __dirname + '/../public/img/placeholder.png';
+				imagepath = path.resolve('../public/img/placeholder.png');
 			}
 			fs.readFile(imagepath, function(err, data) {
 				res.writeHead(200, {'Content-Type': 'image/png' });

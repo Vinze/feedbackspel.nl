@@ -112,14 +112,16 @@ h1:first-child {
 }
 
 h2 {
-	font-size: 1.4em;
+	font-size: 1.5em;
+	font-weight: bold;
 	margin: 20px 0 15px 0;
 	color: #55be78;
 }
 
 h3 {
-	font-weight: bold;
-	margin: 10px 0 2px 0;
+	font-size: 1.3em;
+	font-weight: normal;
+	margin: 15px 0 5px 0;
 }
 
 h4 {

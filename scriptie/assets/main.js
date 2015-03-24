@@ -89,7 +89,7 @@ $.get('/scriptie/afstudeerscriptie.md', function(content) {
 $('#toc').on('click', 'a', function(evt) {
 	var linkTo = $(this).attr('href');
 
-	window.location.hash = linkTo;
+	// window.location.hash = linkTo;
 	
 	window.scrollTo(0, $(linkTo).offset().top - 20);
 

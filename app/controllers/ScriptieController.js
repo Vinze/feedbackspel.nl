@@ -8,13 +8,13 @@ var ScriptieController = {
 	getIndex: function(req, res) {
 		if (req.path == '/scriptie' || req.path == '/scriptie/') {
 			// Get the path to index.html
-			var filepath = path.resolve(__dirname, '..', '..', 'scriptie', 'index.html');
+			var filepath = path.resolve('../scriptie/index.html');
 
 			// Send index.html to the client
-			res.sendfile(filepath);
+			res.sendFile(filepath);
 		} else {
 			// Get the path to the requested file
-			var filepath = path.resolve(__dirname, '..', '..', 'scriptie', req.path.substr(10));
+			var filepath = path.resolve('../scriptie', decodeURIComponent(req.path.substr(10)));
 
 			// Check if the requested file exists
 			fs.exists(filepath, function(exists) {
@@ -22,7 +22,7 @@ var ScriptieController = {
 					return res.status(404).end();
 
 				// Send the file
-				res.sendfile(filepath);
+				res.sendFile(filepath);
 			});
 		}
 	},

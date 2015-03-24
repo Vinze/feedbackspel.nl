@@ -71,6 +71,10 @@ app.use(function (req, res, next) {
 	].join('\t');
 
 	if (req.url.substr(0, 10) != '/scriptie/' && req.url.substr(0, 8) != '/avatar/') {
+		if (req.user && req.user.email == 'vbremer89@gmail.com') {
+			return next();
+		}
+
 		fs.appendFile(__dirname + '/storage/access.log', writeLine + '\n', function (err) {
 			if (err) console.log(err);
 		});

@@ -1,7 +1,7 @@
 var page = require('webpage').create();
 var system = require('system');
 
-var type = system.args[1];
+var resolution = system.args[1];
 var url = system.args[2];
 var filename = system.args[3];
 var timeout = system.args[4];
@@ -10,31 +10,19 @@ if (url.substr(0, 4) != 'http') {
 	url = 'http://' + url;
 }
 
-if (type == 'mobile') {
-	page.viewportSize = {
-		width: 320,
-		height: 568
-	};
-	page.clipRect = {
-		top: 0,
-		left: 0,
-		width: 320,
-		height: 568
-	};
-}
+var width = resolution.split('x')[0];
+var height = resolution.split('x')[1];
 
-if (type == 'desktop') {
-	page.viewportSize = {
-		width: 1280,
-		height: 720
-	};
-	page.clipRect = {
-		top: 0,
-		left: 0,
-		width: 1280,
-		height: 720
-	};
-}
+page.viewportSize = {
+	width: width,
+	height: height
+};
+page.clipRect = {
+	top: 0,
+	left: 0,
+	width: width,
+	height: height
+};
 
 page.open(url, function() {
 	page.evaluate(function() {
@@ -42,7 +30,7 @@ page.open(url, function() {
 	});
 
 	setTimeout(function () {
-		page.render(filename);
+		page.render('screenshots/' + filename);
 		phantom.exit();
 	}, timeout);
 });
