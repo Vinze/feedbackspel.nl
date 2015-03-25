@@ -22,7 +22,6 @@ var auth = {
 				return next();
 			}
 			
-
 			db.users.findById(tokenData.userId, function(err, user) {
 				if (user) {
 					req.user = _.pick(user, '_id', 'email', 'firstname', 'lastname', 'image', 'admin');
@@ -36,7 +35,7 @@ var auth = {
 	setToken: function(user, req) {
 		var payload = {
 			userId: user._id,
-			ip: req.connection.remoteAddress,
+			ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
 			exp: moment().add(6, 'months').unix()
 		};
 		var token = jwt.sign(payload, config.jwt_secret);

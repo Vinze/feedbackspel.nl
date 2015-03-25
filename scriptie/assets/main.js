@@ -62,9 +62,9 @@ function buildTOC() {
 
 function editLinks() {
 	$('#content a').each(function() {
-		if ($(this).attr('href').substr(0, 4) == 'http') {
+		// if ($(this).attr('href').substr(0, 4) == 'http') {
 			$(this).attr({ 'target': '_blank' });
-		}
+		// }
 	});
 }
 
@@ -95,13 +95,3 @@ $('#toc').on('click', 'a', function(evt) {
 
 	evt.preventDefault();
 });
-
-var seconds = 0;
-
-setInterval(function() {
-	seconds++;
-}, 1000);
-
-window.onbeforeunload = function() {
-	$.post('/access/update', { seconds: seconds });
-}

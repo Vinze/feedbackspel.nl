@@ -70,11 +70,19 @@ Tel. secretariaat 058 2511107 / 06 46065567
 
 # Voorwoord
 
-Het idee voor een feedbackspel is ontstaan uit eigen ongenoegen met de bestaande producten om feedback te geven en ontvangen. De afgelopen vier jaar heb ik me op de opleiding Communication & Multimedia Design onder andere bezig gehouden de competenties Growth & Reflection en Multidisciplinary Teamwork. Voor deze competenties is het vereist om er behulp van de mensen uit de projectgroep erachter te komen waar je sterke en zwakke punten liggen en hoe je functioneert in een team. De feedback die je van teamgenoten ontvangt kan waardevolle informatie bieden om jezelf verder te ontwikkelen op zowel persoonlijk als professioneel vlak.
+De afgelopen vier jaar heb ik me op de opleiding Communication & Multimedia Design onder andere bezig gehouden met de competenties Growth & Reflection en Multidisciplinary Teamwork. Voor deze competenties is het vereist om er behulp van medestudenten achter komen te komen waar je sterke en zwakke punten liggen en hoe je functioneert in een team. Deze feedback kan enorm waardevolle informatie bieden om jezelf verder te ontwikkelen, zowel op persoonlijk als professioneel vlak.
 
-Er zijn diverse feedbackmethodieken, vragenlijsten, spellen en boeken beschikbaar welke kunnen helpen bij het houden van een feedbacksessie. Deze producten proberen een bepaalde structuur aan te brengen in een feedbacksessie, en geven informatie over hoe je met feedback om moet gaan. Dit zijn vrijwel allemaal fysieke en analoge producten welke (bijvoorbeeld) op papier staan. Ik heb de afgelopen jaren diverse producten toegepast en ben tot de conclusie gekomen dat ik en vele studenten met mij de bestaande producten omslachtig of onnodig moeilijk vinden. Een leuke manier om feedback te geven is in de vorm van een zogenaamd feedbackspel. Zelf heb ik praktijk ervaring met "Het feedbackspel" en het "Kernkwadranten spel". Deze feedbackspellen zorgen ervoor dat een feedbacksessie gestructureerd wordt en weten bepaalde (gevoelige) onderwerpen op tafel te krijgen. Een nadeel van zo'n spel is dat er redelijk wat voorbereidingen getroffen moeten worden zoals het begrijpen en opzetten van een spel. Dit heeft als gevolg dat er de nodige tijd moet worden uitgetrokken voor een feedbackspel.
+Er zijn diverse feedbackmethodieken, vragenlijsten, spellen en boeken beschikbaar welke kunnen helpen bij het houden van een feedbacksessie. Deze producten proberen een bepaalde structuur aan te brengen in een feedbacksessie, en geven informatie over hoe je met feedback om moet gaan. Dit zijn vrijwel allemaal fysieke en analoge producten welke (bijvoorbeeld) op papier staan. Ik heb de afgelopen jaren diverse producten toegepast en ben tot de conclusie gekomen dat ik en vele studenten met mij de bestaande producten omslachtig of onnodig moeilijk vinden.
+
+Een leuke manier om feedback te geven is in de vorm van een zogenaamd feedbackspel. Zelf heb ik praktijk ervaring met "Het feedbackspel" en het "Kernkwadranten spel". Deze feedbackspellen zorgen ervoor dat een feedbacksessie gestructureerd wordt en weten bepaalde (gevoelige) onderwerpen op tafel te krijgen. Een nadeel van zo'n spel is dat er redelijk wat voorbereidingen getroffen moeten worden zoals het begrijpen en opzetten van het spel. Dit heeft als gevolg dat er de nodige tijd moet worden uitgetrokken voor een feedbackspel.
 
 Ik ben van mening dat dit veel makkelijker moet kunnen in de vorm van, bijvoorbeeld, een digitaal feedbackspel. Na uitgebreid zoeken op internet en in de [App Store](https://itunes.apple.com/nl/genre/ios/id36?mt=8) van Apple en de [Play Store](https://play.google.com/store) van Android ben ik tot de conclusie gekomen dat er eigenlijk nog geen applicaties hiervoor beschikbaar zijn. Hier ligt mogelijk een grote kans om met een nieuw en innovatief concept op de markt te komen.
+
+# Het idee
+
+Het idee om een feedbackspel te ontwikkelen is eigenlijk al in het tweede semester van het derde jaar ontstaan. Ik zat hier in een projectgroep met nog drie medestudenten en we wilden graag feedback op elkaar geven in een groepsgesprek. Hiervoor wilde we in eerste instantie een feedbackspel van school gebruiken, maar deze was toen niet voorhanden. Daarom hebben we via Google een lijst met karakter eigenschappen opgezocht en in ongeveer 10 minuten tijd zelf een kleine applicatie (1) geschreven. Deze applicatie laat met een druk op de knop een willekeurige eigenschap laat zien. Deze eigenschap moesten we in overleg met de projectgroep koppelen aan een medestudent, en uitleggen waarom de eigenschap bij diegene hoorde. Deze manier van feedback geven bleek erg prettig te werken, en doordat er willekeurige eigenschappen getoond werden kwamen er leuke gesprekken op gang.
+
+(1) [http://feedbackspel.nl/randomwords](/randomwords)
 
 # Doelstellingen
 
@@ -109,8 +117,8 @@ Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geve
 
 Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke kunnen helpen bij de verdere ontwikkeling van een feedback systeem.
 
-(1) http://facebook.com/vbremer89/posts/722083571157120  
-(2) [Feedback onderzoek - Google Formulieren.pdf](scriptie/bijlagen/Feedback onderzoek - Google Formulieren.pdf)
+(1) Facebook post: http://facebook.com/vbremer89/posts/722083571157120  
+(2) Ruwe data uit de enquête: [Feedback onderzoek - Google Formulieren.pdf](scriptie/bijlagen/Feedback onderzoek - Google Formulieren.pdf)
 
 ### Feedbacksystemen
 
@@ -200,9 +208,9 @@ Aangezien deze studenten al een aantal jaar op de opleiding zitten is de kans gr
 
 Hebben over het algemeen nog maar weinig ervaring met feedback systemen/spellen en zullen minder naar het technische aspect van een applicatie kijken. Deze doelgroep is perfect om te testen in hoeverre het een applicatie het proces van feedback geven en ontvangen in teamverband kan bevorderen. Ze zijn niet bevooroordeeld hoe een feedbackspel zou moeten werken, en hebben nog geen beeld van hoe dit georganiseerd zou moeten worden.
 
-### PPO docenten
+<!-- ### PPO docenten
 
-PPO docenten houden zich bezig met de persoonlijke ontwikkeling van studenten en hebben veel ervaring met diverse feedbackmethodieken. Bij het spelen van een feedbackspel kijken vanuit een professioneel oogpunt. 
+PPO docenten houden zich bezig met de persoonlijke ontwikkeling van studenten en hebben veel ervaring met diverse feedbackmethodieken. Bij het spelen van een feedbackspel kijken vanuit een professioneel oogpunt.  -->
 
 ## Persona
 
@@ -314,7 +322,7 @@ Het project is volgens het design thinking proces uitgevoerd en hiervoor zijn di
 
 ### Iteration
 
-Het iteractieve proces houd in dat het product zich ontwikkeld op basis van de opgedane kennis uit het testen met gebruikers. Dit proces bestaat uit een aantal stappen die zich herhalen in een cyclus en ervoor zorgt dat het product als het ware om de gebruiker heen ontwikkeld wordt.
+Het iteratieve proces houd in dat het product zich ontwikkeld op basis van de opgedane kennis uit het testen met gebruikers. Dit proces bestaat uit een aantal stappen die zich herhalen in een cyclus en ervoor zorgt dat het product als het ware om de gebruiker heen ontwikkeld wordt.
 
 ![webapp1](scriptie/bijlagen/iteration.svg)
 
@@ -359,7 +367,7 @@ Het spel wordt gespeeld door vijf testpersonen, dit zijn studenten die aan het a
 
 ## Uitvoering
 
-Er is gekozen om drie eigenschappen uit de kernkwadranten van Daniel Ofman te nemen. Twee hiervan waren kwaliteiten (betrokken en besluitvaardig) en één was een valkuil (afwachtend). Er is gekozen om  te testen met slechts drie eigenschappen omdat het uitvoeren van een paper prototype relatief veel tijd kost, en naar verwachting zullen de eventuele knelpunten al snel naar boven komen. Door zowel positieve als negatieve eigenschappen te behandelen kan ik erachter komen of hier anders op gereageerd wordt. Alle spelers hebben een papieren kopie (mockup) gekregen van de webapplicatie. Hierop vult men de namen van de medespelers in, en nadat spelers de eigenschap hebben gezien krijgen ze de tijd om de sterren te verdelen over de medespelers. Zodra iedereen klaar is loop ik langs om de uitslag te noteren en een uiteindelijke top 3 samen te stellen. Deze top 3 zal ik laten zien aan de groep en observeren of er een gesprek ontstaat en wat men met de feedback doet.
+Er is gekozen om drie eigenschappen uit de kernkwadranten van Daniel Ofman te nemen. Twee hiervan waren kwaliteiten (betrokken en besluitvaardig) en één was een valkuil (afwachtend). Er is gekozen om  te testen met slechts drie eigenschappen omdat het uitvoeren van een paper prototype relatief veel tijd kost, en naar verwachting zullen de eventuele knelpunten al snel naar boven komen. Door zowel positieve als negatieve eigenschappen te behandelen kan ik erachter komen of hier anders op gereageerd wordt. Alle spelers hebben een papieren kopie (mock-up) gekregen van de webapplicatie. Hierop vult men de namen van de medespelers in, en nadat spelers de eigenschap hebben gezien krijgen ze de tijd om de sterren te verdelen over de medespelers. Zodra iedereen klaar is loop ik langs om de uitslag te noteren en een uiteindelijke top 3 samen te stellen. Deze top 3 zal ik laten zien aan de groep en observeren of er een gesprek ontstaat en wat men met de feedback doet.
 
 ## Welke vragen wil ik beantwoord hebben?
 
@@ -605,7 +613,7 @@ Helaas kwam het nog wel vaak voor dat de gebruikers een nieuw spel probeerde aan
 
 ## Inleiding
 
-Dit is de laatste iteratie welke nog tijdens het afstuderen uitgevoerd wordt. In deze iteratie ligt de nadruk vooral op het toevoegen van kleine verbeteringen en het gebruiksklaar maken van de applicatie. Daarnaast moeten de aanpassingen uit iteratie 4 ook nog getest worden. Tevens is deze laatste testsessie het meetpunt om erachter te komen of het doel bereikt is om een groepsgesprek op gang te brengen.
+Dit is de laatste iteratie die nog tijdens het afstuderen uitgevoerd wordt. In deze iteratie ligt de nadruk vooral op het toevoegen van kleine verbeteringen en het gebruiksklaar maken van de applicatie. Daarnaast moeten de aanpassingen uit iteratie 4 ook nog getest worden. Tevens is deze laatste testsessie het meetpunt om erachter te komen of het doel bereikt is om een groepsgesprek op gang te brengen.
 
 ## Doelstellingen
 
@@ -652,7 +660,7 @@ Daarom is dit prototype getest bij de medewerkers van een bedrijf. In dit geval 
 
 ## Testmethodiek
 
-Om de test zo realistisch mogelijk te maken wordt het spel gespeeld bij het bedrijf zelf. Er is een vergaderruimte gereserveerd en er staat drinken voor de testpersonen klaar op tafel. In de ruimte staat een camera opgesteld om de testsessie vast te leggen. Deze beelden dienen later als bewijsvoering en helpen bij het evalueren van de test. Vooraf heb ik de laptop klaar gezet met daarop de applicatie en ik heb een zeer korte uitleg gegeven over wat ze gaan doen. Inhoudelijk ben ik niet ingegaan over hoe het spel gespeeld moet worden, dit zou zichzelf moeten wijzen en geen verdere uitleg nodig hebben. Tijdens het testen ben ik in de hoek van de ruimte gaan zitten en heb ik me niet bemoeid met het spel. Eventuele vragen of problemen moesten de testpersonen in eerste instantie zelf proberen op te lossen, en mocht er echt wat fout gaat zou ik pas ingrijpen.
+Om de test zo realistisch mogelijk te maken wordt het spel gespeeld bij het bedrijf zelf. Er is een vergaderruimte gereserveerd en er staat drinken voor de testpersonen klaar op tafel. In de ruimte staat een camera opgesteld om de testsessie vast te leggen. Deze beelden dienen later als bewijsvoering en helpen bij het evalueren van de test. Vooraf heb ik de laptop klaar gezet met daarop de applicatie en ik heb een zeer korte uitleg gegeven over wat ze gaan doen. Inhoudelijk ben ik niet ingegaan over hoe het spel gespeeld moet worden, dit zou zichzelf moeten wijzen en geen verdere uitleg nodig hebben. Tijdens het testen ben ik in de hoek van de ruimte gaan zitten en heb ik me niet bemoeid met het spel. Eventuele vragen of problemen moesten de testpersonen in eerste instantie zelf proberen op te lossen, en mocht er echt wat fout gaat zou ik pas ingrijpen. Er is gekozen voor deze testmethodiek omdat het spel normaal ook gespeeld wordt zonder dat ik erbij aanwezig ben om de gebruikers op weg te helpen.
 
 ## Resultaten
 
@@ -725,11 +733,18 @@ Dit prototype is nu niet bij de primaire doelgroep (CMD studenten) getest, maar 
 
 Geheel onverwacht zijn de uitkomsten uit deze testsessie ontzettend positief. De gebruikers hadden slechts enkele minuten nodig voor het inloggen, registreren en deelnemen aan een feedbackspel. Ook het spelen van het spel leverde weinig problemen op, al na twee rondes kwamen de gesprekken op gang en werd uitgebreid besproken waarom bepaalde eigenschappen wel of niet bij iemand hoorde.
 
+## Verdere ontwikkeling
+
+#### Feedback opslaan
+
+Er zijn nog ontzettend veel functionaliteiten te bedenken om de applicatie verder uit te breiden. Zo zou het opslaan van de ontvangen feedback enorm handig zijn om een profiel van een gebruiker op te bouwen. Dit profiel kan helpen bij het geven van adviezen waarmee de gebruiker zichzelf verder kan ontwikkelen.
+
+#### Eigenschappen beheren
+Sommige gebruikers gaven aan dat ze het handig zouden vinden als ze zelf eigenschappen konden toevoegen of verwijderen. Op die manier kunnen ze de invulling en gespreksonderwerpen in de feedbacksessie wat meer naar eigen hand zetten.
+
 ## Conclusie
 
 Na vijf iteraties van doelen stellen, testen, aanpassen en verbeteren is uiteindelijk een goed werkend en gebruiksklaar product ontwikkeld. De hoofddoelen van het op gang brengen van een gesprek en het eenvoudig opzetten van een feedbacksessie zijn succesvol behaald. Vooral in de eerste drie iteraties was het nog erg zoeken om een erachter te komen wat nodig was om een gesprek op gang te brengen. In iteratie vier zijn een hoop kleine verbeteringen doorgevoerd, en werd het idee bedacht om de applicatie vragen te laten stellen. Dit bleek een gouden zet te zijn want de laatste testsessie duurde maar liefst een uur omdat de testpersonen zoveel gespreksstof hadden.
-
-Er zijn nog ontzettend veel functionaliteiten te bedenken om de applicatie verder uit te breiden. Zo zou het opslaan van de ontvangen feedback enorm handig zijn om een profiel van een gebruiker op te bouwen. Dit profiel kan helpen bij het geven van adviezen waarmee de gebruiker zichzelf verder kan ontwikkelen.
 
 # Dankwoord
 Na bijna een half jaar zit het afstuderen erop en leg ik de laatste hand aan mijn scriptie en het eindproduct. Ik heb de laatste maanden van mijn opleiding nog ontzettend veel geleerd, zowel op vakinhoudelijk als persoonlijk vlak. Hiervoor wil ik graag mijn familie, vrienden, collega's en alle betrokken docenten van de opleiding CMD bedanken.
@@ -808,19 +823,55 @@ Module              Omschrijving                                       Server  C
 - JWT               JSON Web Tokens voor authenticatie en API keys     [x]     [ ]
 ```
 
+### Express
+
+http://expressjs.com/
+
+Als server side framework is gekozen voor Express.js. De keuze hiervoor was snel gemaakt omdat deze op moment van schrijven het meest populaire en stabiele framework is. Er zijn veel handleidingen voor te vinden, en is gemakkelijk uit te breiden met nieuwe functionaliteit. Later in het project is ook gekeken naar Hapi.js, een framework gemaakt om API's mee te ontwikkelen. Dit was mogelijk ook een goede kandidaat, echter bood het niet genoeg voordelen om halverwege nog over te stappen.
+
+### Ractive.js
+
+http://www.ractivejs.org/
+
+Als front-end javascript framework is gekozen voor Ractive.js. Dit is een vrij klein en compact framework welke zorgt voor de live model-view binding. Ractive is ontwikkeld bij The Guardian, een Engelse krant en wordt hier gebruikt om de nieuws applicaties mee te ontwikkelen.
+
+### JSON Web Tokens
+
+http://jwt.io/
+
+Er wordt gebruikt gemaakt van JWT's (JSON Web Tokens) om de gebruikers mee in te loggen. Een JWT is een vrij nieuwe standaard welke het opslaan van de sessie op de server overbodig maakt. Het is mogelijk om bepaalde gebruikersgegevens zoals id, email en naam in deze token op te slaan. Op de server kan vervolgens door middel van een geheime handtekening de token ontsleuteld en gevalideerd worden. Deze tokens kunnen tevens in de headers of URL meegestuurd worden, wat als voordeel heeft dat ze meteen als API keys gebruikt kunnen worden.
+
+### Zepto
+
+http://zeptojs.com/
+
+jQuery wordt in dit project vervangen door Zepto. Deze bied grotendeels dezelfde functionaliteit en werkt vrijwel hetzelfde, maar toch zijn er een aantal verschillen. Zo heeft Zepto standaard betere ondersteuning voor gebaren op mobiele telefoons, en is het een stuk compacter dan jQuery. Echter worden oudere browsers niet meer ondersteund, maar dat is in het geval van deze applicatie geen probleem. In verouderde browsers worden nieuwe technieken zoals websockets niet ondersteund, wat inhoud dat de applicatie daar toch al niet zou werken.
+
+### Underscore
+
+http://underscorejs.org/
+
+Underscore.js bied meer dan 100 functies om allerlei taken mee uit te voeren. Deze worden door de gehele applicatie heen gebruikt, zowel op de server als bij de client.
+
 ## Hosting
+
 De applicatie wordt gehost op DigitalOcean (https://www.digitalocean.com/) en draait op Ubuntu Server versie 13.10. Hiervoor is gekozen omdat DigitalOcean een VPS (Virtual Private Server) aanbied voor slechts vijf dollar per maand en deze VPS erg makkelijk uit te bereiden is in capaciteit. Daarnaast bied een VPS vele voordelen over de standaard hosting, zo is het mogelijk om zelf software te installeren en is de server volledig naar wens te configureren. Voor het besturingssysteem Ubuntu Linux is gekozen omdat ik hier al veel ervaring mee heb en het een stabiel en bewezen platform is.
 
 ### Lighttpd webserver
+
 Op de server wordt [Lighttpd](http://www.lighttpd.net/) gebruikt als webserver software. Dit is een lichtgewicht en snel alternatief voor het alom bekende Apache. Hiervoor is gekozen omdat Lighttpd in dit geval slechts dient als proxy server, en diverse domeinen kan koppelt aan verschillende poorten. Op deze poorten draaien meerdere Node.js applicaties.
 
 ## Code conventies
 
 ### DRY
+
 Don’t Repeat Yourself, dit houd in dat er zo geprogrammeerd dient te worden dat iedere functie ook losstaand kan functioneren en dus niet steeds opnieuw geschreven hoeft te worden.
 
 ### KISS
-Keep It Short and Simple, voeg geen overbodige dingen toe, en schijf je code zo simpel mogelijk. Als iets op meerdere manieren opgelost kan worden, kies dat voor de meest eenvoudige oplossing. De geschreven code moet zichzelf wijzen, dus geef vanzelfsprekende functienamen en waar nodig voeg commentaar toe.
+Keep It Short and Simple, voeg geen overbodige dingen toe, en schijf je code zo simpel mogelijk. Als iets op meerdere manieren opgelost kan worden, kies dat voor de meest eenvoudige oplossing. De geschreven code moet zichzelf wijzen, dus geef vanzelfsprekende functienamen en voeg waar nodig commentaar toe.
+
+### Reactive programming
+Reactive programming houd heel simpel gezegd in dat 'dingen' code technisch aan elkaar gekoppeld. Deze 'dingen' zijn in het geval van deze webapplicatie objecten en templates. Wanneer er iets in de template wijzigt wordt ook het achterliggende object geüpdatet. Wanneer er iets in het object wijzigt, wordt ook de bijbehorende template opnieuw rendered. Deze koppeling, ook wel 'live binding' genoemd, wordt verzorgt door het [Ractive.js](http://www.ractivejs.org/) framework.
 
 ### Variabelen
 Variabelen starten met een kleine letter en ieder opvolgend woord begint met een hoofdletter.  
@@ -908,7 +959,7 @@ De test suites zijn geschreven in het [Mocha](http://mochajs.org/) test framewor
 
 # Reflectieverslag
 
-In dit reflectieverslag zal ik terugblikken op de afgelopen vier jaar en op het afgelopen halfjaar afstuderen van de opleiding CMD. Ik zal diverse tests herhalen welke ik in het verleden heb uitgevoerd om erachter te komen in hoeverre ik veranderd ben. Daarnaast ga ik volgens de STARRT reflectiemethode reflecteren op mijn afstudeerperiode.
+In dit reflectieverslag zal ik terugblikken op de afgelopen vier jaar en op het afgelopen halfjaar afstuderen van de opleiding CMD. Ik zal diverse tests herhalen welke ik in het verleden heb uitgevoerd om erachter te komen in hoeverre ik veranderd ben. Daarnaast ga ik volgens de STARR methode reflecteren op mijn afstudeerperiode en hoe ik de afgelopen jaren gegroeid ben.
 
 ## Big Five persoonlijkheidsrapport
 
@@ -944,7 +995,7 @@ Hierin kan ik me wat minder vinden, ik had eerder een score van rond de 8 verwac
 
 (1) 123test - Gratis psychologische tests. Geraadpleegd op 18 maart 2015, van https://www.123test.nl/bigfive
 
-## Belbin test
+## Belbin teamrollen
 
 In het begin van mijn studie (2011) heb ik een Belbin test uitgevoerd om erachter te komen welke teamrollen het beste bij mij passen. Sindsdien ben ik enorm gegroeid en ben daarom benieuwd in hoeverre dit terug te zien is in de resultaten. Daarom heb ik wederom dezelfde Belbin test na vier jaar nogmaals uitgevoerd. Hieronder zijn de resultaten in te zien en ga ik per rol kijken wat er veranderd is en hoe ik daarover denk.
 
@@ -1021,19 +1072,25 @@ Aangezien ik het afgelopen anderhalf jaar erg veel zelfstandig en alleen gewerkt
 
 *"Stabiel, dominant, extrovert. Gaat op zoek naar ideeën, ontwikkelingen en informatie buiten de deur en beschikt daarvoor over talloze contacten: ontspannen, sociaal, gezellig. Is niet zozeer zelf de bron van ideeën, maar pikt ze gemakkelijk op bij anderen."*
 
-De afgelopen jaren heb ik veel ervaring en contacten opgedaan, en dit is ook terug te zien in de uitslag voor 'Onderzoeker'. Door geregeld samen te werken en veel op internet te zoeken naar nieuwe technieken ben ik enorm gegroeid.
+De afgelopen jaren heb ik veel ervaring en contacten opgedaan, en dit is ook terug te zien in de uitslag voor 'Onderzoeker'. Door geregeld samen te werken en veel op internet te zoeken naar nieuwe technieken ben ik enorm gegroeid. Ik kijk nu veel meer vooruit en vind het erg gaaf om de nieuwste technieken te gebruiken. Doordat ik de ontwikkelingen op de voet volg kom ik vaak nieuwe ideeën tegen en deze wil ik dan graag in de praktijk toepassen.
 
 ### Plant: 8,6% (+0,1%)
 
 *"Dominant, zeer hoge intelligentie, introvert. De man met de plotselinge ideeën. ‘Ingeplant’ in rustige teams om creativiteit te genereren: hij maakt de nieuwe openingen. Een Plant roept weerstanden op door gebrek aan praktische zin en door kritische houding ten opzichte van 'domheid'."*
 
+Volgens mij ben ik wel vrij intelligent, alleen totaal niet dominant, zeker niet in een projectgroep. Waarom ik toch nog 8.6% scoor op deze teamrol is mij een raadsel. Volgens anderen ben ik altijd bereid om te helpen als mensen iets niet snappen (domheid?). Wellicht komt het omdat ik zelf best wel introvert ben en niet zo zeer op de voorgrond hoef te staan.
+
 ### Voorzitter: 2,9% (−5,6%)
 
 *"Stabiel, dominant, extrovert. De Voorzitter houdt de werkwijze van het team onder controle en laat de kracht van ieder teamlid zo goed mogelijk tot zijn recht komen. Geen buitengewone intelligentie, evenmin bijzondere creatieve gaven. Wel kalmte, realisme en nuchterheid. Tolerantie om te luisteren naar anderen, sterk genoeg om adviezen naast zich neer te leggen."*
 
+Ik voel me inderdaad nog niet echt thuis in de rol van voorzitter of projectleider. Maar waarom ik in drie jaar met 5,6% gezakt ben weet ik niet. Ik had juist het gevoel dat ik de rol als voorzitter wel beter beheers sinds ik begonnen ben op de opleiding CMD. Vooral als derde en vierdejaars kwam de rol van voorzitter of projectleider vaak op mijn schouders te liggen. In het derde jaar moest ik nog punten voor projectmanagement halen en hierbij werd ik gedwongen tot deze rol. Daarnaast heb ik ook in een projectgroep gezeten met voornamelijk tweedejaars studenten. Hier was het nodig om het voortouw te nemen, en volgens mij ging me dat toentertijd prima af.
+
 ### Vormer: 10% (-1,4%)
 
 *"Onrustig, dominant, extrovert. Hij geeft vorm aan de inspanningen van het team en zoekt patronen in de discussies. Uitdagend, ruziënd, snel gefrustreerd en onrustig. Eerder hard dan zachtmoedig, niet bang voor risico’s. Productief onder druk en bij hoge snelheid: verkoopleiders, uitgevers, voetbaltrainers."*
+
+
 
 ### Waarschuwer: 11,4% (0%)
 
@@ -1045,26 +1102,31 @@ De afgelopen jaren heb ik veel ervaring en contacten opgedaan, en dit is ook ter
 
 http://www.thesis.nl/testen/test/belbin-test
 
-## KOLB
+## Kolb leerstijlen
 
-![KOLB test 2011 vs 2015](scriptie/bijlagen/reflectie-kolb.png)
+![Kolb test 2011 vs 2015](scriptie/bijlagen/reflectie-kolb.png)
 
 ### Beslisser
-De beslisser durft besluiten te nemen. Hij koppelt graag de theorie aan de praktijk.
 
-Als het gaat om een probleem op te lossen waar één juiste oplossing voor gezocht moet worden, ben je bij de beslisser aan het goede adres. Hij gebruikt hierbij graag technologische begrippen, modellen en theorieën.
+*"De beslisser durft besluiten te nemen. Hij koppelt graag de theorie aan de praktijk.*
 
-De beslisser is praktisch ingesteld. Hij werkt graag volgens een plan zodat hij stap voor stap tot het juiste resultaat kan komen. In de planfase van een project weegt hij zorgvuldig voors en tegens tegen elkaar af. Hij gaat doelgericht en planmatig te werk en zet ideeën om in daden.
+*Als het gaat om een probleem op te lossen waar één juiste oplossing voor gezocht moet worden, ben je bij de beslisser aan het goede adres. Hij gebruikt hierbij graag technologische begrippen, modellen en theorieën.*
 
-De beslisser leert van praktijkvoorbeelden. Hij leert optimaal als hij onder begeleiding van een expert kan oefenen. De expert kan hem de technieken tonen en staven met duidelijke praktische voorbeelden
+*De beslisser is praktisch ingesteld. Hij werkt graag volgens een plan zodat hij stap voor stap tot het juiste resultaat kan komen. In de planfase van een project weegt hij zorgvuldig voors en tegens tegen elkaar af. Hij gaat doelgericht en planmatig te werk en zet ideeën om in daden.*
 
-De beslisser doet het goed in conventionele intelligentietesten. Hij houdt zich liever bezig met technische problemen en dingen dan met mensen en weet zijn emoties goed in toom te houden.
+*De beslisser leert van praktijkvoorbeelden. Hij leert optimaal als hij onder begeleiding van een expert kan oefenen. De expert kan hem de technieken tonen en staven met duidelijke praktische voorbeelden*
 
-## STARR reflecties
+*De beslisser doet het goed in conventionele intelligentietesten. Hij houdt zich liever bezig met technische problemen en dingen dan met mensen en weet zijn emoties goed in toom te houden.*"
+
+Bovenstaande tekst is één-op-één gekopieerd van de Thesis site, maar verbazingwekkend genoeg komt deze omschrijving exact overeen met mijzelf.
+
+http://www.thesis.nl/testen/kolb/
+
+## STARR reflectie
 
 ### STARR reflectie #1
 
-**Situatie:** Ik heb moeite om mezelf gemotiveerd te houden.
+**Situatie:** Ik vind het moeilijk om langere tijd gemotiveerd bezig te gaan voor school.
 
 **Taak:** Het motiveren van mezelf.
 
@@ -1072,15 +1134,15 @@ De beslisser doet het goed in conventionele intelligentietesten. Hij houdt zich 
 
 **Resultaat:** Ik kom nu iedere dag op school en lig netjes op schema met mijn afstuderen.
 
-**Reflectie:** Door samen met anderen te zitten voel ik me meer verplicht om iedere dag naar school te gaan en dit zorgt ervoor dat ik wel gemotiveerd aan het werk ga.
+**Reflectie:** Door samen met anderen te zitten voel ik me meer verplicht om iedere dag naar school te gaan en dit zorgt ervoor dat ik wel gemotiveerd aan de slag ga.
 
 ### STARR reflectie #2
 
 **Situatie:** Deadlines voelen niet echt als deadlines en worden te vaak uitgesteld.
 
-**Taak:** Het halen van en houden aan deadlines.
+**Taak:** Het halen van, en houden aan, deadlines.
 
-**Actie:** Iedere week een vast moment plannen wanneer ik de voortgang bespreek met mijn mentor en vakdocent.
+**Actie:** Voor iedere week een vast moment plannen om de voortgang te bespreken met mijn mentor en vakdocent.
 
 **Resultaat:** Aangezien ik niet iedere week hetzelfde wil laten zien moet ik wel wat doen aan het project en haal ik de deadlines wel.
 
@@ -1088,15 +1150,15 @@ De beslisser doet het goed in conventionele intelligentietesten. Hij houdt zich 
 
 ### STARR reflectie #3
 
-**Situatie:** Ik vind het moeilijk om op expert niveau onderzoek te doen, en kan me hier maar moeilijk toe zetten omdat het zulke droge stof is.
+**Situatie:** Bij het afstuderen moet je op expert niveau onderzoek doen, maar ik kan me maar moeilijk door de droge stof van het onderzoeken heen worstelen.
 
-**Taak:** Het onderzoeken makkelijker voor mezelf maken.
+**Taak:** Het onderzoeken voor mezelf makkelijker maken.
 
-**Actie:** In plaats van het project volgens de voor mij bekende waterval methode te doen, kies ik nu om Design Science Research toe te passen.
+**Actie:** In plaats van het project volgens de voor mij bekende waterval methode te doen, kies ik nu om de onderzoek uit Design Science toe te passen.
 
-**Resultaat:** De onderzoeksresultaten komen nu voornamelijk uit het testen van het product bij de gebruikers. Deze resultaten zijn direct bruikbaar en zijn direct toepasbaar op het product.
+**Resultaat:** De onderzoeksresultaten komen nu voornamelijk uit het testen van het product bij de gebruikers. Deze resultaten zijn direct bruikbaar en toepasbaar op het product.
 
-**Reflectie:** In mijn vakgebied, namelijk het ontwikkelen van applicaties, is het onderzoeken	 uitstekend te combineren met het ontwikkelen van het product. Door te onderzoeken aan de hand van het testen is het een stuk minder droog en doordat de resultaten meteen zichtbaar zijn kan ik mezelf er makkelijker toe zetten.
+**Reflectie:** In mijn vakgebied, namelijk het ontwikkelen van applicaties, is het onderzoeken uitstekend te combineren met het ontwikkelen van het product. Door onderzoek te doen aan de hand van het testen vind ik het veel minder saai werk. Doordat de resultaten meteen zichtbaar zijn weet ik dat het zin heeft, en kan ik mezelf er makkelijker toe zetten.
 
 ### STARR reflectie #4
 
@@ -1112,67 +1174,19 @@ De beslisser doet het goed in conventionele intelligentietesten. Hij houdt zich 
 
 ### STARR reflectie #5
 
-**Situatie:** Alleen afstuderen is saai
+**Situatie:** Bij vergaderingen en andere groepsaangelegenheden sprak ik mezelf niet gauw uit en stond ik teveel op de achtergrond.
 
-**Taak:** 
+**Taak:** Om ervoor te zorgen dat mijn mening en ideeën ook op tafel komen moest ik meer naar de voorgrond treden.
 
-**Actie:** 
+**Actie:** Door mezelf aan te bieden als projectleider of voorzitter dwong ik mezelf om meer naar de voorgrond te treden.
 
-**Resultaat:** 
+**Resultaat:** Doordat ik steeds vaker naar de voorgrond trad voelde ik me hier meer op m'n gemak en kon ik me ook makkelijker uitspreken voor een groep.
 
-**Reflectie:** 
+**Reflectie:** Ik moet vaker uit m'n comfort zone treden en dingen gaan doen die ik liever niet doe. Hierdoor gooi ik mezelf wel in het diepe maar tot nu toe gaat het me prima af en leer ik zo het snelst.
 
-<!-- 
-### Situatie
-
-Afgelopen halfjaar heb ik vanaf september 2014 gewerkt aan mijn afstudeerproject 'Feedbackspel.nl'. Het idee was om een digitaal feedbackspel te gaan ontwikkelen in de vorm van een (web-)applicatie. Ik ben op dit idee gekomen omdat ik er zelf vaak tegenaan liep dat de bestaande (analoge) feedbackspellen te ingewikkeld zijn of deze teveel tijd koste om even samen met de projectgroep te spelen. Naar mijn mening zou een digitaal feedbackspel veel voordelen kunnen bieden, en tot mijn verbazing heb ik nog geen digitale feedbackspellen kunnen vinden. Er is op dit gebied dus ruimte om met een nieuw en innovatief product op de markt te komen.
-
-Na het idee in een afstudeerplan te hebben gezet, heb ik deze ingediend bij mijn afstudeerdocenten Jan-Wessel Hovingh (mentor) en Dirk Sierd de Vries (vakdocent). Samen met nog vijf medestudenten hebben we een eigen afstudeerlokaal geregeld achter het minor lokaal van concepting. Hier heb ik tot en met maart 2015 gewerkt aan de webapplicatie en de bijbehorende documentatie. Het project is uitgevoerd volgens de 'design science' methodiek, wat inhoud dat steeds dezelfde stappen ondernomen worden in een aantal iteraties. Zo worden eerst een aantal doelen voor de iteratie opgesteld. Dan wordt gekeken welke aanpassingen nodig zijn om deze doelen te behalen. Hierna worden deze aanpassingen getest bij de doelgroep en worden de resultaten verwerkt in een verslag. Deze resultaten dienen in de volgende iteratie als basis bij het opstellen van de doelen. Dit zorgt ervoor dat het product als het ware om de eindgebruiker heen wordt ontwikkeld.
-
-### Taak
-
-Mijn taak is het ontwikkelen en bedenken van een systeem waarmee gebruikers eenvoudig een feedbacksessie in groepsverband kunnen organiseren. Dit systeem moet een groepsgesprek op gang brengen en zorgen dat de deelnemers aan de feedbacksessie niet afdwalen van het onderwerp. Aangezien ik het afstuderen alleen doe zal ik ook alle taken op me nemen. Zo moet ik onder andere onderzoeken, ontwerpen, programmeren, testen en documenteren. Dit alles zal volgens de design science methodiek gedaan worden.
-
-### Actie
-
-Voorafgaand aan het afstuderen heb ik een vooronderzoek gedaan om erachter te komen wie de doelgroep is en welke feedbacksystemen reeds bestaan. Hieruit is naar voren gekomen dat vrijwel iedereen wel iets met feedback geven en ontvangen doet. Bij het onderzoek naar feedbacksystemen ben ik diverse methodes tegen gekomen, van feedbackformulieren tot feedbackspellen. Vrijwel al deze methodes zijn vrij statisch en vaak alleen op papier beschikbaar. 
-
-Daarna heb ik mijn afstudeerplan opgesteld en ben ik gaan kijken welke kant ik op wil gaan met dit project. Aangezien ik na mijn studie verder wil als web developer leek het me een leuk idee om een digitale variant van een feedbackspel te maken.
-
-- Wat heb je werkelijk gedaan?
-- Hoe heb je het aangepakt?
-- Welke afwegingen hebben daarin op dat moment een rol gespeeld?
-- Wat dacht je? Wat voelde je? Wat zag je voor je?
-- Wat was precies jouw aandeel of inbreng?
-
-### Resultaat
-
-- Wat was het gevolg van jouw actie bij jezelf en wat was het gevolg bij andere betrokkenen?
-- Wat was het gevolg op de sfeer?
-- Wat was de invloed op het proces? Konden jullie nog goed verder werken?
-- Wat was de invloed van jouw aandeel (van je actie) op het resultaat dat je wilde bereiken.
-
-### Reflectie
-
-- Was het resultaat van je actie dat wat je er mee wilde bereiken?
-- Heb je er iets van geleerd ?
-- Kun je deze situatie en je handelen daarin koppelen aan een competentie uit het profiel  van de beroepsbeoefenaar uit de opdracht? Als je dat kan, hoe scoorde je dan voor deze competentie?
- -->
-
-Afstuderen
-- Alleen = kut
-- Motivatie problemen
-- Programmeren prima
-- Documenteren kut
-- 
-
-big five
-mbti
-
-Gehele opleiding
-- Gegroeid op persoonlijk vlak
-- Technisch enorme verdieping
 
 # Bijlagen
 
 [Afstudeerplan Vincent Bremer.pdf](scriptie/bijlagen/Afstudeerplan Vincent Bremer.pdf)
+
+[Afstudeer presentatie](/presentatie)

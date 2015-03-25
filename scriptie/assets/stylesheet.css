@@ -112,7 +112,7 @@ h1:first-child {
 }
 
 h2 {
-	font-size: 1.5em;
+	font-size: 1.6em;
 	font-weight: bold;
 	margin: 20px 0 15px 0;
 	color: #55be78;
@@ -125,7 +125,9 @@ h3 {
 }
 
 h4 {
-	font-style: italic;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 10px 0 2px 0;
 }
 
 a {

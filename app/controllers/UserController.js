@@ -59,7 +59,7 @@ var UserController = {
 
 		fs.exists(imagepath, function(exists) {
 			if ( ! exists) {
-				imagepath = path.resolve('../public/img/placeholder.png');
+				imagepath = path.resolve('public/img/placeholder.png');
 			}
 			fs.readFile(imagepath, function(err, data) {
 				res.writeHead(200, {'Content-Type': 'image/png' });
@@ -76,9 +76,9 @@ var UserController = {
 
 		var decoded = decodeBase64Image(image.base64);
 
-		var filepath = path.resolve(__dirname, '..', 'storage', 'tmp', Date.now() + '-' + image.name);
+		var filepath = path.resolve('storage/tmp', Date.now() + '-' + image.name);
 
-		var output = path.resolve(__dirname, '..', 'storage', 'avatars', req.user._id + '.png');
+		var output = path.resolve('storage/avatars', req.user._id + '.png');
 
 		if ( ! inArray(decoded.type, ['image/jpeg', 'image/png']))
 			return res.json({ error: 'Uploaded file is no image' });
@@ -99,28 +99,29 @@ var UserController = {
 			});
 		});
 
-
 	},
 
 	postLogin: function(req, res) {
 		var input = req.body;
 		db.users.findOne({ email: input.email }, function(err, user) {
 			if ( ! user) {
-				return res.json({ error: 'Het opgegeven e-mail adres werd niet gevonden.' });
+				return res.json({ exists: false });
 			}
+
 			var token = auth.setToken(user, req);
-			res.json({ error: null, token: token });
 
-			// bcrypt.compare(input.password, user.password, function(err, match) {
-			// 	if ( ! match) {
-			// 		return res.json({ error: 'Het opgegeven wachtwoord is onjuist.' });
-			// 	}
-			// 	var token = auth.setToken(user, req);
-
-			// 	res.json({ error: null, token: token });
-			// });
+			res.json({ exists: true, token: token });
 		});
 	},
+
+	// bcrypt.compare(input.password, user.password, function(err, match) {
+	// 	if ( ! match) {
+	// 		return res.json({ error: 'Het opgegeven wachtwoord is onjuist.' });
+	// 	}
+	// 	var token = auth.setToken(user, req);
+
+	// 	res.json({ error: null, token: token });
+	// });
 
 	postRegister: function(req, res) {
 		var input = req.body;
@@ -152,12 +153,6 @@ var UserController = {
 			});
 
 
-		});
-	},
-
-	postCheckEmail: function(req, res) {
-		db.users.findOne({ email: req.body.email }, function(err, exists) {
-			res.json({ exists: exists ? true : false });
 		});
 	},
 

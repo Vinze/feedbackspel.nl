@@ -24,17 +24,10 @@ Start.on('validateEmail', function(evt) {
 		return;
 	}
 
-	$.post('/api/users/check-email', { email: input.email }, function(email) {
-		self.set('emailError', null);
-		if (email.exists) {
-			$.post('/api/login', input, function(res) {
-				if (res.error) {
-					self.set('emailError', res.error);
-				} else {
-					Cookies.set('fbs_token', res.token, { expires: 3600 * 24 * 365 });
-					window.location.replace('/dashboard');
-				}
-			});
+	$.post('/api/login', input, function(user) {
+		if (user.exists) {
+			Cookies.set('fbs_token', user.token, { expires: 3600 * 24 * 365 });
+			window.location.replace('/dashboard');
 		} else {
 			self.set('action', 'register').then(function() {
 				self.find('#firstname').focus();

@@ -3,6 +3,7 @@ var express      = require('express');
 var app          = express();
 var server       = require('http').Server(app);
 var fs           = require('fs');
+var path         = require('path');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
@@ -16,7 +17,6 @@ var flash        = require('./libs/flash');
 var GameController     = require('./controllers/GameController');
 var SocketController   = require('./controllers/SocketController')(server);
 var UserController     = require('./controllers/UserController');
-var ScriptieController = require('./controllers/ScriptieController');
 
 // Set the middleware
 // View directory
@@ -70,7 +70,7 @@ app.use(function (req, res, next) {
 		(req.headers['x-forwarded-for'] || req.connection.remoteAddress || '?')
 	].join('\t');
 
-	if (req.url.substr(0, 10) != '/scriptie/' && req.url.substr(0, 8) != '/avatar/') {
+	if (req.url.substr(0, 8) != '/avatar/' && req.url.substr(0, 10) != '/scriptie/' && req.url.substr(0, 13) != '/presentatie/') {
 		if (req.user && req.user.email == 'vbremer89@gmail.com') {
 			return next();
 		}
@@ -110,21 +110,62 @@ app.get('/api/user', UserController.getUser);
 app.post('/api/login', auth.isGuest, UserController.postLogin);
 app.post('/api/register', auth.isGuest, UserController.postRegister);
 app.post('/api/users/save', auth.isMember, UserController.postSave);
-app.post('/api/users/check-email', UserController.postCheckEmail);
 app.post('/api/users/delete', auth.isAdmin, UserController.postDelete);
 
-// ScriptieController
-app.get('/scriptie*', ScriptieController.getIndex);
-app.get('/access', auth.isAdmin, ScriptieController.getAccess);
-app.post('/access/update', auth.isAdmin, ScriptieController.postAccess);
-app.get('/access/clear', auth.isAdmin, ScriptieController.getClearAccess);
-
+// Randomwords generator
 app.get('/randomwords', function(req, res) {
 	res.render('randomwords')
 })
 
+// Kernkwadranten
 app.get('/kernkwadranten', function(req, res) {
 	res.render('kernkwadranten')
+});
+
+// Scriptie
+app.get('/scriptie*', function(req, res) {
+	if (req.path == '/scriptie') {
+		// Get the path to index.html
+		var filepath = path.resolve('../scriptie/index.html');
+
+		// Send index.html to the client
+		res.sendFile(filepath);
+	} else {
+		// Get the path to the requested file
+		var filepath = path.resolve('../scriptie', decodeURIComponent(req.path.substr(10)));
+
+		// Check if the requested file exists
+		fs.exists(filepath, function(exists) {
+			if ( ! exists) // File not found! (404)
+				return res.status(404).end();
+
+			// Send the file
+			res.sendFile(filepath);
+		});
+	}
+});
+
+// Presentatie
+app.get('/presentatie*', function(req, res) {
+	if (req.path == '/presentatie') {
+		// Get the path to index.html
+		var filepath = path.resolve('../presentatie/index.html');
+
+		// Send index.html to the client
+		res.sendFile(filepath);
+	} else {
+		// Get the path to the requested file
+		var filepath = path.resolve('../presentatie', decodeURIComponent(req.path.substr(13)));
+
+		// Check if the requested file exists
+		fs.exists(filepath, function(exists) {
+			if ( ! exists) // File not found! (404)
+				return res.status(404).end();
+
+			// Send the file
+			res.sendFile(filepath);
+		});
+	}
 });
 
 app.get('/test', function(req, res) {
