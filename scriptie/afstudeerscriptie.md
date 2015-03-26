@@ -70,7 +70,7 @@ Tel. secretariaat 058 2511107 / 06 46065567
 
 # Voorwoord
 
-De afgelopen vier jaar heb ik me op de opleiding Communication & Multimedia Design onder andere bezig gehouden met de competenties Growth & Reflection en Multidisciplinary Teamwork. Voor deze competenties is het vereist om er behulp van medestudenten achter komen te komen waar je sterke en zwakke punten liggen en hoe je functioneert in een team. Deze feedback kan enorm waardevolle informatie bieden om jezelf verder te ontwikkelen, zowel op persoonlijk als professioneel vlak.
+De afgelopen vier jaar heb ik me op de opleiding Communication & Multimedia Design onder andere bezig gehouden met de competenties Growth & Reflection en Multidisciplinary Teamwork. Voor deze competenties is het vereist om er behulp van medestudenten achter te komen waar je sterke en zwakke punten liggen en hoe je functioneert in een team. Deze feedback kan enorm waardevolle informatie bieden om jezelf verder te ontwikkelen, zowel op persoonlijk als professioneel vlak.
 
 Er zijn diverse feedbackmethodieken, vragenlijsten, spellen en boeken beschikbaar welke kunnen helpen bij het houden van een feedbacksessie. Deze producten proberen een bepaalde structuur aan te brengen in een feedbacksessie, en geven informatie over hoe je met feedback om moet gaan. Dit zijn vrijwel allemaal fysieke en analoge producten welke (bijvoorbeeld) op papier staan. Ik heb de afgelopen jaren diverse producten toegepast en ben tot de conclusie gekomen dat ik en vele studenten met mij de bestaande producten omslachtig of onnodig moeilijk vinden.
 
@@ -399,6 +399,12 @@ Het grootste knelpunt was het feit dat er niet echt een gesprek op gang kwam. De
 ## Conclusie
 
 Zoals verwacht kwamen er behoorlijk wat knelpunten naar boven. Zo bleek dat de gesprekken niet goed op gang kwamen, duurde het te lang om iedereen met de aandacht bij het spel te houden, en kwam het te geforceerd over. Vermoedelijk komt dit mede omdat een paper prototype heel statisch is en nog veel handmatig werk vereist. Een digitale variant kan een hoop dingen automatiseren en houd de vaart in het spel. Daarnaast mogen de resultaten wel wat uitgebreider worden, simpel weg een lijstje geven bied vooralsnog niet veel stof om een gesprek over te hebben.
+
+## Bijlagen
+
+Paper prototype laptop: [pp-laptop.pdf](scriptie/bijlagen/pp-laptop.pdf)
+
+Paper prototype mobile: [pp-mobile.pdf](scriptie/bijlagen/pp-mobile.pdf)
 
 # Iteratie 2 - WebApp v0.1
 
@@ -1189,4 +1195,4 @@ http://www.thesis.nl/testen/kolb/
 
 [Afstudeerplan Vincent Bremer.pdf](scriptie/bijlagen/Afstudeerplan Vincent Bremer.pdf)
 
-[Afstudeer presentatie](/presentatie)
+[Eindpresentatie](/presentatie)
