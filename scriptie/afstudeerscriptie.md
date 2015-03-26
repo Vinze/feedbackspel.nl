@@ -178,11 +178,14 @@ Er zijn een aantal regels bij het geven en ontvangen van feedback. Door deze reg
 
 ### Bronvermelding
 
-*Academie voor Counselling en Coaching Opleidingen*. Geraadpleegd op 12 oktober 2014, van http://www.counselling.nl/coaching/feedbackregels.html
+*Academie voor Counselling en Coaching Opleidingen*. Geraadpleegd op 12 oktober 2014  
+http://www.counselling.nl/coaching/feedbackregels.html
 
-*Feedbackformulier Alice ter Veld*. Dit document is opgesteld door PPO docenten van de opleiding Communication & Multimedia Design en wordt gebruikt als hulpmiddel bij het geven en ontvangen van feedback. [feedback uitgebreid.doc](scriptie/bijlagen/feedback uitgebreid.doc)
+*Feedback geven en ontvangen*. Dit document is overhandigd door PPO docent Alice ter Veld en opgesteld door PPO docenten van de opleiding Communication & Multimedia Design en wordt gebruikt als hulpmiddel bij het geven en ontvangen van feedback.  
+[feedback uitgebreid.doc](scriptie/bijlagen/feedback uitgebreid.doc)
 
-*Spraakwater Sessies*, verzorgd lezingen en contactmomenten. Geraadpleegd op 14 oktober 2014, van http://www.spraakwater.nl/index.php/spraakmakende-items/21-zes-gouden-regels-voor-het-ontvangen-van-feedback
+*Spraakwater Sessies*, verzorgd lezingen en contactmomenten. Geraadpleegd op 14 oktober 2014  
+http://www.spraakwater.nl/index.php/spraakmakende-items/21-zes-gouden-regels-voor-het-ontvangen-van-feedback
 
 ## Een dialoog tot stand brengen
 
@@ -251,11 +254,14 @@ Houd ervan om een feedbacksessie volgens een vooropgezette goed georganiseerde m
 Werkt graag in een steeds veranderende omgeving en vind het geen probleem in het middelpunt van de aandacht te staan. Hij kijkt naar wat realistisch is en ontvangt graag feedback onderbouwd door voorbeelden uit de praktijk. Binnen de groep is hij degene die een feedbacksessie zou organiseren en hij vind het prettig als het er serieus en georganiseerd aan toe gaat.
 
 ### Bronvermelding
-MBTI test van *Psychologie Magazine*, uitgevoerd op 29 oktober 2015, van http://tests.psychologiemagazine.nl/Persoonlijkheid/Test%20persoonlijkheidstype%20MBTI
+MBTI test van *Psychologie Magazine*, uitgevoerd op 29 oktober 2015  
+http://tests.psychologiemagazine.nl/Persoonlijkheid/Test%20persoonlijkheidstype%20MBTI
 
-MBTI test van *Looman Coaching*, uitgevoerd op 30 oktober 2015, van http://www.loomancoaching.nl/nl/persoonsvoorkeuren-test
+MBTI test van *Looman Coaching*, uitgevoerd op 30 oktober 2015  
+http://www.loomancoaching.nl/nl/persoonsvoorkeuren-test
 
-MBTI test van *123test*, uitgevoerd op 30 oktober 2015, van https://www.123test.nl/mbti/
+MBTI test van *123test*, uitgevoerd op 30 oktober 2015  
+https://www.123test.nl/mbti/
 
 # Definition of Done
 
