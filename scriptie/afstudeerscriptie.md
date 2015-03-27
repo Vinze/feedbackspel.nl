@@ -117,8 +117,11 @@ Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geve
 
 Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke kunnen helpen bij de verdere ontwikkeling van een feedback systeem.
 
-(1) Facebook post: http://facebook.com/vbremer89/posts/722083571157120  
-(2) Ruwe data uit de enquête: [Feedback onderzoek - Google Formulieren.pdf](scriptie/bijlagen/Feedback onderzoek - Google Formulieren.pdf)
+*Facebook bericht door Vincent Bremer*, geplaatst op 7 april 2014  
+http://facebook.com/vbremer89/posts/722083571157120
+
+*Ruwe data enquête*, afgenomen op 7 april t/m 9 april 2014  
+[Feedback onderzoek - Google Formulieren.pdf](scriptie/bijlagen/Feedback onderzoek - Google Formulieren.pdf)
 
 ### Feedbacksystemen
 
@@ -151,11 +154,7 @@ Vrijwel alle ondervraagden geven aan dat ze graag onderbouwde feedback willen on
 
 # Feedback geven en ontvangen
 
-Feedback betekent letterlijk terugkoppeling. Het geven van feedback is een belangrijke vaardigheid voor iedereen die samenwerkt in een team. Door middel van feedback wissel je informatie uit over elkaars houding en gedrag.
-
-## Waarom?
-
-Feedback wordt nogal eens verward met kritiek. Mensen voelen zich aangevallen of ervaren de feedback als een teken van falen. Dit is erg jammer want feedback bied iemand kansen om over zichzelf te leren en laat zien op welke punten iemand zichzelf nog kan ontwikkelen.
+Feedback betekent letterlijk terugkoppeling. Het geven van feedback is een belangrijke vaardigheid voor iedereen die samenwerkt in een team. Door middel van feedback wissel je informatie uit over elkaars houding en gedrag. Deze informatie is nodig om erachter te komen hoe anderen u zien, dit kan namelijk verschillen van uw zelfbeeld. Door vragen te stellen en in dialoog te gaan over de gegeven en ontvangen feedback vergroot u uw zelfkennis. (*Commentaar Geven En Ontvangen*, Marieta Koopmans, 2010, p.9)
 
 ## Regels
 
@@ -209,7 +208,7 @@ Aangezien deze studenten al een aantal jaar op de opleiding zitten is de kans gr
 
 ### Eerstejaars CMD studenten
 
-Hebben over het algemeen nog maar weinig ervaring met feedback systemen/spellen en zullen minder naar het technische aspect van een applicatie kijken. Deze doelgroep is perfect om te testen in hoeverre het een applicatie het proces van feedback geven en ontvangen in teamverband kan bevorderen. Ze zijn niet bevooroordeeld hoe een feedbackspel zou moeten werken, en hebben nog geen beeld van hoe dit georganiseerd zou moeten worden.
+Hebben over het algemeen nog maar weinig ervaring met feedback systemen/spellen en zullen minder naar het technische aspect van een applicatie kijken. Deze doelgroep is perfect om te testen in hoeverre het een applicatie het proces van feedback geven en ontvangen in teamverband kan bevorderen. Mede doordat ze over het algemeen minder ervaring hebben met het geven en ontvangen van feedback zullen ze minder bevooroordeeld zijn over hoe een feedbackspel moet werken.
 
 <!-- ### PPO docenten
 
@@ -239,7 +238,10 @@ Twee keer per week gaat Johan voetballen met VV de Renners en hij doet dit voora
 
 ## Persoonlijkheden
 
-Om een goed beeld te krijgen van de doelgroep zijn een drietal personae opgesteld. Door de doelgroep te observeren tijdens het uitvoeren van tests en op basis van het vooronderzoek zijn de onderstaande personae tot stand gekomen. Deze personae zijn weer gebaseerd op de Myers-Briggs Type Indicator (MBTI). Op internet staan diverse tests om erachter te komen wat voor persoonlijkheidstype bij een bepaald persoon hoort. Deze tests zijn driemaal en op verscheidende sites ingevuld. Door de vragen op een manier te beantwoorden die bij de verschillende type mensen uit de doelgroep past, zijn de volgende eigenschappen naar voren gekomen. Er is gekozen voor het MBTI systematiek omdat dit een bekende en vrij eenvoudige methode is om snel een beeld te creëren van de verschillende personen uit de doelgroep.
+Om een goed beeld te krijgen van de doelgroep zijn een drietal personae opgesteld. Door de doelgroep te observeren tijdens het uitvoeren van tests en op basis van het vooronderzoek zijn de onderstaande personae tot stand gekomen. Deze personae zijn weer gebaseerd op de Myers-Briggs Type Indicator (MBTI). Op internet staan diverse tests om erachter te komen wat voor persoonlijkheidstype bij een bepaald persoon hoort. Deze tests zijn driemaal en op verscheidende sites ingevuld. Door de vragen op een manier te beantwoorden die bij de verschillende type mensen uit de doelgroep past, zijn de volgende eigenschappen naar voren gekomen. 
+
+<span style="color:red">Er is gekozen voor het MBTI systematiek omdat dit een bekende en vrij eenvoudige methode is om snel een beeld te creëren van de verschillende personen uit de doelgroep.</span>
+
 
 ### Vivian Bootsma (ESTP)
 
@@ -542,6 +544,13 @@ Door inzichtelijk te maken hoeveel sterren de deelnemer van zijn of haar medespe
 Helaas kwam bij het tonen van de [uitslagen](scriptie/bijlagen/i3-overview.png) niet meteen een groepsgesprek op gang. De deelnemers bekeken de uitslagen en de feedback die ze ontvangen hadden, maar vroegen niet uit zichzelf waarom ze die feedback kregen. Er werd af en toe wel een opmerking gemaakt waaruit blijkt dat iemand niet eens was met de ontvangen feedback, maar hier werd verder niet op in gegaan. Dit kwam vaak omdat de deelnemers vaak wel wisten waarom ze bepaalde feedback kregen, of omdat het ze simpelweg niet zoveel kon schelen.
 
 Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag van een feedback ronde. Als iemand bijvoorbeeld onderaan eindigde stelde ik de vraag waarom diegene zo laag scoorde. Door na iedere ronde een vraag te stellen over de resultaten begon er wel een gesprek op gang te komen en werd uitgelegd waarom iemand bepaalde feedback kreeg.
+
+<div style="color: red">
+- geen impact  
+- interessante conclusie  
+- je onderbouwing is wat mager dan  
+- testen?
+</div>
 
 ## Bijlagen
 
