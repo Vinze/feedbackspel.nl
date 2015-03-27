@@ -10,37 +10,46 @@ var AvatarSelect = Ractive.extend({
 	oninit: function() {
 		var self = this;
 
-		self.on('updatePreview', function(evt) {
+		self.on('uploadImage', function(evt) {
 			var file = evt.node.files[0];
+			var formData = new FormData();
 			var reader = new FileReader();
 
+			formData.append('image', file, file.name);
 			reader.readAsDataURL(file);
 
+			self.set('uploading', true);
+
 			reader.onload = function(evt) {
-				self.set('image', {
-					name: file.name,
-					base64: evt.target.result
-				});
-
-				self.set('uploading', true);
-
-				$.post('/avatar', self.get('image'), function(res) {
-					if (res.error) return alert('Er is een fout opgetreden!');
-
-					self.set('uploading', null).then(function() {
-						self.set('uploaded', true);
-					});
-
-					setTimeout(function() {
-						if (self.get('reload')) {
-							window.location.reload();
-						} else {
+				$.ajax({
+					url: '/avatar',
+					type: 'POST',
+					data: formData,
+					success: function(res) {
+						if (res.error) {
+							self.set('uploading', false);
 							self.set('uploaded', false);
+
+							return alert('Er is een fout opgetreden!');
 						}
-					}, 2000);
+
+						self.set('uploading', null).then(function() {
+							self.set('uploaded', true);
+						});
+						
+						setTimeout(function() {
+							if (self.get('reload')) {
+								window.location.reload();
+							} else {
+								self.set('image', { name: file.name, base64: evt.target.result });
+								self.set('uploaded', false);
+							}
+						}, 2000);
+					},
+					contentType: false,
+					processData: false
 				});
 			}
 		});
 	}
-
 });

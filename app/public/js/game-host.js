@@ -1,10 +1,9 @@
 ;(function() {
 
-	var notification = new Audio('/notification.mp3');
-
 	var token  = Cookies.get('fbs_token');
 	var room   = _.last(window.location.href.split('/'));
 	var socket = io(baseURL, { query: 'token=' + token + '&role=host&room=' + room });
+	var notification = new Audio('/pling.mp3');
 
 	var cards = _.shuffle([
 		'Saai', 'Grappig', 'Flexibel',

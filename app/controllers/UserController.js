@@ -11,20 +11,6 @@ function inArray(needle, haystack) {
 	return haystack.indexOf(needle) != -1;
 }
 
-function decodeBase64Image(dataString) {
-	var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-	var decoded = {};
-
-	if (matches.length !== 3) {
-		return new Error('Invalid input string');
-	}
-
-	decoded.type = matches[1];
-	decoded.data = new Buffer(matches[2], 'base64');
-
-	return decoded;
-}
-
 function capitalizeWords(str) {
 	return str.replace(/\w\S*/g, function(txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -69,36 +55,23 @@ var UserController = {
 	},
 
 	postAvatar: function(req, res) {
-		var image = req.body;
-
-		if ( ! image.base64)
-			return res.json({ error: 'No image selected' });
-
-		var decoded = decodeBase64Image(image.base64);
-
-		var filepath = path.resolve('storage/tmp', Date.now() + '-' + image.name);
-
+		var image = req.files.image;
 		var output = path.resolve('storage/avatars', req.user._id + '.png');
 
-		if ( ! inArray(decoded.type, ['image/jpeg', 'image/png']))
+		if ( ! inArray(image.mimetype, ['image/jpeg', 'image/png']))
 			return res.json({ error: 'Uploaded file is no image' });
 		
-		fs.writeFile(filepath, decoded.data, function (err) {
-			if (err) console.log(err);
-			
-			var convert = spawn('convert', [filepath, '-resize', '150x150^', '-gravity', 'center', '-crop', '150x150+0+0', '+repage', '-auto-orient', output]);
+		var convert = spawn('convert', [image.path, '-resize', '150x150^', '-gravity', 'center', '-crop', '150x150+0+0', '+repage', '-auto-orient', output]);
 
-			convert.on('close', function (code) {
-				db.users.update({ _id: req.user._id }, { $set: { image: true } }, function(err) {
-					if (err) console.log(err);
-				});
-
-				res.json({ success: 'Image saved' });
-
-				fs.unlink(filepath);
+		convert.on('close', function (code) {
+			db.users.update({ _id: req.user._id }, { $set: { image: true } }, function(err) {
+				if (err) console.log(err);
 			});
-		});
 
+			res.json({ success: 'Image saved' });
+
+			fs.unlink(image.path);
+		});
 	},
 
 	postLogin: function(req, res) {

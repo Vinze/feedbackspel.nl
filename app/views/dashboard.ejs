@@ -48,13 +48,13 @@
 				<p>Afbeelding ge&uuml;pload!</p>
 			</div>
 		{{/uploaded}}
-		<form on-submit="upload" class="upload-form">
+		<form class="upload-form">
 			<label class="file-input">
 				<div>
 					<div class="avatar avatar-preview" style="background-image: url('{{ image.base64 ? image.base64 : '/avatar/<%= user._id %>.png' }}')"></div>
 				</div>
 				<i class="fa fa-picture-o"></i> Selecteer afbeelding
-				<input type="file" value="{{file}}" on-change="updatePreview">
+				<input type="file" value="{{file}}" on-change="uploadImage">
 			</label>
 		</form>
 	</div>
