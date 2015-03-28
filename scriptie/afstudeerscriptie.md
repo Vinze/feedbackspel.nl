@@ -990,7 +990,12 @@ In dit reflectieverslag zal ik terugblikken op de afgelopen vier jaar en op het 
 
 ## Big Five persoonlijkheidsrapport
 
-Voor het doelgroep onderzoek heb ik gebruik gemaakt van de Myers-Briggs Type Indicator (MBTI) persoonlijkheidstypes. Door mezelf in te lezen in dit systeem kwam ik erachter dat er ook een alternatief is voor de MBTI, namelijk de Big Five persoonlijkheidsdimensies. De Big Five is wetenschappelijk onderbouwd en wordt schijnbaar ondersteund door de academische wereld. Ik vond het daarom interessant om deze test uit te voeren en te kijken in hoeverre ik mezelf kan vinden in de uitslagen van deze test.
+Voor het doelgroep onderzoek heb ik gebruik gemaakt van de Myers-Briggs Type Indicator (MBTI) persoonlijkheidstypes. Tijdens mijn onderzoek naar dit systeem stuitte ik op een alternatief, namelijk de Big Five persoonlijkheidsdimensies.
+
+De Big Five is wetenschappelijk onderbouwd en wordt ondersteund door de academische wereld. (1) Ik vond het daarom interessant om deze test uit te voeren en te kijken in hoeverre ik mezelf kan vinden in de uitslagen van deze test.
+
+(1) https://www.psychologytoday.com/blog/give-and-take/201309/goodbye-mbti-the-fad-won-t-die
+
 
 *"De Big Five persoonlijkheidstest geeft je inzicht in de vijf hoofddimensies van persoonlijkheid. Dit inzicht kun je gebruiken om jezelf beter te leren kennen of jezelf voor te bereiden op een assessment bij een sollicitatie. Dit kan voor een werksituatie, in een relatie of welke andere sociale situatie dan ook, van belang zijn. Er wordt hieronder verteld wat de dimensies grofweg zijn en hoe jij scoorde."* (1)
 
