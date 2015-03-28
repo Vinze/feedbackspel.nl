@@ -154,7 +154,9 @@ Vrijwel alle ondervraagden geven aan dat ze graag onderbouwde feedback willen on
 
 # Feedback geven en ontvangen
 
+<div style="color: red">
 Feedback betekent letterlijk terugkoppeling. Het geven van feedback is een belangrijke vaardigheid voor iedereen die samenwerkt in een team. Door middel van feedback wissel je informatie uit over elkaars houding en gedrag. Deze informatie is nodig om erachter te komen hoe anderen u zien, dit kan namelijk verschillen van uw zelfbeeld. Door vragen te stellen en in dialoog te gaan over de gegeven en ontvangen feedback vergroot u uw zelfkennis. (*Commentaar Geven En Ontvangen*, Marieta Koopmans, 2010, p.9)
+</div>
 
 ## Regels
 
@@ -546,10 +548,12 @@ Helaas kwam bij het tonen van de [uitslagen](scriptie/bijlagen/i3-overview.png) 
 Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag van een feedback ronde. Als iemand bijvoorbeeld onderaan eindigde stelde ik de vraag waarom diegene zo laag scoorde. Door na iedere ronde een vraag te stellen over de resultaten begon er wel een gesprek op gang te komen en werd uitgelegd waarom iemand bepaalde feedback kreeg.
 
 <div style="color: red">
+
 - geen impact  
 - interessante conclusie  
 - je onderbouwing is wat mager dan  
 - testen?
+
 </div>
 
 ## Bijlagen
@@ -979,6 +983,8 @@ user_id
 De test suites zijn geschreven in het [Mocha](http://mochajs.org/) test framework en er wordt gebruik gemaakt van [Expect.js](https://github.com/Automattic/expect.js) om te testen. Er is voor Mocha gekozen omdat hier zowel server-side én client-side code mee getest kan worden. De combinatie van Mocha met Expect is bijna gelijk aan het testen met Jasmine, een framework waar ik reeds bekend mee ben. De tests zijn te vinden in de map 'tests' en kunnen uitgevoerd worden met het commando `mocha tests/game.js`.
 
 # Reflectieverslag
+
+## Voorwoord
 
 In dit reflectieverslag zal ik terugblikken op de afgelopen vier jaar en op het afgelopen halfjaar afstuderen van de opleiding CMD. Ik zal diverse tests herhalen welke ik in het verleden heb uitgevoerd om erachter te komen in hoeverre ik veranderd ben. Daarnaast ga ik volgens de STARR methode reflecteren op mijn afstudeerperiode en hoe ik de afgelopen jaren gegroeid ben.
 
