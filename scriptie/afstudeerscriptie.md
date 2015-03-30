@@ -877,7 +877,7 @@ Op de server wordt [Lighttpd](http://www.lighttpd.net/) gebruikt als webserver s
 
 ### DRY
 
-Don’t Repeat Yourself, dit houd in dat er zo geprogrammeerd dient te worden dat iedere functie ook losstaand kan functioneren en dus niet steeds opnieuw geschreven hoeft te worden.
+Don't Repeat Yourself, dit houd in dat er zo geprogrammeerd dient te worden dat iedere functie ook losstaand kan functioneren en dus niet steeds opnieuw geschreven hoeft te worden.
 
 ### KISS
 Keep It Short and Simple, voeg geen overbodige dingen toe, en schijf je code zo simpel mogelijk. Als iets op meerdere manieren opgelost kan worden, kies dat voor de meest eenvoudige oplossing. De geschreven code moet zichzelf wijzen, dus geef vanzelfsprekende functienamen en voeg waar nodig commentaar toe.
@@ -1088,7 +1088,7 @@ De afgelopen jaren heb ik veel ervaring en contacten opgedaan, en dit is ook ter
 
 ### Plant: 8,6% (+0,1%)
 
-*"Dominant, zeer hoge intelligentie, introvert. De man met de plotselinge ideeën. ‘Ingeplant’ in rustige teams om creativiteit te genereren: hij maakt de nieuwe openingen. Een Plant roept weerstanden op door gebrek aan praktische zin en door kritische houding ten opzichte van 'domheid'."*
+*"Dominant, zeer hoge intelligentie, introvert. De man met de plotselinge ideeën. 'Ingeplant' in rustige teams om creativiteit te genereren: hij maakt de nieuwe openingen. Een Plant roept weerstanden op door gebrek aan praktische zin en door kritische houding ten opzichte van 'domheid'."*
 
 Volgens mij ben ik wel vrij intelligent, alleen totaal niet dominant, zeker niet in een projectgroep. Waarom ik toch nog 8.6% scoor op deze teamrol is mij een raadsel. Volgens anderen ben ik altijd bereid om te helpen als mensen iets niet snappen (domheid?). Wellicht komt het omdat ik zelf best wel introvert ben en niet zo zeer op de voorgrond hoef te staan.
 
@@ -1100,17 +1100,21 @@ Ik voel me inderdaad nog niet echt thuis in de rol van voorzitter of projectleid
 
 ### Vormer: 10% (-1,4%)
 
-*"Onrustig, dominant, extrovert. Hij geeft vorm aan de inspanningen van het team en zoekt patronen in de discussies. Uitdagend, ruziënd, snel gefrustreerd en onrustig. Eerder hard dan zachtmoedig, niet bang voor risico’s. Productief onder druk en bij hoge snelheid: verkoopleiders, uitgevers, voetbaltrainers."*
+*"Onrustig, dominant, extrovert. Hij geeft vorm aan de inspanningen van het team en zoekt patronen in de discussies. Uitdagend, ruziënd, snel gefrustreerd en onrustig. Eerder hard dan zachtmoedig, niet bang voor risico's. Productief onder druk en bij hoge snelheid: verkoopleiders, uitgevers, voetbaltrainers."*
 
-
+In de rol van vormer kan ik mij totaal niet vinden. Onrustig ben ik zo af en toe wel, maar zeker niet dominant en extrovert. Onder druk of in een competitie ben ik wel productief, wellicht dat ik daarom nog voor 10% een vormer ben.
 
 ### Waarschuwer: 11,4% (0%)
 
 *"Hoge intelligentie, stabiel, introvert. Analyseert de problemen en houdt de ideeën kritische tegen het licht. Serieus, voorzichtig en immuun voor enthousiasme. Hij wantrouwt de euforie en zijn prestatiemotivatie is gering."*
 
+In de rol van waarschuwer kan ik me wel aardig goed vinden. Ik vind het prettig om met twee benen op de grond te staan en kritisch te kijken of ideeën wel haalbaar zijn. Hierdoor kan het soms overkomen dat ik niet erg enthousiast ben over sommige ideeën. Doordat ik soms behoorlijk kritisch ben kan dit nadelig zijn voor het afronden van taken. Dit heeft weer mede te maken met het feit dat ik dingen zo perfect mogelijk wil hebben, en daar af en toe wat in doordrijf.
+
 ### Zorgdrager: 21,4% (+8,6%)
 
-*"Rustig introvert. Houdt in de gaten dat er niets wordt overgeslagen: hij volgt alleen iedereen rusteloos, consciëntieus, zorgelijk en wat beschroomd ten opzichte van anderen. Ze ‘absorberen’ als het ware de stress (maagzweertype); de man achter de schermen die het planmatige verloop voor zijn rekening neemt."*
+*"Rustig introvert. Houdt in de gaten dat er niets wordt overgeslagen: hij volgt alleen iedereen rusteloos, consciëntieus, zorgelijk en wat beschroomd ten opzichte van anderen. Ze 'absorberen' als het ware de stress (maagzweertype); de man achter de schermen die het planmatige verloop voor zijn rekening neemt."*
+
+
 
 http://www.thesis.nl/testen/test/belbin-test
 
