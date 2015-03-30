@@ -117,11 +117,15 @@ Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geve
 
 Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke kunnen helpen bij de verdere ontwikkeling van een feedback systeem.
 
+<div style="color: red">
+
 *Facebook bericht door Vincent Bremer*, geplaatst op 7 april 2014  
 http://facebook.com/vbremer89/posts/722083571157120
 
 *Ruwe data enquête*, afgenomen op 7 april t/m 9 april 2014  
 [Feedback onderzoek - Google Formulieren.pdf](scriptie/bijlagen/Feedback onderzoek - Google Formulieren.pdf)
+
+</div>
 
 ### Feedbacksystemen
 
