@@ -80,9 +80,7 @@ Ik ben van mening dat dit veel makkelijker moet kunnen in de vorm van, bijvoorbe
 
 # Het idee
 
-Het idee om een feedbackspel te ontwikkelen is eigenlijk al in het tweede semester van het derde jaar ontstaan. Ik zat hier in een projectgroep met nog drie medestudenten en we wilden graag feedback op elkaar geven in een groepsgesprek. Hiervoor wilde we in eerste instantie een feedbackspel van school gebruiken, maar deze was toen niet voorhanden. Daarom hebben we via Google een lijst met karakter eigenschappen opgezocht en in ongeveer 10 minuten tijd zelf een kleine applicatie (1) geschreven. Deze applicatie laat met een druk op de knop een willekeurige eigenschap laat zien. Deze eigenschap moesten we in overleg met de projectgroep koppelen aan een medestudent, en uitleggen waarom de eigenschap bij diegene hoorde. Deze manier van feedback geven bleek erg prettig te werken, en doordat er willekeurige eigenschappen getoond werden kwamen er leuke gesprekken op gang.
-
-(1) [http://feedbackspel.nl/randomwords](/randomwords)
+Het idee om een feedbackspel te ontwikkelen is eigenlijk al in het tweede semester van het derde jaar ontstaan. Ik zat hier in een projectgroep met nog drie medestudenten en we wilden graag feedback op elkaar geven in een groepsgesprek. Hiervoor wilde we in eerste instantie een feedbackspel van school gebruiken, maar deze was toen niet voorhanden. Daarom hebben we via Google een lijst met verschillende karakter eigenschappen opgezocht en in ongeveer 10 minuten tijd zelf een kleine applicatie ([feedbackspel.nl/randomwords](/randomwords)) geschreven. Deze applicatie laat met een druk op de knop een willekeurige eigenschap uit de lijst zien. Deze eigenschap moesten we in overleg met de projectgroep koppelen aan een medestudent, en uitleggen waarom de eigenschap bij diegene hoorde. Deze manier van feedback geven bleek erg prettig te werken, en doordat er willekeurige eigenschappen getoond werden kwamen er leuke gesprekken op gang.
 
 # Doelstellingen
 
@@ -1041,10 +1039,9 @@ In het eerste semester van het vierde jaar heb ik stage gelopen bij Tussendoor I
 
 De feedback die ik kreeg van mijn stagebegeleider was erg positief. Dingen die in het verleden nog wel eens mis gingen zoals het goed communiceren bleek nu juist bij mijn pluspunten te staan. Het enige minpunt die ik kreeg was dat ik een negen tot vijf mentaliteit zou hebben. Hier ben ik het zelf absoluut niet mee eens, aangezien ik altijd eerder dan de rest aanwezig was en vaak 's avonds buiten werktijd om nog even wat extra dingen deed. Waarschijnlijk kreeg ik dit minpunt omdat de stagebegeleider niet door had dat ik buiten werktijd nog bezig geweest ben. Dit heeft mij wel te denken gezet en in het vervolg zijn dit wel dingen die ik sneller ga melden, bijvoorbeeld door 's avonds nog even een mailtje te sturen dat ik iets gefixed heb.
 
-<p style="color:red">
-	Na mijn stage ben ik gaan afstuderen
-	
-</p>
+#### Afstuderen
+
+Na het behalen van mijn stage ben ik begonnen aan het laatste onderdeel van de opleiding; het afstuderen. Voor het afstuderen had ik bedacht om een eigen project te gaan doen, en dit traject in m'n eentje te doorlopen. Tijdens deze laatste fase van de opleiding ben ik mezelf pas echt tegen gekomen. Direct na mijn stage wilde ik beginnen met afstuderen om nog voor de zomervakantie (2014) klaar te zijn. Helaas wil dit totaal niet vlotten, ik was niet gemotiveerd, kon geen leuk project bedenken, en toen ik besefte dat ik voor de vakantie
 
 ### Na het afstuderen
 
