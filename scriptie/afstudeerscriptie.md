@@ -117,15 +117,16 @@ Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geve
 
 Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke kunnen helpen bij de verdere ontwikkeling van een feedback systeem.
 
-<div style="color: red">
 
+<p style="color:red">
 *Facebook bericht door Vincent Bremer*, geplaatst op 7 april 2014  
 http://facebook.com/vbremer89/posts/722083571157120
+</p>
 
+<p style="color:red">
 *Ruwe data enquête*, afgenomen op 7 april t/m 9 april 2014  
 [Feedback onderzoek - Google Formulieren.pdf](scriptie/bijlagen/Feedback onderzoek - Google Formulieren.pdf)
-
-</div>
+</p>
 
 ### Feedbacksystemen
 
@@ -158,9 +159,9 @@ Vrijwel alle ondervraagden geven aan dat ze graag onderbouwde feedback willen on
 
 # Feedback geven en ontvangen
 
-<div style="color: red">
+<p style="color:red">
 Feedback betekent letterlijk terugkoppeling. Het geven van feedback is een belangrijke vaardigheid voor iedereen die samenwerkt in een team. Door middel van feedback wissel je informatie uit over elkaars houding en gedrag. Deze informatie is nodig om erachter te komen hoe anderen u zien, dit kan namelijk verschillen van uw zelfbeeld. Door vragen te stellen en in dialoog te gaan over de gegeven en ontvangen feedback vergroot u uw zelfkennis. (*Commentaar Geven En Ontvangen*, Marieta Koopmans, 2010, p.9)
-</div>
+</p>
 
 ## Regels
 
@@ -200,7 +201,19 @@ Het feedback systeem moet de deelnemers dus motiveren tot het hebben van een dia
 
 # Doelgroep
 
-De doelgroep waar ik me in eerste instantie op zal richting zijn studenten die de opleiding Communication & Multimedia Design volgen. Op deze opleiding wordt erg veel gewerkt in groepsverband en is het reflecteren en groeien op persoonlijk vlak erg belangrijk. Uit eigen onderzoek blijkt dat vrijwel alle studenten van de opleiding bekend zijn met het geven en ontvangen van feedbackspellen. 
+<p style="color:red">
+De doelgroep waar ik me in eerste instantie op zal richting zijn studenten die de opleiding Communication & Multimedia Design (CMD) volgen. Deze studenten vallen in de leeftijdscategorie van ongeveer 18 tot 26 jaar, en hebben vaak HAVO of MBO gedaan voordat ze aan de opleiding begonnen. Op CMD wordt erg veel gewerkt in groepsverband en is het reflecteren en groeien op persoonlijk vlak erg belangrijk. Uit eigen vooronderzoek blijkt dat vrijwel alle studenten van de opleiding bekend zijn met het geven en ontvangen van feedback.
+</p>
+
+<p style="color:red">
+Een vereiste bij het selecteren van deze doelgroep is dat ze beschikken over de zogenaamde "21st century skills". Onderstaand schema van Kennisnet (1) geeft erg duidelijk weer welke eigenschappen bij de 21st century skills horen.
+</p>
+
+![uitleg](http://www.kennisnet.nl/uploads/pics/Model21CSKN_06.jpg)
+
+(1) Kennisnet, *Een nieuwe tijd vraagt om nieuwe vaardigheden*, geraadpleegd op 14 september 2014  
+http://www.kennisnet.nl/themas/21st-century-skills/
+
 
 ## User stories
 
@@ -246,9 +259,6 @@ Twee keer per week gaat Johan voetballen met VV de Renners en hij doet dit voora
 
 Om een goed beeld te krijgen van de doelgroep zijn een drietal personae opgesteld. Door de doelgroep te observeren tijdens het uitvoeren van tests en op basis van het vooronderzoek zijn de onderstaande personae tot stand gekomen. Deze personae zijn weer gebaseerd op de Myers-Briggs Type Indicator (MBTI). Op internet staan diverse tests om erachter te komen wat voor persoonlijkheidstype bij een bepaald persoon hoort. Deze tests zijn driemaal en op verscheidende sites ingevuld. Door de vragen op een manier te beantwoorden die bij de verschillende type mensen uit de doelgroep past, zijn de volgende eigenschappen naar voren gekomen. 
 
-<span style="color:red">Er is gekozen voor het MBTI systematiek omdat dit een bekende en vrij eenvoudige methode is om snel een beeld te creëren van de verschillende personen uit de doelgroep.</span>
-
-
 ### Vivian Bootsma (ESTP)
 
 Vind het belangrijk dat een feedbacksessie to-the-point is en er niet teveel omheen gedraaid wordt. Ze zegt waar het op staat en heeft er geen problemen mee om dit uit te spreken in een groep. Ze moet wel oppassen dat ze niet te aanwezig is en de rest van de deelnemers overstemd.
@@ -262,13 +272,13 @@ Houd ervan om een feedbacksessie volgens een vooropgezette goed georganiseerde m
 Werkt graag in een steeds veranderende omgeving en vind het geen probleem in het middelpunt van de aandacht te staan. Hij kijkt naar wat realistisch is en ontvangt graag feedback onderbouwd door voorbeelden uit de praktijk. Binnen de groep is hij degene die een feedbacksessie zou organiseren en hij vind het prettig als het er serieus en georganiseerd aan toe gaat.
 
 ### Bronvermelding
-MBTI test van *Psychologie Magazine*, uitgevoerd op 29 oktober 2015  
+MBTI test van *Psychologie Magazine*, uitgevoerd op 29 oktober 2014  
 http://tests.psychologiemagazine.nl/Persoonlijkheid/Test%20persoonlijkheidstype%20MBTI
 
-MBTI test van *Looman Coaching*, uitgevoerd op 30 oktober 2015  
+MBTI test van *Looman Coaching*, uitgevoerd op 30 oktober 2014  
 http://www.loomancoaching.nl/nl/persoonsvoorkeuren-test
 
-MBTI test van *123test*, uitgevoerd op 30 oktober 2015  
+MBTI test van *123test*, uitgevoerd op 30 oktober 2014  
 https://www.123test.nl/mbti/
 
 # Definition of Done
@@ -340,19 +350,19 @@ Het iteratieve proces houd in dat het product zich ontwikkeld op basis van de op
 
 ![webapp1](scriptie/bijlagen/iteration.svg)
 
-### Low Fidelity Prototype Kit (171)
+### Low Fidelity Prototype Kit (pg. 171)
 
 Een low fidelity prototype is een eenvoudige versie van het product dat ontwikkeld wordt. Dit soort prototype is zeer snel te maken en komt niet in de buurt van de kwaliteit van het uiteindelijke product. Een low fidelity prototype kan bestaan uit bijvoorbeeld papier, karton, post-its en andere eenvoudige materialen. Hiermee kan heel snel getest worden en bied een goede basis om een volgend prototype op verder te ontwikkelen.
 
-### Develop Personas (151)
+### Develop Personas (pg. 151)
 
 Een persona is een profiel van de gebruiker en beschrijft diverse karakteristieken en eigenschappen die bij de gebruiker horen. Dit helpt bij het ontwikkelen van het product en kan helpen bij het gebruiksvriendelijk maken.
 
-### Observation (265)
+### Observation (pg. 265)
 
 Iedere iteratie moet het product getest worden en hiervoor zijn diverse technieken beschikbaar. Een van deze technieken is observeren. Terwijl de gebruikers het product aan het testen zijn zal één of meerdere personen meekijken en observeren welke handelingen de gebruikers uitvoeren. Dit is een eenvoudige manier om snel informatie te vergaren en vergt vrij weinig voorbereiding. Een nadeel is wel dat er snel informatie over het hoofd gezien kan worden, en de aanwezigheid van de persoon die de test afneemt kan het testen (onbewust) beïnvloeden.
 
-### Fly-on-the-wall (242)
+### Fly-on-the-wall (pg. 242)
 
 Observatie methode waarbij de toezichthouder zich zo afstandelijk mogelijk houdt en informatie verzameld zonder met de testpersonen te communiceren. Dit is een vrij eenvoudige methode en heeft als voordeel dat degene die de test afneemt de test niet kan beïnvloeden. Door de test ook op te nemen met een videocamera zou er bij deze methodiek helemaal geen toezichthouder aanwezig hoeven te zijn. Dit heeft weer als voordeel dat de test achteraf rustig bekeken kan worden.
 
@@ -551,14 +561,15 @@ Helaas kwam bij het tonen van de [uitslagen](scriptie/bijlagen/i3-overview.png) 
 
 Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag van een feedback ronde. Als iemand bijvoorbeeld onderaan eindigde stelde ik de vraag waarom diegene zo laag scoorde. Door na iedere ronde een vraag te stellen over de resultaten begon er wel een gesprek op gang te komen en werd uitgelegd waarom iemand bepaalde feedback kreeg.
 
-<div style="color: red">
+## Conclusie
 
-- geen impact  
-- interessante conclusie  
-- je onderbouwing is wat mager dan  
-- testen?
+<p style="color:red">
+Het testen van het prototype verliep zonder grote problemen en er zijn interessante resultaten naar voren gekomen. Het starten en het spelen van het spel was voor alle testpersonen duidelijk en leverde weinig problemen op. Het enige punt van kritiek was het registratieproces. Doordat het registratieformulier op een telefoon ingevuld moet worden neemt het redelijk wat tijd in beslag. Dit kan gebruiksvriendelijker gemaakt worden door bijvoorbeeld de velden 'leeftijd', 'geslacht', 'wachtwoord' en 'wachtwoord herhalen' weg te laten.
+</p>
 
-</div>
+<p style="color:red">
+Waar wel een hoop te verbeteren valt is bij het stimuleren van een groepsgesprek. Het tonen van de resultaten was niet voldoende om de gebruikers aan te zetten tot het hebben van een gesprek. Na een aantal rondes heb ik zelf een aantal vragen aan de gebruikers gesteld over de feedback. Deze vragen leidde ertoe dat er meer toelichting gegeven werd over de feedback, en het gesprek al beter op gang kwam. Er zal in een volgend prototype dus iets toegevoegd moeten worden wat de gebruikers aanspoort om in gesprek te gaan over de feedback.
+</p>
 
 ## Bijlagen
 
@@ -992,6 +1003,51 @@ De test suites zijn geschreven in het [Mocha](http://mochajs.org/) test framewor
 
 In dit reflectieverslag zal ik terugblikken op de afgelopen vier jaar en op het afgelopen halfjaar afstuderen van de opleiding CMD. Ik zal diverse tests herhalen welke ik in het verleden heb uitgevoerd om erachter te komen in hoeverre ik veranderd ben. Daarnaast ga ik volgens de STARR methode reflecteren op mijn afstudeerperiode en hoe ik de afgelopen jaren gegroeid ben.
 
+## Groeiverslag
+
+### MBO ICT Beheer
+
+Voordat ik aan CMD begon heb ik vier jaar de MBO opleiding ICT beheer gevolgd op de ROC Friese Poort in Sneek. Hiervoor had ik toentertijd gekozen omdat ik nog geen idee had wat ik wilde gaan doen, en ik 'wel handig met computers was'. Op deze opleiding was je vooral bezig met het oplossen van computerproblemen, en slechts een klein gedeelte van de opleiding was gericht op applicatie ontwikkeling.
+
+Tijdens mijn drie stages op deze opleiding kreeg ik vrijwel alleen maar positieve feedback en was men zeer tevreden over mijn werkzaamheden. Ik schijn goed met deadlines om te kunnen gaan en ondanks dat ik het niet leuk vind presteer ik het best onder druk. Het feit dat ik vrij perfectionistisch en geordend ben heeft mij ook erg geholpen. Dit zorgde ervoor dat ik geen half werk afleverde en duidelijk kon aangeven waarom ik bepaalde keuzes maak. Verbeterpunten waren er zeker ook, zo was ik soms wat onzichtbaar of enigszins verlegen. Vooral in het begin vond ik het wel moeilijk om de telefoon op te pakken en klanten te gaan bellen. Doordat ik ook veel op de helpdesk zat ben ik hier gelukkig overheen gekomen, en dit heeft mij ook buiten school om ontzettend geholpen.
+
+### HBO Communication & Multimedia Design
+
+Aangezien ik niet de rest van mijn leven computerproblemen wilde oplossen heb ik besloten om na mijn ICT opleiding nog een vervolgopleiding te gaan doen. Het leukste gedeelte van de ICT opleiding vond ik het ontwikkelen van websites en het bedenken van oplossingen waarmee dingen geautomatiseerd konden worden. Na diverse open dagen ben ik tot de conclusie gekomen dat een multimedia opleiding het beste bij mij zou passen. Ik heb gekozen voor de opleiding Communication & Multimedia Design (CMD) omdat ze hier erg praktijkgericht werken, en je leert door dingen in de praktijk toe te passen. De keuze voor de NHL Hogeschool was vervolgens snel gemaakt omdat deze goed aangeschreven staat en de school goed bereikbaar is via het openbaar vervoer.
+
+#### Eerstejaars
+
+Al vanaf het eerste jaar op CMD ben ik mij gaan specialiseren op het ontwikkelen van webapplicaties. Bij het behalen van mijn propedeuse kwam ik erachter dat ik toch al behoorlijk voor liep op de studenten die van HAVO kwamen. Zo kon ik al een redelijk programmeren en het projectmatig werken zat er ook al in. Zonder al teveel moeite heb ik toen mijn propedeuse gehaald en in de feedback van anderen kwam naar voren dat ik altijd goed in de groep lag. Dankzij mijn vooropleiding was ik al gewend aan het samenwerken en dit kwam ook goed tot zijn recht in de projectgroepen. Inhoudelijk heb ik toen weinig verbeterpunten gekregen van de mensen met wie ik heb samengewerkt. Waarschijnlijk omdat je net wat te kort met elkaar in een groep zit om degelijke feedback te geven.
+
+#### Tweedejaars
+
+In het eerste semester van het tweede jaar ben ik begonnen in de minor Multimediaal Reclamebureau (MMR). Hiervoor heb ik gekozen omdat ik ook weleens verder wilde kijken dan het ontwikkelen van websites. In dit semester had één van de leukste projectgroepen, en ben ik ontzettend gegroeid op persoonlijk vlak. Samen met de medestudenten gingen we geregeld op stap of deden we leuke uitstapjes. Hierdoor leerde je elkaar ook buiten school om goed kennen en dit had een positieve invloed op het project waar we aan werkte.
+
+Volgens de medestudenten was ik een harde werker en kon er op me gebouwd worden. Wel kreeg ik als feedback van docenten dat ik meer aanwezig moet zijn, vooral op belangrijke momenten als assessments. Doordat ik vaak anderen eerst liet praten kwam mijn aandeel niet goed naar voren. Hierdoor ben ik bijna een aantal studiepunten misgelopen, puur vanwege het feit dat ik niet genoeg verteld heb. Dit heeft mij wel aan het denken gezet en me ervan bewust geworden dat het belangrijk is om de credits voor je werk op te eisen.
+
+In het tweede semester heb ik een project gedaan in de minor The Next Web (TNW). Deze minor past meer in mijn straatje en hier kon ik de dingen doe waar ik graag expert in wil worden, namelijk het ontwikkelen van webapplicaties. Tijdens dit project hadden we erg veel last van een opdrachtgever die niet wist wat hij wilde. We moesten namelijk een applicatie maken waarmee eigenaren van een elektrische auto bewust werden van hun rijgedrag en energieverbruik. Tijdens dit project heb ik erg veel geleerd over de omgang met een opdrachtgever, en dan vooral hoe het niet moet. We liepen namelijk helemaal vast met de vorderingen van het project omdat de opdrachtgever het naliet om ons van de benodigde gegevens te voorzien. Wat ik hiervan geleerd heb is dat je een opdrachtgever ook achter de broek aan moet zitten, en niet te afwachtend moet zijn. Wanneer een project niet loopt moet je snel de keuze maken of je aan blijft modderen of de stekker eruit trekt.
+
+#### Derdejaars
+
+In het eerste semester van het derde jaar heb ik wederom gekozen voor minor The Next Web. Ik was projectmanager en een medestudent vervulde de rol van assistent projectmanager. Dit keer hadden we een opdrachtgever die wel ontzettend enthousiast was en precies wist wat hij wilde. Helaas zat het qua groepssamenstelling niet echt mee dit semester. Zo begonnen we met zijn zessen en uiteindelijk bleven hier aan het eind van het semester nog vier van over. Dit kwam omdat één medestudent niet lekker in zijn vel zat en op een gegeven moment niet meer kwam opdagen. Daarnaast was een andere student van mening dat hij niks meer kon leren op school, en meende dat hij maar één of twee dagen per week op school hoefde te komen. 
+
+Aangezien ik de projectmanager was moest ik het probleem op lossen en dit was een ontzettende opgave voor me. Ik voel me niet echt lekker in de rol van leidinggevende, en het spreken voor een groep vind ik ook niet erg prettig. Door deze problemen moest is wel naar de voorgrond treden en moeilijke gesprekken houden. Ondanks dat ik het totaal niet leuk vond om te doen ging het me wel redelijk goed af. Ik ben me bewust geworden dat het leidinggeven niet perse in je hoeft te zitten, maar dat dit ook te leren is. Er is op dat moment een knop omgegaan en ik ben erachter gekomen dat ik het wel kan door het gewoon veel te doen. Wanneer je zelfverzekerd overkomt en goed nadenkt over wat je gaat zeggen zullen mensen sneller naar je luisteren.
+
+Daarnaast heb ik in het derde jaar kennis gemaakt met de SCRUM projectmanagement methode. Ik was nooit een held in het maken van planningen, en vond het moeilijk om me hieraan te houden. Door SCRUM toe te passen kwam ik erachter dat deze manier van plannen wel goed voor me werkt. Ik moet de werkzaamheden in kleinere taken verdelen en deze gestructureerd één voor één afwerken. Hierdoor heb ik een stuk minder moeite met het halen van mijn doelen en werk ik efficiënter.
+
+#### Vierdejaars
+
+In het eerste semester van het vierde jaar heb ik stage gelopen bij Tussendoor Internet & Marketing. Het stage lopen en meedraaien in een bedrijf is dankzij mijn MBO opleiding geen onbekend terrein. Wel zat dit bedrijf in een hele andere branche dan mijn voorgaande stagebedrijven. Het was een hele leerzame ervaring en ik heb weer nieuwe dingen over mezelf geleerd. Zo roep ik soms te snel dat dingen niet kunnen, of dat ik denk dat ik iets niet kon. Doordat ik op stage verplicht werd bepaalde problemen op te lossen kwam ik erachter dat eigen 'alles' wel kan. Het is een kwestie van doorzetten en je over het punt van opgeven heenzetten. 
+
+De feedback die ik kreeg van mijn stagebegeleider was erg positief. Dingen die in het verleden nog wel eens mis gingen zoals het goed communiceren bleek nu juist bij mijn pluspunten te staan. Het enige minpunt die ik kreeg was dat ik een negen tot vijf mentaliteit zou hebben. Hier ben ik het zelf absoluut niet mee eens, aangezien ik altijd eerder dan de rest aanwezig was en vaak 's avonds buiten werktijd om nog even wat extra dingen deed. Waarschijnlijk kreeg ik dit minpunt omdat de stagebegeleider niet door had dat ik buiten werktijd nog bezig geweest ben. Dit heeft mij wel te denken gezet en in het vervolg zijn dit wel dingen die ik sneller ga melden, bijvoorbeeld door 's avonds nog even een mailtje te sturen dat ik iets gefixed heb.
+
+<p style="color:red">
+	Na mijn stage ben ik gaan afstuderen
+	
+</p>
+
+### Na het afstuderen
+
 ## Big Five persoonlijkheidsrapport
 
 Voor het doelgroep onderzoek heb ik gebruik gemaakt van de Myers-Briggs Type Indicator (MBTI) persoonlijkheidstypes. Tijdens mijn onderzoek naar dit systeem stuitte ik op een alternatief, namelijk de Big Five persoonlijkheidsdimensies.
@@ -999,7 +1055,6 @@ Voor het doelgroep onderzoek heb ik gebruik gemaakt van de Myers-Briggs Type Ind
 De Big Five is wetenschappelijk onderbouwd en wordt ondersteund door de academische wereld. (1) Ik vond het daarom interessant om deze test uit te voeren en te kijken in hoeverre ik mezelf kan vinden in de uitslagen van deze test.
 
 (1) https://www.psychologytoday.com/blog/give-and-take/201309/goodbye-mbti-the-fad-won-t-die
-
 
 *"De Big Five persoonlijkheidstest geeft je inzicht in de vijf hoofddimensies van persoonlijkheid. Dit inzicht kun je gebruiken om jezelf beter te leren kennen of jezelf voor te bereiden op een assessment bij een sollicitatie. Dit kan voor een werksituatie, in een relatie of welke andere sociale situatie dan ook, van belang zijn. Er wordt hieronder verteld wat de dimensies grofweg zijn en hoe jij scoorde."* (1)
 
@@ -1138,7 +1193,9 @@ In de rol van waarschuwer kan ik me wel aardig goed vinden. Ik vind het prettig 
 
 *"Rustig introvert. Houdt in de gaten dat er niets wordt overgeslagen: hij volgt alleen iedereen rusteloos, consciëntieus, zorgelijk en wat beschroomd ten opzichte van anderen. Ze 'absorberen' als het ware de stress (maagzweertype); de man achter de schermen die het planmatige verloop voor zijn rekening neemt."*
 
+Hier kan ik me zeker in vinden, en dit krijg ik ook geregeld in feedback van anderen mee. Op zich is dit wel een positieve eigenschap, echter is het ook een valkuil waar ik voor op moet passen. Ik vind het moeilijk om dingen los te laten en doe het liefst alles zelf zodat ik zeker weet dat het goed komt. Als iemand anders iets overslaat ben ik vaak degene die de taak op me neemt en hierdoor bezorg ik mezelf soms onnodig veel werk en stress. Hier ben ik me heel goed van bewust, en probeer dus ook om vaker dingen los te laten en erop te vertrouwen dat het wel goed gaat komen. Tot nu toe komt het ook allemaal wel goed, alleen het loslaten gaat nog niet van harte.
 
+De stijging van 8.6% is wellicht te verklaren doordat ik de afgelopen jaren veel vakinhoudelijke kennis heb opgedaan en ik daardoor denk te weten hoe problemen opgelost moeten worden. Dit maken het daarom nog lastiger om dingen los te laten en over te laten aan iemand anders.
 
 http://www.thesis.nl/testen/test/belbin-test
 
@@ -1156,11 +1213,9 @@ http://www.thesis.nl/testen/test/belbin-test
 
 *De beslisser leert van praktijkvoorbeelden. Hij leert optimaal als hij onder begeleiding van een expert kan oefenen. De expert kan hem de technieken tonen en staven met duidelijke praktische voorbeelden*
 
-*De beslisser doet het goed in conventionele intelligentietesten. Hij houdt zich liever bezig met technische problemen en dingen dan met mensen en weet zijn emoties goed in toom te houden.*"
+*De beslisser doet het goed in conventionele intelligentietesten. Hij houdt zich liever bezig met technische problemen en dingen dan met mensen en weet zijn emoties goed in toom te houden.*" (*Thesis Kolb test*, geraadpleegd op 17 maart 2015 http://www.thesis.nl/testen/kolb/)
 
-Bovenstaande tekst is één-op-één gekopieerd van de Thesis site, maar verbazingwekkend genoeg komt deze omschrijving exact overeen met mijzelf.
-
-http://www.thesis.nl/testen/kolb/
+Bovenstaande tekst is één-op-één gekopieerd van de Thesis site, maar verbazingwekkend genoeg komt de omschrijving bijna exact overeen met hoe ik mezelf zie. Alleen het feit dat ik besluiten durf te nemen zie ik zelf niet echt in de praktijk terug. Ik werk er wel druk aan om sneller knopen door te hakken, en misschien wijst de test uit dat dit nu de goede kant op gaat.
 
 ## STARR reflectie
 
