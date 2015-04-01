@@ -3,7 +3,11 @@
 	var token  = Cookies.get('fbs_token');
 	var room   = _.last(window.location.href.split('/'));
 	var socket = io(baseURL, { query: 'token=' + token + '&role=host&room=' + room });
-	var notification = new Audio('/pling.mp3');
+	var notifications = {
+		pling: new Audio('/pling.mp3'),
+		pop: new Audio('/pop.mp3')
+	}
+	var nextRoundTimer;
 
 	var cards = _.shuffle([
 		'Saai', 'Grappig', 'Flexibel',
@@ -182,6 +186,7 @@
 	});
 
 	socket.on('round.next', function(state) {
+		if (nextRoundTimer) clearTimeout(nextRoundTimer);
 		Game.set('players', state.players);
 		Game.set('step', null).then(function() {
 			if (state.card) {
@@ -203,7 +208,11 @@
 			if (state.card) {
 				if (Game.get('step') == 'showResults') return;
 
-				notification.play();
+				notifications.pling.play();
+
+				nextRoundTimer = setTimeout(function() {
+					socket.emit('round.next');
+				}, 5 * 60 * 1000);
 				
 				Game.set('step', null).then(function() {
 					Game.set('showHelp', false);
@@ -215,6 +224,7 @@
 				Game.set('step', 'gameFinished');
 			}
 		} else if (Game.get('step') != 'showCard') {
+			notifications.pop.play();
 			Game.set('step', 'showCard');
 		}
 	});

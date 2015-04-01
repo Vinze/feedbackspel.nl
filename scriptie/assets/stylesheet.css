@@ -299,11 +299,16 @@ div.content {
 		font-size: 12px;
 	}
 
+	h1, h2, h3, h4 {
+		color: #444;
+		page-break-after: avoid;
+		break-after: avoid;
+	}
+
 	h1 {
 		page-break-before: always;
 		margin: 0 0 20px 0;
 		padding: 0;
-		color: #444;
 		border-bottom: none;
 	}
 
@@ -311,9 +316,7 @@ div.content {
 		page-break-before: auto;
 	}
 
-	h2 {
-		page-break-after: avoid;
-		color: #444;
+	h2, h3 {
 	}
 
 	div.container-left {

@@ -3,7 +3,10 @@
 	var userId = null;
 	var token  = Cookies.get('fbs_token');
 	var room   = _.last(window.location.href.split('/'));
-	var notification = new Audio('/pop.mp3');
+	var notifications = {
+		pling: new Audio('/pling.mp3'),
+		pop: new Audio('/pop.mp3')
+	}
 
 	function verifyConnection(callback) {
 		var socket;
@@ -92,7 +95,7 @@
 				ratings[opponent._id] = 1;
 			});
 
-			notification.play();
+			notifications.pop.play();
 
 			Game.set({
 				step: 'setRating',
