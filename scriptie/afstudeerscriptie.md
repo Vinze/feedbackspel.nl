@@ -373,7 +373,7 @@ Observatie methode waarbij de toezichthouder zich zo afstandelijk mogelijk houdt
 
 # Iteratie 1 - paper prototype
 
-![webapp1](scriptie/bijlagen/i1-overview.png)
+![webapp1](scriptie/bijlagen/i1-overview.jpg)
 
 ## Inleiding
 
