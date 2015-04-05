@@ -94,9 +94,11 @@
 		</div>
 
 		<div id="process-3-1" class="step" data-x="4000" data-y="70" data-scale="0.10">
+			&nbsp;
 		</div>
 
 		<div id="process-3-2" class="step" data-x="4100" data-y="40" data-scale="0.15">
+			&nbsp;
 		</div>
 
 		<div id="process-4" class="step" data-x="4500" data-y="0" data-scale="0.3">
@@ -105,9 +107,11 @@
 		</div>
 
 		<div id="process-4-1" class="step" data-x="4490" data-y="-10" data-scale="0.15">
+			&nbsp;
 		</div>
 
 		<div id="process-4-2" class="step" data-x="4600" data-y="40" data-scale="0.15">
+			&nbsp;
 		</div>
 
 		<div id="screencast" class="step" data-x="4500" data-y="500" data-scale="1">
@@ -127,25 +131,43 @@
 
     </div>
 
+    <button class="prev" id="prev">
+    	&laquo;
+    </button>
+
+    <button class="next" id="next">
+    	&raquo;
+    </button>
+
 	<script type="text/javascript" src="/presentatie/assets/impress.js"></script>
 	<script type="text/javascript">
+		var nextButton = document.getElementById('next');
+		var prevButton = document.getElementById('prev');
+		var screencastSlide = document.getElementById('screencast-video');
+		var screencastVideo = document.getElementById('video');
+
 		impress().init();
 
-		(function() {
-			var screencastSlide = document.getElementById('screencast-video');
-			var screencastVideo = document.getElementById('video');
+		nextButton.addEventListener('click', function() {
+			impress().next();
+		});
 
-			screencastSlide.addEventListener('impress:stepenter', function(evt) {
+		prevButton.addEventListener('click', function() {
+			impress().prev();
+		});
+
+		screencastSlide.addEventListener('impress:stepenter', function(evt) {
+			screencastVideo.play();
+			document.body.style.backgroundColor = '#FCFCFC';
+		}, false);
+
+		screencastSlide.addEventListener('impress:stepleave', function(evt) {
+			setTimeout(function() {
+				screencastVideo.pause();
 				screencastVideo.currentTime = 0;
-				setTimeout(screencastVideo.play(), 300);
-				document.body.style.backgroundColor = '#FCFCFC';
-			}, false);
-
-			screencastSlide.addEventListener('impress:stepleave', function(evt) {
-				setTimeout(screencastVideo.pause(), 300);
-				document.body.style.backgroundColor = '#55BE78';
-			}, false);
-		}());
+			}, 1000);
+			document.body.style.backgroundColor = '#55BE78';
+		}, false);
 
 
 	</script>
