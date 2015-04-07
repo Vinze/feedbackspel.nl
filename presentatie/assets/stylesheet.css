@@ -235,6 +235,6 @@ img {
 	padding-right: 15px;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+/*@media screen and (-webkit-min-device-pixel-ratio:0) {
     video { -webkit-filter: brightness(108.5%); }
-}
+}*/

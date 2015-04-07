@@ -179,3 +179,5 @@ app.get('*', function(req, res) {
 
 // Run the server
 server.listen(config.port);
+
+console.log('Feedbackspel.nl started!');

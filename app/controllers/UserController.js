@@ -41,11 +41,11 @@ var UserController = {
 	},
 
 	getAvatar: function(req, res) {
-		var imagepath = path.resolve('storage/avatars', req.params.image);
+		var imagepath = path.resolve(__dirname, '../storage/avatars', req.params.image);
 
 		fs.exists(imagepath, function(exists) {
 			if ( ! exists) {
-				imagepath = path.resolve('public/img/placeholder.png');
+				imagepath = path.resolve(__dirname, '../public/img/placeholder.png');
 			}
 			fs.readFile(imagepath, function(err, data) {
 				res.writeHead(200, {'Content-Type': 'image/png' });
@@ -56,7 +56,7 @@ var UserController = {
 
 	postAvatar: function(req, res) {
 		var image = req.files.image;
-		var output = path.resolve('storage/avatars', req.user._id + '.png');
+		var output = path.resolve(__dirname, '../storage/avatars', req.user._id + '.png');
 
 		if ( ! inArray(image.mimetype, ['image/jpeg', 'image/png']))
 			return res.json({ error: 'Uploaded file is no image' });
@@ -187,7 +187,8 @@ var UserController = {
 	},
 
 	postDelete: function(req, res) {
-		var imagepath = './storage/avatars/' + req.body._id + '.png';
+		var imagepath = path.resolve(__dirname, '../storage/avatars', req.body._id + '.png');
+
 		fs.exists(imagepath, function(exists) {
 			if (exists) fs.unlink(imagepath);
 		});
