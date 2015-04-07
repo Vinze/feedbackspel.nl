@@ -116,15 +116,11 @@ Om vast te kunnen stellen waar de doelgroep ligt en hoe deze omgaat met het geve
 Uit deze enquête zijn een aantal belangrijke punten naar voren gekomen welke kunnen helpen bij de verdere ontwikkeling van een feedback systeem.
 
 
-<p style="color:red">
 *Facebook bericht door Vincent Bremer*, geplaatst op 7 april 2014  
 http://facebook.com/vbremer89/posts/722083571157120
-</p>
 
-<p style="color:red">
 *Ruwe data enquête*, afgenomen op 7 april t/m 9 april 2014  
 [Feedback onderzoek - Google Formulieren.pdf](scriptie/bijlagen/Feedback onderzoek - Google Formulieren.pdf)
-</p>
 
 ### Feedbacksystemen
 
@@ -157,9 +153,7 @@ Vrijwel alle ondervraagden geven aan dat ze graag onderbouwde feedback willen on
 
 # Feedback geven en ontvangen
 
-<p style="color:red">
 Feedback betekent letterlijk terugkoppeling. Het geven van feedback is een belangrijke vaardigheid voor iedereen die samenwerkt in een team. Door middel van feedback wissel je informatie uit over elkaars houding en gedrag. Deze informatie is nodig om erachter te komen hoe anderen u zien, dit kan namelijk verschillen van uw zelfbeeld. Door vragen te stellen en in dialoog te gaan over de gegeven en ontvangen feedback vergroot u uw zelfkennis. (*Commentaar Geven En Ontvangen*, Marieta Koopmans, 2010, p.9)
-</p>
 
 ## Regels
 
@@ -199,13 +193,9 @@ Het feedback systeem moet de deelnemers dus motiveren tot het hebben van een dia
 
 # Doelgroep
 
-<p style="color:red">
 De doelgroep waar ik me in eerste instantie op zal richting zijn studenten die de opleiding Communication & Multimedia Design (CMD) volgen. Deze studenten vallen in de leeftijdscategorie van ongeveer 18 tot 26 jaar, en hebben vaak HAVO of MBO gedaan voordat ze aan de opleiding begonnen. Op CMD wordt erg veel gewerkt in groepsverband en is het reflecteren en groeien op persoonlijk vlak erg belangrijk. Uit eigen vooronderzoek blijkt dat vrijwel alle studenten van de opleiding bekend zijn met het geven en ontvangen van feedback.
-</p>
 
-<p style="color:red">
 Een vereiste bij het selecteren van deze doelgroep is dat ze beschikken over de zogenaamde "21st century skills". Onderstaand schema van Kennisnet (1) geeft erg duidelijk weer welke eigenschappen bij de 21st century skills horen.
-</p>
 
 ![uitleg](http://www.kennisnet.nl/uploads/pics/Model21CSKN_06.jpg)
 
@@ -561,13 +551,9 @@ Na drie rondes besloot ik om zelf een aantal vragen te stellen over de uitslag v
 
 ## Conclusie
 
-<p style="color:red">
 Het testen van het prototype verliep zonder grote problemen en er zijn interessante resultaten naar voren gekomen. Het starten en het spelen van het spel was voor alle testpersonen duidelijk en leverde weinig problemen op. Het enige punt van kritiek was het registratieproces. Doordat het registratieformulier op een telefoon ingevuld moet worden neemt het redelijk wat tijd in beslag. Dit kan gebruiksvriendelijker gemaakt worden door bijvoorbeeld de velden 'leeftijd', 'geslacht', 'wachtwoord' en 'wachtwoord herhalen' weg te laten.
-</p>
 
-<p style="color:red">
 Waar wel een hoop te verbeteren valt is bij het stimuleren van een groepsgesprek. Het tonen van de resultaten was niet voldoende om de gebruikers aan te zetten tot het hebben van een gesprek. Na een aantal rondes heb ik zelf een aantal vragen aan de gebruikers gesteld over de feedback. Deze vragen leidde ertoe dat er meer toelichting gegeven werd over de feedback, en het gesprek al beter op gang kwam. Er zal in een volgend prototype dus iets toegevoegd moeten worden wat de gebruikers aanspoort om in gesprek te gaan over de feedback.
-</p>
 
 ## Bijlagen
 
@@ -726,8 +712,9 @@ Het eindresultaat is zéér positief en de test verliep een stuk beter dan voora
 
 ### Testen prototype 13 maart 2015
 
-<p id="test-vid">YouTube link: http://youtu.be/ahAJmDIjdII</p>
+<iframe width="700" height="418" src="https://www.youtube.com/embed/ahAJmDIjdII" frameborder="0" allowfullscreen class="hide-print"></iframe>
 
+YouTube link: http://youtu.be/ahAJmDIjdII
 
 # Samenvatting
 
