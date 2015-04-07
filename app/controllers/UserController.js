@@ -20,7 +20,7 @@ function capitalizeWords(str) {
 var UserController = {
 
 	getStart: function(req, res) {
-		res.render('start');
+		res.render('start', { pageTitle: 'Start | Feedbackspel.nl' });
 	},
 
 	getDashboard: function(req, res) {
@@ -29,15 +29,15 @@ var UserController = {
 			if (intendedURL) {
 				res.redirect(intendedURL);
 			} else {
-				res.render('dashboard');
+				res.render('dashboard', { pageTitle: 'Dashboard | Feedbackspel.nl' });
 			}
 		} else {
-			res.render('select-avatar');
+			res.render('select-avatar', { pageTitle: 'Profielfoto instellen | Feedbackspel.nl' });
 		}
 	},
 
 	getIndex: function(req, res) {
-		res.render('users');
+		res.render('users', { pageTitle: 'Gebruikers | Feedbackspel.nl' });
 	},
 
 	getAvatar: function(req, res) {

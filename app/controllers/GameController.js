@@ -29,7 +29,7 @@ var GameController = {
 
 		if ( ! room) return res.redirect('/dashboard');
 
-		res.render('game-host', { pageTitle: 'Feedbackspel - ' + room });
+		res.render('game-host', { pageTitle: 'Feedbackspel: ' + room });
 	},
 
 	getPlay: function(req, res) {
@@ -37,7 +37,7 @@ var GameController = {
 
 		if ( ! room) return res.redirect('/dashboard');
 
-		res.render('game-player', { pageTitle: 'Feedbackspel - ' + room });
+		res.render('game-player', { pageTitle: 'Feedbackspel: ' + room });
 	},
 
 	roomParser: function(req, res, next) {
